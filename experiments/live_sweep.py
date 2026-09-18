@@ -100,7 +100,10 @@ def _req(method, path, body=None):
         url += ("&" if "?" in path else "?") + f"token={TOKEN}"
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(url, data=data,
-                                 headers={"Content-Type": "application/json"},
+                                 headers={"Content-Type": "application/json",
+                                          # Cloudflare edge 403s Python-urllib UA;
+                                          # identify honestly instead of looking like a bot.
+                                          "User-Agent": "influence-sweep/1.0"},
                                  method=method)
     try:
         with urllib.request.urlopen(req, timeout=20) as r:

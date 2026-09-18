@@ -225,6 +225,42 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json({"error": str(e)[:200]}, 500)
             return self._json({"ok": True, "projects": len(d["influencers"]),
                                "tasks": len(d["tasks"])})
+        if self._route() == "/api/resource-done":
+            try:
+                n = int(self.headers.get("Content-Length", "0"))
+                body = json.loads(self.rfile.read(n) or b"{}")
+            except Exception:
+                return self._json({"error": "bad json"}, 400)
+            slug, key = str(body.get("slug", "")), str(body.get("resource_key", ""))
+            done = body.get("done", True)
+            if not slug or not key:
+                return self._json({"error": "slug + resource_key required"}, 400)
+            sys.path.insert(0, os.path.dirname(ROOT))
+            from dash.store import mark_resource_done
+            db_path = os.getenv("DASH_DB", os.path.join(ROOT, "influence.db"))
+            try:
+                return self._json({"ok": True,
+                                   **mark_resource_done(slug, key, bool(done), db_path)})
+            except KeyError as e:
+                return self._json({"error": str(e)[:160]}, 404)
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
+        if self._route() == "/api/autopilot":
+            try:
+                n = int(self.headers.get("Content-Length", "0"))
+                body = json.loads(self.rfile.read(n) or b"{}")
+            except Exception:
+                return self._json({"error": "bad json"}, 400)
+            sys.path.insert(0, os.path.dirname(ROOT))
+            from dash.store import autopilot_run
+            db_path = os.getenv("DASH_DB", os.path.join(ROOT, "influence.db"))
+            try:
+                out = autopilot_run(str(body.get("slug") or "") or None, db_path)
+                return self._json({"ok": True, **out})
+            except KeyError as e:
+                return self._json({"error": str(e)[:160]}, 404)
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/present":
             try:
                 n = int(self.headers.get("Content-Length", "0"))

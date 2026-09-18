@@ -117,9 +117,10 @@ def handle_chat(message: str, state: dict | None = None,
 
     st = state or {"influencers": [], "tasks": []}
     bare = cmd.strip("?!.,")
-    if bare in ("help", "status", "tasks", "queue", "htasks", "products"):
-        return handle_chat("/" + bare if bare in ("help", "status") else bare,
-                           state=state, journal_path=journal_path)
+    if bare in ("help", "status"):
+        return handle_chat("/" + bare, state=state, journal_path=journal_path)
+    if bare in ("tasks", "queue", "htasks", "products"):
+        cmd = bare  # fall through to the handlers below (no recursion)
     if bare in ("hey", "hi", "hello", "yo", "sup", "morning", "evening", "howdy"):
         n_inf = len(st.get("influencers", []))
         n_tasks = len(st.get("tasks", []))
