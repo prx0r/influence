@@ -111,12 +111,21 @@ def main():
         return "example.com BLOCKED, authoritative"
     run("check-taken", t_taken)
 
-    # 2. free-looking name yields buy path + prices, never auto-buy
+    # 2. free-looking name yields buy path + prices, never auto-buy.
+    # One retry: RDAP is a live external dependency and may hiccup —
+    # the connector must answer UNKNOWN then (never a guess), and the
+    # drill retries once before calling it a failure.
     def t_free():
-        s, b = _req("POST", "/api/chat", {"message": "check zzq-drill-4821.dev"})
-        assert s == 200, (s, b)
-        assert "MISSING" in b.get("reply", "") and "BUY-DOMAIN" in b.get("reply", ""), b
-        return "free name -> human buy path, prices attached"
+        import time
+        last = None
+        for _ in range(2):
+            s, b = _req("POST", "/api/chat", {"message": "check zzq-drill-4821.dev"})
+            assert s == 200, (s, b)
+            last = b.get("reply", "")
+            if "MISSING" in last and "BUY-DOMAIN" in last:
+                return "free name -> human buy path, prices attached"
+            time.sleep(5)
+        assert False, f"no buy path after retry: {last}"
     run("check-free", t_free)
 
     # 3. pipeline setup view over live targets
@@ -155,6 +164,27 @@ def main():
         assert v["ok"], v
         return f"{v['checked']} receipts re-settled, chain ok"
     run("verify-chain", t_verify)
+
+    # 7. every receipt in scope of its module (masquerading fails)
+    def t_scope():
+        import json
+        from qp.modules import scope_check
+        path = os.getenv("RECEIPT_LOG", os.path.join(ROOT, "dash", "receipts.jsonl"))
+        n, bad, mods = 0, [], {}
+        with open(path) as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                rc = json.loads(line)["payload"]["receipt"]
+                v = scope_check(rc)
+                n += 1
+                mods[v.get("module") or "NONE"] = mods.get(v.get("module") or "NONE", 0) + 1
+                if not v["ok"]:
+                    bad.append((rc.get("id"), v["reason"]))
+        assert n > 0 and not bad, f"{n} receipts, out-of-scope: {bad[:3]}"
+        return f"{n} receipts in scope: {mods}"
+    run("module-scope", t_scope)
 
     print(f"\nPROVISION {TS}: {PASS[0]}/{total[0]} passed — log {RUNLOG}")
     return 0 if PASS[0] == total[0] else 1

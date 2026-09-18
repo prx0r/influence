@@ -256,6 +256,13 @@ def handle_chat(message: str, state: dict | None = None,
         from dash.mcp import PRODUCTS
         return {"reply": "products:\n" + "\n".join(
             f"· {p['name']} ({p['kind']}) — {p['intent']}" for p in PRODUCTS)}
+    if cmd == "modules":
+        sys.path.insert(0, PARENT)
+        from qp.modules import MODULES
+        return {"reply": "modules (namespaces with teeth — receipts outside their "
+                         "module's gates fail scope):\n" + "\n".join(
+            f"· {m}: {s['description']} ({len(s['domains'])} claim domains)"
+            for m, s in MODULES.items())}
     if cmd == "primitives":
         if len(parts) != 2:
             return {"reply": "usage: primitives <product> — e.g. primitives setup.social"}
@@ -265,6 +272,7 @@ def handle_chat(message: str, state: dict | None = None,
         if not prim:
             return {"reply": f"unknown product {parts[1]}. Say 'products' for the list."}
         lines = [f"{prim['name']} ({prim['kind']}, {prim['status']}) — {prim['path']}",
+                 f"module: {prim.get('module', '?')}",
                  f"objects: {', '.join(prim['objects'])}",
                  f"gates live: {', '.join(prim['gates_live'])}",
                  f"gates future: {', '.join(prim['gates_future']) or '—'}",

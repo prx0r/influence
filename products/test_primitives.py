@@ -11,6 +11,7 @@ from qp.law import use_law
 use_law()
 from acom import gates as G
 from core.cmail.connectors import CONNECTORS
+from qp.modules import MODULES
 
 PRIMS = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                                     "products", "primitives.json")))["products"]
@@ -38,3 +39,8 @@ def test_live_connectors_exist():
 def test_status_honest():
     for p in PRIMS:
         assert p["status"] in ("live", "partial", "designed"), p["name"]
+
+
+def test_module_registered():
+    for p in PRIMS:
+        assert p.get("module") in MODULES, f"{p['name']}: module {p.get('module')} unregistered"

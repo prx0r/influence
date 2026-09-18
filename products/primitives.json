@@ -1,1 +1,607 @@
-{"products": [{"connectors_live": ["names", "domain", "registrar", "zone", "website", "social"], "connectors_stub": ["mail", "number", "postiz_social"], "gates_future": ["budget-cap-v1", "drift-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "human task approval (exact payload, single-use); spend grants arrive with BUY-DOMAIN leaf", "judges": ["urgency.score"], "kind": "infra", "name": "setup.social", "objects": ["CLAIM", "EVIDENCE", "TASK", "RUN", "GATE", "GRANT"], "path": "L1 observe -> L2 acquire (all human-gated) -> influencer()", "proof_level": 4, "receipts": "project_receipt per reconcile (PASS/FAIL first-class)", "status": "partial", "stubs": ["mailbox create", "number provision", "zone apply"]}, {"connectors_live": [], "connectors_stub": [], "gates_future": ["funny-score-v1", "lineage-eval-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "none (simulate-only, no effects)", "judges": ["funny.score", "lands.noul"], "kind": "infra", "name": "funnylab", "objects": ["CLAIM", "EVIDENCE", "RUN", "GATE"], "path": "corpus -> set.write -> funny.score / lands Noul -> rsi.reweight", "proof_level": 4, "receipts": "reweight receipt per cycle (promotion by receipt only)", "status": "designed", "stubs": ["frozen eval cut", "one lineage", "first reweight receipt"]}, {"connectors_live": [], "connectors_stub": [], "gates_future": ["judge-version-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "capability mint per caller (future)", "judges": ["intent.choice", "urgency.score", "risk.score", "funny.score"], "kind": "infra", "name": "eval-api", "objects": ["CLAIM", "EVIDENCE", "GATE", "GRANT"], "path": "L5 judges + grants + receipts", "proof_level": 4, "receipts": "per-judgment receipt with model/provider version logged", "status": "partial", "stubs": ["metered endpoint", "capability mint"]}, {"connectors_live": [], "connectors_stub": ["trend-source"], "gates_future": ["trend-rank-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "judges": ["intent.choice", "urgency.score"], "kind": "infra", "name": "trend-radar", "objects": ["CLAIM", "EVIDENCE", "TASK", "GATE"], "path": "L1 observe -> L5 judges -> queue", "proof_level": 4, "receipts": "per-candidate receipt", "status": "designed", "stubs": ["one trend source connector", "radar lens"]}, {"connectors_live": ["tee"], "connectors_stub": ["xmr-pay"], "gates_future": ["attest-valid-v1", "split-wallet-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "bounded exact grants (pmail subgraph); TEE attestation carried as evidence", "judges": [], "kind": "infra", "name": "private-studio", "objects": ["CLAIM", "EVIDENCE", "GATE", "GRANT", "RUN"], "path": "L0 privacy + tee.attest + pmail subgraph", "proof_level": 6, "receipts": "attested-run receipt (commitments public, raw private)", "status": "partial", "stubs": ["TEE chain validation (hash-only today)", "xmr.pay live"]}, {"connectors_live": ["names", "domain", "registrar", "zone", "website", "social"], "connectors_stub": ["mail", "number"], "gates_future": ["budget-cap-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "human task approval; spend grants with BUY-DOMAIN leaf", "judges": ["urgency.score"], "kind": "surface", "name": "instant-influencer", "objects": ["CLAIM", "EVIDENCE", "TASK", "RUN", "GATE", "GRANT"], "path": "setup.social -> draft.write -> L5 judges", "proof_level": 4, "receipts": "project_receipt per reconcile", "status": "partial", "stubs": ["remaining L2 connectors"]}, {"connectors_live": ["publisher", "inbox"], "connectors_stub": ["postiz-send", "mail-send"], "gates_future": ["delivery-readback-v1", "drift-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "human + grant on every L4 effect; delivery settles on readback", "judges": ["intent.choice", "urgency.score", "risk.score", "delivery.noul"], "kind": "surface", "name": "influencer-ops", "objects": ["CLAIM", "EVIDENCE", "TASK", "RUN", "GATE", "GRANT"], "path": "L2 + L4 + L5, delivery settles on readback", "proof_level": 6, "receipts": "effect receipt per send (PROPOSED->AUTHORIZED->EXECUTING->PROVEN_*)", "status": "designed", "stubs": ["publisher + inbox live fetch", "ops lens"]}, {"connectors_live": ["local_artifact"], "connectors_stub": ["freaktown-stage"], "gates_future": ["bundle-seal-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "human approval on bundle import", "judges": ["funny.score"], "kind": "surface", "name": "influencer-studio", "objects": ["CLAIM", "EVIDENCE", "GATE", "GRANT"], "path": "L3 + freaktown bundles, digest-pinned both ways", "proof_level": 4, "receipts": "sealed-bundle receipt per job", "status": "designed", "stubs": ["freaktown bridge", "one sealed import"]}, {"connectors_live": [], "connectors_stub": ["reward-ingest", "youtube-analytics"], "gates_future": ["lineage-eval-v1", "reward-authentic-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "none (proposes only; promotion by receipt)", "judges": ["funny.score", "lands.noul", "lineage.choice"], "kind": "surface", "name": "freaktown-autopilot", "objects": ["CLAIM", "EVIDENCE", "RUN", "GATE"], "path": "L3 -> L5 -> L6 over HAHA/CLAP + eval + analytics", "proof_level": 4, "receipts": "reweight/promotion receipts", "status": "designed", "stubs": ["reward ingestion", "one lineage + eval gate"]}, {"connectors_live": [], "connectors_stub": ["reaction-emitters"], "gates_future": [], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "judges": [], "kind": "surface", "name": "watch-loop", "objects": ["EVIDENCE", "RUN"], "path": "audience() emitters -> reward events -> L6", "proof_level": 4, "receipts": "reward-batch receipts", "status": "designed", "stubs": ["watch lens with clips + reaction buttons"]}, {"connectors_live": [], "connectors_stub": ["cutter", "postiz-send"], "gates_future": ["clip-score-v1", "delivery-readback-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "human + grant on gated publish", "judges": ["funny.score"], "kind": "surface", "name": "clip-farm", "objects": ["CLAIM", "EVIDENCE", "GATE", "GRANT"], "path": "L3 cut -> L5 clip judges -> L4 gated publish", "proof_level": 4, "receipts": "per-clip + per-publish receipts", "status": "designed", "stubs": ["cutter connector", "clip lens"]}, {"connectors_live": [], "connectors_stub": ["postiz-send"], "gates_future": ["roast-rubric-v1", "delivery-readback-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "human + grant on gated send", "judges": ["funny.score", "guardrail.noul"], "kind": "surface", "name": "roast-line", "objects": ["CLAIM", "EVIDENCE", "GATE", "GRANT"], "path": "L3 -> L5 roast rubric -> gated send", "proof_level": 4, "receipts": "per-roast + per-send receipts", "status": "designed", "stubs": ["roast rubric as Score criteria"]}, {"connectors_live": [], "connectors_stub": ["etsy-orders", "image-observe"], "gates_future": ["order-proof-v1", "delivery-readback-v1", "drift-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "human + grant on fulfillment + payout (money-proof)", "judges": ["funny.score", "intent.choice"], "kind": "surface", "name": "roast.pet", "objects": ["CLAIM", "EVIDENCE", "TASK", "GATE", "GRANT"], "path": "roast-line + image observe + Etsy orders as tasks", "proof_level": 6, "receipts": "per-order receipts (order->fulfillment->payout chain)", "status": "partial", "stubs": ["pipeline lives in etsysignal; order queue + first receipted roast here"]}, {"connectors_live": [], "connectors_stub": ["pogtown-adapter"], "gates_future": ["room-event-authentic-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "judges": [], "kind": "surface", "name": "party-rooms", "objects": ["EVIDENCE", "RUN", "GATE"], "path": "L7 rooms -> events", "proof_level": 4, "receipts": "per-event receipts", "status": "designed", "stubs": ["pogtown adapter", "hosted room one"]}, {"connectors_live": [], "connectors_stub": ["pogtown-adapter", "stage"], "gates_future": ["booking-grant-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "bounded grants for stage time", "judges": [], "kind": "surface", "name": "guest-bookings", "objects": ["CLAIM", "EVIDENCE", "GATE", "GRANT"], "path": "L7 agent links -> rooms -> events", "proof_level": 4, "receipts": "per-booking receipts", "status": "designed", "stubs": ["booking passport", "one external guest"]}, {"connectors_live": [], "connectors_stub": ["listing-provider", "payout-rail"], "gates_future": ["listing-proof-v1", "drift-v1", "budget-cap-v1"], "gates_live": ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"], "grants": "money-proof gates before doors open (spend ledger pattern)", "judges": ["intent.choice", "risk.score"], "kind": "surface", "name": "storefront", "objects": ["CLAIM", "EVIDENCE", "TASK", "GATE", "GRANT"], "path": "setup.social subdomain -> listings -> orders -> fulfillment -> payout", "proof_level": 6, "receipts": "per-order chain receipts", "status": "designed", "stubs": ["listing kinds", "one provider", "one test order"]}], "version": 1}
+{
+ "products": [
+  {
+   "connectors_live": [
+    "names",
+    "domain",
+    "registrar",
+    "zone",
+    "website",
+    "social"
+   ],
+   "connectors_stub": [
+    "mail",
+    "number",
+    "postiz_social"
+   ],
+   "gates_future": [
+    "budget-cap-v1",
+    "drift-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "human task approval (exact payload, single-use); spend grants arrive with BUY-DOMAIN leaf",
+   "judges": [
+    "urgency.score"
+   ],
+   "kind": "infra",
+   "module": "provision",
+   "name": "setup.social",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "TASK",
+    "RUN",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "L1 observe -> L2 acquire (all human-gated) -> influencer()",
+   "proof_level": 4,
+   "receipts": "project_receipt per reconcile (PASS/FAIL first-class)",
+   "status": "partial",
+   "stubs": [
+    "mailbox create",
+    "number provision",
+    "zone apply"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [],
+   "gates_future": [
+    "funny-score-v1",
+    "lineage-eval-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "none (simulate-only, no effects)",
+   "judges": [
+    "funny.score",
+    "lands.noul"
+   ],
+   "kind": "infra",
+   "module": "studio",
+   "name": "funnylab",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "RUN",
+    "GATE"
+   ],
+   "path": "corpus -> set.write -> funny.score / lands Noul -> rsi.reweight",
+   "proof_level": 4,
+   "receipts": "reweight receipt per cycle (promotion by receipt only)",
+   "status": "designed",
+   "stubs": [
+    "frozen eval cut",
+    "one lineage",
+    "first reweight receipt"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [],
+   "gates_future": [
+    "judge-version-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "capability mint per caller (future)",
+   "judges": [
+    "intent.choice",
+    "urgency.score",
+    "risk.score",
+    "funny.score"
+   ],
+   "kind": "infra",
+   "module": "studio",
+   "name": "eval-api",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "L5 judges + grants + receipts",
+   "proof_level": 4,
+   "receipts": "per-judgment receipt with model/provider version logged",
+   "status": "partial",
+   "stubs": [
+    "metered endpoint",
+    "capability mint"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "trend-source"
+   ],
+   "gates_future": [
+    "trend-rank-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "judges": [
+    "intent.choice",
+    "urgency.score"
+   ],
+   "kind": "infra",
+   "module": "provision",
+   "name": "trend-radar",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "TASK",
+    "GATE"
+   ],
+   "path": "L1 observe -> L5 judges -> queue",
+   "proof_level": 4,
+   "receipts": "per-candidate receipt",
+   "status": "designed",
+   "stubs": [
+    "one trend source connector",
+    "radar lens"
+   ]
+  },
+  {
+   "connectors_live": [
+    "tee"
+   ],
+   "connectors_stub": [
+    "xmr-pay"
+   ],
+   "gates_future": [
+    "attest-valid-v1",
+    "split-wallet-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "bounded exact grants (pmail subgraph); TEE attestation carried as evidence",
+   "judges": [],
+   "kind": "infra",
+   "module": "ledger",
+   "name": "private-studio",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "GATE",
+    "GRANT",
+    "RUN"
+   ],
+   "path": "L0 privacy + tee.attest + pmail subgraph",
+   "proof_level": 6,
+   "receipts": "attested-run receipt (commitments public, raw private)",
+   "status": "partial",
+   "stubs": [
+    "TEE chain validation (hash-only today)",
+    "xmr.pay live"
+   ]
+  },
+  {
+   "connectors_live": [
+    "names",
+    "domain",
+    "registrar",
+    "zone",
+    "website",
+    "social"
+   ],
+   "connectors_stub": [
+    "mail",
+    "number"
+   ],
+   "gates_future": [
+    "budget-cap-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "human task approval; spend grants with BUY-DOMAIN leaf",
+   "judges": [
+    "urgency.score"
+   ],
+   "kind": "surface",
+   "module": "provision",
+   "name": "instant-influencer",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "TASK",
+    "RUN",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "setup.social -> draft.write -> L5 judges",
+   "proof_level": 4,
+   "receipts": "project_receipt per reconcile",
+   "status": "partial",
+   "stubs": [
+    "remaining L2 connectors"
+   ]
+  },
+  {
+   "connectors_live": [
+    "publisher",
+    "inbox"
+   ],
+   "connectors_stub": [
+    "postiz-send",
+    "mail-send"
+   ],
+   "gates_future": [
+    "delivery-readback-v1",
+    "drift-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "human + grant on every L4 effect; delivery settles on readback",
+   "judges": [
+    "intent.choice",
+    "urgency.score",
+    "risk.score",
+    "delivery.noul"
+   ],
+   "kind": "surface",
+   "module": "provision",
+   "name": "influencer-ops",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "TASK",
+    "RUN",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "L2 + L4 + L5, delivery settles on readback",
+   "proof_level": 6,
+   "receipts": "effect receipt per send (PROPOSED->AUTHORIZED->EXECUTING->PROVEN_*)",
+   "status": "designed",
+   "stubs": [
+    "publisher + inbox live fetch",
+    "ops lens"
+   ]
+  },
+  {
+   "connectors_live": [
+    "local_artifact"
+   ],
+   "connectors_stub": [
+    "freaktown-stage"
+   ],
+   "gates_future": [
+    "bundle-seal-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "human approval on bundle import",
+   "judges": [
+    "funny.score"
+   ],
+   "kind": "surface",
+   "module": "studio",
+   "name": "influencer-studio",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "L3 + freaktown bundles, digest-pinned both ways",
+   "proof_level": 4,
+   "receipts": "sealed-bundle receipt per job",
+   "status": "designed",
+   "stubs": [
+    "freaktown bridge",
+    "one sealed import"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "reward-ingest",
+    "youtube-analytics"
+   ],
+   "gates_future": [
+    "lineage-eval-v1",
+    "reward-authentic-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "none (proposes only; promotion by receipt)",
+   "judges": [
+    "funny.score",
+    "lands.noul",
+    "lineage.choice"
+   ],
+   "kind": "surface",
+   "module": "studio",
+   "name": "freaktown-autopilot",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "RUN",
+    "GATE"
+   ],
+   "path": "L3 -> L5 -> L6 over HAHA/CLAP + eval + analytics",
+   "proof_level": 4,
+   "receipts": "reweight/promotion receipts",
+   "status": "designed",
+   "stubs": [
+    "reward ingestion",
+    "one lineage + eval gate"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "reaction-emitters"
+   ],
+   "gates_future": [],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "judges": [],
+   "kind": "surface",
+   "module": "studio",
+   "name": "watch-loop",
+   "objects": [
+    "EVIDENCE",
+    "RUN"
+   ],
+   "path": "audience() emitters -> reward events -> L6",
+   "proof_level": 4,
+   "receipts": "reward-batch receipts",
+   "status": "designed",
+   "stubs": [
+    "watch lens with clips + reaction buttons"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "cutter",
+    "postiz-send"
+   ],
+   "gates_future": [
+    "clip-score-v1",
+    "delivery-readback-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "human + grant on gated publish",
+   "judges": [
+    "funny.score"
+   ],
+   "kind": "surface",
+   "module": "studio",
+   "name": "clip-farm",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "L3 cut -> L5 clip judges -> L4 gated publish",
+   "proof_level": 4,
+   "receipts": "per-clip + per-publish receipts",
+   "status": "designed",
+   "stubs": [
+    "cutter connector",
+    "clip lens"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "postiz-send"
+   ],
+   "gates_future": [
+    "roast-rubric-v1",
+    "delivery-readback-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "human + grant on gated send",
+   "judges": [
+    "funny.score",
+    "guardrail.noul"
+   ],
+   "kind": "surface",
+   "module": "studio",
+   "name": "roast-line",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "L3 -> L5 roast rubric -> gated send",
+   "proof_level": 4,
+   "receipts": "per-roast + per-send receipts",
+   "status": "designed",
+   "stubs": [
+    "roast rubric as Score criteria"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "etsy-orders",
+    "image-observe"
+   ],
+   "gates_future": [
+    "order-proof-v1",
+    "delivery-readback-v1",
+    "drift-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "human + grant on fulfillment + payout (money-proof)",
+   "judges": [
+    "funny.score",
+    "intent.choice"
+   ],
+   "kind": "surface",
+   "module": "studio",
+   "name": "roast.pet",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "TASK",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "roast-line + image observe + Etsy orders as tasks",
+   "proof_level": 6,
+   "receipts": "per-order receipts (order->fulfillment->payout chain)",
+   "status": "partial",
+   "stubs": [
+    "pipeline lives in etsysignal; order queue + first receipted roast here"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "pogtown-adapter"
+   ],
+   "gates_future": [
+    "room-event-authentic-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "judges": [],
+   "kind": "surface",
+   "module": "venue",
+   "name": "party-rooms",
+   "objects": [
+    "EVIDENCE",
+    "RUN",
+    "GATE"
+   ],
+   "path": "L7 rooms -> events",
+   "proof_level": 4,
+   "receipts": "per-event receipts",
+   "status": "designed",
+   "stubs": [
+    "pogtown adapter",
+    "hosted room one"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "pogtown-adapter",
+    "stage"
+   ],
+   "gates_future": [
+    "booking-grant-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "bounded grants for stage time",
+   "judges": [],
+   "kind": "surface",
+   "module": "venue",
+   "name": "guest-bookings",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "L7 agent links -> rooms -> events",
+   "proof_level": 4,
+   "receipts": "per-booking receipts",
+   "status": "designed",
+   "stubs": [
+    "booking passport",
+    "one external guest"
+   ]
+  },
+  {
+   "connectors_live": [],
+   "connectors_stub": [
+    "listing-provider",
+    "payout-rail"
+   ],
+   "gates_future": [
+    "listing-proof-v1",
+    "drift-v1",
+    "budget-cap-v1"
+   ],
+   "gates_live": [
+    "evidence-fresh-v1",
+    "no-duplicate-v1",
+    "claim-resolved-v1"
+   ],
+   "grants": "money-proof gates before doors open (spend ledger pattern)",
+   "judges": [
+    "intent.choice",
+    "risk.score"
+   ],
+   "kind": "surface",
+   "module": "ledger",
+   "name": "storefront",
+   "objects": [
+    "CLAIM",
+    "EVIDENCE",
+    "TASK",
+    "GATE",
+    "GRANT"
+   ],
+   "path": "setup.social subdomain -> listings -> orders -> fulfillment -> payout",
+   "proof_level": 6,
+   "receipts": "per-order chain receipts",
+   "status": "designed",
+   "stubs": [
+    "listing kinds",
+    "one provider",
+    "one test order"
+   ]
+  }
+ ],
+ "version": 1
+}
