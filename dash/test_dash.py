@@ -125,7 +125,7 @@ def main():
         # chat: help + unknown; vault: deposit then list (metadata only)
         status, body = post(PORT, "/api/chat", {"message": "/help"})
         assert status == 200 and "/add" in json.loads(body)["reply"], "chat help"
-        status, body = post(PORT, "/api/chat", {"message": "hello?"})
+        status, body = post(PORT, "/api/chat", {"message": "zxqv blorpt"})
         assert status == 200 and "unknown command" in json.loads(body)["reply"], "chat honest"
         status, body = post(PORT, "/api/vault-store", {"name": "T_KEY", "value": "s3cr3t", "kind": "service"})
         assert status == 200 and json.loads(body)["ok"], "vault deposit"

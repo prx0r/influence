@@ -116,6 +116,44 @@ def handle_chat(message: str, state: dict | None = None,
         return {"reply": f"added {slug} [{inf['stage']}]. {len(mine)} open tasks.", "refresh": True}
 
     st = state or {"influencers": [], "tasks": []}
+    bare = cmd.strip("?!.,")
+    if bare in ("help", "status", "tasks", "queue", "htasks", "products"):
+        return handle_chat("/" + bare if bare in ("help", "status") else bare,
+                           state=state, journal_path=journal_path)
+    if bare in ("hey", "hi", "hello", "yo", "sup", "morning", "evening", "howdy"):
+        n_inf = len(st.get("influencers", []))
+        n_tasks = len(st.get("tasks", []))
+        top = f" Most urgent: {st['tasks'][0]['id']} — {st['tasks'][0].get('title', '')}" if n_tasks else ""
+        return {"reply": f"hey. {n_inf} influencers, {n_tasks} open tasks.{top} "
+                         "I can show tasks, decide, verify receipts, or brief an influencer. Try 'tasks'."}
+    if bare in ("graph", "layers", "protocol", "qp"):
+        sys.path.insert(0, PARENT)
+        from dash.mcp import GRAPH
+        return {"reply": "dependency graph:\n" + "\n".join(
+            f"· {g['layer']}: {', '.join(g['functions'][:6])}"
+            f"{'…' if len(g['functions']) > 6 else ''}" for g in GRAPH)}
+    if bare in ("runs", "monitor", "activity"):
+        runs = st.get("runs", [])
+        if not runs:
+            return {"reply": "No runs yet. Reconcile from the terminal rail or /add an influencer."}
+        return {"reply": "latest runs:\n" + "\n".join(
+            f"· {r['id']} {r.get('summary', '')} "
+            f"{'[' + r['receipt_id'] + ']' if r.get('receipt_id') else '(no receipt)'}" for r in runs[:10])}
+    if bare in ("agents", "trail", "predictions", "workers", "subagents"):
+        jp = journal_path or os.getenv("DASH_JOURNAL", os.path.join(ROOT, "decisions.db"))
+        import sqlite3
+        try:
+            db = sqlite3.connect(jp)
+            try:
+                n = db.execute("SELECT COUNT(*), COALESCE(SUM(used),0) FROM predictions").fetchone()
+                e = db.execute("SELECT COUNT(*) FROM effects").fetchone()[0]
+            except Exception:
+                n, e = (0, 0), 0
+            db.close()
+            return {"reply": f"agent trail: {n[0]} presented, {n[1]} decided, {e} journal effects. "
+                             "Worker/subagent spawn lands in Phase 3 — open the agents tab for the full ledger."}
+        except Exception:
+            return {"reply": "Agent trail empty — no predictions banked yet. Decide a task to start it."}
     if cmd in ("tasks", "queue", "htasks"):
         tasks = st.get("tasks", [])
         if not tasks:
