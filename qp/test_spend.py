@@ -123,7 +123,9 @@ def test_settle_emits_verifiable_receipt(tmp_path, monkeypatch):
     rc, ev = entry["payload"]["receipt"], entry["payload"]["evidence"]
     assert rc["passed"] is True and entry["payload"]["spend"] == "sr1"
     import sys
-    sys.path.insert(0, "/home/ubuntu/qprivately")
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "law"))
+    from qp.law import use_law
+    use_law()
     from acom import receipts as R
     assert R.settle(rc, ev)["ok"] is True
 

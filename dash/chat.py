@@ -35,6 +35,7 @@ HELP = ("commands:\n"
         "receipt <id> — verify a receipt\n"
         "influencer <slug> — resources + stage\n"
         "products — product registry\n"
+        "primitives <product> — exactly what it needs: objects, gates, grants, stubs\n"
         "/help — this")
 
 
@@ -255,6 +256,23 @@ def handle_chat(message: str, state: dict | None = None,
         from dash.mcp import PRODUCTS
         return {"reply": "products:\n" + "\n".join(
             f"· {p['name']} ({p['kind']}) — {p['intent']}" for p in PRODUCTS)}
+    if cmd == "primitives":
+        if len(parts) != 2:
+            return {"reply": "usage: primitives <product> — e.g. primitives setup.social"}
+        sys.path.insert(0, PARENT)
+        from dash.mcp import handle as mcp_handle, _primitives
+        prim = _primitives().get(parts[1])
+        if not prim:
+            return {"reply": f"unknown product {parts[1]}. Say 'products' for the list."}
+        lines = [f"{prim['name']} ({prim['kind']}, {prim['status']}) — {prim['path']}",
+                 f"objects: {', '.join(prim['objects'])}",
+                 f"gates live: {', '.join(prim['gates_live'])}",
+                 f"gates future: {', '.join(prim['gates_future']) or '—'}",
+                 f"grants: {prim['grants']}", f"receipts: {prim['receipts']}",
+                 f"proof level: {prim['proof_level']}",
+                 f"live connectors: {', '.join(prim['connectors_live']) or '—'}",
+                 f"stubs: {', '.join(prim['stubs']) or '—'}"]
+        return {"reply": "\n".join(lines)}
 
     # Fallback: route by intent judges, confidence shown, never faked.
     try:

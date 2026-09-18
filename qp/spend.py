@@ -89,11 +89,9 @@ class SpendLedger:
 
     def _emit_receipt(self, idem: str, purpose: str, amount: int,
                       readback: int, final: str) -> dict:
-        import os
         from datetime import datetime, timezone
-        qp = os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")
-        if qp not in sys.path:
-            sys.path.insert(0, qp)
+        from qp.law import use_law
+        use_law()
         from acom import objects as O
         from acom import receipts as R
         from acom import store as StoreMod

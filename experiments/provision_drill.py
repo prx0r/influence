@@ -16,9 +16,8 @@ import urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
-QPRIVATELY = os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")
-if QPRIVATELY not in sys.path:
-    sys.path.insert(0, QPRIVATELY)
+from qp.law import use_law
+use_law()
 
 PORT = os.getenv("DASH_PORT", "8793")
 TOKEN = os.getenv("DASH_TOKEN", "")

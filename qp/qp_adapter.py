@@ -1,9 +1,10 @@
-"""Phase 1 adapter: reconcile observations -> qprivately acom receipts.
+"""Phase 1 adapter: reconcile observations -> law acom receipts.
 
-Imports acom as law (never copied). Each reconcile emits one receipt per
-project: evidence per resource, claim TRUE iff all READY / FALSE iff any
-BLOCKED / else UNKNOWN, gates fresh + no-duplicate + claim-resolved.
-FAIL receipts are first-class, not errors. Appends to JSONL store.
+Imports the forked law (never copied ad hoc). Each reconcile emits one
+receipt per project: evidence per resource, claim TRUE iff all READY /
+FALSE iff any BLOCKED / else UNKNOWN, gates fresh + no-duplicate +
+claim-resolved. FAIL receipts are first-class, not errors. Appends to
+JSONL store.
 """
 from __future__ import annotations
 
@@ -11,9 +12,12 @@ import os
 import sys
 from datetime import datetime, timezone
 
-QPRIVATELY = os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")
-if QPRIVATELY not in sys.path:
-    sys.path.insert(0, QPRIVATELY)
+import sys as _sys
+_parent = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _parent not in _sys.path:
+    _sys.path.insert(0, _parent)
+from qp.law import use_law  # noqa: E402
+use_law()  # noqa: E402
 
 import hashlib as _hashlib
 import json as _json
@@ -23,10 +27,6 @@ from acom import objects as O  # noqa: E402
 from acom import receipts as R  # noqa: E402
 from acom import store as StoreMod  # noqa: E402
 
-import sys as _sys
-_parent = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _parent not in _sys.path:
-    _sys.path.insert(0, _parent)
 from qp.actuality import Actuality, actuality_of_status, and_dag  # noqa: E402
 
 GATES = ["evidence-fresh-v1", "no-duplicate-v1", "claim-resolved-v1"]

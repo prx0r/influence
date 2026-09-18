@@ -62,6 +62,9 @@ PRODUCTS = [
 ]
 
 PRODUCT_DETAILS = {
+    # Primitives per product live in products/primitives.json (machine twin
+    # of products/PRIMITIVES.md) and are folded into product.get below —
+    # one surface, no second registry to drift.
     "setup.social": {"path": "L1 observe -> L2 acquire (all human-gated)",
                      "needs": ["layer 0"], "status": "graph + observe live",
                      "next": "registrar compare, zone apply, mailbox create, number bridges"},
@@ -139,6 +142,19 @@ def _find_receipt(rid: str):
     return None, None
 
 
+def _primitives() -> dict:
+    """products/primitives.json, cached. Missing file = empty (dash still serves)."""
+    if not hasattr(_primitives, "cache"):
+        import json
+        try:
+            with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                   "products", "primitives.json")) as f:
+                _primitives.cache = {p["name"]: p for p in json.load(f)["products"]}  # type: ignore[attr-defined]
+        except Exception:
+            _primitives.cache = {}  # type: ignore[attr-defined]
+    return _primitives.cache  # type: ignore[return-value]
+
+
 def handle(state: dict, method: str, params: dict) -> dict:
     if method == "tools/list":
         return {"tools": TOOLS}
@@ -166,16 +182,17 @@ def handle(state: dict, method: str, params: dict) -> dict:
         base = next((p for p in PRODUCTS if p["name"] == args.get("slug", args.get("name", ""))), None)
         if d is None or base is None:
             return {"error": "unknown product"}
-        return {"result": {**base, **d}}
+        prim = _primitives().get(args.get("slug", args.get("name", "")), {})
+        return {"result": {**base, **d, "primitives": prim}}
     if name == "receipt.get":
         rc, ev = _find_receipt(str(args.get("id", "")))
         if rc is None:
             return {"error": "unknown receipt"}
         try:
             import sys
-            qp = os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")
-            if qp not in sys.path:
-                sys.path.insert(0, qp)
+            sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            from qp.law import use_law
+            use_law()
             from acom import receipts as R
             v = R.settle(rc, ev)
             return {"result": {"receipt": rc, "verify": v}}

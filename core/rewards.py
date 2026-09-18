@@ -75,9 +75,8 @@ def anchor_batch(log_path: str = REWARD_LOG, store_path: str | None = None,
     if summary["events"] == 0:
         raise ValueError("nothing to anchor")
     now = as_of or datetime.now(timezone.utc).isoformat()
-    qp = os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")
-    if qp not in sys.path:
-        sys.path.insert(0, qp)
+    from qp.law import use_law
+    use_law()
     from acom import objects as O
     from acom import receipts as R
     from acom import store as StoreMod
@@ -137,9 +136,8 @@ def reweight(lineage: str, weights: dict[str, float], laugh_rate: float,
     total = sum(new_w.values()) or 1.0
     new_w = {k: round(v / total, 6) for k, v in new_w.items()}
 
-    qp = os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")
-    if qp not in sys.path:
-        sys.path.insert(0, qp)
+    from qp.law import use_law
+    use_law()
     from acom import objects as O
     from acom import receipts as R
     from acom import store as StoreMod

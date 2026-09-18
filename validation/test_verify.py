@@ -25,7 +25,9 @@ def test_import_boundary():
 
 
 def _seed(path):
-    sys.path.insert(0, "/home/ubuntu/qprivately")
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "law"))
+    from qp.law import use_law
+    use_law()
     from acom import objects as O
     from acom import receipts as R
     from acom import store as StoreMod

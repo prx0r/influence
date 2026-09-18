@@ -10,9 +10,12 @@ def verify_log(path: str) -> dict:
     import json
     import os
     import sys
-    qp = os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")
-    if qp not in sys.path:
-        sys.path.insert(0, qp)
+    # Vendored fork first, env fallback — stdlib path ops only, so the
+    # import-boundary test (acom + stdlib, nothing else) keeps passing.
+    _law = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "law")
+    for _cand in (_law, os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")):
+        if _cand and os.path.isdir(os.path.join(_cand, "acom")) and _cand not in sys.path:
+            sys.path.insert(0, _cand)
     from acom import receipts as R
     from acom import store as StoreMod
     st = StoreMod.Store(path)

@@ -33,7 +33,10 @@ def test_tamper_fails():
 
 def test_receipt_level(tmp_path):
     import sys as _sys
-    _sys.path.insert(0, "/home/ubuntu/qprivately")
+    import os as _os
+    _sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "law"))
+    from qp.law import use_law
+    use_law()
     from acom import objects as O
     from acom import receipts as R
     from acom import store as StoreMod
