@@ -25,6 +25,7 @@ dash/tunnel.log
 dash/tunnel-perm.log
 dash/serve-perm.log
 dash/vault.json
+dash/vault.json.lock
 dash/vault.key
 dash/influence.db
 dash/decisions.db
