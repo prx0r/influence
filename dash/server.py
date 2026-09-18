@@ -1,9 +1,8 @@
 """Influence dash server. Stdlib only. Serves static HTML + JSON state.
 
-Routes: health/state (seed LIVE=0 or SQLite reconcile LIVE=1), chat,
-vault, reconcile, present/decide (HLoop + journal), verify (QP chain),
-resource-done (close static checklists), autopilot (conservative AUTO
-loop), MCP (read-only tools). Binds loopback; token-gated when set."""
+Routes: health/state (seed LIVE=0 or SQLite reconcile LIVE=1), chat
+(agent loop over the graph), vault, reconcile, present/decide (HLoop +
+journal), MCP (read-only tools). Binds loopback; token-gated when set."""
 from __future__ import annotations
 
 import json
@@ -21,13 +20,38 @@ LIVE = os.environ.get("LIVE", "0") == "1"
 TOKEN = os.environ.get("DASH_TOKEN", "")  # empty = loopback dev only; set before any tunnel
 
 
+def _urgency_of(task: dict) -> dict:
+    """Urgency for the human rail. Rule-based v0 (qp/judges): scored from
+    title+instructions, blended with the task's risk. Falls back to risk
+    alone if judges are unavailable — never a fake precision."""
+    text = f"{task.get('title', '')}\n{task.get('instructions', '')}"
+    risk = float(task.get("risk", 0.3) or 0.0)
+    try:
+        sys.path.insert(0, os.path.dirname(ROOT))
+        from qp.judges import urgency_score
+        u = urgency_score(text)
+        score = round(min(2.0, u["score"] + risk), 3)
+        return {"score": score, "confidence": u["confidence"],
+                "reason": f"urgency={u['score']} risk={risk}"}
+    except Exception:
+        return {"score": round(risk, 3), "confidence": 0.0,
+                "reason": f"risk={risk} (judges unavailable)"}
+
+
 def load_state() -> dict:
     if LIVE:
         sys.path.insert(0, os.path.dirname(ROOT))
         from dash.store import live_state
-        return live_state()
-    with open(SEED) as f:
-        return json.load(f)
+        d = live_state()
+    else:
+        with open(SEED) as f:
+            d = json.load(f)
+    tasks = d.get("tasks", [])
+    for t in tasks:
+        t["urgency"] = _urgency_of(t)
+    tasks.sort(key=lambda t: (-t["urgency"]["score"], t.get("id", "")))
+    d["tasks"] = tasks
+    return d
 
 
 REPO_ROOT = os.path.dirname(ROOT)
@@ -119,6 +143,38 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/files":
             return self._json(read_repo_file(parse_qs(urlparse(self.path).query).get("path", [""])[0]))
+        if self._route() == "/api/agents":
+            # HLoop present→decide trail + journal effect states. This is the
+            # agent-activity ledger the Agents tab renders. Worker/subagent
+            # spawn arrives in Phase 3; until then this trail is the truth.
+            import sqlite3
+            journal_path = os.getenv("DASH_JOURNAL", os.path.join(ROOT, "decisions.db"))
+            out = {"predictions": [], "effects": [],
+                   "counts": {"presented": 0, "decided": 0, "effects": 0}}
+            try:
+                db = sqlite3.connect(journal_path)
+                try:
+                    rows = db.execute("SELECT ref, task_id, at, used FROM predictions "
+                                      "ORDER BY at DESC LIMIT 20").fetchall()
+                    out["predictions"] = [{"ref": r[0], "task": r[1], "at": r[2],
+                                           "used": bool(r[3])} for r in rows]
+                    n = db.execute("SELECT COUNT(*), SUM(used) FROM predictions").fetchone()
+                    out["counts"]["presented"], out["counts"]["decided"] = n[0] or 0, n[1] or 0
+                except Exception:
+                    pass
+                try:
+                    rows = db.execute("SELECT idem, action, state FROM effects "
+                                      "ORDER BY updated_at DESC LIMIT 20").fetchall()
+                    out["effects"] = [{"idem": r[0], "action": r[1], "state": r[2]}
+                                      for r in rows]
+                    out["counts"]["effects"] = db.execute(
+                        "SELECT COUNT(*) FROM effects").fetchone()[0]
+                except Exception:
+                    pass
+                db.close()
+            except Exception:
+                pass
+            return self._json(out)
         if self._route() == "/":
             self.path = "/index.html"
         return super().do_GET()
@@ -135,7 +191,13 @@ class Handler(SimpleHTTPRequestHandler):
             sys.path.insert(0, os.path.dirname(ROOT))
             from dash.chat import handle_chat
             try:
-                return self._json(handle_chat(str(body.get("message", ""))))
+                state = load_state()
+            except Exception:
+                state = None
+            journal_path = os.getenv("DASH_JOURNAL", os.path.join(ROOT, "decisions.db"))
+            try:
+                return self._json(handle_chat(str(body.get("message", "")),
+                                              state=state, journal_path=journal_path))
             except Exception as e:
                 return self._json({"reply": f"error: {str(e)[:200]}"})
         if self._route() == "/api/vault-store":

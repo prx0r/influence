@@ -143,7 +143,7 @@ function switchView(name,el){
 }
 function renderChatSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
-    <div style="padding:8px;font-size:11px;color:var(--dim)">Commands run on the graph. Chat lives in the center tab.</div>
+    <div style="padding:8px;font-size:11px;color:var(--dim)">Chat is the center tab. Try: tasks, decide, receipt, influencer, products.</div>
     <div class="tree-item" onclick="quickChat('/status')">/status — queue + stages</div>
     <div class="tree-item" onclick="quickChat('/help')">/help — all commands</div>
     <div class="tree-header">Add influencer</div>
@@ -182,9 +182,10 @@ async function depositVault(){
 function renderRail(){
   const el=document.getElementById('rail-tasks');
   el.innerHTML=((S?.tasks||[]).map(t=>`
-    <div class="task"><div class="t">${esc(t.title)}</div>
-    <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)}</div>
-    <div class="opts">${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}</div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
+    <div class="task"><div class="t">${esc(t.title)} <span class="pill ${t.urgency&&t.urgency.score>=1?'BLOCKED':t.urgency&&t.urgency.score>=0.5?'MISSING':'UNKNOWN'}" title="${esc(t.urgency?.reason||'')}">U=${t.urgency?.score??'?'}</span></div>
+    <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)} · ${esc(t.id)}</div>
+    <div class="opts">${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}</div>
+    <div style="color:var(--dim);font-size:10px;margin-top:2px">or chat: <span style="font-family:monospace">decide ${esc(t.id)} 7</span></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
 }
 async function decideTask(id,digit){
   const p=await api('POST','/api/present',{task_id:id});
@@ -204,9 +205,10 @@ async function termReconcile(){const r=await api('POST','/api/reconcile',{});log
 
 function renderTabs(){
   const el=document.getElementById('editor-tabs');
-  const tabs=['monitor','chat','files',...(S?.influencers||[]).map(i=>i.slug)];
+  const tabs=['chat','monitor','explorer','studio','agents',...(S?.influencers||[]).map(i=>i.slug)];
   openTabs=openTabs.filter(t=>tabs.includes(t));
-  if(!openTabs.length&&tabs.length)openTabs=['monitor'];
+  if(!openTabs.length&&tabs.length)openTabs=['chat'];
+  if(!activeTab&&openTabs.length)activeTab=openTabs[0];
   if(activeTab&&!openTabs.includes(activeTab))activeTab=openTabs[0];
   el.innerHTML=openTabs.map(t=>`<div class="tab ${t===activeTab?'active':''}" onclick="openTab('${t}')">${t}<span class="close" onclick="closeTab('${t}',event)">×</span></div>`).join('');
 }
@@ -220,16 +222,33 @@ function openTab(t,soft){
   }
   if(t==='chat'){
     main.innerHTML=`<div class="chat-messages" id="chat-messages-main" style="max-height:60vh"></div>
-      <div class="chat-input"><input id="chat-in-main" placeholder="/add slug domain · /status · /help"><button onclick="sendChatMain()">→</button></div>`;
+      <div class="chat-input"><input id="chat-in-main" placeholder="tasks · decide T-001 7 · receipt <id> · influencer <slug> · /add slug domain"><button onclick="sendChatMain()">→</button></div>
+      <div style="color:var(--dim);font-size:11px;margin-top:6px">Deterministic agent: every answer computed from live state, HLoop, or receipts. No free chat yet — an LLM narrator can sit on top later.</div>`;
     document.getElementById('chat-in-main').addEventListener('keydown',e=>{if(e.key==='Enter')sendChatMain()});
+    renderChatHistory();
     return;
   }
-  if(t==='files'){
-    main.innerHTML=`<h3 style="margin-bottom:8px">Files — influence repo (read-only)</h3>
+  if(t==='explorer'){
+    main.innerHTML=`<h3 style="margin-bottom:8px">Explorer — influence repo (read-only)</h3>
       <div class="filecrumb"><input id="file-path" value="${esc(curPath||'products')}"><button onclick="openFilePath()">Open</button></div>
       <div id="file-body"><div style="color:var(--dim)">Pick a file.</div></div>`;
     document.getElementById('file-path').addEventListener('keydown',e=>{if(e.key==='Enter')openFilePath()});
     openFilePath();
+    return;
+  }
+  if(t==='studio'){
+    main.innerHTML=`<h3 style="margin-bottom:8px">Studio — sealed character bundles</h3>
+      <div style="color:var(--dim);font-size:12px">Bridge status: <b style="color:var(--yellow)">designed, not wired</b>. No bundles sealed yet — the freaktown stage adapter lands as the first leaf (one sealed import + one receipted job). Product spec: open <span style="font-family:monospace">products/influencer-studio.md</span> in the explorer.</div>`;
+    return;
+  }
+  if(t==='agents'){
+    main.innerHTML=`<h3 style="margin-bottom:8px">Agents — present→decide trail</h3><div style="color:var(--dim)">Loading…</div>`;
+    api('GET','/api/agents').then(a=>{
+      main.innerHTML=`<h3 style="margin-bottom:8px">Agents — present→decide trail</h3>
+        <div style="color:var(--dim);font-size:12px;margin-bottom:8px">presented ${a.counts.presented} · decided ${a.counts.decided} · journal effects ${a.counts.effects}. Worker/subagent spawn arrives in Phase 3 — this trail is the truth until then.</div>`
+        +(a.predictions.map(p=>`<div class="res"><span><span style="font-family:monospace">${esc(p.ref)}</span> → ${esc(p.task)} ${p.used?'<span class="pill READY">used</span>':'<span class="pill UNKNOWN">banked</span>'}</span></div>`).join('')||'<div style="color:var(--dim)">No predictions banked yet. Decide a task to start the trail.</div>')
+        +(a.effects.map(e=>`<div class="res"><span><span style="font-family:monospace">${esc(e.idem)}</span> ${esc(e.action)} → <b>${esc(e.state)}</b></span></div>`).join(''));
+    }).catch(e=>{main.innerHTML='<div style="color:var(--red)">agents ledger unavailable</div>'});
     return;
   }
   const i=(S?.influencers||[]).find(x=>x.slug===t);
@@ -258,7 +277,9 @@ async function openFilePath(){
 }
 function openFileEntry(path,isDir){document.getElementById('file-path').value=path;openFilePath()}
 
-function chatMsgMain(who,text){const d=document.createElement('div');d.className='chat-msg '+(who==='you'?'you':'');d.innerHTML=`<div class="who">${who}</div><div class="text">${esc(text).replace(/\n/g,'<br>')}</div>`;const m=document.getElementById('chat-messages-main');if(!m)return;m.appendChild(d);m.scrollTop=999999}
+let chatHistory=[];
+function renderChatHistory(){const m=document.getElementById('chat-messages-main');if(!m)return;m.innerHTML='';chatHistory.forEach(([w,x])=>chatMsgMain(w,x,true))}
+function chatMsgMain(who,text,skipStore){if(!skipStore)chatHistory.push([who,text]);const d=document.createElement('div');d.className='chat-msg '+(who==='you'?'you':'');d.innerHTML=`<div class="who">${who}</div><div class="text">${esc(text).replace(/\n/g,'<br>')}</div>`;const m=document.getElementById('chat-messages-main');if(!m)return;m.appendChild(d);m.scrollTop=999999}
 async function sendChatMain(){
   const inp=document.getElementById('chat-in-main');if(!inp)return;const v=inp.value.trim();if(!v)return;inp.value='';
   chatMsgMain('you',v);
