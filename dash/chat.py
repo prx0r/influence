@@ -28,12 +28,74 @@ if PARENT not in sys.path:
 HELP = ("commands:\n"
         "/add <slug> <domain> — import domain as influencer + reconcile\n"
         "/status — projects, stages, open tasks\n"
+        "check <name|domain> — check a name everywhere (RDAP, prices, handles)\n"
+        "setup [slug] — provisioning pipeline: name→domain→email→phone→socials\n"
         "tasks — human queue, urgency-sorted, with digits\n"
         "decide <task_id> <digit> — present + decide (intent only, QP pending)\n"
         "receipt <id> — verify a receipt\n"
         "influencer <slug> — resources + stage\n"
         "products — product registry\n"
         "/help — this")
+
+
+def _check_name(arg: str) -> dict:
+    from core.cmail.connectors.names import NamesConnector
+    want_domain = "." in arg
+    obs = NamesConnector().observe({"domain": arg} if want_domain else {"name": arg})
+    lines = [f"{arg}: {obs.status} — {obs.message}"]
+    if isinstance(obs.observed.get("prices"), dict):
+        prices = obs.observed["prices"]
+        items = prices if isinstance(prices, list) else prices.get("registrars", prices)
+        try:
+            lines.append("cheapest: " + ", ".join(
+                f"{p.get('registrar', p.get('name', '?'))} {p.get('price', p.get('total', '?'))}"
+                for p in (items if isinstance(items, list) else [])[:3]))
+        except Exception:
+            pass
+    # handle namespace scan alongside (best effort, never blocking)
+    name = arg.split(".")[0]
+    try:
+        import httpx
+        from core.cmail.connectors.names import CHECKER
+        from core.cmail.config import settings
+        with httpx.Client(timeout=settings.http_timeout) as client:
+            r = client.get(f"{CHECKER}/api/handles/{name}")
+        if r.status_code == 200 and isinstance(r.json(), dict):
+            body = r.json()
+            lines.append(f"handles: {str(body)[:300]}")
+    except Exception:
+        lines.append("handles: UNKNOWN (scan unavailable)")
+    if obs.status == "MISSING" and "buys" in obs.message:
+        lines.append("next: human buys (docs/BUY-DOMAIN.md), then reconcile verifies + wires.")
+    return {"reply": "\n".join(lines)}
+
+
+PIPELINE = ["name", "handles", "names", "domain", "registrar", "zone",
+            "mailbox", "number", "social:x", "content"]
+
+
+def _setup(state: dict, slug: str | None) -> dict:
+    infs = state.get("influencers", [])
+    if slug:
+        infs = [i for i in infs if i["slug"] == slug]
+        if not infs:
+            return {"reply": f"unknown influencer {slug}"}
+    if not infs:
+        return {"reply": "Nothing provisioning yet. /add <slug> <domain> starts the chain: "
+                         "name → domain → email → phone → socials."}
+    blocks = []
+    for inf in infs:
+        by_key = {r["key"]: r for r in inf["resources"]}
+        rows = []
+        for key in PIPELINE:
+            r = by_key.get(key)
+            if r is None:
+                continue
+            rows.append(f"{'●' if r['status'] == 'READY' else '○'} {key}: {r['status']}")
+        ready = sum(1 for r in inf["resources"] if r["status"] == "READY")
+        blocks.append(f"{inf['slug']} [{inf['stage']}] {ready}/{len(inf['resources'])} — "
+                      "idea→endpoint:\n" + "\n".join(rows))
+    return {"reply": "\n\n".join(blocks)}
 
 
 def _task_line(t: dict) -> str:
@@ -121,6 +183,13 @@ def handle_chat(message: str, state: dict | None = None,
         return handle_chat("/" + bare, state=state, journal_path=journal_path)
     if bare in ("tasks", "queue", "htasks", "products"):
         cmd = bare  # fall through to the handlers below (no recursion)
+    if bare == "setup" or cmd == "setup":
+        slug = parts[1] if len(parts) > 1 else None
+        return _setup(st, slug)
+    if cmd == "check":
+        if len(parts) != 2:
+            return {"reply": "usage: check <name|domain> — e.g. check myname.dev"}
+        return _check_name(parts[1].lower())
     if bare in ("hey", "hi", "hello", "yo", "sup", "morning", "evening", "howdy"):
         n_inf = len(st.get("influencers", []))
         n_tasks = len(st.get("tasks", []))
@@ -193,7 +262,7 @@ def handle_chat(message: str, state: dict | None = None,
         from qp.judges import intent_choice
         ic = intent_choice(message)
         hint = {"reply": "unknown command — I route by intent, I don't chat freely yet " +
-                f"(intent={ic['choice']} conf={ic['confidence']}). Try: tasks, " +
+                f"(intent={ic['choice']} conf={ic['confidence']}). Try: check <name>, setup, tasks, " +
                 "decide <id> <digit>, receipt <id>, influencer <slug>, products, /status.",
                 "intent": ic["choice"], "confidence": ic["confidence"]}
         if ic["choice"] in ("reply", "transact") and ic["confidence"] > 0.3 and st.get("tasks"):

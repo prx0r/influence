@@ -82,7 +82,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 
 <div class="titlebar">
   <div class="menu"><span>File</span><span>Edit</span><span>View</span><span>Run</span><span>Help</span></div>
-  <span style="margin-left:auto">influence — agent control plane</span>
+  <span style="margin-left:auto">influence — idea → domain → email → phone → socials</span>
 </div>
 
 <div class="main">
@@ -222,7 +222,7 @@ function openTab(t,soft){
   }
   if(t==='chat'){
     main.innerHTML=`<div class="chat-messages" id="chat-messages-main" style="max-height:60vh"></div>
-      <div class="chat-input"><input id="chat-in-main" placeholder="tasks · decide T-001 7 · receipt <id> · influencer <slug> · /add slug domain"><button onclick="sendChatMain()">→</button></div>
+      <div class="chat-input"><input id="chat-in-main" placeholder="check myname.dev · setup · tasks · decide T-001 7"><button onclick="sendChatMain()">→</button></div>
       <div style="color:var(--dim);font-size:11px;margin-top:6px">Deterministic agent: every answer computed from live state, HLoop, or receipts. No free chat yet — an LLM narrator can sit on top later.</div>`;
     document.getElementById('chat-in-main').addEventListener('keydown',e=>{if(e.key==='Enter')sendChatMain()});
     renderChatHistory();

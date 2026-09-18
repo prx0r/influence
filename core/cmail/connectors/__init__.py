@@ -4,6 +4,7 @@ from .browser import BrowserConnector
 from .domain import DomainConnector, WebsiteConnector
 from .github import GitHubConnector
 from .inbox import InboxConnector
+from .names import NamesConnector
 from .phone import PhoneConnector
 from .postiz import PostizConnector
 from .publisher import PublisherConnector
@@ -27,6 +28,7 @@ CONNECTORS = {
     "registrar": RegistrarConnector(),
     "zone": ZoneConnector(),
     "mail": MailConnector(),
+    "names": NamesConnector(),
     "number": PhoneConnector(),
     "publisher": PublisherConnector(),
     "inbox": InboxConnector(),
