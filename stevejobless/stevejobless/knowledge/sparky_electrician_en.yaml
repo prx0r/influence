@@ -1,0 +1,82 @@
+# Sparky — electrician business kernel.
+# Doubles as voice-agent BUSINESS_CONFIG (business/agent/voice/nodes shape)
+# plus a `tradie:` block this side reads and the voice side ignores.
+business:
+  name: "Sparky Electrical"
+  locale: "en-GB"
+  phone: "+44 7000 000000"
+  hours:
+    monday-friday: "08:00-18:00"
+    saturday: "09:00-14:00"
+    sunday: "closed"
+agent:
+  system_prompt: |
+    You are the after-hours agent for Sparky Electrical. Be warm, brief, operational.
+    After hours: take name, phone, address, job type, urgency. Emergencies
+    (sparks, burning smell, exposed wires, total power loss) → say the electrician
+    will be woken and call back immediately. Everything else → promise a morning
+    reply with a quote and slots. Never invent prices; use only quoted ranges.
+    Ask for photos when useful (consumer unit, damage). Max 2 photos at night.
+voice:
+  edge_voice: "en-GB-RyanNeural"
+  production_note: "Qwen-Omni realtime (DashScope SG) for live calls; this prompt seeds it."
+nodes:
+  - id: service.ev_charger
+    type: service
+    name: EV charger installation
+    aliases: [ev charger, car charger, wallbox, zappi, ohme]
+    text: "Home EV charger installs. Needs: address, parking setup, consumer unit photo, preferred date. Typical half-day job."
+  - id: service.consumer_unit
+    type: service
+    name: Consumer unit replacement
+    aliases: [fuse box, fuseboard, consumer unit]
+    text: "Fusebox upgrades. Needs: photo of existing unit, house size. Full-day job, power off required."
+  - id: service.fault
+    type: service
+    name: Fault finding
+    aliases: [fault, tripping, power cut, sockets dead]
+    text: "Diagnostics visit. Needs: symptoms, when it started, photos if visible damage."
+  - id: escalation.safety
+    type: escalation
+    name: Electrical emergency
+    aliases: [sparks, burning, smoke, exposed wire, shock, power loss]
+    text: "Wake the electrician immediately. Tell customer to switch off at the mains if safe and not to touch anything."
+  - id: policy.photos
+    type: faq
+    name: Photo ask (trimmed)
+    aliases: [photo, picture]
+    text: "Night: max 2 photos (overall + close-up). Day: overall, close-up of label, consumer unit."
+  - id: policy.pricing
+    type: policy
+    name: Pricing policy
+    aliases: [price, quote, cost]
+    text: "Give published ranges only. Final quotes need site visit or photos + tradie sign-off."
+tradie:
+  # autonomy: observe (log only) | semi_auto (draft quotes+slots) | full_auto (also propose+book routine)
+  # sends ALWAYS need tradie confirm regardless of level.
+  autonomy: semi_auto
+  retention_days: 90  # transcripts older than this are swept (GDPR)
+  preferences:
+    preferred_slots: ["morning"]
+    max_distance_km: 25
+    min_job_value: 90
+    takes_emergency: true
+    job_affinity:
+      ev_charger: 2
+      consumer_unit: 1
+      fault: 0
+      general: -1
+    max_typical_min: 300
+  after_hours_multiplier: 1.5
+  callout_per_km: 1.2
+  default_range: [80, 150]
+  price_book:
+    ev_charger:
+      labour: 350
+      typical_parts: ["32A RCBO", "SWA cable (per m)", "mounting kit"]
+    consumer_unit:
+      labour: 450
+      typical_parts: ["10-way dual-RCD board", "RCBOs", "labels/cert"]
+    fault:
+      labour: 90
+      typical_parts: []

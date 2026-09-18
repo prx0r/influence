@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "product": {"name": "Drawdle", "domain": "drawdle.dev"},
+  "resources": [
+    {"key": "domain", "kind": "domain", "label": "Domain", "desired": {"domain": "drawdle.dev"}},
+    {"key": "github", "kind": "github_repo", "label": "GitHub", "desired": {"repo": "prx0r/drawdle"}},
+    {"key": "appstore", "kind": "app_store", "label": "App Store Connect", "desired": {"app_name": "Drawdle", "bundle_id": "dev.drawdle.app", "app_store_id": null}},
+    {"key": "social:x", "kind": "social", "label": "X", "desired": {"platform": "x", "handle": "drawdle", "state": "unknown"}}
+  ]
+}

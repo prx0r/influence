@@ -1,0 +1,261 @@
+{
+  "openapi": "3.2.0",
+  "info": {
+    "title": "Domain Intelligence Engine API",
+    "version": "3.0.0",
+    "description": "Domain intelligence for humans and agents: verify availability, generate candidates, score meaning, compare registrar prices.",
+    "contact": {
+      "name": "prx0r",
+      "url": "https://github.com/prx0r/domainnamechecker"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://domainnamechecker.dev",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "health",
+        "summary": "Health check",
+        "tags": ["system"],
+        "responses": {
+          "200": {
+            "description": "Service healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string" },
+                    "version": { "type": "string" },
+                    "tools": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/verify/{domain}": {
+      "get": {
+        "operationId": "verifyDomain",
+        "summary": "Verify domain availability",
+        "description": "Full verification pipeline: DNS probe + RDAP registration check. Returns availability status with confidence score.",
+        "tags": ["domains"],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Domain name to verify (e.g., example.com)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verification result",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/VerificationResult" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/registrar/{domain}": {
+      "get": {
+        "operationId": "compareRegistrars",
+        "summary": "Compare registrar prices",
+        "description": "Compare domain prices across Cloudflare, Porkbun, Dynadot, and Namecheap with 5-year cost projections.",
+        "tags": ["domains"],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registrar comparison",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RegistrarComparison" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mine": {
+      "post": {
+        "operationId": "mineDomains",
+        "summary": "Mine domains (full pipeline)",
+        "description": "Generate candidates from concept, verify availability, score, compare registrars. Returns top available domains sorted by score.",
+        "tags": ["domains"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MineRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mined domains",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MineResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mcp": {
+      "post": {
+        "operationId": "mcp",
+        "summary": "MCP endpoint",
+        "description": "JSON-RPC MCP endpoint. Supports tools/list and tools/call methods.",
+        "tags": ["mcp"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/McpRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "MCP JSON-RPC response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/McpResponse" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VerificationResult": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string" },
+          "registration": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "enum": ["available", "taken", "unknown"] },
+              "confidence": { "type": "number" },
+              "authoritative": { "type": "boolean" },
+              "verified_at": { "type": "string", "format": "date-time" }
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": { "type": "string" },
+                "status": { "type": "string" }
+              }
+            }
+          },
+          "dns": {
+            "type": "object",
+            "properties": {
+              "has_records": { "type": "boolean" },
+              "records": { "type": "object" }
+            }
+          },
+          "rdap": {
+            "type": "object",
+            "properties": {
+              "registered": { "type": ["boolean", "null"] },
+              "name": { "type": "string" }
+            }
+          },
+          "schema_version": { "type": "string" }
+        }
+      },
+      "RegistrarComparison": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string" },
+          "quotes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "registrar": { "type": "string" },
+                "registration": { "type": "number" },
+                "renewal": { "type": "number" },
+                "privacy": { "type": "number" },
+                "total_5_year": { "type": "number" }
+              }
+            }
+          },
+          "best_year_1": { "type": "object" },
+          "best_5_year": { "type": "object" },
+          "checked_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "MineRequest": {
+        "type": "object",
+        "required": ["concept", "intent"],
+        "properties": {
+          "concept": { "type": "string", "description": "Concept to generate domains from" },
+          "intent": { "type": "string", "description": "Intent keyword for scoring" },
+          "tlds": { "type": "array", "items": { "type": "string" }, "default": ["com"] }
+        }
+      },
+      "MineResponse": {
+        "type": "object",
+        "properties": {
+          "concept": { "type": "string" },
+          "intent": { "type": "string" },
+          "results": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/MinedDomain" }
+          }
+        }
+      },
+      "MinedDomain": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string" },
+          "score": { "type": "integer" },
+          "meaning": { "type": "object" },
+          "registrar": { "type": "object" }
+        }
+      },
+      "McpRequest": {
+        "type": "object",
+        "properties": {
+          "jsonrpc": { "type": "string", "const": "2.0" },
+          "id": { "type": "integer" },
+          "method": { "type": "string", "enum": ["tools/list", "tools/call"] },
+          "params": { "type": "object" }
+        }
+      },
+      "McpResponse": {
+        "type": "object",
+        "properties": {
+          "jsonrpc": { "type": "string" },
+          "id": { "type": "integer" },
+          "result": { "type": "object" }
+        }
+      }
+    }
+  }
+}

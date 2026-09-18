@@ -1,0 +1,12 @@
+services:
+  steve:
+    build: .
+    ports:
+      - "8787:8787"
+    environment:
+      STEVE_DB_URL: sqlite:////data/stevejobless.db
+      STEVE_SAFE_MODE: "1"
+    volumes:
+      - steve-data:/data
+volumes:
+  steve-data:

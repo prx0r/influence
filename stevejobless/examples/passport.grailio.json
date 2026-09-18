@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "product": {"name": "Grailio", "domain": "grailio.dev"},
+  "resources": [
+    {"key": "domain", "kind": "domain", "label": "Domain", "desired": {"domain": "grailio.dev"}},
+    {"key": "website", "kind": "website", "label": "Production website", "desired": {"url": "https://grailio.dev"}},
+    {"key": "github", "kind": "github_repo", "label": "GitHub", "desired": {"repo": "prx0r/grailio"}},
+    {"key": "appstore", "kind": "app_store", "label": "App Store Connect", "desired": {"app_name": "Grailio", "bundle_id": "dev.grailio.app", "app_store_id": null}},
+    {"key": "social:x", "kind": "social", "label": "X", "desired": {"platform": "x", "handle": "grailio", "state": "unknown"}},
+    {"key": "social:instagram", "kind": "social", "label": "Instagram", "desired": {"platform": "instagram", "handle": null}},
+    {"key": "social:tiktok", "kind": "social", "label": "TikTok", "desired": {"platform": "tiktok", "handle": null}}
+  ]
+}

@@ -1,0 +1,7 @@
+name = "domainnamechecker"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "HCACHE"
+id = "d37a8d80ed7d40a68fa77c3f8b511a6f"

@@ -1,0 +1,78 @@
+# Domain Intelligence Engine
+
+> Domain intelligence for humans and agents: generate candidates, verify availability, score meaning, compare registrar prices.
+
+## What it does
+
+Full domain intelligence pipeline:
+- **Verify** domain availability via DNS + RDAP (authoritative)
+- **Generate** domain candidates from a concept
+- **Score** domains by semantic meaning, length, hyphens, TLD
+- **Compare** registrar prices (Cloudflare, Porkbun, Dynadot, Namecheap)
+- **Mine** — full pipeline: generate + verify + score + compare
+- **Bulk verify** — check up to 50 domains at once
+
+## MCP Tools
+
+- `verify_domain` — Full verification pipeline: DNS probe + RDAP registration check
+- `generate_domains` — Generate domain candidates from a concept + TLDs
+- `score_domain` — Score a domain by semantic meaning, length, TLD
+- `compare_registrars` — Compare domain prices across registrars
+- `mine_domains` — Full pipeline: generate + verify + score + compare (top 20 candidates)
+- `get_analytics` — Get search and click analytics
+
+## MCP Endpoint
+
+```bash
+curl -X POST https://domainnamechecker.dev/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+
+## API
+
+```bash
+# Verify a domain (DNS + RDAP)
+curl https://domainnamechecker.dev/api/verify/example.com
+
+# Compare registrar prices
+curl https://domainnamechecker.dev/api/registrar/example.com
+
+# Bulk verify up to 50 domains
+curl -X POST https://domainnamechecker.dev/api/bulk-verify \
+  -H "Content-Type: application/json" \
+  -d '{"domains":["example.com","test.com","demo.com"]}'
+
+# Mine domains (full pipeline)
+curl -X POST https://domainnamechecker.dev/api/mine \
+  -H "Content-Type: application/json" \
+  -d '{"concept":"tiny api tools","intent":"get","tlds":["com"]}'
+
+# Health check
+curl https://domainnamechecker.dev/api/health
+```
+
+## Verification output
+
+```json
+{
+  "domain": "example.com",
+  "registration": {
+    "status": "taken",
+    "confidence": 0.99,
+    "authoritative": true,
+    "verified_at": "2026-08-21T12:00:00Z"
+  },
+  "evidence": [
+    { "source": "dns", "status": "records_found" },
+    { "source": "rdap", "status": "registered" }
+  ],
+  "schema_version": "3.0.0"
+}
+```
+
+## Links
+
+- [GitHub](https://github.com/prx0r/domainnamechecker)
+- [API Documentation](/docs/api.md)
+- [MCP Documentation](/docs/mcp.md)

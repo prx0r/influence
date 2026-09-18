@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domain Intelligence Engine</title>
+  <meta name="description" content="Check domain availability via DNS + RDAP, generate candidates, compare registrar prices.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://domainnamechecker.tradesprior.workers.dev/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Domain Intelligence Engine","url":"https://domainnamechecker.tradesprior.workers.dev","applicationCategory":"DeveloperApplication","operatingSystem":"Web","description":"Check domain availability via DNS + RDAP, generate candidates, compare registrar prices","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Source Code Pro',monospace;background:#fafafa;color:#111;-webkit-font-smoothing:antialiased;line-height:1.6}
+    a{color:#111;text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{max-width:800px;margin:0 auto;padding:3rem 2rem}
+    h1{font-size:1rem;font-weight:500}
+    .top-row{display:flex;gap:1rem;margin-top:1.5rem;align-items:stretch}
+    .search{display:flex;gap:0;border:1px solid #ccc;flex:1}
+    .search input{flex:1;padding:.75rem 1rem;border:none;background:transparent;font-family:'Source Code Pro',monospace;font-size:.875rem;outline:none}
+    .search button{padding:.75rem 1.5rem;background:#111;color:#fff;border:none;font-family:'Source Code Pro',monospace;font-size:.75rem;font-weight:500;cursor:pointer}
+    .search button:hover{background:#333}
+    .curr{border:1px solid #ccc;padding:.75rem .5rem;background:transparent;font-family:'Source Code Pro',monospace;font-size:.75rem;cursor:pointer;outline:none;min-width:70px}
+    .status{font-size:.6875rem;color:#999;margin-top:.75rem;min-height:1.2em}
+    .section{margin-top:2rem}
+    .section-label{font-size:.625rem;color:#999;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.75rem;font-weight:500}
+    table{width:100%;border-collapse:collapse}
+    tr.row{cursor:pointer;transition:background .1s}
+    tr.row:hover{background:#f0f0f0}
+    td{padding:.625rem 0;border-bottom:1px solid #eee;font-size:.8125rem}
+    td:first-child{font-weight:500}
+    .avail{color:#166534;font-weight:500;font-size:.75rem}
+    .taken{color:#999;font-size:.75rem}
+    .verified{font-size:.625rem;color:#166534;font-weight:500;margin-left:.3rem}
+    .unverified{font-size:.625rem;color:#92400e;margin-left:.3rem}
+    .price-col{text-align:right;color:#666;font-size:.75rem}
+    .buy{font-size:.6875rem;color:#111;border:1px solid #ccc;padding:.25rem .625rem;display:inline-block}
+    .buy:hover{border-color:#111;text-decoration:none}
+    .expand{display:none}
+    .expand.open{display:table-row}
+    .taken-row td:first-child{color:#999}
+    .expand td{padding:.5rem 0 .75rem 0;border-bottom:1px solid #eee}
+    .reg-card{padding:.5rem 0}
+    .reg-card+.reg-card{border-top:1px solid #f5f5f5}
+    .reg-top{display:flex;justify-content:space-between;align-items:center}
+    .reg-name{font-weight:500;font-size:.8125rem}
+    .reg-prices{font-size:.75rem;color:#666;margin-top:.25rem}
+    .reg-meta{font-size:.625rem;color:#999;margin-top:.25rem;display:flex;gap:1rem;flex-wrap:wrap}
+    .promo{color:#166534;font-weight:500}
+    .tag{font-size:.625rem;padding:.125rem .375rem;border:1px solid #eee;display:inline-block}
+    .tag.privacy{border-color:#166534;color:#166534}
+    .toggle{font-size:.6875rem;color:#999;cursor:pointer;border:1px solid #ccc;padding:.375rem .75rem;background:transparent;font-family:'Source Code Pro',monospace;margin-top:1.5rem;display:inline-block}
+    .toggle:hover{border-color:#111;color:#111}
+    .toggle.on{background:#111;color:#fff;border-color:#111}
+    .empty{color:#999;font-size:.75rem;padding:1rem 0}
+    .error{color:#991b1b;font-size:.75rem;padding:1rem 0}
+    .sep{margin-top:1.5rem;border-top:1px solid #eee;padding-top:1.5rem}
+    footer{margin-top:4rem;padding-top:1rem;border-top:1px solid #eee;font-size:.625rem;color:#bbb;display:flex;justify-content:space-between}
+    footer a{color:#999}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>domain search</h1>
+    <div class="top-row">
+      <div class="search">
+        <input type="text" id="q" placeholder="is agentseo available? or search for tools">
+        <button id="go">search</button>
+      </div>
+      <select class="curr" id="cur">
+        <option value="USD">$ USD</option>
+        <option value="GBP">£ GBP</option>
+        <option value="EUR">€ EUR</option>
+        <option value="AUD">A$ AUD</option>
+        <option value="CAD">C$ CAD</option>
+        <option value="JPY">¥ JPY</option>
+      </select>
+    </div>
+    <div class="status" id="st"></div>
+    <div id="out"></div>
+    <footer>
+      <span>v3.0.0</span>
+      <span><a href="/llms.txt">llms.txt</a> · <a href="/docs/api">api</a> · <a href="/docs/mcp">mcp</a></span>
+    </footer>
+  </div>
+  <script>
+    const $=s=>document.querySelector(s);
+    const RATES={USD:1,GBP:0.79,EUR:0.92,AUD:1.53,CAD:1.36,JPY:149.5};
+    const SYM={USD:'$',GBP:'£',EUR:'€',AUD:'A$',CAD:'C$',JPY:'¥'};
+    function isDomain(s){s=s.trim().toLowerCase();return /^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z]{2,})+$/.test(s)&&s.includes('.')&&s.split('.').pop().length>=2}
+    function pv(v){if(v==null)return'—';const c=$('#cur').value;const conv=v*RATES[c];return SYM[c]+(conv>=100?Math.round(conv):conv.toFixed(2))}
+
+    async function loadPricing(domain,td){
+      if(td.dataset.loaded)return;td.dataset.loaded='1';
+      td.innerHTML='<span style="color:#999;font-size:.625rem">loading...</span>';
+      try{
+        const r=await fetch('/api/registrar/'+encodeURIComponent(domain));
+        const p=await r.json();
+        if(!p.quotes||!p.quotes.length){td.innerHTML='<span style="color:#999;font-size:.6875rem">no pricing</span>';return;}
+        let h='';
+        for(const q of p.quotes){
+          h+='<div class="reg-card"><div class="reg-top"><span class="reg-name">'+q.registrar_name+'</span><span>'+pv(q.registration)+' 1st yr</span></div>';
+          h+='<div class="reg-prices">renewal '+pv(q.renewal)+'/yr · transfer '+pv(q.transfer)+'</div>';
+          h+='<div class="reg-meta">';
+          if(q.privacy>0)h+='<span class="tag">privacy '+pv(q.privacy)+'</span>';
+          else h+='<span class="tag privacy">free privacy</span>';
+          h+='<span>5yr total '+pv(q.total_5_year)+'</span>';
+          if(q.promo)h+='<span class="promo">'+q.promo+'</span>';
+          h+='</div>';
+          h+='<div style="margin-top:.375rem">'+(q.buy_url?'<a href="'+q.buy_url+'" target="_blank" class="buy">buy at '+q.registrar_name+' →</a>':'')+'</div></div>';
+        }
+        td.innerHTML=h;
+      }catch(e){td.innerHTML='<span style="color:#991b1b;font-size:.6875rem">'+e.message+'</span>';}
+    }
+
+    function makeRows(rows,showScore){
+      let h='';
+      for(const r of rows){
+        const id=r.domain.replace(/\./g,'-');
+        h+='<tr class="row" onclick="toggle(\''+id+'\',\''+r.domain+'\')">';
+        h+='<td>'+r.domain+'</td>';
+        h+='<td>'+(r.status==='available'?'<span class="avail">available</span>':'<span class="taken">taken</span>')+'</td>';
+        if(showScore)h+='<td style="color:#999;font-size:.75rem">'+(r.score||'')+'</td>';
+        h+='<td class="price-col">from '+pv(r.registration)+'/yr</td>';
+        h+='<td>'+(r.buy_url&&r.status==='available'?'<a href="'+r.buy_url+'" target="_blank" class="buy" onclick="event.stopPropagation()">buy →</a>':'')+'</td>';
+        h+='</tr>';
+        h+='<tr class="expand" id="'+id+'"><td colspan="'+(showScore?5:4)+'"><div id="p-'+id+'"></div></td></tr>';
+      }
+      return h;
+    }
+    window.toggle=function(id,domain){
+      const el=document.getElementById(id);if(!el)return;
+      el.classList.toggle('open');
+      if(el.classList.contains('open'))loadPricing(domain,document.getElementById('p-'+id));
+    };
+
+    let showV=false,exactD=[],varD=[];
+    function renderAll(q){
+      const av=exactD.filter(r=>r.status==='available');
+      const tk=exactD.filter(r=>r.status!=='available');
+      let h='<div class="section">';
+      h+='<div class="section-label">'+q+' — available</div>';
+      h+=av.length?'<table>'+makeRows(av,false)+'</table>':'<div class="empty">none available</div>';
+      h+='<div class="sep"></div>';
+      h+='<div class="section-label">'+q+' — taken</div>';
+      h+=tk.length?'<table>'+makeRows(tk,false)+'</table>':'<div class="empty">all available!</div>';
+      h+='</div>';
+      h+='<button class="toggle'+(showV?' on':'')+'" onclick="toggleV()">'+(showV?'hide variants':'show variants')+'</button>';
+      if(showV&&varD.length){
+        const va=varD.filter(r=>r.status==='available');
+        h+='<div class="section" style="margin-top:1rem"><div class="section-label">variants — '+va.length+' available</div>';
+        h+='<table>'+makeRows(varD,true)+'</table></div>';
+      }
+      out.innerHTML=h;
+    }
+    window.toggleV=function(){showV=!showV;renderAll($('#q').value.trim());};
+    let searchCount=parseInt(localStorage.getItem('dn searches')||'0');
+    function trackSearch(q){searchCount++;localStorage.setItem('dn searches',searchCount);const el=document.getElementById('analytics');if(el)el.textContent=searchCount+' searches';}
+    window.addEventListener('load',()=>{const el=document.getElementById('analytics');if(el&&searchCount)el.textContent=searchCount+' searches';});
+
+    async function search(){
+      const q=$('#q').value.trim();if(!q)return;
+      const st=$('#st'),out=$('#out');
+      exactD=[];varD=[];showV=false;out.innerHTML='';
+      if(isDomain(q)){
+        st.textContent='verifying...';
+        try{
+          const[vp,pp]=await Promise.all([fetch('/api/verify/'+encodeURIComponent(q)),fetch('/api/registrar/'+encodeURIComponent(q))]);
+          const v=await vp.json(),pr=await pp.json();
+          st.textContent='';
+          let recs=v.dns?.records?Object.entries(v.dns.records).map(([t,a])=>t+': '+a.join(', ')).join('\n'):'none';
+          let h='<div class="section"><span style="font-weight:500">'+v.domain+'</span> '+(v.registration.status==='available'?'<span class="avail">available</span>':'<span class="taken">taken</span>');
+          h+='<div style="font-size:.6875rem;color:#999;margin-top:.25rem">'+(v.registration.confidence*100).toFixed(0)+'% confidence</div>';
+          h+='<details style="margin-top:.75rem"><summary style="font-size:.6875rem;cursor:pointer;color:#999">dns records</summary><pre style="margin-top:.5rem;padding:.75rem;background:#fff;border:1px solid #eee;font-size:.6875rem;overflow-x:auto">'+recs+'</pre></details>';
+          if(pr.quotes&&pr.quotes.length){
+            h+='<div style="margin-top:1.25rem"><div class="section-label">registrars</div>';
+            for(const r of pr.quotes){
+              h+='<div class="reg-card"><div class="reg-top"><span class="reg-name">'+r.registrar_name+'</span><span>'+pv(r.registration)+' 1st yr</span></div>';
+              h+='<div class="reg-prices">renewal '+pv(r.renewal)+'/yr · transfer '+pv(r.transfer)+'</div>';
+              h+='<div class="reg-meta">';
+              if(r.privacy>0)h+='<span class="tag">privacy '+pv(r.privacy)+'</span>';
+              else h+='<span class="tag privacy">free privacy</span>';
+              h+='<span>5yr total '+pv(r.total_5_year)+'</span>';
+              if(r.promo)h+='<span class="promo">'+r.promo+'</span>';
+              h+='</div><div style="margin-top:.375rem">'+(r.buy_url?'<a href="'+r.buy_url+'" target="_blank" class="buy">buy at '+r.registrar_name+' →</a>':'')+'</div></div>';
+            }
+            h+='</div>';}
+          h+='</div>';out.innerHTML=h;
+        }catch(err){st.textContent='';out.innerHTML='<div class="error">'+err.message+'</div>'}
+      }else{
+        st.textContent='thinking...';
+        const resp=await fetch('/api/search',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q})});
+        const reader=resp.body.getReader(),dec=new TextDecoder();
+        let buf='';
+        while(true){
+          const{done,value}=await reader.read();if(done)break;
+          buf+=dec.decode(value,{stream:true});
+          const lines=buf.split('\n');buf=lines.pop();
+          for(const line of lines){
+            if(line.startsWith('event: '))var evt=line.slice(7);
+            else if(line.startsWith('data: ')){
+              const d=JSON.parse(line.slice(6));
+              if(evt==='intent')st.textContent='detected: '+d.type+'...';
+              else if(evt==='status')st.textContent=d.msg+'...';
+              else if(evt==='domain'){
+                st.textContent='';
+                const v=d.verification,p=d.pricing;
+                let recs=v.dns?.records?Object.entries(v.dns.records).map(([t,a])=>t+': '+a.join(', ')).join('\n'):'none';
+                const isAvail=v.registration.status==='available';
+                const badge=isAvail?'<span class="avail">available</span>':'<span class="taken">taken</span>';
+                const verified=v.registration.authoritative?'<span class="verified">RDAP verified</span>':'<span class="unverified">DNS only</span>';
+                let h='<div class="section"><span style="font-weight:500">'+v.domain+'</span> '+badge+verified;
+                h+='<div style="font-size:.6875rem;color:#999;margin-top:.25rem">'+(v.registration.confidence*100).toFixed(0)+'% confidence · '+(v.sources||['unknown']).join(', ')+'</div>';
+                h+='<details style="margin-top:.75rem"><summary style="font-size:.6875rem;cursor:pointer;color:#999">dns records</summary><pre style="margin-top:.5rem;padding:.75rem;background:#fff;border:1px solid #eee;font-size:.6875rem;overflow-x:auto">'+recs+'</pre></details>';
+                if(p.quotes&&p.quotes.length){
+                  h+='<div style="margin-top:1.25rem"><div class="section-label">registrars</div>';
+                  for(const r of p.quotes){h+='<div class="reg-card"><div class="reg-top"><span class="reg-name">'+r.registrar_name+'</span><span>'+pv(r.registration)+' 1st yr</span></div><div class="reg-prices">renewal '+pv(r.renewal)+'/yr \u00b7 transfer '+pv(r.transfer)+'</div><div class="reg-meta">';if(r.privacy>0)h+='<span class="tag">privacy '+pv(r.privacy)+'</span>';else h+='<span class="tag privacy">free privacy</span>';h+='<span>5yr total '+pv(r.total_5_year)+'</span>';if(r.promo)h+='<span class="promo">'+r.promo+'</span>';h+='</div><div style="margin-top:.375rem">'+(r.buy_url?'<a href="'+r.buy_url+'" target="_blank" class="buy">buy at '+r.registrar_name+' \u2192</a>':'')+'</div></div>';}
+                  h+='</div>';}
+                h+='</div>';out.innerHTML=h;
+              }
+              else if(evt==='message'){st.textContent='';out.innerHTML='<div class="section"><div class="empty">'+d.text+'</div></div>';}
+              else if(evt==='exact'){exactD.push(d);renderAll(q);}
+              else if(evt==='variants'){varD.push(...d);if(showV)renderAll(q);}
+              else if(evt==='done'){st.textContent='';trackSearch(q);}
+            }
+          }
+        }
+      }
+    }
+    $('#go').addEventListener('click',search);
+    $('#q').addEventListener('keydown',e=>{if(e.key==='Enter')search()});
+    $('#cur').addEventListener('change',()=>{if($('#q').value.trim())search()});
+  </script>
+</body>
+</html>

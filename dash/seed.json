@@ -1,0 +1,35 @@
+{"influencers": [
+  {"slug": "nova-ink", "name": "Nova Ink", "stage": "name-only",
+   "resources": [
+    {"key": "name", "kind": "name", "label": "Handle + domain picked", "status": "READY", "message": "novaink selected"},
+    {"key": "handles", "kind": "social", "label": "Handles mapped", "status": "MISSING", "message": "x/instagram/tiktok unmapped"},
+    {"key": "domain", "kind": "domain", "label": "Domain owned", "status": "MISSING", "message": "not yet verified"},
+    {"key": "mailbox", "kind": "mail", "label": "Mailbox live", "status": "BLOCKED", "message": "needs domain first"},
+    {"key": "social:x", "kind": "social", "label": "X connected", "status": "UNKNOWN", "message": "unmapped handle"}]},
+  {"slug": "velvet-signal", "name": "Velvet Signal", "stage": "domain-owned",
+   "resources": [
+    {"key": "name", "kind": "name", "label": "Handle + domain picked", "status": "READY", "message": "velvetsignal selected"},
+    {"key": "handles", "kind": "social", "label": "Handles mapped", "status": "READY", "message": "x + instagram mapped"},
+    {"key": "domain", "kind": "domain", "label": "Domain owned", "status": "READY", "message": "velvetsignal.dev owned"},
+    {"key": "zone", "kind": "website", "label": "Zone + site live", "status": "MISSING", "message": "NS not moved"},
+    {"key": "mailbox", "kind": "mail", "label": "Mailbox live", "status": "MISSING", "message": "needs zone first"},
+    {"key": "social:x", "kind": "social", "label": "X connected", "status": "MISSING", "message": "human claim pending"}]},
+  {"slug": "copper-field", "name": "Copper Field", "stage": "wired-needs-content",
+   "resources": [
+    {"key": "name", "kind": "name", "label": "Handle + domain picked", "status": "READY", "message": "copperfield selected"},
+    {"key": "handles", "kind": "social", "label": "Handles mapped", "status": "READY", "message": "all mapped"},
+    {"key": "domain", "kind": "domain", "label": "Domain owned", "status": "READY", "message": "copperfield.dev owned"},
+    {"key": "zone", "kind": "website", "label": "Zone + site live", "status": "READY", "message": "live"},
+    {"key": "mailbox", "kind": "mail", "label": "Mailbox live", "status": "READY", "message": "hello@ live"},
+    {"key": "social:x", "kind": "social", "label": "X connected", "status": "READY", "message": "connected"},
+    {"key": "content", "kind": "publisher", "label": "First week queued", "status": "MISSING", "message": "0 of 7 posts drafted"}]}
+],
+"tasks": [
+  {"id": "T-001", "influencer": "nova-ink", "resource_key": "handles", "kind": "PREFERENCE", "title": "Map handles for novaink", "instructions": "Run handles map for novaink across x, instagram, tiktok. Pick first-free set, record proof.", "options": {"7": "Approve map", "1": "Reject and replan"}, "risk": 0.1, "state": "OPEN"},
+  {"id": "T-002", "influencer": "velvet-signal", "resource_key": "zone", "kind": "AUTHORIZATION", "title": "Approve NS move for velvetsignal.dev", "instructions": "Moving NS to Cloudflare. Human confirms once in registrar dashboard, machine verifies after.", "options": {"7": "Confirmed in registrar", "1": "Hold"}, "risk": 0.4, "state": "OPEN"},
+  {"id": "T-003", "influencer": "copper-field", "resource_key": "content", "kind": "PREFERENCE", "title": "Draft first week for copperfield", "instructions": "Draft 7 posts from positioning notes. Drafts only, publishing stays gated.", "options": {"7": "Start drafting", "1": "Hold"}, "risk": 0.15, "state": "OPEN"}
+],
+"runs": [
+  {"id": "run-001", "influencer": "velvet-signal", "summary": "Reconcile: 3 READY, 2 MISSING, 1 UNKNOWN", "status": "OK"},
+  {"id": "run-002", "influencer": "copper-field", "summary": "Reconcile: 6 READY, 1 MISSING", "status": "OK"}
+]}

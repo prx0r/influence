@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0c" />
+  <title>SteveJobless</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <div class="eyebrow">STUDIO OS</div>
+        <h1>STEVE<span>JOBLESS</span></h1>
+      </div>
+      <button class="primary" id="reconcileAll">Run Steve</button>
+    </header>
+
+    <section class="hero">
+      <div><strong id="companyCount">—</strong><span>companies</span></div>
+      <div><strong id="actionCount">—</strong><span>need you</span></div>
+      <div><strong id="avgProgress">—</strong><span>ready</span></div>
+    </section>
+
+    <div id="notice" class="notice hidden"></div>
+    <section id="projects" class="projects"></section>
+  </main>
+
+  <template id="projectTemplate">
+    <article class="project-card">
+      <div class="project-top">
+        <div><div class="domain"></div><h2></h2></div>
+        <div class="score"><strong></strong><span>READY</span></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <div class="need"></div>
+      <details>
+        <summary>Studio passport status</summary>
+        <div class="resources"></div>
+      </details>
+      <button class="ghost reconcile">Reconcile</button>
+    </article>
+  </template>
+  <script src="/static/app.js"></script>
+</body>
+</html>

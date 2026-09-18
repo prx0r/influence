@@ -1,0 +1,11 @@
+{"version": "frozen_v1", "source": "killella/data/analysis.txt (Casey Rocket ep), hand-labeled, pinned",
+ "items": [
+  {"id": "ev01", "bit": "425 MHz queso dip truck stalled to the Hamptons", "techniques": ["absurdism", "escalation", "wordplay"]},
+  {"id": "ev02", "bit": "Gangstalked by pissers; landlord routes to Christian Dior", "techniques": ["escalation", "misdirection", "paranoia-frame"]},
+  {"id": "ev03", "bit": "Appendix bursts or a rich person hires you to burst it", "techniques": ["misdirection", "rich-vs-poor", "wordplay"]},
+  {"id": "ev04", "bit": "Qeso returns all episode as running gag", "techniques": ["callback"]},
+  {"id": "ev05", "bit": "Downton Abbey meets McDonald's; Grimace judge jury executioner", "techniques": ["absurdism", "wordplay", "escalation"]},
+  {"id": "ev06", "bit": "Pensacola Beach dark vs Ozzy last-show dark", "techniques": ["escalation", "misdirection", "deadpan"]},
+  {"id": "ev07", "bit": "Greeter at Firestone Tires as divine", "techniques": ["deadpan", "absurdism", "non-sequitur"]},
+  {"id": "ev08", "bit": "Butler trade grandfathered blessing", "techniques": ["deadpan", "wordplay", "callback-proof"]}
+ ]}

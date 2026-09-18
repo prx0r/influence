@@ -1,0 +1,3 @@
+{"lineage": "absurd", "version": 1,
+ "weights": {"absurdism": 0.2, "escalation": 0.2, "misdirection": 0.15, "deadpan": 0.15, "wordplay": 0.15, "callback": 0.1, "rich-vs-poor": 0.05},
+ "note": "v1 seed. Reweights append new versions; v1 never edited."}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Sparky Desk — morning briefing</title>
+  <style>
+    :root { --bg: #0b0b0c; --card: #141416; --border: #282833; --text: #f4f4f5; --muted: #8b8b98; --accent: #fbbf24; --green: #22c55e; --red: #ef4444; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; min-height: 100vh; }
+    .shell { max-width: 900px; margin: 0 auto; padding: 20px; }
+    header { padding: 16px 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    .eyebrow { font-size: 10px; letter-spacing: .15em; color: var(--accent); font-weight: 700; }
+    h1 { font-size: 22px; font-weight: 900; }
+    h2 { font-size: 14px; color: var(--muted); margin: 20px 0 10px; text-transform: uppercase; letter-spacing: .1em; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+    .card.urgent { border-color: var(--red); }
+    .row { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    .muted { color: var(--muted); font-size: 13px; }
+    .btns { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .btn { background: var(--accent); color: #000; border: none; padding: 7px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; }
+    .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--border); }
+    .pill { font-size: 11px; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border); color: var(--muted); }
+    .pill.hot { color: var(--red); border-color: var(--red); }
+    .pill.go { color: var(--green); border-color: var(--green); }
+    .allgood { color: var(--green); }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header><div class="eyebrow">SPARKY ELECTRICAL · MORNING BRIEFING</div><h1>⚡ Desk</h1></header>
+  <h2>Wake-now alerts</h2><div id="alerts"></div>
+  <h2>Backend</h2><div id="backend"></div>
+  <h2>Domain deals</h2><div id="deals"></div>
+  <h2>Renewals</h2><div id="renewals"></div>
+  <h2>Open jobs</h2><div id="jobs"></div>
+  <h2>Numbers</h2><div id="stats"></div>
+</div>
+<script>
+const SLUG = "sparky";
+async function api(url, options = {}) {
+  const r = await fetch(url, { headers: { "Content-Type": "application/json" }, ...options });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function load() {
+  const [projects, jobsData, statsData, recon] = await Promise.all([
+    api("/api/projects"), api(`/api/tradie/${SLUG}/jobs`), api(`/api/tradie/${SLUG}/stats`),
+    api(`/api/tradie/${SLUG}/reconcile`, { method: "POST" }).catch(() => null),
+  ]);
+  if (recon) {
+    document.getElementById("backend").innerHTML = Object.entries(recon.channels).map(([k, v]) =>
+      `<div class="card"><div class="row"><b>${k}</b><span class="pill${v.status === "READY" ? " go" : v.status === "ERROR" ? " hot" : ""}">${v.status}</span></div><div class="muted">${v.message || ""}</div></div>`).join("");
+  }
+  try {
+    const deals = await api("/api/domains/deals?status=PREPARED");
+    const open = deals.deals || [];
+    document.getElementById("deals").innerHTML = open.length
+      ? open.map(d => `<div class="card"><div class="row"><b>${d.domain}</b><span class="pill">${d.status} · ${d.provider} · $${d.quoted_price ?? "?"}</span></div></div>`).join("")
+      : `<div class="card muted">No open deals.</div>`;
+  } catch (e) { document.getElementById("deals").innerHTML = `<div class="card muted">deals unavailable</div>`; }
+  try {
+    const ren = await api("/api/domains/renewals");
+    document.getElementById("renewals").innerHTML = ren.domains.length
+      ? ren.domains.map(d => `<div class="card"><div class="row"><b>${d.domain}</b><span class="pill${d.alert ? " hot" : " go"}">${d.days_left != null ? d.days_left + "d left" : "?"}</span></div><div class="muted">expires ${d.expires || "?"} · ${d.state || ""}</div></div>`).join("")
+      : `<div class="card muted">No Cloudflare-registered domains. External zones aren't listed — transfer in or watch registrar mail.</div>`;
+  } catch (e) { document.getElementById("renewals").innerHTML = `<div class="card muted">renewals unavailable</div>`; }
+  const sparky = projects.find(p => p.slug === SLUG);
+  const actions = (sparky?.actions || []).filter(a => !a.done);
+  document.getElementById("alerts").innerHTML = actions.length
+    ? actions.map(a => `<div class="card${a.priority >= 90 ? " urgent" : ""}"><div class="row"><b>${a.title}</b><span class="pill${a.priority >= 90 ? " hot" : ""}">prio ${a.priority}</span></div><div class="muted">${(a.instructions || "").slice(0, 220)}</div><div class="btns"><button class="btn ghost" data-done="${a.id}">Mark done</button></div></div>`).join("")
+    : `<div class="card allgood">Nothing urgent. Kettle on. 🍵</div>`;
+  const open = jobsData.jobs.filter(j => !["done", "invoiced", "lost"].includes(j.status));
+  document.getElementById("jobs").innerHTML = open.length
+    ? (await Promise.all(open.map(async j => {
+        const detail = await api(`/api/tradie/${SLUG}/jobs/${j.id}`);
+        const quote = detail.quotes.find(q => ["draft", "approved"].includes(q.status));
+        const slotsOpt = detail.options.find(o => o.id === "slots");
+        return `<div class="card${j.urgent ? " urgent" : ""}"><div class="row"><b>#${j.id} ${j.job_type} — ${j.customer || j.phone}</b><span class="pill">${j.status}</span></div>
+        <div class="muted">${(detail.job.description || "").slice(0, 160)}</div>
+        <div class="muted">${detail.options.find(o => o.id === "verdict")?.label || ""}</div>
+        ${slotsOpt ? `<div class="muted">🗓 ${slotsOpt.slots.slice(0, 3).map(s => s.label).join(" · ")}</div>` : ""}
+        <div class="btns">
+          ${quote ? `<button class="btn" data-send="${j.id}:${quote.id}">Send quote £${quote.total.toFixed(0)}</button>` : ""}
+          ${j.status === "done" ? `<button class="btn" data-invoice="${j.id}">Invoice</button>` : ""}
+          <a class="btn ghost" href="/api/tradie/${SLUG}/jobs/${j.id}/calendar.ics">Calendar</a>
+          ${j.customer || j.phone ? `<a class="btn ghost" href="tel:${j.phone}">Call</a>` : ""}
+          <button class="btn ghost" data-donejob="${j.id}">Mark done</button>
+        </div></div>`;
+      }))).join("")
+    : `<div class="card allgood">No open jobs.</div>`;
+  document.getElementById("stats").innerHTML = Object.entries(statsData.stats).map(([t, s]) =>
+    `<div class="card"><div class="row"><b>${t}</b><span class="pill go">${s.n} jobs · ${s.avg_min}min avg · £${s.avg_revenue} avg</span></div></div>`).join("")
+    || `<div class="card muted">No completed jobs yet — stats accrue as jobs close.</div>`;
+  document.querySelectorAll("[data-done]").forEach(b => b.onclick = async () => { await api(`/api/actions/${b.dataset.done}`, { method: "PATCH", body: JSON.stringify({ done: true }) }); load(); });
+  document.querySelectorAll("[data-send]").forEach(b => b.onclick = async () => { const [jid, qid] = b.dataset.send.split(":"); await api(`/api/tradie/${SLUG}/jobs/${jid}/quote/${qid}/send`, { method: "POST" }); load(); });
+  document.querySelectorAll("[data-donejob]").forEach(b => b.onclick = async () => { await api(`/api/tradie/${SLUG}/jobs/${b.dataset.donejob}`, { method: "PATCH", body: JSON.stringify({ status: "done" }) }); load(); });
+  document.querySelectorAll("[data-invoice]").forEach(b => b.onclick = async () => { await api(`/api/tradie/${SLUG}/jobs/${b.dataset.invoice}/invoice`, { method: "POST" }); load(); });
+}
+load().catch(e => document.getElementById("alerts").innerHTML = `<div class="card">Error: ${e.message}</div>`);
+</script>
+</body>
+</html>

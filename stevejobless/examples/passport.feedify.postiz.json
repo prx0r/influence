@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "product": {"name": "Feedify", "domain": "feedify.dev"},
+  "resources": [
+    {"key": "domain", "kind": "domain", "label": "Domain", "desired": {"domain": "feedify.dev"}},
+    {"key": "website", "kind": "website", "label": "Production website", "desired": {"url": "https://feedify.dev"}},
+    {"key": "github", "kind": "github_repo", "label": "GitHub", "desired": {"repo": "prx0r/feedify"}},
+    {"key": "social:x", "kind": "postiz_social", "label": "X via Postiz", "desired": {"platform": "x", "handle": "feedifydev"}},
+    {"key": "social:linkedin", "kind": "postiz_social", "label": "LinkedIn via Postiz", "desired": {"platform": "linkedin"}},
+    {"key": "social:instagram", "kind": "postiz_social", "label": "Instagram via Postiz", "desired": {"platform": "instagram"}},
+    {"key": "social:tiktok", "kind": "postiz_social", "label": "TikTok via Postiz", "desired": {"platform": "tiktok"}}
+  ]
+}

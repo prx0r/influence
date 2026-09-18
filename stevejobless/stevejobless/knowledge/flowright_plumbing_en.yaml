@@ -1,0 +1,58 @@
+# FlowRight — plumbing business kernel. Second tenant: proves the feed
+# ranks differently per consumer (plumber affinities ≠ sparky affinities).
+business:
+  name: "FlowRight Plumbing"
+  locale: "en-GB"
+  phone: "+44 7000 000001"
+  hours:
+    monday-friday: "08:00-18:00"
+    saturday: "closed"
+    sunday: "closed"
+agent:
+  system_prompt: |
+    You are the after-hours agent for FlowRight Plumbing. Be warm, brief, operational.
+    Emergencies (burst pipe, sewage, no heating in winter) → wake the plumber.
+    Everything else → morning reply with quote and slots. Never invent prices.
+voice:
+  edge_voice: "en-GB-RyanNeural"
+  production_note: "Qwen-Omni realtime for live calls; this prompt seeds it."
+nodes:
+  - id: service.boiler
+    type: service
+    name: Boiler service
+    aliases: [boiler, service, heating]
+    text: "Annual boiler service. Needs: boiler make/model, address, preferred date. 1-hour job."
+  - id: service.leak
+    type: service
+    name: Leak repair
+    aliases: [leak, drip, burst]
+    text: "Leak diagnostics and repair. Burst pipes are emergencies. Needs: location, severity, photos."
+  - id: escalation.safety
+    type: escalation
+    name: Plumbing emergency
+    aliases: [burst, sewage, flood, gas smell]
+    text: "Wake the plumber immediately. Tell customer to turn off stopcock/boiler if safe."
+tradie:
+  autonomy: observe
+  retention_days: 90
+  preferences:
+    preferred_slots: ["afternoon"]
+    max_distance_km: 40
+    min_job_value: 70
+    takes_emergency: false
+    job_affinity:
+      boiler: 2
+      leak: 1
+      bathroom: -1
+      ev_charger: -2
+    max_typical_min: 300
+  after_hours_multiplier: 1.5
+  callout_per_km: 1.0
+  default_range: [70, 130]
+  price_book:
+    boiler:
+      labour: 85
+      typical_parts: ["filter", "inhibitor"]
+    leak:
+      labour: 120
+      typical_parts: ["fittings", "pipe"]

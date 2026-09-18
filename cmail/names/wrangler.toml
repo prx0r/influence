@@ -1,0 +1,7 @@
+name = "cmail-names"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[[services]]
+binding = "CHECKER_SVC"
+service = "domainnamechecker"

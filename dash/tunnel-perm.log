@@ -1,0 +1,45 @@
+2026-09-18T14:41:54Z INF Starting tunnel tunnelID=9be36151-4294-4859-b98d-7933edef7f0f
+2026-09-18T14:41:54Z INF Version 2026.9.0 (Checksum 53b7a7a5420d188758d24341294acb0d1bca54296548ac05e38811a694ac6134)
+2026-09-18T14:41:54Z INF GOOS: linux, GOVersion: go1.26.8, GoArch: amd64
+2026-09-18T14:41:54Z INF Settings: map[config:/home/ubuntu/.cloudflared/influence-dash.yml cred-file:/home/ubuntu/.cloudflared/influence-dash-creds.json credentials-file:/home/ubuntu/.cloudflared/influence-dash-creds.json]
+2026-09-18T14:41:54Z INF cloudflared will not automatically update if installed by a package manager.
+2026-09-18T14:41:54Z INF Generated Connector ID: d7b5186a-eefc-4aed-bc12-607ecf3a9f61
+2026-09-18T14:41:54Z INF Initial protocol quic
+2026-09-18T14:41:54Z INF ICMP proxy will use 51.222.81.2 as source for IPv4
+2026-09-18T14:41:54Z INF ICMP proxy will use 2607:5300:205:200::3a24 in zone ens3 as source for IPv6
+2026-09-18T14:41:54Z WRN The user running cloudflared process has a GID (group ID) that is not within ping_group_range. You might need to add that user to a group within that range, or instead update the range to encompass a group the user is already in by modifying /proc/sys/net/ipv4/ping_group_range. Otherwise cloudflared will not be able to ping this network error="Group ID 1000 is not between ping group 1 to 0"
+2026-09-18T14:41:54Z WRN ICMP proxy feature is disabled error="cannot create ICMPv4 proxy: Group ID 1000 is not between ping group 1 to 0 nor ICMPv6 proxy: socket: permission denied"
+2026/09/18 14:41:54 failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 7168 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
+2026-09-18T14:41:54Z INF ICMP proxy will use 51.222.81.2 as source for IPv4
+2026-09-18T14:41:54Z INF ICMP proxy will use 2607:5300:205:200::3a24 in zone ens3 as source for IPv6
+2026-09-18T14:41:54Z INF Starting metrics server on 127.0.0.1:20244/metrics
+2026-09-18T14:41:54Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=2606:4700:a8::1
+2026-09-18T14:41:54Z INF +-------------------------------------------------------------------------------------+
+2026-09-18T14:41:54Z INF |                               CONNECTIVITY PRE-CHECKS                               |
+2026-09-18T14:41:54Z INF +-------------------------------------------------------------------------------------+
+2026-09-18T14:41:54Z INF |  COMPONENT         TARGET                     STATUS  DETAILS                       |
+2026-09-18T14:41:54Z INF |  DNS Resolution    region1.v2.argotunnel.com  PASS    DNS Resolved successfully     |
+2026-09-18T14:41:54Z INF |  DNS Resolution    region2.v2.argotunnel.com  PASS    DNS Resolved successfully     |
+2026-09-18T14:41:54Z INF |  UDP Connectivity  region1.v2.argotunnel.com  PASS    QUIC connection successful    |
+2026-09-18T14:41:54Z INF |  UDP Connectivity  region2.v2.argotunnel.com  PASS    QUIC connection successful    |
+2026-09-18T14:41:54Z INF |  TCP Connectivity  region1.v2.argotunnel.com  PASS    HTTP/2 connection successful  |
+2026-09-18T14:41:54Z INF |  TCP Connectivity  region2.v2.argotunnel.com  PASS    HTTP/2 connection successful  |
+2026-09-18T14:41:54Z INF |  Cloudflare API    api.cloudflare.com:443     PASS    API is reachable              |
+2026-09-18T14:41:54Z INF |                                                                                     |
+2026-09-18T14:41:54Z INF |  SUMMARY: Environment is healthy. cloudflared will use 'quic' as primary protocol.  |
+2026-09-18T14:41:54Z INF +-------------------------------------------------------------------------------------+
+2026-09-18T14:41:54Z INF precheck component="DNS Resolution" details="DNS Resolved successfully" run_id=404c951d-555b-4361-a434-5d8010e4f422 status=pass target=region1.v2.argotunnel.com
+2026-09-18T14:41:54Z INF precheck component="DNS Resolution" details="DNS Resolved successfully" run_id=404c951d-555b-4361-a434-5d8010e4f422 status=pass target=region2.v2.argotunnel.com
+2026-09-18T14:41:54Z INF precheck component="UDP Connectivity" details="QUIC connection successful" run_id=404c951d-555b-4361-a434-5d8010e4f422 status=pass target=region1.v2.argotunnel.com
+2026-09-18T14:41:54Z INF precheck component="UDP Connectivity" details="QUIC connection successful" run_id=404c951d-555b-4361-a434-5d8010e4f422 status=pass target=region2.v2.argotunnel.com
+2026-09-18T14:41:54Z INF precheck component="TCP Connectivity" details="HTTP/2 connection successful" run_id=404c951d-555b-4361-a434-5d8010e4f422 status=pass target=region1.v2.argotunnel.com
+2026-09-18T14:41:54Z INF precheck component="TCP Connectivity" details="HTTP/2 connection successful" run_id=404c951d-555b-4361-a434-5d8010e4f422 status=pass target=region2.v2.argotunnel.com
+2026-09-18T14:41:54Z INF precheck component="Cloudflare API" details="API is reachable" run_id=404c951d-555b-4361-a434-5d8010e4f422 status=pass target=api.cloudflare.com:443
+2026-09-18T14:41:54Z INF precheck complete hard_fail=false run_id=404c951d-555b-4361-a434-5d8010e4f422 suggested_protocol=quic
+2026-09-18T14:41:54Z INF Registered tunnel connection connIndex=0 connection=eb2517f7-7b7b-4e36-81d2-13121c294b71 event=0 ip=2606:4700:a8::1 location=yyz06 protocol=quic
+2026-09-18T14:41:54Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=1 event=0 ip=2606:4700:a0::6
+2026-09-18T14:41:54Z INF Registered tunnel connection connIndex=1 connection=11e5f307-6c71-419e-bda3-7d6963078e28 event=0 ip=2606:4700:a0::6 location=yul01 protocol=quic
+2026-09-18T14:41:55Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=2 event=0 ip=2606:4700:a0::7
+2026-09-18T14:41:55Z INF Registered tunnel connection connIndex=2 connection=077dc56f-d1c7-4695-802e-dabae701b503 event=0 ip=2606:4700:a0::7 location=yul01 protocol=quic
+2026-09-18T14:41:56Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=3 event=0 ip=2606:4700:a8::8
+2026-09-18T14:41:56Z INF Registered tunnel connection connIndex=3 connection=3e608d2b-577f-4f93-a2f2-4c53941a90a7 event=0 ip=2606:4700:a8::8 location=yyz06 protocol=quic

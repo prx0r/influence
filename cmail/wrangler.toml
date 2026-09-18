@@ -1,0 +1,45 @@
+name = "cmail"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cmail-index"
+database_id = "1a2b7b3e-cfad-4455-ad5f-133903e4265b"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "RAW"
+bucket_name = "cmail-raw"
+
+[[kv_namespaces]]
+binding = "SESSION"
+id = "04b8045a8730487a8629d95b03da94f8"
+
+[[durable_objects.bindings]]
+name = "MAILBOX"
+class_name = "MailboxDO"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["MailboxDO"]
+
+[vars]
+DEFAULT_NEEDS_REPLY = "true"
+# Bridge to stevejobless (registry + action queue). Set STEVE_URL to the
+# steve server, STEVE_BRIDGE_TOKEN to match steve's STEVE_BRIDGE_TOKEN.
+# STEVE_URL = "https://steve.yourdomain.com"
+# STEVE_BRIDGE_TOKEN = ""
+
+# Outbound email — requires Workers Paid ($5/mo, 3k sends incl.). To enable:
+# 1. upgrade the account, 2. uncomment below, 3. redeploy. Code already
+# handles both states (mcp.ts email.send checks env.SENDER at runtime).
+# [[send_email]]
+# name = "SENDER"
+
+# Inbound catch-all: configure in dashboard → Email Routing → Email Workers.
+# (No [email] field — routing attaches to the deployed worker.)
+
+[ai]
+binding = "AI"
