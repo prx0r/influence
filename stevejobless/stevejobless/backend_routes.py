@@ -73,6 +73,7 @@ class TelnyxWire(BaseModel):
     connection_id: str
     phone_number: str
     base_url: str  # public brain URL, e.g. https://steve.example.com
+    messaging_profile_id: str | None = None
 
 
 @router.post("/{slug}/telnyx/wire")
@@ -85,24 +86,45 @@ def telnyx_wire(slug: str, body: TelnyxWire, db: Session = Depends(_db)):
     if not key:
         raise HTTPException(409, "no telnyx api_key")
     p, kernel = _kernel(db, slug)
-    hook = f"{body.base_url.rstrip('/')}/api/backend/telnyx/voice-webhook?slug={slug}"
+    # Unified webhook: Telnyx sends ALL events to one URL, brain routes internally
+    unified_hook = f"{body.base_url.rstrip('/')}/api/backend/telnyx/webhook?slug={slug}"
+    voice_hook = f"{body.base_url.rstrip('/')}/api/backend/telnyx/voice-webhook?slug={slug}"
     sms_hook = f"{body.base_url.rstrip('/')}/api/backend/telnyx/sms-webhook?slug={slug}"
     try:
-        app = telephony.set_voice_webhook(key, body.connection_id, hook)
+        app = telephony.set_webhook_urls(key, body.connection_id, unified_hook)
     except telephony.TelnyxError as e:
         raise HTTPException(502, f"telnyx rejected webhook: {str(e)[:200]}")
     v.set_credential(slug, "telnyx", "connection_id", body.connection_id)
     v.set_credential(slug, "telnyx", "phone_number", body.phone_number)
+    if body.messaging_profile_id:
+        v.set_credential(slug, "telnyx", "messaging_profile_id", body.messaging_profile_id)
     k = db.scalar(select(TradieKernel).where(TradieKernel.project_id == p.id))
     cfg = dict(kernel)
-    cfg["telnyx"] = {"phone_number": body.phone_number, "voice_webhook": hook, "sms_webhook": sms_hook}
+    cfg["telnyx"] = {
+        "phone_number": body.phone_number,
+        "unified_webhook": unified_hook,
+        "voice_webhook": voice_hook,
+        "sms_webhook": sms_hook,
+    }
     if k is None:
         db.add(TradieKernel(project_id=p.id, config=cfg))
     else:
         k.config = cfg
     db.commit()
-    return {"ok": True, "voice_webhook": hook, "sms_webhook": sms_hook,
+    return {"ok": True, "unified_webhook": unified_hook,
+            "voice_webhook": voice_hook, "sms_webhook": sms_hook,
             "telnyx_app": {"id": app.get("id"), "webhook": app.get("webhook_event_url")}}
+
+
+@router.post("/telnyx/webhook")
+async def telnyx_unified_webhook(payload: dict[str, Any], slug: str = "", db: Session = Depends(_db)):
+    """Unified Telnyx webhook — routes voice events to voice handler, SMS to SMS handler.
+    Telnyx sends ALL events to one URL; this dispatcher splits them."""
+    event_type = payload.get("data", {}).get("event_type", "")
+    if event_type.startswith("message."):
+        return await telnyx_sms_webhook(payload, slug, db)
+    else:
+        return await telnyx_voice_webhook(payload, slug, db)
 
 
 @router.post("/telnyx/voice-webhook")

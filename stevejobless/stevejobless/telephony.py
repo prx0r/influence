@@ -55,6 +55,18 @@ def set_voice_webhook(api_key: str, connection_id: str, webhook_url: str) -> dic
     return d.get("data", {})
 
 
+def set_webhook_urls(api_key: str, connection_id: str, event_url: str,
+                     failover_url: str | None = None) -> dict[str, Any]:
+    """Set both primary and failover webhook URLs on a Call Control app.
+    Telnyx sends ALL events (voice + SMS) to webhook_event_url.
+    The brain routes internally."""
+    body: dict[str, Any] = {"webhook_event_url": event_url}
+    if failover_url:
+        body["webhook_event_failover_url"] = failover_url
+    d = _call(api_key, "PATCH", f"/call_control_applications/{connection_id}", body)
+    return d.get("data", {})
+
+
 def send_sms(api_key: str, from_number: str, to: str, text: str,
              profile_id: str | None = None) -> dict[str, Any]:
     body = {"from": from_number, "to": to, "text": text}

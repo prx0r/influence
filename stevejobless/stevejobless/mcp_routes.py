@@ -38,6 +38,30 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
     {"name": "email.needs_reply", "description": "Important unread mail proxied from cmail (quarantine excluded)",
      "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "phone.search", "description": "Search available phone numbers by country (Telnyx). Read-only, no purchase.",
+     "inputSchema": {"type": "object", "properties": {"country": {"type": "string", "description": "Country code (US, GB, DE, etc.)"},
+                                                      "number_type": {"type": "string", "description": "local, mobile, toll_free"},
+                                                      "limit": {"type": "integer", "description": "Max results (default 20)"}},
+                     "required": ["country"]}},
+    {"name": "phone.owned", "description": "List phone numbers already purchased on Telnyx",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "phone.find_gem", "description": """Deep scan for premium/vanity phone number patterns.
+Scans hundreds of numbers and scores them by memorability patterns:
+- TRIPLE/QUAD: repeated digits (000, 8888)
+- ECHO: prefix digits appear in suffix (07822 000 272)
+- ABA RHYME: last 3 digits form X-Y-X pattern
+- MIRROR: number reads same backwards
+- SEQUENCE: consecutive digits (1234, 5678)
+- VISUAL: digits map to readable words in leet speak
+- BLOCK: same digit repeated in a group
+Asks user to confirm country before scanning if not specified.""",
+     "inputSchema": {"type": "object", "properties": {
+         "country": {"type": "string", "description": "Country code (GB, US, DE, etc.). If omitted, agent should ask user."},
+         "number_type": {"type": "string", "description": "mobile, local, toll_free"},
+         "scan_pages": {"type": "integer", "description": "Pages to scan (100 nums/page, default 10=1000 numbers)"},
+         "min_score": {"type": "integer", "description": "Minimum score threshold (default 6)"},
+         "context": {"type": "string", "description": "Business name/purpose for tailored recommendations"}}},
+    },
 ]
 
 
@@ -143,6 +167,216 @@ def _email_needs(db: Session, a: dict) -> Any:
         return _json.loads(resp.read())
 
 
+def _phone_search(db: Session, a: dict) -> Any:
+    from . import telephony
+    from .vault import CredentialVault
+
+    # Use the first business that has a telnyx key, or accept explicit slug
+    slug = a.get("slug")
+    if slug:
+        v = CredentialVault(db)
+        key = v.get_credential(slug, "telnyx", "api_key")
+    else:
+        # Find any business with a telnyx key
+        from .models import Project
+        v = CredentialVault(db)
+        key = None
+        for p in db.scalars(select(Project)):
+            key = v.get_credential(p.slug, "telnyx", "api_key")
+            if key:
+                slug = p.slug
+                break
+    if not key:
+        return {"error": "no telnyx api_key configured — POST to /api/backend/{slug}/telnyx/credential first"}
+    country = a.get("country", "US")
+    limit = min(a.get("limit", 20), 50)
+    number_type = a.get("number_type")
+    try:
+        if number_type:
+            from urllib.request import Request, urlopen
+            import json as _json
+            filter_part = f"&filter[number_type]={number_type}" if number_type else ""
+            req = Request(f"https://api.telnyx.com/v2/available_phone_numbers?filter[country_code]={country}{filter_part}&page[size]={limit}",
+                          headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+            with urlopen(req, timeout=20) as resp:
+                d = _json.loads(resp.read())
+            nums = [{"number": n.get("phone_number"), "features": [f.get("name") for f in n.get("features", [])]}
+                    for n in d.get("data", [])]
+        else:
+            nums = telephony.search_numbers(key, country, limit)
+        return {"country": country, "count": len(nums), "numbers": nums, "slug": slug}
+    except Exception as e:
+        return {"error": str(e)[:300]}
+
+
+def _phone_owned(db: Session, a: dict) -> Any:
+    from . import telephony
+    from .vault import CredentialVault
+
+    slug = a.get("slug")
+    if slug:
+        v = CredentialVault(db)
+        key = v.get_credential(slug, "telnyx", "api_key")
+    else:
+        from .models import Project
+        v = CredentialVault(db)
+        key = None
+        for p in db.scalars(select(Project)):
+            key = v.get_credential(p.slug, "telnyx", "api_key")
+            if key:
+                slug = p.slug
+                break
+    if not key:
+        return {"error": "no telnyx api_key configured"}
+    try:
+        nums = telephony.list_numbers(key)
+        return {"count": len(nums), "numbers": nums, "slug": slug}
+    except Exception as e:
+        return {"error": str(e)[:300]}
+
+
+def _phone_find_gem(db: Session, a: dict) -> Any:
+    """Deep scan for premium number patterns. Scores by memorability."""
+    from .vault import CredentialVault
+    from urllib.request import Request, urlopen
+    import json as _json
+
+    slug = a.get("slug")
+    if slug:
+        v = CredentialVault(db)
+        key = v.get_credential(slug, "telnyx", "api_key")
+    else:
+        from .models import Project
+        v = CredentialVault(db)
+        key = None
+        for p in db.scalars(select(Project)):
+            key = v.get_credential(p.slug, "telnyx", "api_key")
+            if key:
+                slug = p.slug
+                break
+    if not key:
+        return {"error": "no telnyx api_key configured"}
+
+    country = a.get("country", "GB")
+    number_type = a.get("number_type", "mobile")
+    scan_pages = min(a.get("scan_pages", 10), 20)
+    min_score = a.get("min_score", 6)
+
+    # Fetch numbers
+    all_nums = []
+    for page in range(1, scan_pages + 1):
+        try:
+            req = Request(
+                f"https://api.telnyx.com/v2/available_phone_numbers?"
+                f"filter[country_code]={country}&filter[number_type]={number_type}"
+                f"&filter[page][number]={page}&page[size]=100",
+                headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+            with urlopen(req, timeout=20) as resp:
+                d = _json.loads(resp.read())
+            nums = d.get("data", [])
+            if not nums:
+                break
+            all_nums.extend(nums)
+        except:
+            break
+
+    # Score each number
+    def _score(digits, local):
+        score = 0
+        tags = []
+
+        # Consecutive sequences
+        for seq in ['01234','12345','23456','34567','45678','56789',
+                    '98765','87654','76543','65432','54321','43210']:
+            if seq in local:
+                score += 8; tags.append(f'seq-{seq}')
+
+        # Triple/quad digits
+        for i in range(len(digits)-2):
+            if digits[i] == digits[i+1] == digits[i+2]:
+                score += 5; tags.append(f'triple-{digits[i]}')
+                if i+3 < len(digits) and digits[i] == digits[i+3]:
+                    score += 5; tags.append('quad')
+
+        # Triple zero
+        if '000' in local:
+            score += 4; tags.append('triple-0')
+
+        # Echo pattern
+        if len(local) >= 10:
+            p = local[3:5]
+            s = local[7:10]
+            if p in s:
+                score += 5; tags.append('echo')
+
+        # ABA rhyme
+        if len(local) >= 10:
+            end = local[7:10]
+            if end[0] == end[2] and end[0] != end[1]:
+                score += 4; tags.append('ABA')
+            if end[0] == end[1] == end[2]:
+                score += 5; tags.append('AAA-end')
+
+        # Mirror
+        if local == local[::-1]:
+            score += 12; tags.append('MIRROR')
+        mismatches = sum(1 for i in range(len(local)//2) if local[i] != local[-(i+1)])
+        if mismatches == 1:
+            score += 6; tags.append('near-mirror')
+
+        # Double pairs
+        if local[0:2] == local[2:4]: score += 3; tags.append('double-pair')
+        if local[3:5] == local[5:7]: score += 3; tags.append('mid-pair')
+
+        # Digit frequency
+        for d in '0123456789':
+            c = digits.count(d)
+            if c >= 5: score += 6; tags.append(f'x5-{d}')
+            elif c >= 4: score += 3; tags.append(f'x4-{d}')
+
+        # Block repeat
+        if len(local) >= 10:
+            for start in [0, 3, 5, 7]:
+                end = min(start+3, len(local))
+                chunk = local[start:end]
+                if len(set(chunk)) == 1 and len(chunk) >= 3:
+                    score += 5; tags.append(f'block-{start}')
+
+        # Leet word mirror
+        word_map = {'0':'O','1':'I','2':'Z','3':'E','4':'A','5':'S','6':'G','7':'L','8':'B','9':'G'}
+        word = ''.join(word_map.get(d, '') for d in local)
+        if word == word[::-1] and len(word) >= 6:
+            score += 8; tags.append(f'leet-mirror')
+
+        return score, list(set(tags))
+
+    gems = []
+    for n in all_nums:
+        num = n.get("phone_number", "")
+        digits = "".join(c for c in num if c.isdigit())
+        feats = [f.get("name") for f in n.get("features", [])]
+        local = digits[2:]
+        score, tags = _score(digits, local)
+        if "sms" in feats:
+            score += 2
+        if score >= min_score:
+            gems.append({"number": num, "score": score, "tags": tags, "sms": "sms" in feats, "voice": "voice" in feats})
+
+    gems.sort(key=lambda x: -x["score"])
+
+    # Deduplicate
+    seen = set()
+    unique = []
+    for g in gems:
+        if g["number"] not in seen:
+            seen.add(g["number"])
+            unique.append(g)
+
+    return {"scanned": len(all_nums), "country": country, "type": number_type,
+            "min_score": min_score, "gems": unique[:30]}
+
+
 _CALLS = {"job.list": _job_list, "job.get": _job_get, "name.check": _name_check,
           "name.handles": _name_handles, "biz.status": _biz_status,
-          "email.needs_reply": _email_needs}
+          "email.needs_reply": _email_needs, "phone.search": _phone_search,
+          "phone.owned": _phone_owned, "phone.find_gem": _phone_find_gem}
