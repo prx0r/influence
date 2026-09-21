@@ -67,6 +67,30 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 .frm{padding:8px;display:flex;flex-direction:column;gap:6px}
 .frm input,.frm select{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 8px;border-radius:4px;font-size:12px}
 .frm button{background:var(--accent);color:#fff;border:none;padding:6px;border-radius:4px;cursor:pointer}
+.identity-slot{padding:10px 12px;border-bottom:1px solid var(--bg4);font-size:12px;display:flex;align-items:center;gap:10px}
+.identity-slot .slot-icon{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.identity-slot .slot-icon.ready{background:#123f2c;color:#7fe0a8}
+.identity-slot .slot-icon.pending{background:#2b2d2d;color:var(--dim)}
+.identity-slot .slot-icon.error{background:#3f1a12;color:var(--red)}
+.identity-slot .slot-info{flex:1;min-width:0}
+.identity-slot .slot-name{font-weight:600;font-size:13px}
+.identity-slot .slot-detail{color:var(--dim);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.identity-header{padding:16px;border-bottom:1px solid var(--border)}
+.identity-header h2{margin:0 0 4px;font-size:18px}
+.identity-header .meta{color:var(--dim);font-size:12px}
+.identity-header .bar{margin-top:8px}
+.identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.identity-grid .slot-card{background:var(--bg2);padding:14px;display:flex;flex-direction:column;gap:6px}
+.identity-grid .slot-card .label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:0.5px}
+.identity-grid .slot-card .value{font-size:13px;font-weight:500}
+.identity-grid .slot-card .status{font-size:11px}
+.account-item{padding:10px 12px;border-bottom:1px solid var(--bg4);cursor:pointer;display:flex;align-items:center;gap:10px;font-size:12px}
+.account-item:hover{background:var(--bg3)}
+.account-item.active{background:var(--bg3);border-left:2px solid var(--accent)}
+.account-item .acc-icon{width:28px;height:28px;border-radius:6px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.account-item .acc-info{flex:1;min-width:0}
+.account-item .acc-name{font-weight:600}
+.account-item .acc-meta{color:var(--dim);font-size:10px}
 .task{padding:8px 12px;border-bottom:1px solid var(--bg4);font-size:12px}
 .task .t{font-weight:600}
 .task .opts{display:flex;gap:6px;margin-top:6px}
@@ -88,6 +112,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 <div class="main">
   <div class="activity">
     <div class="icon active" onclick="switchView('chat',this)" title="Chat">💬</div>
+    <div class="icon" onclick="switchView('accounts',this)" title="Accounts">👤</div>
     <div class="icon" onclick="switchView('influencers',this)" title="Influencers">🛰</div>
     <div class="icon" onclick="switchView('vault',this)" title="Vault">🔑</div>
     <div class="icon" onclick="switchView('tasks',this)" title="Tasks">✅<span class="badge" id="badge-tasks">0</span></div>
@@ -139,7 +164,7 @@ function switchView(name,el){
   document.querySelectorAll('.activity .icon').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('sidebar-title').textContent=name[0].toUpperCase()+name.slice(1);
-  ({chat:renderChatSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,tasks:renderTasksSidebar,terminal:renderTerminalSidebar}[name])();
+  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,tasks:renderTasksSidebar,terminal:renderTerminalSidebar}[name])();
 }
 function renderChatSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
@@ -149,6 +174,74 @@ function renderChatSidebar(){
     <div class="tree-header">Add influencer</div>
     <div class="frm"><input id="q-slug" placeholder="slug"><input id="q-domain" placeholder="domain.dev">
     <button onclick="quickChat('/add '+document.getElementById('q-slug').value+' '+document.getElementById('q-domain').value)">Add + reconcile</button></div>`;
+}
+let identitiesData=[];
+async function renderAccountsSidebar(){
+  const el=document.getElementById('sidebar-content');
+  el.innerHTML='<div style="padding:8px;color:var(--dim)">Loading identities…</div>';
+  try{
+    const r=await api('POST','/mcp',{method:'tools/call',params:{name:'identity.list',arguments:{}}});
+    identitiesData=JSON.parse(r.result?.content?.[0]?.text||'[]');
+  }catch(e){identitiesData=[]}
+  if(!identitiesData.length){el.innerHTML='<div style="padding:8px;color:var(--dim)">No identities yet. Create one from chat.</div>';return}
+  el.innerHTML='<div class="tree-header">Identities ('+identitiesData.length+')</div>'+
+    identitiesData.map(i=>{
+      const icon=i.category==='compute'?'⛏':i.category==='content'?'🎬':'🛰';
+      return `<div class="account-item" onclick="openIdentityTab('${esc(i.slug)}')">
+        <div class="acc-icon">${icon}</div>
+        <div class="acc-info">
+          <div class="acc-name">${esc(i.name)}</div>
+          <div class="acc-meta">${i.ready}/${i.total} slots ready</div>
+        </div>
+        <span class="pill ${i.ready===i.total?'READY':i.ready>0?'MISSING':'UNKNOWN'}">${i.ready}/${i.total}</span>
+      </div>`}).join('');
+}
+async function openIdentityTab(slug){
+  if(!openTabs.includes('id:'+slug))openTabs.push('id:'+slug);
+  activeTab='id:'+slug;renderTabs();
+  const main=document.getElementById('editor-main');
+  main.innerHTML='<div style="color:var(--dim)">Loading identity…</div>';
+  try{
+    const r=await api('POST','/mcp',{method:'tools/call',params:{name:'identity.get',arguments:{slug}}});
+    const data=JSON.parse(r.result?.content?.[0]?.text||'{}');
+    renderIdentityView(main,data);
+  }catch(e){main.innerHTML='<div style="color:var(--red)">Error loading identity</div>'}
+}
+function renderIdentityView(main,data){
+  if(data.error){main.innerHTML=`<div style="color:var(--red)">${esc(data.error)}</div>`;return}
+  const ready=data.ready||0,total=data.total||0,pct=Math.round(100*ready/total);
+  const slotIcons={domain:'🌐',email:'📧',phone:'📱',twitter:'🐦',github:'🐙',youtube:'📺',telegram:'✈️',website:'🖥️'};
+  const slotLabels={domain:'Domain',email:'Email',phone:'Phone',twitter:'Twitter/X',github:'GitHub',youtube:'YouTube',telegram:'Telegram',website:'Website'};
+  main.innerHTML=`
+    <div class="identity-header">
+      <h2>${esc(data.name||data.slug)}</h2>
+      <div class="meta">${esc(data.slug)} · ${ready}/${total} slots ready</div>
+      <div class="bar"><i style="width:${pct}%"></i></div>
+    </div>
+    <div class="identity-grid">
+      ${Object.entries(data.slots||{}).map(([id,s])=>{
+        const icon=slotIcons[id]||'📋';
+        const label=slotLabels[id]||id;
+        const status=s.status||'pending';
+        const fields=Object.entries(s.fields||{}).map(([k,v])=>`${k}: ${v}`).join(', ')||'not configured';
+        return `<div class="slot-card">
+          <div class="label">${icon} ${label}</div>
+          <div class="value"><span class="pill ${status.toUpperCase()}">${status}</span></div>
+          <div class="status" style="color:var(--dim);font-size:11px;margin-top:4px">${esc(fields)}</div>
+        </div>`}).join('')}
+    </div>
+    <div style="padding:16px;border-top:1px solid var(--border)">
+      <h3 style="margin-bottom:8px">Actions</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button onclick="identitySlotAction('${esc(data.slug)}','phone','status','ready')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">Set Phone Ready</button>
+        <button onclick="identitySlotAction('${esc(data.slug)}','website','status','ready')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">Set Website Ready</button>
+        <button onclick="openIdentityTab('${esc(data.slug)}')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">Refresh</button>
+      </div>
+    </div>`;
+}
+async function identitySlotAction(slug,slot,field,value){
+  await api('POST','/mcp',{method:'tools/call',params:{name:'identity.slot',arguments:{slug,slot,[field]:value,status:value}}});
+  openIdentityTab(slug);
 }
 function renderInfSidebar(){
   const el=document.getElementById('sidebar-content');
@@ -205,12 +298,18 @@ async function termReconcile(){const r=await api('POST','/api/reconcile',{});log
 
 function renderTabs(){
   const el=document.getElementById('editor-tabs');
-  const tabs=['chat','monitor','explorer','studio','agents',...(S?.influencers||[]).map(i=>i.slug)];
+  const baseTabs=['chat','monitor','explorer','studio','agents'];
+  const infTabs=(S?.influencers||[]).map(i=>i.slug);
+  const idTabs=identitiesData.map(i=>'id:'+i.slug);
+  const tabs=[...baseTabs,...idTabs,...infTabs];
   openTabs=openTabs.filter(t=>tabs.includes(t));
   if(!openTabs.length&&tabs.length)openTabs=['chat'];
   if(!activeTab&&openTabs.length)activeTab=openTabs[0];
   if(activeTab&&!openTabs.includes(activeTab))activeTab=openTabs[0];
-  el.innerHTML=openTabs.map(t=>`<div class="tab ${t===activeTab?'active':''}" onclick="openTab('${t}')">${t}<span class="close" onclick="closeTab('${t}',event)">×</span></div>`).join('');
+  el.innerHTML=openTabs.map(t=>{
+    const label=t.startsWith('id:')?t.slice(3):t;
+    const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':'';
+    return `<div class="tab ${t===activeTab?'active':''}" onclick="openTab('${t}')">${icon}${label}<span class="close" onclick="closeTab('${t}',event)">×</span></div>`}).join('');
 }
 function openTab(t,soft){
   if(!openTabs.includes(t))openTabs.push(t);
@@ -252,6 +351,7 @@ function openTab(t,soft){
     return;
   }
   const i=(S?.influencers||[]).find(x=>x.slug===t);
+  if(t.startsWith('id:')){openIdentityTab(t.slice(3));return}
   if(!i){main.innerHTML='<div style="color:var(--dim)">gone — refresh</div>';return}
   const ready=i.resources.filter(r=>r.status==='READY').length,pct=Math.round(100*ready/i.resources.length);
   main.innerHTML=`<h3>${esc(i.name)} <span style="color:var(--dim);font-size:11px">${esc(i.slug)} · ${esc(i.stage)}</span></h3>

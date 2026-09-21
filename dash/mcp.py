@@ -19,6 +19,14 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}},
     {"name": "receipt.get", "description": "Receipt by id with independent verification",
      "inputSchema": {"type": "object", "properties": {"id": {"type": "string"}}, "required": ["id"]}},
+    {"name": "identity.list", "description": "List all identities (businesses/brands)",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "identity.get", "description": "Get identity details with slot statuses",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "identity.create", "description": "Create a new identity with auto-initialized slots",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "name": {"type": "string"}, "category": {"type": "string"}, "niche": {"type": "string"}}, "required": ["slug", "name"]}},
+    {"name": "identity.slot", "description": "Update an identity slot (domain, email, phone, socials, website)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "slot": {"type": "string"}, "fields": {"type": "object"}, "status": {"type": "string"}}, "required": ["slug", "slot"]}},
 ]
 
 GRAPH = [
@@ -198,4 +206,29 @@ def handle(state: dict, method: str, params: dict) -> dict:
             return {"result": {"receipt": rc, "verify": v}}
         except Exception:
             return {"result": {"receipt": rc, "verify": {"ok": None, "reason": "verifier unavailable"}}}
+    if name == "identity.list":
+        from core.identity import Identity
+        ident = Identity(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "identities"))
+        all_ids = ident.list_all()
+        return {"result": [{"slug": i["slug"], "name": i["name"], "category": i.get("category", ""),
+                            "ready": sum(1 for s in i["slots"].values() if s["status"] == "ready"),
+                            "total": len(i["slots"])} for i in all_ids]}
+    if name == "identity.get":
+        from core.identity import Identity
+        ident = Identity(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "identities"))
+        result = ident.get_status(args.get("slug", ""))
+        return {"result": result} if "error" not in result else {"error": result["error"]}
+    if name == "identity.create":
+        from core.identity import Identity
+        ident = Identity(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "identities"))
+        result = ident.create(args["slug"], args["name"], args.get("category", ""), args.get("niche", ""))
+        return {"result": result}
+    if name == "identity.slot":
+        from core.identity import Identity
+        ident = Identity(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "identities"))
+        try:
+            ident.update_slot(args["slug"], args["slot"], args.get("fields", {}), args.get("status"))
+            return {"result": ident.get_status(args["slug"])}
+        except Exception as e:
+            return {"error": str(e)[:200]}
     return {"error": f"unknown tool {name}"}
