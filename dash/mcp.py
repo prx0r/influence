@@ -2,7 +2,9 @@
 never spend, send, or mutate. Writes stay on REST behind the decide gate."""
 from __future__ import annotations
 
+import json
 import os
+import sys
 
 TOOLS = [
     {"name": "influencer.list", "description": "List influencers with stage + progress",
@@ -35,6 +37,12 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}}},
     {"name": "content.status", "description": "Check content pipeline status",
      "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "phone.sms", "description": "List SMS messages from Telnyx number",
+     "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer"}, "slug": {"type": "string"}}}},
+    {"name": "phone.calls", "description": "List call logs from Telnyx number",
+     "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer"}, "slug": {"type": "string"}}}},
+    {"name": "phone.send", "description": "Send SMS from Telnyx number",
+     "inputSchema": {"type": "object", "properties": {"to": {"type": "string"}, "text": {"type": "string"}, "slug": {"type": "string"}}, "required": ["to", "text"]}},
 ]
 
 GRAPH = [
@@ -205,7 +213,6 @@ def handle(state: dict, method: str, params: dict) -> dict:
         if rc is None:
             return {"error": "unknown receipt"}
         try:
-            import sys
             sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             from qp.law import use_law
             use_law()
@@ -281,4 +288,47 @@ def handle(state: dict, method: str, params: dict) -> dict:
             return {"result": json.loads(r.stdout)} if r.stdout else {"error": r.stderr[:200]}
         except Exception as e:
             return {"error": str(e)[:200]}
+    if name in ("phone.sms", "phone.calls", "phone.send"):
+        slug = args.get("slug", "")
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "stevejobless"))
+        try:
+            from stevejobless.telephony import _call as telnyx_call, send_sms, list_numbers
+            from stevejobless.vault import CredentialVault
+            from stevejobless.db import SessionLocal as _SL
+            db = _SL()
+            v = CredentialVault(db)
+            key = v.get_credential(slug, "telnyx", "api_key") if slug else None
+            num = v.get_credential(slug, "telnyx", "phone_number") if slug else None
+            db.close()
+            if not key:
+                return {"error": "no telnyx api_key — POST /telnyx/credential first"}
+            if name == "phone.sms":
+                limit = min(args.get("limit", 20), 100)
+                d = telnyx_call(key, "GET", f"/messages?page[size]={limit}")
+                msgs = [{"id": m.get("id"),
+                         "from": (m.get("from") or {}).get("phone_number", "") if isinstance(m.get("from"), dict) else m.get("from", ""),
+                         "to": (m.get("to") or [{}])[0].get("phone_number", "") if isinstance(m.get("to"), list) else "",
+                         "text": m.get("text", ""),
+                         "direction": m.get("direction"),
+                         "created_at": m.get("created_at")}
+                        for m in d.get("data", [])]
+                return {"result": msgs}
+            if name == "phone.calls":
+                limit = min(args.get("limit", 20), 100)
+                d = telnyx_call(key, "GET", f"/calls?page[size]={limit}")
+                calls = [{"id": c.get("call_control_id"),
+                          "from": c.get("from"), "to": c.get("to"),
+                          "status": c.get("call_status"), "direction": c.get("direction"),
+                          "started_at": c.get("started_at"), "ended_at": c.get("ended_at"),
+                          "duration_ms": c.get("duration_ms")}
+                         for c in d.get("data", [])]
+                return {"result": calls}
+            if name == "phone.send":
+                to, text = args.get("to", ""), args.get("text", "")
+                if not to or not text:
+                    return {"error": "to and text required"}
+                d = telnyx_call(key, "POST", "/messages", {"from": num, "to": to, "text": text})
+                return {"result": {"ok": True, "id": (d.get("data") or {}).get("id")}}
+        except Exception as e:
+            return {"error": str(e)[:300]}
     return {"error": f"unknown tool {name}"}

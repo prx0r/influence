@@ -113,6 +113,8 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
   <div class="activity">
     <div class="icon active" onclick="switchView('chat',this)" title="Chat">💬</div>
     <div class="icon" onclick="switchView('accounts',this)" title="Accounts">👤</div>
+    <div class="icon" onclick="switchView('phone',this)" title="Phone">📱</div>
+    <div class="icon" onclick="switchView('content',this)" title="Content">🎬</div>
     <div class="icon" onclick="switchView('influencers',this)" title="Influencers">🛰</div>
     <div class="icon" onclick="switchView('vault',this)" title="Vault">🔑</div>
     <div class="icon" onclick="switchView('tasks',this)" title="Tasks">✅<span class="badge" id="badge-tasks">0</span></div>
@@ -164,7 +166,7 @@ function switchView(name,el){
   document.querySelectorAll('.activity .icon').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('sidebar-title').textContent=name[0].toUpperCase()+name.slice(1);
-  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,tasks:renderTasksSidebar,terminal:renderTerminalSidebar}[name])();
+  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,content:renderContentSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,tasks:renderTasksSidebar,terminal:renderTerminalSidebar}[name])();
 }
 function renderChatSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
@@ -294,6 +296,30 @@ function renderTerminalSidebar(){
     <div class="tree-item" onclick="termReconcile()">Reconcile all</div>
     <div class="tree-item" onclick="refresh()">Refresh state</div>`;
 }
+function renderPhoneSidebar(){
+  const el=document.getElementById('sidebar-content');
+  el.innerHTML=`
+    <div style="padding:8px;font-size:11px;color:var(--dim)">Phone — SMS + Calls</div>
+    <div class="tree-header">Quick Actions</div>
+    <div class="tree-item" onclick="loadPhoneTab('sms')">📬 SMS Messages</div>
+    <div class="tree-item" onclick="loadPhoneTab('calls')">📞 Call Logs</div>
+    <div class="tree-item" onclick="loadPhoneTab('send')">✏️ Send SMS</div>
+    <div class="tree-header">Send SMS</div>
+    <div class="frm">
+      <input id="sms-to" placeholder="To: +447822000272">
+      <input id="sms-text" placeholder="Message text">
+      <button onclick="sendSMS()">Send</button>
+    </div>`;
+}
+function renderContentSidebar(){
+  const el=document.getElementById('sidebar-content');
+  el.innerHTML=`
+    <div style="padding:8px;font-size:11px;color:var(--dim)">Content — signals + posts</div>
+    <div class="tree-header">Pipeline</div>
+    <div class="tree-item" onclick="loadContentTab('signals')">📊 Signals (powpowpow)</div>
+    <div class="tree-item" onclick="loadContentTab('status')">📋 Pipeline Status</div>
+    <div class="tree-item" onclick="loadContentTab('lineage')">🔗 Lineage</div>`;
+}
 async function termReconcile(){const r=await api('POST','/api/reconcile',{});logBottom(r.ok?`reconciled ${r.projects} projects`:'reconcile failed',r.ok?'ok':'err');refresh()}
 
 function renderTabs(){
@@ -387,6 +413,76 @@ async function sendChatMain(){
   catch(e){chatMsgMain('graph','Error: '+e.message)}
 }
 function quickChat(msg){openTab('chat',true);const inp=document.getElementById('chat-in-main');if(inp){inp.value=msg;sendChatMain()}}
+
+let phoneData={sms:[],calls:[]};
+async function loadPhoneTab(type){
+  openTab('phone',true);
+  const main=document.getElementById('editor-main');
+  main.innerHTML=`<h3>📱 Phone</h3><div style="color:var(--dim)">Loading ${type}...</div>`;
+  try{
+    if(type==='sms'){
+      const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.sms',arguments:{limit:30}}});
+      phoneData.sms=r.result?.content?JSON.parse(r.result.content[0].text):[];
+      renderPhoneSMS(main);
+    }else if(type==='calls'){
+      const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.calls',arguments:{limit:30}}});
+      phoneData.calls=r.result?.content?JSON.parse(r.result.content[0].text):[];
+      renderPhoneCalls(main);
+    }else if(type==='send'){
+      main.innerHTML=`<h3>📱 Send SMS</h3>
+        <div class="frm"><input id="sms-to-main" placeholder="To: +447822000272">
+        <input id="sms-text-main" placeholder="Message text">
+        <button onclick="sendSMSMain()">Send</button></div>
+        <div id="sms-result" style="margin-top:8px"></div>`;
+    }
+  }catch(e){main.innerHTML=`<div style="color:var(--red)">Error: ${esc(e.message)}</div>`}
+}
+function renderPhoneSMS(main){
+  if(!phoneData.sms.length){main.innerHTML=`<h3>📱 SMS</h3><div style="color:var(--dim)">No messages yet. Buy a number first.</div>`;return}
+  main.innerHTML=`<h3>📱 SMS Messages (${phoneData.sms.length})</h3>`+
+    phoneData.sms.map(m=>`<div class="res"><span><b>${esc(m.direction==='inbound'?'←':'→')} ${esc(m.direction==='inbound'?m.from:m.to)}</b><br>${esc(m.text||'(no text)')}<br><span style="color:var(--dim)">${esc(m.created_at||'')}</span></span></div>`).join('');
+}
+function renderPhoneCalls(main){
+  if(!phoneData.calls.length){main.innerHTML=`<h3>📞 Calls</h3><div style="color:var(--dim)">No calls yet. Buy a number first.</div>`;return}
+  main.innerHTML=`<h3>📞 Call Logs (${phoneData.calls.length})</h3>`+
+    phoneData.calls.map(c=>`<div class="res"><span><b>${esc(c.direction)} ${esc(c.from)} → ${esc(c.to)}</b><br>Status: ${esc(c.status)} Duration: ${c.duration_ms?Math.round(c.duration_ms/1000)+'s':'?'}<br><span style="color:var(--dim)">${esc(c.started_at||'')}</span></span></div>`).join('');
+}
+async function sendSMS(){
+  const to=document.getElementById('sms-to').value,text=document.getElementById('sms-text').value;
+  if(!to||!text){logBottom('to + text required','err');return}
+  const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.send',arguments:{to,text}}});
+  logBottom(r.result?.content?`SMS sent to ${to}`:`Failed: ${JSON.stringify(r.error||r)}`,r.result?'ok':'err');
+}
+async function sendSMSMain(){
+  const to=document.getElementById('sms-to-main').value,text=document.getElementById('sms-text-main').value;
+  if(!to||!text){document.getElementById('sms-result').innerHTML='<div style="color:var(--red)">to + text required</div>';return}
+  const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.send',arguments:{to,text}}});
+  document.getElementById('sms-result').innerHTML=r.result?.content?`<div style="color:var(--green)">SMS sent to ${esc(to)}</div>`:`<div style="color:var(--red)">Failed</div>`;
+}
+let contentData={signals:[]};
+async function loadContentTab(type){
+  openTab('content',true);
+  const main=document.getElementById('editor-main');
+  main.innerHTML=`<h3>🎬 Content</h3><div style="color:var(--dim)">Loading ${type}...</div>`;
+  try{
+    if(type==='signals'){
+      const r=await api('POST','/mcp',{method:'tools/call',params:{name:'content.signals',arguments:{garden:'powpowpow',limit:10}}});
+      contentData.signals=r.result?.content?JSON.parse(r.result.content[0].text):[];
+      renderContentSignals(main);
+    }else if(type==='status'){
+      const r=await api('POST','/mcp',{method:'tools/call',params:{name:'content.status',arguments:{}}});
+      const s=r.result?.content?JSON.parse(r.result.content[0].text):{};
+      main.innerHTML=`<h3>🎬 Content Pipeline</h3><pre class="fileview">${esc(JSON.stringify(s,null,2))}</pre>`;
+    }else if(type==='lineage'){
+      main.innerHTML=`<h3>🎬 Lineage</h3><div style="color:var(--dim)">Content → publish → measure lineage will appear here.</div>`;
+    }
+  }catch(e){main.innerHTML=`<div style="color:var(--red)">Error: ${esc(e.message)}</div>`}
+}
+function renderContentSignals(main){
+  if(!contentData.signals.length){main.innerHTML=`<h3>🎬 Signals</h3><div style="color:var(--dim)">No signals. Check powpowpow data.</div>`;return}
+  main.innerHTML=`<h3>🎬 Content Signals (${contentData.signals.length})</h3>`+
+    contentData.signals.map(s=>`<div class="res"><span><b>${esc(s.title||s.type)}</b><br>${esc(s.claim||'')}<br><span style="color:var(--dim)">Score: ${s.score||'?'} · ${esc(s.type||'')} · ${esc(s.id||'')}</span></span></div>`).join('');
+}
 
 function logBottom(text,cls='info'){
   const el=document.getElementById('bottom-content'),ts=new Date().toLocaleTimeString();
