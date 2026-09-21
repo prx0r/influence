@@ -1,0 +1,94 @@
+{
+  "identity": {
+    "slug": "pow-systems",
+    "name": "pow.systems",
+    "domain": "pow.systems",
+    "category": "compute",
+    "niche": "mining / privacy / useful PoW",
+    "tagline": "Weird compute infrastructure that stays valuable when software becomes cheap"
+  },
+  "setup_checklist": [
+    {
+      "id": 1,
+      "step": "domain",
+      "task": "Update Porkbun nameservers to gina.ns.cloudflare.com + pete.ns.cloudflare.com",
+      "status": "done",
+      "receipt": "zone.created:aaff4cc5673927379ac64e32aef94bc7"
+    },
+    {
+      "id": 2,
+      "step": "email",
+      "task": "Create support@pow.systems → tradesprior@gmail.com via Cloudflare Email Routing",
+      "status": "done",
+      "receipt": "email.routing:support@pow.systems"
+    },
+    {
+      "id": 3,
+      "step": "phone",
+      "task": "Buy +447822000272 on Telnyx, wire to pow-systems",
+      "status": "pending",
+      "action": "Buy on dashboard.telnyx.com, then POST /api/backend/pow-systems/telnyx/wire"
+    },
+    {
+      "id": 4,
+      "step": "socials",
+      "task": "Claim @pow.systems handles on Twitter/X, GitHub, YouTube",
+      "status": "pending",
+      "action": "POST /mcp phone.find_gem → then claim each platform"
+    },
+    {
+      "id": 5,
+      "step": "website",
+      "task": "Deploy pow.systems landing page",
+      "status": "pending",
+      "action": "Add A record in Cloudflare → deploy to VPS or Cloudflare Pages"
+    },
+    {
+      "id": 6,
+      "step": "telegram",
+      "task": "Create @powsystems Telegram channel",
+      "status": "pending"
+    },
+    {
+      "id": 7,
+      "step": "github",
+      "task": "Create github.com/pow-systems org, publish repos",
+      "status": "pending"
+    },
+    {
+      "id": 8,
+      "step": "content",
+      "task": "Create first YouTube video: pow.systems intro",
+      "status": "pending"
+    },
+    {
+      "id": 9,
+      "step": "mining",
+      "task": "Wire SafeTrade collector to pow-systems identity",
+      "status": "pending",
+      "action": "Connect powpowpow data to pow.systems dash"
+    },
+    {
+      "id": 10,
+      "step": "reconcile",
+      "task": "Run setup.status → all checks READY → identity is ONLINE",
+      "status": "pending",
+      "action": "POST /mcp setup.status slug=pow-systems domain=pow.systems"
+    }
+  ],
+  "channels": {
+    "email": "support@pow.systems",
+    "phone": null,
+    "telegram": null,
+    "twitter": null,
+    "github": null,
+    "youtube": null
+  },
+  "infrastructure": {
+    "cloudflare_zone": "aaff4cc5673927379ac64e32aef94bc7",
+    "cloudflare_nameservers": ["gina.ns.cloudflare.com", "pete.ns.cloudflare.com"],
+    "email_routing": "enabled",
+    "telnyx_number": null,
+    "telnyx_api_key": "stored in vault"
+  }
+}
