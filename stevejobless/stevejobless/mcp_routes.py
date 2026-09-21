@@ -62,6 +62,31 @@ Asks user to confirm country before scanning if not specified.""",
          "min_score": {"type": "integer", "description": "Minimum score threshold (default 6)"},
          "context": {"type": "string", "description": "Business name/purpose for tailored recommendations"}}},
     },
+    {"name": "phone.send_sms", "description": "Send SMS from your Telnyx number. Requires Telnyx API key + messaging profile.",
+     "inputSchema": {"type": "object", "properties": {
+         "to": {"type": "string", "description": "Recipient phone number (E.164 format, e.g. +447822000272)"},
+         "text": {"type": "string", "description": "Message body"},
+         "slug": {"type": "string", "description": "Business slug (auto-detects if omitted)"}}},
+     "required": ["to", "text"]},
+    {"name": "phone.read_sms", "description": "List recent SMS messages for your Telnyx number.",
+     "inputSchema": {"type": "object", "properties": {
+         "limit": {"type": "integer", "description": "Max messages to return (default 20)"},
+         "slug": {"type": "string"}}},
+    },
+    {"name": "phone.make_call", "description": "Make an outbound phone call via Telnyx.",
+     "inputSchema": {"type": "object", "properties": {
+         "to": {"type": "string", "description": "Number to call (E.164)"},
+         "slug": {"type": "string"}}},
+     "required": ["to"]},
+    {"name": "phone.hangup", "description": "Hang up an active call.",
+     "inputSchema": {"type": "object", "properties": {
+         "call_control_id": {"type": "string", "description": "Call control ID from make_call response"}}},
+     "required": ["call_control_id"]},
+    {"name": "phone.list_calls", "description": "List recent call logs.",
+     "inputSchema": {"type": "object", "properties": {
+         "limit": {"type": "integer", "description": "Max calls (default 20)"},
+         "slug": {"type": "string"}}},
+    },
 ]
 
 
@@ -376,7 +401,140 @@ def _phone_find_gem(db: Session, a: dict) -> Any:
             "min_score": min_score, "gems": unique[:30]}
 
 
+def _get_telnyx_key(db: Session, slug: str | None = None) -> tuple[str | None, str | None]:
+    """Get Telnyx API key + phone number for a business."""
+    from .models import Project
+    from .vault import CredentialVault
+    v = CredentialVault(db)
+    if slug:
+        key = v.get_credential(slug, "telnyx", "api_key")
+        num = v.get_credential(slug, "telnyx", "phone_number")
+        return key, num
+    for p in db.scalars(select(Project)):
+        key = v.get_credential(p.slug, "telnyx", "api_key")
+        if key:
+            return key, v.get_credential(p.slug, "telnyx", "phone_number")
+    return None, None
+
+
+def _telnyx_api(key: str, method: str, path: str, body: dict | None = None) -> dict:
+    """Call Telnyx REST API."""
+    import json as _json
+    from urllib.request import Request, urlopen
+    req = Request(
+        f"https://api.telnyx.com/v2{path}",
+        data=_json.dumps(body).encode() if body else None,
+        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+        method=method)
+    with urlopen(req, timeout=20) as resp:
+        return _json.loads(resp.read() or b"{}")
+
+
+def _phone_send_sms(db: Session, a: dict) -> Any:
+    key, from_num = _get_telnyx_key(db, a.get("slug"))
+    if not key:
+        return {"error": "no telnyx api_key configured"}
+    to = a.get("to", "")
+    text = a.get("text", "")
+    if not to or not text:
+        return {"error": "to and text are required"}
+    try:
+        body = {"from": from_num, "to": to, "text": text}
+        d = _telnyx_api(key, "POST", "/messages", body)
+        msg = d.get("data", {})
+        return {"ok": True, "id": msg.get("id"), "from": from_num, "to": to,
+                "status": msg.get("to", [{}])[0].get("status") if isinstance(msg.get("to"), list) else None}
+    except Exception as e:
+        return {"error": str(e)[:300]}
+
+
+def _phone_read_sms(db: Session, a: dict) -> Any:
+    key, from_num = _get_telnyx_key(db, a.get("slug"))
+    if not key:
+        return {"error": "no telnyx api_key configured"}
+    limit = min(a.get("limit", 20), 100)
+    try:
+        d = _telnyx_api(key, "GET", f"/messages?filter[to]={from_num}&page[size]={limit}" if from_num
+                        else f"/messages?page[size]={limit}")
+        msgs = []
+        for m in d.get("data", []):
+            msgs.append({
+                "id": m.get("id"),
+                "from": (m.get("from") or {}).get("phone_number", "") if isinstance(m.get("from"), dict) else m.get("from", ""),
+                "to": (m.get("to") or [{}])[0].get("phone_number", "") if isinstance(m.get("to"), list) else "",
+                "text": m.get("text", ""),
+                "direction": m.get("direction"),
+                "status": (m.get("to") or [{}])[0].get("status") if isinstance(m.get("to"), list) else None,
+                "created_at": m.get("created_at"),
+            })
+        return {"count": len(msgs), "messages": msgs}
+    except Exception as e:
+        return {"error": str(e)[:300]}
+
+
+def _phone_make_call(db: Session, a: dict) -> Any:
+    key, from_num = _get_telnyx_key(db, a.get("slug"))
+    if not key:
+        return {"error": "no telnyx api_key configured"}
+    to = a.get("to", "")
+    if not to:
+        return {"error": "to is required"}
+    try:
+        d = _telnyx_api(key, "POST", "/calls", {
+            "connection_id": _get_telnyx_key(db, a.get("slug"))[0],  # placeholder
+            "to": to,
+            "from": from_num,
+        })
+        call = d.get("data", {})
+        return {"ok": True, "call_control_id": call.get("call_control_id"),
+                "from": from_num, "to": to, "status": call.get("call_status")}
+    except Exception as e:
+        return {"error": str(e)[:300]}
+
+
+def _phone_hangup(db: Session, a: dict) -> Any:
+    key, _ = _get_telnyx_key(db, a.get("slug"))
+    if not key:
+        return {"error": "no telnyx api_key configured"}
+    cid = a.get("call_control_id", "")
+    if not cid:
+        return {"error": "call_control_id is required"}
+    try:
+        _telnyx_api(key, "POST", f"/calls/{cid}/actions/hangup", {})
+        return {"ok": True, "hung_up": cid}
+    except Exception as e:
+        return {"error": str(e)[:300]}
+
+
+def _phone_list_calls(db: Session, a: dict) -> Any:
+    key, _ = _get_telnyx_key(db, a.get("slug"))
+    if not key:
+        return {"error": "no telnyx api_key configured"}
+    limit = min(a.get("limit", 20), 100)
+    try:
+        d = _telnyx_api(key, "GET", f"/calls?page[size]={limit}")
+        calls = []
+        for c in d.get("data", []):
+            calls.append({
+                "call_control_id": c.get("call_control_id"),
+                "from": c.get("from"),
+                "to": c.get("to"),
+                "status": c.get("call_status"),
+                "direction": c.get("direction"),
+                "started_at": c.get("started_at"),
+                "answered_at": c.get("answered_at"),
+                "ended_at": c.get("ended_at"),
+                "duration_ms": c.get("duration_ms"),
+            })
+        return {"count": len(calls), "calls": calls}
+    except Exception as e:
+        return {"error": str(e)[:300]}
+
+
 _CALLS = {"job.list": _job_list, "job.get": _job_get, "name.check": _name_check,
           "name.handles": _name_handles, "biz.status": _biz_status,
           "email.needs_reply": _email_needs, "phone.search": _phone_search,
-          "phone.owned": _phone_owned, "phone.find_gem": _phone_find_gem}
+          "phone.owned": _phone_owned, "phone.find_gem": _phone_find_gem,
+          "phone.send_sms": _phone_send_sms, "phone.read_sms": _phone_read_sms,
+          "phone.make_call": _phone_make_call, "phone.hangup": _phone_hangup,
+          "phone.list_calls": _phone_list_calls}

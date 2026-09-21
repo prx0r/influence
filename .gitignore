@@ -33,3 +33,4 @@ dash/decisions.db
 dash/receipts.jsonl
 dash/spend.db
 runs/*.jsonl
+stevejobless/.env
