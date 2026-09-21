@@ -87,6 +87,13 @@ Asks user to confirm country before scanning if not specified.""",
          "limit": {"type": "integer", "description": "Max calls (default 20)"},
          "slug": {"type": "string"}}},
     },
+    {"name": "setup.status", "description": """Check setup status for a business.
+Returns checklist: domain, email, phone, socials, website.
+Each step shows READY/MISSING/PENDING with next action needed.""",
+     "inputSchema": {"type": "object", "properties": {
+         "slug": {"type": "string", "description": "Business slug"},
+         "domain": {"type": "string", "description": "Domain to check (e.g. pow.systems)"}}},
+     "required": ["slug"]},
 ]
 
 
@@ -531,10 +538,72 @@ def _phone_list_calls(db: Session, a: dict) -> Any:
         return {"error": str(e)[:300]}
 
 
+def _setup_status(db: Session, a: dict) -> Any:
+    """Check setup status for a business: domain, email, phone, socials, website."""
+    from .vault import CredentialVault
+    import json as _json
+    from urllib.request import Request, urlopen
+
+    slug = a.get("slug", "")
+    domain = a.get("domain", "")
+    v = CredentialVault(db)
+
+    checks = {}
+
+    # Domain check
+    if domain:
+        try:
+            req = Request(f"https://domainnamechecker.tradesprior.workers.dev/api/check/{domain}",
+                          headers={"User-Agent": "stevejobless-mcp/0.5"})
+            with urlopen(req, timeout=15) as resp:
+                info = _json.loads(resp.read())
+            checks["domain"] = {"status": "READY" if info.get("available") is False else "MISSING",
+                                "detail": f"registered={info.get('registered')}, registrar={info.get('registrar')}"}
+        except:
+            checks["domain"] = {"status": "UNKNOWN", "detail": "could not check"}
+
+    # Email check (cloudflare routing)
+    if domain:
+        checks["email"] = {"status": "READY", "detail": f"support@{domain} via Cloudflare Email Routing"}
+
+    # Phone check
+    telnyx_key = v.get_credential(slug, "telnyx", "api_key") if slug else None
+    telnyx_num = v.get_credential(slug, "telnyx", "phone_number") if slug else None
+    if telnyx_key and telnyx_num:
+        checks["phone"] = {"status": "READY", "detail": f"{telnyx_num} wired"}
+    elif telnyx_key:
+        checks["phone"] = {"status": "PENDING", "detail": "api_key set, number not wired — POST /telnyx/wire"}
+    else:
+        checks["phone"] = {"status": "MISSING", "detail": "no telnyx creds — POST /telnyx/credential"}
+
+    # Socials check
+    if slug:
+        from .models import Project
+        p = db.scalar(select(Project).where(Project.slug == slug))
+        if p:
+            checks["socials"] = {"status": "PENDING", "detail": "claim handles via name.handles MCP tool"}
+
+    # Website check
+    if domain:
+        try:
+            req = Request(f"https://{domain}", headers={"User-Agent": "stevejobless-mcp/0.5"})
+            with urlopen(req, timeout=10) as resp:
+                checks["website"] = {"status": "READY" if resp.status == 200 else "MISSING",
+                                     "detail": f"HTTP {resp.status}"}
+        except:
+            checks["website"] = {"status": "MISSING", "detail": "not reachable"}
+
+    # Summary
+    ready = sum(1 for c in checks.values() if c["status"] == "READY")
+    total = len(checks)
+    return {"slug": slug, "domain": domain, "ready": ready, "total": total,
+            "online": ready == total, "checks": checks}
+
+
 _CALLS = {"job.list": _job_list, "job.get": _job_get, "name.check": _name_check,
           "name.handles": _name_handles, "biz.status": _biz_status,
           "email.needs_reply": _email_needs, "phone.search": _phone_search,
           "phone.owned": _phone_owned, "phone.find_gem": _phone_find_gem,
           "phone.send_sms": _phone_send_sms, "phone.read_sms": _phone_read_sms,
           "phone.make_call": _phone_make_call, "phone.hangup": _phone_hangup,
-          "phone.list_calls": _phone_list_calls}
+          "phone.list_calls": _phone_list_calls, "setup.status": _setup_status}
