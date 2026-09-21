@@ -26,7 +26,7 @@ def _wait_for_container(creation_id: str, token: str, timeout: int = 90) -> tupl
     return False, "container poll timeout"
 
 
-def publish(content: str, media_urls: list[str] | None = None,
+def _raw_publish(content: str, media_urls: list[str] | None = None,
             settings: dict | None = None, account_extra: dict | None = None) -> tuple[bool, str, str]:
     extra = account_extra or {}
     ig_user_id = extra.get("ig_user_id", "")
@@ -66,3 +66,8 @@ def publish(content: str, media_urls: list[str] | None = None,
         return True, str(r.json().get("id", "")), ""
     except Exception as e:
         return False, "", f"instagram error: {e}"
+
+def publish(content, media_urls=None, settings=None, account_extra=None):
+    from ..base import sanitize_content, retry_publish
+    content = sanitize_content(content, "instagram")
+    return retry_publish(_raw_publish, content, media_urls, settings, account_extra)

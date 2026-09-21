@@ -8,7 +8,7 @@ platform = "facebook"
 GRAPH = "https://graph.facebook.com/v21.0"
 
 
-def publish(content: str, media_urls: list[str] | None = None,
+def _raw_publish(content: str, media_urls: list[str] | None = None,
             settings: dict | None = None, account_extra: dict | None = None) -> tuple[bool, str, str]:
     extra = account_extra or {}
     page_id = extra.get("page_id", "")
@@ -35,3 +35,8 @@ def publish(content: str, media_urls: list[str] | None = None,
         return True, str(post_id), ""
     except Exception as e:
         return False, "", f"facebook error: {e}"
+
+def publish(content, media_urls=None, settings=None, account_extra=None):
+    from ..base import sanitize_content, retry_publish
+    content = sanitize_content(content, "facebook")
+    return retry_publish(_raw_publish, content, media_urls, settings, account_extra)

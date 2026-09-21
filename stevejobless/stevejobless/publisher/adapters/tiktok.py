@@ -10,7 +10,7 @@ platform = "tiktok"
 BASE = "https://open.tiktokapis.com/v2"
 
 
-def publish(content: str, media_urls: list[str] | None = None,
+def _raw_publish(content: str, media_urls: list[str] | None = None,
             settings: dict | None = None, account_extra: dict | None = None) -> tuple[bool, str, str]:
     extra = account_extra or {}
     token = extra.get("access_token", "")
@@ -64,3 +64,8 @@ def publish(content: str, media_urls: list[str] | None = None,
         return False, "", f"HTTP {e.response.status_code}: {e.response.text[:300]}"
     except Exception as e:
         return False, "", f"tiktok error: {e}"
+
+def publish(content, media_urls=None, settings=None, account_extra=None):
+    from ..base import sanitize_content, retry_publish
+    content = sanitize_content(content, "tiktok")
+    return retry_publish(_raw_publish, content, media_urls, settings, account_extra)

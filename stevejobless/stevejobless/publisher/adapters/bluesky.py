@@ -8,7 +8,7 @@ platform = "bluesky"
 PDS_URL = "https://bsky.social"
 
 
-def publish(content: str, media_urls: list[str] | None = None,
+def _raw_publish(content: str, media_urls: list[str] | None = None,
             settings: dict | None = None, account_extra: dict | None = None) -> tuple[bool, str, str]:
     extra = account_extra or {}
     handle = extra.get("handle", "")
@@ -47,3 +47,8 @@ def publish(content: str, media_urls: list[str] | None = None,
             return True, cid, ""
     except Exception as e:
         return False, "", f"bluesky error: {e}"
+
+def publish(content, media_urls=None, settings=None, account_extra=None):
+    from ..base import sanitize_content, retry_publish
+    content = sanitize_content(content, "bluesky")
+    return retry_publish(_raw_publish, content, media_urls, settings, account_extra)

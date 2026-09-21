@@ -27,7 +27,7 @@ def _refresh_access_token(client: httpx.Client, client_id: str, client_secret: s
     return r.json().get("access_token"), ""
 
 
-def publish(content: str, media_urls: list[str] | None = None,
+def _raw_publish(content: str, media_urls: list[str] | None = None,
             settings: dict | None = None, account_extra: dict | None = None) -> tuple[bool, str, str]:
     extra = account_extra or {}
     client_id = extra.get("client_id", "")
@@ -95,3 +95,8 @@ def publish(content: str, media_urls: list[str] | None = None,
         if not video_id:
             return False, "", f"upload: missing id ({body!r})"
         return True, video_id, ""
+
+def publish(content, media_urls=None, settings=None, account_extra=None):
+    from ..base import sanitize_content, retry_publish
+    content = sanitize_content(content, "youtube")
+    return retry_publish(_raw_publish, content, media_urls, settings, account_extra)
