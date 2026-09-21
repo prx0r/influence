@@ -1,94 +1,174 @@
 {
-  "identity": {
-    "slug": "pow-systems",
-    "name": "pow.systems",
-    "domain": "pow.systems",
-    "category": "compute",
-    "niche": "mining / privacy / useful PoW",
-    "tagline": "Weird compute infrastructure that stays valuable when software becomes cheap"
-  },
-  "setup_checklist": [
-    {
-      "id": 1,
-      "step": "domain",
-      "task": "Update Porkbun nameservers to gina.ns.cloudflare.com + pete.ns.cloudflare.com",
-      "status": "done",
-      "receipt": "zone.created:aaff4cc5673927379ac64e32aef94bc7"
+  "slug": "pow-systems",
+  "name": "pow.systems",
+  "category": "compute",
+  "niche": "mining / privacy / useful PoW",
+  "tagline": "Weird compute infrastructure that stays valuable when software becomes cheap",
+  "created_at": "2026-09-21T16:41:05.177306+00:00",
+  "slots": {
+    "domain": {
+      "status": "ready",
+      "fields": {
+        "name": "pow.systems",
+        "registrar": "porkbun",
+        "nameservers": [
+          "gina.ns.cloudflare.com",
+          "pete.ns.cloudflare.com"
+        ],
+        "cloudflare_zone_id": "aaff4cc5673927379ac64e32aef94bc7"
+      },
+      "updated_at": "2026-09-21T16:41:05.178723+00:00",
+      "receipts": [
+        {
+          "event": "slot.domain.updated",
+          "slug": "pow-systems",
+          "data": {
+            "slot": "domain",
+            "fields": {
+              "name": "pow.systems",
+              "registrar": "porkbun",
+              "nameservers": [
+                "gina.ns.cloudflare.com",
+                "pete.ns.cloudflare.com"
+              ],
+              "cloudflare_zone_id": "aaff4cc5673927379ac64e32aef94bc7"
+            },
+            "status": "ready"
+          },
+          "timestamp": "2026-09-21T16:41:05.178748+00:00",
+          "hash": "e88b7672b04f2131"
+        }
+      ]
     },
-    {
-      "id": 2,
-      "step": "email",
-      "task": "Create support@pow.systems → tradesprior@gmail.com via Cloudflare Email Routing",
-      "status": "done",
-      "receipt": "email.routing:support@pow.systems"
+    "email": {
+      "status": "ready",
+      "fields": {
+        "address": "support@pow.systems",
+        "provider": "cloudflare",
+        "routing_target": "tradesprior@gmail.com"
+      },
+      "updated_at": "2026-09-21T16:41:05.180255+00:00",
+      "receipts": [
+        {
+          "event": "slot.email.updated",
+          "slug": "pow-systems",
+          "data": {
+            "slot": "email",
+            "fields": {
+              "address": "support@pow.systems",
+              "provider": "cloudflare",
+              "routing_target": "tradesprior@gmail.com"
+            },
+            "status": "ready"
+          },
+          "timestamp": "2026-09-21T16:41:05.180282+00:00",
+          "hash": "ccca5aae0b32fd3c"
+        }
+      ]
     },
-    {
-      "id": 3,
-      "step": "phone",
-      "task": "Buy +447822000272 on Telnyx, wire to pow-systems",
+    "phone": {
       "status": "pending",
-      "action": "Buy on dashboard.telnyx.com, then POST /api/backend/pow-systems/telnyx/wire"
+      "fields": {
+        "number": "+447822000272",
+        "provider": "telnyx"
+      },
+      "updated_at": "2026-09-21T16:41:05.181525+00:00",
+      "receipts": [
+        {
+          "event": "slot.phone.updated",
+          "slug": "pow-systems",
+          "data": {
+            "slot": "phone",
+            "fields": {
+              "number": "+447822000272",
+              "provider": "telnyx"
+            },
+            "status": "pending"
+          },
+          "timestamp": "2026-09-21T16:41:05.181554+00:00",
+          "hash": "7ef1b4ecfb0ec970"
+        }
+      ]
     },
-    {
-      "id": 4,
-      "step": "socials",
-      "task": "Claim @pow.systems handles on Twitter/X, GitHub, YouTube",
+    "twitter": {
       "status": "pending",
-      "action": "POST /mcp phone.find_gem → then claim each platform"
+      "fields": {},
+      "updated_at": "2026-09-21T16:41:05.177403+00:00",
+      "receipts": []
     },
-    {
-      "id": 5,
-      "step": "website",
-      "task": "Deploy pow.systems landing page",
+    "github": {
       "status": "pending",
-      "action": "Add A record in Cloudflare → deploy to VPS or Cloudflare Pages"
+      "fields": {},
+      "updated_at": "2026-09-21T16:41:05.177411+00:00",
+      "receipts": []
     },
-    {
-      "id": 6,
-      "step": "telegram",
-      "task": "Create @powsystems Telegram channel",
-      "status": "pending"
-    },
-    {
-      "id": 7,
-      "step": "github",
-      "task": "Create github.com/pow-systems org, publish repos",
-      "status": "pending"
-    },
-    {
-      "id": 8,
-      "step": "content",
-      "task": "Create first YouTube video: pow.systems intro",
-      "status": "pending"
-    },
-    {
-      "id": 9,
-      "step": "mining",
-      "task": "Wire SafeTrade collector to pow-systems identity",
+    "youtube": {
       "status": "pending",
-      "action": "Connect powpowpow data to pow.systems dash"
+      "fields": {},
+      "updated_at": "2026-09-21T16:41:05.177478+00:00",
+      "receipts": []
     },
-    {
-      "id": 10,
-      "step": "reconcile",
-      "task": "Run setup.status → all checks READY → identity is ONLINE",
+    "telegram": {
       "status": "pending",
-      "action": "POST /mcp setup.status slug=pow-systems domain=pow.systems"
+      "fields": {},
+      "updated_at": "2026-09-21T16:41:05.177492+00:00",
+      "receipts": []
+    },
+    "website": {
+      "status": "pending",
+      "fields": {},
+      "updated_at": "2026-09-21T16:41:05.177502+00:00",
+      "receipts": []
     }
-  ],
-  "channels": {
-    "email": "support@pow.systems",
-    "phone": null,
-    "telegram": null,
-    "twitter": null,
-    "github": null,
-    "youtube": null
   },
-  "infrastructure": {
-    "cloudflare_zone": "aaff4cc5673927379ac64e32aef94bc7",
-    "cloudflare_nameservers": ["gina.ns.cloudflare.com", "pete.ns.cloudflare.com"],
-    "email_routing": "enabled",
-    "telnyx_number": null,
-    "telnyx_api_key": "stored in vault"
-  }
+  "receipts": [
+    {
+      "event": "slot.domain.updated",
+      "slug": "pow-systems",
+      "data": {
+        "slot": "domain",
+        "fields": {
+          "name": "pow.systems",
+          "registrar": "porkbun",
+          "nameservers": [
+            "gina.ns.cloudflare.com",
+            "pete.ns.cloudflare.com"
+          ],
+          "cloudflare_zone_id": "aaff4cc5673927379ac64e32aef94bc7"
+        },
+        "status": "ready"
+      },
+      "timestamp": "2026-09-21T16:41:05.178748+00:00",
+      "hash": "e88b7672b04f2131"
+    },
+    {
+      "event": "slot.email.updated",
+      "slug": "pow-systems",
+      "data": {
+        "slot": "email",
+        "fields": {
+          "address": "support@pow.systems",
+          "provider": "cloudflare",
+          "routing_target": "tradesprior@gmail.com"
+        },
+        "status": "ready"
+      },
+      "timestamp": "2026-09-21T16:41:05.180282+00:00",
+      "hash": "ccca5aae0b32fd3c"
+    },
+    {
+      "event": "slot.phone.updated",
+      "slug": "pow-systems",
+      "data": {
+        "slot": "phone",
+        "fields": {
+          "number": "+447822000272",
+          "provider": "telnyx"
+        },
+        "status": "pending"
+      },
+      "timestamp": "2026-09-21T16:41:05.181554+00:00",
+      "hash": "7ef1b4ecfb0ec970"
+    }
+  ]
 }

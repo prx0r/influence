@@ -26,74 +26,325 @@ def _db():
 
 
 TOOLS = [
-    {"name": "job.list", "description": "List jobs for a business",
-     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "status": {"type": "string"}}, "required": ["slug"]}},
-    {"name": "job.get", "description": "Job detail + transcript + quotes + options",
-     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "job_id": {"type": "integer"}}, "required": ["slug", "job_id"]}},
-    {"name": "name.check", "description": "Domain availability + live prices (checker prefilter + providers)",
-     "inputSchema": {"type": "object", "properties": {"domain": {"type": "string"}}, "required": ["domain"]}},
-    {"name": "name.handles", "description": "Handle map across socials/packages/ENS",
-     "inputSchema": {"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}},
-    {"name": "biz.status", "description": "Reconcile states for a business (no writes)",
-     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
-    {"name": "email.needs_reply", "description": "Important unread mail proxied from cmail (quarantine excluded)",
-     "inputSchema": {"type": "object", "properties": {}}},
-    {"name": "phone.search", "description": "Search available phone numbers by country (Telnyx). Read-only, no purchase.",
-     "inputSchema": {"type": "object", "properties": {"country": {"type": "string", "description": "Country code (US, GB, DE, etc.)"},
-                                                      "number_type": {"type": "string", "description": "local, mobile, toll_free"},
-                                                      "limit": {"type": "integer", "description": "Max results (default 20)"}},
-                     "required": ["country"]}},
-    {"name": "phone.owned", "description": "List phone numbers already purchased on Telnyx",
-     "inputSchema": {"type": "object", "properties": {}}},
-    {"name": "phone.find_gem", "description": """Deep scan for premium/vanity phone number patterns.
-Scans hundreds of numbers and scores them by memorability patterns:
-- TRIPLE/QUAD: repeated digits (000, 8888)
-- ECHO: prefix digits appear in suffix (07822 000 272)
-- ABA RHYME: last 3 digits form X-Y-X pattern
-- MIRROR: number reads same backwards
-- SEQUENCE: consecutive digits (1234, 5678)
-- VISUAL: digits map to readable words in leet speak
-- BLOCK: same digit repeated in a group
-Asks user to confirm country before scanning if not specified.""",
-     "inputSchema": {"type": "object", "properties": {
-         "country": {"type": "string", "description": "Country code (GB, US, DE, etc.). If omitted, agent should ask user."},
-         "number_type": {"type": "string", "description": "mobile, local, toll_free"},
-         "scan_pages": {"type": "integer", "description": "Pages to scan (100 nums/page, default 10=1000 numbers)"},
-         "min_score": {"type": "integer", "description": "Minimum score threshold (default 6)"},
-         "context": {"type": "string", "description": "Business name/purpose for tailored recommendations"}}},
+    {
+        "name": "job.list",
+        "description": "List jobs for a business",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "slug"
+            ]
+        }
     },
-    {"name": "phone.send_sms", "description": "Send SMS from your Telnyx number. Requires Telnyx API key + messaging profile.",
-     "inputSchema": {"type": "object", "properties": {
-         "to": {"type": "string", "description": "Recipient phone number (E.164 format, e.g. +447822000272)"},
-         "text": {"type": "string", "description": "Message body"},
-         "slug": {"type": "string", "description": "Business slug (auto-detects if omitted)"}}},
-     "required": ["to", "text"]},
-    {"name": "phone.read_sms", "description": "List recent SMS messages for your Telnyx number.",
-     "inputSchema": {"type": "object", "properties": {
-         "limit": {"type": "integer", "description": "Max messages to return (default 20)"},
-         "slug": {"type": "string"}}},
+    {
+        "name": "job.get",
+        "description": "Job detail + transcript + quotes + options",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                },
+                "job_id": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "slug",
+                "job_id"
+            ]
+        }
     },
-    {"name": "phone.make_call", "description": "Make an outbound phone call via Telnyx.",
-     "inputSchema": {"type": "object", "properties": {
-         "to": {"type": "string", "description": "Number to call (E.164)"},
-         "slug": {"type": "string"}}},
-     "required": ["to"]},
-    {"name": "phone.hangup", "description": "Hang up an active call.",
-     "inputSchema": {"type": "object", "properties": {
-         "call_control_id": {"type": "string", "description": "Call control ID from make_call response"}}},
-     "required": ["call_control_id"]},
-    {"name": "phone.list_calls", "description": "List recent call logs.",
-     "inputSchema": {"type": "object", "properties": {
-         "limit": {"type": "integer", "description": "Max calls (default 20)"},
-         "slug": {"type": "string"}}},
+    {
+        "name": "name.check",
+        "description": "Domain availability + live prices",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "domain": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "domain"
+            ]
+        }
     },
-    {"name": "setup.status", "description": """Check setup status for a business.
-Returns checklist: domain, email, phone, socials, website.
-Each step shows READY/MISSING/PENDING with next action needed.""",
-     "inputSchema": {"type": "object", "properties": {
-         "slug": {"type": "string", "description": "Business slug"},
-         "domain": {"type": "string", "description": "Domain to check (e.g. pow.systems)"}}},
-     "required": ["slug"]},
+    {
+        "name": "name.handles",
+        "description": "Handle map across socials/packages/ENS",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        }
+    },
+    {
+        "name": "biz.status",
+        "description": "Reconcile states for a business (no writes)",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "slug"
+            ]
+        }
+    },
+    {
+        "name": "email.needs_reply",
+        "description": "Important unread mail proxied from cmail",
+        "inputSchema": {
+            "type": "object",
+            "properties": {}
+        }
+    },
+    {
+        "name": "phone.search",
+        "description": "Search available phone numbers by country (Telnyx). Read-only.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "country": {
+                    "type": "string"
+                },
+                "number_type": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "country"
+            ]
+        }
+    },
+    {
+        "name": "phone.owned",
+        "description": "List phone numbers already purchased on Telnyx",
+        "inputSchema": {
+            "type": "object",
+            "properties": {}
+        }
+    },
+    {
+        "name": "phone.find_gem",
+        "description": "Deep scan for premium/vanity phone number patterns. Scores by memorability: triple/quad, echo, ABA rhyme, mirror, sequence, leet-word, block.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "country": {
+                    "type": "string"
+                },
+                "number_type": {
+                    "type": "string"
+                },
+                "scan_pages": {
+                    "type": "integer"
+                },
+                "min_score": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    {
+        "name": "phone.send_sms",
+        "description": "Send SMS from your Telnyx number",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "to": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "to",
+                "text"
+            ]
+        }
+    },
+    {
+        "name": "phone.read_sms",
+        "description": "List recent SMS messages for your Telnyx number",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    {
+        "name": "phone.make_call",
+        "description": "Make an outbound phone call via Telnyx",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "to": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "to"
+            ]
+        }
+    },
+    {
+        "name": "phone.hangup",
+        "description": "Hang up an active call",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "call_control_id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "call_control_id"
+            ]
+        }
+    },
+    {
+        "name": "phone.list_calls",
+        "description": "List recent call logs",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    {
+        "name": "setup.status",
+        "description": "Check setup status: domain, email, phone, socials, website. Shows READY/MISSING/PENDING.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "slug"
+            ]
+        }
+    },
+    {
+        "name": "identity.list",
+        "description": "List all identities (businesses/brands) in the system",
+        "inputSchema": {
+            "type": "object",
+            "properties": {}
+        }
+    },
+    {
+        "name": "identity.get",
+        "description": "Get full identity details with slot statuses",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "slug"
+            ]
+        }
+    },
+    {
+        "name": "identity.create",
+        "description": "Create a new identity. Slots auto-initialized as pending.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "niche": {
+                    "type": "string"
+                },
+                "tagline": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "slug",
+                "name"
+            ]
+        }
+    },
+    {
+        "name": "identity.slot",
+        "description": "Update an identity slot (domain, email, phone, socials, website)",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                },
+                "slot": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "object"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "slug",
+                "slot"
+            ]
+        }
+    }
 ]
 
 
@@ -600,10 +851,50 @@ def _setup_status(db: Session, a: dict) -> Any:
             "online": ready == total, "checks": checks}
 
 
+def _identity_list(db: Session, a: dict) -> Any:
+    from core.identity import Identity
+    import os
+    ident = Identity(os.path.join(os.path.dirname(__file__), "..", "..", "..", "identities"))
+    all_ids = ident.list_all()
+    return [{"slug": i["slug"], "name": i["name"], "category": i.get("category", ""),
+             "domain": next((s["fields"].get("name") for s in i["slots"].values()
+                            if s["status"] == "ready" and "name" in s["fields"]), ""),
+             "ready": sum(1 for s in i["slots"].values() if s["status"] == "ready"),
+             "total": len(i["slots"])}
+            for i in all_ids]
+
+
+def _identity_get(db: Session, a: dict) -> Any:
+    from core.identity import Identity
+    import os
+    ident = Identity(os.path.join(os.path.dirname(__file__), "..", "..", "..", "identities"))
+    return ident.get_status(a["slug"])
+
+
+def _identity_create(db: Session, a: dict) -> Any:
+    from core.identity import Identity
+    import os
+    ident = Identity(os.path.join(os.path.dirname(__file__), "..", "..", "..", "identities"))
+    return ident.create(a["slug"], a["name"], a.get("category", ""),
+                        a.get("niche", ""), a.get("tagline", ""))
+
+
+def _identity_slot(db: Session, a: dict) -> Any:
+    from core.identity import Identity
+    import os
+    ident = Identity(os.path.join(os.path.dirname(__file__), "..", "..", "..", "identities"))
+    fields = a.get("fields", {})
+    status = a.get("status")
+    identity = ident.update_slot(a["slug"], a["slot"], fields, status)
+    return ident.get_status(a["slug"])
+
+
 _CALLS = {"job.list": _job_list, "job.get": _job_get, "name.check": _name_check,
           "name.handles": _name_handles, "biz.status": _biz_status,
           "email.needs_reply": _email_needs, "phone.search": _phone_search,
           "phone.owned": _phone_owned, "phone.find_gem": _phone_find_gem,
           "phone.send_sms": _phone_send_sms, "phone.read_sms": _phone_read_sms,
           "phone.make_call": _phone_make_call, "phone.hangup": _phone_hangup,
-          "phone.list_calls": _phone_list_calls, "setup.status": _setup_status}
+          "phone.list_calls": _phone_list_calls, "setup.status": _setup_status,
+          "identity.list": _identity_list, "identity.get": _identity_get,
+          "identity.create": _identity_create, "identity.slot": _identity_slot}
