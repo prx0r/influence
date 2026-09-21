@@ -34,3 +34,5 @@ dash/receipts.jsonl
 dash/spend.db
 runs/*.jsonl
 stevejobless/.env
+stevejobless/.env
+stevejobless/.env.example
