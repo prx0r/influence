@@ -27,6 +27,14 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "name": {"type": "string"}, "category": {"type": "string"}, "niche": {"type": "string"}}, "required": ["slug", "name"]}},
     {"name": "identity.slot", "description": "Update an identity slot (domain, email, phone, socials, website)",
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "slot": {"type": "string"}, "fields": {"type": "object"}, "status": {"type": "string"}}, "required": ["slug", "slot"]}},
+    {"name": "content.signals", "description": "Get top signals from a data garden (powpowpow, ukgraph, etc.)",
+     "inputSchema": {"type": "object", "properties": {"garden": {"type": "string"}, "limit": {"type": "integer"}}}},
+    {"name": "content.build", "description": "Build content from a signal (hook + claim + beats)",
+     "inputSchema": {"type": "object", "properties": {"signal": {"type": "object"}, "template": {"type": "string"}}}},
+    {"name": "content.narrate", "description": "Generate narration audio from content",
+     "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}}},
+    {"name": "content.status", "description": "Check content pipeline status",
+     "inputSchema": {"type": "object", "properties": {}}},
 ]
 
 GRAPH = [
@@ -229,6 +237,48 @@ def handle(state: dict, method: str, params: dict) -> dict:
         try:
             ident.update_slot(args["slug"], args["slot"], args.get("fields", {}), args.get("status"))
             return {"result": ident.get_status(args["slug"])}
+        except Exception as e:
+            return {"error": str(e)[:200]}
+    if name == "content.signals":
+        import subprocess
+        content_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "content")
+        garden = args.get("garden", "powpowpow")
+        limit = args.get("limit", 5)
+        try:
+            r = subprocess.run(["python3", os.path.join(content_dir, "mcp_server.py"),
+                               "signals_top", json.dumps({"garden": garden, "limit": limit})],
+                              capture_output=True, text=True, timeout=30, cwd=content_dir)
+            return {"result": json.loads(r.stdout)} if r.stdout else {"error": r.stderr[:200]}
+        except Exception as e:
+            return {"error": str(e)[:200]}
+    if name == "content.build":
+        import subprocess
+        content_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "content")
+        try:
+            r = subprocess.run(["python3", os.path.join(content_dir, "mcp_server.py"),
+                               "build_content", json.dumps({"signal": args.get("signal"), "template": args.get("template", "anomaly")})],
+                              capture_output=True, text=True, timeout=30, cwd=content_dir)
+            return {"result": json.loads(r.stdout)} if r.stdout else {"error": r.stderr[:200]}
+        except Exception as e:
+            return {"error": str(e)[:200]}
+    if name == "content.narrate":
+        import subprocess
+        content_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "content")
+        try:
+            r = subprocess.run(["python3", os.path.join(content_dir, "mcp_server.py"),
+                               "render_narration", json.dumps({"content_id": args.get("content_id")})],
+                              capture_output=True, text=True, timeout=60, cwd=content_dir)
+            return {"result": json.loads(r.stdout)} if r.stdout else {"error": r.stderr[:200]}
+        except Exception as e:
+            return {"error": str(e)[:200]}
+    if name == "content.status":
+        import subprocess
+        content_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "content")
+        try:
+            r = subprocess.run(["python3", os.path.join(content_dir, "mcp_server.py"),
+                               "content_status", "{}"],
+                              capture_output=True, text=True, timeout=15, cwd=content_dir)
+            return {"result": json.loads(r.stdout)} if r.stdout else {"error": r.stderr[:200]}
         except Exception as e:
             return {"error": str(e)[:200]}
     return {"error": f"unknown tool {name}"}
