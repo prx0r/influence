@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 DASH_DIR="$PWD/dash"
 TOKEN="$(cat "$DASH_DIR/.token" | tr -d '\n')"
 CFG="$HOME/.cloudflared/influence-dash.yml"
-HOST="influence.intelligentothers.xyz"
+HOST="agentcom.org"
 
 dash_up=0
 if curl -s -m 5 http://127.0.0.1:8793/api/health | grep -q '"ok": true'; then

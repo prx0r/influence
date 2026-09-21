@@ -1,0 +1,66 @@
+{
+  "slug": "pow-systems",
+  "name": "pow.systems",
+  "category": "compute",
+  "niche": "mining / privacy / useful PoW",
+  "tagline": "Weird compute infrastructure",
+  "slots": {
+    "domain": {
+      "status": "ready",
+      "fields": {
+        "name": "pow.systems",
+        "registrar": "porkbun"
+      },
+      "updated_at": "",
+      "receipts": []
+    },
+    "email": {
+      "status": "ready",
+      "fields": {
+        "address": "support@pow.systems",
+        "provider": "cloudflare"
+      },
+      "updated_at": "",
+      "receipts": []
+    },
+    "phone": {
+      "status": "pending",
+      "fields": {
+        "number": "+447822000272",
+        "provider": "telnyx"
+      },
+      "updated_at": "",
+      "receipts": []
+    },
+    "twitter": {
+      "status": "pending",
+      "fields": {},
+      "updated_at": "",
+      "receipts": []
+    },
+    "github": {
+      "status": "pending",
+      "fields": {},
+      "updated_at": "",
+      "receipts": []
+    },
+    "youtube": {
+      "status": "pending",
+      "fields": {},
+      "updated_at": "",
+      "receipts": []
+    },
+    "telegram": {
+      "status": "pending",
+      "fields": {},
+      "updated_at": "",
+      "receipts": []
+    },
+    "website": {
+      "status": "pending",
+      "fields": {},
+      "updated_at": "",
+      "receipts": []
+    }
+  }
+}
