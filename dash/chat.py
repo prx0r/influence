@@ -9,6 +9,12 @@ Commands:
   receipt <receipt_id> — verify a receipt independently
   influencer <slug> — resources + stage
   products — product registry
+  studio lora1|art — locked recipe / art gallery
+  studio generate <style> <model> <prompt…> — FLUX art
+  studio render <art-name> [k=v…] — 30s draw clip (async, returns jid)
+  studio job <jid> — poll render
+  studio publish <jid> <title> — ship to test channel
+  studio narrate <voice> <text…> — voice iteration mp3
   /help — this
 
 Anything else is routed by intent judges to the closest capability, with
@@ -34,9 +40,10 @@ HELP = ("commands:\n"
         "decide <task_id> <digit> — present + decide (intent only, QP pending)\n"
         "receipt <id> — verify a receipt\n"
         "influencer <slug> — resources + stage\n"
-        "products — product registry\n"
-        "primitives <product> — exactly what it needs: objects, gates, grants, stubs\n"
-        "/help — this")
+  "products — product registry\n"
+  "primitives <product> — exactly what it needs: objects, gates, grants, stubs\n"
+  "studio lora1|art|generate|render|job|publish|narrate — sleep draw studio\n"
+  "/help — this")
 
 
 def _check_name(arg: str) -> dict:
@@ -142,6 +149,78 @@ def _receipt(rid: str) -> dict:
                      f"verify_ok={v.get('ok')} ({v.get('reason', '')})"}
 
 
+def _studio(parts: list) -> dict:
+    """Sleep draw studio through the MCP verbs (one code path as the UI)."""
+    sys.path.insert(0, PARENT)
+    from dash.mcp import handle as mcp_handle
+    if len(parts) < 2:
+        return {"reply": "studio lora1|art|generate|render|job|publish|narrate — "
+                         "e.g. studio generate pencil flux a crescent moon, minimal"}
+    sub, rest = parts[1].lower(), parts[2:]
+    if sub == "lora1":
+        out = mcp_handle({}, "tools/call", {"name": "studio.lora1", "arguments": {}})
+        e = out["result"]["env"]
+        return {"reply": "lora1 locked: white pencil on black, no hand, 30s, 16:9.\n" +
+                         " ".join(f"{k}={e[k]}" for k in sorted(e))}
+    if sub == "art":
+        out = mcp_handle({}, "tools/call", {"name": "studio.art", "arguments": {}})
+        items = out.get("result", [])
+        if not items:
+            return {"reply": "gallery empty — studio generate pencil flux <prompt>"}
+        return {"reply": f"{len(items)} pieces:\n" + "\n".join(
+            f"· {a['name']} ({a.get('style','?')}/{a.get('model','?')})" for a in items[:10])}
+    if sub == "generate":
+        if len(rest) < 3:
+            return {"reply": "usage: studio generate <style> <model> <prompt…>"}
+        out = mcp_handle({}, "tools/call", {"name": "studio.generate", "arguments": {
+            "style": rest[0], "model": rest[1], "prompt": " ".join(rest[2:])}})
+        if "error" in out:
+            return {"reply": f"generate failed: {out['error']}"}
+        return {"reply": f"art ready: {out['result']['name']} "
+                         f"({out['result']['bytes']}b). studio render {out['result']['name']} to draw it."}
+    if sub == "render":
+        if not rest:
+            return {"reply": "usage: studio render <art-name> [k=v…] (lora1 knobs default)"}
+        knobs = {"dur": 30000, "WB_SKIP": 8, "WB_SKETCH_W": 4, "WB_COLOR_W": 1,
+                 "WB_HOLD_S": 3, "WB_BG": "#000000", "WB_SKETCH_LIGHT": "1",
+                 "WB_SPLIT": 5, "WB_SMOOTH": "1", "no_hand": True}
+        for kv in rest[1:]:
+            if "=" in kv:
+                k, v = kv.split("=", 1)
+                knobs[k.strip()] = int(v) if v.strip().isdigit() else v.strip()
+        out = mcp_handle({}, "tools/call", {"name": "studio.render", "arguments": {
+            "name": rest[0], "knobs": knobs}})
+        if "error" in out:
+            return {"reply": f"render failed: {out['error']}"}
+        return {"reply": f"rendering: {out['result']['jid']}. studio job {out['result']['jid']} to poll."}
+    if sub == "job":
+        if not rest:
+            return {"reply": "usage: studio job <jid>"}
+        out = mcp_handle({}, "tools/call", {"name": "studio.job", "arguments": {"jid": rest[0]}})
+        s = out.get("result", {})
+        if s.get("status") == "done":
+            return {"reply": f"{rest[0]} done. studio publish {rest[0]} <title> to ship it."}
+        return {"reply": f"{rest[0]}: {s.get('status', '?')} {s.get('error', '')}"[:300]}
+    if sub == "publish":
+        if len(rest) < 2:
+            return {"reply": "usage: studio publish <jid> <title>"}
+        out = mcp_handle({}, "tools/call", {"name": "studio.publish", "arguments": {
+            "jid": rest[0], "title": " ".join(rest[1:])}})
+        if "error" in out:
+            return {"reply": f"publish failed: {out['error']}"}
+        return {"reply": f"shipped: {out['result']['key']}"}
+    if sub == "narrate":
+        if len(rest) < 2:
+            return {"reply": "usage: studio narrate <voice> <text…> (aria/guy/ana/christopher)"}
+        out = mcp_handle({}, "tools/call", {"name": "studio.narrate", "arguments": {
+            "voice": rest[0], "text": " ".join(rest[1:])}})
+        if "error" in out:
+            return {"reply": f"narrate failed: {out['error']}"}
+        return {"reply": f"voice ready: {out['result']['name']} ({out['result']['voice']}, "
+                         f"{out['result']['chars']} chars). Play it in Studio → voice."}
+    return {"reply": "studio lora1|art|generate|render|job|publish|narrate"}
+
+
 def handle_chat(message: str, state: dict | None = None,
                 journal_path: str | None = None) -> dict:
     parts = message.strip().split()
@@ -191,6 +270,8 @@ def handle_chat(message: str, state: dict | None = None,
         if len(parts) != 2:
             return {"reply": "usage: check <name|domain> — e.g. check myname.dev"}
         return _check_name(parts[1].lower())
+    if cmd == "studio":
+        return _studio(parts)
     if bare in ("hey", "hi", "hello", "yo", "sup", "morning", "evening", "howdy"):
         n_inf = len(st.get("influencers", []))
         n_tasks = len(st.get("tasks", []))
@@ -283,6 +364,24 @@ def handle_chat(message: str, state: dict | None = None,
         return {"reply": "\n".join(lines)}
 
     # Fallback: route by intent judges, confidence shown, never faked.
+    # Studio bridge: plain-English draw/voice talk maps to exact studio verbs
+    # (reads execute, writes come back as the command — human confirms by sending it).
+    low = message.lower()
+    _draw_words = ("draw", "generate", "render", "video", "clip", "moon",
+                   "narrat", "voice", "publish", "ship", "lora")
+    if any(w in low for w in _draw_words):
+        if any(w in low for w in ("narrat", "voice", "say", "speak")):
+            return {"reply": "voice: `studio narrate <voice> <text…>` "
+                             "(aria/guy/ana/christopher). Hear it in Studio → voice."}
+        if any(w in low for w in ("publish", "ship", "upload", "test channel")):
+            return {"reply": "ship: `studio publish <jid> <title>` — needs a done render "
+                             "(`studio job <jid>` to check). Nothing publishes without the jid."}
+        if any(w in low for w in ("render", "draw", "video", "clip")):
+            return {"reply": "draw: `studio art` to see the gallery, then "
+                             "`studio render <art-name>` (lora1 knobs default). "
+                             "New picture first? `studio generate pencil flux <prompt…>`."}
+        return {"reply": "studio: `studio lora1` (recipe) · `studio art` (gallery) · "
+                         "`studio generate pencil flux <prompt>` · `studio render <name>`."}
     try:
         sys.path.insert(0, PARENT)
         from qp.judges import intent_choice

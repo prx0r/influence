@@ -37,6 +37,20 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}}},
     {"name": "content.status", "description": "Check content pipeline status",
      "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "studio.lora1", "description": "Locked sleep B&W draw recipe (knobs+rules)",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "studio.art", "description": "List sleep studio art gallery",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "studio.generate", "description": "Generate FLUX art (pencil/paper/chalk)",
+     "inputSchema": {"type": "object", "properties": {"prompt": {"type": "string"}, "style": {"type": "string"}, "model": {"type": "string"}}, "required": ["prompt"]}},
+    {"name": "studio.render", "description": "Render art to 30s draw clip (async, returns jid)",
+     "inputSchema": {"type": "object", "properties": {"name": {"type": "string"}, "knobs": {"type": "object"}}, "required": ["name"]}},
+    {"name": "studio.job", "description": "Poll a studio render job",
+     "inputSchema": {"type": "object", "properties": {"jid": {"type": "string"}}, "required": ["jid"]}},
+    {"name": "studio.publish", "description": "Publish a finished render to the test channel",
+     "inputSchema": {"type": "object", "properties": {"jid": {"type": "string"}, "title": {"type": "string"}}, "required": ["jid", "title"]}},
+    {"name": "studio.narrate", "description": "Voice iteration: edge-tts MP3 (aria/guy/ana/christopher)",
+     "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "voice": {"type": "string"}}, "required": ["text"]}},
     {"name": "phone.sms", "description": "List SMS messages from Telnyx number",
      "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer"}, "slug": {"type": "string"}}}},
     {"name": "phone.calls", "description": "List call logs from Telnyx number",
@@ -288,6 +302,56 @@ def handle(state: dict, method: str, params: dict) -> dict:
             return {"result": json.loads(r.stdout)} if r.stdout else {"error": r.stderr[:200]}
         except Exception as e:
             return {"error": str(e)[:200]}
+    if name == "studio.lora1":
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+        import sleep_studio as _st
+        return {"result": _st.lora1()}
+    if name == "studio.art":
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+        import sleep_studio as _st
+        return {"result": _st.list_art()}
+    if name == "studio.generate":
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+        import sleep_studio as _st
+        try:
+            return {"result": _st.generate(str(args.get("prompt", "")),
+                                           str(args.get("style", "pencil") or "pencil"),
+                                           str(args.get("model", "flux") or "flux"))}
+        except Exception as e:
+            return {"error": str(e)[:300]}
+    if name == "studio.render":
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+        import sleep_studio as _st
+        try:
+            knobs = dict(args.get("knobs", {}) or {})
+            if "dur" in knobs:
+                knobs["dur"] = int(knobs["dur"])
+            return {"result": {"jid": _st.start_render(str(args.get("name", "")), knobs)}}
+        except Exception as e:
+            return {"error": str(e)[:300]}
+    if name == "studio.job":
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+        import sleep_studio as _st
+        return {"result": _st.job_status(str(args.get("jid", "")))}
+    if name == "studio.publish":
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+        import sleep_studio as _st
+        job = _st.JOBS.get(str(args.get("jid", "")))
+        if not job or job.get("status") != "done":
+            return {"error": "render not done"}
+        try:
+            return {"result": _st.publish(job["mp4path"], str(args.get("title", "sleep-test")),
+                                          {"name": job.get("name"), "knobs": job.get("knobs")})}
+        except Exception as e:
+            return {"error": str(e)[:300]}
+    if name == "studio.narrate":
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+        import sleep_studio as _st
+        try:
+            return {"result": _st.narrate(str(args.get("text", "")),
+                                          str(args.get("voice", "aria") or "aria"))}
+        except Exception as e:
+            return {"error": str(e)[:300]}
     if name in ("phone.sms", "phone.calls", "phone.send"):
         slug = args.get("slug", "")
         sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "stevejobless"))

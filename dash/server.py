@@ -143,6 +143,54 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/files":
             return self._json(read_repo_file(parse_qs(urlparse(self.path).query).get("path", [""])[0]))
+        if self._route() == "/api/studio/art":
+            sys.path.insert(0, ROOT)
+            from sleep_studio import list_art
+            try:
+                return self._json({"art": list_art()})
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
+        if self._route() == "/api/studio/job":
+            sys.path.insert(0, ROOT)
+            from sleep_studio import job_status
+            jid = parse_qs(urlparse(self.path).query).get("jid", [""])[0]
+            return self._json(job_status(jid))
+        if self._route() == "/api/studio/file":
+            sys.path.insert(0, ROOT)
+            import sleep_studio as _st
+            q = parse_qs(urlparse(self.path).query)
+            kind = q.get("kind", [""])[0]
+            if kind == "art":
+                base = os.path.basename(q.get("file", [""])[0])
+                full = os.path.realpath(os.path.join(_st.ART, base))
+                root = os.path.realpath(_st.ART)
+                ctype, ok = "image/jpeg", base.endswith(".jpg")
+            elif kind == "rend":
+                d = os.path.basename(q.get("dir", [""])[0])
+                base = os.path.basename(q.get("file", [""])[0])
+                full = os.path.realpath(os.path.join(_st.REND, d, base))
+                root = os.path.realpath(_st.REND)
+                ctype = ("video/mp4" if base.endswith(".mp4")
+                         else "image/jpeg" if base.endswith(".jpg") else "")
+                ok = bool(ctype)
+            elif kind == "voice":
+                base = os.path.basename(q.get("file", [""])[0])
+                full = os.path.realpath(os.path.join(_st.VOICE, base))
+                root = os.path.realpath(_st.VOICE)
+                ctype, ok = "audio/mpeg", base.endswith(".mp3")
+            else:
+                return self._json({"error": "kind?"}, 400)
+            if not ok or not full.startswith(root + os.sep):
+                return self._json({"error": "bad file"}, 400)
+            try:
+                body = open(full, "rb").read()
+            except OSError:
+                return self._json({"error": "missing"}, 404)
+            self.send_response(200)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            return self.wfile.write(body)
         if self._route() == "/api/agents":
             # HLoop present→decide trail + journal effect states. This is the
             # agent-activity ledger the Agents tab renders. Worker/subagent
@@ -182,6 +230,42 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if not self._authed():
             return self._json({"error": "forbidden"}, 403)
+        if self._route().startswith("/api/studio/"):
+            try:
+                n = int(self.headers.get("Content-Length", "0"))
+                body = json.loads(self.rfile.read(n) or b"{}")
+            except Exception:
+                return self._json({"error": "bad json"}, 400)
+            sys.path.insert(0, ROOT)
+            try:
+                import sleep_studio as _st
+                if self._route() == "/api/studio/generate":
+                    return self._json({"ok": True, **_st.generate(
+                        str(body.get("prompt", "")),
+                        str(body.get("style", "pencil") or "pencil"),
+                        str(body.get("model", "flux") or "flux"))})
+                if self._route() == "/api/studio/narrate":
+                    return self._json({"ok": True, **_st.narrate(
+                        str(body.get("text", "")),
+                        str(body.get("voice", "aria") or "aria"),
+                        str(body.get("rate", "-5%") or "-5%"),
+                        str(body.get("pitch", "-2Hz") or "-2Hz"))})
+                if self._route() == "/api/studio/render":
+                    knobs = dict(body.get("knobs", {}))
+                    knobs["dur"] = int(knobs.get("dur", 30000))
+                    return self._json({"ok": True, "jid": _st.start_render(
+                        str(body.get("name", "")), knobs)})
+                if self._route() == "/api/studio/publish":
+                    job = _st.JOBS.get(str(body.get("jid", "")))
+                    if not job or job.get("status") != "done":
+                        return self._json({"error": "render not done"}, 409)
+                    return self._json({"ok": True, **_st.publish(
+                        job["mp4path"],
+                        str(body.get("title", "sleep-test")),
+                        {"name": job.get("name"), "knobs": job.get("knobs")})})
+            except Exception as e:
+                return self._json({"error": str(e)[:300]}, 500)
+            return self._json({"error": "not found"}, 404)
         if self._route() == "/api/chat":
             try:
                 n = int(self.headers.get("Content-Length", "0"))

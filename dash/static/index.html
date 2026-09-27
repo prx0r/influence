@@ -318,6 +318,7 @@ function renderContentSidebar(){
     <div class="tree-header">Pipeline</div>
     <div class="tree-item" onclick="loadContentTab('signals')">📊 Signals (powpowpow)</div>
     <div class="tree-item" onclick="loadContentTab('status')">📋 Pipeline Status</div>
+    <div class="tree-item" onclick="loadContentTab('studio')">🎨 Sleep Studio</div>
     <div class="tree-item" onclick="loadContentTab('lineage')">🔗 Lineage</div>`;
 }
 async function termReconcile(){const r=await api('POST','/api/reconcile',{});logBottom(r.ok?`reconciled ${r.projects} projects`:'reconcile failed',r.ok?'ok':'err');refresh()}
@@ -475,6 +476,8 @@ async function loadContentTab(type){
       main.innerHTML=`<h3>🎬 Content Pipeline</h3><pre class="fileview">${esc(JSON.stringify(s,null,2))}</pre>`;
     }else if(type==='lineage'){
       main.innerHTML=`<h3>🎬 Lineage</h3><div style="color:var(--dim)">Content → publish → measure lineage will appear here.</div>`;
+    }else if(type==='studio'){
+      renderStudio(main);
     }
   }catch(e){main.innerHTML=`<div style="color:var(--red)">Error: ${esc(e.message)}</div>`}
 }
@@ -484,6 +487,108 @@ function renderContentSignals(main){
     contentData.signals.map(s=>`<div class="res"><span><b>${esc(s.title||s.type)}</b><br>${esc(s.claim||'')}<br><span style="color:var(--dim)">Score: ${s.score||'?'} · ${esc(s.type||'')} · ${esc(s.id||'')}</span></span></div>`).join('');
 }
 
+let studioSel=null, studioJid=null;
+function studioLora1(){
+  document.getElementById('st-p').value='crescent moon over still black water, extremely minimal, vast black';
+  document.getElementById('st-s').value='pencil'; document.getElementById('st-m').value='flux';
+  document.getElementById('st-dur').value='30000'; document.getElementById('st-skip').value='8';
+  document.getElementById('st-sw').value='4'; document.getElementById('st-cw').value='1';
+  document.getElementById('st-hold').value='3'; document.getElementById('st-bg').value='#000000';
+  document.getElementById('st-split').value='5'; document.getElementById('st-brush').value='50';
+  document.getElementById('st-light').checked=true; document.getElementById('st-smooth').checked=true;
+  document.getElementById('st-nohand').checked=true;
+  document.getElementById('st-msg').textContent='lora1 locked';
+}
+function studioLora2(){
+  document.getElementById('st-p').value='quiet valley at dusk, barn and hedgerows, dense crosshatching, photoreal pencil clouds, monochrome, vast black';
+  document.getElementById('st-s').value='pencil'; document.getElementById('st-m').value='flux';
+  document.getElementById('st-dur').value='120000'; document.getElementById('st-skip').value='8';
+  document.getElementById('st-sw').value='4'; document.getElementById('st-cw').value='3';
+  document.getElementById('st-hold').value='3'; document.getElementById('st-bg').value='#000000';
+  document.getElementById('st-split').value='5'; document.getElementById('st-brush').value='10';
+  document.getElementById('st-light').checked=true; document.getElementById('st-smooth').checked=true;
+  document.getElementById('st-nohand').checked=true;
+  document.getElementById('st-msg').textContent='lora2 locked';
+}
+async function studioRefreshArt(){
+  const r=await api('GET','/api/studio/art');
+  const gal=document.getElementById('st-gal'); if(!gal) return;
+  gal.innerHTML=(r.art||[]).map(x=>`<div class="res" style="${x.name===studioSel?'border-color:var(--gold);':''}cursor:pointer" onclick="studioSel='${x.name}';studioRefreshArt()">
+    <img src="/api/studio/file?kind=art&file=${x.name}.jpg&token=${encodeURIComponent(T)}" style="width:100%;border-radius:4px">
+    <span><b>${esc(x.name)}</b><br><span style="color:var(--dim)">${esc(x.style||'')} ${esc(x.model||'')} · ${x.bytes||'?'}b<br>${esc((x.prompt||'').slice(0,80))}</span></span></div>`).join('')||'<div style="color:var(--dim)">no art yet — generate one</div>';
+}
+async function studioGen(){
+  const m=document.getElementById('st-msg'); m.textContent='generating (FLUX ~30s)…';
+  try{const r=await api('POST','/api/studio/generate',{prompt:document.getElementById('st-p').value,style:document.getElementById('st-s').value,model:document.getElementById('st-m').value});
+    if(r.error){m.textContent='ERR '+r.error;return} studioSel=r.name; m.textContent='ok: '+r.name;}
+  catch(e){m.textContent='ERR '+e.message} studioRefreshArt();
+}
+async function studioRender(){
+  const m=document.getElementById('st-msg2'); if(!studioSel){m.textContent='pick art first';return}
+  m.textContent='rendering (minutes)…'; document.getElementById('st-out').innerHTML='';
+  const knobs={dur:+document.getElementById('st-dur').value,WB_SKIP:+document.getElementById('st-skip').value,WB_SKETCH_W:+document.getElementById('st-sw').value,WB_COLOR_W:+document.getElementById('st-cw').value,WB_HOLD_S:+document.getElementById('st-hold').value,WB_BG:document.getElementById('st-bg').value,WB_SKETCH_LIGHT:document.getElementById('st-light').checked?'1':'0',WB_SMOOTH:document.getElementById('st-smooth').checked?'1':'0',no_hand:document.getElementById('st-nohand').checked,WB_SPLIT:+document.getElementById('st-split').value,WB_BRUSH:+document.getElementById('st-brush').value};
+  try{const r=await api('POST','/api/studio/render',{name:studioSel,knobs});
+    if(r.error){m.textContent='ERR '+r.error;return} studioJid=r.jid; studioPoll();}
+  catch(e){m.textContent='ERR '+e.message}
+}
+async function studioPoll(){
+  const m=document.getElementById('st-msg2');
+  const s=await api('GET','/api/studio/job?jid='+studioJid);
+  if(s.status==='running'){m.textContent='rendering…';setTimeout(studioPoll,4000);return}
+  if(s.status==='error'){m.textContent='ERR';document.getElementById('st-out').innerHTML=`<pre class="fileview">${esc(s.error||'')}</pre>`;return}
+  m.textContent='done';
+  document.getElementById('st-out').innerHTML=`<video controls style="width:100%;max-width:640px;background:#000" src="${s.mp4}&token=${encodeURIComponent(T)}"></video><br>`+
+    (s.frames||[]).map(f=>`<img style="width:100%;max-width:640px" src="${f.url}&token=${encodeURIComponent(T)}"><br><span style="color:var(--dim)">${f.t}s</span><br>`).join('')+
+    `<pre class="fileview">${esc((s.log||'').slice(-800))}</pre>`;
+}
+async function studioPublish(){
+  const m=document.getElementById('st-msg3'); if(!studioJid){m.textContent='render first';return}
+  m.textContent='uploading to powoutputs/test/…';
+  try{const r=await api('POST','/api/studio/publish',{jid:studioJid,title:document.getElementById('st-title').value||'sleep-test'});
+    m.textContent=r.key||('ERR '+(r.error||''));}
+  catch(e){m.textContent='ERR '+e.message}
+}
+async function studioNarrate(){
+  const m=document.getElementById('st-msg4'); m.textContent='rendering voice…';
+  try{const r=await api('POST','/api/studio/narrate',{text:document.getElementById('st-text').value,voice:document.getElementById('st-voice').value});
+    if(r.error){m.textContent='ERR '+r.error;return}
+    m.textContent=`done (${r.chars} chars, ${r.voice})`;
+    document.getElementById('st-vox').innerHTML=`<audio controls src="${r.url}&token=${encodeURIComponent(T)}"></audio>`;}
+  catch(e){m.textContent='ERR '+e.message}
+}
+function renderStudio(main){
+  main.innerHTML=`<h3>🎨 Sleep Studio</h3>
+  <div style="color:var(--dim)">FLUX art → draw knobs → 30s landscape → test channel. House rule: white-on-black, no text, minimal.</div>
+  <h4>1 · art</h4>
+  <input id="st-p" size="55" placeholder="crescent moon over still black water, extremely minimal, vast black">
+  <select id="st-s"><option>pencil</option><option>paper</option><option>chalk</option></select>
+  <select id="st-m"><option>flux</option><option>sdxl</option><option>lightning</option><option>dreamshaper</option></select>
+  <button onclick="studioGen()">generate</button> <span id="st-msg"></span>
+  <button onclick="studioLora1()" title="fill lora1 house recipe">lora1</button>
+  <button onclick="studioLora2()" title="fill lora2 etched recipe">lora2</button>
+  <div id="st-gal"></div>
+  <h4>2 · draw knobs</h4>
+  duration <select id="st-dur"><option value="15000">15s</option><option value="30000" selected>30s</option><option value="60000">60s</option><option value="120000">2min</option></select>
+  SKIP <input id="st-skip" size="2" value="4" title="cells/frame: higher=faster, jumpier">
+  SKETCH_W <input id="st-sw" size="2" value="4"> COLOR_W <input id="st-cw" size="2" value="1">
+  HOLD <input id="st-hold" size="2" value="3"> BG <input id="st-bg" size="8" value="#000000">
+  SPLIT <input id="st-split" size="2" value="10" title="grid px: smaller=finer lines, slower render">
+  BRUSH <input id="st-brush" size=2 value="50" title="colorize brush radius">
+  <label><input type="checkbox" id="st-light" checked> SKETCH_LIGHT</label>
+  <label><input type="checkbox" id="st-smooth" checked> SMOOTH</label>
+  <label><input type="checkbox" id="st-nohand"> NO-HAND</label>
+  <button onclick="studioRender()">render selected</button> <span id="st-msg2"></span>
+  <div id="st-out"></div>
+  <h4>3 · publish</h4>
+  <input id="st-title" size="35" placeholder="sleep-draw-30s-moon">
+  <button onclick="studioPublish()">publish to test channel</button> <span id="st-msg3"></span>
+  <h4>4 · voice</h4>
+  <input id="st-text" size="55" placeholder="Settle in. Let the day dissolve behind you.">
+  <select id="st-voice"><option>aria</option><option>guy</option><option>ana</option><option>christopher</option></select>
+  <button onclick="studioNarrate()">narrate</button> <span id="st-msg4"></span>
+  <div id="st-vox"></div>`;
+  studioRefreshArt();
+}
 function logBottom(text,cls='info'){
   const el=document.getElementById('bottom-content'),ts=new Date().toLocaleTimeString();
   el.innerHTML+=`<div class="line"><span class="ts">${ts}</span><span class="${cls}">${esc(text)}</span></div>`;
