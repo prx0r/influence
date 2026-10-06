@@ -36,3 +36,5 @@ runs/*.jsonl
 stevejobless/.env
 stevejobless/.env
 stevejobless/.env.example
+dash/phone_tunnel_token
+dash/*.log
