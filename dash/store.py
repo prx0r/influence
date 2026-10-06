@@ -77,6 +77,7 @@ def live_state(db_path: str = DB_PATH) -> dict:
                 tasks.append({"id": f"A-{a['id']}", "influencer": p.slug,
                               "resource_key": a["resource_key"], "kind": "HUMAN",
                               "title": a["title"], "instructions": a["instructions"],
+                              "url": a.get("url") or "",
                               "options": DIGITS, "risk": 0.3, "state": "OPEN"})
             run_entry = {"id": f"run-{p.slug}", "influencer": p.slug,
                          "summary": f"Reconcile: {rep['counts']}", "status": "OK"}

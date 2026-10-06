@@ -50,6 +50,13 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 .chat-divider{width:4px;cursor:col-resize;background:transparent;position:absolute;left:-2px;top:0;bottom:0;z-index:10}
 .chat-divider:hover,.chat-divider.dragging{background:var(--accent)}
 .rail-list{flex:1;overflow-y:auto;padding:8px}
+.rail-seal{border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
+.guide-row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.guide-row button{background:var(--accent);color:#fff;border:none;border-radius:4px;padding:5px 12px;cursor:pointer;font-size:11px}
+.guide-row button.ghost{background:var(--bg4);color:var(--text);border:1px solid var(--border)}
+.sb-sms{padding:6px 8px;border-bottom:1px solid var(--bg4);font-size:11px}
+.sb-sms .from{font-weight:600}
+.sb-sms .at{color:var(--dim);font-size:10px}
 .chat-messages{flex:1;overflow-y:auto;padding:12px}
 .chat-msg{margin-bottom:8px;font-size:12px}
 .chat-msg .who{color:var(--dim);font-size:10px}
@@ -139,7 +146,8 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
   <div class="chat-panel" id="chat-panel">
     <div class="chat-divider" id="chat-divider"></div>
     <div class="sidebar-header">HTasks — human rail</div>
-    <div style="border-bottom:1px solid var(--border)">
+    <div class="rail-list" id="rail-tasks"></div>
+    <div class="rail-seal">
       <div class="tree-header">Seal secret (straight to vault)</div>
       <div class="frm">
         <input id="v-name" placeholder="NAME (e.g. X_BEARER)">
@@ -148,7 +156,6 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
         <button onclick="depositVault()">Seal into vault</button>
       </div>
     </div>
-    <div class="rail-list" id="rail-tasks"></div>
   </div>
 </div>
 
@@ -279,7 +286,7 @@ function renderRail(){
   el.innerHTML=((S?.tasks||[]).map(t=>`
     <div class="task"><div class="t">${esc(t.title)} <span class="pill ${t.urgency&&t.urgency.score>=1?'BLOCKED':t.urgency&&t.urgency.score>=0.5?'MISSING':'UNKNOWN'}" title="${esc(t.urgency?.reason||'')}">U=${t.urgency?.score??'?'}</span></div>
     <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)} · ${esc(t.id)}</div>
-    <div class="opts">${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}</div>
+    <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button>${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}<button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div>
     <div style="color:var(--dim);font-size:10px;margin-top:2px">or chat: <span style="font-family:monospace">decide ${esc(t.id)} 7</span></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
 }
 async function decideTask(id,digit){
@@ -288,6 +295,31 @@ async function decideTask(id,digit){
   const r=await api('POST','/api/decide',{task_id:id,digit,prediction_ref:p.prediction_ref});
   logBottom(r.ok?`${id} → ${r.state}`:`rejected: ${r.error}`,r.ok?'ok':'err');
   refresh();
+}
+async function resourceDone(slug,key){
+  const r=await api('POST','/api/resource-done',{slug,resource_key:key,done:true});
+  logBottom(r.ok?`${slug}/${key} → done (${r.reconcile.progress}%)`:`done failed: ${r.error}`,r.ok?'ok':'err');
+  refresh();
+}
+function startTask(id){
+  const t=(S?.tasks||[]).find(x=>x.id===id);if(!t)return;
+  openTab('chat',true);
+  const m=document.getElementById('chat-messages-main');if(!m)return;
+  const lines=[t.title,'',(t.instructions||'').trim()];
+  if(t.url)lines.push('','Link: '+t.url);
+  lines.push('','Phone OTPs/input: https://phone.agentcom.org/app');
+  lines.push('Reply here when done, or press ✓ Done below — then I record it.');
+  chatMsgMain('guide ● '+t.id,lines.join('\n'));
+  const box=m.lastChild?.querySelector('.text');if(!box)return;
+  const row=document.createElement('div');row.className='guide-row';box.appendChild(row);
+  const btn=(label,fn,ghost)=>{const b=document.createElement('button');b.textContent=label;if(ghost)b.className='ghost';b.onclick=fn;row.appendChild(b);return b};
+  if(t.url)btn('Open link ↗',()=>window.open(t.url,'_blank'));
+  btn('Open phone app ↗',()=>window.open('https://phone.agentcom.org/app','_blank'),!t.url);
+  if(/secret|key|token|password|bearer|credential/i.test((t.title||'')+' '+(t.instructions||'')))
+    btn('Seal a secret ↓',()=>{const n=document.getElementById('v-name');if(n){n.focus();n.scrollIntoView({block:'nearest'})}logBottom('type NAME + paste value below — value never touches chat','info')},true);
+  btn('✓ Done',()=>resourceDone(t.influencer,t.resource_key));
+  btn('7 Approve',()=>decideTask(t.id,'7'),true);
+  m.scrollTop=999999;
 }
 function renderTerminalSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
@@ -300,6 +332,8 @@ function renderPhoneSidebar(){
   const el=document.getElementById('sidebar-content');
   el.innerHTML=`
     <div style="padding:8px;font-size:11px;color:var(--dim)">Phone — SMS + Calls</div>
+    <div class="tree-header">Recent SMS <span style="cursor:pointer" onclick="renderPhoneSidebar()">↻</span></div>
+    <div id="sb-sms"><div style="padding:8px;color:var(--dim)">Loading…</div></div>
     <div class="tree-header">Quick Actions</div>
     <div class="tree-item" onclick="loadPhoneTab('sms')">📬 SMS Messages</div>
     <div class="tree-item" onclick="loadPhoneTab('calls')">📞 Call Logs</div>
@@ -310,6 +344,12 @@ function renderPhoneSidebar(){
       <input id="sms-text" placeholder="Message text">
       <button onclick="sendSMS()">Send</button>
     </div>`;
+  api('POST','/mcp',{method:'tools/call',params:{name:'phone.sms',arguments:{limit:5}}}).then(r=>{
+    const arr=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||[]);
+    const box=document.getElementById('sb-sms');if(!box)return;
+    box.innerHTML=arr.length?arr.map(m=>`<div class="sb-sms"><span class="from">← ${esc(m.from)}</span> ${esc((m.text||'').slice(0,100))}<br><span class="at">${esc(m.at||'')}</span></div>`).join('')
+      :'<div style="padding:8px;color:var(--dim)">No inbound SMS yet.</div>';
+  }).catch(e=>{const box=document.getElementById('sb-sms');if(box)box.innerHTML='<div style="padding:8px;color:var(--dim)">SMS unavailable.</div>'});
 }
 function renderContentSidebar(){
   const el=document.getElementById('sidebar-content');
@@ -325,7 +365,7 @@ async function termReconcile(){const r=await api('POST','/api/reconcile',{});log
 
 function renderTabs(){
   const el=document.getElementById('editor-tabs');
-  const baseTabs=['chat','monitor','explorer','studio','agents'];
+  const baseTabs=['chat','monitor','explorer','studio','agents','phone','content'];
   const infTabs=(S?.influencers||[]).map(i=>i.slug);
   const idTabs=identitiesData.map(i=>'id:'+i.slug);
   const tabs=[...baseTabs,...idTabs,...infTabs];
@@ -335,7 +375,7 @@ function renderTabs(){
   if(activeTab&&!openTabs.includes(activeTab))activeTab=openTabs[0];
   el.innerHTML=openTabs.map(t=>{
     const label=t.startsWith('id:')?t.slice(3):t;
-    const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':'';
+    const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':t==='phone'?'📱 ':t==='content'?'🎬 ':'';
     return `<div class="tab ${t===activeTab?'active':''}" onclick="openTab('${t}')">${icon}${label}<span class="close" onclick="closeTab('${t}',event)">×</span></div>`}).join('');
 }
 function openTab(t,soft){
@@ -379,6 +419,8 @@ function openTab(t,soft){
   }
   const i=(S?.influencers||[]).find(x=>x.slug===t);
   if(t.startsWith('id:')){openIdentityTab(t.slice(3));return}
+  if(t==='phone'){phoneHub(main);return}
+  if(t==='content'){contentHub(main);return}
   if(!i){main.innerHTML='<div style="color:var(--dim)">gone — refresh</div>';return}
   const ready=i.resources.filter(r=>r.status==='READY').length,pct=Math.round(100*ready/i.resources.length);
   main.innerHTML=`<h3>${esc(i.name)} <span style="color:var(--dim);font-size:11px">${esc(i.slug)} · ${esc(i.stage)}</span></h3>
@@ -416,53 +458,79 @@ async function sendChatMain(){
 function quickChat(msg){openTab('chat',true);const inp=document.getElementById('chat-in-main');if(inp){inp.value=msg;sendChatMain()}}
 
 let phoneData={sms:[],calls:[]};
+function ensureTab(t){if(!openTabs.includes(t))openTabs.push(t);activeTab=t;renderTabs()}
+function phoneHub(main){
+  main.innerHTML=`<h3>📱 Phone</h3><div style="color:var(--dim);margin-bottom:8px">Brand line <b>+44 7822 000802</b> · full UI: <a href="https://phone.agentcom.org/app" target="_blank">phone.agentcom.org/app</a></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+  <button onclick="loadPhoneTab('sms')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">📬 SMS</button>
+  <button onclick="loadPhoneTab('calls')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">📞 Calls</button>
+  <button onclick="loadPhoneTab('send')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">✏️ Send</button></div>
+  <div id="phone-hub-recent" style="margin-top:8px;color:var(--dim)">Loading recent…</div>`;
+  api('POST','/mcp',{method:'tools/call',params:{name:'phone.sms',arguments:{limit:5}}}).then(r=>{
+    const arr=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||[]);
+    const box=document.getElementById('phone-hub-recent');if(!box)return;
+    box.innerHTML='<div class="tree-header">Recent SMS</div>'+(arr.length?arr.map(m=>`<div class="res"><span><b>← ${esc(m.from)}</b><br>${esc((m.text||'').slice(0,140))}<br><span style="color:var(--dim)">${esc(m.at||'')}</span></span></div>`).join(''):'No inbound SMS yet.');
+  }).catch(e=>{const box=document.getElementById('phone-hub-recent');if(box)box.textContent='SMS unavailable.'});
+}
+function contentHub(main){
+  main.innerHTML=`<h3>🎬 Content</h3><div style="display:flex;gap:8px;flex-wrap:wrap">
+  <button onclick="loadContentTab('signals')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">📊 Signals</button>
+  <button onclick="loadContentTab('status')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">📋 Status</button>
+  <button onclick="loadContentTab('lineage')" style="background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer">🔗 Lineage</button></div>`;
+}
 async function loadPhoneTab(type){
-  openTab('phone',true);
+  ensureTab('phone');
   const main=document.getElementById('editor-main');
   main.innerHTML=`<h3>📱 Phone</h3><div style="color:var(--dim)">Loading ${type}...</div>`;
   try{
     if(type==='sms'){
       const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.sms',arguments:{limit:30}}});
-      phoneData.sms=r.result?.content?JSON.parse(r.result.content[0].text):[];
+      phoneData.sms=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||[]);
       renderPhoneSMS(main);
     }else if(type==='calls'){
       const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.calls',arguments:{limit:30}}});
-      phoneData.calls=r.result?.content?JSON.parse(r.result.content[0].text):[];
+      phoneData.calls=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||[]);
       renderPhoneCalls(main);
+    }else if(type==='status'){
+      const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.status',arguments:{}}});
+      const st=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||{});
+      main.innerHTML=`<h3>📱 Brand phone</h3><div class="res"><pre>${esc(JSON.stringify(st,null,2))}</pre></div>`;
     }else if(type==='send'){
-      main.innerHTML=`<h3>📱 Send SMS</h3>
-        <div class="frm"><input id="sms-to-main" placeholder="To: +447822000272">
+      main.innerHTML=`<h3>📱 Send SMS (human gated)</h3>
+        <div style="color:var(--dim);margin-bottom:8px">Support number: <b>+44 7822 000802</b> · outbound not auto-enabled in dash</div>
+        <div class="frm"><input id="sms-to-main" placeholder="To: +447...">
         <input id="sms-text-main" placeholder="Message text">
-        <button onclick="sendSMSMain()">Send</button></div>
+        <button onclick="sendSMSMain()">Queue send</button></div>
         <div id="sms-result" style="margin-top:8px"></div>`;
     }
   }catch(e){main.innerHTML=`<div style="color:var(--red)">Error: ${esc(e.message)}</div>`}
 }
 function renderPhoneSMS(main){
-  if(!phoneData.sms.length){main.innerHTML=`<h3>📱 SMS</h3><div style="color:var(--dim)">No messages yet. Buy a number first.</div>`;return}
+  if(!phoneData.sms.length){main.innerHTML=`<h3>📱 SMS</h3><div style="color:var(--dim)">No inbound SMS yet on +447822000802.</div>`;return}
   main.innerHTML=`<h3>📱 SMS Messages (${phoneData.sms.length})</h3>`+
-    phoneData.sms.map(m=>`<div class="res"><span><b>${esc(m.direction==='inbound'?'←':'→')} ${esc(m.direction==='inbound'?m.from:m.to)}</b><br>${esc(m.text||'(no text)')}<br><span style="color:var(--dim)">${esc(m.created_at||'')}</span></span></div>`).join('');
+    phoneData.sms.map(m=>`<div class="res"><span><b>${esc(m.direction==='inbound'?'←':'→')} ${esc(m.direction==='inbound'?m.from:m.to||m.from)}</b><br>${esc(m.text||'(no text)')}<br><span style="color:var(--dim)">${esc(m.created_at||m.at||'')}</span></span></div>`).join('');
 }
 function renderPhoneCalls(main){
-  if(!phoneData.calls.length){main.innerHTML=`<h3>📞 Calls</h3><div style="color:var(--dim)">No calls yet. Buy a number first.</div>`;return}
-  main.innerHTML=`<h3>📞 Call Logs (${phoneData.calls.length})</h3>`+
-    phoneData.calls.map(c=>`<div class="res"><span><b>${esc(c.direction)} ${esc(c.from)} → ${esc(c.to)}</b><br>Status: ${esc(c.status)} Duration: ${c.duration_ms?Math.round(c.duration_ms/1000)+'s':'?'}<br><span style="color:var(--dim)">${esc(c.started_at||'')}</span></span></div>`).join('');
+  if(!phoneData.calls.length){main.innerHTML=`<h3>📞 Calls</h3><div style="color:var(--dim)">No call events yet on +447822000802.</div>`;return}
+  main.innerHTML=`<h3>📞 Calls (${phoneData.calls.length})</h3>`+
+    phoneData.calls.map(c=>`<div class="res"><span><b>${esc(c.direction||c.call_status||'call')} ${esc(c.from)} → ${esc(c.to||'')}</b><br>${esc(c.body||c.status||c.call_status||'')}<br><span style="color:var(--dim)">${esc(c.created_at||c.at||'')}</span></span></div>`).join('');
 }
 async function sendSMS(){
   const to=document.getElementById('sms-to').value,text=document.getElementById('sms-text').value;
   if(!to||!text){logBottom('to + text required','err');return}
-  const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.send',arguments:{to,text}}});
-  logBottom(r.result?.content?`SMS sent to ${to}`:`Failed: ${JSON.stringify(r.error||r)}`,r.result?'ok':'err');
+  const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.send',arguments:{to,text,confirm:true}}});
+  logBottom(r.result?.content?`SMS queued to ${to}`:`Blocked/failed: ${JSON.stringify(r.error||r)}`,r.result?'ok':'err');
 }
 async function sendSMSMain(){
   const to=document.getElementById('sms-to-main').value,text=document.getElementById('sms-text-main').value;
   if(!to||!text){document.getElementById('sms-result').innerHTML='<div style="color:var(--red)">to + text required</div>';return}
-  const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.send',arguments:{to,text}}});
-  document.getElementById('sms-result').innerHTML=r.result?.content?`<div style="color:var(--green)">SMS sent to ${esc(to)}</div>`:`<div style="color:var(--red)">Failed</div>`;
+  const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.send',arguments:{to,text,confirm:true}}});
+  const msg=r.result?.content?`<div style="color:var(--green)">Queued for human send to ${esc(to)}</div>`:`<div style="color:var(--red)">${esc(JSON.stringify(r.error||r))}</div>`;
+  document.getElementById('sms-result').innerHTML=msg;
 }
 let contentData={signals:[]};
 async function loadContentTab(type){
-  openTab('content',true);
+  ensureTab('content');
   const main=document.getElementById('editor-main');
   main.innerHTML=`<h3>🎬 Content</h3><div style="color:var(--dim)">Loading ${type}...</div>`;
   try{
