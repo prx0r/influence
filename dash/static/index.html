@@ -147,6 +147,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="icon" onclick="switchView('phone',this)" title="Phone">📱<span class="badge" id="badge-sms" style="display:none">0</span></div>
     <div class="icon" onclick="switchView('email',this)" title="Email">✉️<span class="badge" id="badge-email" style="display:none">0</span></div>
     <div class="icon" onclick="switchView('content',this)" title="Content">🎬</div>
+    <div class="icon" onclick="switchView('htasks',this)" title="Human Tasks">H</div>
     <div class="icon" onclick="switchView('influencers',this)" title="Influencers">🛰</div>
     <div class="icon" onclick="switchView('vault',this)" title="Vault">🔑</div>
     <div class="icon" onclick="switchView('terminal',this)" title="Terminal">🖥</div>
@@ -155,10 +156,10 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="sidebar-header" id="sidebar-title">Chat</div>
     <div class="sidebar-content" id="sidebar-content"></div>
   </div>
-  <div class="editor-area">
-    <div class="brandbar" id="brand-bar" style="display:flex;gap:6px;padding:6px 10px;border-bottom:1px solid var(--bg4);font-size:12px;align-items:center"></div>
-    <div class="studiotabs" id="studio-tabs" style="display:flex;gap:6px;padding:6px 10px;border-bottom:1px solid var(--bg4);font-size:12px;align-items:center"></div>
-    <div class="tabs" id="editor-tabs"></div>
+  <div class="editor-area" style="position:relative">
+    <div class="brandfloat" id="brand-bar" style="position:absolute;top:8px;left:10px;z-index:20;display:flex;gap:14px;align-items:flex-start;pointer-events:none"></div>
+    <div class="modefloat" id="studio-tabs" style="position:absolute;top:96px;left:10px;z-index:20;display:flex;gap:6px;align-items:center;pointer-events:none"></div>
+    <div class="tabs" id="editor-tabs" style="padding-top:150px"></div>
     <div class="editor" id="editor-main"></div>
     <div class="bottom-content" id="bottom-content" style="display:none"></div>
     <div class="hud" id="hud" style="display:flex;gap:6px;align-items:center;padding:4px 10px;border-top:1px solid var(--border);background:var(--bg2);font-size:11px;overflow-x:auto;white-space:nowrap;min-height:26px"></div>
@@ -170,9 +171,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
       </div>
     </div>
   </div>
-  <div class="chat-panel" id="chat-panel">
-    <div class="chat-divider" id="chat-divider"></div>
-    <div class="sidebar-header">Human Tasks</div>
+  <div id="rail-holder" style="display:none">
     <div class="rail-list" id="rail-tasks"></div>
     <div class="rail-seal">
       <div class="tree-header">Seal secret (straight to vault)</div>
@@ -196,10 +195,9 @@ const STUDIO_TABS={chat:{label:'💬 Chat'},video:{label:'🎬 Video',src:'https
 function paintStudioTabs(){
   const bar=document.getElementById('studio-tabs');
   if(!bar)return;
-  const b=BRAND_SLUG==='global'?{name:'Global'}:BRANDS[BRAND_SLUG];
   bar.innerHTML=Object.entries(STUDIO_TABS).map(([k,t])=>
-    `<button onclick="setStudioTab('${k}')" style="border:1px solid ${k===STUDIO_TAB?'var(--accent)':'var(--border)'};border-radius:10px;padding:2px 12px;cursor:pointer;font-size:12px;${k===STUDIO_TAB?'background:var(--bg3);font-weight:600':'background:transparent;color:var(--text)'}">${t.label}</button>`
-  ).join('')+`<span style="color:var(--dim);font-size:11px">${esc(b.name)} studio${STUDIO_TAB==='chat'?'':' · human does final touches here'}</span>`;
+    `<button onclick="setStudioTab('${k}')" style="pointer-events:auto;border:1px solid ${k===STUDIO_TAB?'var(--accent)':'var(--border)'};border-radius:14px;padding:3px 14px;cursor:pointer;font-size:12px;background:rgba(30,30,30,.85);backdrop-filter:blur(4px);color:var(--text);${k===STUDIO_TAB?'font-weight:600':''}">${t.label}</button>`
+  ).join('');
 }
 function setStudioTab(k){
   if(!STUDIO_TABS[k])return;
@@ -215,10 +213,9 @@ const BRANDS={oddhobb:{name:'OddHobb',mailbox:'hello@oddhobb.com',domain:'oddhob
 function paintBrandBar(){
   const bar=document.getElementById('brand-bar');
   if(!bar)return;
-  bar.innerHTML='<span style="color:var(--dim)">Brand:</span>'+Object.entries(BRANDS).map(([slug,b])=>
-    `<button onclick="setBrand('${slug}')" title="${esc(b.name)} · ${esc(b.domain)}" style="display:flex;align-items:center;gap:6px;border:1px solid ${slug===BRAND_SLUG?b.accent:'var(--border)'};border-radius:10px;padding:2px 10px 2px 2px;cursor:pointer;font-size:12px;${slug===BRAND_SLUG?'background:var(--bg3);font-weight:600':'background:transparent;color:var(--text)'}"><img src="${esc(b.logo)}" width="22" height="22" style="border-radius:6px" alt="">${esc(b.name)}</button>`
-  ).join('')+`<button onclick="setBrand('global')" title="All entities" style="border:1px solid ${'global'===BRAND_SLUG?'var(--accent)':'var(--border)'};border-radius:10px;padding:2px 10px;cursor:pointer;font-size:12px;${'global'===BRAND_SLUG?'background:var(--bg3);font-weight:600':'background:transparent;color:var(--text)'}">🌐 Global</button>`+`<span style="color:var(--dim);font-size:11px">${BRAND_SLUG==='global'?'all entities':esc(BRANDS[BRAND_SLUG].mailbox)+' · '+esc(BRANDS[BRAND_SLUG].domain)}</span>`;
-  paintTitleBrand();
+  const emb=(slug,inner,ring,title)=>`<div style="display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:auto"><button onclick="setBrand('${slug}')" title="${esc(title)}" style="width:52px;height:52px;border-radius:50%;border:3px solid ${ring};background:var(--bg2);padding:0;cursor:pointer;overflow:hidden;${slug===BRAND_SLUG?'box-shadow:0 0 0 2px var(--bg),0 0 12px '+ring:''}">${inner}</button><span style="font-size:10px;color:var(--text)">${esc(title)}</span></div>`;
+  bar.innerHTML=Object.entries(BRANDS).map(([slug,b])=>emb(slug,`<img src="${esc(b.logo)}" width="46" height="46" style="border-radius:50%" alt="">`,b.accent,b.name)).join('')
+    +emb('global',`<span style="font-size:22px;line-height:46px">🌐</span>`,BRAND_SLUG==='global'?'var(--accent)':'var(--border)','Global');
 }
 function paintTitleBrand(){
   const t=document.getElementById('title-brand');
@@ -328,8 +325,27 @@ async function refresh(){try{S=await api('GET','/api/state');paintBrandBar();pai
 function switchView(name,el){
   document.querySelectorAll('.activity .icon').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('sidebar-title').textContent=name[0].toUpperCase()+name.slice(1);
-  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,email:renderEmailSidebar,content:renderContentSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,terminal:renderTerminalSidebar}[name])();
+  document.getElementById('sidebar-title').textContent=name==='htasks'?'Human Tasks':name[0].toUpperCase()+name.slice(1);
+  if(name!=='htasks')parkRail();
+  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,email:renderEmailSidebar,content:renderContentSidebar,htasks:renderHtasksSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,terminal:renderTerminalSidebar}[name])();
+}
+function renderHtasksSidebar(){
+  const el=document.getElementById('sidebar-content');
+  el.innerHTML='<div id="htasks-slot"></div>';
+  const slot=document.getElementById('htasks-slot');
+  const rail=document.getElementById('rail-tasks');
+  const seal=rail?rail.nextElementSibling:null;
+  if(rail&&slot){slot.appendChild(rail);if(seal&&seal.classList.contains('rail-seal'))slot.appendChild(seal)}
+  renderRail();
+}
+function parkRail(){
+  const holder=document.getElementById('rail-holder');
+  const rail=document.getElementById('rail-tasks');
+  if(rail&&holder&&rail.parentElement!==holder){
+    const seal=rail.nextElementSibling;
+    holder.appendChild(rail);
+    if(seal&&seal.classList&&seal.classList.contains('rail-seal'))holder.appendChild(seal);
+  }
 }
 function renderChatSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
@@ -740,7 +756,7 @@ function renderTabs(){
   if(!openTabs.length&&tabs.length)openTabs=['chat'];
   if(!activeTab&&openTabs.length)activeTab=openTabs[0];
   if(activeTab&&!openTabs.includes(activeTab))activeTab=openTabs[0];
-  el.innerHTML=openTabs.map(t=>{
+  el.innerHTML=openTabs.filter(t=>t!=='chat').map(t=>{
     const label=t.startsWith('id:')?t.slice(3):t;
     const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='email-view'?'✉ ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':t==='phone'?'📱 ':t==='email'?'✉️ ':t==='content'?'🎬 ':'';
     return `<div class="tab ${t===activeTab?'active':''}" onclick="openTab('${t}')">${icon}${label}<span class="close" onclick="closeTab('${t}',event)">×</span></div>`}).join('');
@@ -1164,6 +1180,7 @@ function logBottom(text,cls='info'){
 
 (function(){
   const divider=document.getElementById('chat-divider'),panel=document.getElementById('chat-panel');
+  if(!divider||!panel)return;
   let dragging=false,startX,startW;
   divider.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX;startW=panel.offsetWidth;divider.classList.add('dragging');e.preventDefault()});
   document.addEventListener('mousemove',e=>{if(!dragging)return;panel.style.width=Math.max(200,Math.min(600,startW-(e.clientX-startX)))+'px'});
