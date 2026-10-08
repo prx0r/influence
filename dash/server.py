@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
@@ -456,6 +457,42 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json({"error": str(e)[:160]}, 404)
             except Exception as e:
                 return self._json({"error": str(e)[:200]}, 500)
+        if self._route() == "/api/task-start":
+            try:
+                n = int(self.headers.get("Content-Length", "0"))
+                body = json.loads(self.rfile.read(n) or b"{}")
+            except Exception:
+                return self._json({"error": "bad json"}, 400)
+            tid = str(body.get("task_id", ""))
+            if not tid:
+                return self._json({"error": "task_id required"}, 400)
+            try:
+                st = load_state()
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
+            t = next((x for x in st.get("tasks", []) if x.get("id") == tid), None)
+            if not t:
+                return self._json({"error": f"unknown task {tid}"}, 404)
+            slug = t.get("influencer", "")
+            vname = re.sub(r"[^A-Z0-9]+", "_", f"{slug}_{t.get('resource_key', 'secret')}".upper()).strip("_")[:48]
+            secretish = bool(re.search(r"secret|key|token|password|bearer|credential|api",
+                                        f"{t.get('title', '')} {t.get('instructions', '')}", re.I))
+            links = []
+            if t.get("url"):
+                links.append({"label": "Open", "url": t["url"]})
+            links.append({"label": "Claim kit", "url": f"/api/onboarding?slug={slug}"})
+            guide = [f"Task {tid}: {t.get('title', '')}", "",
+                     (t.get("instructions", "") or "").strip()]
+            if t.get("url"):
+                guide += ["", f"Link: {t['url']}"]
+            if secretish:
+                guide += ["", f"Vault name: {vname} (editable in the rail box below)",
+                          "Paste the value into the vault box — never into chat."]
+            guide += ["", f"Reply DONE or press ✓ when finished."]
+            return self._json({"ok": True, "task_id": tid, "slug": slug,
+                               "guide": "\n".join(guide), "links": links,
+                               "vault_name": vname if secretish else "",
+                               "walk_prompt": f"Walk me through task {tid} ({t.get('title', '')}) for {slug} step by step."})
         if self._route() == "/api/autopilot":
             try:
                 n = int(self.headers.get("Content-Length", "0"))

@@ -420,15 +420,25 @@ function renderRail(){
   const el=document.getElementById('rail-tasks');
   const latest=smsCache[0]||null;
   const otp=latest?extractOtp(latest.text):null;
-  const smsBanner=otp?`<div class="otp-strip" style="margin:0 0 8px">SMS code <div class="code">${esc(otp)}</div><div class="meta">${esc(latest.from||'')} · ${esc(latest.at||'')}</div></div>`:'';
+  const freshSms=latest&&otp&&!latest._dismissed&&((Date.now()-new Date(latest.at||0).getTime())<10*60*1000);
+  const smsBanner=freshSms?`<div class="otp-strip" style="margin:0 0 8px;cursor:pointer" onclick="dismissSms()" title="Dismiss">SMS code <div class="code">${esc(otp)}</div><div class="meta">${esc(latest.from||'')} · ${esc(latest.at||'')}</div></div>`:'';
   const all=(S?.tasks||[]);
   const mine=BRAND_SLUG==='global'?all:all.filter(t=>t.influencer===BRAND_SLUG);
   const scope=BRAND_SLUG==='global'?'all entities':BRANDS[BRAND_SLUG].name;
   el.innerHTML=smsBanner+`<div style="padding:4px 8px;color:var(--dim);font-size:10px">${esc(scope)} · ${mine.length}/${all.length}</div>`+(mine.map(t=>`
-    <div class="task"><div class="t">${esc(t.title)} <span class="pill ${t.urgency&&t.urgency.score>=1?'BLOCKED':t.urgency&&t.urgency.score>=0.5?'MISSING':'UNKNOWN'}" title="${esc(t.urgency?.reason||'')}">U=${t.urgency?.score??'?'}</span></div>
-    <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)} · ${esc(t.id)}</div>
-    <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button>${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}<button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div>
-    <div style="color:var(--dim);font-size:10px;margin-top:2px">or chat: <span style="font-family:monospace">decide ${esc(t.id)} 7</span></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
+    <div class="task"><div class="t">${esc(taskAction(t))}</div>
+    <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button>${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}<button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
+}
+function dismissSms(){
+  const latest=smsCache[0]||null;
+  if(latest)latest._dismissed=true;
+  renderRail();
+}
+function taskAction(t){
+  const ins=t.instructions||'';
+  const m=ins.match(/^(Claim|Map|Connect|Verify|Provision|Reply|Send|Approve|Review|Complete|Top up|Attach)[^.]{0,90}/);
+  if(m)return m[0].trim();
+  return (t.title||'').split('—')[0].split(':')[0].trim().slice(0,90);
 }
 async function decideTask(id,digit){
   const p=await api('POST','/api/present',{task_id:id});
@@ -442,40 +452,31 @@ async function resourceDone(slug,key){
   logBottom(r.ok?`${slug}/${key} → done (${r.reconcile.progress}%)`:`done failed: ${r.error}`,r.ok?'ok':'err');
   refresh();
 }
-function startTask(id){
+async function startTask(id){
   const t=(S?.tasks||[]).find(x=>x.id===id);if(!t)return;
   openTab('chat',true);
   const m=document.getElementById('chat-messages-main');if(!m)return;
-  const isClaim=/claim-|social|otp|phone|sign/i.test((t.resource_key||'')+' '+(t.title||''));
-  const lines=[t.title,'',(t.instructions||'').trim()];
-  if(t.url)lines.push('','Link: '+t.url);
-  lines.push('','Phone OTPs/input: https://phone.agentcom.org/app');
-  if(isClaim)lines.push('','Live SMS will appear below — codes highlighted automatically.');
-  lines.push('Reply here when done, or press ✓ Done below — then I record it.');
-  lines.push('Registry: data/social_onboarding.v1.json · chat: onboarding '+(t.influencer||''));
-  chatMsgMain('guide ● '+t.id,lines.join('\n'));
-  const box=m.lastChild?.querySelector('.text');if(!box)return;
-  if(isClaim){
-    const live=document.createElement('div');
-    live.id='sms-live';
-    live.className='otp-strip';
-    live.innerHTML='<div style="color:var(--dim)">Loading SMS…</div>';
-    box.appendChild(live);
-    startSmsPolling();
+  let g=null;
+  try{
+    const r=await api('POST','/api/task-start',{task_id:id});
+    if(r.ok)g=r;
+  }catch(e){}
+  if(!g){
+    chatMsgMain('guide ● '+id,(t.title||'')+'\n\n'+(t.instructions||'').trim());
+    return;
   }
-  const row=document.createElement('div');row.className='guide-row';box.appendChild(row);
-  const btn=(label,fn,ghost)=>{const b=document.createElement('button');b.textContent=label;if(ghost)b.className='ghost';b.onclick=fn;row.appendChild(b);return b};
-  if(t.url)btn('Open link ↗',()=>window.open(t.url,'_blank'));
-  btn('Open phone app ↗',()=>window.open('https://phone.agentcom.org/app','_blank'),!t.url);
-  btn('Full kit ↗',()=>{
-    const slug=t.influencer||'';
-    window.open('/api/onboarding?slug='+encodeURIComponent(slug),'_blank');
-  },true);
-  btn('Refresh SMS ↗',()=>fetchSms(12),true);
-  if(/secret|key|token|password|bearer|credential/i.test((t.title||'')+' '+(t.instructions||'')))
-    btn('Seal a secret ↓',()=>{const n=document.getElementById('v-name');if(n){n.focus();n.scrollIntoView({block:'nearest'})}logBottom('type NAME + paste value below — value never touches chat','info')},true);
-  btn('✓ Done',()=>resourceDone(t.influencer,t.resource_key));
-  btn('7 Approve',()=>decideTask(t.id,'7'),true);
+  chatMsgMain('guide ● '+id,g.guide);
+  if(g.vault_name){
+    const vn=document.getElementById('v-name');
+    if(vn&&!vn.value)vn.value=g.vault_name;
+  }
+  for(const l of (g.links||[])){
+    if(/^https?:\/\//.test(l.url||''))window.open(l.url,'_blank');
+  }
+  try{
+    const r2=await api('POST','/api/chat',{message:g.walk_prompt,brand:t.influencer},{timeoutMs:90000});
+    chatMsgMain('graph',r2.reply||'(empty)');
+  }catch(e){chatMsgMain('graph','Error: '+e.message)}
   m.scrollTop=999999;
 }
 function renderTerminalSidebar(){
