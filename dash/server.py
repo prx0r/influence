@@ -77,6 +77,14 @@ def load_state() -> dict:
     d["tasks"] = tasks
     _STATE_CACHE["state"] = d
     _STATE_CACHE["at"] = now
+    try:
+        import sqlite3 as _sq
+        _c = _sq.connect(os.getenv("DASH_DB", os.path.join(ROOT, "influence.db")), timeout=5)
+        _c.execute("DELETE FROM run_logs WHERE id NOT IN (SELECT id FROM run_logs ORDER BY id DESC LIMIT 600)")
+        _c.commit()
+        _c.close()
+    except Exception:
+        pass
     return d
 
 
