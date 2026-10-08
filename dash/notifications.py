@@ -102,7 +102,7 @@ def _local_events(limit: int = 20) -> tuple[list[dict], list[dict]]:
     runs: list[dict] = []
     receipts: list[dict] = []
     try:
-        db = sqlite3.connect(DB_PATH)
+        db = sqlite3.connect(DB_PATH, timeout=30)
         try:
             rows = db.execute(
                 "SELECT id, status, summary, started_at FROM run_logs "
@@ -166,7 +166,7 @@ def _local_events(limit: int = 20) -> tuple[list[dict], list[dict]]:
 def _journal_events(limit: int = 15) -> list[dict]:
     out: list[dict] = []
     try:
-        db = sqlite3.connect(JOURNAL_PATH)
+        db = sqlite3.connect(JOURNAL_PATH, timeout=30)
         try:
             try:
                 rows = db.execute(
@@ -307,7 +307,7 @@ def agent_feed(limit: int = 40) -> dict[str, Any]:
     items.extend(receipts)
     items.extend(_journal_events(limit=15))
     try:
-        db = sqlite3.connect(DB_PATH)
+        db = sqlite3.connect(DB_PATH, timeout=30)
         try:
             rows = db.execute(
                 "SELECT a.id, a.resource_key, a.title, a.priority, p.slug "

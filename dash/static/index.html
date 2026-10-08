@@ -159,7 +159,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
   <div class="editor-area" style="position:relative">
     <div class="brandfloat" id="brand-bar" style="position:absolute;top:8px;left:10px;z-index:20;display:flex;gap:14px;align-items:flex-start;pointer-events:none"></div>
     <div class="modefloat" id="studio-tabs" style="position:absolute;top:96px;left:10px;z-index:20;display:flex;gap:6px;align-items:center;pointer-events:none"></div>
-    <div class="tabs" id="editor-tabs" style="padding-top:150px"></div>
+    <div class="tabs" id="editor-tabs"></div>
     <div class="editor" id="editor-main"></div>
     <div class="bottom-content" id="bottom-content" style="display:none"></div>
     <div class="hud" id="hud" style="display:flex;gap:6px;align-items:center;padding:4px 10px;border-top:1px solid var(--border);background:var(--bg2);font-size:11px;overflow-x:auto;white-space:nowrap;min-height:26px"></div>
@@ -203,17 +203,21 @@ function setStudioTab(k){
   if(!STUDIO_TABS[k])return;
   STUDIO_TAB=k;
   paintStudioTabs();
+  paintBrandBar();
   const main=document.getElementById('editor-main');
   if(!main)return;
   if(k==='chat'){openTab('chat',true);return}
   const t=STUDIO_TABS[k];
-  main.innerHTML=`<iframe src="${t.src}" style="width:100%;height:100%;min-height:60vh;border:0" title="${k} studio"></iframe>`;
+  main.innerHTML=`<iframe src="${t.src}" style="width:100%;height:100%;min-height:78vh;border:0" title="${k} studio"></iframe>`;
 }
 const BRANDS={oddhobb:{name:'OddHobb',mailbox:'hello@oddhobb.com',domain:'oddhobb.com',logo:'brands/oddhobb.svg',accent:'#AC64F6'},pogtown:{name:'PogTown',mailbox:'hello@pogtown.com',domain:'pogtown.com',logo:'api/brand-logo?slug=pogtown',accent:'#E8A33D'},humanvoiced:{name:'HumanVoiced',mailbox:'hello@humanvoiced.com',domain:'humanvoiced.com',logo:'api/brand-logo?slug=humanvoiced',accent:'#22B8D4'}};
 function paintBrandBar(){
   const bar=document.getElementById('brand-bar');
   if(!bar)return;
-  const emb=(slug,inner,ring,title)=>`<div style="display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:auto"><button onclick="setBrand('${slug}')" title="${esc(title)}" style="width:52px;height:52px;border-radius:50%;border:3px solid ${ring};background:var(--bg2);padding:0;cursor:pointer;overflow:hidden;${slug===BRAND_SLUG?'box-shadow:0 0 0 2px var(--bg),0 0 12px '+ring:''}">${inner}</button><span style="font-size:10px;color:var(--text)">${esc(title)}</span></div>`;
+  const compact=STUDIO_TAB!=='chat';
+  const emb=(slug,inner,ring,title)=>compact
+    ?`<button onclick="setBrand('${slug}')" title="${esc(title)}" style="pointer-events:auto;width:30px;height:30px;border-radius:50%;border:2px solid ${ring};background:rgba(20,20,20,.85);padding:0;cursor:pointer;overflow:hidden">${inner.replace('width="46" height="46"','width="26" height="26"').replace('font-size:22px;line-height:46px','font-size:14px;line-height:26px')}</button>`
+    :`<div style="display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:auto"><button onclick="setBrand('${slug}')" title="${esc(title)}" style="width:52px;height:52px;border-radius:50%;border:3px solid ${ring};background:var(--bg2);padding:0;cursor:pointer;overflow:hidden;${slug===BRAND_SLUG?'box-shadow:0 0 0 2px var(--bg),0 0 12px '+ring:''}">${inner}</button><span style="font-size:10px;color:var(--text);background:rgba(20,20,20,.7);border-radius:4px;padding:0 4px">${esc(title)}</span></div>`;
   bar.innerHTML=Object.entries(BRANDS).map(([slug,b])=>emb(slug,`<img src="${esc(b.logo)}" width="46" height="46" style="border-radius:50%" alt="">`,b.accent,b.name)).join('')
     +emb('global',`<span style="font-size:22px;line-height:46px">🌐</span>`,BRAND_SLUG==='global'?'var(--accent)':'var(--border)','Global');
 }
@@ -682,6 +686,7 @@ function paintNotifList(elId, items, opts){
 async function fetchNotifications(){
   try{
     const r=await api('GET','/api/notifications?limit=40');
+    if(!r||!Array.isArray(r.items))return r;
     notifCache=r.items||[];
     window._notifCounts=r.counts||{};
     const c=r.counts||{};
@@ -699,6 +704,7 @@ async function fetchNotifications(){
 async function fetchAgentFeed(){
   try{
     const r=await api('GET','/api/agent-feed?limit=40');
+    if(!r||!Array.isArray(r.items))return r;
     agentCache=r.items||[];
     window._agentCounts=r.counts||{};
     const c=r.counts||{};
@@ -773,7 +779,14 @@ function openTab(t,soft){
   }
   if(t==='chat'){
     // Chat history lives in the main editor; input is the persistent dock below.
+    const cards=(S?.influencers||[]).map(i=>{
+      const b=BRANDS[i.slug];
+      const ready=i.resources.filter(x=>x.status==='READY').length;
+      const logo=b?`<img src="${esc(b.logo)}" width="28" height="28" style="border-radius:50%;border:2px solid ${b.accent}" alt="">`:'🛰';
+      return `<div class="tree-item" onclick="setBrand('${esc(i.slug)}')" style="display:flex;gap:8px;align-items:center">${logo}<span><b>${esc(i.name)}</b> <span style="color:var(--dim)">${esc(i.stage)} · ${ready}/${i.resources.length} ready</span></span></div>`;
+    }).join('');
     main.innerHTML=`<div class="chat-messages" id="chat-messages-main" style="max-height:none;min-height:200px"></div>
+      ${cards?`<div style="margin-top:8px"><div style="color:var(--dim);font-size:11px;margin-bottom:4px">Entities — click to operate</div>${cards}</div>`:''}
       <div style="color:var(--dim);font-size:11px;margin-top:8px">Deterministic agent over live state + receipts. Input is at the bottom of this panel — works on every tab.</div>`;
     renderChatHistory();
     return;

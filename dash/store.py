@@ -26,7 +26,7 @@ DIGITS = {"7": "Approve / confirm done", "1": "Hold / replan"}
 
 
 def _session(db_path: str = DB_PATH):
-    eng = create_engine(f"sqlite:///{db_path}")
+    eng = create_engine(f"sqlite:///{db_path}", connect_args={"timeout": 30})
     M.Base.metadata.create_all(bind=eng)
     return sessionmaker(bind=eng)()
 
@@ -65,19 +65,38 @@ def live_state(db_path: str = DB_PATH) -> dict:
             rep = reconcile_project(s, p)
             summ = project_summary(p)
             states = {r["key"]: r["status"] for r in summ["resources"]}
-            res_list = [{"key": r["key"], "kind": r["kind"], "label": r["label"],
-                         "status": r["status"], "message": r["message"] or ""}
-                        for r in summ["resources"]]
+            res_list = []
+            for r in summ["resources"]:
+                item = {"key": r["key"], "kind": r["kind"], "label": r["label"],
+                        "status": r["status"], "message": r["message"] or ""}
+                # Surface kit metadata for social claim tasks (dash + onboarding).
+                for pr in (p.passport or {}).get("resources", []):
+                    if pr.get("key") == r["key"]:
+                        kit = (pr.get("desired") or {}).get("kit")
+                        if kit:
+                            item["kit"] = kit
+                        break
+                res_list.append(item)
             influencers.append({
                 "slug": p.slug, "name": p.name,
+                "domain": p.domain or "",
+                "handle": ((p.passport or {}).get("influencer") or {}).get("handle")
+                          or p.slug.replace("-", ""),
                 "stage": derive_stage(states),
                 "resources": res_list,
             })
             for a in summ["actions"]:
+                # Prefer kit metadata from passport desired when present.
+                desired_kit = {}
+                for r in (p.passport or {}).get("resources", []):
+                    if r.get("key") == a["resource_key"]:
+                        desired_kit = (r.get("desired") or {}).get("kit") or {}
+                        break
                 tasks.append({"id": f"A-{a['id']}", "influencer": p.slug,
                               "resource_key": a["resource_key"], "kind": "HUMAN",
                               "title": a["title"], "instructions": a["instructions"],
                               "url": a.get("url") or "",
+                              "kit": desired_kit or None,
                               "options": DIGITS, "risk": 0.3, "state": "OPEN"})
             run_entry = {"id": f"run-{p.slug}", "influencer": p.slug,
                          "summary": f"Reconcile: {rep['counts']}", "status": "OK"}
