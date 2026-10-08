@@ -170,7 +170,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
   </div>
   <div class="chat-panel" id="chat-panel">
     <div class="chat-divider" id="chat-divider"></div>
-    <div class="sidebar-header">HTasks — human rail</div>
+    <div class="sidebar-header">Human Tasks</div>
     <div class="rail-list" id="rail-tasks"></div>
     <div class="rail-seal">
       <div class="tree-header">Seal secret (straight to vault)</div>
@@ -186,7 +186,6 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 
 <script>
 const T=new URLSearchParams(location.search).get("token")||"";
-const DASH_BUILD='2026-10-08e';
 const api=(m,p,b,o)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),o?.timeoutMs||60000);return fetch(p+"?token="+encodeURIComponent(T),{method:m,headers:{"Content-Type":"application/json"},body:b?JSON.stringify(b):undefined,signal:c.signal}).finally(()=>clearTimeout(t)).then(r=>r.json())};
 let S=null, openTabs=[], activeTab=null, curPath="";
 let BRAND_SLUG='oddhobb';
@@ -201,8 +200,7 @@ function paintBrandBar(){
 }
 function paintTitleBrand(){
   const t=document.getElementById('title-brand');
-  if(!t)return;
-  t.textContent=(BRAND_SLUG==='global'?'influence — all entities':'influence — '+BRANDS[BRAND_SLUG].name+' · '+BRANDS[BRAND_SLUG].domain)+' · '+DASH_BUILD;
+  if(t)t.textContent='';
 }
 function fileMenu(e){
   e.stopPropagation();
@@ -426,7 +424,7 @@ function renderRail(){
   const all=(S?.tasks||[]);
   const mine=BRAND_SLUG==='global'?all:all.filter(t=>t.influencer===BRAND_SLUG);
   const scope=BRAND_SLUG==='global'?'all entities':BRANDS[BRAND_SLUG].name;
-  el.innerHTML=smsBanner+`<div style="padding:4px 8px;color:var(--dim);font-size:10px">HTasks · ${esc(scope)} (${mine.length}/${all.length})</div>`+(mine.map(t=>`
+  el.innerHTML=smsBanner+`<div style="padding:4px 8px;color:var(--dim);font-size:10px">${esc(scope)} · ${mine.length}/${all.length}</div>`+(mine.map(t=>`
     <div class="task"><div class="t">${esc(t.title)} <span class="pill ${t.urgency&&t.urgency.score>=1?'BLOCKED':t.urgency&&t.urgency.score>=0.5?'MISSING':'UNKNOWN'}" title="${esc(t.urgency?.reason||'')}">U=${t.urgency?.score??'?'}</span></div>
     <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)} · ${esc(t.id)}</div>
     <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button>${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}<button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div>
