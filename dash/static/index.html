@@ -187,7 +187,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 
 <script>
 const T=new URLSearchParams(location.search).get("token")||"";
-const api=(m,p,b,o)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),o?.timeoutMs||60000);return fetch(p+"?token="+encodeURIComponent(T),{method:m,headers:{"Content-Type":"application/json"},body:b?JSON.stringify(b):undefined,signal:c.signal}).finally(()=>clearTimeout(t)).then(r=>r.json())};
+const api=(m,p,b,o)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),o?.timeoutMs||60000);const sep=p.includes('?')?'&':'?';return fetch(p+sep+"token="+encodeURIComponent(T),{method:m,headers:{"Content-Type":"application/json"},body:b?JSON.stringify(b):undefined,signal:c.signal}).finally(()=>clearTimeout(t)).then(r=>r.json())};
 let S=null, openTabs=[], activeTab=null, curPath="";
 let BRAND_SLUG='oddhobb';
 let STUDIO_TAB='chat';

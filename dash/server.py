@@ -300,7 +300,10 @@ class Handler(SimpleHTTPRequestHandler):
                 sys.path.insert(0, os.path.dirname(ROOT))
                 from dash.notifications import notifications
                 q = parse_qs(urlparse(self.path).query)
-                limit = int((q.get("limit") or ["40"])[0] or 40)
+                try:
+                    limit = int(str((q.get("limit") or ["40"])[0]).split("?")[0] or 40)
+                except ValueError:
+                    limit = 40
                 limit = max(5, min(limit, 100))
                 return self._json(notifications(limit=limit))
             except Exception as e:
@@ -310,7 +313,10 @@ class Handler(SimpleHTTPRequestHandler):
                 sys.path.insert(0, os.path.dirname(ROOT))
                 from dash.notifications import agent_feed
                 q = parse_qs(urlparse(self.path).query)
-                limit = int((q.get("limit") or ["40"])[0] or 40)
+                try:
+                    limit = int(str((q.get("limit") or ["40"])[0]).split("?")[0] or 40)
+                except ValueError:
+                    limit = 40
                 limit = max(5, min(limit, 100))
                 return self._json(agent_feed(limit=limit))
             except Exception as e:
