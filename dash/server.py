@@ -155,6 +155,8 @@ class Handler(SimpleHTTPRequestHandler):
                 f"dash_auth={TOKEN}; Path=/; HttpOnly; SameSite=Lax; Max-Age=31536000",
             )
             self._want_cookie = False
+        if urlparse(self.path).path in ("/", "/index.html"):
+            self.send_header("Cache-Control", "no-store, must-revalidate")
         super().end_headers()
 
     def do_GET(self):

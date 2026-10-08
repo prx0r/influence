@@ -148,7 +148,6 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="icon" onclick="switchView('content',this)" title="Content">🎬</div>
     <div class="icon" onclick="switchView('influencers',this)" title="Influencers">🛰</div>
     <div class="icon" onclick="switchView('vault',this)" title="Vault">🔑</div>
-    <div class="icon" onclick="switchView('tasks',this)" title="Tasks">✅<span class="badge" id="badge-tasks">0</span></div>
     <div class="icon" onclick="switchView('terminal',this)" title="Terminal">🖥</div>
   </div>
   <div class="sidebar" id="sidebar">
@@ -187,6 +186,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 
 <script>
 const T=new URLSearchParams(location.search).get("token")||"";
+const DASH_BUILD='2026-10-08e';
 const api=(m,p,b,o)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),o?.timeoutMs||60000);return fetch(p+"?token="+encodeURIComponent(T),{method:m,headers:{"Content-Type":"application/json"},body:b?JSON.stringify(b):undefined,signal:c.signal}).finally(()=>clearTimeout(t)).then(r=>r.json())};
 let S=null, openTabs=[], activeTab=null, curPath="";
 let BRAND_SLUG='oddhobb';
@@ -202,7 +202,7 @@ function paintBrandBar(){
 function paintTitleBrand(){
   const t=document.getElementById('title-brand');
   if(!t)return;
-  t.textContent=BRAND_SLUG==='global'?'influence — all entities':'influence — '+BRANDS[BRAND_SLUG].name+' · '+BRANDS[BRAND_SLUG].domain;
+  t.textContent=(BRAND_SLUG==='global'?'influence — all entities':'influence — '+BRANDS[BRAND_SLUG].name+' · '+BRANDS[BRAND_SLUG].domain)+' · '+DASH_BUILD;
 }
 function fileMenu(e){
   e.stopPropagation();
@@ -302,13 +302,13 @@ function startSmsPolling(){
 }
 function stopSmsPolling(){if(smsTimer){clearInterval(smsTimer);smsTimer=null}}
 
-async function refresh(){try{S=await api('GET','/api/state');paintBrandBar();document.getElementById('badge-tasks').textContent=S.tasks.length;renderRail();renderTabs();if(activeTab)openTab(activeTab,true);fetchSms(8);}catch(e){}}
+async function refresh(){try{S=await api('GET','/api/state');paintBrandBar();renderRail();renderTabs();if(activeTab)openTab(activeTab,true);fetchSms(8);}catch(e){}}
 
 function switchView(name,el){
   document.querySelectorAll('.activity .icon').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('sidebar-title').textContent=name[0].toUpperCase()+name.slice(1);
-  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,email:renderEmailSidebar,content:renderContentSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,tasks:renderTasksSidebar,terminal:renderTerminalSidebar}[name])();
+  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,email:renderEmailSidebar,content:renderContentSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,terminal:renderTerminalSidebar}[name])();
 }
 function renderChatSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
@@ -400,12 +400,6 @@ async function renderVaultSidebar(){
   el.innerHTML=`<div style="padding:8px;font-size:11px;color:var(--dim)">Seal from the HTask rail — values never render, here or anywhere.</div>
     <div class="tree-header">Keys (${keys.length})</div>`+
     (keys.map(k=>`<div class="vault-item"><div class="name">${esc(k.name)}</div><div class="meta">${esc(k.kind)} · ${esc(k.tier)} · uses ${k.usage?.calls||0}</div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">none yet</div>');
-}
-function renderTasksSidebar(){
-  const el=document.getElementById('sidebar-content');
-  el.innerHTML='<div style="padding:8px;font-size:11px;color:var(--dim)">Decide from the HTask rail on the right.</div><div class="tree-header">Queue</div>'+((S?.tasks||[]).map(t=>`
-    <div class="task"><div class="t">${esc(t.title)}</div>
-    <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)}</div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
 }
 async function depositVault(){
   let name=document.getElementById('v-name').value.trim();
@@ -720,6 +714,7 @@ function renderTabs(){
 function openTab(t,soft){
   if(!openTabs.includes(t))openTabs.push(t);
   activeTab=t;renderTabs();
+  if(BRANDS[t]&&t!==BRAND_SLUG){setBrand(t);return}
   const main=document.getElementById('editor-main');
   if(t==='monitor'){
     main.innerHTML=`<h3 style="margin-bottom:8px">Monitor</h3>`+((S?.runs||[]).map(r=>`<div class="res"><span><b>${esc(r.id)}</b> ${esc(r.summary)}<br><span style="color:var(--dim)">${esc(r.influencer)}${r.receipt_id?` · <span style="font-family:monospace">${esc(r.receipt_id)}</span> ${r.passed?'PASS':'FAIL'}`:''}${r.evidence_root?`<br>evidence <span style="font-family:monospace">${esc(String(r.evidence_root).slice(0,24))}…</span>`:''}${r.gates?`<br>gates ${r.gates.map(g=>esc(g.id.split('-')[0])+':'+esc(g.result)).join(' ')}`:''}</span></span></div>`).join('')||'<div style="color:var(--dim)">No runs yet.</div>');
