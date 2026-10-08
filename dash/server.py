@@ -2,22 +2,27 @@
 
 Routes: health/state (seed LIVE=0 or SQLite reconcile LIVE=1), chat
 (agent loop over the graph), vault, reconcile, present/decide (HLoop +
-journal), MCP (read-only tools). Binds loopback; token-gated when set."""
+journal), MCP (read-only tools). Binds 127.0.0.1 only — public access is
+the Cloudflare tunnel. DASH_TOKEN empty = open (normal for tunnel-only
+ops). If DASH_TOKEN is set, ?token= or Cookie: dash_auth=<token> works;
+a valid ?token= also sets the cookie so you don't paste it every time."""
 from __future__ import annotations
 
 import json
 import os
-import secrets
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
+
+_SNAP: dict = {}
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC = os.path.join(ROOT, "static")
 SEED = os.path.join(ROOT, "seed.json")
 PORT = int(os.environ.get("DASH_PORT", "8793"))
 LIVE = os.environ.get("LIVE", "0") == "1"
-TOKEN = os.environ.get("DASH_TOKEN", "")  # empty = loopback dev only; set before any tunnel
+# Empty = open (loopback + tunnel). Set only if you want an extra app-level gate.
+TOKEN = os.environ.get("DASH_TOKEN", "").strip()
 
 
 def _urgency_of(task: dict) -> dict:
@@ -113,20 +118,68 @@ class Handler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def _authed(self) -> bool:
+    def _authed(self) -> tuple[bool, bool]:
+        """Return (ok, set_cookie). Cookie is set only when a valid ?token= is used."""
         if not TOKEN:
-            return True  # dev loopback: server binds 127.0.0.1 only
-        q = parse_qs(urlparse(self.path).query)
-        return q.get("token", [""])[0] == TOKEN
+            return True, False
+        parsed = urlparse(self.path)
+        q = parse_qs(parsed.query)
+        qt = q.get("token", [""])[0]
+        if qt and qt == TOKEN:
+            return True, True
+        cookies = {}
+        raw = self.headers.get("Cookie") or ""
+        for part in raw.split(";"):
+            if "=" in part:
+                k, v = part.split("=", 1)
+                cookies[k.strip()] = v.strip()
+        if cookies.get("dash_auth") == TOKEN:
+            return True, False
+        return False, False
 
     def _route(self) -> str:
         return urlparse(self.path).path
 
+    def _auth_gate(self) -> bool:
+        ok, set_cookie = self._authed()
+        if not ok:
+            self._json({"error": "forbidden"}, 403)
+            return False
+        self._want_cookie = set_cookie
+        return True
+
+    def end_headers(self):
+        if getattr(self, "_want_cookie", False) and TOKEN:
+            self.send_header(
+                "Set-Cookie",
+                f"dash_auth={TOKEN}; Path=/; HttpOnly; SameSite=Lax; Max-Age=31536000",
+            )
+            self._want_cookie = False
+        super().end_headers()
+
     def do_GET(self):
         if self._route() == "/api/health":
             return self._json({"ok": True, "dash": "influence"})
-        if not self._authed():
-            return self._json({"error": "forbidden"}, 403)
+        if self._route() == "/api/brand-logo":
+            if not self._auth_gate():
+                return
+            from urllib.parse import parse_qs as _pq, urlparse as _up
+            sys.path.insert(0, os.path.dirname(ROOT))
+            from dash.brand_logo import logo_svg, spinner_svg
+            q = _pq(_up(self.path).query)
+            slug = (q.get("slug") or ["oddhobb"])[0]
+            size = int((q.get("size") or ["64"])[0][:3] or 64)
+            svg = spinner_svg(slug, size) if "spin" in q else logo_svg(slug, size)
+            body = svg.encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "image/svg+xml")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "public, max-age=3600")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if not self._auth_gate():
+            return
         if self._route() == "/api/vault":
             sys.path.insert(0, os.path.dirname(ROOT))
             from core.vault.store import Vault
@@ -138,8 +191,16 @@ class Handler(SimpleHTTPRequestHandler):
             return self._json({"keys": keys})
         if self._route() == "/api/state":
             try:
-                return self._json(load_state())
+                st = load_state()
+                _SNAP["state"] = st
+                import time as _t
+                _SNAP["at"] = _t.time()
+                return self._json(st)
             except Exception as e:
+                if _SNAP.get("state"):
+                    cached = dict(_SNAP["state"])
+                    cached["stale"] = True
+                    return self._json(cached)
                 return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/files":
             return self._json(read_repo_file(parse_qs(urlparse(self.path).query).get("path", [""])[0]))
@@ -191,6 +252,66 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_header("Content-Length", str(len(body)))
             self.end_headers()
             return self.wfile.write(body)
+        if self._route() == "/api/onboarding":
+            # Brand-agnostic social claim kit — same registry as passport + chat.
+            from urllib.parse import parse_qs as _pq, urlparse as _up
+            q = _pq(_up(self.path).query)
+            slug = (q.get("slug") or [""])[0]
+            handle = (q.get("handle") or [""])[0]
+            domain = (q.get("domain") or [""])[0]
+            sys.path.insert(0, os.path.dirname(ROOT))
+            from core.cmail.social_onboarding import format_onboarding_reply, render_brand_onboarding
+            brand: dict = {}
+            if slug:
+                try:
+                    st = load_state()
+                except Exception as e:
+                    return self._json({"error": str(e)[:200]}, 500)
+                inf = next((i for i in st.get("influencers", []) if i["slug"] == slug), None)
+                if not inf:
+                    return self._json({"error": f"unknown influencer {slug}"}, 404)
+                handle = handle or (inf.get("handle") or inf.get("slug", "")).replace("@", "").replace("-", "")
+                domain = domain or inf.get("domain") or ""
+                brand["display_name"] = inf.get("name") or handle.title()
+                for r in inf.get("resources", []):
+                    d = r.get("desired") or {}
+                    if r.get("key") == "domain" and d.get("domain"):
+                        domain = domain or d["domain"]
+                    kit = r.get("kit") or d.get("kit") or {}
+                    for bk in ("phone", "email", "website"):
+                        if kit.get(bk) and not brand.get(bk):
+                            brand[bk] = kit[bk]
+                if not domain and "." in str(inf.get("slug", "")):
+                    domain = str(inf["slug"])
+            if not handle:
+                return self._json({"error": "slug or handle required"}, 400)
+            if not domain:
+                domain = f"{handle.lower()}.com"
+            try:
+                on = render_brand_onboarding(handle, domain, brand=brand)
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
+            return self._json({"ok": True, "onboarding": on, "text": format_onboarding_reply(on)})
+        if self._route() == "/api/notifications":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from dash.notifications import notifications
+                q = parse_qs(urlparse(self.path).query)
+                limit = int((q.get("limit") or ["40"])[0] or 40)
+                limit = max(5, min(limit, 100))
+                return self._json(notifications(limit=limit))
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "items": [], "counts": {}}, 500)
+        if self._route() == "/api/agent-feed":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from dash.notifications import agent_feed
+                q = parse_qs(urlparse(self.path).query)
+                limit = int((q.get("limit") or ["40"])[0] or 40)
+                limit = max(5, min(limit, 100))
+                return self._json(agent_feed(limit=limit))
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "items": [], "counts": {}}, 500)
         if self._route() == "/api/agents":
             # HLoop present→decide trail + journal effect states. This is the
             # agent-activity ledger the Agents tab renders. Worker/subagent
@@ -266,6 +387,8 @@ class Handler(SimpleHTTPRequestHandler):
             except Exception as e:
                 return self._json({"error": str(e)[:300]}, 500)
             return self._json({"error": "not found"}, 404)
+        if not self._auth_gate():
+            return
         if self._route() == "/api/chat":
             try:
                 n = int(self.headers.get("Content-Length", "0"))
@@ -281,7 +404,9 @@ class Handler(SimpleHTTPRequestHandler):
             journal_path = os.getenv("DASH_JOURNAL", os.path.join(ROOT, "decisions.db"))
             try:
                 return self._json(handle_chat(str(body.get("message", "")),
-                                              state=state, journal_path=journal_path))
+                                              state=state, journal_path=journal_path,
+                                              brand=str(body.get("brand", "") or ""),
+                                              history=body.get("history") or []))
             except Exception as e:
                 return self._json({"reply": f"error: {str(e)[:200]}"})
         if self._route() == "/api/vault-store":
@@ -416,6 +541,17 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 def main():
+    for _db in (os.getenv("DASH_DB", os.path.join(ROOT, "influence.db")),
+                os.getenv("DASH_JOURNAL", os.path.join(ROOT, "decisions.db"))):
+        try:
+            import sqlite3
+            c = sqlite3.connect(_db, timeout=30)
+            c.execute("PRAGMA journal_mode=WAL")
+            c.execute("PRAGMA busy_timeout=10000")
+            c.commit()
+            c.close()
+        except Exception:
+            pass
     httpd = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
     print(f"influence step-0 dash on http://127.0.0.1:{PORT}")
     httpd.serve_forever()

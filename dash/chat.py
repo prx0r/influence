@@ -36,6 +36,8 @@ HELP = ("commands:\n"
         "/status — projects, stages, open tasks\n"
         "check <name|domain> — check a name everywhere (RDAP, prices, handles)\n"
         "setup [slug] — provisioning pipeline: name→domain→email→phone→socials\n"
+        "onboarding [slug] — social claim kit (bios, steps, pins) from registry\n"
+        "socials — list platforms in the onboarding registry\n"
         "tasks — human queue, urgency-sorted, with digits\n"
         "decide <task_id> <digit> — present + decide (intent only, QP pending)\n"
         "receipt <id> — verify a receipt\n"
@@ -43,6 +45,8 @@ HELP = ("commands:\n"
   "products — product registry\n"
   "primitives <product> — exactly what it needs: objects, gates, grants, stubs\n"
   "studio lora1|art|generate|render|job|publish|narrate — sleep draw studio\n"
+  "agent on|off — operator LLM chat (tools over live state)\n"
+  "anything else → operator model (mimo) with read-only tools\n"
   "/help — this")
 
 
@@ -103,6 +107,42 @@ def _setup(state: dict, slug: str | None) -> dict:
         ready = sum(1 for r in inf["resources"] if r["status"] == "READY")
         blocks.append(f"{inf['slug']} [{inf['stage']}] {ready}/{len(inf['resources'])} — "
                       "idea→endpoint:\n" + "\n".join(rows))
+    return {"reply": "\n\n".join(blocks)}
+
+
+def _onboarding(state: dict, slug: str | None) -> dict:
+    """Render the objective social claim kit for one influencer (or all)."""
+    sys.path.insert(0, PARENT)
+    from core.cmail.social_onboarding import format_onboarding_reply, render_brand_onboarding
+    infs = state.get("influencers", [])
+    if slug:
+        infs = [i for i in infs if i["slug"] == slug]
+        if not infs:
+            return {"reply": f"unknown influencer {slug}"}
+    if not infs:
+        return {"reply": "Nothing onboarding yet. /add <slug> <domain> first, then: onboarding <slug>"}
+    blocks = []
+    for inf in infs:
+        handle = (inf.get("handle") or inf.get("slug", "")).replace("@", "").replace("-", "")
+        domain = inf.get("domain") or ""
+        brand_name = inf.get("name") or handle.title()
+        brand_extra = {}
+        for r in inf.get("resources", []):
+            d = r.get("desired") or {}
+            if r.get("key") == "domain" and d.get("domain"):
+                domain = domain or d["domain"]
+            kit = r.get("kit") or d.get("kit") or {}
+            for bk in ("phone", "email", "website"):
+                if kit.get(bk) and not brand_extra.get(bk):
+                    brand_extra[bk] = kit[bk]
+        if not domain and "." in str(inf.get("slug", "")):
+            domain = str(inf["slug"])
+        brand = {"display_name": brand_name, **brand_extra}
+        try:
+            on = render_brand_onboarding(handle, domain, brand=brand)
+            blocks.append(format_onboarding_reply(on))
+        except Exception as e:
+            blocks.append(f"{inf['slug']}: onboarding error — {e}")
     return {"reply": "\n\n".join(blocks)}
 
 
@@ -222,7 +262,8 @@ def _studio(parts: list) -> dict:
 
 
 def handle_chat(message: str, state: dict | None = None,
-                journal_path: str | None = None) -> dict:
+                journal_path: str | None = None,
+                brand: str = "", history: list | None = None) -> dict:
     parts = message.strip().split()
     if not parts:
         return {"reply": HELP}
@@ -263,7 +304,19 @@ def handle_chat(message: str, state: dict | None = None,
         return handle_chat("/" + bare, state=state, journal_path=journal_path)
     if bare in ("tasks", "queue", "htasks", "products"):
         cmd = bare  # fall through to the handlers below (no recursion)
-    if bare == "setup" or cmd == "setup":
+    if cmd == "onboarding" or bare == "onboarding":
+        slug = parts[1] if len(parts) > 1 else None
+        return _onboarding(st, slug)
+    if cmd == "socials" or bare == "socials":
+        sys.path.insert(0, PARENT)
+        from core.cmail.social_onboarding import list_platforms
+        plats = list_platforms()
+        return {"reply": "social onboarding registry (data/social_onboarding.v1.json):\n" +
+                "\n".join(f"· {p['platform']} ({p['label']}) — {p['resource_key']} "
+                          f"prio={p['priority']} {'optional' if p['optional'] else ''} "
+                          f"{p['signup_url']}" for p in plats) +
+                "\n\nChat: onboarding <slug> · Dash: influencer tab → claim tasks → ▶ start"}
+    if cmd == "setup" or bare == "setup":
         slug = parts[1] if len(parts) > 1 else None
         return _setup(st, slug)
     if cmd == "check":
@@ -382,6 +435,40 @@ def handle_chat(message: str, state: dict | None = None,
                              "New picture first? `studio generate pencil flux <prompt…>`."}
         return {"reply": "studio: `studio lora1` (recipe) · `studio art` (gallery) · "
                          "`studio generate pencil flux <prompt>` · `studio render <name>`."}
+    # Fallback: operator LLM (mimo) with read-only tools, then intent judges.
+    try:
+        sys.path.insert(0, PARENT)
+        from dash.agent_chat import agent_chat
+        # Deterministic verbs still win when they match tightly.
+        tight = cmd in {
+            "check", "setup", "onboarding", "socials", "tasks", "queue", "htasks",
+            "decide", "receipt", "influencer", "products", "modules", "primitives",
+            "graph", "layers", "protocol", "qp", "runs", "monitor", "activity",
+            "agents", "trail", "predictions", "workers", "subagents", "help",
+        }
+        if not tight:
+            hist = []
+            for h in (history or [])[-8:]:
+                if isinstance(h, dict) and h.get("role") in ("user", "assistant") and h.get("content"):
+                    hist.append({"role": h["role"], "content": str(h["content"])[:2000]})
+                elif isinstance(h, (list, tuple)) and len(h) == 2:
+                    who, text = h
+                    hist.append({"role": "assistant" if str(who).lower() not in ("you", "user") else "user",
+                                 "content": str(text)[:2000]})
+            msg = message
+            if brand and "[brand:" not in message.lower():
+                msg = f"[brand:{brand}] {message}"
+            out = agent_chat(msg, state=st, history=hist)
+            if out.get("mode") == "agent" and out.get("reply"):
+                reply = out["reply"]
+                tools = out.get("tools_used") or []
+                if tools:
+                    reply += "\n\n(tools: " + ", ".join(tools[:8]) + ")"
+                reply += "\n\nHuman-only: send/post/buy/decide — say which task digit or open the claim kit."
+                return {"reply": reply, "mode": "agent", "tools_used": tools, "refresh": False}
+            # agent failed → intent judges
+    except Exception:
+        pass
     try:
         sys.path.insert(0, PARENT)
         from qp.judges import intent_choice

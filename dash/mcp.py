@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+from pathlib import Path
 
 TOOLS = [
     {"name": "influencer.list", "description": "List influencers with stage + progress",
@@ -29,6 +30,10 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "name": {"type": "string"}, "category": {"type": "string"}, "niche": {"type": "string"}}, "required": ["slug", "name"]}},
     {"name": "identity.slot", "description": "Update an identity slot (domain, email, phone, socials, website)",
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "slot": {"type": "string"}, "fields": {"type": "object"}, "status": {"type": "string"}}, "required": ["slug", "slot"]}},
+    {"name": "brand.voice", "description": "Inhabit pack for a brand: voice, style_lock, handles, bio, design rules, gates (bgraph spine + commerce truth)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "brand.graphs", "description": "Company graphs an entity can see: bgraph export, dash project, site/companygraph, primitives (entity is the selector)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
     {"name": "content.signals", "description": "Get top signals from a data garden (powpowpow, ukgraph, etc.)",
      "inputSchema": {"type": "object", "properties": {"garden": {"type": "string"}, "limit": {"type": "integer"}}}},
     {"name": "content.build", "description": "Build content from a signal (hook + claim + beats)",
@@ -51,12 +56,26 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"jid": {"type": "string"}, "title": {"type": "string"}}, "required": ["jid", "title"]}},
     {"name": "studio.narrate", "description": "Voice iteration: edge-tts MP3 (aria/guy/ana/christopher)",
      "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "voice": {"type": "string"}}, "required": ["text"]}},
-    {"name": "phone.sms", "description": "List SMS messages from Telnyx number",
+    {"name": "phone.status", "description": "Brand phone status (number, inbound counts) from phone.agentcom.org",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "phone.sms", "description": "Inbound SMS from brand phone inbox (free read)",
      "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer"}, "slug": {"type": "string"}}}},
-    {"name": "phone.calls", "description": "List call logs from Telnyx number",
+    {"name": "phone.calls", "description": "Call events from brand phone inbox (free read)",
      "inputSchema": {"type": "object", "properties": {"limit": {"type": "integer"}, "slug": {"type": "string"}}}},
-    {"name": "phone.send", "description": "Send SMS from Telnyx number",
-     "inputSchema": {"type": "object", "properties": {"to": {"type": "string"}, "text": {"type": "string"}, "slug": {"type": "string"}}, "required": ["to", "text"]}},
+    {"name": "phone.callbacks", "description": "Queued human callbacks (return SMS/call)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}}},
+    {"name": "phone.send", "description": "Send SMS from brand number — HUMAN GATED, never auto",
+     "inputSchema": {"type": "object", "properties": {"to": {"type": "string"}, "text": {"type": "string"}, "slug": {"type": "string"}, "confirm": {"type": "boolean"}}, "required": ["to", "text"]}},
+    {"name": "social.onboarding", "description": "Brand-agnostic social claim kit from data/social_onboarding.v1.json (steps, bios, pin posts)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "handle": {"type": "string"}, "domain": {"type": "string"}, "platforms": {"type": "array", "items": {"type": "string"}}}}},
+    {"name": "social.platforms", "description": "List onboarding platforms from the social registry",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "email.inbox", "description": "Brand inbox from cmail worker (filter by mailbox e.g. hello@oddhobb.com)",
+     "inputSchema": {"type": "object", "properties": {"mailbox": {"type": "string"}, "limit": {"type": "integer"}, "needs_reply": {"type": "boolean"}}}},
+    {"name": "email.stats", "description": "cmail inbox counters (needs_me / total)",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "email.read", "description": "Read one email by message_id (meta + raw body from cmail)",
+     "inputSchema": {"type": "object", "properties": {"message_id": {"type": "string"}}, "required": ["message_id"]}},
 ]
 
 GRAPH = [
@@ -260,6 +279,63 @@ def handle(state: dict, method: str, params: dict) -> dict:
             return {"result": ident.get_status(args["slug"])}
         except Exception as e:
             return {"error": str(e)[:200]}
+    if name == "brand.graphs":
+        slug = str(args.get("slug", "")).strip().lower()
+        root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        graphs: dict = {"slug": slug}
+        bp = os.path.join(root, "bgraph", "exports", f"{slug}.json")
+        graphs["bgraph_export"] = bp if os.path.exists(bp) else None
+        graphs["bgraph_registry"] = os.path.join(root, "bgraph", "registry", "brands", f"{slug}.json") if os.path.exists(
+            os.path.join(root, "bgraph", "registry", "brands", f"{slug}.json")) else None
+        sp = os.path.join(root, "oddhobbies", "stores", slug, "store.json")
+        graphs["commerce_pack"] = sp if os.path.exists(sp) else None
+        graphs["dash_project"] = slug
+        graphs["site_companygraph"] = f"https://{slug}.com/api/companygraph" if slug in ("oddhobb",) else None
+        graphs["primitives"] = "influence/products/primitives.json"
+        graphs["note"] = "entity is the selector: every graph keys off slug/store_id"
+        return {"result": graphs}
+    if name == "brand.voice":
+        slug = str(args.get("slug", "")).strip().lower()
+        if slug == "humanvoiced":
+            return {"result": {
+                "slug": "humanvoiced", "display_name": "HumanVoiced",
+                "domain": "humanvoiced.com", "email": "hello@humanvoiced.com",
+                "handles": {"primary": "@humanvoiced"},
+                "voice": "Clear, direct marketplace operator. Real voices, on demand.",
+                "style_lock": {"background": "clean product UI",
+                               "avoid": ["synthetic-voice claims", "unverified stats"]},
+                "branches": [], "publish_gate": "human_confirm",
+                "commerce": {"thesis": "Human voice marketplace: narration, series, dubbing."},
+                "instructions": "Inhabit HumanVoiced: marketplace operator voice. Drafts only — publish stays human_confirm."}}
+        root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        try:
+            with open(os.path.join(root, "bgraph", "registry", "brands", f"{slug}.json")) as f:
+                b = json.load(f)
+        except Exception:
+            return {"error": f"unknown brand {slug}"}
+        ident = b.get("identity", {}) or {}
+        branches = []
+        for br in b.get("branches", []):
+            acc = br.get("account") or {}
+            branches.append({"platform": br.get("platform"), "handle": acc.get("handle"),
+                             "status": acc.get("status"), "content_types": br.get("content_types")})
+        pack: dict = {"slug": slug,
+            "display_name": ident.get("display_name"), "domain": ident.get("domain"),
+            "email": ident.get("email"),
+            "handles": ident.get("confirmed_socials") or {"primary": ident.get("handle_primary")},
+            "voice": ident.get("voice"), "style_lock": ident.get("style_lock"),
+            "branches": branches, "publish_gate": "human_confirm"}
+        try:
+            with open(os.path.join(root, "oddhobbies", "stores", slug, "store.json")) as f:
+                s = json.load(f)
+            pack["commerce"] = {"store_name": s.get("store_name"), "brand_line": s.get("brand_line"),
+                                "thesis": s.get("thesis"), "style_lock": s.get("style_lock"),
+                                "sections": s.get("sections")}
+        except Exception:
+            pack["commerce"] = {}
+        pack["instructions"] = (f"Inhabit {pack['display_name']}: write in voice, honor style_lock avoid-list, "
+                                f"link {pack['domain']}. Drafts only — publish stays human_confirm.")
+        return {"result": pack}
     if name == "content.signals":
         import subprocess
         content_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "content")
@@ -352,47 +428,164 @@ def handle(state: dict, method: str, params: dict) -> dict:
                                           str(args.get("voice", "aria") or "aria"))}
         except Exception as e:
             return {"error": str(e)[:300]}
-    if name in ("phone.sms", "phone.calls", "phone.send"):
-        slug = args.get("slug", "")
-        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "stevejobless"))
+    if name == "email.read":
+        import urllib.request as _urlreq
+        base = os.environ.get("CMAIL_URL", "https://cmail.tradesprior.workers.dev").rstrip("/")
+        mid = str(args.get("message_id") or "")
+        if not mid:
+            return {"error": "message_id required"}
         try:
-            from stevejobless.telephony import _call as telnyx_call, send_sms, list_numbers
-            from stevejobless.vault import CredentialVault
-            from stevejobless.db import SessionLocal as _SL
-            db = _SL()
-            v = CredentialVault(db)
-            key = v.get_credential(slug, "telnyx", "api_key") if slug else None
-            num = v.get_credential(slug, "telnyx", "phone_number") if slug else None
-            db.close()
-            if not key:
-                return {"error": "no telnyx api_key — POST /telnyx/credential first"}
-            if name == "phone.sms":
-                limit = min(args.get("limit", 20), 100)
-                d = telnyx_call(key, "GET", f"/messages?page[size]={limit}")
-                msgs = [{"id": m.get("id"),
-                         "from": (m.get("from") or {}).get("phone_number", "") if isinstance(m.get("from"), dict) else m.get("from", ""),
-                         "to": (m.get("to") or [{}])[0].get("phone_number", "") if isinstance(m.get("to"), list) else "",
-                         "text": m.get("text", ""),
-                         "direction": m.get("direction"),
-                         "created_at": m.get("created_at")}
-                        for m in d.get("data", [])]
-                return {"result": msgs}
-            if name == "phone.calls":
-                limit = min(args.get("limit", 20), 100)
-                d = telnyx_call(key, "GET", f"/calls?page[size]={limit}")
-                calls = [{"id": c.get("call_control_id"),
-                          "from": c.get("from"), "to": c.get("to"),
-                          "status": c.get("call_status"), "direction": c.get("direction"),
-                          "started_at": c.get("started_at"), "ended_at": c.get("ended_at"),
-                          "duration_ms": c.get("duration_ms")}
-                         for c in d.get("data", [])]
-                return {"result": calls}
-            if name == "phone.send":
-                to, text = args.get("to", ""), args.get("text", "")
-                if not to or not text:
-                    return {"error": "to and text required"}
-                d = telnyx_call(key, "POST", "/messages", {"from": num, "to": to, "text": text})
-                return {"result": {"ok": True, "id": (d.get("data") or {}).get("id")}}
+            body = json.dumps({"tool": "email.read", "args": {"message_id": mid}, "actor": "owner"}).encode()
+            req = _urlreq.Request(
+                base + "/mcp",
+                data=body,
+                headers={"Content-Type": "application/json", "User-Agent": "influence-dash/0.5"},
+                method="POST",
+            )
+            with _urlreq.urlopen(req, timeout=15) as resp:
+                return {"result": json.loads(resp.read() or b"{}")}
         except Exception as e:
-            return {"error": str(e)[:300]}
+            return {"error": str(e)[:200]}
+    if name == "email.stats":
+        import urllib.request as _urlreq
+        base = os.environ.get("CMAIL_URL", "https://cmail.tradesprior.workers.dev").rstrip("/")
+        try:
+            req = _urlreq.Request(base + "/api/stats", headers={"User-Agent": "influence-dash/0.4"})
+            with _urlreq.urlopen(req, timeout=12) as resp:
+                return {"result": json.loads(resp.read() or b"{}")}
+        except Exception as e:
+            return {"error": str(e)[:200]}
+    if name == "email.inbox":
+        import urllib.request as _urlreq
+        base = os.environ.get("CMAIL_URL", "https://cmail.tradesprior.workers.dev").rstrip("/")
+        mailbox = str(args.get("mailbox") or "")
+        limit = min(int(args.get("limit") or 20), 50)
+        needs = bool(args.get("needs_reply"))
+        try:
+            if mailbox:
+                # MCP path filters by mailbox
+                req = _urlreq.Request(
+                    base + "/mcp",
+                    data=json.dumps({"tool": "email.inbox", "args": {"mailbox": mailbox}, "actor": "owner"}).encode(),
+                    headers={"Content-Type": "application/json", "User-Agent": "influence-dash/0.4"},
+                    method="POST",
+                )
+                with _urlreq.urlopen(req, timeout=15) as resp:
+                    body = json.loads(resp.read() or b"{}")
+                msgs = body.get("messages") or []
+            else:
+                path = "/api/inbox?needs_reply=1" if needs else "/api/inbox"
+                req = _urlreq.Request(base + path, headers={"User-Agent": "influence-dash/0.4"})
+                with _urlreq.urlopen(req, timeout=15) as resp:
+                    msgs = json.loads(resp.read() or b"[]")
+            return {"result": msgs[:limit]}
+        except Exception as e:
+            return {"error": str(e)[:200]}
+    if name == "social.platforms":
+        from core.cmail.social_onboarding import list_platforms
+        return {"result": list_platforms()}
+    if name == "social.onboarding":
+        from core.cmail.social_onboarding import format_onboarding_reply, render_brand_onboarding
+        slug = str(args.get("slug") or "")
+        handle = str(args.get("handle") or "")
+        domain = str(args.get("domain") or "")
+        brand: dict = {}
+        if slug:
+            inf = next((i for i in state.get("influencers", []) if i["slug"] == slug), None)
+            if not inf:
+                return {"error": f"unknown influencer {slug}"}
+            handle = handle or (inf.get("handle") or inf.get("slug", "")).replace("@", "").replace("-", "")
+            domain = domain or inf.get("domain") or ""
+            # Pull desired passport fields when present
+            for r in inf.get("resources", []):
+                d = r.get("desired") or {}
+                if r.get("key") == "domain" and d.get("domain"):
+                    domain = domain or d["domain"]
+                kit = r.get("kit") or d.get("kit") or {}
+                if kit.get("phone") and not brand.get("phone"):
+                    brand["phone"] = kit["phone"]
+                if kit.get("email") and not brand.get("email"):
+                    brand["email"] = kit["email"]
+                if kit.get("website") and not brand.get("website"):
+                    brand["website"] = kit["website"]
+            brand["display_name"] = inf.get("name") or handle.title()
+            if not domain and "." in str(inf.get("slug", "")):
+                domain = str(inf["slug"])
+        if not handle:
+            return {"error": "slug or handle required"}
+        if not domain:
+            domain = args.get("domain") or f"{handle.lower()}.com"
+        platforms = args.get("platforms")
+        try:
+            on = render_brand_onboarding(handle, domain, platforms=platforms, brand=brand)
+        except Exception as e:
+            return {"error": str(e)[:200]}
+        return {"result": {"onboarding": on, "text": format_onboarding_reply(on)}}
+    if name in ("phone.status", "phone.sms", "phone.calls", "phone.callbacks", "phone.send"):
+        import urllib.error
+        import urllib.request as _urlreq
+
+        # Prefer public agentcom edge; fall back to workers.dev if tunnel cold.
+        base = os.environ.get("PHONE_WORKER_URL", "").rstrip("/")
+        candidates = [base] if base else []
+        candidates += [
+            "https://phone.agentcom.org",
+            "https://oddhobb-phone.tradesprior.workers.dev",
+            "http://127.0.0.1:8794",
+        ]
+        auth_file = os.environ.get("PHONE_AUTH_FILE", os.path.expanduser("~/stevejobless/.phone_auth"))
+        auth = ""
+        try:
+            auth = Path(auth_file).read_text().strip() if Path(auth_file).exists() else ""
+        except Exception:
+            auth = ""
+        if not auth:
+            try:
+                import subprocess
+                auth = subprocess.run(
+                    ["agent-vault", "vault", "credential", "get", "ODDHOBB_PHONE_AUTH", "--vault", "oracle"],
+                    capture_output=True, text=True, timeout=10,
+                ).stdout.strip()
+            except Exception:
+                auth = ""
+        headers = {"User-Agent": "influence-dash/0.4"}
+        if auth:
+            headers["Authorization"] = f"Bearer {auth}"
+
+        def _get(path):
+            last = None
+            for base_i in candidates:
+                if not base_i:
+                    continue
+                try:
+                    req = _urlreq.Request(base_i + path, headers=headers)
+                    with _urlreq.urlopen(req, timeout=12) as resp:
+                        return json.loads(resp.read() or b"{}")
+                except Exception as e:
+                    last = e
+                    continue
+            raise last or RuntimeError("no phone inbox reachable")
+
+        try:
+            if name == "phone.status":
+                return {"result": _get("/v1/status")}
+            if name == "phone.sms":
+                limit = min(int(args.get("limit") or 30), 100)
+                data = _get("/v1/inbox?kind=sms")
+                events = data.get("events") or []
+                return {"result": events[:limit]}
+            if name == "phone.calls":
+                limit = min(int(args.get("limit") or 30), 100)
+                data = _get("/v1/inbox?kind=call")
+                events = data.get("events") or []
+                return {"result": events[:limit]}
+            if name == "phone.callbacks":
+                data = _get("/v1/callbacks")
+                return {"result": data.get("callbacks") or []}
+            if name == "phone.send":
+                if args.get("confirm") is not True:
+                    return {"error": "phone.send blocked — pass confirm:true after human approval"}
+                return {"error": "outbound send not enabled in influence dash — use owner phone"}
+        except Exception as e:
+            return {"error": str(e)[:250]}
     return {"error": f"unknown tool {name}"}

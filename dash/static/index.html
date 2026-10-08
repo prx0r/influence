@@ -25,22 +25,38 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 .tabs{display:flex;background:var(--bg3);border-bottom:1px solid var(--border);overflow-x:auto}
 .tab{padding:8px 16px;font-size:12px;cursor:pointer;border-right:1px solid var(--border);color:var(--dim);white-space:nowrap;display:flex;align-items:center;gap:6px}
 .tab:hover{color:var(--text)}
-.tab.active{background:var(--bg);color:var(--text);border-top:1px solid var(--accent)}
+.tab.active{background:var(--bg);color:var(--text);border-top:2px solid var(--accent)}
 .tab .close{opacity:0;font-size:14px;border-radius:4px;padding:0 4px}
 .tab:hover .close{opacity:1}
 .tab .close:hover{background:var(--bg4)}
-.editor{flex:1;overflow-y:auto;padding:16px}
+.editor{flex:1;overflow-y:auto;padding:16px;min-height:0}
+.chat-dock{border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
+.chat-dock .chat-input{display:flex;border-top:none;padding:8px}
+.chat-dock .chat-input input{flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:4px;font-size:12px}
+.chat-dock .chat-input button{margin-left:6px;background:var(--accent);color:#fff;border:none;padding:8px 14px;border-radius:4px;cursor:pointer}
+.chat-dock .dock-hint{padding:0 12px 4px;font-size:10px;color:var(--dim)}
+.email-item{padding:8px 10px;border-bottom:1px solid var(--bg4);cursor:pointer;font-size:12px}
+.email-item:hover{background:var(--bg3)}
+.email-item .subj{font-weight:600}
+.email-item .meta{color:var(--dim);font-size:10px;margin-top:2px}
+.email-view{max-width:820px}
+.email-view .hdr{border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:12px}
+.email-view .hdr .from{font-weight:600}
+.email-view .body{white-space:pre-wrap;font:13px/1.5 'SF Mono',Monaco,monospace;background:var(--bg2);padding:12px;border-radius:4px;border:1px solid var(--border)}
+.email-view .actions{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
+.email-view .actions button{background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer;font-size:12px}
+.email-view .actions button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .res{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--bg4);font-size:12px}
 .pill{font-family:monospace;font-size:10px;padding:1px 8px;border-radius:20px;white-space:nowrap}
 .READY{background:#123f2c;color:#7fe0a8}.MISSING{background:#3f2f12;color:var(--yellow)}.BLOCKED{background:#3f1a12;color:var(--red)}.UNKNOWN{background:#2b2d2d;color:#bbb}.ERROR{background:#3f1a12;color:#fff}
 .bar{height:8px;background:#111;border-radius:6px;overflow:hidden;margin:8px 0}
 .bar i{display:block;height:100%;background:var(--green)}
-.bottom-panel{height:180px;border-top:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column}
+.bottom-panel{border-top:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column}
 .bottom-tabs{display:flex;border-bottom:1px solid var(--border);padding:0 8px}
 .bottom-tab{padding:6px 12px;font-size:11px;cursor:pointer;color:var(--dim);text-transform:uppercase}
 .bottom-tab:hover{color:var(--text)}
 .bottom-tab.active{color:var(--text);border-bottom:2px solid var(--accent)}
-.bottom-content{flex:1;overflow-y:auto;padding:8px 16px;font:12px/1.4 'SF Mono',Monaco,monospace;color:var(--dim)}
+.bottom-content{height:150px;overflow-y:auto;padding:8px 16px;font:12px/1.4 'SF Mono',Monaco,monospace;color:var(--dim)}
 .bottom-content .line{padding:1px 0}
 .bottom-content .line .ts{color:#555;margin-right:8px}
 .bottom-content .line .info{color:var(--blue)}
@@ -57,6 +73,18 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 .sb-sms{padding:6px 8px;border-bottom:1px solid var(--bg4);font-size:11px}
 .sb-sms .from{font-weight:600}
 .sb-sms .at{color:var(--dim);font-size:10px}
+.otp-strip{background:#1a2e1a;border:1px solid #2d5a2d;border-radius:6px;padding:8px 10px;margin:8px 0;font-size:12px}
+.otp-strip .code{font:700 18px/1.2 'SF Mono',Monaco,monospace;color:var(--green);letter-spacing:2px}
+.otp-strip .meta{color:var(--dim);font-size:10px;margin-top:4px}
+.sms-live{max-height:180px;overflow-y:auto;border:1px solid var(--border);border-radius:4px;background:var(--bg2);margin:8px 0}
+.sms-live .row{padding:6px 8px;border-bottom:1px solid var(--bg4);font-size:11px}
+.sms-live .row .from{font-weight:600}
+.sms-live .row .code{color:var(--green);font-family:monospace;font-weight:700}
+.sms-live .row .at{color:var(--dim);font-size:10px}
+.badge.hot{background:#a33;animation:pulse 1.2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.icon{position:relative}
+.icon .badge{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;font-size:9px;padding:1px 5px;border-radius:8px}
 .chat-messages{flex:1;overflow-y:auto;padding:12px}
 .chat-msg{margin-bottom:8px;font-size:12px}
 .chat-msg .who{color:var(--dim);font-size:10px}
@@ -112,15 +140,16 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 <body>
 
 <div class="titlebar">
-  <div class="menu"><span>File</span><span>Edit</span><span>View</span><span>Run</span><span>Help</span></div>
-  <span style="margin-left:auto">influence — idea → domain → email → phone → socials</span>
+  <div class="menu"><span onclick="fileMenu(event)" style="cursor:pointer">File ▾</span><span onclick="quickChat('/help')" style="cursor:pointer">Help</span></div>
+  <span style="margin-left:auto" id="title-brand">influence</span>
 </div>
 
 <div class="main">
   <div class="activity">
     <div class="icon active" onclick="switchView('chat',this)" title="Chat">💬</div>
     <div class="icon" onclick="switchView('accounts',this)" title="Accounts">👤</div>
-    <div class="icon" onclick="switchView('phone',this)" title="Phone">📱</div>
+    <div class="icon" onclick="switchView('phone',this)" title="Phone">📱<span class="badge" id="badge-sms" style="display:none">0</span></div>
+    <div class="icon" onclick="switchView('email',this)" title="Email">✉️<span class="badge" id="badge-email" style="display:none">0</span></div>
     <div class="icon" onclick="switchView('content',this)" title="Content">🎬</div>
     <div class="icon" onclick="switchView('influencers',this)" title="Influencers">🛰</div>
     <div class="icon" onclick="switchView('vault',this)" title="Vault">🔑</div>
@@ -132,15 +161,25 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="sidebar-content" id="sidebar-content"></div>
   </div>
   <div class="editor-area">
+    <div class="brandbar" id="brand-bar" style="display:flex;gap:6px;padding:6px 10px;border-bottom:1px solid var(--bg4);font-size:12px;align-items:center"></div>
     <div class="tabs" id="editor-tabs"></div>
     <div class="editor" id="editor-main"></div>
-    <div class="bottom-panel">
-      <div class="bottom-tabs">
-        <div class="bottom-tab active" onclick="showBottom('output',this)">Output</div>
-        <div class="bottom-tab" onclick="showBottom('tasks',this)">Tasks</div>
-        <div class="bottom-tab" onclick="showBottom('runs',this)">Runs</div>
+    <div class="hud" id="hud" style="display:flex;gap:6px;align-items:center;padding:4px 10px;border-top:1px solid var(--border);background:var(--bg2);font-size:11px;overflow-x:auto;white-space:nowrap;min-height:26px"></div>
+    <div class="chat-dock" id="chat-dock">
+      <div class="dock-hint">Chat · operator model + live tools · Enter to send. Human confirms sends/spends.</div>
+      <div class="chat-input">
+        <input id="chat-in-main" placeholder="tasks · onboarding oddhobb · decide A-3 7 · check oddhobb.com" autocomplete="off">
+        <button onclick="sendChatMain()">→</button>
       </div>
-      <div class="bottom-content" id="bottom-content"></div>
+    </div>
+    <div class="bottom-panel" id="bottom-panel">
+      <div class="bottom-tabs">
+        <div class="bottom-tab active" onclick="showBottom('notifications',this)">Notifications <span class="pill UNKNOWN" id="bt-notif" style="margin-left:4px"></span></div>
+        <div class="bottom-tab" onclick="showBottom('agents',this)">Agents <span class="pill UNKNOWN" id="bt-agent" style="margin-left:4px"></span></div>
+        <div class="bottom-tab" onclick="showBottom('runs',this)">Runs</div>
+        <div class="bottom-tab" onclick="toggleBottom(this)" title="Expand/collapse detail">↕</div>
+      </div>
+      <div class="bottom-content" id="bottom-content" style="display:none"></div>
     </div>
   </div>
   <div class="chat-panel" id="chat-panel">
@@ -163,17 +202,126 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 const T=new URLSearchParams(location.search).get("token")||"";
 const api=(m,p,b,o)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),o?.timeoutMs||60000);return fetch(p+"?token="+encodeURIComponent(T),{method:m,headers:{"Content-Type":"application/json"},body:b?JSON.stringify(b):undefined,signal:c.signal}).finally(()=>clearTimeout(t)).then(r=>r.json())};
 let S=null, openTabs=[], activeTab=null, curPath="";
+let BRAND_SLUG='oddhobb';
+const BRANDS={oddhobb:{name:'OddHobb',mailbox:'hello@oddhobb.com',domain:'oddhobb.com',logo:'brands/oddhobb.svg',accent:'#AC64F6'},pogtown:{name:'PogTown',mailbox:'hello@pogtown.com',domain:'pogtown.com',logo:'api/brand-logo?slug=pogtown',accent:'#E8A33D'},humanvoiced:{name:'HumanVoiced',mailbox:'hello@humanvoiced.com',domain:'humanvoiced.com',logo:'api/brand-logo?slug=humanvoiced',accent:'#22B8D4'}};
+function paintBrandBar(){
+  const bar=document.getElementById('brand-bar');
+  if(!bar)return;
+  bar.innerHTML='<span style="color:var(--dim)">Brand:</span>'+Object.entries(BRANDS).map(([slug,b])=>
+    `<button onclick="setBrand('${slug}')" title="${esc(b.name)} · ${esc(b.domain)}" style="display:flex;align-items:center;gap:6px;border:1px solid ${slug===BRAND_SLUG?b.accent:'var(--border)'};border-radius:10px;padding:2px 10px 2px 2px;cursor:pointer;font-size:12px;${slug===BRAND_SLUG?'background:var(--bg3);font-weight:600':'background:transparent;color:var(--text)'}"><img src="${esc(b.logo)}" width="22" height="22" style="border-radius:6px" alt="">${esc(b.name)}</button>`
+  ).join('')+`<button onclick="setBrand('global')" title="All entities" style="border:1px solid ${'global'===BRAND_SLUG?'var(--accent)':'var(--border)'};border-radius:10px;padding:2px 10px;cursor:pointer;font-size:12px;${'global'===BRAND_SLUG?'background:var(--bg3);font-weight:600':'background:transparent;color:var(--text)'}">🌐 Global</button>`+`<span style="color:var(--dim);font-size:11px">${BRAND_SLUG==='global'?'all entities':esc(BRANDS[BRAND_SLUG].mailbox)+' · '+esc(BRANDS[BRAND_SLUG].domain)}</span>`;
+  paintTitleBrand();
+}
+function paintTitleBrand(){
+  const t=document.getElementById('title-brand');
+  if(!t)return;
+  t.textContent=BRAND_SLUG==='global'?'influence — all entities':'influence — '+BRANDS[BRAND_SLUG].name+' · '+BRANDS[BRAND_SLUG].domain;
+}
+function fileMenu(e){
+  e.stopPropagation();
+  const old=document.getElementById('file-menu');
+  if(old){old.remove();return}
+  const d=document.createElement('div');
+  d.id='file-menu';
+  d.style.cssText='position:fixed;top:32px;left:8px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:4px;z-index:99;min-width:190px';
+  d.innerHTML=[['New chat','openTab(\'chat\',true)'],['Explorer','openTab(\'explorer\',true)'],['Refresh state','refresh()'],['Onboarding kit','quickChat(\'onboarding \'+BRAND_SLUG)']].map(([l,fn])=>`<div class="tree-item" onclick="${fn};document.getElementById('file-menu').remove()">${l}</div>`).join('');
+  document.body.appendChild(d);
+  const close=ev=>{if(!d.contains(ev.target)){d.remove();document.removeEventListener('click',close)}};
+  setTimeout(()=>document.addEventListener('click',close),0);
+}
+function setBrand(slug){
+  if(slug!=='global'&&!BRANDS[slug])return;
+  BRAND_SLUG=slug;
+  if(slug!=='global')EMAIL_MAILBOX=BRANDS[slug].mailbox;
+  try{if(slug!=='global')document.documentElement.style.setProperty('--accent',BRANDS[slug].accent)}catch(e){}
+  try{let l=document.querySelector('link[rel="icon"]');if(!l){l=document.createElement('link');l.rel='icon';document.head.appendChild(l)}if(slug!=='global')l.href=BRANDS[slug].logo}catch(e){}
+  paintBrandBar();
+  const mb=document.getElementById('email-mbox');
+  if(mb)mb.value=EMAIL_MAILBOX;
+  const st=document.getElementById('sidebar-title');
+  if(st)st.textContent='Chat · '+(slug==='global'?'Global':BRANDS[slug].name);
+  fetchEmail(15);
+  if(typeof refresh==='function')refresh();
+}
+let smsCache=[], smsSeen={}, smsTimer=null, claimSmsTimer=null;
 
 function pill(s){return `<span class="pill ${s}">${s}</span>`}
-function esc(s){return String(s??'').replace(/</g,'&lt;')}
+function esc(s){return String(s??'').replace(/</g,'&lt>')}
 
-async function refresh(){try{S=await api('GET','/api/state');document.getElementById('badge-tasks').textContent=S.tasks.length;renderRail();renderTabs();if(activeTab)openTab(activeTab,true);}catch(e){}}
+function extractOtp(text){
+  const t=String(text||'');
+  const ms=t.match(/\b(\d{4,8})\b/g)||[];
+  const cands=[];
+  for(const m of ms){
+    if(m.length===4 && +m>=1990 && +m<=2100)continue;
+    if(/^0+$/.test(m))continue;
+    cands.push(m);
+  }
+  cands.sort((a,b)=>(a.length===6?0:1)-(b.length===6?0:1)||b.length-a.length);
+  return cands[0]||null;
+}
+function smsKey(m){return m.id||((m.from||'')+'|'+(m.at||'')+'|'+(m.text||'').slice(0,40))}
+async function fetchSms(limit){
+  try{
+    const r=await api('POST','/mcp',{method:'tools/call',params:{name:'phone.sms',arguments:{limit:limit||12}}});
+    const arr=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||[]);
+    smsCache=Array.isArray(arr)?arr:[];
+    let fresh=0;
+    smsCache.forEach(m=>{const k=smsKey(m);if(!smsSeen[k]){smsSeen[k]=true;fresh++}});
+    const badge=document.getElementById('badge-sms');
+    if(badge){
+      const n=smsCache.length;
+      if(n>0){badge.style.display='';badge.textContent=n;badge.className='badge'+(fresh?' hot':'')}
+      else badge.style.display='none';
+    }
+    if(fresh>0)logBottom('SMS: '+smsCache.length+' in inbox'+(smsCache[0]?.text?' — latest: '+smsCache[0].text.slice(0,60):''),'ok');
+    // keep notifications tab in sync when SMS is the signal
+    if(typeof fetchNotifications==='function' && bottomTab==='notifications'){/* counts refresh via startNotifPolling */}
+    paintSmsBits();
+    if(typeof paintHud==='function')paintHud();
+    return smsCache;
+  }catch(e){return smsCache}
+}
+function paintSmsBits(){
+  const latest=smsCache[0]||null;
+  const otp=latest?extractOtp(latest.text):null;
+  // Phone sidebar
+  const box=document.getElementById('sb-sms');
+  if(box){
+    box.innerHTML=smsCache.length?smsCache.slice(0,8).map(m=>{
+      const code=extractOtp(m.text);
+      return `<div class="sb-sms"><span class="from">← ${esc(m.from)}</span> ${esc((m.text||'').slice(0,110))}${code?` <span class="code" style="color:var(--green)">${esc(code)}</span>`:''}<br><span class="at">${esc(m.at||'')}</span></div>`;
+    }).join(''):'<div style="padding:8px;color:var(--dim)">No inbound SMS yet.</div>';
+  }
+  // Guide-card live panel
+  const live=document.getElementById('sms-live');
+  if(live){
+    if(!smsCache.length){live.innerHTML='<div style="color:var(--dim);padding:6px">Waiting for SMS… sign up, then codes land here.</div>';return}
+    let html='';
+    if(otp){
+      html+=`<div class="otp-strip">Latest code <div class="code">${esc(otp)}</div><div class="meta">from ${esc(latest.from||'?')} · ${esc(latest.at||'')}</div></div>`;
+    }
+    html+='<div class="sms-live">'+smsCache.slice(0,10).map(m=>{
+      const code=extractOtp(m.text);
+      return `<div class="row"><span class="from">← ${esc(m.from)}</span> ${esc((m.text||'').slice(0,140))}${code?` <span class="code">${esc(code)}</span>`:''}<br><span class="at">${esc(m.at||'')}</span></div>`;
+    }).join('')+'</div>';
+    live.innerHTML=html;
+  }
+}
+function startSmsPolling(){
+  fetchSms(12);
+  if(smsTimer)clearInterval(smsTimer);
+  smsTimer=setInterval(()=>fetchSms(12),8000);
+}
+function stopSmsPolling(){if(smsTimer){clearInterval(smsTimer);smsTimer=null}}
+
+async function refresh(){try{S=await api('GET','/api/state');paintBrandBar();document.getElementById('badge-tasks').textContent=S.tasks.length;renderRail();renderTabs();if(activeTab)openTab(activeTab,true);fetchSms(8);}catch(e){}}
 
 function switchView(name,el){
   document.querySelectorAll('.activity .icon').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('sidebar-title').textContent=name[0].toUpperCase()+name.slice(1);
-  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,content:renderContentSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,tasks:renderTasksSidebar,terminal:renderTerminalSidebar}[name])();
+  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,email:renderEmailSidebar,content:renderContentSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,tasks:renderTasksSidebar,terminal:renderTerminalSidebar}[name])();
 }
 function renderChatSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
@@ -273,9 +421,17 @@ function renderTasksSidebar(){
     <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)}</div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
 }
 async function depositVault(){
-  const name=document.getElementById('v-name').value.trim(),value=document.getElementById('v-value').value;
+  let name=document.getElementById('v-name').value.trim();
+  const value=document.getElementById('v-value').value;
   const kind=document.getElementById('v-kind').value;
-  if(!name||!value){logBottom('vault: name + value required','err');return}
+  if(!value){logBottom('vault: paste a value first','err');return}
+  if(!name){
+    const cand=(S?.tasks||[]).filter(t=>(BRAND_SLUG==='global'||t.influencer===BRAND_SLUG)&&/secret|key|token|password|bearer|credential|api/i.test((t.title||'')+' '+(t.instructions||'')))[0];
+    const base=cand?((cand.influencer||BRAND_SLUG)+'_'+(cand.resource_key||'secret')):(BRAND_SLUG+'_secret');
+    name=base.toUpperCase().replace(/[^A-Z0-9]+/g,'_').replace(/^_+|_+$/g,'').slice(0,48);
+    document.getElementById('v-name').value=name;
+    logBottom('vault: name inferred as '+name+' — edit before sealing if wrong','info');
+  }
   const r=await api('POST','/api/vault-store',{name,value,kind});
   logBottom(r.ok?`vault: sealed ${name}`:`vault failed: ${r.error}`,r.ok?'ok':'err');
   document.getElementById('v-value').value='';
@@ -283,7 +439,13 @@ async function depositVault(){
 }
 function renderRail(){
   const el=document.getElementById('rail-tasks');
-  el.innerHTML=((S?.tasks||[]).map(t=>`
+  const latest=smsCache[0]||null;
+  const otp=latest?extractOtp(latest.text):null;
+  const smsBanner=otp?`<div class="otp-strip" style="margin:0 0 8px">SMS code <div class="code">${esc(otp)}</div><div class="meta">${esc(latest.from||'')} · ${esc(latest.at||'')}</div></div>`:'';
+  const all=(S?.tasks||[]);
+  const mine=BRAND_SLUG==='global'?all:all.filter(t=>t.influencer===BRAND_SLUG);
+  const scope=BRAND_SLUG==='global'?'all entities':BRANDS[BRAND_SLUG].name;
+  el.innerHTML=smsBanner+`<div style="padding:4px 8px;color:var(--dim);font-size:10px">HTasks · ${esc(scope)} (${mine.length}/${all.length})</div>`+(mine.map(t=>`
     <div class="task"><div class="t">${esc(t.title)} <span class="pill ${t.urgency&&t.urgency.score>=1?'BLOCKED':t.urgency&&t.urgency.score>=0.5?'MISSING':'UNKNOWN'}" title="${esc(t.urgency?.reason||'')}">U=${t.urgency?.score??'?'}</span></div>
     <div style="color:var(--dim);font-size:10px">${esc(t.influencer)} · ${esc(t.resource_key)} · ${esc(t.id)}</div>
     <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button>${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}<button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div>
@@ -305,16 +467,32 @@ function startTask(id){
   const t=(S?.tasks||[]).find(x=>x.id===id);if(!t)return;
   openTab('chat',true);
   const m=document.getElementById('chat-messages-main');if(!m)return;
+  const isClaim=/claim-|social|otp|phone|sign/i.test((t.resource_key||'')+' '+(t.title||''));
   const lines=[t.title,'',(t.instructions||'').trim()];
   if(t.url)lines.push('','Link: '+t.url);
   lines.push('','Phone OTPs/input: https://phone.agentcom.org/app');
+  if(isClaim)lines.push('','Live SMS will appear below — codes highlighted automatically.');
   lines.push('Reply here when done, or press ✓ Done below — then I record it.');
+  lines.push('Registry: data/social_onboarding.v1.json · chat: onboarding '+(t.influencer||''));
   chatMsgMain('guide ● '+t.id,lines.join('\n'));
   const box=m.lastChild?.querySelector('.text');if(!box)return;
+  if(isClaim){
+    const live=document.createElement('div');
+    live.id='sms-live';
+    live.className='otp-strip';
+    live.innerHTML='<div style="color:var(--dim)">Loading SMS…</div>';
+    box.appendChild(live);
+    startSmsPolling();
+  }
   const row=document.createElement('div');row.className='guide-row';box.appendChild(row);
   const btn=(label,fn,ghost)=>{const b=document.createElement('button');b.textContent=label;if(ghost)b.className='ghost';b.onclick=fn;row.appendChild(b);return b};
   if(t.url)btn('Open link ↗',()=>window.open(t.url,'_blank'));
   btn('Open phone app ↗',()=>window.open('https://phone.agentcom.org/app','_blank'),!t.url);
+  btn('Full kit ↗',()=>{
+    const slug=t.influencer||'';
+    window.open('/api/onboarding?slug='+encodeURIComponent(slug),'_blank');
+  },true);
+  btn('Refresh SMS ↗',()=>fetchSms(12),true);
   if(/secret|key|token|password|bearer|credential/i.test((t.title||'')+' '+(t.instructions||'')))
     btn('Seal a secret ↓',()=>{const n=document.getElementById('v-name');if(n){n.focus();n.scrollIntoView({block:'nearest'})}logBottom('type NAME + paste value below — value never touches chat','info')},true);
   btn('✓ Done',()=>resourceDone(t.influencer,t.resource_key));
@@ -325,14 +503,16 @@ function renderTerminalSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
     <div style="padding:8px;font-size:11px;color:var(--dim)">Graph ops</div>
     <div class="tree-item" onclick="quickChat('/status')">Queue + stages</div>
+    <div class="tree-item" onclick="quickChat('socials')">Social registry</div>
+    <div class="tree-item" onclick="quickChat('onboarding oddhobb')">Onboarding kit</div>
     <div class="tree-item" onclick="termReconcile()">Reconcile all</div>
     <div class="tree-item" onclick="refresh()">Refresh state</div>`;
 }
 function renderPhoneSidebar(){
   const el=document.getElementById('sidebar-content');
   el.innerHTML=`
-    <div style="padding:8px;font-size:11px;color:var(--dim)">Phone — SMS + Calls</div>
-    <div class="tree-header">Recent SMS <span style="cursor:pointer" onclick="renderPhoneSidebar()">↻</span></div>
+    <div style="padding:8px;font-size:11px;color:var(--dim)">Phone — SMS + Calls · live every 8s</div>
+    <div class="tree-header">Recent SMS <span style="cursor:pointer" onclick="fetchSms(12)">↻</span></div>
     <div id="sb-sms"><div style="padding:8px;color:var(--dim)">Loading…</div></div>
     <div class="tree-header">Quick Actions</div>
     <div class="tree-item" onclick="loadPhoneTab('sms')">📬 SMS Messages</div>
@@ -344,12 +524,184 @@ function renderPhoneSidebar(){
       <input id="sms-text" placeholder="Message text">
       <button onclick="sendSMS()">Send</button>
     </div>`;
-  api('POST','/mcp',{method:'tools/call',params:{name:'phone.sms',arguments:{limit:5}}}).then(r=>{
+  startSmsPolling();
+}
+let emailCache=[], emailTimer=null, EMAIL_MAILBOX='hello@oddhobb.com';
+async function fetchEmail(limit){
+  try{
+    const r=await api('POST','/mcp',{method:'tools/call',params:{name:'email.inbox',arguments:{mailbox:EMAIL_MAILBOX,limit:limit||15}}});
     const arr=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||[]);
-    const box=document.getElementById('sb-sms');if(!box)return;
-    box.innerHTML=arr.length?arr.map(m=>`<div class="sb-sms"><span class="from">← ${esc(m.from)}</span> ${esc((m.text||'').slice(0,100))}<br><span class="at">${esc(m.at||'')}</span></div>`).join('')
-      :'<div style="padding:8px;color:var(--dim)">No inbound SMS yet.</div>';
-  }).catch(e=>{const box=document.getElementById('sb-sms');if(box)box.innerHTML='<div style="padding:8px;color:var(--dim)">SMS unavailable.</div>'});
+    emailCache=Array.isArray(arr)?arr:[];
+    const badge=document.getElementById('badge-email');
+    if(badge){
+      const n=emailCache.filter(m=>m.needs_reply==1||m.needs_reply===true).length||emailCache.length;
+      if(emailCache.length){badge.style.display='';badge.textContent=n}
+      else badge.style.display='none';
+    }
+    paintEmailBits();
+    if(typeof paintHud==='function')paintHud();
+    return emailCache;
+  }catch(e){return emailCache}
+}
+function paintEmailBits(){
+  const box=document.getElementById('sb-email');
+  if(box){
+    box.innerHTML=emailCache.length?emailCache.slice(0,12).map((m,i)=>{
+      const id=m.message_id||m.id||i;
+      const code=extractOtp((m.subject||'')+' '+(m.summary||''));
+      return `<div class="email-item" onclick="openEmail('${esc(id)}')" title="Open in main panel">
+      <div class="subj">✉ ${esc(m.subject||'(no subject)')}${code?` <span class="code" style="color:var(--green)">${esc(code)}</span>`:''}${m.needs_reply==1?' <span class="pill MISSING">needs</span>':''}</div>
+      <div class="meta">${esc(m.sender||'?')} · ${esc(m.received_at||'')}</div></div>`;
+    }).join('')
+      :`<div style="padding:8px;color:var(--dim)">No mail for ${esc(EMAIL_MAILBOX)} yet.</div>`;
+  }
+  const live=document.getElementById('email-live');
+  if(live){
+    const topCode=emailCache.length?extractOtp((emailCache[0].subject||'')+' '+(emailCache[0].summary||'')):null;
+    live.innerHTML=(topCode?`<div class="otp-strip">Latest code <div class="code">${esc(topCode)}</div><div class="meta">${esc(emailCache[0].subject||'')} · ${esc(emailCache[0].received_at||'')}</div></div>`:'')+(emailCache.length?emailCache.map((m,i)=>{
+      const id=m.message_id||m.id||i;
+      return `<div class="email-item" onclick="openEmail('${esc(id)}')">
+      <div class="subj">${esc(m.subject||'(no subject)')}${m.needs_reply==1?' <span class="pill MISSING">needs</span>':''}</div>
+      <div class="meta">${esc(m.sender||'?')} · ${esc(m.classification||'')} · imp ${esc(m.importance??'')}</div>
+      <div>${esc((m.summary||'').slice(0,160))}</div></div>`;
+    }).join('')
+      :`<div style="color:var(--dim);padding:6px">Waiting for mail on ${esc(EMAIL_MAILBOX)}…</div>`);
+  }
+}
+let openEmailId=null;
+async function openEmail(messageId){
+  if(!messageId)return;
+  openEmailId=messageId;
+  ensureTab('email-view');
+  // mark email tab active-ish via editor title
+  const main=document.getElementById('editor-main');
+  main.innerHTML=`<div class="email-view"><div style="color:var(--dim)">Loading email…</div></div>`;
+  let meta=null, raw=null;
+  try{
+    const r=await api('POST','/mcp',{method:'tools/call',params:{name:'email.read',arguments:{message_id:messageId}}});
+    const payload=r.result?.content?JSON.parse(r.result.content[0].text):(r.result||r);
+    if(payload.error){main.innerHTML=`<div class="email-view"><div style="color:var(--red)">${esc(payload.error)}</div></div>`;return}
+    meta=payload.meta||payload;
+    raw=payload.raw||'';
+  }catch(e){
+    // fall back to list cache
+    meta=emailCache.find(m=>(m.message_id||m.id)===messageId)||null;
+    raw='';
+  }
+  if(!meta){
+    main.innerHTML=`<div class="email-view"><div style="color:var(--dim)">Email ${esc(messageId)} not found.</div></div>`;
+    return;
+  }
+  const needs=meta.needs_reply==1||meta.needs_reply===true;
+  const bodyText=raw||meta.summary||'(no body captured — raw not in R2 yet)';
+  main.innerHTML=`<div class="email-view">
+    <div class="hdr">
+      <div style="color:var(--dim);font-size:11px;margin-bottom:6px"><a href="#" onclick="loadEmailTab();return false" style="color:var(--accent)">← inbox</a> · ${esc(meta.mailbox||EMAIL_MAILBOX)}</div>
+      <div style="font-size:16px;font-weight:600">${esc(meta.subject||'(no subject)')}</div>
+      <div class="from" style="margin-top:6px">From ${esc(meta.sender||'?')}</div>
+      <div style="color:var(--dim);font-size:11px">${esc(meta.received_at||'')} · ${esc(meta.classification||'')} · imp ${esc(meta.importance??'')} ${needs?'<span class="pill MISSING">needs reply</span>':'<span class="pill READY">ok</span>'}</div>
+    </div>
+    <div class="actions">
+      <button class="primary" onclick="draftReply('${esc(messageId)}')">Draft reply…</button>
+      <button onclick="quickChat('receipt check for ${esc(messageId)}')">Ask agent</button>
+      <button onclick="loadEmailTab()">Back to inbox</button>
+    </div>
+    <div class="body">${esc(bodyText).slice(0,8000)}</div>
+    <div style="color:var(--dim);font-size:11px;margin-top:10px">Send stays human-gated. Chat bar below works while this is open.</div>
+  </div>`;
+}
+function draftReply(messageId){
+  const meta=emailCache.find(m=>(m.message_id||m.id)===messageId)||{};
+  openTab('chat',true);
+  const lines=[
+    'Draft reply for email '+messageId,
+    'From: '+(meta.sender||'?'),
+    'Subject: Re: '+(meta.subject||'(no subject)'),
+    '',
+    'Write a short warm '+(BRAND_SLUG==='global'?'influence':BRANDS[BRAND_SLUG].name)+' reply. Draft only — do not send.',
+    'Brand: '+(BRAND_SLUG==='global'?'all entities':BRANDS[BRAND_SLUG].mailbox+' · site '+BRANDS[BRAND_SLUG].domain),
+  ];
+  chatMsgMain('draft ● '+messageId, lines.join('\n'));
+  quickChat('draft a reply to '+(meta.sender||'customer')+' about '+(meta.subject||'their email'));
+}
+function startEmailPolling(){
+  fetchEmail(15);
+  if(emailTimer)clearInterval(emailTimer);
+  emailTimer=setInterval(()=>{
+    fetchEmail(15);
+    // live-refresh open email body if still viewing
+    if(openEmailId && activeTab==='email-view') openEmail(openEmailId);
+  },12000);
+}
+let notifCache=[], agentCache=[], notifTimer=null;
+function kindIcon(k){
+  return {sms:'📱',email:'✉️',run:'🔄',receipt:'🧾',prediction:'🔮',effect:'⛓',task:'✅'}[k]||'•';
+}
+function paintNotifList(elId, items, opts){
+  const el=document.getElementById(elId);if(!el)return;
+  if(!items.length){el.innerHTML='<div style="padding:8px;color:var(--dim)">Nothing yet.</div>';return}
+  el.innerHTML=items.map(n=>{
+    const otp=n.otp?` <span class="code" style="color:var(--green)">${esc(n.otp)}</span>`:'';
+    const flag=n.needs_reply?' <span class="pill MISSING">needs</span>':(n.ok===false?' <span class="pill BLOCKED">fail</span>':' <span class="pill READY">ok</span>');
+    return `<div class="row"><span class="from">${kindIcon(n.kind)} ${esc(n.title||n.kind)}</span>${otp}${flag}
+      <br>${esc((n.body||'').slice(0,180))}
+      <br><span class="at">${esc(n.kind)} · ${esc(n.source||'')} · ${esc(n.at||'')}</span></div>`;
+  }).join('');
+}
+async function fetchNotifications(){
+  try{
+    const r=await api('GET','/api/notifications?limit=40');
+    notifCache=r.items||[];
+    window._notifCounts=r.counts||{};
+    const c=r.counts||{};
+    const bt=document.getElementById('bt-notif');
+    if(bt)bt.textContent=c.total||0;
+    const badge=document.getElementById('badge-sms');
+    // SMS badge also driven by notification sms count when present
+    if(badge && c.sms!=null){
+      // keep phone badge from fetchSms; only annotate bottom tab here
+    }
+    if(bottomTab==='notifications')paintBottom();
+    return r;
+  }catch(e){return {items:[],counts:{}}}
+}
+async function fetchAgentFeed(){
+  try{
+    const r=await api('GET','/api/agent-feed?limit=40');
+    agentCache=r.items||[];
+    window._agentCounts=r.counts||{};
+    const c=r.counts||{};
+    const bt=document.getElementById('bt-agent');
+    if(bt)bt.textContent=(c.total||0)+((c.receipts_fail||c.pending)?'':'');
+    if(bt && (c.receipts_fail||c.pending))bt.className='pill BLOCKED';
+    if(bottomTab==='agents')paintBottom();
+    return r;
+  }catch(e){return {items:[],counts:{}}}
+}
+function startNotifPolling(){
+  fetchNotifications();fetchAgentFeed();
+  if(notifTimer)clearInterval(notifTimer);
+  notifTimer=setInterval(()=>{fetchNotifications();fetchAgentFeed()},10000);
+}
+function renderEmailSidebar(){
+  const el=document.getElementById('sidebar-content');
+  el.innerHTML=`
+    <div style="padding:8px;font-size:11px;color:var(--dim)">Email — cmail · live every 12s</div>
+    <div class="frm" style="margin-bottom:6px">
+      <input id="email-mbox" value="${esc(EMAIL_MAILBOX)}" placeholder="hello@oddhobb.com">
+      <button onclick="EMAIL_MAILBOX=document.getElementById('email-mbox').value||'hello@oddhobb.com';fetchEmail(15)">Load mailbox</button>
+    </div>
+    <div class="tree-header">Recent <span style="cursor:pointer" onclick="fetchEmail(15)">↻</span></div>
+    <div id="sb-email"><div style="padding:8px;color:var(--dim)">Loading…</div></div>
+    <div class="tree-item" onclick="loadEmailTab()">📬 Open inbox tab</div>`;
+  startEmailPolling();
+}
+async function loadEmailTab(){
+  ensureTab('email');
+  const main=document.getElementById('editor-main');
+  main.innerHTML=`<h3>✉️ Email — ${esc(EMAIL_MAILBOX)}</h3><div id="email-live" style="color:var(--dim)">Loading…</div>
+    <div style="color:var(--dim);font-size:11px;margin-top:8px">Routed via Cloudflare Email Routing → cmail worker. Send stays human-gated.</div>`;
+  startEmailPolling();
 }
 function renderContentSidebar(){
   const el=document.getElementById('sidebar-content');
@@ -365,7 +717,7 @@ async function termReconcile(){const r=await api('POST','/api/reconcile',{});log
 
 function renderTabs(){
   const el=document.getElementById('editor-tabs');
-  const baseTabs=['chat','monitor','explorer','studio','agents','phone','content'];
+  const baseTabs=['chat','email-view','monitor','explorer','studio','agents','phone','email','content'];
   const infTabs=(S?.influencers||[]).map(i=>i.slug);
   const idTabs=identitiesData.map(i=>'id:'+i.slug);
   const tabs=[...baseTabs,...idTabs,...infTabs];
@@ -375,7 +727,7 @@ function renderTabs(){
   if(activeTab&&!openTabs.includes(activeTab))activeTab=openTabs[0];
   el.innerHTML=openTabs.map(t=>{
     const label=t.startsWith('id:')?t.slice(3):t;
-    const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':t==='phone'?'📱 ':t==='content'?'🎬 ':'';
+    const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='email-view'?'✉ ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':t==='phone'?'📱 ':t==='email'?'✉️ ':t==='content'?'🎬 ':'';
     return `<div class="tab ${t===activeTab?'active':''}" onclick="openTab('${t}')">${icon}${label}<span class="close" onclick="closeTab('${t}',event)">×</span></div>`}).join('');
 }
 function openTab(t,soft){
@@ -387,10 +739,9 @@ function openTab(t,soft){
     return;
   }
   if(t==='chat'){
-    main.innerHTML=`<div class="chat-messages" id="chat-messages-main" style="max-height:60vh"></div>
-      <div class="chat-input"><input id="chat-in-main" placeholder="check myname.dev · setup · tasks · decide T-001 7"><button onclick="sendChatMain()">→</button></div>
-      <div style="color:var(--dim);font-size:11px;margin-top:6px">Deterministic agent: every answer computed from live state, HLoop, or receipts. No free chat yet — an LLM narrator can sit on top later.</div>`;
-    document.getElementById('chat-in-main').addEventListener('keydown',e=>{if(e.key==='Enter')sendChatMain()});
+    // Chat history lives in the main editor; input is the persistent dock below.
+    main.innerHTML=`<div class="chat-messages" id="chat-messages-main" style="max-height:none;min-height:200px"></div>
+      <div style="color:var(--dim);font-size:11px;margin-top:8px">Deterministic agent over live state + receipts. Input is at the bottom of this panel — works on every tab.</div>`;
     renderChatHistory();
     return;
   }
@@ -420,6 +771,7 @@ function openTab(t,soft){
   const i=(S?.influencers||[]).find(x=>x.slug===t);
   if(t.startsWith('id:')){openIdentityTab(t.slice(3));return}
   if(t==='phone'){phoneHub(main);return}
+  if(t==='email'){loadEmailTab();return}
   if(t==='content'){contentHub(main);return}
   if(!i){main.innerHTML='<div style="color:var(--dim)">gone — refresh</div>';return}
   const ready=i.resources.filter(r=>r.status==='READY').length,pct=Math.round(100*ready/i.resources.length);
@@ -448,14 +800,44 @@ function openFileEntry(path,isDir){document.getElementById('file-path').value=pa
 
 let chatHistory=[];
 function renderChatHistory(){const m=document.getElementById('chat-messages-main');if(!m)return;m.innerHTML='';chatHistory.forEach(([w,x])=>chatMsgMain(w,x,true))}
-function chatMsgMain(who,text,skipStore){if(!skipStore)chatHistory.push([who,text]);const d=document.createElement('div');d.className='chat-msg '+(who==='you'?'you':'');d.innerHTML=`<div class="who">${who}</div><div class="text">${esc(text).replace(/\n/g,'<br>')}</div>`;const m=document.getElementById('chat-messages-main');if(!m)return;m.appendChild(d);m.scrollTop=999999}
+function chatMsgMain(who,text,skipStore){
+  if(!skipStore)chatHistory.push([who,text]);
+  let m=document.getElementById('chat-messages-main');
+  if(!m){
+    // chat dock works from any tab — if no history pane, open chat tab first
+    if(activeTab!=='chat'){openTab('chat',true);m=document.getElementById('chat-messages-main')}
+    if(!m)return;
+  }
+  const d=document.createElement('div');d.className='chat-msg '+(who==='you'?'you':'');
+  d.innerHTML=`<div class="who">${who}</div><div class="text">${esc(text).replace(/\n/g,'<br>')}</div>`;
+  m.appendChild(d);m.scrollTop=999999;
+}
 async function sendChatMain(){
   const inp=document.getElementById('chat-in-main');if(!inp)return;const v=inp.value.trim();if(!v)return;inp.value='';
+  // ensure chat history visible
+  if(!document.getElementById('chat-messages-main')) openTab('chat',true);
   chatMsgMain('you',v);
-  try{const r=await api('POST','/api/chat',{message:v},{timeoutMs:90000});chatMsgMain('graph',r.reply||'(empty)');if(r.refresh)refresh()}
+  const hist=chatHistory.slice(-8).map(([w,x])=>({role:String(w).toLowerCase()==='you'?'user':'assistant',content:String(x).slice(0,2000)}));
+  try{const r=await api('POST','/api/chat',{message:v,brand:BRAND_SLUG,history:hist},{timeoutMs:90000});chatMsgMain('graph',r.reply||'(empty)');if(r.refresh)refresh()}
   catch(e){chatMsgMain('graph','Error: '+e.message)}
 }
-function quickChat(msg){openTab('chat',true);const inp=document.getElementById('chat-in-main');if(inp){inp.value=msg;sendChatMain()}}
+function quickChat(msg){
+  const inp=document.getElementById('chat-in-main');
+  if(inp){inp.value=msg;sendChatMain();return}
+  openTab('chat',true);
+  const inp2=document.getElementById('chat-in-main');
+  if(inp2){inp2.value=msg;sendChatMain()}
+}
+// dock input binding (persistent)
+document.addEventListener('DOMContentLoaded',()=>{
+  const inp=document.getElementById('chat-in-main');
+  if(inp)inp.addEventListener('keydown',e=>{if(e.key==='Enter')sendChatMain()});
+});
+// also bind now (script at end of body)
+setTimeout(()=>{
+  const inp=document.getElementById('chat-in-main');
+  if(inp && !inp.dataset.bound){inp.dataset.bound='1';inp.addEventListener('keydown',e=>{if(e.key==='Enter')sendChatMain()})}
+},0);
 
 let phoneData={sms:[],calls:[]};
 function ensureTab(t){if(!openTabs.includes(t))openTabs.push(t);activeTab=t;renderTabs()}
@@ -657,17 +1039,109 @@ function renderStudio(main){
   <div id="st-vox"></div>`;
   studioRefreshArt();
 }
+function brandColorFor(source, mailbox){
+  const m=String(mailbox||source||'').toLowerCase();
+  for(const [slug,b] of Object.entries(BRANDS)){
+    if(m.includes(slug)||m.includes(b.domain))return b.accent;
+  }
+  if(/sms|phone/i.test(String(source||'')))return '#569cd6';
+  return '#808080';
+}
+function boilDown(n){
+  const otp=n.otp?` <b style="color:var(--green)">${esc(n.otp)}</b>`:'';
+  if(n.kind==='email'){
+    const dom=String(n.source||'').includes('@')?n.source.split('@')[1]:n.source;
+    return `${esc(dom||'mail')}:${otp||esc((n.title||'').slice(0,40))}`;
+  }
+  if(n.kind==='sms'){
+    const from=String(n.title||'').replace(/^SMS from /,'');
+    return `${esc(from)}:${otp||esc((n.body||'').slice(0,30))}`;
+  }
+  if(n.kind==='task')return `task ${esc((n.title||'').slice(0,44))}`;
+  return esc((n.title||n.kind||'').slice(0,44))+otp;
+}
+function hudGo(n){
+  if(n.kind==='email'&&n.ref)openEmail(n.ref);
+  else if(n.kind==='sms')openTab('phone',true);
+  else if(n.kind==='task')openTab('chat',true);
+  else if(n.kind==='receipt'||n.kind==='run')openTab('monitor',true);
+  else openTab('chat',true);
+}
+function paintHud(){
+  const bar=document.getElementById('hud');
+  if(!bar)return;
+  const seen=new Set((notifCache||[]).map(n=>n.kind+':'+(n.ref||n.id||n.title)));
+  const extra=[];
+  const topMail=(emailCache||[])[0];
+  if(topMail){
+    const code=extractOtp((topMail.subject||'')+' '+(topMail.summary||''));
+    if(code&&!seen.has('email:'+(topMail.message_id||topMail.id)))extra.push({kind:'email',source:EMAIL_MAILBOX,title:topMail.subject,body:topMail.summary,at:topMail.received_at,otp:code,ref:topMail.message_id||topMail.id,needs_reply:true});
+  }
+  const topSms=(smsCache||[])[0];
+  if(topSms){
+    const code=extractOtp(topSms.text);
+    if(code)extra.push({kind:'sms',source:'phone',title:'SMS from '+(topSms.from||'?'),body:topSms.text,at:topSms.at,otp:code,ref:topSms.id});
+  }
+  const items=[...extra,...(notifCache||[])].slice(0,8);
+  if(!items.length){bar.innerHTML='<span style="color:var(--dim)">quiet — nothing needs you</span>';return}
+  bar.innerHTML=items.map((n,i)=>{
+    const col=brandColorFor(n.source,n.source);
+    const flag=n.needs_reply?' ●':'';
+    return `<span onclick='hudGoByIdx(${i})' title="${esc(n.kind)} · ${esc(n.source||'')} · ${esc(n.at||'')} — click to open" style="cursor:pointer;border-left:3px solid ${col};background:var(--bg3);border-radius:4px;padding:2px 8px;flex-shrink:0">${boilDown(n)}<span style="color:${col}">${flag}</span></span>`;
+  }).join('');
+  bar._items=items;
+}
+function hudGoByIdx(i){
+  const n=(document.getElementById('hud')._items||[])[i];
+  if(n)hudGo(n);
+}
+let bottomTab='notifications';
+function toggleBottom(el){
+  const c=document.getElementById('bottom-content');
+  const open=c.style.display!=='none';
+  c.style.display=open?'none':'block';
+  if(!open)paintBottom();
+}
+function showBottom(name,el){
+  document.querySelectorAll('.bottom-tab').forEach(t=>t.classList.remove('active'));
+  if(el)el.classList.add('active');
+  bottomTab=name;
+  document.getElementById('bottom-content').style.display='block';
+  paintBottom();
+}
+function paintBottom(){
+  const el=document.getElementById('bottom-content');if(!el)return;
+  const ts=()=>new Date().toLocaleTimeString();
+  if(bottomTab==='notifications'){
+    const items=notifCache||[];
+    const c=window._notifCounts||{};
+    el.innerHTML=`<div class="line"><span class="ts">${ts()}</span><span class="info">notifications · ${c.total||items.length} events · ${c.sms||0} sms · ${c.email||0} email · ${c.attention||0} attention · live 10s</span></div>`+
+      (items.length?items.slice(0,40).map(n=>{
+        const otp=n.otp?` <span class="code" style="color:var(--green)">${esc(n.otp)}</span>`:'';
+        const flag=n.needs_reply?'<span class="err">needs</span>':(n.ok===false?'<span class="err">fail</span>':'<span class="ok">ok</span>');
+        return `<div class="line"><span class="ts">${esc((n.at||'').slice(11,19)||(n.at||'').slice(0,16))}</span><span class="info">${kindIcon(n.kind)} ${esc(n.kind)} · ${esc(n.title||'')}</span>${otp} ${flag}<br><span class="ts"></span><span>${esc((n.body||'').slice(0,160))}</span></div>`;
+      }).join(''):`<div class="line"><span class="ok">quiet — no notifications yet</span></div>`);
+    el.scrollTop=999999;
+  }else if(bottomTab==='agents'){
+    const items=agentCache||[];
+    const c=window._agentCounts||{};
+    el.innerHTML=`<div class="line"><span class="ts">${ts()}</span><span class="info">agents · ${c.total||items.length} events · ${c.receipts_fail||0} failed receipts · ${c.pending||0} pending · ${c.tasks||0} tasks</span></div>`+
+      (items.length?items.slice(0,40).map(n=>{
+        const flag=n.needs_reply?'<span class="err">pending</span>':(n.ok===false?'<span class="err">fail</span>':'<span class="ok">ok</span>');
+        return `<div class="line"><span class="ts">${esc((n.at||'').slice(11,19)||(n.at||'').slice(0,16))}</span><span class="info">${kindIcon(n.kind)} ${esc(n.kind)} · ${esc(n.title||'')}</span> ${flag}<br><span class="ts"></span><span>${esc((n.body||'').slice(0,160))}</span></div>`;
+      }).join(''):`<div class="line"><span class="ok">agent feed empty</span></div>`);
+    el.scrollTop=999999;
+  }else if(bottomTab==='runs'){
+    el.innerHTML='';
+    (S?.runs||[]).slice(0,20).forEach(r=>logBottom(`${r.id} ${r.summary}`, r.status==='OK'?'ok':'err'));
+    (S?.tasks||[]).slice(0,10).forEach(t=>logBottom(`${t.id} ${t.title}`,'info'));
+  }
+  paintHud();
+}
 function logBottom(text,cls='info'){
   const el=document.getElementById('bottom-content'),ts=new Date().toLocaleTimeString();
   el.innerHTML+=`<div class="line"><span class="ts">${ts}</span><span class="${cls}">${esc(text)}</span></div>`;
   el.scrollTop=999999;
-}
-function showBottom(name,el){
-  document.querySelectorAll('.bottom-tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('bottom-content').innerHTML='';
-  if(name==='tasks')(S?.tasks||[]).slice(0,20).forEach(t=>logBottom(`${t.id} ${t.title}`,'info'));
-  if(name==='runs')(S?.runs||[]).slice(0,20).forEach(r=>logBottom(`${r.id} ${r.summary}`,'ok'));
 }
 
 (function(){
@@ -678,7 +1152,7 @@ function showBottom(name,el){
   document.addEventListener('mouseup',()=>{if(dragging){dragging=false;divider.classList.remove('dragging')}});
 })();
 
-renderChatSidebar();refresh();setInterval(refresh,15000);
+renderChatSidebar();refresh();startSmsPolling();startEmailPolling();startNotifPolling();paintBottom();setInterval(refresh,15000);
 </script>
 </body>
 </html>
