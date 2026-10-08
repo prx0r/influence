@@ -9,7 +9,7 @@
 :root{--bg:#1e1e1e;--bg2:#252526;--bg3:#2d2d2d;--bg4:#3c3c3c;--border:#404040;--text:#cccccc;--dim:#808080;--blue:#569cd6;--green:#4ec9b0;--red:#f44747;--yellow:#dcdcaa;--accent:#007acc}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;display:flex;flex-direction:column}
-.titlebar{height:30px;background:var(--bg3);display:flex;align-items:center;padding:0 12px;font-size:12px;color:var(--dim);border-bottom:1px solid var(--border)}
+.titlebar{background:var(--bg3);display:flex;align-items:center;padding:4px 12px;font-size:12px;color:var(--dim);border-bottom:1px solid var(--border)}
 .titlebar .menu{display:flex;gap:4px}
 .titlebar .menu span{padding:2px 8px;border-radius:4px;cursor:pointer}
 .titlebar .menu span:hover{background:var(--bg4)}
@@ -135,8 +135,10 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 </head>
 <body>
 
-<div class="titlebar">
+<div class="titlebar" style="height:auto;min-height:30px;flex-wrap:wrap;row-gap:4px">
   <div class="menu"><span onclick="fileMenu(event)" style="cursor:pointer">File ▾</span><span onclick="quickChat('/help')" style="cursor:pointer">Help</span></div>
+  <div class="brandfloat" id="brand-bar" style="display:flex;gap:10px;align-items:flex-start;margin-left:12px"></div>
+  <div class="modefloat" id="studio-tabs" style="display:flex;gap:6px;align-items:center;margin-left:8px"></div>
   <span style="margin-left:auto" id="title-brand">influence</span>
 </div>
 
@@ -152,13 +154,12 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="icon" onclick="switchView('vault',this)" title="Vault">🔑</div>
     <div class="icon" onclick="switchView('terminal',this)" title="Terminal">🖥</div>
   </div>
-  <div class="sidebar" id="sidebar">
+  <div class="sidebar" id="sidebar" style="position:relative">
     <div class="sidebar-header" id="sidebar-title">Chat</div>
     <div class="sidebar-content" id="sidebar-content"></div>
+    <div id="sidebar-drag" style="position:absolute;top:0;right:-3px;bottom:0;width:6px;cursor:col-resize;z-index:10"></div>
   </div>
   <div class="editor-area" style="position:relative">
-    <div class="brandfloat" id="brand-bar" style="position:absolute;top:8px;left:10px;z-index:20;display:flex;gap:14px;align-items:flex-start;pointer-events:none"></div>
-    <div class="modefloat" id="studio-tabs" style="position:absolute;top:96px;left:10px;z-index:20;display:flex;gap:6px;align-items:center;pointer-events:none"></div>
     <div class="tabs" id="editor-tabs"></div>
     <div class="editor" id="editor-main"></div>
     <div class="bottom-content" id="bottom-content" style="display:none"></div>
@@ -231,7 +232,8 @@ function fileMenu(e){
   if(old){old.remove();return}
   const d=document.createElement('div');
   d.id='file-menu';
-  d.style.cssText='position:fixed;top:32px;left:8px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:4px;z-index:99;min-width:190px';
+  const tb=document.querySelector('.titlebar');
+  d.style.cssText='position:fixed;top:'+((tb?tb.offsetHeight:32)+4)+'px;left:8px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:4px;z-index:99;min-width:190px';
   d.innerHTML=[['New chat','openTab(\'chat\',true)'],['Explorer','openTab(\'explorer\',true)'],['Refresh state','refresh()'],['Onboarding kit','quickChat(\'onboarding \'+BRAND_SLUG)']].map(([l,fn])=>`<div class="tree-item" onclick="${fn};document.getElementById('file-menu').remove()">${l}</div>`).join('');
   document.body.appendChild(d);
   const close=ev=>{if(!d.contains(ev.target)){d.remove();document.removeEventListener('click',close)}};
@@ -1200,6 +1202,15 @@ function logBottom(text,cls='info'){
   document.addEventListener('mouseup',()=>{if(dragging){dragging=false;divider.classList.remove('dragging')}});
 })();
 
+(function(){
+  const drag=document.getElementById('sidebar-drag'),sb=document.getElementById('sidebar');
+  if(drag&&sb){
+    let on=false,sx=0,sw=0;
+    drag.addEventListener('mousedown',e=>{on=true;sx=e.clientX;sw=sb.offsetWidth;e.preventDefault()});
+    document.addEventListener('mousemove',e=>{if(!on)return;sb.style.width=Math.max(180,Math.min(600,sw+(e.clientX-sx)))+'px'});
+    document.addEventListener('mouseup',()=>{on=false});
+  }
+})();
 renderChatSidebar();refresh();startSmsPolling();startEmailPolling();startNotifPolling();paintBottom();setInterval(refresh,15000);
 </script>
 </body>
