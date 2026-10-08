@@ -44,11 +44,29 @@ def _urgency_of(task: dict) -> dict:
                 "reason": f"risk={risk} (judges unavailable)"}
 
 
+_STATE_CACHE: dict = {"at": 0.0, "state": None}
+STATE_TTL = 20.0
+_STORE_LOCK = None
+
+
+def _store_lock():
+    global _STORE_LOCK
+    if _STORE_LOCK is None:
+        import threading
+        _STORE_LOCK = threading.Lock()
+    return _STORE_LOCK
+
+
 def load_state() -> dict:
+    import time as _t
+    now = _t.time()
+    if _STATE_CACHE.get("state") is not None and now - _STATE_CACHE.get("at", 0) < STATE_TTL:
+        return _STATE_CACHE["state"]
     if LIVE:
         sys.path.insert(0, os.path.dirname(ROOT))
         from dash.store import live_state
-        d = live_state()
+        with _store_lock():
+            d = live_state()
     else:
         with open(SEED) as f:
             d = json.load(f)
@@ -57,6 +75,8 @@ def load_state() -> dict:
         t["urgency"] = _urgency_of(t)
     tasks.sort(key=lambda t: (-t["urgency"]["score"], t.get("id", "")))
     d["tasks"] = tasks
+    _STATE_CACHE["state"] = d
+    _STATE_CACHE["at"] = now
     return d
 
 
@@ -438,7 +458,8 @@ class Handler(SimpleHTTPRequestHandler):
             sys.path.insert(0, os.path.dirname(ROOT))
             from dash.store import live_state
             try:
-                d = live_state()
+                with _store_lock():
+                    d = live_state()
             except Exception as e:
                 return self._json({"error": str(e)[:200]}, 500)
             return self._json({"ok": True, "projects": len(d["influencers"]),
