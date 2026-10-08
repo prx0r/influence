@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="brands/oddhobb.svg">
 <title>influence</title>
 <style>
 :root{--bg:#1e1e1e;--bg2:#252526;--bg3:#2d2d2d;--bg4:#3c3c3c;--border:#404040;--text:#cccccc;--dim:#808080;--blue:#569cd6;--green:#4ec9b0;--red:#f44747;--yellow:#dcdcaa;--accent:#007acc}
@@ -156,6 +157,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
   </div>
   <div class="editor-area">
     <div class="brandbar" id="brand-bar" style="display:flex;gap:6px;padding:6px 10px;border-bottom:1px solid var(--bg4);font-size:12px;align-items:center"></div>
+    <div class="studiotabs" id="studio-tabs" style="display:flex;gap:6px;padding:6px 10px;border-bottom:1px solid var(--bg4);font-size:12px;align-items:center"></div>
     <div class="tabs" id="editor-tabs"></div>
     <div class="editor" id="editor-main"></div>
     <div class="bottom-content" id="bottom-content" style="display:none"></div>
@@ -163,7 +165,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="chat-dock" id="chat-dock">
       <div class="dock-hint">Chat · operator model + live tools · Enter to send. Human confirms sends/spends.</div>
       <div class="chat-input">
-        <input id="chat-in-main" placeholder="tasks · onboarding oddhobb · decide A-3 7 · check oddhobb.com" autocomplete="off">
+        <input id="chat-in-main" placeholder="ask anything · try: tasks, onboarding pogtown, check oddhobb.com" autocomplete="off">
         <button onclick="sendChatMain()">→</button>
       </div>
     </div>
@@ -189,6 +191,26 @@ const T=new URLSearchParams(location.search).get("token")||"";
 const api=(m,p,b,o)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),o?.timeoutMs||60000);return fetch(p+"?token="+encodeURIComponent(T),{method:m,headers:{"Content-Type":"application/json"},body:b?JSON.stringify(b):undefined,signal:c.signal}).finally(()=>clearTimeout(t)).then(r=>r.json())};
 let S=null, openTabs=[], activeTab=null, curPath="";
 let BRAND_SLUG='oddhobb';
+let STUDIO_TAB='chat';
+const STUDIO_TABS={chat:{label:'💬 Chat'},video:{label:'🎬 Video',src:'https://video.agentcom.org/'},image:{label:'🎨 Image',src:'https://image.agentcom.org/'}};
+function paintStudioTabs(){
+  const bar=document.getElementById('studio-tabs');
+  if(!bar)return;
+  const b=BRAND_SLUG==='global'?{name:'Global'}:BRANDS[BRAND_SLUG];
+  bar.innerHTML=Object.entries(STUDIO_TABS).map(([k,t])=>
+    `<button onclick="setStudioTab('${k}')" style="border:1px solid ${k===STUDIO_TAB?'var(--accent)':'var(--border)'};border-radius:10px;padding:2px 12px;cursor:pointer;font-size:12px;${k===STUDIO_TAB?'background:var(--bg3);font-weight:600':'background:transparent;color:var(--text)'}">${t.label}</button>`
+  ).join('')+`<span style="color:var(--dim);font-size:11px">${esc(b.name)} studio${STUDIO_TAB==='chat'?'':' · human does final touches here'}</span>`;
+}
+function setStudioTab(k){
+  if(!STUDIO_TABS[k])return;
+  STUDIO_TAB=k;
+  paintStudioTabs();
+  const main=document.getElementById('editor-main');
+  if(!main)return;
+  if(k==='chat'){openTab('chat',true);return}
+  const t=STUDIO_TABS[k];
+  main.innerHTML=`<iframe src="${t.src}" style="width:100%;height:100%;min-height:60vh;border:0" title="${k} studio"></iframe>`;
+}
 const BRANDS={oddhobb:{name:'OddHobb',mailbox:'hello@oddhobb.com',domain:'oddhobb.com',logo:'brands/oddhobb.svg',accent:'#AC64F6'},pogtown:{name:'PogTown',mailbox:'hello@pogtown.com',domain:'pogtown.com',logo:'api/brand-logo?slug=pogtown',accent:'#E8A33D'},humanvoiced:{name:'HumanVoiced',mailbox:'hello@humanvoiced.com',domain:'humanvoiced.com',logo:'api/brand-logo?slug=humanvoiced',accent:'#22B8D4'}};
 function paintBrandBar(){
   const bar=document.getElementById('brand-bar');
@@ -221,10 +243,11 @@ function setBrand(slug){
   try{if(slug!=='global')document.documentElement.style.setProperty('--accent',BRANDS[slug].accent)}catch(e){}
   try{let l=document.querySelector('link[rel="icon"]');if(!l){l=document.createElement('link');l.rel='icon';document.head.appendChild(l)}if(slug!=='global')l.href=BRANDS[slug].logo}catch(e){}
   paintBrandBar();
+  paintStudioTabs();
   const mb=document.getElementById('email-mbox');
   if(mb)mb.value=EMAIL_MAILBOX;
   const st=document.getElementById('sidebar-title');
-  if(st)st.textContent='Chat · '+(slug==='global'?'Global':BRANDS[slug].name);
+  if(st&&st.textContent.indexOf('Chat')===0)st.textContent='Chat · '+(slug==='global'?'Global':BRANDS[slug].name);
   fetchEmail(15);
   if(typeof refresh==='function')refresh();
 }
@@ -300,7 +323,7 @@ function startSmsPolling(){
 }
 function stopSmsPolling(){if(smsTimer){clearInterval(smsTimer);smsTimer=null}}
 
-async function refresh(){try{S=await api('GET','/api/state');paintBrandBar();renderRail();renderTabs();if(activeTab)openTab(activeTab,true);fetchSms(8);}catch(e){}}
+async function refresh(){try{S=await api('GET','/api/state');paintBrandBar();paintStudioTabs();renderRail();renderTabs();const em=document.getElementById('editor-main');const sy=em?em.scrollTop:0;if(activeTab&&STUDIO_TAB==='chat')openTab(activeTab,true);if(em)em.scrollTop=sy;fetchSms(8);}catch(e){}}
 
 function switchView(name,el){
   document.querySelectorAll('.activity .icon').forEach(i=>i.classList.remove('active'));
@@ -310,7 +333,7 @@ function switchView(name,el){
 }
 function renderChatSidebar(){
   document.getElementById('sidebar-content').innerHTML=`
-    <div style="padding:8px;font-size:11px;color:var(--dim)">Chat is the center tab. Try: tasks, decide, receipt, influencer, products.</div>
+    <div style="padding:8px;font-size:11px;color:var(--dim)">Chat is the center tab. Try: tasks, receipt, influencer, products.</div>
     <div class="tree-item" onclick="quickChat('/status')">/status — queue + stages</div>
     <div class="tree-item" onclick="quickChat('/help')">/help — all commands</div>
     <div class="tree-header">Add influencer</div>
@@ -445,7 +468,7 @@ function renderRail(){
   const scope=BRAND_SLUG==='global'?'all entities':BRANDS[BRAND_SLUG].name;
   el.innerHTML=smsBanner+`<div style="padding:4px 8px;color:var(--dim);font-size:10px">${esc(scope)} · ${mine.length}/${all.length}</div>`+(mine.map(t=>`
     <div class="task"><div class="t">${esc(taskAction(t))}</div>
-    <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button>${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}<button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
+    <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button><button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
   syncVaultName();
 }
 function dismissSms(){
@@ -458,13 +481,6 @@ function taskAction(t){
   const m=ins.match(/^(Claim|Map|Connect|Verify|Provision|Reply|Send|Approve|Review|Complete|Top up|Attach)[^.]{0,90}/);
   if(m)return m[0].trim();
   return (t.title||'').split('—')[0].split(':')[0].trim().slice(0,90);
-}
-async function decideTask(id,digit){
-  const p=await api('POST','/api/present',{task_id:id});
-  if(!p.ok){logBottom('present failed: '+p.error,'err');return}
-  const r=await api('POST','/api/decide',{task_id:id,digit,prediction_ref:p.prediction_ref});
-  logBottom(r.ok?`${id} → ${r.state}`:`rejected: ${r.error}`,r.ok?'ok':'err');
-  refresh();
 }
 async function resourceDone(slug,key){
   const r=await api('POST','/api/resource-done',{slug,resource_key:key,done:true});
@@ -732,6 +748,7 @@ function renderTabs(){
 function openTab(t,soft){
   if(!openTabs.includes(t))openTabs.push(t);
   activeTab=t;renderTabs();
+  if(t!=='chat'&&STUDIO_TAB!=='chat'){STUDIO_TAB='chat';paintStudioTabs()}
   if(BRANDS[t]&&t!==BRAND_SLUG){setBrand(t);return}
   const main=document.getElementById('editor-main');
   if(t==='monitor'){
