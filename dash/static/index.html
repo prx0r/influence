@@ -399,17 +399,35 @@ async function renderVaultSidebar(){
     <div class="tree-header">Keys (${keys.length})</div>`+
     (keys.map(k=>`<div class="vault-item"><div class="name">${esc(k.name)}</div><div class="meta">${esc(k.kind)} · ${esc(k.tier)} · uses ${k.usage?.calls||0}</div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">none yet</div>');
 }
+function suggestVaultName(){
+  const cand=(S?.tasks||[]).filter(t=>(BRAND_SLUG==='global'||t.influencer===BRAND_SLUG)&&/secret|key|token|password|bearer|credential|api/i.test((t.title||'')+' '+(t.instructions||'')))[0];
+  if(!cand)return {name:'',task:null};
+  const base=((cand.influencer||BRAND_SLUG)+'_'+(cand.resource_key||'secret'));
+  const name=base.toUpperCase().replace(/[^A-Z0-9]+/g,'_').replace(/^_+|_+$/g,'').slice(0,48);
+  return {name, task:cand};
+}
+function syncVaultName(){
+  const inp=document.getElementById('v-name');
+  if(!inp)return;
+  if(document.activeElement===inp&&inp.value)return;
+  const s=suggestVaultName();
+  if(s.name){
+    inp.value=s.name;
+    inp.title='For task '+s.task.id+' — edit me if wrong, then paste the value below';
+  } else if(!inp.value){
+    inp.placeholder='NAME (auto-fills from active task)';
+  }
+}
 async function depositVault(){
   let name=document.getElementById('v-name').value.trim();
   const value=document.getElementById('v-value').value;
   const kind=document.getElementById('v-kind').value;
   if(!value){logBottom('vault: paste a value first','err');return}
   if(!name){
-    const cand=(S?.tasks||[]).filter(t=>(BRAND_SLUG==='global'||t.influencer===BRAND_SLUG)&&/secret|key|token|password|bearer|credential|api/i.test((t.title||'')+' '+(t.instructions||'')))[0];
-    const base=cand?((cand.influencer||BRAND_SLUG)+'_'+(cand.resource_key||'secret')):(BRAND_SLUG+'_secret');
-    name=base.toUpperCase().replace(/[^A-Z0-9]+/g,'_').replace(/^_+|_+$/g,'').slice(0,48);
+    const s=suggestVaultName();
+    if(!s.name){logBottom('vault: no secret task active — type a name or start a task first','err');return}
+    name=s.name;
     document.getElementById('v-name').value=name;
-    logBottom('vault: name inferred as '+name+' — edit before sealing if wrong','info');
   }
   const r=await api('POST','/api/vault-store',{name,value,kind});
   logBottom(r.ok?`vault: sealed ${name}`:`vault failed: ${r.error}`,r.ok?'ok':'err');
@@ -428,6 +446,7 @@ function renderRail(){
   el.innerHTML=smsBanner+`<div style="padding:4px 8px;color:var(--dim);font-size:10px">${esc(scope)} · ${mine.length}/${all.length}</div>`+(mine.map(t=>`
     <div class="task"><div class="t">${esc(taskAction(t))}</div>
     <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button>${Object.entries(t.options||{}).map(([k,v])=>`<button onclick="decideTask('${t.id}','${k}')" title="${esc(v)}">${k}</button>`).join('')}<button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
+  syncVaultName();
 }
 function dismissSms(){
   const latest=smsCache[0]||null;
