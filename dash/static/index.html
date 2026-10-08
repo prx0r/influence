@@ -51,12 +51,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 .READY{background:#123f2c;color:#7fe0a8}.MISSING{background:#3f2f12;color:var(--yellow)}.BLOCKED{background:#3f1a12;color:var(--red)}.UNKNOWN{background:#2b2d2d;color:#bbb}.ERROR{background:#3f1a12;color:#fff}
 .bar{height:8px;background:#111;border-radius:6px;overflow:hidden;margin:8px 0}
 .bar i{display:block;height:100%;background:var(--green)}
-.bottom-panel{border-top:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column}
-.bottom-tabs{display:flex;border-bottom:1px solid var(--border);padding:0 8px}
-.bottom-tab{padding:6px 12px;font-size:11px;cursor:pointer;color:var(--dim);text-transform:uppercase}
-.bottom-tab:hover{color:var(--text)}
-.bottom-tab.active{color:var(--text);border-bottom:2px solid var(--accent)}
-.bottom-content{height:150px;overflow-y:auto;padding:8px 16px;font:12px/1.4 'SF Mono',Monaco,monospace;color:var(--dim)}
+.bottom-content{height:150px;overflow-y:auto;padding:8px 16px;font:12px/1.4 'SF Mono',Monaco,monospace;color:var(--dim);border-top:1px solid var(--border);background:var(--bg2)}
 .bottom-content .line{padding:1px 0}
 .bottom-content .line .ts{color:#555;margin-right:8px}
 .bottom-content .line .info{color:var(--blue)}
@@ -164,6 +159,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="brandbar" id="brand-bar" style="display:flex;gap:6px;padding:6px 10px;border-bottom:1px solid var(--bg4);font-size:12px;align-items:center"></div>
     <div class="tabs" id="editor-tabs"></div>
     <div class="editor" id="editor-main"></div>
+    <div class="bottom-content" id="bottom-content" style="display:none"></div>
     <div class="hud" id="hud" style="display:flex;gap:6px;align-items:center;padding:4px 10px;border-top:1px solid var(--border);background:var(--bg2);font-size:11px;overflow-x:auto;white-space:nowrap;min-height:26px"></div>
     <div class="chat-dock" id="chat-dock">
       <div class="dock-hint">Chat · operator model + live tools · Enter to send. Human confirms sends/spends.</div>
@@ -171,15 +167,6 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
         <input id="chat-in-main" placeholder="tasks · onboarding oddhobb · decide A-3 7 · check oddhobb.com" autocomplete="off">
         <button onclick="sendChatMain()">→</button>
       </div>
-    </div>
-    <div class="bottom-panel" id="bottom-panel">
-      <div class="bottom-tabs">
-        <div class="bottom-tab active" onclick="showBottom('notifications',this)">Notifications <span class="pill UNKNOWN" id="bt-notif" style="margin-left:4px"></span></div>
-        <div class="bottom-tab" onclick="showBottom('agents',this)">Agents <span class="pill UNKNOWN" id="bt-agent" style="margin-left:4px"></span></div>
-        <div class="bottom-tab" onclick="showBottom('runs',this)">Runs</div>
-        <div class="bottom-tab" onclick="toggleBottom(this)" title="Expand/collapse detail">↕</div>
-      </div>
-      <div class="bottom-content" id="bottom-content" style="display:none"></div>
     </div>
   </div>
   <div class="chat-panel" id="chat-panel">
@@ -1070,6 +1057,8 @@ function hudGo(n){
 function paintHud(){
   const bar=document.getElementById('hud');
   if(!bar)return;
+  const nc=window._notifCounts||{}, ac=window._agentCounts||{};
+  const tabs=`<span onclick="showBottom('notifications')" title="Notifications detail" style="cursor:pointer;color:var(--dim)">Notif <b style="color:var(--text)">${nc.total||0}</b></span><span onclick="showBottom('agents')" title="Agents detail" style="cursor:pointer;color:var(--dim)">Agents <b style="color:var(--text)">${ac.total||0}</b></span><span onclick="showBottom('runs')" title="Runs detail" style="cursor:pointer;color:var(--dim)">Runs</span>`;
   const seen=new Set((notifCache||[]).map(n=>n.kind+':'+(n.ref||n.id||n.title)));
   const extra=[];
   const topMail=(emailCache||[])[0];
@@ -1083,8 +1072,8 @@ function paintHud(){
     if(code)extra.push({kind:'sms',source:'phone',title:'SMS from '+(topSms.from||'?'),body:topSms.text,at:topSms.at,otp:code,ref:topSms.id});
   }
   const items=[...extra,...(notifCache||[])].slice(0,8);
-  if(!items.length){bar.innerHTML='<span style="color:var(--dim)">quiet — nothing needs you</span>';return}
-  bar.innerHTML=items.map((n,i)=>{
+  if(!items.length){bar.innerHTML=tabs+'<span style="color:var(--dim)">quiet — nothing needs you</span>';return}
+  bar.innerHTML=tabs+items.map((n,i)=>{
     const col=brandColorFor(n.source,n.source);
     const flag=n.needs_reply?' ●':'';
     return `<span onclick='hudGoByIdx(${i})' title="${esc(n.kind)} · ${esc(n.source||'')} · ${esc(n.at||'')} — click to open" style="cursor:pointer;border-left:3px solid ${col};background:var(--bg3);border-radius:4px;padding:2px 8px;flex-shrink:0">${boilDown(n)}<span style="color:${col}">${flag}</span></span>`;
@@ -1096,17 +1085,16 @@ function hudGoByIdx(i){
   if(n)hudGo(n);
 }
 let bottomTab='notifications';
-function toggleBottom(el){
-  const c=document.getElementById('bottom-content');
-  const open=c.style.display!=='none';
-  c.style.display=open?'none':'block';
-  if(!open)paintBottom();
-}
 function showBottom(name,el){
+  const c=document.getElementById('bottom-content');
+  if(!c)return;
+  if(bottomTab===name&&c.style.display!=='none'&&(!el||el.dataset?.hud)){
+    c.style.display='none';return;
+  }
   document.querySelectorAll('.bottom-tab').forEach(t=>t.classList.remove('active'));
-  if(el)el.classList.add('active');
+  if(el&&el.classList)el.classList.add('active');
   bottomTab=name;
-  document.getElementById('bottom-content').style.display='block';
+  c.style.display='block';
   paintBottom();
 }
 function paintBottom(){
