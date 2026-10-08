@@ -34,6 +34,8 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
     {"name": "brand.graphs", "description": "Company graphs an entity can see: bgraph export, dash project, site/companygraph, primitives (entity is the selector)",
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "brand.delegate", "description": "Hand a task to one entity's subagent (scoped voice, graphs, tools). Global orchestrator fans out per slug; replies stay brand-separated",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "task": {"type": "string"}}, "required": ["slug", "task"]}},
     {"name": "content.signals", "description": "Get top signals from a data garden (powpowpow, ukgraph, etc.)",
      "inputSchema": {"type": "object", "properties": {"garden": {"type": "string"}, "limit": {"type": "integer"}}}},
     {"name": "content.build", "description": "Build content from a signal (hook + claim + beats)",
@@ -294,6 +296,24 @@ def handle(state: dict, method: str, params: dict) -> dict:
         graphs["primitives"] = "influence/products/primitives.json"
         graphs["note"] = "entity is the selector: every graph keys off slug/store_id"
         return {"result": graphs}
+    if name == "brand.delegate":
+        slug = str(args.get("slug", "")).strip().lower()
+        task = str(args.get("task", "")).strip()
+        if not slug or not task:
+            return {"error": "slug + task required"}
+        if "[delegated" in task.lower() or "[brand:global]" in task.lower():
+            return {"error": "nested delegation refused"}
+        if slug not in ("oddhobb", "pogtown", "humanvoiced"):
+            return {"error": f"unknown entity {slug}"}
+        try:
+            import sys as _sys
+            _sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            from dash.agent_chat import agent_chat
+            out = agent_chat(f"[brand:{slug}] [delegated] {task}", state=state, history=[])
+            return {"result": {"slug": slug, "reply": out.get("reply", ""),
+                               "tools_used": out.get("tools_used", [])}}
+        except Exception as e:
+            return {"error": str(e)[:200]}
     if name == "brand.voice":
         slug = str(args.get("slug", "")).strip().lower()
         if slug == "humanvoiced":

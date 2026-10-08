@@ -33,6 +33,7 @@ READONLY_TOOLS = [
     "influencer.get",
     "brand.voice",
     "brand.graphs",
+    "brand.delegate",
     "social.platforms",
     "social.onboarding",
     "email.inbox",
@@ -96,6 +97,11 @@ TOOL_SCHEMAS = [
         "parameters": {"type": "object", "properties": {"id": {"type": "string"}}, "required": ["id"]}}},
 ]
 
+DELEGATE_SCHEMA = {"type": "function", "function": {
+    "name": "brand.delegate",
+    "description": "Hand a task to one entity's subagent (oddhobb|pogtown|humanvoiced). Use for per-entity work; replies stay brand-separated. Only callable in GLOBAL sessions.",
+    "parameters": {"type": "object", "properties": {"slug": {"type": "string"}, "task": {"type": "string"}}, "required": ["slug", "task"]}}},
+
 SYSTEM_ODDHOBB = """You are the influence dash operator for brand OddHobb (@oddhobbstudio, oddhobb.com).
 
 You inspect live state via tools, then answer in plain English. You do NOT:
@@ -104,6 +110,7 @@ You inspect live state via tools, then answer in plain English. You do NOT:
 - reveal secrets, vault values, or API keys
 
 You DO:
+- call brand.voice for your slug FIRST and ground every fact in it (handles, voice, gates); kits/dash are fallback
 - call tools to read queue, influencer passport, social onboarding kit, email, SMS
 - explain next human steps (claim TikTok/X, reply DONE, seal secrets)
 - cite what the tool returned; if empty, say so honestly
@@ -115,7 +122,7 @@ Brand context:
 - Social kit registry: data/social_onboarding.v1.json
 
 When you need data, call one tool then answer. Keep replies short and actionable.
-If the user asks to post/send/buy: refuse execution, offer the human path (task digit 7 / vault / claim kit).
+If the user asks to post/send/buy: refuse execution, offer the human path (press start on the task / vault / claim kit).
 """
 
 SYSTEM_POGTOWN = """You are the influence dash operator for brand PogTown (@pogtown, pogtown.com).
@@ -126,17 +133,18 @@ You inspect live state via tools, then answer in plain English. You do NOT:
 - reveal secrets, vault values, or API keys
 
 You DO:
+- call brand.voice for your slug FIRST and ground every fact in it (handles, voice, gates); kits/dash are fallback
 - call tools to read queue, influencer passport, social onboarding kit, email, SMS
 - explain next human steps and cite what the tool returned; if empty, say so honestly
 
 Brand context:
-- Handle @pogtown (unclaimed) · domain pogtown.com · email hello@pogtown.com
+- X @pogtown CLAIMED 2026-10-08 · other handles @pogtown unclaimed · domain pogtown.com · email hello@pogtown.com
 - Sibling to OddHobb, own brand/store_id pogtown. Never mix the two brands.
 - Dash: human tasks + receipts; publish stays human_confirm
 - Social kit registry: data/social_onboarding.v1.json
 
 When you need data, call one tool then answer. Keep replies short and actionable.
-If the user asks to post/send/buy: refuse execution, offer the human path (task digit 7 / vault / claim kit).
+If the user asks to post/send/buy: refuse execution, offer the human path (press start on the task / vault / claim kit).
 """
 
 SYSTEM = SYSTEM_ODDHOBB
@@ -170,6 +178,7 @@ You inspect live state via tools, then answer in plain English. You do NOT:
 - reveal secrets, vault values, or API keys
 
 You DO:
+- call brand.voice for your slug FIRST and ground every fact in it (handles, voice, gates); kits/dash are fallback
 - call tools to read queue, influencer passport, social onboarding kit, email, SMS
 - explain next human steps and cite what the tool returned; if empty, say so honestly
 
@@ -179,7 +188,7 @@ Brand context:
 - Dash: human tasks + receipts; publish stays human_confirm
 
 When you need data, call one tool then answer. Keep replies short and actionable.
-If the user asks to post/send/buy: refuse execution, offer the human path (task digit 7 / vault / claim kit).
+If the user asks to post/send/buy: refuse execution, offer the human path (press start on the task / vault / claim kit).
 """
 
 
@@ -296,6 +305,7 @@ def agent_chat(message: str, state: dict | None = None, history: list[dict] | No
         return {"error": "llm_unavailable", "reply": "Operator model unavailable (no key). Deterministic mode."}
 
     messages: list[dict] = [{"role": "system", "content": _system_for(msg)}]
+    schemas = TOOL_SCHEMAS + [DELEGATE_SCHEMA] if _system_for(msg) is SYSTEM_GLOBAL else TOOL_SCHEMAS
     for h in (history or [])[-8:]:
         if h.get("role") in ("user", "assistant") and h.get("content"):
             messages.append({"role": h["role"], "content": str(h["content"])[:2000]})
@@ -304,7 +314,7 @@ def agent_chat(message: str, state: dict | None = None, history: list[dict] | No
     tools_used: list[str] = []
     try:
         for _ in range(MAX_TOOL_ROUNDS):
-            assistant = _call_llm(messages, tools=TOOL_SCHEMAS)
+            assistant = _call_llm(messages, tools=schemas)
             tool_calls = assistant.get("tool_calls") or []
             content = (assistant.get("content") or "").strip()
             if not tool_calls:
