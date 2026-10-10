@@ -46,8 +46,12 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "pack.list", "description": "List product packs with validation gaps (read-only)",
      "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}}, "required": []}},
-    {"name": "pack.compile", "description": "Dry-run compile one pack for all channels (read-only, never pushes)",
-     "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}}, "required": ["sku"]}},
+    {"name": "pack.compile", "description": "Dry-run compile one pack (read-only, zero DB writes, never pushes)",
+     "inputSchema": {"type": "object", "properties": {"sku": {"type": "string"}, "brand": {"type": "string"}, "channel": {"type": "string"}}, "required": ["sku"]}},
+    {"name": "release.create", "description": "Draft ChannelRelease + ReviewBundle + approval task (writes draft rows, never publishes)",
+     "inputSchema": {"type": "object", "properties": {"sku": {"type": "string"}, "brand": {"type": "string"}, "channel": {"type": "string"}, "campaign": {"type": "string"}}, "required": ["sku"]}},
+    {"name": "task.status", "description": "Poll effect approval task state + payload hash + receipt (read-only)",
+     "inputSchema": {"type": "object", "properties": {"task_id": {"type": "integer"}}, "required": ["task_id"]}},
     {"name": "campaign.list", "description": "List campaigns with item counts (read-only)",
      "inputSchema": {"type": "object", "properties": {"brand": {"type": "string"}}, "required": []}},
     {"name": "etsy.listing", "description": "Preview 'add this product to Etsy': template + payload + images + coherence (read-only, never pushes)",
@@ -627,7 +631,7 @@ def handle(state: dict, method: str, params: dict) -> dict:
                                       str(args.get("sku") or ""))}
         except Exception as e:
             return {"error": str(e)[:250]}
-    if name in ("pack.list", "pack.compile", "campaign.list", "actions.list"):
+    if name in ("pack.list", "pack.compile", "release.create", "task.status", "campaign.list", "actions.list"):
         try:
             import sys as _sys2
             _sys2.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -638,12 +642,30 @@ def handle(state: dict, method: str, params: dict) -> dict:
                 from pipeline.catalog import list_packs
                 return {"result": list_packs(args.get("level"))}
             if name == "pack.compile":
+                from pipeline.runner import preview_pack
+                sku = str(args.get("sku") or "")
+                if not sku:
+                    return {"error": "sku required"}
+                return {"result": preview_pack(sku, str(args.get("brand") or "oddhobb"),
+                                               str(args.get("channel") or "etsy"))}
+            if name == "release.create":
                 from pipeline.runner import run_pack
                 sku = str(args.get("sku") or "")
                 if not sku:
                     return {"error": "sku required"}
                 return {"result": run_pack(sku, str(args.get("brand") or "oddhobb"),
-                                           campaign=args.get("campaign"))}
+                                           str(args.get("channel") or "etsy"),
+                                           args.get("campaign"))}
+            if name == "task.status":
+                from pipeline.effects import get_task
+                t = get_task(int(args.get("task_id", 0)))
+                if not t:
+                    return {"error": "unknown task"}
+                return {"result": {"task_id": t["id"], "state": t["state"],
+                                   "brand": t["brand"], "kind": t["kind"],
+                                   "payload_hash": (t.get("payload_hash") or "")[:16],
+                                   "receipt_id": t.get("receipt_id"),
+                                   "decision": t.get("decision")}}
             if name == "campaign.list":
                 from pipeline.campaign import list_campaigns
                 return {"result": list_campaigns(args.get("brand"))}

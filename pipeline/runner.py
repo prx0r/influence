@@ -16,18 +16,41 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(_HERE))
 try:
     from catalog import load as catalog_load, level, may, pack_hash, listing_images
-    from release import create as release_create, get as release_get
+    from release import create as release_create, get as release_get, resolve_price
     from compilers.etsy import compile_catalog
     from compilers.template import build_catalog_description
     from effects import create_bundle, propose, transition
     from actions import log_action
 except ImportError:
     from pipeline.catalog import load as catalog_load, level, may, pack_hash, listing_images
-    from pipeline.release import create as release_create, get as release_get
+    from pipeline.release import create as release_create, get as release_get, resolve_price
     from pipeline.compilers.etsy import compile_catalog
     from pipeline.compilers.template import build_catalog_description
     from pipeline.effects import create_bundle, propose, transition
     from pipeline.actions import log_action
+
+
+def preview_pack(sku: str, brand: str = "oddhobb",
+                 channel: str = "etsy") -> dict:
+    """Pure dry-run: compile + validate, zero DB writes. Safe for GET."""
+    lv = level(sku)
+    if channel in ("etsy", "shopify", "pinterest", "x", "instagram",
+                   "tiktok", "youtube") and not may(sku, "listing"):
+        return {"ok": False, "sku": sku, "level": lv,
+                "reason": f"{sku} is {lv}: {channel} requires LISTABLE+"}
+    if channel == "etsy":
+        c = compile_catalog(sku)
+        payload, warnings = c["payload"], c["warnings"]
+    else:
+        return {"ok": False, "reason": f"channel compiler for {channel} not yet ported"}
+    media = [{"file": im["file"], "sha256": im["sha256"][:16]}
+             for im in listing_images(sku)]
+    pr = resolve_price(sku)
+    return {"ok": True, "sku": sku, "level": lv,
+            "payload_fields": sorted(payload.keys()),
+            "payload_preview": {k: (str(v)[:200]) for k, v in payload.items()},
+            "media": media, "price": pr, "warnings": warnings,
+            "dry_run": True}
 
 
 def run_pack(sku: str, brand: str = "oddhobb", channel: str = "etsy",

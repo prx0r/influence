@@ -445,15 +445,19 @@ class Handler(SimpleHTTPRequestHandler):
             except Exception as e:
                 return self._json({"error": str(e)[:200], "packs": []}, 500)
         if self._route() == "/api/compile":
+            # Pure dry-run preview: zero DB writes. Use POST /api/release/create
+            # to draft a release + bundle + task.
             try:
                 sys.path.insert(0, os.path.dirname(ROOT))
-                from pipeline.runner import run_pack
+                from pipeline.runner import preview_pack
                 q = parse_qs(urlparse(self.path).query)
                 sku = (q.get("sku") or [""])[0]
-                store = (q.get("store") or ["oddhobb"])[0]
                 if not sku:
                     return self._json({"error": "sku required"}, 400)
-                return self._json(run_pack(store, sku, dry_run=True))
+                return self._json(preview_pack(
+                    sku,
+                    (q.get("brand") or ["oddhobb"])[0],
+                    (q.get("channel") or ["etsy"])[0]))
             except Exception as e:
                 return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/etsy-listing":
@@ -494,6 +498,25 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json({"queue": queue(brand)})
             except Exception as e:
                 return self._json({"error": str(e)[:200], "queue": []}, 500)
+        if self._route() == "/api/task/status":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.effects import get_task
+                q = parse_qs(urlparse(self.path).query)
+                tid = (q.get("task_id") or [""])[0]
+                if not tid:
+                    return self._json({"error": "task_id required"}, 400)
+                t = get_task(int(tid))
+                if not t:
+                    return self._json({"error": "unknown task"}, 404)
+                return self._json({"task_id": t["id"], "state": t["state"],
+                                   "brand": t["brand"], "kind": t["kind"],
+                                   "payload_hash": t["payload_hash"][:16] if t.get("payload_hash") else None,
+                                   "receipt_id": t.get("receipt_id"),
+                                   "decision": t.get("decision"),
+                                   "risk_class": t.get("risk_class")})
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/actions-totals":
             try:
                 sys.path.insert(0, os.path.dirname(ROOT))
@@ -542,6 +565,26 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if not self._authed():
             return self._json({"error": "forbidden"}, 403)
+        if self._route() == "/api/release/create":
+            # Draft release + ReviewBundle + effect task. Never pushes.
+            # Publishing is: approve task → runtime.execute → adapter → verify.
+            try:
+                n = int(self.headers.get("Content-Length", "0"))
+                body = json.loads(self.rfile.read(n) or b"{}")
+            except Exception:
+                return self._json({"error": "bad json"}, 400)
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.runner import run_pack
+                sku = str(body.get("sku") or "")
+                if not sku:
+                    return self._json({"error": "sku required"}, 400)
+                out = run_pack(sku, str(body.get("brand") or "oddhobb"),
+                               str(body.get("channel") or "etsy"),
+                               body.get("campaign"))
+                return self._json(out)
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/review/decide":
             # APPROVE / REJECT / CHANGE on an effect task. (dirs 15-17, 23)
             # APPROVE binds the frozen payload hash — never prose.
