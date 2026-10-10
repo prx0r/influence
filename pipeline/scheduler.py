@@ -77,6 +77,127 @@ def queue_post(platform: str, handle: str, content: str,
             "note": "queued. Publishes via scheduler after human approval."}
 
 
+def _adapters():
+    """Import stevejobless adapters (plain publish functions)."""
+    import sys as _sys
+    _sys.path.insert(0, "/root/stevejobless")
+    try:
+        from stevejobless.publisher.adapters import ADAPTERS
+        return ADAPTERS
+    except Exception:
+        return {}
+
+
+def _account_tokens(db, business_slug: str, platform: str) -> dict:
+    try:
+        row = db.execute(
+            "SELECT access_token, refresh_token, extra FROM social_accounts_v2"
+            " WHERE business_slug=? AND platform=? LIMIT 1",
+            (business_slug, platform)).fetchone()
+    except Exception:
+        return {}
+    if not row:
+        return {}
+    toks = {"access_token": row[0] or "", "refresh_token": row[1] or ""}
+    try:
+        toks.update(json.loads(row[2] or "{}"))
+    except Exception:
+        pass
+    return toks
+
+
+def run_due(steve_db: str = STEVE_DB, max_posts: int = 10) -> dict:
+    """Fire due approved posts. Called by systemd timer every 5 min.
+
+    For each due row (scheduled/retry, time reached, attempts<3):
+    per-account gate → adapter.publish → verify → receipt → learn.
+    Publication proves post.published=TRUE (never from queueing alone).
+    """
+    try:
+        from channel_state import can_publish, record_post
+        from actions import log_action as _log
+        from learn import record_publication
+    except ImportError:
+        from pipeline.channel_state import can_publish, record_post
+        from pipeline.actions import log_action as _log
+        from pipeline.learn import record_publication
+    adapters = _adapters()
+    db = sqlite3.connect(steve_db, timeout=30)
+    try:
+        cols = [r[1] for r in db.execute("PRAGMA table_info(post_queue)").fetchall()]
+        now = datetime.now(timezone.utc).isoformat()
+        rows = db.execute(
+            "SELECT id,business_slug,platform,content,media_urls FROM post_queue"
+            " WHERE status IN ('scheduled','retry') AND scheduled_at <= ?"
+            " AND attempts < 3 ORDER BY scheduled_at LIMIT ?",
+            (now, max_posts)).fetchall()
+    except Exception as e:
+        db.close()
+        return {"ok": False, "reason": f"queue read failed: {e}"[:150]}
+    fired, skipped, failed = [], [], []
+    for pid, brand, platform, content, media_urls in rows:
+        # handle lookup for gate (business_slug → brand mapping)
+        handles = {"x": "@oddhobb", "instagram": "@oddhobbstudio",
+                   "tiktok": "@oddhobb", "youtube": "@oddhobbstudio",
+                   "pinterest": "@oddhobbstudio"}
+        gate = can_publish(platform, handles.get(platform, ""), 0.7)
+        if not gate["ok"]:
+            skipped.append({"id": pid, "reason": gate["reason"]})
+            continue
+        adapter = adapters.get(platform)
+        if not adapter:
+            skipped.append({"id": pid, "reason": f"no adapter for {platform}"})
+            continue
+        media = (media_urls or "").split(",") if media_urls else []
+        media = [m for m in media if m]
+        toks = _account_tokens(db, brand, platform)
+        try:
+            ok, external_id, error = adapter.publish(content, media or None, None, toks)
+        except Exception as e:  # noqa: BLE001
+            ok, external_id, error = False, "", str(e)[:200]
+        try:
+            if ok:
+                db.execute("UPDATE post_queue SET status='published', posted_at=?,"
+                           " external_id=?, error=NULL, attempts=attempts+1 WHERE id=?",
+                           (datetime.now(timezone.utc).isoformat(), external_id, pid))
+                db.commit()
+                record_post(platform, handles.get(platform, ""))
+                # learn: only verified publications enter (dir 33)
+                try:
+                    record_publication(platform, handles.get(platform, ""),
+                                       external_id, f"receipt:post-{pid}",
+                                       body=(content or "")[:500],
+                                       brand_slug=brand)
+                except Exception:
+                    pass
+                _log("scheduler", f"PUBLISHED {platform} post {pid} → {external_id}",
+                     0.0, None, None, brand, str(external_id), 3, 3, None, "PASS")
+                fired.append({"id": pid, "external_id": external_id})
+            else:
+                db.execute("UPDATE post_queue SET attempts=attempts+1, error=?,"
+                           " status=CASE WHEN attempts+1>=3 THEN 'dead' ELSE 'retry' END"
+                           " WHERE id=?", (error[:300], pid))
+                db.commit()
+                _log("scheduler", f"FAILED {platform} post {pid}: {error[:100]}",
+                     0.0, None, None, brand, None, 0, 1, None, "FAIL")
+                failed.append({"id": pid, "error": error[:150]})
+        except Exception as e:
+            failed.append({"id": pid, "error": str(e)[:150]})
+    db.close()
+    return {"ok": True, "fired": fired, "skipped": skipped, "failed": failed}
+
+
+if __name__ == "__main__":
+    import argparse
+    _ap = argparse.ArgumentParser()
+    _ap.add_argument("--tick", action="store_true", help="fire due posts once")
+    _ap.add_argument("--max", type=int, default=10)
+    _a = _ap.parse_args()
+    if _a.tick:
+        import json as _j
+        print(_j.dumps(run_due(max_posts=_a.max)))
+
+
 def queue_pack_social(pack: dict, compiled: dict,
                       handles: dict | None = None,
                       brand_slug: str = "oddhobb",

@@ -69,10 +69,28 @@ def compile_youtube(pack: dict) -> dict:
 
 
 def compile_all(pack: dict, shop_url: str = "",
-                brand_tags: list[str] | None = None) -> dict:
-    return {
+                brand_tags: list[str] | None = None,
+                brand_slug: str = "oddhobb") -> dict:
+    """Compile all variants. Brand voice/style from bgraph when available."""
+    try:
+        import os as _os
+        import sys as _sys
+        _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+        try:
+            from brand import get_context
+        except ImportError:
+            from pipeline.brand import get_context
+        ctx = get_context(brand_slug)
+    except Exception:
+        ctx = {}
+    out = {
         "x": compile_x(pack, shop_url),
         "instagram": compile_instagram(pack, brand_tags),
         "tiktok": compile_tiktok(pack),
         "youtube": compile_youtube(pack),
     }
+    if ctx:
+        out["_brand"] = {"voice": ctx.get("voice", ""),
+                         "domain": ctx.get("domain", ""),
+                         "gaps": ctx.get("gaps", [])}
+    return out

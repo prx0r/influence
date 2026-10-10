@@ -14,6 +14,26 @@ SECTIONS = ("hook", "what", "how", "specs", "shipping", "brand")
 
 BRAND_SIGNOFF = "— OddHobb · odd little gifts for the things they're obsessed with."
 
+
+def brand_signoff(brand_slug: str = "oddhobb") -> str:
+    """Sign-off from bgraph voice. Falls back to OddHobb default."""
+    try:
+        import os as _os
+        import sys as _sys
+        _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+        try:
+            from brand import get_context
+        except ImportError:
+            from pipeline.brand import get_context
+        ctx = get_context(brand_slug)
+        disp = ctx.get("display_name", brand_slug)
+        dom = ctx.get("domain", "")
+        if disp and dom:
+            return f"— {disp} · {dom}"
+    except Exception:
+        pass
+    return BRAND_SIGNOFF
+
 # ── image slots ─────────────────────────────────────────────────────────
 # Full spec: oddhobbies/etsy-pack/IMAGES.md (deconstructed from listing
 # 4584650499 "Your Own Brick Figure"). 5 essential images, fixed order.
