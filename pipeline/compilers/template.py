@@ -14,7 +14,10 @@ SECTIONS = ("hook", "what", "how", "specs", "shipping", "brand")
 
 BRAND_SIGNOFF = "— OddHobb · odd little gifts for the things they're obsessed with."
 
-# ── image slots (Etsy allows 10) ────────────────────────────────────────
+# ── image slots ─────────────────────────────────────────────────────────
+# Full spec: oddhobbies/etsy-pack/IMAGES.md (deconstructed from listing
+# 4584650499 "Your Own Brick Figure"). 5 essential images, fixed order.
+# Slots 6-10 reserved for future expansion; Etsy allows 10.
 IMAGE_SLOTS = [
     {"slot": 1, "role": "hero", "required": True,
      "desc": "Main product image — clean surface, warm light, fills frame"},
