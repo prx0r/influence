@@ -75,3 +75,28 @@ class RunLog(Base):
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     status: Mapped[str] = mapped_column(String(32), default="RUNNING")
     summary: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class AuditedAction(Base):
+    """Every API call, publish, or spend. One row per action. See RUNTIME.md."""
+    __tablename__ = "actions"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, index=True)
+    channel: Mapped[str] = mapped_column(String(64), index=True)  # fal|qwen|etsy|x|prodigi|...
+    action: Mapped[str] = mapped_column(String(240))  # flux/dev image|PATCH listing|...
+    project_id: Mapped[int | None] = mapped_column(ForeignKey("projects.id", ondelete="SET NULL"), nullable=True, index=True)
+    campaign: Mapped[str | None] = mapped_column(String(120), nullable=True, index=True)
+    sku: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    cost_usd: Mapped[float] = mapped_column(default=0.0)
+    cost_cents: Mapped[int] = mapped_column(Integer, default=0)
+    external_id: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    gates_passed: Mapped[int] = mapped_column(Integer, default=0)
+    gates_total: Mapped[int] = mapped_column(Integer, default=0)
+    receipt_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    status: Mapped[str] = mapped_column(String(16), default="UNKNOWN", index=True)  # PASS|FAIL|UNKNOWN
+    grant_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    payload_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    response_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+
+    project: Mapped[Project | None] = relationship()

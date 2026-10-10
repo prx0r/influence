@@ -349,6 +349,96 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json(agent_feed(limit=limit))
             except Exception as e:
                 return self._json({"error": str(e)[:200], "items": [], "counts": {}}, 500)
+        if self._route() == "/api/actions":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.actions import list_actions, totals
+                q = parse_qs(urlparse(self.path).query)
+                channel = (q.get("channel") or [None])[0]
+                campaign = (q.get("campaign") or [None])[0]
+                status = (q.get("status") or [None])[0]
+                try:
+                    limit = int(str((q.get("limit") or ["50"])[0]).split("?")[0] or 50)
+                except ValueError:
+                    limit = 50
+                limit = max(1, min(limit, 200))
+                return self._json({
+                    "actions": list_actions(channel, campaign, status, limit),
+                    "totals": totals(campaign),
+                })
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "actions": [], "totals": {}}, 500)
+        if self._route() == "/api/suppliers":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.suppliers import list_suppliers, quiet
+                q = parse_qs(urlparse(self.path).query)
+                status = (q.get("status") or [None])[0]
+                return self._json({
+                    "suppliers": list_suppliers(status),
+                    "chase": quiet(),
+                })
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "suppliers": []}, 500)
+        if self._route() == "/api/supplier-thread":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.suppliers import thread, latest
+                q = parse_qs(urlparse(self.path).query)
+                slug = (q.get("slug") or [""])[0]
+                if not slug:
+                    return self._json({"error": "slug required"}, 400)
+                return self._json({
+                    "thread": thread(slug),
+                    "latest": latest(slug),
+                })
+            except KeyError as e:
+                return self._json({"error": str(e)[:160]}, 404)
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
+        if self._route() == "/api/accounts":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.channel_state import list_accounts, can_publish
+                q = parse_qs(urlparse(self.path).query)
+                brand = (q.get("brand") or [None])[0]
+                return self._json({"accounts": list_accounts(brand)})
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "accounts": []}, 500)
+        if self._route() == "/api/campaigns":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.campaign import list_campaigns, get_campaign
+                q = parse_qs(urlparse(self.path).query)
+                cid = (q.get("id") or [None])[0]
+                brand = (q.get("brand") or [None])[0]
+                if cid:
+                    c = get_campaign(int(cid))
+                    return self._json({"campaign": c} if c else {"error": "not found"}, 200 if c else 404)
+                return self._json({"campaigns": list_campaigns(brand)})
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "campaigns": []}, 500)
+        if self._route() == "/api/goals":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.goals import list_goals, goal_status
+                q = parse_qs(urlparse(self.path).query)
+                gid = (q.get("id") or [None])[0]
+                entity = (q.get("entity") or [None])[0]
+                if gid:
+                    return self._json({"goal": goal_status(int(gid))})
+                return self._json({"goals": list_goals(entity)})
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "goals": []}, 500)
+        if self._route() == "/api/actions-totals":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.actions import totals
+                q = parse_qs(urlparse(self.path).query)
+                campaign = (q.get("campaign") or [None])[0]
+                return self._json(totals(campaign))
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/agents":
             # HLoop present→decide trail + journal effect states. This is the
             # agent-activity ledger the Agents tab renders. Worker/subagent
