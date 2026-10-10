@@ -15,7 +15,7 @@ LAW_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 
 def use_law() -> str:
     """Ensure `import acom` resolves to the vendored fork first. Returns dir used."""
-    for candidate in (LAW_DIR, os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately")):
+    for candidate in (LAW_DIR, os.getenv("QPRIVATELY_PATH", "/root/qprivately")):
         if candidate and os.path.isdir(os.path.join(candidate, "acom")):
             if candidate not in sys.path:
                 sys.path.insert(0, candidate)

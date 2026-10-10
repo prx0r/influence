@@ -65,6 +65,56 @@ def compile_etsy(pack: dict) -> dict:
     return {"payload": payload, "warnings": warnings}
 
 
+def compile_catalog(sku: str) -> dict:
+    """Pack → Etsy PATCH payload from pogpet/catalog/packs. (dirs 2, 7)
+
+    Reads catalog listing block (title/tags/materials/description).
+    Price resolved separately via release.resolve_price (never here).
+    Description assembled by template.build_catalog_description.
+    """
+    import os as _os
+    import sys as _sys
+    _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+    try:
+        from catalog import load as _cload, level as _level
+    except ImportError:
+        from pipeline.catalog import load as _cload, level as _level
+    p = _cload(sku)
+    listing = p.get("listing") or {}
+    warnings: list[str] = []
+    payload: dict = {}
+
+    title = (listing.get("title") or "").strip()
+    if len(title) > TITLE_MAX:
+        warnings.append(f"title {len(title)} > {TITLE_MAX}, truncating")
+        title = title[:TITLE_MAX].rsplit(" ", 1)[0]
+    if title:
+        payload["title"] = title
+
+    # description via template (shape) + catalog fields (facts)
+    try:
+        from template import build_catalog_description
+    except ImportError:
+        from pipeline.compilers.template import build_catalog_description
+    desc, dw = build_catalog_description(sku)
+    payload["description"] = desc
+    warnings += dw
+
+    tags = normalize_tags(listing.get("tags") or [])
+    if tags:
+        payload["tags"] = tags
+
+    # taxonomy: catalog packs don't carry Etsy taxonomy yet → gap, not guess
+    # (caller resolves via taxonomy map or leaves for human)
+    warnings.append("taxonomy: resolve from product type (not in catalog pack)")
+
+    materials = listing.get("materials") or []
+    if materials:
+        payload["materials"] = materials
+
+    return {"payload": payload, "warnings": warnings, "level": _level(sku)}
+
+
 def diff_against_live(payload: dict, live: dict) -> dict:
     """Show what would change. Returns {field: (old, new)} for differing fields."""
     diff = {}

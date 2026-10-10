@@ -93,12 +93,41 @@ def slideshow(image_paths: list[str], out_path: str,
             "mb": round(mb, 1), "images": len(image_paths), "cost_usd": 0.0}
 
 
-def manifest(sku: str, assets: list[dict], out_dir: str) -> str:
-    """Write manifest of exactly what produced each asset. Returns path."""
+def manifest(sku: str, assets: list[dict], out_dir: str,
+             pack_hash: str = "", transform_id: str = "",
+             transform_version: str = "", provider: str = "",
+             model: str = "", prompt_hash: str = "",
+             template: str = "", cost_usd: float = 0.0,
+             qc: dict | None = None) -> str:
+    """Write manifest binding every output to its lineage. (dir 31)
+
+    pack_hash + source asset hashes + transform + prompt hash + provider +
+    template + output hash + cost + QC. Only immutable artifacts move
+    into ReviewBundles. Product foreground never AI-invented.
+    """
+    import hashlib as _hl
     os.makedirs(out_dir, exist_ok=True)
+    enriched = []
+    for a in assets:
+        a = dict(a)
+        a["output_hash"] = "sha256:" + _hl.sha256(
+            json.dumps(a.get("out", ""), sort_keys=True).encode()).hexdigest()[:16]
+        enriched.append(a)
     path = os.path.join(out_dir, f"{sku}-media-manifest.json")
     with open(path, "w") as f:
-        json.dump({"sku": sku, "assets": assets}, f, indent=1)
+        json.dump({
+            "sku": sku,
+            "pack_hash": pack_hash,
+            "transform": {"id": transform_id, "version": transform_version},
+            "prompt_hash": prompt_hash,
+            "provider": provider, "model": model,
+            "renderer_template": template,
+            "cost_usd": cost_usd,
+            "qc": qc or {},
+            "created_at": __import__("datetime").datetime.now(
+                __import__("datetime").timezone.utc).isoformat(),
+            "assets": enriched,
+        }, f, indent=1)
     return path
 
 

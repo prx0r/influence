@@ -43,8 +43,15 @@ def _req(method: str, url: str, body: dict | None = None) -> dict:
 
 
 def push_listing(listing_id: str, payload: dict, sku: str = "",
-                 campaign: str | None = None, dry_run: bool = True) -> dict:
-    """Push PATCH (or dry-run). Always verifies + receipts + audits."""
+                 campaign: str | None = None, dry_run: bool = True,
+                 ctx: dict | None = None) -> dict:
+    """Push PATCH (or dry-run). Always verifies + receipts + audits.
+
+    dir 9: live pushes REQUIRE an execution context with a verified grant:
+    ctx = {"grant": {...}, "spec_id": "...", "payload_hash": "sha256:..."}.
+    The payload hash must match the granted hash exactly — any drift fails
+    closed. Without ctx: FAIL CLOSED (no caller-convention bypass).
+    """
     url = f"https://openapi.etsy.com/v3/application/shops/{SHOP_ID}/listings/{listing_id}"
 
     if dry_run:
@@ -52,6 +59,24 @@ def push_listing(listing_id: str, payload: dict, sku: str = "",
                    campaign, "oddhobb", str(listing_id), 0, 0, None, "UNKNOWN")
         return {"ok": True, "dry_run": True, "payload": payload,
                 "fields": sorted(payload.keys())}
+
+    # dir 9: no grant, no push — fail closed even if caller forgot dry_run
+    if not ctx or not ctx.get("grant"):
+        log_action("etsy", f"BLOCKED PATCH {listing_id} (no grant)", 0.0,
+                   sku or None, campaign, "oddhobb", str(listing_id),
+                   0, 1, None, "FAIL")
+        return {"ok": False,
+                "reason": "no execution context with verified grant: FAIL CLOSED"}
+    import hashlib as _hl
+    granted_hash = str(ctx["grant"].get("payload_hash", "")).replace("sha256:", "")
+    actual_hash = _hl.sha256(json.dumps(payload, sort_keys=True, default=str)
+                             .encode()).hexdigest()
+    if granted_hash != actual_hash:
+        log_action("etsy", f"BLOCKED PATCH {listing_id} (payload drift)", 0.0,
+                   sku or None, campaign, "oddhobb", str(listing_id),
+                   0, 1, None, "FAIL")
+        return {"ok": False,
+                "reason": "payload hash != granted hash: re-review required"}
 
     # 1. PATCH
     try:
@@ -99,13 +124,22 @@ def push_listing(listing_id: str, payload: dict, sku: str = "",
 
 def upload_image(listing_id: str, image_path: str, rank: int = 1,
                  sku: str = "", campaign: str | None = None,
-                 dry_run: bool = True) -> dict:
-    """Upload one image to a listing (multipart). Verifies via GET."""
+                 dry_run: bool = True, ctx: dict | None = None) -> dict:
+    """Upload one image to a listing (multipart). Verifies via GET.
+
+    dir 9: live uploads REQUIRE execution context with verified grant.
+    """
     import mimetypes
     if dry_run:
         log_action("etsy", f"DRY-RUN image upload {listing_id} <- {image_path}", 0.0,
                    sku or None, campaign, "oddhobb", str(listing_id), 0, 0, None, "UNKNOWN")
         return {"ok": True, "dry_run": True, "path": image_path, "rank": rank}
+    if not ctx or not ctx.get("grant"):
+        log_action("etsy", f"BLOCKED image upload {listing_id} (no grant)", 0.0,
+                   sku or None, campaign, "oddhobb", str(listing_id),
+                   0, 1, None, "FAIL")
+        return {"ok": False,
+                "reason": "no execution context with verified grant: FAIL CLOSED"}
     if not os.path.isfile(image_path):
         return {"ok": False, "reason": f"file not found: {image_path}"}
     key, access = _creds()
@@ -135,16 +169,54 @@ def upload_image(listing_id: str, image_path: str, rank: int = 1,
         with urllib.request.urlopen(req, timeout=60) as r:
             resp = json.loads(r.read() or b"{}")
         img_id = str(resp.get("listing_image_id", ""))
-        log_action("etsy", f"image upload {listing_id} rank {rank}", 0.0,
-                   sku or None, campaign, "oddhobb", str(listing_id),
-                   2, 2, None, "PASS" if img_id else "FAIL")
-        return {"ok": bool(img_id), "listing_image_id": img_id, "rank": rank}
     except Exception as e:
         detail = e.read().decode()[:200] if hasattr(e, "read") else str(e)
         log_action("etsy", f"image upload {listing_id} FAILED", 0.0,
                    sku or None, campaign, "oddhobb", str(listing_id),
                    0, 1, None, "FAIL")
         return {"ok": False, "reason": f"{e}: {detail}"[:250]}
+    if not img_id:
+        log_action("etsy", f"image upload {listing_id} no id", 0.0,
+                   sku or None, campaign, "oddhobb", str(listing_id),
+                   1, 2, None, "FAIL")
+        return {"ok": False, "reason": "no listing_image_id in response"}
+    # dir 28: verify independently — fetch listing images, check exists +
+    # rank + count. Attempt response alone is insufficient.
+    try:
+        vreq = urllib.request.Request(
+            f"https://openapi.etsy.com/v3/application/shops/{SHOP_ID}"
+            f"/listings/{listing_id}/images")
+        vreq.add_header("x-api-key", key)
+        vreq.add_header("Authorization", f"Bearer {access}")
+        with urllib.request.urlopen(vreq, timeout=30) as r:
+            imgs = json.loads(r.read() or b"{}").get("results", [])
+        found = [im for im in imgs if str(im.get("listing_image_id", "")) == img_id]
+        verified_rank = found[0].get("rank") if found else None
+        ok = bool(found) and verified_rank == rank
+        proof = (f"image {img_id} at rank {verified_rank}/{len(imgs)}"
+                 if found else "image id not found on refetch")
+    except Exception as e:  # noqa: BLE001 — verification failure, not success
+        ok, proof = False, f"refetch failed: {e}"[:150]
+    try:
+        from verifiers.gates import run_gates
+    except ImportError:
+        from pipeline.verifiers.gates import run_gates
+    v = run_gates(channel="etsy", external_id=img_id,
+                  response_code=200, response={"listing_image_id": img_id},
+                  fetch_result={"listing_image_id": img_id, "rank": verified_rank,
+                                "count": len(imgs)} if found else {"error": proof},
+                  expected={"rank": rank}, actual={"rank": verified_rank} if found else {},
+                  content_fields=["rank"] if found else [],
+                  claim_statement=f"Etsy image {img_id} live at rank {rank}")
+    r_ = v.receipt()
+    log_action("etsy", f"image verify {listing_id} rank {rank}: {proof}", 0.0,
+               sku or None, campaign, "oddhobb", str(listing_id),
+               sum(1 for g in r_["channel_gates"] if g["result"] == "PASS"),
+               len(r_["channel_gates"]), r_.get("id"),
+               "PASS" if v.all_passed else "FAIL")
+    return {"ok": v.all_passed, "listing_image_id": img_id, "rank": rank,
+            "verified_rank": verified_rank, "proof": proof,
+            "receipt_id": r_.get("id")}
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 VENDOR = os.path.join(HERE, "acom")
-PINNED = os.path.join(os.getenv("QPRIVATELY_PATH", "/home/ubuntu/qprivately"), "acom")
+PINNED = os.path.join(os.getenv("QPRIVATELY_PATH", "/root/qprivately"), "acom")
 SKIP = {"__pycache__"}
 
 

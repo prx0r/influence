@@ -6,6 +6,8 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import pytest as _pt  # noqa: E402
+nacl = _pt.importorskip("nacl.signing", reason="nacl unavailable: spend crypto tests need keys")  # noqa: E402
 from nacl.signing import SigningKey  # noqa: E402
 
 from qp.authority import issue, payload_hash  # noqa: E402

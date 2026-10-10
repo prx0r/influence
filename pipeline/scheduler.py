@@ -30,8 +30,21 @@ def queue_post(platform: str, handle: str, content: str,
                brand_slug: str = "oddhobb",
                quality_score: float = 1.0,
                sku: str | None = None, campaign: str | None = None,
-               steve_db: str = STEVE_DB) -> dict:
-    """Gate → queue. Returns {ok, post_id|reason}."""
+               steve_db: str = STEVE_DB,
+               ctx: dict | None = None) -> dict:
+    """Gate → queue. Returns {ok, post_id|reason}.
+
+    dir 9+27: queueing proves post.queued=TRUE only — never post.published.
+    Publication needs adapter execution + platform readback + receipt.
+    Human approval is required (ctx with grant) unless the caller passes
+    pre_approved evidence. Without ctx: FAIL CLOSED.
+    """
+    # 0. approval evidence (dir 27)
+    if not ctx or not ctx.get("grant"):
+        log_action("scheduler", f"BLOCKED queue {platform} {handle} (no approval)", 0.0,
+                   sku, campaign, brand_slug, None, 0, 1, None, "FAIL")
+        return {"ok": False, "reason": "no approval evidence: FAIL CLOSED",
+                "gate": "approval"}
     # 1. per-account gate (budget, cooldown, quality)
     gate = can_publish(platform, handle, quality_score)
     if not gate["ok"]:

@@ -1,4 +1,9 @@
-"""Agent function: etsy.listing — 'add this product to Etsy'.
+"""LEGACY agent function (old oddhobbies packs).
+
+Use pipeline/runner.py (catalog packs + ChannelRelease + effect tasks)
+for all new work. This module remains for migration compat only.
+
+Agent function: etsy.listing — 'add this product to Etsy'.
 
 One call takes a SKU through the whole flow:
   pack → template → compile → preview → human task → (approval) → push
@@ -92,47 +97,74 @@ def request_push(store_id: str, sku: str, specs_block: str = "",
 
 
 def execute(task_id: int, dry_run: bool = True) -> dict:
-    """Run an approved push. Reads payload from the task. Verifies + receipts."""
-    import sqlite3
-    db_path = os.getenv("DASH_DB", os.path.join(_HERE, "..", "dash", "influence.db"))
-    db = sqlite3.connect(db_path, timeout=30)
+    """Run an approved push via effect task + ReviewBundle. (dirs 16, 17)
+
+    Dir 16: approval binds the frozen payload hash. This function NEVER
+    parses prose to recover what was approved and NEVER recompiles.
+    It loads the effect task, checks state == APPROVED, loads the
+    ReviewBundle payload by hash, verifies bytes match, then executes
+    through runtime.execute with the task's grant.
+
+    Dir 17: APPROVED = permission to attempt. Only the receipt closes
+    the task (transition to VERIFYING → PROVEN_TRUE/FALSE here).
+    """
     try:
-        row = db.execute("SELECT title,instructions,done FROM human_actions WHERE id=?",
-                         (task_id,)).fetchone()
-        if not row:
-            return {"ok": False, "reason": f"unknown task {task_id}"}
-        title, instructions, done = row
-        if not done:
-            return {"ok": False, "reason": f"task {task_id} not approved yet",
-                    "next": "human must approve first"}
-    finally:
-        db.close()
-
-    # re-derive payload from instructions is fragile; instead re-run preview
-    # from task title ("Approve: etsy_push → etsy" + SKU in instructions)
-    import re
-    m = re.search(r"SKU:\s*(\S+)", instructions or "")
-    sku = m.group(1) if m else ""
-    m2 = re.search(r"Channel:\s*(\S+)", instructions or "")
-    if not sku:
-        return {"ok": False, "reason": "could not recover SKU from task"}
-    # find store from task: look up pack across known stores
-    store_id = "oddhobb"
-    pv = preview(store_id, sku)
-    if not pv["listing_id"]:
-        return {"ok": False, "reason": f"{sku} has no etsy_listing_id (draft creation not wired)"}
-
+        from effects import get_task, get_bundle, transition
+    except ImportError:
+        from pipeline.effects import get_task, get_bundle, transition
     try:
         from adapters.etsy import push_listing
+        from runtime import make_spec, execute as _exec
     except ImportError:
         from pipeline.adapters.etsy import push_listing
-    pack = load(store_id, sku)
-    compiled = compile_etsy({**pack, "description": pv["description_preview"]})
-    # rebuild full description for push (preview was truncated)
-    full_desc, _ = build_description(pack)
-    compiled["payload"]["description"] = full_desc
-    return push_listing(str(pv["listing_id"]), compiled["payload"], sku,
-                        campaign=None, dry_run=dry_run)
+        from pipeline.runtime import make_spec, execute as _exec
+
+    t = get_task(task_id)
+    if not t:
+        return {"ok": False, "reason": f"unknown effect task {task_id}"}
+    if t["state"] != "APPROVED":
+        return {"ok": False,
+                "reason": f"task {task_id} is {t['state']}, not APPROVED",
+                "next": "human must approve the exact revision first"}
+    b = get_bundle(t["review_bundle_id"])
+    if not b:
+        return {"ok": False, "reason": "review bundle missing"}
+    if b["payload_hash"] != t["payload_hash"]:
+        return {"ok": False,
+                "reason": "payload drift since approval: re-review required"}
+    payload = b["payload"]
+    listing_id = str((b.get("consequence") or {}).get("target", "")
+                     ).replace("listing:", "")
+    if not listing_id:
+        return {"ok": False, "reason": "bundle has no listing target"}
+
+    if dry_run:
+        return {"ok": True, "dry_run": True, "task_id": task_id,
+                "payload_hash": t["payload_hash"][:16],
+                "fields": sorted(payload.keys())}
+
+    # grant from task (minted at approval time, bound to payload hash)
+    grant = {"payload_hash": t["payload_hash"],
+             "expires_at": 9999999999,  # replaced by real grant minting
+             "action": "etsy.listing.update"}
+    spec = make_spec(t["brand"], "etsy.listing.update", "listing_mutate",
+                     "pipeline.adapters.etsy:push_listing",
+                     f"listing:{listing_id}", payload,
+                     campaign=b.get("campaign"),
+                     expected_cost_usd=b.get("cost_estimate_usd", 0.0))
+    transition(task_id, "GRANTED", by="runtime")
+    transition(task_id, "EXECUTING")
+    result = _exec(spec, grant, lambda: push_listing(
+        listing_id, payload, b.get("sku", ""),
+        campaign=b.get("campaign"), dry_run=False,
+        ctx={"grant": grant, "spec_id": spec["id"]}))
+    transition(task_id, "VERIFYING")
+    if result.get("ok"):
+        transition(task_id, "PROVEN_TRUE", receipt_id=result.get("receipt", {}).get("id")
+                   if isinstance(result.get("receipt"), dict) else None)
+    else:
+        transition(task_id, "PROVEN_FALSE")
+    return {**result, "task_id": task_id}
 
 
 if __name__ == "__main__":

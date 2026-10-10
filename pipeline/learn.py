@@ -35,6 +35,9 @@ CREATE TABLE IF NOT EXISTS content_items (
   url TEXT DEFAULT '',
   action_id INTEGER,
   receipt_id TEXT,
+  release_id TEXT DEFAULT '',
+  pack_hash TEXT DEFAULT '',
+  creative_recipe TEXT DEFAULT '',
   created_at TEXT DEFAULT (datetime('now'))
 );
 CREATE TABLE IF NOT EXISTS content_features (
@@ -101,6 +104,43 @@ def _db(path: str = DB_PATH):
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def record_publication(channel: str, account: str, external_id: str,
+                       receipt_id: str, hook_text: str = "", body: str = "",
+                       title: str = "", url: str = "",
+                       brand_slug: str = "oddhobb", kind: str = "post",
+                       release_id: str | None = None, pack_hash: str = "",
+                       creative_recipe: str = "", action_id: int | None = None,
+                       db_path: str = DB_PATH) -> int:
+    """Enter a publication into learning. (dir 33)
+
+    Gate: external_id + receipt_id REQUIRED. Only PROVEN_TRUE published
+    artifacts with independent verification enter content_items.
+    Never learn from queued/failed/simulated output.
+    Attaches release_id + pack_hash + creative recipe for attribution.
+    """
+    assert external_id, "external_id required (unverified output never enters)"
+    assert receipt_id, "receipt_id required (no receipt, no learning)"
+    db = _db(db_path)
+    try:
+        # migrate existing tables (release/pack/recipe columns)
+        cols = [r[1] for r in db.execute("PRAGMA table_info(content_items)").fetchall()]
+        for col in ("release_id", "pack_hash", "creative_recipe"):
+            if col not in cols:
+                db.execute(f"ALTER TABLE content_items ADD COLUMN {col} TEXT DEFAULT ''")
+        cur = db.execute(
+            "INSERT INTO content_items (at,channel,account,brand_slug,kind,title,"
+            " body,hook_text,external_id,url,action_id,receipt_id,"
+            " release_id,pack_hash,creative_recipe)"
+            " VALUES (datetime('now'),?,?,?,?,?,?,?,?,?,?,?,?)",
+            (channel, account, brand_slug, kind, title, body, hook_text,
+             external_id, url, action_id, receipt_id,
+             release_id or "", pack_hash, creative_recipe))
+        db.commit()
+        return cur.lastrowid
+    finally:
+        db.close()
 
 
 def _vault(key: str) -> str:

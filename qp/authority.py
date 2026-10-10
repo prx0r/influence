@@ -9,7 +9,12 @@ import secrets
 import time
 from dataclasses import dataclass
 
-from nacl.signing import SigningKey, VerifyKey
+try:
+    from nacl.signing import SigningKey, VerifyKey
+    _NACL = True
+except ImportError:  # keys unavailable: issue/validate-with-key refuse, structural checks still work
+    SigningKey = VerifyKey = None  # type: ignore
+    _NACL = False
 
 
 def canonical(obj) -> bytes:
@@ -38,8 +43,10 @@ class Grant:
                 "expires_at": self.expires_at, "nonce": self.nonce, "max_uses": self.max_uses}
 
 
-def issue(action: str, payload: dict, subject: str, issuer: str, key: SigningKey,
+def issue(action: str, payload: dict, subject: str, issuer: str, key,
           ttl_s: int = 600, max_uses: int = 1) -> Grant:
+    if not _NACL:
+        raise RuntimeError("nacl unavailable: cannot sign grants on this box")
     now = int(time.time())
     g = Grant(issuer=issuer, subject=subject, action=action, payload_hash=payload_hash(payload),
               issued_at=now, expires_at=now + ttl_s, nonce=secrets.token_hex(16), max_uses=max_uses)
@@ -47,7 +54,7 @@ def issue(action: str, payload: dict, subject: str, issuer: str, key: SigningKey
     return g
 
 
-def validate(g: Grant, action: str, payload: dict, verify: VerifyKey, uses: int = 0) -> tuple[bool, str]:
+def validate(g: Grant, action: str, payload: dict, verify, uses: int = 0) -> tuple[bool, str]:
     if g.action != action:
         return False, "action mismatch"
     if g.payload_hash != payload_hash(payload):
@@ -57,6 +64,8 @@ def validate(g: Grant, action: str, payload: dict, verify: VerifyKey, uses: int 
         return False, "expired"
     if uses >= g.max_uses:
         return False, "uses exhausted"
+    if not _NACL or verify is None:
+        return False, "no signature verifier on this box (fail closed)"
     try:
         verify.verify(canonical(g.body()), bytes.fromhex(g.signature))
     except Exception:

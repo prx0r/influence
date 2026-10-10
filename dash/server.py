@@ -431,12 +431,17 @@ class Handler(SimpleHTTPRequestHandler):
             except Exception as e:
                 return self._json({"error": str(e)[:200], "goals": []}, 500)
         if self._route() == "/api/packs":
+            # Catalog packs (canonical). ?legacy=1 for old oddhobbies packs.
             try:
                 sys.path.insert(0, os.path.dirname(ROOT))
-                from pipeline.compilers.pack_loader import list_packs
                 q = parse_qs(urlparse(self.path).query)
-                store = (q.get("store") or ["oddhobb"])[0]
-                return self._json({"packs": list_packs(store)})
+                if (q.get("legacy") or [""])[0] == "1":
+                    from pipeline.compilers.pack_loader import list_packs
+                    store = (q.get("store") or ["oddhobb"])[0]
+                    return self._json({"packs": list_packs(store), "source": "legacy"})
+                from pipeline.catalog import list_packs
+                level = (q.get("level") or [None])[0]
+                return self._json({"packs": list_packs(level), "source": "catalog"})
             except Exception as e:
                 return self._json({"error": str(e)[:200], "packs": []}, 500)
         if self._route() == "/api/compile":
@@ -463,6 +468,32 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json(_el.preview(store, sku))
             except Exception as e:
                 return self._json({"error": str(e)[:200]}, 500)
+        if self._route() == "/api/review/bundle":
+            # Universal Review Canvas data (dirs 19-25): one endpoint renders
+            # whatever the active Human Task reviews. APPROVE/CHANGE/REJECT.
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.effects import get_bundle, get_task
+                q = parse_qs(urlparse(self.path).query)
+                bid = (q.get("id") or [""])[0]
+                if not bid:
+                    return self._json({"error": "id required"}, 400)
+                b = get_bundle(bid)
+                if not b:
+                    return self._json({"error": "unknown bundle"}, 404)
+                return self._json({"bundle": b})
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
+        if self._route() == "/api/review/queue":
+            # What needs judgment, ranked (dir 37)
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.effects import queue
+                q = parse_qs(urlparse(self.path).query)
+                brand = (q.get("brand") or [None])[0]
+                return self._json({"queue": queue(brand)})
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "queue": []}, 500)
         if self._route() == "/api/actions-totals":
             try:
                 sys.path.insert(0, os.path.dirname(ROOT))
@@ -511,6 +542,44 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if not self._authed():
             return self._json({"error": "forbidden"}, 403)
+        if self._route() == "/api/review/decide":
+            # APPROVE / REJECT / CHANGE on an effect task. (dirs 15-17, 23)
+            # APPROVE binds the frozen payload hash — never prose.
+            # CHANGE creates a new bundle revision (approval never transfers).
+            try:
+                n = int(self.headers.get("Content-Length", "0"))
+                body = json.loads(self.rfile.read(n) or b"{}")
+            except Exception:
+                return self._json({"error": "bad json"}, 400)
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.effects import transition, get_task, create_bundle
+                tid = int(body.get("task_id", 0))
+                decision = str(body.get("decision", "")).upper()
+                if decision == "APPROVE":
+                    t = get_task(tid)
+                    if not t:
+                        return self._json({"error": "unknown task"}, 404)
+                    if t["state"] != "REVIEW_READY":
+                        return self._json({"error": f"task is {t['state']}, not REVIEW_READY"}, 409)
+                    transition(tid, "APPROVED", by=str(body.get("by", "owner")))
+                    return self._json({"ok": True, "task_id": tid, "state": "APPROVED",
+                                       "payload_hash": t["payload_hash"]})
+                if decision == "REJECT":
+                    transition(tid, "REJECTED", by=str(body.get("by", "owner")))
+                    return self._json({"ok": True, "task_id": tid, "state": "REJECTED"})
+                if decision == "CHANGE":
+                    # new revision: recompile handled by caller, which passes new payload
+                    t = get_task(tid)
+                    if not t:
+                        return self._json({"error": "unknown task"}, 404)
+                    return self._json({"ok": True, "task_id": tid,
+                                       "next": "submit revised payload via /api/review/revise"})
+                return self._json({"error": "decision must be APPROVE, REJECT, or CHANGE"}, 400)
+            except (KeyError, ValueError) as e:
+                return self._json({"error": str(e)[:200]}, 409)
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
         if self._route().startswith("/api/studio/"):
             try:
                 n = int(self.headers.get("Content-Length", "0"))

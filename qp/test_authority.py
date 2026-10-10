@@ -6,6 +6,7 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
+nacl = pytest.importorskip("nacl.signing", reason="nacl unavailable: crypto tests need keys")
 from nacl.signing import SigningKey
 
 from qp.authority import issue, validate

@@ -632,14 +632,18 @@ def handle(state: dict, method: str, params: dict) -> dict:
             import sys as _sys2
             _sys2.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             if name == "pack.list":
-                from pipeline.compilers.pack_loader import list_packs
-                return {"result": list_packs(str(args.get("store") or "oddhobb"))}
+                if str(args.get("legacy") or "") == "1":
+                    from pipeline.compilers.pack_loader import list_packs
+                    return {"result": list_packs(str(args.get("store") or "oddhobb"))}
+                from pipeline.catalog import list_packs
+                return {"result": list_packs(args.get("level"))}
             if name == "pack.compile":
                 from pipeline.runner import run_pack
                 sku = str(args.get("sku") or "")
                 if not sku:
                     return {"error": "sku required"}
-                return {"result": run_pack(str(args.get("store") or "oddhobb"), sku, dry_run=True)}
+                return {"result": run_pack(sku, str(args.get("brand") or "oddhobb"),
+                                           campaign=args.get("campaign"))}
             if name == "campaign.list":
                 from pipeline.campaign import list_campaigns
                 return {"result": list_campaigns(args.get("brand"))}

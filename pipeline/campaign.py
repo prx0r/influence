@@ -97,22 +97,48 @@ def set_item_status(item_id: int, status: str, external_id: str | None = None,
 
 
 def add_spend(campaign_id: int, amount_usd: float, db_path: str = DB_PATH) -> dict:
-    """Add spend. Returns {ok, spent, cap, remaining}. Fail closed on cap."""
+    """DEPRECATED mutation path (dir 26): prefer derived_spend() below.
+
+    Kept for compat; new code must not call this to record spend.
+    Spend is derived from settled receipts, never independently asserted.
+    """
+    return derived_spend(campaign_id, db_path)
+
+
+def derived_spend(campaign_id: int, db_path: str = DB_PATH) -> dict:
+    """Spend derived from settled receipts + actions ledger. (dir 26)
+
+    budget_usd stays a policy input. spent_usd is computed, never stored.
+    Reads: actions ledger (cost_usd by campaign name) + qp/spend ledger.
+    """
+    import json as _j
     db = _db(db_path)
     try:
-        row = db.execute("SELECT budget_usd,spent_usd FROM campaigns WHERE id=?",
+        row = db.execute("SELECT name,budget_usd FROM campaigns WHERE id=?",
                          (campaign_id,)).fetchone()
         if not row:
             return {"ok": False, "reason": "no such campaign"}
-        cap, spent = row
-        if cap and (spent + amount_usd) > cap:
-            return {"ok": False, "reason": f"cap ${cap:.2f} exceeded",
-                    "spent": spent, "cap": cap}
-        db.execute("UPDATE campaigns SET spent_usd=spent_usd+? WHERE id=?",
-                   (amount_usd, campaign_id))
-        db.commit()
-        return {"ok": True, "spent": round(spent + amount_usd, 4), "cap": cap,
-                "remaining": round((cap - spent - amount_usd) if cap else -1, 4)}
+        name, cap = row
+        spent = db.execute("SELECT COALESCE(SUM(cost_usd),0) FROM actions"
+                           " WHERE campaign=?", (name,)).fetchone()[0] or 0.0
+        # qp/spend ledger (settled spends) where importable
+        settled = 0.0
+        try:
+            import sys as _sys
+            _sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            from qp.spend import SpendLedger
+            _ledger = SpendLedger()
+            rows = _ledger.db.execute(
+                "SELECT amount FROM spends WHERE state='SETTLED'").fetchall()
+            settled = sum(r[0] for r in rows) / 100.0
+        except Exception:
+            pass
+        total = round(spent + settled, 4)
+        return {"ok": True, "spent": total, "cap": cap,
+                "remaining": round(cap - total, 4) if cap else -1,
+                "derived": True,
+                "sources": {"actions_usd": round(spent, 4),
+                            "settled_usd": round(settled, 4)}}
     finally:
         db.close()
 

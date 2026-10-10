@@ -1,3 +1,18 @@
+# influence — autonomous brand manager runtime
+
+> **What this repo is now:** the consequence-control runtime for AI brand
+> operators. Agents do unlimited cognitive work; anything consequential
+> (publish, spend, send, mutate, order) passes through `pipeline/runtime.py`
+> with qprivately grants, human review, and canonical receipts.
+>
+> **Canonical runtime:** `pipeline/` · `dash/` · `qp/` + `law/acom` (pinned).
+> **Upstream/legacy (read-only, do not add brand logic):** `cmail/`,
+> `domainnamechecker/`, `stevejobless/`.
+> **Product truth lives elsewhere:** `pogpet/catalog/packs` (packs),
+> `bgraph` (identity). Influence reads, never redefines.
+> See `docs/pipeline/FINAL-STACK.md`.
+
+---
 # cmail — the agentic business stack
 
 **One name, owned everywhere, touched once. One business, run by agents, seen as one queue.**

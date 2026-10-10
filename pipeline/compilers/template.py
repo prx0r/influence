@@ -64,30 +64,30 @@ def build_description(pack: dict, specs_block: str = "",
     if rest:
         parts.append("WHAT YOU GET\n" + rest)
 
-    # HOW TO ORDER — standard flow (personalised products)
+    # HOW TO ORDER — shape only. Steps are generic process (place → send →
+    # approve → made), never operational promises. Preview timing, rush
+    # options, and delivery promises come from the pack or not at all.
+    # (dir 6: templates define shape, never invent facts.)
     parts.append(
         "HOW TO ORDER\n"
         "1. Place your order.\n"
         "2. Send your photo / name / message (Etsy message or email).\n"
-        "3. We create a preview within 24 hours.\n"
-        "4. You approve — we make and ship."
+        "3. You approve the preview — we make and ship."
     )
 
-    # SPECS — caller-supplied (Prodigi dims, materials) or pack material
+    # SPECS — caller-supplied block (from catalog specs compiler) or nothing.
+    # Never invent material/dims here.
     if specs_block:
         parts.append(specs_block)
-    elif pack.get("material"):
-        parts.append(f"SPECS\nMaterial: {pack['material']}.")
+    else:
+        warnings.append("no specs block — pass catalog spec_block (never guess)")
 
-    # SHIPPING — caller-supplied delivery windows, or generic honest fallback
+    # SHIPPING — caller-supplied delivery windows from catalog lead times,
+    # or nothing. Never invent promises.
     if shipping_block:
         parts.append(shipping_block)
     else:
-        parts.append(
-            "SHIPPING\nMade to order. Processing time shown above. "
-            "Message us for rush options."
-        )
-        warnings.append("generic shipping block — pass real delivery windows")
+        warnings.append("no shipping block — pass catalog lead times (never promise)")
 
     # BRAND — always last, always identical
     parts.append(BRAND_SIGNOFF)
@@ -98,6 +98,65 @@ def build_description(pack: dict, specs_block: str = "",
     if price and str(price) in text:
         warnings.append("price appears in description copy — remove (lives in price field)")
     return text, warnings
+
+
+def build_catalog_description(sku: str) -> tuple[str, list[str]]:
+    """Description from catalog pack truth. (dirs 2, 6)
+
+    Shape from template sections. EVERY factual sentence compiles from the
+    pack: description, spec_rows, processing. Nothing invented. No "24 hours",
+    no "rush options", no promises the pack doesn't make.
+    """
+    import os as _os
+    import sys as _sys
+    _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+    try:
+        from catalog import load as _cload
+    except ImportError:
+        from pipeline.catalog import load as _cload
+    warnings: list[str] = []
+    p = _cload(sku)
+    listing = p.get("listing") or {}
+    parts: list[str] = []
+
+    desc = (listing.get("description") or "").strip()
+    short = (listing.get("short") or "").strip()
+    if short:
+        parts.append(short)
+    elif desc:
+        parts.append(desc.split("\n")[0].strip())
+    else:
+        parts.append(p.get("name", sku))
+        warnings.append("no description/short in catalog pack")
+
+    if desc and short and desc != short:
+        parts.append("WHAT YOU GET\n" + desc)
+
+    # HOW TO ORDER — shape only, no timing promises (dir 6)
+    parts.append(
+        "HOW TO ORDER\n"
+        "1. Place your order.\n"
+        "2. Send your photo / name / message (Etsy message or email).\n"
+        "3. You approve the preview — we make and ship."
+    )
+
+    # SPECS — spec_rows verbatim from catalog (dir 2: pack truth)
+    rows = listing.get("spec_rows") or []
+    if rows:
+        parts.append("SPECS\n" + "\n".join(
+            f"{r[0]}: {r[1]}" for r in rows if len(r) == 2))
+    else:
+        warnings.append("no spec_rows in catalog pack")
+
+    # SHIPPING — processing verbatim from catalog, nothing added
+    proc = (listing.get("processing") or "").strip()
+    if proc:
+        parts.append("SHIPPING\n" + proc)
+    else:
+        warnings.append("no processing in catalog pack (no promises made)")
+
+    parts.append(BRAND_SIGNOFF)
+    return "\n\n".join(parts), warnings
 
 
 def image_checklist(pack: dict) -> dict:
