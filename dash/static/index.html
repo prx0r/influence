@@ -150,6 +150,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
     <div class="icon" onclick="switchView('email',this)" title="Email">✉️<span class="badge" id="badge-email" style="display:none">0</span></div>
     <div class="icon" onclick="switchView('content',this)" title="Content">🎬</div>
     <div class="icon" onclick="switchView('htasks',this)" title="Human Tasks">H</div>
+    <div class="icon" onclick="switchView('review',this)" title="Review Canvas (approve/reject releases)">✓<span class="badge" id="badge-review" style="display:none">0</span></div>
     <div class="icon" onclick="switchView('influencers',this)" title="Influencers">🛰</div>
     <div class="icon" onclick="switchView('vault',this)" title="Vault">🔑</div>
     <div class="icon" onclick="switchView('terminal',this)" title="Terminal">🖥</div>
@@ -331,9 +332,81 @@ async function refresh(){try{S=await api('GET','/api/state');paintBrandBar();pai
 function switchView(name,el){
   document.querySelectorAll('.activity .icon').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('sidebar-title').textContent=name==='htasks'?'Human Tasks':name[0].toUpperCase()+name.slice(1);
+  document.getElementById('sidebar-title').textContent=name==='htasks'?'Human Tasks':name==='review'?'Review':name[0].toUpperCase()+name.slice(1);
   if(name!=='htasks')parkRail();
-  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,email:renderEmailSidebar,content:renderContentSidebar,htasks:renderHtasksSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,terminal:renderTerminalSidebar}[name])();
+  ({chat:renderChatSidebar,accounts:renderAccountsSidebar,phone:renderPhoneSidebar,email:renderEmailSidebar,content:renderContentSidebar,htasks:renderHtasksSidebar,review:renderReviewSidebar,influencers:renderInfSidebar,vault:renderVaultSidebar,terminal:renderTerminalSidebar}[name])();
+}
+let REVIEW_QUEUE=[],CURRENT_REVIEW=null;
+async function renderReviewSidebar(){
+  const el=document.getElementById('sidebar-content');
+  el.innerHTML='<div style="padding:8px;color:var(--dim)">Loading review queue…</div>';
+  try{
+    const r=await api('GET','/api/review/queue');
+    REVIEW_QUEUE=r.queue||[];
+    const badge=document.getElementById('badge-review');
+    if(badge){badge.textContent=REVIEW_QUEUE.length;badge.style.display=REVIEW_QUEUE.length?'':'none'}
+    if(!REVIEW_QUEUE.length){el.innerHTML='<div style="padding:10px;color:var(--dim);font-size:12px">Queue empty — nothing needs judgment.<br><br>Draft a release with <code>release.create</code> to populate.</div>';return}
+    el.innerHTML=REVIEW_QUEUE.map(t=>`
+      <div class="tree-item" onclick="openReview(${t.id})" style="border-left:2px solid ${t.risk_class==='high'?'#e5534b':t.risk_class==='medium'?'#e8a33d':'#3fb950'};padding:6px 8px;margin-bottom:4px">
+        <div style="font-size:11px;font-weight:600">#${t.id} ${t.kind}</div>
+        <div style="font-size:10px;color:var(--dim)">${t.brand} · ${t.state} · $${(t.estimated_cost_usd||0).toFixed(2)} · ${t.risk_class}</div>
+        <div style="font-size:10px;color:var(--dim)">${(t.consequence||'').slice(0,44)}</div>
+      </div>`).join('');
+  }catch(e){el.innerHTML='<div style="padding:8px;color:#e5534b">Failed to load: '+esc(String(e))+'</div>'}
+}
+async function openReview(taskId){
+  try{
+    CURRENT_REVIEW=REVIEW_QUEUE.find(x=>x.id===taskId)||null;
+    openTab('review');
+  }catch(e){console.error(e)}
+}
+function renderReviewCanvas(){
+  const main=document.getElementById('editor-main');
+  const t=CURRENT_REVIEW;
+  if(!t){main.innerHTML='<div style="padding:20px;color:var(--dim);font-size:13px">No review selected. Pick one from the Review sidebar.</div>';return}
+  main.innerHTML='<div style="padding:20px;color:var(--dim)">Loading bundle…</div>';
+  api('GET','/api/review/bundle?id='+encodeURIComponent(t.review_bundle_id)).then(br=>{
+    if(br.error){main.innerHTML='<div style="padding:20px;color:#e5534b">'+esc(br.error)+'</div>';return}
+    const b=br.bundle;
+    const ph=(b.payload_hash||'').slice(0,16);
+    const fields=Object.entries(b.payload||{}).map(([k,v])=>`
+      <tr><td style="color:var(--dim);padding:2px 12px 2px 0;white-space:nowrap">${esc(k)}</td><td style="word-break:break-word">${esc(typeof v==='string'?v.slice(0,400):JSON.stringify(v).slice(0,400))}</td></tr>`).join('');
+    const gates=(b.machine_gates||[]).map(g=>`<span style="margin-right:8px">${g.result==='PASS'?'✅':'❌'} ${g.id}</span>`).join('')||'<span style="color:var(--dim)">no pre-gates</span>';
+    main.innerHTML=`
+      <div style="padding:16px;max-width:860px;margin:0 auto;font-size:13px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div><b style="font-size:15px">${esc(b.sku||b.kind)}</b> <span style="color:var(--dim)">${esc(b.kind)} · ${esc(b.brand)}</span></div>
+          <div style="font-size:11px;color:var(--dim)">task #${t.id} · rev ${b.revision}</div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:11px;margin-bottom:10px">
+          <div><b>HASH</b> <code>${ph}</code> · <b>COST</b> $${(b.cost_estimate_usd||0).toFixed(2)} · <b>TARGET</b> ${esc(b.consequence?.target||'—')}</div>
+          <div style="margin-top:4px">${gates}</div>
+          ${b.pack_hash?`<div style="margin-top:4px;color:var(--dim)">pack ${esc(b.pack_hash)}${b.source_refs?.pack?' · '+esc(b.source_refs.pack):''}</div>`:''}
+        </div>
+        ${b.diff&&Object.keys(b.diff).length?`<div style="background:#2d1a1a;border:1px solid #e5534b44;border-radius:6px;padding:8px 12px;font-size:11px;margin-bottom:10px"><b>LIVE DIFF</b><br>${Object.entries(b.diff).map(([k,v])=>esc(k)+': '+esc(JSON.stringify(v))).join('<br>')}</div>`:''}
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px;margin-bottom:14px">
+          <div style="font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Payload (what gets approved)</div>
+          <table style="width:100%;font-size:12px;border-collapse:collapse">${fields}</table>
+        </div>
+        ${b.media&&b.media.length?`<div style="font-size:11px;color:var(--dim);margin-bottom:8px">MEDIA: ${b.media.map(m=>esc(m.file)).join(', ')}</div>`:''}
+        <div style="display:flex;gap:8px">
+          <button onclick="reviewDecide(${t.id},'REJECT')" style="flex:1;padding:9px;background:#e5534b;color:#fff;border:0;border-radius:5px;cursor:pointer;font-weight:600">Reject</button>
+          <button onclick="reviewDecide(${t.id},'CHANGE')" style="flex:1;padding:9px;background:var(--bg4);color:var(--text);border:1px solid var(--border);border-radius:5px;cursor:pointer">Request changes</button>
+          <button onclick="reviewDecide(${t.id},'APPROVE')" style="flex:1;padding:9px;background:#238636;color:#fff;border:0;border-radius:5px;cursor:pointer;font-weight:600">Approve exact revision</button>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-top:8px">Approval binds hash <code>${ph}</code> — any byte change requires re-review.</div>
+      </div>`;
+  }).catch(e=>{main.innerHTML='<div style="padding:20px;color:#e5534b">Bundle load failed: '+esc(String(e))+'</div>'});
+}
+async function reviewDecide(taskId,decision){
+  try{
+    const r=await api('POST','/api/review/decide',{task_id:taskId,decision:decision,by:'owner'});
+    if(r.error){alert(r.error);return}
+    const em=document.getElementById('editor-main');
+    if(em)em.innerHTML=`<div style="padding:30px;text-align:center"><div style="font-size:22px">${decision==='APPROVE'?'✅ Approved':decision==='REJECT'?'❌ Rejected':'🔄 Revision requested'}</div><div style="color:var(--dim);margin-top:8px;font-size:13px">task #${taskId} → ${r.state||''} ${r.payload_hash?'· hash '+r.payload_hash:''}</div><div style="color:var(--dim);margin-top:14px;font-size:12px">${decision==='APPROVE'?'Grant minted. Execution runs via runtime.execute with this hash bound.':'Recompile and resubmit for review.'}</div></div>`;
+    CURRENT_REVIEW=null;
+    renderReviewSidebar();
+  }catch(e){alert('decide failed: '+e)}
 }
 function renderHtasksSidebar(){
   const el=document.getElementById('sidebar-content');
@@ -756,7 +829,7 @@ async function termReconcile(){const r=await api('POST','/api/reconcile',{});log
 
 function renderTabs(){
   const el=document.getElementById('editor-tabs');
-  const baseTabs=['chat','email-view','monitor','explorer','studio','agents','phone','email','content'];
+  const baseTabs=['chat','email-view','monitor','explorer','studio','agents','phone','email','content','review'];
   const infTabs=(S?.influencers||[]).map(i=>i.slug);
   const idTabs=identitiesData.map(i=>'id:'+i.slug);
   const tabs=[...baseTabs,...idTabs,...infTabs];
@@ -766,7 +839,7 @@ function renderTabs(){
   if(activeTab&&!openTabs.includes(activeTab))activeTab=openTabs[0];
   el.innerHTML=openTabs.filter(t=>t!=='chat').map(t=>{
     const label=t.startsWith('id:')?t.slice(3):t;
-    const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='email-view'?'✉ ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':t==='phone'?'📱 ':t==='email'?'✉️ ':t==='content'?'🎬 ':'';
+    const icon=t.startsWith('id:')?'👤 ':t==='chat'?'💬 ':t==='email-view'?'✉ ':t==='monitor'?'📊 ':t==='explorer'?'📁 ':t==='studio'?'🎨 ':t==='agents'?'🤖 ':t==='phone'?'📱 ':t==='email'?'✉️ ':t==='content'?'🎬 ':t==='review'?'✓ ':'';
     return `<div class="tab ${t===activeTab?'active':''}" onclick="openTab('${t}')">${icon}${label}<span class="close" onclick="closeTab('${t}',event)">×</span></div>`}).join('');
 }
 function openTab(t,soft){
@@ -791,6 +864,10 @@ function openTab(t,soft){
       ${cards?`<div style="margin-top:8px"><div style="color:var(--dim);font-size:11px;margin-bottom:4px">Entities — click to operate</div>${cards}</div>`:''}
       <div style="color:var(--dim);font-size:11px;margin-top:8px">Deterministic agent over live state + receipts. Input is at the bottom of this panel — works on every tab.</div>`;
     renderChatHistory();
+    return;
+  }
+  if(t==='review'){
+    renderReviewCanvas();
     return;
   }
   if(t==='explorer'){

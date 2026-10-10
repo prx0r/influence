@@ -603,13 +603,19 @@ class Handler(SimpleHTTPRequestHandler):
                     t = get_task(tid)
                     if not t:
                         return self._json({"error": "unknown task"}, 404)
+                    if t["state"] == "PROPOSED":
+                        # bundle is complete at propose-time; auto-arm review
+                        transition(tid, "REVIEW_READY")
+                        t = get_task(tid)
                     if t["state"] != "REVIEW_READY":
                         return self._json({"error": f"task is {t['state']}, not REVIEW_READY"}, 409)
-                    transition(tid, "APPROVED", by=str(body.get("by", "owner")))
+                    transition(tid, "APPROVED", by=str(body.get("by", "owner")),
+                               decision="APPROVED")
                     return self._json({"ok": True, "task_id": tid, "state": "APPROVED",
                                        "payload_hash": t["payload_hash"]})
                 if decision == "REJECT":
-                    transition(tid, "REJECTED", by=str(body.get("by", "owner")))
+                    transition(tid, "REJECTED", by=str(body.get("by", "owner")),
+                               decision="REJECTED")
                     return self._json({"ok": True, "task_id": tid, "state": "REJECTED"})
                 if decision == "CHANGE":
                     # new revision: recompile handled by caller, which passes new payload
