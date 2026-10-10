@@ -44,6 +44,14 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"content_id": {"type": "string"}}}},
     {"name": "content.status", "description": "Check content pipeline status",
      "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "pack.list", "description": "List product packs with validation gaps (read-only)",
+     "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}}, "required": []}},
+    {"name": "pack.compile", "description": "Dry-run compile one pack for all channels (read-only, never pushes)",
+     "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}}, "required": ["sku"]}},
+    {"name": "campaign.list", "description": "List campaigns with item counts (read-only)",
+     "inputSchema": {"type": "object", "properties": {"brand": {"type": "string"}}, "required": []}},
+    {"name": "actions.list", "description": "Audited action ledger with costs (read-only)",
+     "inputSchema": {"type": "object", "properties": {"channel": {"type": "string"}, "campaign": {"type": "string"}, "status": {"type": "string"}, "limit": {"type": "integer"}}, "required": []}},
     {"name": "studio.lora1", "description": "Locked sleep B&W draw recipe (knobs+rules)",
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "studio.art", "description": "List sleep studio art gallery",
@@ -606,6 +614,31 @@ def handle(state: dict, method: str, params: dict) -> dict:
                 if args.get("confirm") is not True:
                     return {"error": "phone.send blocked — pass confirm:true after human approval"}
                 return {"error": "outbound send not enabled in influence dash — use owner phone"}
+        except Exception as e:
+            return {"error": str(e)[:250]}
+    if name in ("pack.list", "pack.compile", "campaign.list", "actions.list"):
+        try:
+            import sys as _sys2
+            _sys2.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            if name == "pack.list":
+                from pipeline.compilers.pack_loader import list_packs
+                return {"result": list_packs(str(args.get("store") or "oddhobb"))}
+            if name == "pack.compile":
+                from pipeline.runner import run_pack
+                sku = str(args.get("sku") or "")
+                if not sku:
+                    return {"error": "sku required"}
+                return {"result": run_pack(str(args.get("store") or "oddhobb"), sku, dry_run=True)}
+            if name == "campaign.list":
+                from pipeline.campaign import list_campaigns
+                return {"result": list_campaigns(args.get("brand"))}
+            if name == "actions.list":
+                from pipeline.actions import list_actions, totals
+                return {"result": {
+                    "actions": list_actions(args.get("channel"), args.get("campaign"),
+                                            args.get("status"), int(args.get("limit") or 20)),
+                    "totals": totals(args.get("campaign")),
+                }}
         except Exception as e:
             return {"error": str(e)[:250]}
     return {"error": f"unknown tool {name}"}

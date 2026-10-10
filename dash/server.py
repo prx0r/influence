@@ -430,6 +430,27 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json({"goals": list_goals(entity)})
             except Exception as e:
                 return self._json({"error": str(e)[:200], "goals": []}, 500)
+        if self._route() == "/api/packs":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.compilers.pack_loader import list_packs
+                q = parse_qs(urlparse(self.path).query)
+                store = (q.get("store") or ["oddhobb"])[0]
+                return self._json({"packs": list_packs(store)})
+            except Exception as e:
+                return self._json({"error": str(e)[:200], "packs": []}, 500)
+        if self._route() == "/api/compile":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline.runner import run_pack
+                q = parse_qs(urlparse(self.path).query)
+                sku = (q.get("sku") or [""])[0]
+                store = (q.get("store") or ["oddhobb"])[0]
+                if not sku:
+                    return self._json({"error": "sku required"}, 400)
+                return self._json(run_pack(store, sku, dry_run=True))
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/actions-totals":
             try:
                 sys.path.insert(0, os.path.dirname(ROOT))
