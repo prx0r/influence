@@ -50,6 +50,8 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}}, "required": ["sku"]}},
     {"name": "campaign.list", "description": "List campaigns with item counts (read-only)",
      "inputSchema": {"type": "object", "properties": {"brand": {"type": "string"}}, "required": []}},
+    {"name": "etsy.listing", "description": "Preview 'add this product to Etsy': template + payload + images + coherence (read-only, never pushes)",
+     "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}}, "required": ["sku"]}},
     {"name": "actions.list", "description": "Audited action ledger with costs (read-only)",
      "inputSchema": {"type": "object", "properties": {"channel": {"type": "string"}, "campaign": {"type": "string"}, "status": {"type": "string"}, "limit": {"type": "integer"}}, "required": []}},
     {"name": "studio.lora1", "description": "Locked sleep B&W draw recipe (knobs+rules)",
@@ -614,6 +616,15 @@ def handle(state: dict, method: str, params: dict) -> dict:
                 if args.get("confirm") is not True:
                     return {"error": "phone.send blocked — pass confirm:true after human approval"}
                 return {"error": "outbound send not enabled in influence dash — use owner phone"}
+        except Exception as e:
+            return {"error": str(e)[:250]}
+    if name == "etsy.listing":
+        try:
+            import sys as _sys3
+            _sys3.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            from pipeline.etsy_listing import preview
+            return {"result": preview(str(args.get("store") or "oddhobb"),
+                                      str(args.get("sku") or ""))}
         except Exception as e:
             return {"error": str(e)[:250]}
     if name in ("pack.list", "pack.compile", "campaign.list", "actions.list"):

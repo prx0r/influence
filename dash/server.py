@@ -451,6 +451,18 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json(run_pack(store, sku, dry_run=True))
             except Exception as e:
                 return self._json({"error": str(e)[:200]}, 500)
+        if self._route() == "/api/etsy-listing":
+            try:
+                sys.path.insert(0, os.path.dirname(ROOT))
+                from pipeline import etsy_listing as _el
+                q = parse_qs(urlparse(self.path).query)
+                sku = (q.get("sku") or [""])[0]
+                store = (q.get("store") or ["oddhobb"])[0]
+                if not sku:
+                    return self._json({"error": "sku required"}, 400)
+                return self._json(_el.preview(store, sku))
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
         if self._route() == "/api/actions-totals":
             try:
                 sys.path.insert(0, os.path.dirname(ROOT))

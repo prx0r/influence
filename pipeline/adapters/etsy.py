@@ -97,6 +97,56 @@ def push_listing(listing_id: str, payload: dict, sku: str = "",
             "url": body.get("url") or actual.get("url")}
 
 
+def upload_image(listing_id: str, image_path: str, rank: int = 1,
+                 sku: str = "", campaign: str | None = None,
+                 dry_run: bool = True) -> dict:
+    """Upload one image to a listing (multipart). Verifies via GET."""
+    import mimetypes
+    if dry_run:
+        log_action("etsy", f"DRY-RUN image upload {listing_id} <- {image_path}", 0.0,
+                   sku or None, campaign, "oddhobb", str(listing_id), 0, 0, None, "UNKNOWN")
+        return {"ok": True, "dry_run": True, "path": image_path, "rank": rank}
+    if not os.path.isfile(image_path):
+        return {"ok": False, "reason": f"file not found: {image_path}"}
+    key, access = _creds()
+    import uuid
+    boundary = f"----etsy{uuid.uuid4().hex}"
+    mime, _ = mimetypes.guess_type(image_path)
+    mime = mime or "image/png"
+    with open(image_path, "rb") as f:
+        data = f.read()
+    if len(data) > 10 * 1024 * 1024:
+        return {"ok": False, "reason": "image >10MB"}
+    body = (
+        f"--{boundary}\r\n".encode()
+        + f'Content-Disposition: form-data; name="image"; filename="{os.path.basename(image_path)}"\r\n'.encode()
+        + f"Content-Type: {mime}\r\n\r\n".encode() + data
+        + f"\r\n--{boundary}\r\n".encode()
+        + f'Content-Disposition: form-data; name="rank"\r\n\r\n{rank}\r\n'.encode()
+        + f"--{boundary}--\r\n".encode()
+    )
+    url = (f"https://openapi.etsy.com/v3/application/shops/{SHOP_ID}"
+           f"/listings/{listing_id}/images")
+    req = urllib.request.Request(url, data=body, method="POST")
+    req.add_header("x-api-key", key)
+    req.add_header("Authorization", f"Bearer {access}")
+    req.add_header("Content-Type", f"multipart/form-data; boundary={boundary}")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            resp = json.loads(r.read() or b"{}")
+        img_id = str(resp.get("listing_image_id", ""))
+        log_action("etsy", f"image upload {listing_id} rank {rank}", 0.0,
+                   sku or None, campaign, "oddhobb", str(listing_id),
+                   2, 2, None, "PASS" if img_id else "FAIL")
+        return {"ok": bool(img_id), "listing_image_id": img_id, "rank": rank}
+    except Exception as e:
+        detail = e.read().decode()[:200] if hasattr(e, "read") else str(e)
+        log_action("etsy", f"image upload {listing_id} FAILED", 0.0,
+                   sku or None, campaign, "oddhobb", str(listing_id),
+                   0, 1, None, "FAIL")
+        return {"ok": False, "reason": f"{e}: {detail}"[:250]}
+
+
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
