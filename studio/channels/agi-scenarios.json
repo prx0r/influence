@@ -38,7 +38,7 @@
     "direction": "precise lecturer voice, half speed, diagrams in words",
     "status": "casting",
     "recommended": {
-     "voice_id": "",
+     "voice_id": "e1f8f1eb9d894a15990ac5eacc83bda9",
      "label": "Half-Life Scientist (clear, conversational)",
      "reason": "diagrams-in-words needs clarity + friendliness; ear-check pending"
     }
