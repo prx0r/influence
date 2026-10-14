@@ -908,11 +908,7 @@ function openTab(t,soft){
     return;
   }
   if(t==='onboard'){renderOnboard(main);return}
-  if(t==='studio'){
-    main.innerHTML=`<h3 style="margin-bottom:8px">Studio — sealed character bundles</h3>
-      <div style="color:var(--dim);font-size:12px">Bridge status: <b style="color:var(--yellow)">designed, not wired</b>. No bundles sealed yet — the freaktown stage adapter lands as the first leaf (one sealed import + one receipted job). Product spec: open <span style="font-family:monospace">products/influencer-studio.md</span> in the explorer.</div>`;
-    return;
-  }
+  if(t==='studio'){renderStudio(main);return}
   if(t==='agents'){
     main.innerHTML=`<h3 style="margin-bottom:8px">Agents — present→decide trail</h3><div style="color:var(--dim)">Loading…</div>`;
     api('GET','/api/agents').then(a=>{
