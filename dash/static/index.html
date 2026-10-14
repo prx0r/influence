@@ -1261,15 +1261,33 @@ async function studioOnboard(slug){
   try{
     const r=await api('POST','/api/studio/channel',{slug});
     if(!r.ok&&!r.record){el.innerHTML='ERR '+(r.error||'');return}
-    const rec=r.record, chairs=(rec.voice||{}).chairs||{};
+    _seriesRec=r.record||{};
+    const rec=_seriesRec, chairs=(rec.voice||{}).chairs||{};
     el.innerHTML=`<h4>casting: ${esc(rec.display_name||slug)}</h4>
       <div style="font-size:11px"><b>thesis:</b> ${esc(rec.pitch||'')}</div>
       <div style="font-size:11px"><b>pipeline:</b> ${esc(((rec.engine||{}).contract)||rec.engine||'')} → snippet ear-check → approve-all → bank → etch after verdict</div>
       <div style="font-size:11px"><b>style:</b> ${(rec.style||{}).accent||''} ${(rec.style||{}).manner||''}</div>
+      <div style="font-size:11px;margin-top:4px"><b>series (${(rec.series||[]).length}):</b> `+(rec.series||[]).map(s=>`<button onclick="studioSeries('${slug}','${esc(s.id)}')" title="${esc(s.title||'')}">${esc(s.id)} (${(s.videos||[]).length})</button>`).join('')+`</div><div id="st-series"></div>
       <button onclick="studioConfig('${slug}')">configure identity · style · thumbnails · formats</button><div id="st-cfg"></div>`
       +Object.keys(chairs).map(ch=>`<div style="margin-top:6px;font-size:11px"><b>role: ${esc(ch)}</b> <span style="color:var(--dim)">${esc(chairs[ch].direction||'')}</span><br>
         <span style="color:var(--dim)">locked: ${(chairs[ch].fish_id||'—').slice(0,12)}${chairs[ch].fish_id?'…':''} ${esc(chairs[ch].status||'open')}${chairs[ch].lock_reason?' — “'+esc(chairs[ch].lock_reason)+'”':''}</span>
         <button onclick="studioPropose('${slug}','${esc(ch)}')">propose 5 voices</button><div id="st-prop-${esc(ch)}"></div></div>`).join('');
+  }catch(e){el.innerHTML='ERR '+e.message}
+}
+let _seriesRec=null;
+async function studioSeries(slug,sid){
+  const el=document.getElementById('st-series');
+  try{
+    if(!_seriesRec){
+      const r=await api('POST','/api/studio/channel',{slug});
+      _seriesRec=r.record||{};
+    }
+    const s=((_seriesRec.series||[]).find(x=>x.id===sid))||{};
+    const chars=s.characters||{};
+    el.innerHTML=`<div class="res"><b>${esc(s.title||sid)}</b> <span style="color:var(--dim)">${esc(s.note||'')} · ${(s.videos||[]).length} videos · ${(s.collections||[]).length} collections</span><br>
+      <span style="font-size:11px">narrator: <b>${esc(((s.narrator||{}).label)||(s.narrator||{}).voice_id||'—')}</b> ${esc((s.narrator||{}).status||'')}</span><br>
+      <span style="font-size:11px">characters (${Object.keys(chars).length}): ${esc(Object.keys(chars).slice(0,12).join(', ')||'— open, cast per tale')}</span><br>
+      <span style="font-size:11px;color:var(--dim)">thumbnail: ${esc((s.thumbnail||{}).inherit?'channel standard':(s.thumbnail||{}).type||'channel standard')} · formats: ${esc((s.formats||{}).inherit?'channel standard':'custom')}</span></div>`;
   }catch(e){el.innerHTML='ERR '+e.message}
 }
 async function studioPropose(slug,chair){

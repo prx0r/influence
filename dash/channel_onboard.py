@@ -348,6 +348,42 @@ def save_config(slug: str, patch: dict) -> dict:
                          "reasoning": str(f.get("reasoning", ""))[:500]})
         rec["formats"] = fmts
         applied.append(f"formats[{len(fmts)}]")
+    if isinstance(patch.get("series"), list):
+        # Series edits: narrator + characters + thumbnail override only.
+        # Structure (id/videos/collections) is migration-owned, never edited.
+        by_id = {s.get("id"): s for s in rec.get("series", [])
+                 if isinstance(s, dict)}
+        touched = 0
+        for s in patch["series"][:20]:
+            if not isinstance(s, dict) or s.get("id") not in by_id:
+                continue
+            cur = by_id[s["id"]]
+            if isinstance(s.get("narrator"), dict):
+                nv = str(s["narrator"].get("voice_id", ""))[:40]
+                if nv and re.fullmatch(r"[0-9a-f]{32}", nv):
+                    cur["narrator"] = {
+                        "voice_id": nv,
+                        "label": str(s["narrator"].get("label", ""))[:120],
+                        "status": "locked",
+                        "lock_reason": str(
+                            s["narrator"].get("reason", ""))[:300]}
+                    touched += 1
+            if isinstance(s.get("characters"), dict):
+                chars = cur.setdefault("characters", {})
+                for nm, vid in list(s["characters"].items())[:30]:
+                    if (isinstance(nm, str) and isinstance(vid, str)
+                            and re.fullmatch(r"[0-9a-f]{32}", vid)):
+                        chars[nm[:60]] = vid
+                        touched += 1
+            if isinstance(s.get("thumbnail"), dict):
+                cur["thumbnail"] = {
+                    "inherit": False,
+                    "type": str(s["thumbnail"].get("type", ""))[:300],
+                    "rules": [str(r)[:200]
+                              for r in s["thumbnail"].get("rules", [])[:12]]}
+                touched += 1
+        if touched:
+            applied.append(f"series[{touched}]")
     if not applied:
         return {"ok": False, "reason": "nothing allowlisted to save"}
     path = os.path.join(CHANNELS_DIR, slug + ".json")

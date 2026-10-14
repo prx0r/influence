@@ -217,3 +217,28 @@ def test_ship_dryrun_offline():
     assert all("fresh" in s for s in r["skipped"])
     for k in ("R2_ENDPOINT", "R2_ACCESS_KEY", "R2_SECRET_KEY"):
         _o.environ.pop(k, None)
+
+
+def test_save_config_series():
+    import json as _j
+    import channel_onboard as ob
+    assert ob.save_config("folk-and-fable", {"series": [{"id": "nope"}]})["ok"] is False
+    r = ob.save_config("folk-and-fable", {"series": [{
+        "id": "s2-folklore",
+        "narrator": {"voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+                     "label": "Calm Sleep", "reason": "test"},
+        "characters": {"Yuki": "f3a2b90078d54a65af4b95f63bc7798e",
+                       "bad": "zzz"},
+        "thumbnail": {"type": "custom dark", "rules": ["no faces"]}}]})
+    assert r["ok"] is True, r
+    back = _j.load(open("/root/influence/studio/channels/folk-and-fable.json"))
+    s2 = next(s for s in back["series"] if s["id"] == "s2-folklore")
+    assert s2["narrator"]["voice_id"].startswith("22dfd973")
+    assert s2["characters"]["Yuki"].startswith("f3a2b900")
+    assert "bad" not in s2["characters"] and len(s2["videos"]) == 17
+    # restore narrator
+    ob.save_config("folk-and-fable", {"series": [{
+        "id": "s2-folklore",
+        "narrator": {"voice_id": "bf322df2096a46f18c579d0baa36f41d",
+                     "label": "Adrian (channel default)",
+                     "reason": "restore after test"}}]})

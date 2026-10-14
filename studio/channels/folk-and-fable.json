@@ -157,5 +157,167 @@
    "sleepintel hypotheses HOST/FAIRY"
   ],
   "pi_job": "propose next tale from calendar gaps (12-tale calendar in brief); extract boundaries; prep-score; cast via dramatis"
- }
+ },
+ "series": [
+  {
+   "id": "s1-fairy",
+   "title": "Fairy tales",
+   "note": "nostalgia surface, best-known stories",
+   "collections": [
+    "aesop-front-to-back",
+    "andersen-part-1",
+    "andersen-part-2",
+    "book-of-were-wolves",
+    "english-fairy-tales-jacobs",
+    "fairy-faith-celtic",
+    "fairy-mythology-keightley",
+    "grimm-part-1",
+    "grimm-part-2",
+    "grimm-part-3",
+    "grimm-part-4",
+    "jamaica-anansi",
+    "poetic-edda",
+    "princess-and-the-goblin",
+    "prose-edda",
+    "prose-edda-part-2",
+    "south-african-folk-tales",
+    "tales-of-old-japan-part-1",
+    "thousand-nights-part-1",
+    "west-african-part-1",
+    "west-african-part-2",
+    "west-england-romances",
+    "witches-before-the-trials"
+   ],
+   "videos": [
+    "FF-S1-fairy-aesop-front-to-back",
+    "FF-S1-fairy-andersen-part-1",
+    "FF-S1-fairy-andersen-part-2",
+    "FF-S1-fairy-book-of-were-wolves",
+    "FF-S1-fairy-english-fairy-tales-jacobs",
+    "FF-S1-fairy-fairy-faith-celtic",
+    "FF-S1-fairy-fairy-mythology-keightley",
+    "FF-S1-fairy-grimm-part-1",
+    "FF-S1-fairy-grimm-part-2",
+    "FF-S1-fairy-grimm-part-3",
+    "FF-S1-fairy-grimm-part-4",
+    "FF-S1-fairy-jamaica-anansi",
+    "FF-S1-fairy-poetic-edda",
+    "FF-S1-fairy-princess-and-the-goblin",
+    "FF-S1-fairy-prose-edda",
+    "FF-S1-fairy-prose-edda-part-2",
+    "FF-S1-fairy-south-african-folk-tales",
+    "FF-S1-fairy-tales-of-old-japan-part-1",
+    "FF-S1-fairy-thousand-nights-part-1",
+    "FF-S1-fairy-west-african-part-1",
+    "FF-S1-fairy-west-african-part-2",
+    "FF-S1-fairy-west-england-romances",
+    "FF-S1-fairy-witches-before-the-trials"
+   ],
+   "narrator": {
+    "voice_id": "bf322df2096a46f18c579d0baa36f41d",
+    "label": "Adrian (channel default, Calm Sleep under review)",
+    "status": "locked"
+   },
+   "characters": {},
+   "thumbnail": {
+    "inherit": true,
+    "note": "channel standard unless overridden"
+   },
+   "formats": {
+    "inherit": true
+   }
+  },
+  {
+   "id": "s2-folklore",
+   "title": "Folklore depth",
+   "note": "zero-competition tales, Yuki leads",
+   "collections": [
+    "arabian-nights-entertainments",
+    "celtic-folk-fairy-tales",
+    "changelings-witnesses",
+    "discoverie-of-witchcraft",
+    "household-spirits",
+    "kwaidan-part-1",
+    "kwaidan-part-2",
+    "nights-continued",
+    "russian-fairy-tales-part-1",
+    "russian-fairy-tales-part-2",
+    "russian-fairy-tales-part-3",
+    "russian-story-book-part-1",
+    "russian-story-book-part-2",
+    "slav-peasants-part-1",
+    "slav-peasants-part-2",
+    "werewolf-case-histories",
+    "witchcraft-and-demonology"
+   ],
+   "videos": [
+    "FF-S2-folklore-arabian-nights-entertainments",
+    "FF-S2-folklore-celtic-folk-fairy-tales",
+    "FF-S2-folklore-changelings-witnesses",
+    "FF-S2-folklore-discoverie-of-witchcraft",
+    "FF-S2-folklore-household-spirits",
+    "FF-S2-folklore-kwaidan-part-1",
+    "FF-S2-folklore-kwaidan-part-2",
+    "FF-S2-folklore-nights-continued",
+    "FF-S2-folklore-russian-fairy-tales-part-1",
+    "FF-S2-folklore-russian-fairy-tales-part-2",
+    "FF-S2-folklore-russian-fairy-tales-part-3",
+    "FF-S2-folklore-russian-story-book-part-1",
+    "FF-S2-folklore-russian-story-book-part-2",
+    "FF-S2-folklore-slav-peasants-part-1",
+    "FF-S2-folklore-slav-peasants-part-2",
+    "FF-S2-folklore-werewolf-case-histories",
+    "FF-S2-folklore-witchcraft-and-demonology"
+   ],
+   "narrator": {
+    "voice_id": "bf322df2096a46f18c579d0baa36f41d",
+    "label": "Adrian (channel default)",
+    "status": "locked",
+    "lock_reason": "restore after test"
+   },
+   "characters": {
+    "Yuki": "f3a2b90078d54a65af4b95f63bc7798e"
+   },
+   "thumbnail": {
+    "inherit": false,
+    "type": "custom dark",
+    "rules": [
+     "no faces"
+    ]
+   },
+   "formats": {
+    "inherit": true
+   }
+  },
+  {
+   "id": "s3-myth",
+   "title": "Myth crossover",
+   "note": "mythology-YouTube bait",
+   "collections": [
+    "bulfinchs-mythology",
+    "golden-bough",
+    "mythology-of-the-british-islands",
+    "sinbad-burton"
+   ],
+   "videos": [
+    "FF-S3-myth-bulfinchs-mythology",
+    "FF-S3-myth-golden-bough",
+    "FF-S3-myth-mythology-of-the-british-islands",
+    "FF-S3-myth-sinbad-burton"
+   ],
+   "narrator": {
+    "voice_id": "bf322df2096a46f18c579d0baa36f41d",
+    "label": "Adrian (channel default, Calm Sleep under review)",
+    "status": "locked"
+   },
+   "characters": {},
+   "thumbnail": {
+    "inherit": true,
+    "note": "channel standard unless overridden"
+   },
+   "formats": {
+    "inherit": true
+   }
+  }
+ ]
 }
