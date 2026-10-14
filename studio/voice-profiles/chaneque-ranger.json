@@ -29,45 +29,111 @@
    "voice_id": "en-US-JennyNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   100,
+   160
+  ],
+  "pitch_source": "default",
+  "pace": {
+   "pack": 1.0,
+   "modulator_adjusted": 0.95,
+   "words": "fast urgent pacing"
+  },
+  "energy": {
+   "pack": 0.85,
+   "words": "high-energy"
+  },
+  "delivery": "easy unhurried delivery, casual warmth",
+  "affect": {
+   "arousal": 0.463,
+   "valence": -0.275,
+   "power": 0.5
+  },
+  "mary": {
+   "rate_delta": 0.176,
+   "volume_db": 3.06,
+   "range_st": 5.85,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "ranger-brief",
+  "restraint": "medium",
+  "voice_words": [
+   "easy",
+   "unhurried",
+   "delivery",
+   "casual",
+   "warmth",
+   "cheerful",
+   "brisk",
+   "faintly",
+   "superior",
+   "about",
+   "adult",
+   "navigation",
+   "skills",
+   "rangerbrief",
+   "condescending",
+   "paranoid",
+   "exhausted",
+   "smug"
+  ],
+  "direction": "Chaneque Ranger Poco: Knee-high Veracruz forest ranger. Finds lost kids, feeds them sweet food and milk, and returns them unbothered while search parties collect scratches. Speaks cheerful, brisk, faintly superior about adult navigation skills. Voice: high-energy, fast urgent pacing. easy unhurried delivery, casual warmth. Register: ranger-brief.",
+  "hold_ms": 800
+ },
  "archetype": {
-  "name": "innocent",
-  "confidence": 0.95,
-  "delivery": "plain wonder, no craft, all sincerity"
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
  },
  "affect": {
-  "valence": 0.3,
-  "power": 0.2,
+  "valence": -0.1,
+  "power": -0.5,
   "arousal": -0.5,
   "voice_words": [
    "calm",
-   "gentle",
-   "kind",
+   "meek",
    "slow",
-   "soft",
-   "warm"
+   "small",
+   "soft"
   ]
  },
  "picks": [
   {
-   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
-   "name": "Luna Lovegood",
-   "score": 14.0,
-   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
-   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (gentle, calm, soft); owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 prior uses (niche); mea"
-  },
-  {
    "voice_id": "0051da373e0a4ac282399909d1d31b69",
    "name": "SpongeBob",
-   "score": 13.7,
+   "score": 15.9,
    "sample": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3",
-   "reason": "your loved voice (SpongeBob) — auto-included; weak tag match (high) — judge the sample; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,584 prior"
+   "reason": "your loved voice (SpongeBob) — auto-included; tags match vibe: cheerful, high; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,584 prior uses (pr"
   },
   {
    "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
    "name": "Dramatic Character Male",
-   "score": 13.6,
+   "score": 13.9,
    "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
-   "reason": "affect match (gentle, calm, slow); tags match vibe: high, old; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,577 prior uses (proven)"
+   "reason": "affect match (calm, slow, soft); tags match vibe: cheerful, fast, high; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,577 prior uses"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 13.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 prior uses (niche); measured sl"
+  },
+  {
+   "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
+   "name": "Verity",
+   "score": 12.8,
+   "sample": "https://platform.r2.fish.audio/task/461d972bd74442b4a06be63d34228cff.mp3",
+   "reason": "your loved voice (Verity) — auto-included; tags match vibe: cheerful; owner taste (Luna Lovegood, Verity): character-voice, entertainment, social-media, storytelling; 1,934,509 prior uses (proven); me"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 12.6,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-aged, narration; 1,337 prior us"
   }
  ],
  "propose_error": null

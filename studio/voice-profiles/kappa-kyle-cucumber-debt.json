@@ -29,6 +29,62 @@
    "voice_id": "en-US-GuyNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   200,
+   320
+  ],
+  "pitch_source": "archetype:imp (conf 0.95)",
+  "pace": {
+   "pack": 0.92,
+   "modulator_adjusted": 0.845,
+   "words": "measured pacing"
+  },
+  "energy": {
+   "pack": 0.7,
+   "words": "mid-energy"
+  },
+  "delivery": "flat deadpan delivery, minimal pitch movement, dry",
+  "affect": {
+   "arousal": 0.35,
+   "valence": 0.0,
+   "power": 0.5
+  },
+  "mary": {
+   "rate_delta": 0.175,
+   "volume_db": 2.31,
+   "range_st": 5.4,
+   "pitch_direction": "flat",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "clerk",
+  "restraint": "medium",
+  "voice_words": [
+   "flat",
+   "deadpan",
+   "delivery",
+   "minimal",
+   "pitch",
+   "movement",
+   "overly",
+   "polite",
+   "bows",
+   "constantly",
+   "gets",
+   "flustered",
+   "when",
+   "namedrops",
+   "river",
+   "clerk",
+   "smug",
+   "exhausted",
+   "bright",
+   "giggling",
+   "undercurrent"
+  ],
+  "direction": "Kappa Kyle, the Cucumber-Debt Collector: 400-year-old Japanese river imp who moved to the city and now runs a protection racket payable exclusively in cucumbers. Bows at everyone, including automatic doors. Speaks overly polite, bows constantly, gets flustered when dry, name-drops the river. Voice: mid-energy, measured pacing. flat deadpan delivery, minimal pitch movement, dry. Register: clerk.",
+  "hold_ms": 900
+ },
  "archetype": {
   "name": "imp",
   "confidence": 0.95,
@@ -46,6 +102,13 @@
  },
  "picks": [
   {
+   "voice_id": "e686ae649ee44f219a108aacba206c1a",
+   "name": "calm storyteller male",
+   "score": 15.1,
+   "sample": "https://platform.r2.fish.audio/task/94872bb78886416993c4c0bb3e456a30.mp3",
+   "reason": "affect match (calm); tags match vibe: middle-aged, measured; owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, narration, measured, calm; 214,610 prior uses (proven)"
+  },
+  {
    "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
    "name": "Luna Lovegood",
    "score": 15.0,
@@ -53,18 +116,25 @@
    "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: middle-aged; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 p"
   },
   {
-   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
-   "name": "Dramatic Character Male",
-   "score": 14.3,
-   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
-   "reason": "affect match (calm, slow, soft); tags match vibe: neutral-tone, middle-aged, monotone, bright; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusia"
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 14.9,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: middle-aged, measured; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling"
   },
   {
-   "voice_id": "dbcbce60e6244a60a7f56a785c9f1bb1",
-   "name": "calm calm",
-   "score": 13.8,
-   "sample": "https://platform.r2.fish.audio/task/c28a9213c34947bd95207a0aefdc7a74.mp3",
-   "reason": "affect match (calm); tags match vibe: middle-aged, history; owner taste (Calm Sleep Narrator, Luna Lovegood): social-media, storytelling, middle-aged, smooth; 1,754 prior uses (niche)"
+   "voice_id": "7d805071401d4b738334f332a8c320c2",
+   "name": "old man bible storytelling",
+   "score": 14.5,
+   "sample": "https://platform.r2.fish.audio/task/c2ab34a94be74ae3b61b75ff87525cd8.mp3",
+   "reason": "affect match (calm); tags match vibe: measured, old; owner taste (Calm Sleep Narrator, Luna Lovegood): narration, measured, calm, deep; 2,660 prior uses (niche)"
+  },
+  {
+   "voice_id": "0af969cba6c24e74b5600d6df78e8975",
+   "name": "Narration ",
+   "score": 14.1,
+   "sample": "https://platform.r2.fish.audio/task/344e8e90a31a467faa095f58c4580fd9.mp3",
+   "reason": "tags match vibe: middle-aged, measured; owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, narration, measured, female; 114,874 prior uses (proven)"
   }
  ],
  "propose_error": null

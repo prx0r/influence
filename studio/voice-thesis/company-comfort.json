@@ -1,0 +1,43 @@
+{
+ "channel": "company-comfort",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Originals lane (written cozies, no PD): settle, never enumerate anxieties.",
+ "characters": [
+  {
+   "character": "companion",
+   "status": "open",
+   "direction": "[warm companion voice, settling, never alarming]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Originals lane (written cozies, no PD): settle, never enumerate anxieties. Chair brief: [warm companion voice, settling, never alarming]"
+  }
+ ]
+}

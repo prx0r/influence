@@ -1,0 +1,43 @@
+{
+ "channel": "agi-scenarios",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "What happens when AI surpasses us — the singularity, explained slowly for sleep.",
+ "characters": [
+  {
+   "character": "lecturer",
+   "status": "open",
+   "direction": "precise lecturer voice, half speed, diagrams in words",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: What happens when AI surpasses us — the singularity, explained slowly for sleep. Chair brief: precise lecturer voice, half speed, diagrams in words"
+  }
+ ]
+}

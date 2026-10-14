@@ -29,20 +29,72 @@
    "voice_id": "en-US-AriaNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   130,
+   200
+  ],
+  "pitch_source": "archetype:crone (conf 0.95)",
+  "pace": {
+   "pack": 0.88,
+   "modulator_adjusted": 0.855,
+   "words": "fast urgent pacing"
+  },
+  "energy": {
+   "pack": 0.6,
+   "words": "mid-energy"
+  },
+  "delivery": "knowing, dry, amused at mortals (via archetype; pack vibe empty). high restraint: emotion pressed flat, leaks at the edges, never shouts",
+  "affect": {
+   "arousal": 0.487,
+   "valence": -0.25,
+   "power": 0.625
+  },
+  "mary": {
+   "rate_delta": 0.194,
+   "volume_db": 3.21,
+   "range_st": 5.95,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "ledger",
+  "restraint": "high",
+  "voice_words": [
+   "knowing",
+   "amused",
+   "mortals",
+   "archetype",
+   "pack",
+   "vibe",
+   "empty",
+   "matronly",
+   "menace",
+   "with",
+   "ledger",
+   "manners",
+   "receipts",
+   "everything",
+   "including",
+   "doubt",
+   "condescending",
+   "smug",
+   "angry",
+   "exhausted"
+  ],
+  "direction": "The Hag, Night Landlady: The night's landlady. Sits on chests, holds the paralysis, collects breath-rent nightly. One in six tenants; the rest lie about sleeping fine. Speaks matronly menace with ledger manners; receipts for everything including doubt. Voice: mid-energy, fast urgent pacing. knowing, dry, amused at mortals (via archetype; pack vibe empty). Register: ledger. high restraint: emotion pressed flat, leaks at the edges, never shouts",
+  "hold_ms": 1200
+ },
  "archetype": {
   "name": "crone",
   "confidence": 0.95,
   "delivery": "knowing, dry, amused at mortals"
  },
  "affect": {
-  "valence": 0.0,
-  "power": 0.7,
+  "valence": 0.1,
+  "power": 0.0,
   "arousal": -0.5,
   "voice_words": [
-   "authoritative",
    "calm",
-   "commanding",
-   "deep",
    "slow",
    "soft"
   ]
@@ -51,23 +103,37 @@
   {
    "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
    "name": "Luna Lovegood",
-   "score": 15.2,
+   "score": 17.2,
    "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
-   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: breathy; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 prior"
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: middle-aged, breathy; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration"
+  },
+  {
+   "voice_id": "0051da373e0a4ac282399909d1d31b69",
+   "name": "SpongeBob",
+   "score": 15.7,
+   "sample": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3",
+   "reason": "your loved voice (SpongeBob) — auto-included; tags match vibe: middle-aged, high; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,584 prior uses "
   },
   {
    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
    "name": "Calm Sleep Narrator",
-   "score": 14.9,
+   "score": 15.0,
    "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
-   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, deep, soft); tags match vibe: breathy; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle"
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: middle-aged, breathy; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling,"
   },
   {
    "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
    "name": "Dramatic Character Male",
-   "score": 14.2,
+   "score": 14.9,
    "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
-   "reason": "affect match (authoritative, calm, deep); tags match vibe: neutral-tone, energetic, monotone, breathy; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, "
+   "reason": "affect match (calm, slow, soft); tags match vibe: neutral-tone, middle-aged, monotone, breathy; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusi"
+  },
+  {
+   "voice_id": "638893dc81e241c79356f02ea1ed28f6",
+   "name": "Calm Narrator",
+   "score": 13.2,
+   "sample": "https://platform.r2.fish.audio/task/cb0e02c96f0941baae8c1aafde7f4a5b.mp3",
+   "reason": "affect match (calm); tags match vibe: neutral-tone, middle-aged; owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, narration, measured, medium; 6,828 prior uses (niche)"
   }
  ],
  "propose_error": null

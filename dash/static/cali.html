@@ -30,13 +30,29 @@ let CANDS=[];
 let SRC='books';
 async function boot(){
   const ch=(new URLSearchParams(location.search).get('channel'))||'folk-and-fable';
+  const force=(new URLSearchParams(location.search).get('character'))||'';
   document.getElementById('src').textContent = SRC==='packs' ? 'character graph packs' : 'book characters';
   if(SRC==='packs'){ await bootPack(); return; }
-  const nx=await api('POST','/api/studio/cali/next',{channel:ch});
-  const p=nx.pick;
+  let p;
+  if(force){
+    p={name:force,function:'general',direction:'',voice_query:'',dialogue_lines:'?',pairs_so_far:'?',why:'hand-picked for ranking'};
+  } else {
+    const nx=await api('POST','/api/studio/cali/next',{channel:ch});
+    p=nx.pick;
+  }
   if(!p){document.getElementById('next').innerHTML='nothing left to calibrate 🎉';return}
-  document.getElementById('next').innerHTML=`<b>Next: ${esc(p.name)}</b> <span class="pill">${esc(p.function)}</span><div class="sub">${esc(p.why)} · ${p.dialogue_lines} dialogue lines</div>`;
-  const r=await api('POST','/api/studio/onboard/propose',{channel:ch,chair:p.name,n:5,direction:p.direction||p.name});
+  // exact character graph: who they are, books, sample lines — so the
+  // ranker knows what the slate is FOR.
+  let ctx=null;
+  try{ ctx=await api('POST','/api/studio/cast/context',{channel:ch,chair:p.name}); }catch(e){}
+  let ctxHtml='';
+  if(ctx&&ctx.ok){
+    const ents=Object.entries(ctx.characters||{});
+    ctxHtml=ents.map(([nm,c])=>`<div class="sub" style="margin-top:6px"><b>${esc(nm)}</b> ${esc(c.gender||'?')}/${esc(c.age||'?')}/${esc(c.role||'no role')} · ${c.mentions||0} mentions · ${c.dialogue_lines||0} lines${c.sample_line?`<br>e.g. “${esc(c.sample_line.slice(0,180))}”`:''}</div>`).join('')
+      + `<div class="sub" style="margin-top:4px">books: ${esc((ctx.books||[]).join(', '))}</div>`;
+  }
+  document.getElementById('next').innerHTML=`<b>Next: ${esc(p.name)}</b> <span class="pill">${esc(p.function)}</span><div class="sub">${esc(p.why)} · ${p.dialogue_lines} dialogue lines</div>${ctxHtml}`;
+  const r=await api('POST','/api/studio/onboard/propose',{channel:ch,chair:p.name,n:5,direction:p.voice_query||p.direction||p.name});
   CANDS=(r.candidates||[]).slice(0,5);
   document.getElementById('grid').innerHTML=CANDS.map((c,i)=>`<div class="card"><div class="row" style="justify-content:space-between;margin-top:0"><b>${i+1}. ${esc(c.name||c.voice_id)}</b><span class="pill">${c.score}</span></div>
     <div class="sub">${c.uses||0} uses · ${esc((c.tags||[]).slice(0,4).join(', '))}</div>

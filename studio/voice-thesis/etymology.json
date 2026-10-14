@@ -1,0 +1,43 @@
+{
+ "channel": "etymology",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Etymology, grammar, thesaurus, roots and idioms — one word per video, read to sleep.",
+ "characters": [
+  {
+   "character": "lecturer",
+   "status": "open",
+   "direction": "[clear lecturer voice, precise and unhurried, half speed]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Etymology, grammar, thesaurus, roots and idioms — one word per video, read to sleep. Chair brief: [clear lecturer voice, precise and unhurried, half speed]"
+  }
+ ]
+}

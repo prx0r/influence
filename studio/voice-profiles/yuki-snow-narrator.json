@@ -29,6 +29,58 @@
    "voice_id": "en-GB-SoniaNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   200,
+   300
+  ],
+  "pitch_source": "archetype:fae (conf 0.95)",
+  "pace": {
+   "pack": 0.7,
+   "modulator_adjusted": 0.633,
+   "words": "measured pacing"
+  },
+  "energy": {
+   "pack": 0.35,
+   "words": "low-energy"
+  },
+  "delivery": "airy, veiled, half-smiling detachment (via archetype; pack vibe empty). high restraint: emotion pressed flat, leaks at the edges, never shouts",
+  "affect": {
+   "arousal": 0.367,
+   "valence": -0.133,
+   "power": 0.567
+  },
+  "mary": {
+   "rate_delta": 0.157,
+   "volume_db": 2.42,
+   "range_st": 5.47,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "frost",
+  "restraint": "high",
+  "voice_words": [
+   "airy",
+   "veiled",
+   "halfsmiling",
+   "detachment",
+   "archetype",
+   "pack",
+   "vibe",
+   "empty",
+   "frostcalm",
+   "sparse",
+   "lets",
+   "silence",
+   "work",
+   "frost",
+   "exhausted",
+   "condescending",
+   "smug"
+  ],
+  "direction": "Yuki, Snow Narrator: Winter spirit telling Kwaidan tales deadpan-flat, letting horror sit. Pauses where the snow pauses. Speaks frost-calm, sparse, lets silence do the work. Voice: low-energy, measured pacing. airy, veiled, half-smiling detachment (via archetype; pack vibe empty). Register: frost. high restraint: emotion pressed flat, leaks at the edges, never shouts",
+  "hold_ms": 1500
+ },
  "archetype": {
   "name": "fae",
   "confidence": 0.95,
@@ -46,25 +98,39 @@
  },
  "picks": [
   {
-   "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
-   "name": "Verity",
-   "score": 15.6,
-   "sample": "https://platform.r2.fish.audio/task/461d972bd74442b4a06be63d34228cff.mp3",
-   "reason": "your loved voice (Verity) — auto-included; tags match vibe: character-voice, storytelling, character; owner taste (Luna Lovegood, Verity): character-voice, entertainment, social-media, storytelling; 1"
-  },
-  {
    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
    "name": "Calm Sleep Narrator",
-   "score": 15.2,
+   "score": 16.2,
    "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
-   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: storytelling, warm; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, m"
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: storytelling, measured, low; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storyt"
   },
   {
-   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
-   "name": "Luna Lovegood",
-   "score": 15.0,
-   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
-   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: character-voice; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,1"
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 14.4,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: storytelling, measured, high, slow; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,"
+  },
+  {
+   "voice_id": "319010b746ea48fe8137531bb52caa49",
+   "name": "Deep Calm Narrator",
+   "score": 14.1,
+   "sample": "https://platform.r2.fish.audio/task/3979165182dd4746992e90869b7a8e7a.mp3",
+   "reason": "affect match (calm); tags match vibe: storytelling, measured, low; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, expressive, narration; 4,533 prior uses (niche)"
+  },
+  {
+   "voice_id": "0051da373e0a4ac282399909d1d31b69",
+   "name": "SpongeBob",
+   "score": 13.7,
+   "sample": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3",
+   "reason": "your loved voice (SpongeBob) — auto-included; weak tag match (high) — judge the sample; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,584 prior"
+  },
+  {
+   "voice_id": "8e90926676d147ffa27b22773bcfeb3f",
+   "name": "Storytelling Philosophy Deep",
+   "score": 13.5,
+   "sample": "https://platform.r2.fish.audio/task/62ee4ed17f55404492ab2207646b2b1f.mp3",
+   "reason": "tags match vibe: storytelling, low; owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, narration, young, deep; 1,576 prior uses (niche)"
   }
  ],
  "propose_error": null

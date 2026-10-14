@@ -1,0 +1,49 @@
+{
+ "channel": "daimon-dreams",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Anything western esoteric lives here. Eastern (tantra/sanskrit/shaivism/taoist/",
+ "characters": [
+  {
+   "character": "guide",
+   "status": "open",
+   "direction": "[low, steady guide voice, descending, unhurried]",
+   "predicted": {
+    "archetype": "mentor",
+    "delivery": "warm and weighty, tragic patience",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Anything western esoteric lives here. Eastern (tantra/sanskrit/shaivism/taoist/ Chair brief: [low, steady guide voice, descending, unhurried]"
+  }
+ ]
+}

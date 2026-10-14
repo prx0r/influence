@@ -30,6 +30,56 @@
    "voice_id": "en-US-ChristopherNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   100,
+   160
+  ],
+  "pitch_source": "default",
+  "pace": {
+   "pack": 0.9,
+   "modulator_adjusted": 0.88,
+   "words": "fast urgent pacing"
+  },
+  "energy": {
+   "pack": 0.7,
+   "words": "mid-energy"
+  },
+  "delivery": "easy unhurried delivery, casual warmth. low restraint: feelings out loud, no filter",
+  "affect": {
+   "arousal": 0.54,
+   "valence": -0.34,
+   "power": 0.56
+  },
+  "mary": {
+   "rate_delta": 0.202,
+   "volume_db": 3.56,
+   "range_st": 6.16,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "decree",
+  "restraint": "low",
+  "voice_words": [
+   "easy",
+   "unhurried",
+   "delivery",
+   "casual",
+   "warmth",
+   "booming",
+   "decree",
+   "collapsing",
+   "into",
+   "excuses",
+   "smug",
+   "angry",
+   "condescending",
+   "exhausted",
+   "paranoid"
+  ],
+  "direction": "Zeus, Sky Sovereign: King of the Olympian gods, running existence like a chairman who never reads the minutes. Thunder is his gavel. Speaks booming decree collapsing into excuses. Voice: mid-energy, fast urgent pacing. easy unhurried delivery, casual warmth. Register: decree. low restraint: feelings out loud, no filter",
+  "hold_ms": 1000
+ },
  "archetype": {
   "name": "supporting",
   "confidence": 0.0,
@@ -52,23 +102,37 @@
   {
    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
    "name": "Calm Sleep Narrator",
-   "score": 13.6,
+   "score": 15.8,
    "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
-   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, deep, soft); owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-aged, narration; 1,337 pr"
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, deep, soft); tags match vibe: middle-aged, low; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytellin"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: middle-aged; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 p"
   },
   {
    "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
    "name": "Dramatic Character Male",
-   "score": 13.3,
+   "score": 14.6,
    "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
-   "reason": "affect match (authoritative, calm, deep); weak tag match (husky) — judge the sample; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,5"
+   "reason": "affect match (authoritative, calm, deep); tags match vibe: middle-aged, angry, husky, fast; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiasti"
   },
   {
-   "voice_id": "dbcbce60e6244a60a7f56a785c9f1bb1",
-   "name": "calm calm",
-   "score": 13.0,
-   "sample": "https://platform.r2.fish.audio/task/c28a9213c34947bd95207a0aefdc7a74.mp3",
-   "reason": "affect match (calm, deep); tags match vibe: history; owner taste (Calm Sleep Narrator, Luna Lovegood): social-media, storytelling, middle-aged, smooth; 1,754 prior uses (niche)"
+   "voice_id": "e686ae649ee44f219a108aacba206c1a",
+   "name": "calm storyteller male",
+   "score": 14.0,
+   "sample": "https://platform.r2.fish.audio/task/94872bb78886416993c4c0bb3e456a30.mp3",
+   "reason": "affect match (calm, deep); tags match vibe: middle-aged; owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, narration, measured, calm; 214,610 prior uses (proven)"
+  },
+  {
+   "voice_id": "319010b746ea48fe8137531bb52caa49",
+   "name": "Deep Calm Narrator",
+   "score": 13.8,
+   "sample": "https://platform.r2.fish.audio/task/3979165182dd4746992e90869b7a8e7a.mp3",
+   "reason": "affect match (authoritative, calm, deep); weak tag match (low) — judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, expressive, narration; 4,533 prior use"
   }
  ],
  "propose_error": null

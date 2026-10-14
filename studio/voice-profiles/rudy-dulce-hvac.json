@@ -29,6 +29,65 @@
    "voice_id": "en-US-GuyNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   70,
+   120
+  ],
+  "pitch_source": "archetype:beast (conf 0.95)",
+  "pace": {
+   "pack": 0.9,
+   "modulator_adjusted": 0.833,
+   "words": "measured pacing"
+  },
+  "energy": {
+   "pack": 0.6,
+   "words": "mid-energy"
+  },
+  "delivery": "flat deadpan delivery, minimal pitch movement, dry",
+  "affect": {
+   "arousal": 0.367,
+   "valence": -0.133,
+   "power": 0.567
+  },
+  "mary": {
+   "rate_delta": 0.157,
+   "volume_db": 2.42,
+   "range_st": 5.47,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "work-order",
+  "restraint": "medium",
+  "voice_words": [
+   "flat",
+   "deadpan",
+   "delivery",
+   "minimal",
+   "pitch",
+   "movement",
+   "tired",
+   "practical",
+   "hisses",
+   "when",
+   "flattered",
+   "talks",
+   "ducts",
+   "chefs",
+   "talk",
+   "knives",
+   "workorder",
+   "exhausted",
+   "condescending",
+   "smug",
+   "massive",
+   "simple",
+   "pauses",
+   "like"
+  ],
+  "direction": "Rudy, Dulce HVAC: Tunnel-level reptilian HVAC tech. Doesn't rule anything; keeps the warm air moving for those who do. Knows every duct, every dero rewiring, and exactly which vent screams. Speaks tired, practical, hisses when flattered; talks ducts the way chefs talk knives. Voice: mid-energy, measured pacing. flat deadpan delivery, minimal pitch movement, dry. Register: work-order.",
+  "hold_ms": 1000
+ },
  "archetype": {
   "name": "beast",
   "confidence": 0.95,
@@ -48,23 +107,37 @@
   {
    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
    "name": "Calm Sleep Narrator",
-   "score": 15.2,
+   "score": 16.2,
    "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
-   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: storytelling, warm; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, m"
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: middle-aged, measured, warm; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storyt"
   },
   {
-   "voice_id": "dbcbce60e6244a60a7f56a785c9f1bb1",
-   "name": "calm calm",
+   "voice_id": "e686ae649ee44f219a108aacba206c1a",
+   "name": "calm storyteller male",
+   "score": 15.1,
+   "sample": "https://platform.r2.fish.audio/task/94872bb78886416993c4c0bb3e456a30.mp3",
+   "reason": "affect match (calm); tags match vibe: middle-aged, measured; owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, narration, measured, calm; 214,610 prior uses (proven)"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: middle-aged; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 p"
+  },
+  {
+   "voice_id": "f281f234a1d04a929ade9f676ed7c441",
+   "name": "calm",
+   "score": 14.9,
+   "sample": "https://platform.r2.fish.audio/task/587277711ebc431cbbd0f6f829ce4dac.mp3",
+   "reason": "affect match (calm); tags match vibe: middle-aged, warm; owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, narration, calm, deep; 4,963 prior uses (niche)"
+  },
+  {
+   "voice_id": "0af969cba6c24e74b5600d6df78e8975",
+   "name": "Narration ",
    "score": 14.1,
-   "sample": "https://platform.r2.fish.audio/task/c28a9213c34947bd95207a0aefdc7a74.mp3",
-   "reason": "affect match (calm); tags match vibe: storytelling, history; owner taste (Calm Sleep Narrator, Luna Lovegood): social-media, storytelling, middle-aged, smooth; 1,754 prior uses (niche)"
-  },
-  {
-   "voice_id": "da884380087f4e82b793b8cccac3d3b1",
-   "name": "CALM NARRATION",
-   "score": 14.0,
-   "sample": "https://platform.r2.fish.audio/task/849a56c4c1274a4a909a0755d15b1bd0.mp3",
-   "reason": "affect match (calm); tags match vibe: storytelling, warm; owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, middle-aged, expressive, narration; 235 prior uses (niche)"
+   "sample": "https://platform.r2.fish.audio/task/344e8e90a31a467faa095f58c4580fd9.mp3",
+   "reason": "tags match vibe: middle-aged, measured; owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, narration, measured, female; 114,874 prior uses (proven)"
   }
  ],
  "propose_error": null

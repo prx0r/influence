@@ -1,0 +1,43 @@
+{
+ "channel": "yogi-watch",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Yes, specced: sleepdraw `styles/anakhya.md` (v1) + `films/anakhya-01/` + Wave 1",
+ "characters": [
+  {
+   "character": "documentarian",
+   "status": "open",
+   "direction": "[plainspoken narrator voice, miracles told plain, unhurried]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Yes, specced: sleepdraw `styles/anakhya.md` (v1) + `films/anakhya-01/` + Wave 1 Chair brief: [plainspoken narrator voice, miracles told plain, unhurried]"
+  }
+ ]
+}

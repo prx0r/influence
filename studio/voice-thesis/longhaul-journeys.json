@@ -1,0 +1,115 @@
+{
+ "channel": "longhaul-journeys",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "One channel, subfolders per mode. The room IS the content (E4 ambience + E5 talk",
+ "characters": [
+  {
+   "character": "narrator",
+   "status": "open",
+   "direction": "[steady navigator voice, directional and calm]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: One channel, subfolders per mode. The room IS the content (E4 ambience + E5 talk Chair brief: [steady navigator voice, directional and calm]"
+  },
+  {
+   "character": "crew",
+   "status": "open",
+   "direction": "",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: One channel, subfolders per mode. The room IS the content (E4 ambience + E5 talk Chair brief: "
+  },
+  {
+   "character": "ground",
+   "status": "open",
+   "direction": "",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: One channel, subfolders per mode. The room IS the content (E4 ambience + E5 talk Chair brief: "
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "channel": "sleepy-trades",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "The killer utilitarian lane: trades read like liturgy. Zero competition,",
+ "characters": [
+  {
+   "character": "foreman",
+   "status": "open",
+   "direction": "[steady workmanlike voice, methodical, no rush]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: The killer utilitarian lane: trades read like liturgy. Zero competition, Chair brief: [steady workmanlike voice, methodical, no rush]"
+  }
+ ]
+}

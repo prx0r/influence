@@ -1,0 +1,43 @@
+{
+ "channel": "stonedoorway",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Everything sleep-related esoteric. Laboratory at midnight: clinical, tender,",
+ "characters": [
+  {
+   "character": "clinician",
+   "status": "open",
+   "direction": "[clinical, tender, unhurried voice, midnight laboratory]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Everything sleep-related esoteric. Laboratory at midnight: clinical, tender, Chair brief: [clinical, tender, unhurried voice, midnight laboratory]"
+  }
+ ]
+}

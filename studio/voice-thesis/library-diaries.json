@@ -1,0 +1,43 @@
+{
+ "channel": "library-diaries",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Every \"X's Library/Diary\" in the registry (mostly ready, all PD) + the long",
+ "characters": [
+  {
+   "character": "narrator",
+   "status": "open",
+   "direction": "[unhurried reader voice, diary-paced, lights low]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Every \"X's Library/Diary\" in the registry (mostly ready, all PD) + the long Chair brief: [unhurried reader voice, diary-paced, lights low]"
+  }
+ ]
+}

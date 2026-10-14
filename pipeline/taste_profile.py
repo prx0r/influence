@@ -417,6 +417,7 @@ def next_character(candidates: list[dict]) -> dict | None:
                                    "direction": " ".join(x for x in
                                        [str(c.get("age") or ""),
                                         str(c.get("gender") or "")] if x),
+                                   "voice_query": str(c.get("voice_query") or ""),
                                    "pairs_so_far": ppf.get(fn, 0),
                                    "dialogue_lines": c.get("dialogue_lines", 0),
                                    "why": (f"{fn} has {ppf.get(fn, 0)} ranked pairs — "

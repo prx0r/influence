@@ -1,0 +1,2705 @@
+{
+ "channel": "folk-and-fable",
+ "narrator_model": "per-collection (Adrian demoted to candidate)",
+ "collections": [
+  {
+   "collection": "aesop-front-to-back",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "playful",
+     "evidence": [
+      "aesop"
+     ]
+    }
+   ],
+   "cast_notes": "17 figures, 55 dialogue lines; Lamb(16), King(9), Oxen(7), Bat(6)",
+   "narrator": {
+    "voice": "warm elder referee, sly, measured, amused",
+    "why": "trickster casts are fast and loud; the narrator is the frame, not a second picture. Amusement without competing. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "andersen-part-1",
+   "tradition": "Danish fairytale",
+   "vibes": [
+    {
+     "vibe": "romantic",
+     "evidence": [
+      "princess"
+     ]
+    }
+   ],
+   "cast_notes": "41 figures, 261 dialogue lines; Tree(50), Princess(42), Emperor(35), Councillor(26)",
+   "narrator": {
+    "voice": "tender, close, unhurried, smiling underneath",
+    "why": "love tales are told leaning in. Closeness, not projection. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "andersen-part-2",
+   "tradition": "Danish fairytale",
+   "vibes": [
+    {
+     "vibe": "sleepy",
+     "evidence": [
+      "baseline"
+     ]
+    }
+   ],
+   "cast_notes": "30 figures, 166 dialogue lines; Gerda(15), Yes(23), Raven(19), Kay(1)",
+   "narrator": {
+    "voice": "calm measured storyteller, slow and gentle",
+    "why": "default sleep baseline: no spikes, no demands, pure carrier wave. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "arabian-nights-entertainments",
+   "tradition": "French/Scheherazade",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "arabian",
+      "nights"
+     ]
+    }
+   ],
+   "cast_notes": "31 figures, 262 dialogue lines; The(107), Sultan(52), Yes(19), Alas(18)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "book-of-were-wolves",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "sleepy",
+     "evidence": [
+      "baseline"
+     ]
+    }
+   ],
+   "cast_notes": "61 figures, 41 dialogue lines; Saga(4), God(7), Katla(1), Odd(0)",
+   "narrator": {
+    "voice": "calm measured storyteller, slow and gentle",
+    "why": "default sleep baseline: no spikes, no demands, pure carrier wave. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "bulfinchs-mythology",
+   "tradition": "Greek/Classical myth",
+   "vibes": [
+    {
+     "vibe": "epic",
+     "evidence": [
+      "bulfinch",
+      "mythology"
+     ]
+    }
+   ],
+   "cast_notes": "81 figures, 121 dialogue lines; Jupiter(1), Apollo(7), Milton(11), Juno(5)",
+   "narrator": {
+    "voice": "unhurried authority, weight, rooms quiet when they speak",
+    "why": "myth is told by time itself. Slowness IS the grandeur; haste would shrink it. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "celtic-folk-fairy-tales",
+   "tradition": "British Isles fairy",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "fairy",
+      "celtic"
+     ]
+    }
+   ],
+   "cast_notes": "52 figures, 141 dialogue lines; Guleesh(11), Hudden(6), Donald(5), Dudden(7)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "changelings-witnesses",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "changeling"
+     ]
+    }
+   ],
+   "cast_notes": "56 figures, 26 dialogue lines; Ireland(2), Irish(1), Kirk(0), Dominick(4)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "discoverie-of-witchcraft",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "witch"
+     ]
+    },
+    {
+     "vibe": "grim",
+     "evidence": [
+      "witchcraft",
+      "discoverie"
+     ]
+    }
+   ],
+   "cast_notes": "87 figures, 90 dialogue lines; Scot(14), Esq(0), Thomas(8), London(0)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": -0.5,
+     "power": 0.6,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "cold",
+      "commanding",
+      "dark",
+      "deep",
+      "menacing",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "english-fairy-tales-jacobs",
+   "tradition": "British Isles fairy",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "fairy"
+     ]
+    }
+   ],
+   "cast_notes": "22 figures, 245 dialogue lines; Well(100), Jack(6), Rushes(24), Yes(23)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "fairy-faith-celtic",
+   "tradition": "British Isles fairy",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "fairy",
+      "celtic"
+     ]
+    }
+   ],
+   "cast_notes": "74 figures, 1 dialogue lines; Celtic(0), Faith(0), Ireland(0), Tara(1)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "fairy-mythology-keightley",
+   "tradition": "British Isles fairy",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "fairy",
+      "keightley"
+     ]
+    },
+    {
+     "vibe": "epic",
+     "evidence": [
+      "mythology"
+     ]
+    }
+   ],
+   "cast_notes": "113 figures, 59 dialogue lines; Fairy(0), Peri(6), Ogier(4), Peries(3)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "golden-bough",
+   "tradition": "Greek/Classical myth",
+   "vibes": [
+    {
+     "vibe": "epic",
+     "evidence": [
+      "bough"
+     ]
+    }
+   ],
+   "cast_notes": "54 figures, 11 dialogue lines; Diana(0), Nemi(1), Hippolytus(1), Virbius(0)",
+   "narrator": {
+    "voice": "unhurried authority, weight, rooms quiet when they speak",
+    "why": "myth is told by time itself. Slowness IS the grandeur; haste would shrink it. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "grimm-part-1",
+   "tradition": "German fairytale",
+   "vibes": [
+    {
+     "vibe": "sleepy",
+     "evidence": [
+      "baseline"
+     ]
+    }
+   ],
+   "cast_notes": "29 figures, 200 dialogue lines; King(108), Yes(25), Queen(12), Die(0)",
+   "narrator": {
+    "voice": "calm measured storyteller, slow and gentle",
+    "why": "default sleep baseline: no spikes, no demands, pure carrier wave. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "grimm-part-2",
+   "tradition": "German fairytale",
+   "vibes": [
+    {
+     "vibe": "sleepy",
+     "evidence": [
+      "baseline"
+     ]
+    }
+   ],
+   "cast_notes": "18 figures, 230 dialogue lines; King(76), Flounder(31), Queen(23), Cinderella(18)",
+   "narrator": {
+    "voice": "calm measured storyteller, slow and gentle",
+    "why": "default sleep baseline: no spikes, no demands, pure carrier wave. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "grimm-part-3",
+   "tradition": "German fairytale",
+   "vibes": [
+    {
+     "vibe": "sleepy",
+     "evidence": [
+      "baseline"
+     ]
+    }
+   ],
+   "cast_notes": "19 figures, 214 dialogue lines; Grethel(55), King(41), Hans(2), Cap(24)",
+   "narrator": {
+    "voice": "calm measured storyteller, slow and gentle",
+    "why": "default sleep baseline: no spikes, no demands, pure carrier wave. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "grimm-part-4",
+   "tradition": "German fairytale",
+   "vibes": [
+    {
+     "vibe": "winter",
+     "evidence": [
+      "snow"
+     ]
+    }
+   ],
+   "cast_notes": "27 figures, 231 dialogue lines; King(40), Snow(38), Queen(14), Thrushbeard(13)",
+   "narrator": {
+    "voice": "oldest and weightiest, ledger patience, cold tale/warm teller",
+    "why": "winter tales are told by winter itself; the teller's age is the tale's age. Cold in the story, warm in the voice. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "household-spirits",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "grim",
+     "evidence": [
+      "household-spirits"
+     ]
+    }
+   ],
+   "cast_notes": "42 figures, 134 dialogue lines; Jack(7), Johnny(21), Bear(9), Molly(14)",
+   "narrator": {
+    "voice": "ledger patience, distance, low and dry (either gender)",
+    "why": "trials/demons told flat read as record, not threat. Distance is the safety signal. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "jamaica-anansi",
+   "tradition": "West African folklore",
+   "vibes": [
+    {
+     "vibe": "playful",
+     "evidence": [
+      "anansi",
+      "jamaica",
+      "tiger"
+     ]
+    }
+   ],
+   "cast_notes": "43 figures, 179 dialogue lines; Tiger(80), Anansi(1), Tacoomah(24), Hanansi(29)",
+   "narrator": {
+    "voice": "warm elder referee, sly, measured, amused",
+    "why": "trickster casts are fast and loud; the narrator is the frame, not a second picture. Amusement without competing. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.3,
+     "power": 0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "kwaidan-part-1",
+   "tradition": "Japanese folklore",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "kwaidan"
+     ]
+    }
+   ],
+   "cast_notes": "40 figures, 73 dialogue lines; Sir(9), Tomotada(6), Minokichi(5), Japanese(2)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "kwaidan-part-2",
+   "tradition": "Japanese folklore",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "kwaidan"
+     ]
+    }
+   ],
+   "cast_notes": "24 figures, 79 dialogue lines; Japanese(31), Buddhist(9), Riki(7), Chinese(2)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "mythology-of-the-british-islands",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "celtic"
+     ]
+    },
+    {
+     "vibe": "epic",
+     "evidence": [
+      "mythology"
+     ]
+    }
+   ],
+   "cast_notes": "122 figures, 242 dialogue lines; Ireland(10), Gaelic(10), Celtic(6), British(9)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "nights-continued",
+   "tradition": "French/Scheherazade",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "nights"
+     ]
+    }
+   ],
+   "cast_notes": "44 figures, 73 dialogue lines; King(16), God(4), Efreet(0), Arabs(9)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "poetic-edda",
+   "tradition": "Norse myth",
+   "vibes": [
+    {
+     "vibe": "epic",
+     "evidence": [
+      "edda",
+      "poetic"
+     ]
+    }
+   ],
+   "cast_notes": "88 figures, 116 dialogue lines; Othin(14), Regius(10), Snorri(5), Hauksbok(6)",
+   "narrator": {
+    "voice": "unhurried authority, weight, rooms quiet when they speak",
+    "why": "myth is told by time itself. Slowness IS the grandeur; haste would shrink it. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "princess-and-the-goblin",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "goblin"
+     ]
+    },
+    {
+     "vibe": "romantic",
+     "evidence": [
+      "princess"
+     ]
+    }
+   ],
+   "cast_notes": "13 figures, 0 dialogue lines; Irene(0), Curdie(0), Lootie(0), Yes(0)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "prose-edda-part-2",
+   "tradition": "Norse myth",
+   "vibes": [
+    {
+     "vibe": "epic",
+     "evidence": [
+      "edda",
+      "prose-edd"
+     ]
+    }
+   ],
+   "cast_notes": "112 figures, 0 dialogue lines; Thor(0), Loke(0), Footnote(0), Odin(0)",
+   "narrator": {
+    "voice": "unhurried authority, weight, rooms quiet when they speak",
+    "why": "myth is told by time itself. Slowness IS the grandeur; haste would shrink it. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "prose-edda",
+   "tradition": "Norse myth",
+   "vibes": [
+    {
+     "vibe": "epic",
+     "evidence": [
+      "edda",
+      "prose-edd"
+     ]
+    }
+   ],
+   "cast_notes": "98 figures, 12 dialogue lines; Edda(2), Footnote(0), Odin(0), Ganglere(0)",
+   "narrator": {
+    "voice": "unhurried authority, weight, rooms quiet when they speak",
+    "why": "myth is told by time itself. Slowness IS the grandeur; haste would shrink it. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "russian-fairy-tales-part-1",
+   "tradition": "Russian folklore",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "demon"
+     ]
+    },
+    {
+     "vibe": "playful",
+     "evidence": [
+      "simpleton"
+     ]
+    },
+    {
+     "vibe": "magical",
+     "evidence": [
+      "fairy"
+     ]
+    },
+    {
+     "vibe": "winter",
+     "evidence": [
+      "russian"
+     ]
+    }
+   ],
+   "cast_notes": "52 figures, 330 dialogue lines; Russian(26), Marusia(35), Simpleton(27), Demon(20)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "russian-fairy-tales-part-2",
+   "tradition": "Russian folklore",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "fairy"
+     ]
+    },
+    {
+     "vibe": "winter",
+     "evidence": [
+      "russian"
+     ]
+    }
+   ],
+   "cast_notes": "51 figures, 252 dialogue lines; King(44), Ivan(3), Snake(12), Morevna(16)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "russian-fairy-tales-part-3",
+   "tradition": "Russian folklore",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "fairy"
+     ]
+    },
+    {
+     "vibe": "winter",
+     "evidence": [
+      "russian"
+     ]
+    }
+   ],
+   "cast_notes": "67 figures, 319 dialogue lines; Yaga(66), Afanasief(24), Russian(21), Vasilissa(5)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "russian-story-book-part-1",
+   "tradition": "Russian folklore",
+   "vibes": [
+    {
+     "vibe": "winter",
+     "evidence": [
+      "russian"
+     ]
+    }
+   ],
+   "cast_notes": "42 figures, 109 dialogue lines; Ilya(11), Cloudfall(14), Vladimir(6), Dunai(1)",
+   "narrator": {
+    "voice": "oldest and weightiest, ledger patience, cold tale/warm teller",
+    "why": "winter tales are told by winter itself; the teller's age is the tale's age. Cold in the story, warm in the voice. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "russian-story-book-part-2",
+   "tradition": "Russian folklore",
+   "vibes": [
+    {
+     "vibe": "winter",
+     "evidence": [
+      "russian"
+     ]
+    }
+   ],
+   "cast_notes": "54 figures, 160 dialogue lines; Kiev(15), Ilya(6), Diuk(9), Vladimir(7)",
+   "narrator": {
+    "voice": "oldest and weightiest, ledger patience, cold tale/warm teller",
+    "why": "winter tales are told by winter itself; the teller's age is the tale's age. Cold in the story, warm in the voice. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "sinbad-burton",
+   "tradition": "Greek/Classical myth",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "nights",
+      "sinbad"
+     ]
+    }
+   ],
+   "cast_notes": "60 figures, 254 dialogue lines; Allah(25), King(19), Arab(22), Wazir(12)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "slav-peasants-part-1",
+   "tradition": "Russian folklore",
+   "vibes": [
+    {
+     "vibe": "winter",
+     "evidence": [
+      "slav"
+     ]
+    }
+   ],
+   "cast_notes": "31 figures, 109 dialogue lines; God(23), Illustration(15), Vsevede(13), George(1)",
+   "narrator": {
+    "voice": "oldest and weightiest, ledger patience, cold tale/warm teller",
+    "why": "winter tales are told by winter itself; the teller's age is the tale's age. Cold in the story, warm in the voice. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "slav-peasants-part-2",
+   "tradition": "Russian folklore",
+   "vibes": [
+    {
+     "vibe": "winter",
+     "evidence": [
+      "slav"
+     ]
+    }
+   ],
+   "cast_notes": "19 figures, 111 dialogue lines; God(15), Matthias(8), Kostey(6), Yaga(9)",
+   "narrator": {
+    "voice": "oldest and weightiest, ledger patience, cold tale/warm teller",
+    "why": "winter tales are told by winter itself; the teller's age is the tale's age. Cold in the story, warm in the voice. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "south-african-folk-tales",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "sleepy",
+     "evidence": [
+      "baseline"
+     ]
+    }
+   ],
+   "cast_notes": "47 figures, 199 dialogue lines; Jackal(8), Lion(6), Tortoise(27), Elephant(14)",
+   "narrator": {
+    "voice": "calm measured storyteller, slow and gentle",
+    "why": "default sleep baseline: no spikes, no demands, pure carrier wave. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "tales-of-old-japan-part-1",
+   "tradition": "Japanese folklore",
+   "vibes": [
+    {
+     "vibe": "winter",
+     "evidence": [
+      "yedo"
+     ]
+    }
+   ],
+   "cast_notes": "37 figures, 65 dialogue lines; Japanese(9), Kami(5), Yedo(3), Takumi(2)",
+   "narrator": {
+    "voice": "oldest and weightiest, ledger patience, cold tale/warm teller",
+    "why": "winter tales are told by winter itself; the teller's age is the tale's age. Cold in the story, warm in the voice. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "thousand-nights-part-1",
+   "tradition": "French/Scheherazade",
+   "vibes": [
+    {
+     "vibe": "magical",
+     "evidence": [
+      "nights"
+     ]
+    }
+   ],
+   "cast_notes": "94 figures, 90 dialogue lines; God(8), King(2), Wezeer(3), Arabic(4)",
+   "narrator": {
+    "voice": "soft wonder, airy but grounded, gentle lift",
+    "why": "magic needs belief; belief needs warmth. Light on top, weight underneath so it never floats away. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "werewolf-case-histories",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "grim",
+     "evidence": [
+      "werewolf-case"
+     ]
+    }
+   ],
+   "cast_notes": "34 figures, 13 dialogue lines; Grenier(0), Greek(1), Poirier(1), Gaboriant(2)",
+   "narrator": {
+    "voice": "ledger patience, distance, low and dry (either gender)",
+    "why": "trials/demons told flat read as record, not threat. Distance is the safety signal. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": -0.5,
+     "power": 0.6,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "cold",
+      "commanding",
+      "dark",
+      "deep",
+      "menacing",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "west-african-part-1",
+   "tradition": "West African folklore",
+   "vibes": [
+    {
+     "vibe": "playful",
+     "evidence": [
+      "anansi",
+      "west-african"
+     ]
+    }
+   ],
+   "cast_notes": "18 figures, 46 dialogue lines; Anansi(4), Spider(1), King(5), Tsin(6)",
+   "narrator": {
+    "voice": "warm elder referee, sly, measured, amused",
+    "why": "trickster casts are fast and loud; the narrator is the frame, not a second picture. Amusement without competing. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "west-african-part-2",
+   "tradition": "West African folklore",
+   "vibes": [
+    {
+     "vibe": "playful",
+     "evidence": [
+      "west-african"
+     ]
+    }
+   ],
+   "cast_notes": "23 figures, 37 dialogue lines; King(6), Ohia(0), Quarcoo(4), Mawu(4)",
+   "narrator": {
+    "voice": "warm elder referee, sly, measured, amused",
+    "why": "trickster casts are fast and loud; the narrator is the frame, not a second picture. Amusement without competing. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "west-england-romances",
+   "tradition": "British Isles fairy",
+   "vibes": [
+    {
+     "vibe": "sleepy",
+     "evidence": [
+      "baseline"
+     ]
+    }
+   ],
+   "cast_notes": "65 figures, 106 dialogue lines; Cornwall(9), Arthur(11), Kieve(7), Cornish(4)",
+   "narrator": {
+    "voice": "calm measured storyteller, slow and gentle",
+    "why": "default sleep baseline: no spikes, no demands, pure carrier wave. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "witchcraft-and-demonology",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "demon",
+      "witch"
+     ]
+    },
+    {
+     "vibe": "grim",
+     "evidence": [
+      "witchcraft",
+      "demonology"
+     ]
+    }
+   ],
+   "cast_notes": "88 figures, 117 dialogue lines; Witchcraft(3), Murray(13), God(8), Sabbat(8)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. dialogue-heavy: narrator must yield, frame not compete.",
+    "affect": {
+     "valence": -0.5,
+     "power": 0.6,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "cold",
+      "commanding",
+      "dark",
+      "deep",
+      "menacing",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "witches-before-the-trials",
+   "tradition": "general tale stock",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "witch"
+     ]
+    },
+    {
+     "vibe": "grim",
+     "evidence": [
+      "trials"
+     ]
+    }
+   ],
+   "cast_notes": "24 figures, 0 dialogue lines; God(0), Gods(0), Lord(0), Hebrue(0)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": -0.5,
+     "power": 0.6,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "cold",
+      "commanding",
+      "dark",
+      "deep",
+      "menacing",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "collection": "yuki-onna",
+   "tradition": "Japanese folklore",
+   "vibes": [
+    {
+     "vibe": "scary",
+     "evidence": [
+      "yuki"
+     ]
+    },
+    {
+     "vibe": "winter",
+     "evidence": [
+      "yuki",
+      "yedo"
+     ]
+    }
+   ],
+   "cast_notes": "4 figures, 8 dialogue lines; Minokichi(5), Yuki(1), Mosaku(1), Yedo(1)",
+   "narrator": {
+    "voice": "old, male, slow, low, grave-but-safe",
+    "why": "fear content needs a hearth voice: dread in the tale, safety in the teller. Falling pitch, warm floor, never loud. narration-led: voice must carry alone.",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "characters": [
+  {
+   "character": "Minokichi",
+   "books": [
+    "kwaidan-part-1",
+    "yuki-onna"
+   ],
+   "mentions": 34,
+   "dialogue_lines": 10,
+   "traits": {
+    "gender": null,
+    "age": "young",
+    "role": null
+   },
+   "sample_lines": [
+    "“I intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,—because you\n\nare so young... You are a pretty boy, Minokichi; and I w",
+    "“I intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,—because you\n\nare so young... You are a pretty boy, Minokichi; and I w"
+   ],
+   "predicted": {
+    "archetype": "hero",
+    "delivery": "open throat, grounded, conversational courage",
+    "pitch_hz": [
+     140,
+     200
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "34 mentions across 2 book(s), 10 spoken lines; speaks proximity. Minokichi: young unspecified figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+  },
+  {
+   "character": "Yuki",
+   "books": [
+    "kwaidan-part-1",
+    "yuki-onna"
+   ],
+   "mentions": 23,
+   "dialogue_lines": 2,
+   "traits": {
+    "gender": null,
+    "age": "young",
+    "role": null
+   },
+   "sample_lines": [
+    "“Tell me about her... Where did you see her?”",
+    "“Tell me about her... Where did you see her?”"
+   ],
+   "predicted": {
+    "archetype": "fae",
+    "delivery": "airy, veiled, half-smiling detachment",
+    "pitch_hz": [
+     140,
+     200
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "23 mentions across 2 book(s), 2 spoken lines; speaks proximity. Yuki: young unspecified figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+  },
+  {
+   "character": "Tiger",
+   "books": [
+    "jamaica-anansi",
+    "south-african-folk-tales",
+    "west-african-part-2"
+   ],
+   "mentions": 244,
+   "dialogue_lines": 91,
+   "traits": {
+    "gender": "male",
+    "age": "young",
+    "role": null
+   },
+   "sample_lines": [
+    "“What you have in that basket,\n\nsah?”",
+    "\"Friend Jackal, I am quite out of breath, and am half dead\n\nwith fright, for I have just seen a terrible looking fellow, with a\n\nlarge and thick head, and on my",
+    "Go home,"
+   ],
+   "predicted": {
+    "archetype": "trickster",
+    "delivery": "sly musicality, delight in the game",
+    "pitch_hz": [
+     100,
+     150
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "244 mentions across 3 book(s), 91 spoken lines; speaks proximity. Tiger: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+  },
+  {
+   "character": "Yaga",
+   "books": [
+    "russian-fairy-tales-part-2",
+    "russian-fairy-tales-part-3",
+    "slav-peasants-part-2"
+   ],
+   "mentions": 106,
+   "dialogue_lines": 89,
+   "traits": {
+    "gender": "female",
+    "age": "young",
+    "role": null
+   },
+   "sample_lines": [
+    "\"But how did you get across the fiery river?\"",
+    "\"by fowl's legs,\"",
+    "\"What, Prince Junak! How have you come\n\nhere, where no one ever enters?\""
+   ],
+   "predicted": {
+    "archetype": "crone",
+    "delivery": "knowing, dry, amused at mortals",
+    "pitch_hz": [
+     140,
+     200
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "106 mentions across 3 book(s), 89 spoken lines; speaks proximity. Yaga: young female figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+  },
+  {
+   "character": "Queen",
+   "books": [
+    "andersen-part-2",
+    "discoverie-of-witchcraft",
+    "grimm-part-1",
+    "grimm-part-2",
+    "grimm-part-3",
+    "grimm-part-4",
+    "russian-fairy-tales-part-2",
+    "sinbad-burton"
+   ],
+   "mentions": 139,
+   "dialogue_lines": 81,
+   "traits": {
+    "gender": "female",
+    "age": "young",
+    "role": "queen"
+   },
+   "sample_lines": [
+    "“We have travelled fast,”",
+    "“No,\n\nI did not open the forbidden door;”",
+    "“How fares my child, how fares my roe?\n\nTwice shall I come, then never more.”"
+   ],
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "pitch_hz": [
+     150,
+     220
+    ],
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "139 mentions across 8 book(s), 81 spoken lines; speaks proximity. Queen: young female queen (ruler); pitch around 150-220Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority — rooms quiet when they speak"
+  },
+  {
+   "character": "Sultan",
+   "books": [
+    "arabian-nights-entertainments",
+    "grimm-part-4"
+   ],
+   "mentions": 57,
+   "dialogue_lines": 63,
+   "traits": {
+    "gender": "male",
+    "age": "young",
+    "role": null
+   },
+   "sample_lines": [
+    "\"The Arabian\n\nNights\"",
+    "“To-morrow I intend to shoot Old Sultan, he is no longer of any\n\nuse.”"
+   ],
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "pitch_hz": [
+     100,
+     150
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "57 mentions across 2 book(s), 63 spoken lines; speaks proximity. Sultan: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+  },
+  {
+   "character": "Grethel",
+   "books": [
+    "grimm-part-2",
+    "grimm-part-3"
+   ],
+   "mentions": 73,
+   "dialogue_lines": 56,
+   "traits": {
+    "gender": "female",
+    "age": "young",
+    "role": null
+   },
+   "sample_lines": [
+    "And no boat crosses either,",
+    "“Behave well, Hans.”"
+   ],
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "pitch_hz": [
+     140,
+     200
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "73 mentions across 2 book(s), 56 spoken lines; speaks proximity. Grethel: young female figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+  },
+  {
+   "character": "Tree",
+   "books": [
+    "andersen-part-1",
+    "andersen-part-2",
+    "changelings-witnesses"
+   ],
+   "mentions": 67,
+   "dialogue_lines": 55,
+   "traits": {
+    "gender": "male",
+    "age": "young",
+    "role": null
+   },
+   "sample_lines": [
+    "“Oh! Were I but such a high tree as the others are,”",
+    "“It is lovely here in spring!”"
+   ],
+   "predicted": {
+    "archetype": "elder",
+    "delivery": "geological patience, words like sediment",
+    "pitch_hz": [
+     100,
+     150
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "67 mentions across 3 book(s), 55 spoken lines; speaks proximity. Tree: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+  },
+  {
+   "character": "Princess",
+   "books": [
+    "andersen-part-1",
+    "andersen-part-2"
+   ],
+   "mentions": 55,
+   "dialogue_lines": 50,
+   "traits": {
+    "gender": null,
+    "age": "young",
+    "role": "princess"
+   },
+   "sample_lines": [
+    "“Visiting,”",
+    "“Does he live with a Princess?”"
+   ],
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "pitch_hz": [
+     140,
+     200
+    ],
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "55 mentions across 2 book(s), 50 spoken lines; speaks proximity. Princess: young unspecified princess (ruler); pitch around 140-200Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority — rooms quiet when they speak"
+  },
+  {
+   "character": "Emperor",
+   "books": [
+    "andersen-part-1",
+    "grimm-part-2",
+    "kwaidan-part-2",
+    "tales-of-old-japan-part-1"
+   ],
+   "mentions": 57,
+   "dialogue_lines": 44,
+   "traits": {
+    "gender": "male",
+    "age": "young",
+    "role": "emperor"
+   },
+   "sample_lines": [
+    "“Had I\n\nsuch a suit, I might at once find out what men in my realms are unfit\n\nfor their office, and also be able to distinguish the wise from the\n\nfoolish! Thi",
+    "“Alas, wife, why do you wish to be\n\nEmperor?”"
+   ],
+   "predicted": {
+    "archetype": "overlord",
+    "delivery": "deep, harsh edge, unhurried menace",
+    "pitch_hz": [
+     85,
+     130
+    ],
+    "affect": {
+     "valence": 0.0,
+     "power": 0.7,
+     "arousal": -0.5,
+     "voice_words": [
+      "authoritative",
+      "calm",
+      "commanding",
+      "deep",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "deep",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "57 mentions across 4 book(s), 44 spoken lines; speaks proximity. Emperor: young male emperor (ruler); pitch around 85-130Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority — rooms quiet when they speak"
+  }
+ ]
+}

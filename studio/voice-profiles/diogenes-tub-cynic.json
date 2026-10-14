@@ -29,6 +29,54 @@
    "voice_id": "en-US-GuyNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   100,
+   160
+  ],
+  "pitch_source": "default",
+  "pace": {
+   "pack": 1.0,
+   "modulator_adjusted": 0.95,
+   "words": "fast urgent pacing"
+  },
+  "energy": {
+   "pack": 0.85,
+   "words": "high-energy"
+  },
+  "delivery": "easy unhurried delivery, casual warmth. low restraint: feelings out loud, no filter",
+  "affect": {
+   "arousal": 0.45,
+   "valence": -0.05,
+   "power": 0.75
+  },
+  "mary": {
+   "rate_delta": 0.215,
+   "volume_db": 2.97,
+   "range_st": 5.8,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "heckle",
+  "restraint": "low",
+  "voice_words": [
+   "easy",
+   "unhurried",
+   "delivery",
+   "casual",
+   "warmth",
+   "hecklewarm",
+   "lanternswinging",
+   "escalates",
+   "into",
+   "actout",
+   "heckle",
+   "smug",
+   "condescending"
+  ],
+  "direction": "Diogenes, Tub Cynic: Cynic philosopher doing shameless observational street comedy from a jar, with act-outs. Holds a lantern to the audience's excuses. Speaks heckle-warm, lantern-swinging, escalates into act-out. Voice: high-energy, fast urgent pacing. easy unhurried delivery, casual warmth. Register: heckle. low restraint: feelings out loud, no filter",
+  "hold_ms": 700
+ },
  "archetype": {
   "name": "supporting",
   "confidence": 0.0,
@@ -46,25 +94,39 @@
  },
  "picks": [
   {
-   "voice_id": "4071569f4df34ad293216532515ee526",
-   "name": "WWE Commentators Pack",
-   "score": 16.2,
-   "sample": "https://platform.r2.fish.audio/task/65642cc3ee2f4c339431b78b709777b1.mp3",
-   "reason": "tags match vibe: Sports Commentator, entertainment, confident; owner taste (SpongeBob, Verity): entertainment, enthusiastic, energetic, male; 4,731 prior uses (niche)"
-  },
-  {
    "voice_id": "0051da373e0a4ac282399909d1d31b69",
    "name": "SpongeBob",
-   "score": 16.0,
+   "score": 15.7,
    "sample": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3",
-   "reason": "your loved voice (SpongeBob) — auto-included; tags match vibe: character-voice, entertainment; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,58"
+   "reason": "your loved voice (SpongeBob) — auto-included; tags match vibe: character-voice, high; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,584 prior u"
+  },
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: character-voice, character, fast, high; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic;"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: character-voice; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,1"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: warm, low; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-age"
   },
   {
    "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
    "name": "Verity",
-   "score": 15.7,
+   "score": 14.2,
    "sample": "https://platform.r2.fish.audio/task/461d972bd74442b4a06be63d34228cff.mp3",
-   "reason": "your loved voice (Verity) — auto-included; tags match vibe: character-voice, entertainment, character; owner taste (Luna Lovegood, Verity): character-voice, entertainment, social-media, storytelling; "
+   "reason": "your loved voice (Verity) — auto-included; tags match vibe: character-voice, character; owner taste (Luna Lovegood, Verity): character-voice, entertainment, social-media, storytelling; 1,934,509 prior"
   }
  ],
  "propose_error": null

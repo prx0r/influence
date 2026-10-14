@@ -60,6 +60,15 @@ def _keywords(text: str) -> set[str]:
     return {w for w in words if w not in STOP}
 
 
+def _keywords_ordered(text: str) -> list[str]:
+    """Keywords in encounter order (brief words outrank pitch words)."""
+    out = []
+    for w in re.findall(r"[a-z]{3,}", (text or "").lower()):
+        if w not in STOP and w not in out:
+            out.append(w)
+    return out
+
+
 def vibe_queries(channel: dict, chair_name: str) -> list[str]:
     """2-3 Fish search queries from chair direction + channel pitch."""
     chairs = (channel.get("voice") or {}).get("chairs", {})
@@ -68,8 +77,12 @@ def vibe_queries(channel: dict, chair_name: str) -> list[str]:
     pitch = channel.get("pitch", "") or ""
     # NOTE: chair label excluded — it names the incumbent (e.g. Adrian)
     # and would bias search toward the status quo. Fresh ears each time.
-    kws = sorted(_keywords(direction + " " + pitch))
-    primary = " ".join(kws[:4]) or "calm narration"
+    # Brief leads: direction words in encounter order first, channel pitch
+    # only fills leftover slots (pitch is visual style words — "etch fairy
+    # fairytales" must never BE the query for a ghost tale).
+    dkws = _keywords_ordered(direction)
+    pkws = [w for w in _keywords_ordered(pitch) if w not in dkws]
+    primary = " ".join((dkws + pkws)[:4]) or "calm narration"
     queries = [primary]
     _lbl = (chair.get("label", "") or "").lower()
     if "whisper" in direction.lower() or "whisper" in _lbl:
@@ -113,11 +126,13 @@ def _sibling_voice_ids(exclude_slug: str) -> set[str]:
 
 def propose(channel_slug: str, chair: str = "narrator",
             n: int = 5, exclude: list | None = None,
-            direction: str = "") -> dict:
+            direction: str = "", voice_profile: dict | None = None) -> dict:
     """5 voice candidates matched to the channel vibe, each with samples
     and a reason citing tags/uses/language/differentiation. Free reads.
     exclude = voice IDs already seen (more-buttons, dismissed).
-    direction = ad-hoc chair brief (calibration studio: any character)."""
+    direction = ad-hoc chair brief (calibration studio: any character).
+    voice_profile = mapped character delivery-spec (character_to_voice):
+    its voice_words join the match set, and it is returned for display."""
     af = _audio_flow()
     try:
         channel = load_channel(channel_slug)
@@ -141,21 +156,71 @@ def propose(channel_slug: str, chair: str = "narrator",
                          "status": "ad-hoc"}
     chair_kw = _keywords((chairs[chair].get("direction", "") or "") + " " +
                          (chairs[chair].get("label", "") or ""))
+    # ad-hoc brief always counts: for existing chairs the passed direction
+    # otherwise dies silently (queries were built from channel pitch while
+    # the ghost-tale brief sat unused). Merge its words + lead query.
+    _dir_kw = _keywords(direction) if direction else set()
+    chair_kw |= _dir_kw
     # archetype vocabulary (research gets close): classify the chair,
     # add its delivery words to the match set. Taste narrows within.
     _arch, _arch_prof = "", {}
     try:
         sys_path_push()
         from ensemble_cast import classify_archetype as _cla
-        _ar = _cla(chair + " " + (chairs[chair].get("direction", "") or ""),
-                   chairs[chair].get("direction", ""))
+        _ar = _cla(chair + " " + (chairs[chair].get("direction", "") or "") +
+                  " " + (direction or ""),
+                  (chairs[chair].get("direction", "") or "") + " " + (direction or ""))
         if _ar.get("confidence", 0) > 0:
             _arch, _arch_prof = _ar["archetype"], _ar["profile"]
             chair_kw |= _keywords(_arch_prof.get("delivery", "") or "")
     except Exception:
         pass
+    # theory tags: what a voice OF the predicted archetype is tagged by
+    # vendors. Scored as its own term so the prediction carries points.
+    _arch_tags: set = set()
+    if _arch:
+        try:
+            sys_path_push()
+            from ensemble_cast import ARCHETYPE_TAGS as _ATT
+            _arch_tags = set(_ATT.get(_arch, ()))
+        except Exception:
+            pass
+    _vp = voice_profile
+    if isinstance(_vp, dict) and "voice_profile" in _vp and isinstance(
+            _vp.get("voice_profile"), dict):
+        _vp = _vp["voice_profile"]
+    if not isinstance(_vp, dict):
+        _vp = None
+    if _vp:
+        for _w in _vp.get("voice_words", []) or []:
+            _w = "".join(c for c in str(_w).lower() if c.isalpha())
+            if len(_w) >= 3 and _w not in STOP:
+                chair_kw.add(_w)
+    # character graph (book truth): species queries shrink the pool before
+    # scoring; vetoes penalize contradictions. Ad-hoc/pack chairs have no
+    # dramatis and skip this cleanly (None).
+    _cg = None
+    try:
+        sys_path_push()
+        from character_graph import build as _cgbuild
+        _cg = _cgbuild(channel_slug, chair)
+    except Exception:
+        _cg = None
+    _vetoes: set = set((_cg or {}).get("vetoes", []) or [])
+    _queries = list((_cg or {}).get("queries", []) or []) or None
+    if _cg:
+        for _qw in " ".join(_cg.get("queries", [])).lower().split():
+            _qw = "".join(c for c in _qw if c.isalpha())
+            if len(_qw) >= 4 and _qw not in STOP:
+                chair_kw.add(_qw)
     pool: dict[str, dict] = {}
-    for q in vibe_queries(channel, chair):
+    # graph queries narrow (species truth), vibe queries widen (recall),
+    # ad-hoc brief leads (explicit instruction beats channel default);
+    # unioned so "tiger" finds tortoise-slow voices AND narration voices.
+    _lead = [" ".join(_keywords_ordered(direction)[:6])] if _dir_kw else []
+    _all_q = list(dict.fromkeys(
+        _lead + list(_queries or []) + vibe_queries(channel, chair)))
+    for q in _all_q:
         r = af.voices(q, "", False, 10)
         for v in ((r.get("data") or {}).get("voices") or []):
             vid = v.get("id") or v.get("voice_id", "")
@@ -165,9 +230,11 @@ def propose(channel_slug: str, chair: str = "narrator",
     seen_ids = set(exclude or []) | _dismissed_ids(channel_slug)
     anchors = _anchors()
     anchor_vocab: dict[str, str] = {}  # tag/word -> anchor title
+    anchor_src: dict[str, str] = {}  # tag/word -> anchor voice_id
     for a in anchors:
         for t in (a.get("tags") or []) + (a.get("descriptors") or []):
             anchor_vocab.setdefault(str(t).lower(), a.get("title", "?"))
+            anchor_src.setdefault(str(t).lower(), str(a.get("voice_id") or ""))
     # calibrated taste weights (taste_profile.json, compiled from locks /
     # likes / anchors / notes). Falls back to hand defaults when thin.
     try:
@@ -268,19 +335,51 @@ def propose(channel_slug: str, chair: str = "narrator",
         _uses = int(v.get("task_count") or 0)
         _anchored = any(str(_a.get("voice_id")) == vid for _a in anchors)
         _words = _nm.split()
+        _wl = {w.lower() for w in _words}
         _junk = ((len(_nm) > 4 and _nm.upper() == _nm) or
-                 (len(_words) > 1 and len({w.lower() for w in _words}) < len(_words)))
+                 (len(_words) > 1 and len(_wl) < len(_words)) or
+                 (_nm.strip().lower() in {"calm", "sleep", "whisper", "narration",
+                                          "story", "stories", "relax", "voice"} and len(_words) == 1) or
+                 bool(_wl & {"null", "none", "test", "testing", "trial", "demo",
+                             "sample", "temp", "xxx", "untitled"}) or
+                 bool(__import__("re").search(r"['\"0-9_]", _nm)))
         if (_junk or _uses < 200) and vid != incumbent and not _anchored:
             continue
         tags = set((v.get("tags") or []))
-        overlap = sorted({t for t in tags
-                          if any(k in t for k in chair_kw)},
+        # token match (substring "male" in "female" was scoring cross-gender).
+        # Each tag counts ONCE across all terms: theory claims first, then
+        # affect, then overlap, then anchor. Same tags stacking four capped
+        # terms is how 14-tag blanket voices (Fairy zzz) haunted every slate.
+        _tag_toks = {t: set(str(t).lower().replace("-", " ").split())
+                     for t in tags}
+        _claimed: set = set()
+        def _claim(pred):
+            hits = {t for t, toks in _tag_toks.items() if pred(toks)}
+            fresh = {t for t in hits
+                     if not (_tag_toks[t] & _claimed)}
+            _claimed.update(*[set(_tag_toks[t]) for t in hits])
+            return sorted(fresh, key=lambda t: (-len(t), t))
+        _thit = _claim(lambda toks: bool(toks & _arch_tags)) \
+            if _arch_tags else []
+        _amatch = sorted(
+            {t for t in tags if t.lower() in _affwords
+             and not (_tag_toks[t] & _claimed)},
+            key=lambda t: (-len(t), t))
+        _claimed.update(*[_tag_toks[t] for t in _amatch])
+        overlap = sorted({t for t, toks in _tag_toks.items()
+                          if any(k in toks for k in chair_kw)
+                          and not (toks & _claimed)},
                          key=lambda t: (-len(t), t))
+        _claimed.update(*[_tag_toks[t] for t in overlap])
         uses = int(v.get("task_count") or 0)
-        # popularity capped low: proof of life, not the decision. Taste
-        # (overlap + anchors + fitted weights) must be able to outvote fame —
-        # otherwise one mega-voice tops every slate (observed 2026-10-14).
-        pop = min(4.0, math.log10(max(10, uses)))
+        likes = int(v.get("like_count") or 0)
+        # score budget: theory 5 (prediction leads), taste overlap 4,
+        # affect 2, anchor cross-taste 2, fame 1 + buzz 2 + lang 1.
+        # Fame (total uses) is legacy, capped hard; buzz (like-rate) is
+        # momentum — trending outranks famous.
+        pop = min(1.0, math.log10(max(10, uses)) / 5.0) + \
+            min(2.0, (likes / max(1, uses)) * 40.0)
+        like_rate = likes / max(1, uses)
         langs = v.get("languages") or v.get("language") or []
         if isinstance(langs, str):
             langs = [langs]
@@ -292,17 +391,27 @@ def propose(channel_slug: str, chair: str = "narrator",
         # every query (observed: one voice topping all 21 packs). Overlap is
         # discounted by tag count — precision beats coverage.
         _tag_n = max(8, len(tags))
-        overlap_score = round(sum((1.5 + 1.5 * _taste_w(t, 0.5)) * 8.0 / _tag_n
-                                  for t in overlap)
-                              + sum(_fww.get(t.lower(), 0.0) * 2.0
-                                    for t in tags), 1)
-        _amatch = sorted({t for t in tags if t.lower() in _affwords},
-                         key=lambda t: (-len(t), t))
+        overlap_score = round(min(4.0, sum(
+            (1.5 + 1.5 * _taste_w(t, 0.5)) * 8.0 / _tag_n
+            for t in overlap))
+            + sum(_fww.get(t.lower(), 0.0) * 2.0
+                  for t in tags), 1)
         if _amatch:
-            overlap_score = round(overlap_score + min(3.0, len(_amatch)), 1)
-        score = round(overlap_score + pop + (2 if lang_ok else -5)
+            overlap_score = round(overlap_score + min(2.0, len(_amatch)), 1)
+        # _thit already computed above under claim priority (each tag once).
+        if _thit:
+            overlap_score = round(
+                overlap_score + min(5.0, 1.5 * len(_thit)), 1)
+        # precision: blanket tag coverage (14 tags matching everything)
+        # is catalogue SEO, not fit. Tag-derived points scale down with
+        # tag count — precision beats coverage.
+        _prec = 8.0 / max(8, len(tags))
+        score = round(overlap_score * _prec, 1)
+        score = round(score + pop + (1 if lang_ok else -5)
                       - (8 if shared else 0), 1)
         reasons = []
+        if _thit:
+            reasons.append(f"theory fit ({_arch}: {', '.join(_thit[:4])})")
         if _amatch:
             reasons.append(f"affect match ({', '.join(_amatch[:3])})")
         if overlap:
@@ -310,7 +419,15 @@ def propose(channel_slug: str, chair: str = "narrator",
                 reasons.append(f"weak tag match ({overlap[0]}) — judge the sample")
             else:
                 reasons.append(f"tags match vibe: {', '.join(overlap[:4])}")
-        anchor_hit = sorted({t for t in tags if t.lower() in anchor_vocab},
+        # anchor self-match excluded: a loved voice may not cite its OWN
+        # tags as owner taste (Luna topping every slate off her own
+        # vocabulary is the bug). Only OTHER anchors' tags count.
+        # anchor is last in claim priority: already-counted tags don't
+        # double-pay here either.
+        anchor_hit = sorted({t for t in tags
+                             if t.lower() in anchor_vocab
+                             and anchor_src.get(t.lower()) != vid
+                             and not (_tag_toks[t] & _claimed)},
                             key=lambda t: (-len(t), t))
         if not overlap and not anchor_hit:
             reasons.append("no tag overlap — sample decides")
@@ -318,9 +435,24 @@ def propose(channel_slug: str, chair: str = "narrator",
             cited = sorted({anchor_vocab[t.lower()] for t in anchor_hit})
             reasons.append(f"owner taste ({', '.join(cited[:2])}): "
                            f"{', '.join(anchor_hit[:4])}")
-            score = round(score + min(4.0, 2.0 * len(anchor_hit)), 1)
-        reasons.append(f"{uses:,} prior uses"
-                       + (" (proven)" if uses > 20000 else " (niche)"))
+            score = round(score + min(2.0, 1.0 * len(anchor_hit)), 1)
+        # mismatch vetoes: vendor tags contradicting the graph's archetype
+        # (dramatic tortoise, giggly crone). Each contradiction -3, cap -6.
+        _vhit = sorted({t for t in tags
+                        if set(str(t).lower().replace("-", " ").split())
+                        & _vetoes},
+                       key=lambda t: (-len(t), t)) if _vetoes else []
+        if _vhit:
+            score = round(score - min(6.0, 3.0 * len(_vhit)), 1)
+            reasons.append(f"contradicts {(_cg or {}).get('archetype', '?')}: "
+                           f"{', '.join(_vhit[:3])} — judge hard")
+        if like_rate >= 0.02:
+            reasons.append(f"trending ({like_rate:.1%} like-rate)")
+        elif uses > 20000 and like_rate < 0.004:
+            reasons.append("legacy fame, low love — judge the sample")
+        else:
+            reasons.append(f"{uses:,} prior uses"
+                           + (" (proven)" if uses > 20000 else " (niche)"))
         if not lang_ok:
             reasons.append("WARNING: not English-first")
         if shared:
@@ -335,7 +467,7 @@ def propose(channel_slug: str, chair: str = "narrator",
                     _anch_from = _aa.get("title", "?")
                     break
         if _anch_from:
-            reasons.insert(0, f"your loved voice ({_anch_from}) — auto-included")
+            reasons.insert(0, f"your loved voice ({_anch_from})")
         _meas = (_ac or {}).get(vid, {})
         _sf = ((_meas.get("sleep_fit") or {}).get("score")
                if isinstance(_meas, dict) else None)
@@ -354,42 +486,121 @@ def propose(channel_slug: str, chair: str = "narrator",
                        "uses": uses, "score": score,
                        "reason": "; ".join(reasons)})
     scored.sort(key=lambda c: c["score"], reverse=True)
+    # listen before rank: measure top candidates' samples (cached per
+    # voice), fit to the predicted band. Tag liars never reach the slate
+    # on claims alone (Philosophy Deep: tagged deep/low, measures 500Hz).
+    if _arch:
+        try:
+            sys_path_push()
+            from character_engine import (fit_score as _fitscore,
+                                          PACE_TARGET as _PT,
+                                          DISP_WANT_LOW as _DWL)
+            from ensemble_cast import ARCHETYPES as _ARCHT
+            _band = {"pitch_hz": list(_ARCHT.get(_arch, {}).get(
+                "pitch", (100, 160))),
+                "rate_syl_s": _PT.get(_arch, 2.2),
+                "dispersion": ("low" if _arch in _DWL else "high")}
+            _mcpath = os.path.join(os.path.dirname(CHANNELS_DIR),
+                                   "voice-measurements.json")
+            try:
+                _mc = json.load(open(_mcpath, encoding="utf-8"))
+            except Exception:
+                _mc = {}
+            _dirty = False
+            for _c in scored[:12]:
+                _vid2, _samp = _c["voice_id"], _c.get("sample") or ""
+                if not _samp or _vid2 in _mc:
+                    continue
+                try:
+                    from voice_listen import listen as _listen
+                    _mc[_vid2] = {"measured": _listen(_samp)}
+                    _dirty = True
+                except Exception:
+                    continue
+            if _dirty:
+                try:
+                    _tmp = _mcpath + ".tmp"
+                    json.dump(_mc, open(_tmp, "w"), ensure_ascii=False)
+                    os.replace(_tmp, _mcpath)
+                except Exception:
+                    pass
+            for _c in scored:
+                _m = (_mc.get(_c["voice_id"]) or {}).get("measured")
+                if not _m:
+                    continue
+                _f = _fitscore(_m, _band)
+                _c["score"] = round(_c["score"] + (_f["fit"] / 10.0) * 4.0, 1)
+                _c["reason"] += (f"; heard: F0 {_m.get('f0_median_hz')}Hz, "
+                                 f"{_m.get('syllables_per_sec')}/s, "
+                                 f"fit {_f['fit']}/{_f['max']}")
+                _f0v = _m.get("f0_median_hz") or 0
+                if _f0v and _f0v > 2 * _band["pitch_hz"][1]:
+                    _c["score"] = round(_c["score"] - 5.0, 1)
+                    _c["reason"] += (" | TAG LIE: measures 2x above band — "
+                                     "judge hard")
+            scored.sort(key=lambda c: c["score"], reverse=True)
+        except Exception:
+            pass
+    # slate assembly: incumbent always in (status-quo comparison), at most
+    # 2 loved voices, remaining slots go to fresh voices by score. Loved
+    # voices stay cited and one-click lockable — they just can't BE the
+    # whole slate anymore (a tortoise served 5 anchors teaches nothing).
+    _anchor_ids = {str(_a.get("voice_id") or "") for _a in anchors}
+    _inc = [c for c in scored if c["voice_id"] == incumbent][:1] if incumbent else []
+    _loved = [c for c in scored if c["voice_id"] in _anchor_ids
+              and c["voice_id"] != incumbent][:2]
+    _fresh = [c for c in scored if c["voice_id"] not in _anchor_ids
+              and c["voice_id"] != incumbent]
+    slate = _inc + _loved + _fresh
+    # de-dupe (incumbent can also be loved), keep first occurrence
+    _seen, _slate = set(), []
+    for c in slate:
+        if c["voice_id"] not in _seen:
+            _seen.add(c["voice_id"])
+            _slate.append(c)
+    # non-English hard filter when the pool allows: a -5 penalty still
+    # seated Spanish tigres on an English slate. Veto only if n English
+    # candidates survive it.
+    _en = [c for c in _slate
+           if "WARNING: not English-first" not in c.get("reason", "")]
+    if len(_en) >= n:
+        _slate = _en
+    _slate.sort(key=lambda c: c["score"], reverse=True)
+    slate = _slate[:n]
     # BT verdict: fitted pairwise model over the top two (when calibrated).
     # Cited on the winner; same hot..cold shape as characters voice_battle.
     _bt, _verdict = None, None
     try:
         sys_path_push()
         from taste_profile import bt_predict as _btp
-        _bt = _btp(_fn, (scored[0].get("tags", []) if len(scored) > 0 else []),
-                   (scored[1].get("tags", []) if len(scored) > 1 else [])) \
-            if len(scored) > 1 else None
+        _bt = _btp(_fn, (slate[0].get("tags", []) if len(slate) > 0 else []),
+                   (slate[1].get("tags", []) if len(slate) > 1 else [])) \
+            if len(slate) > 1 else None
     except Exception:
         _bt = None
     if _bt:
-        scored[0]["bt_p"] = _bt["p"]
-        scored[0]["reason"] += (f" | BT fit ({_fn}, acc {_bt['train_accuracy']}): "
+        slate[0]["bt_p"] = _bt["p"]
+        slate[0]["reason"] += (f" | BT fit ({_fn}, acc {_bt['train_accuracy']}): "
                                 f"P={_bt['p']} → {_bt['verdict']['state']}/"
                                 f"{_bt['verdict']['action']}")
         _verdict = _bt["verdict"]
     else:
         _verdict = None
-    # loved voices always survive the cut: appended with marker when they
-    # would otherwise fall off — owner taste is never paged out.
-    _have = {c["voice_id"] for c in scored[:n]}
-    for _a in anchors:
-        _vid = str(_a.get("voice_id") or "")
-        if not _vid or _vid in _have or _vid in seen_ids:
-            continue
-        scored.append({"voice_id": _vid,
-                       "name": _a.get("title") or "loved voice",
-                       "language": ((_a.get("languages") or ["?"])[0]
-                                    if isinstance(_a.get("languages"), list)
-                                    else _a.get("languages")),
-                       "tags": sorted(set(_a.get("tags") or []))[:8],
-                       "sample": _a.get("sample_audio"),
-                       "uses": int(_a.get("task_count") or 0),
-                       "score": 5.0,
-                       "reason": f"your loved voice ({_a.get('title', '?')}) — auto-included"})
+    # slate coherence: mean pairwise Jaccard over candidate tag sets.
+    # 1.0 = five identical voices, 0.0 = five strangers. Reported, not
+    # yet enforced — acoustic variance (F0/formants) replaces this once
+    # the listening layer measures candidates.
+    def _coherence(cands):
+        tags = [set(str(t).lower() for t in (c.get("tags") or []))
+                for c in cands]
+        if len(tags) < 2:
+            return 1.0
+        sims = []
+        for i in range(len(tags)):
+            for j in range(i + 1, len(tags)):
+                u = tags[i] | tags[j]
+                sims.append(len(tags[i] & tags[j]) / len(u) if u else 0.0)
+        return round(sum(sims) / len(sims), 3) if sims else 0.0
     liked = _liked_ids(channel_slug, chair)
     return {"ok": True, "channel": channel_slug, "chair": chair,
             "function": _fn,
@@ -397,11 +608,13 @@ def propose(channel_slug: str, chair: str = "narrator",
                           "pitch": _arch_prof.get("pitch"),
                           "delivery": (_arch_prof.get("delivery") or "")[:160]} if _arch else None,
             "character_profile": _character_profile(channel_slug, chair),
+            "voice_profile": _vp,
             "function_calibrated": bool(_fww),
             "bt_verdict": _verdict,
-            "queries": vibe_queries(channel, chair),
+            "queries": (_queries or vibe_queries(channel, chair)),
             "liked": sorted(liked),
-            "candidates": scored[:n],
+            "candidates": slate,
+            "coherence": _coherence(slate),
             "next": "human picks one with a reason → lock_voice writes it"}
 
 

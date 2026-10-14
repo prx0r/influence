@@ -1,0 +1,49 @@
+{
+ "channel": "channeled-wisdom",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "- `frontier/channeling/`: LawofOne 63M (full 106 sessions txt), Seth 64M, Cassiopaea 29 sessions, PKD exegesis + Densities frameworks",
+ "characters": [
+  {
+   "character": "guide",
+   "status": "open",
+   "direction": "[warm, certain guide voice, visualising slowly]",
+   "predicted": {
+    "archetype": "mentor",
+    "delivery": "warm and weighty, tragic patience",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: - `frontier/channeling/`: LawofOne 63M (full 106 sessions txt), Seth 64M, Cassiopaea 29 sessions, PKD exegesis + Densities frameworks Chair brief: [warm, certain guide voice, visualising slowly]"
+  }
+ ]
+}

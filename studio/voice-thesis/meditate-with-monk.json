@@ -1,0 +1,49 @@
+{
+ "channel": "meditate-with-monk",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Super basic meditation instruction + breath visualisation. No lore, no stories —",
+ "characters": [
+  {
+   "character": "monk",
+   "status": "open",
+   "direction": "[low plain meditation guide voice, exact and kind, unhurried]",
+   "predicted": {
+    "archetype": "mentor",
+    "delivery": "warm and weighty, tragic patience",
+    "affect": {
+     "valence": 0.6,
+     "power": -0.2,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "gentle",
+      "kind",
+      "slow",
+      "soft",
+      "warm"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft",
+       "warm"
+      ]
+     },
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "gentle",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Super basic meditation instruction + breath visualisation. No lore, no stories — Chair brief: [low plain meditation guide voice, exact and kind, unhurried]"
+  }
+ ]
+}

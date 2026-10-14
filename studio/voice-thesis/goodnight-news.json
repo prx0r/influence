@@ -1,0 +1,43 @@
+{
+ "channel": "goodnight-news",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "The world is getting better. Sleep on that. 5 good things, nightly.",
+ "characters": [
+  {
+   "character": "anchor",
+   "status": "locked: Anchor News 13k uses",
+   "direction": "warm nightly anchor voice, settling the day, unhurried",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: The world is getting better. Sleep on that. 5 good things, nightly. Chair brief: warm nightly anchor voice, settling the day, unhurried"
+  }
+ ]
+}

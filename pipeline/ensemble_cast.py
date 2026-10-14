@@ -224,6 +224,25 @@ ARCHETYPES = {
               "valence": 0.1, "power": 0.6, "arousal": -0.5},
 }
 
+# ---- archetype -> catalogue tag vocabulary (the translation layer) ----
+#
+# Theory words (geological, sediment) never appear in Fish tags. These are
+# the tag-vocabulary equivalents per archetype — what a voice OF this type
+# is actually tagged by vendors. Scored directly in propose() so the
+# prediction carries points, not just keywords.
+ARCHETYPE_TAGS = {
+    "overlord": ("deep", "dark", "commanding", "villain", "low", "slow"),
+    "imp": ("playful", "young", "quick", "bright", "nasal", "high"),
+    "hero": ("bright", "clear", "confident", "warm", "young", "strong"),
+    "mentor": ("warm", "deep", "calm", "wise", "old", "slow"),
+    "fae": ("soft", "gentle", "airy", "light", "female", "whisper"),
+    "crone": ("old", "female", "dry", "knowing", "textured", "slow"),
+    "beast": ("deep", "low", "slow", "resonant", "calm", "male"),
+    "trickster": ("playful", "quick", "clever", "young", "musical", "bright"),
+    "innocent": ("young", "soft", "clear", "gentle", "small", "female"),
+    "elder": ("deep", "old", "slow", "low", "calm", "measured"),
+}
+
 _ARCHETYPE_KEYS = {
     "overlord": ("giant", "overlord", "emperor", "sorcerer", "darth", "scar",
                  "evil chancellor", "don", "brute", "troll-", "ogre", "dragon"),
@@ -232,16 +251,16 @@ _ARCHETYPE_KEYS = {
     "hero": ("hero", "prince", "knight", "protagonist", "minokichi"),
     "mentor": ("mentor", "sensei", "master", "sage", "guide", "father",
                "grandfather"),
-    "fae": ("fairy", "fae", "elf", "spirit", "yuki", "mermaid", "sylph",
-            "ghost"),
-    "crone": ("witch", "crone", "hag", "baba", "yubaba", "stepmother"),
+    "fae": ("fairy", "fae", "elf", "spirit", "yuki", "mermaid", "sylph"),
+    "crone": ("witch", "crone", "hag", "baba", "yaga", "yubaba", "stepmother"),
     "beast": ("reptilian", "beast", "dragon", "bear", "wolf", "lion",
               "serpent", "crocodile", "lizard"),
-    "trickster": ("trickster", "fox", "anansi", "cat", "raven", "coyote"),
+    "trickster": ("trickster", "fox", "anansi", "cat", "raven", "coyote", "tiger", "monkey"),
     "innocent": ("child", "kid", "baby", "lamb", "kai", "gerda", "lad",
                  "apprentice"),
     "elder": ("tree", "oak", "ancient", "mountain", "ent", "tortoise",
-              "grandmother", "grandfather"),
+              "grandmother", "grandfather", "ghost", "grave", "tomb",
+              "crypt", "ancestor"),
 }
 
 

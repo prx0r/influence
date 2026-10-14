@@ -29,6 +29,65 @@
    "voice_id": "en-US-JennyNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   200,
+   300
+  ],
+  "pitch_source": "archetype:fae (conf 0.95)",
+  "pace": {
+   "pack": 1.0,
+   "modulator_adjusted": 0.95,
+   "words": "fast urgent pacing"
+  },
+  "energy": {
+   "pack": 0.85,
+   "words": "high-energy"
+  },
+  "delivery": "fast kinetic delivery, wide pitch swings, barely contained energy",
+  "affect": {
+   "arousal": 0.463,
+   "valence": -0.275,
+   "power": 0.5
+  },
+  "mary": {
+   "rate_delta": 0.176,
+   "volume_db": 3.06,
+   "range_st": 5.85,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "customer-service",
+  "restraint": "medium",
+  "voice_words": [
+   "fast",
+   "kinetic",
+   "delivery",
+   "wide",
+   "pitch",
+   "swings",
+   "barely",
+   "contained",
+   "energy",
+   "sparkling",
+   "evasive",
+   "turns",
+   "sharp",
+   "second",
+   "iron",
+   "names",
+   "come",
+   "customerservice",
+   "smug",
+   "exhausted",
+   "condescending",
+   "paranoid",
+   "airy",
+   "veiled"
+  ],
+  "direction": "Fay Marrow, Gig Fairy: Freelance tooth-and-wish fairy doing gig work in the city. Allergic to iron, obsessed with true names, still owed milk from 1987. Speaks sparkling, evasive, turns sharp the second iron or names come up. Voice: high-energy, fast urgent pacing. fast kinetic delivery, wide pitch swings, barely contained energy. Register: customer-service.",
+  "hold_ms": 800
+ },
  "archetype": {
   "name": "fae",
   "confidence": 0.95,
@@ -49,13 +108,6 @@
  },
  "picks": [
   {
-   "voice_id": "5084227c7a6f489280cfeeccae809388",
-   "name": "Sleepy",
-   "score": 14.4,
-   "sample": "https://platform.r2.fish.audio/task/42c09de8d9454651b811cec66af4031f.mp3",
-   "reason": "your loved voice (Sleepy) — auto-included; affect match (gentle, calm, soft); weak tag match (young) — judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): conversational, entertainment"
-  },
-  {
    "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
    "name": "Luna Lovegood",
    "score": 14.0,
@@ -63,11 +115,32 @@
    "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (gentle, calm, soft); owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 prior uses (niche); mea"
   },
   {
-   "voice_id": "3a561684e5fa46eb9528e8e6ff9000c9",
-   "name": "Darwin",
+   "voice_id": "0051da373e0a4ac282399909d1d31b69",
+   "name": "SpongeBob",
    "score": 13.7,
-   "sample": "https://platform.r2.fish.audio/task/72b24dc9fbd046ebb116d30ce349c1e8.mp3",
-   "reason": "your loved voice (Darwin) — auto-included; weak tag match (young) — judge the sample; owner taste (Darwin, Luna Lovegood): character-voice, entertainment, social-media, expressive; 15,118 prior uses ("
+   "sample": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3",
+   "reason": "your loved voice (SpongeBob) — auto-included; weak tag match (high) — judge the sample; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,584 prior"
+  },
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 13.6,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (gentle, calm, slow); tags match vibe: fast, high; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,577 prior uses (proven"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 13.6,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (gentle, calm, soft); owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-aged, narration; 1,337 "
+  },
+  {
+   "voice_id": "5084227c7a6f489280cfeeccae809388",
+   "name": "Sleepy",
+   "score": 13.0,
+   "sample": "https://platform.r2.fish.audio/task/42c09de8d9454651b811cec66af4031f.mp3",
+   "reason": "your loved voice (Sleepy) — auto-included; affect match (gentle, calm, soft); owner taste (Calm Sleep Narrator, Luna Lovegood): conversational, entertainment, storytelling, narration; 352 prior uses ("
   }
  ],
  "propose_error": null

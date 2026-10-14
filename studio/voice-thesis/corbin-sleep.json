@@ -1,0 +1,79 @@
+{
+ "channel": "corbin-sleep",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Literally sleep-shaped subject, unfilmed anywhere. Wave 1 bible + 4 shots banked",
+ "characters": [
+  {
+   "character": "imaginal",
+   "status": "open",
+   "direction": "[luminous reader voice, imaginal-paced, violet hour]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Literally sleep-shaped subject, unfilmed anywhere. Wave 1 bible + 4 shots banked Chair brief: [luminous reader voice, imaginal-paced, violet hour]"
+  },
+  {
+   "character": "guest",
+   "status": "open",
+   "direction": "",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Literally sleep-shaped subject, unfilmed anywhere. Wave 1 bible + 4 shots banked Chair brief: "
+  }
+ ]
+}

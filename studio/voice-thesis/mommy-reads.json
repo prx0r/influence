@@ -1,0 +1,43 @@
+{
+ "channel": "mommy-reads",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "Bedtime stories read by Mommy. Honey, time for bed.",
+ "characters": [
+  {
+   "character": "mommy",
+   "status": "locked: Mommy 208k uses (crown jewel)",
+   "direction": "warm maternal voice, patient and smiling, close and unhurried, honey-time-for-bed",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: Bedtime stories read by Mommy. Honey, time for bed. Chair brief: warm maternal voice, patient and smiling, close and unhurried, honey-time-for-bed"
+  }
+ ]
+}

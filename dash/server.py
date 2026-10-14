@@ -1029,16 +1029,43 @@ class Handler(SimpleHTTPRequestHandler):
                                     "direction": " ".join(x for x in
                                         [c.get("age") or "", c.get("gender") or "",
                                          c.get("role") or ""] if x),
+                                    "voice_query": c.get("voice_query", "") or "",
                                     "dialogue_lines": c.get("dialogue_lines", 0),
                                     "book": os.path.basename(fp)[:-5]})
-                    # de-dupe by name, keep max dialogue
+                    # de-dupe by name, keep max dialogue. Smeared-name guard:
+                    # entities spanning 6+ books with no role (King/God/Yes)
+                    # are parsing artifacts, never calibration targets.
+                    _JUNK = {"yes", "the", "well", "and", "her", "him",
+                             "you", "sir", "god", "king", "man", "woman",
+                             "mother", "father", "alas", "ah", "oh", "ay"}
+                    _books: dict = {}
+                    for c in cands:
+                        _books.setdefault(str(c["name"] or ""), set()).add(
+                            c.get("book", ""))
                     seen: dict = {}
                     for c in cands:
-                        if (c["name"] not in seen or c["dialogue_lines"] >
-                                seen[c["name"]]["dialogue_lines"]):
-                            seen[c["name"]] = c
+                        nm = str(c["name"] or "")
+                        if len(nm) < 3 or nm.lower() in _JUNK:
+                            continue
+                        if (nm not in seen or c["dialogue_lines"] >
+                                seen[nm]["dialogue_lines"]):
+                            seen[nm] = c
+                    # drop smeared: 6+ books and no role word in direction
+                    seen = {nm: c for nm, c in seen.items()
+                            if len(_books.get(nm, ())) <= 5 or
+                            str(c.get("direction") or "").strip()}
                     return self._json({"ok": True,
                                        "pick": next_character(list(seen.values()))})
+                if self._route() == "/api/studio/cast/context":
+                    # Exact character graph for assessment: books, profiles,
+                    # every sample line. Powers cali + casting headers.
+                    import sleep_studio as _stx
+                    slug = str(body.get("channel", "folk-and-fable") or
+                               "folk-and-fable")
+                    if not slug.replace("-", "").replace("_", "").isalnum():
+                        return self._json({"error": "bad channel"}, 400)
+                    return self._json(_stx.character_context(
+                        slug, str(body.get("chair", body.get("name", "")) or "")))
                 if self._route() == "/api/studio/onboard/thumb":
                     import channel_onboard as _obt
                     return self._json(_obt.react_thumb(

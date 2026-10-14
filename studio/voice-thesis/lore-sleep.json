@@ -1,0 +1,43 @@
+{
+ "channel": "lore-sleep",
+ "narrator_model": "single chair (no collections)",
+ "pitch": "One umbrella for ALL modern lore: cartoons, games, films, anything. Whiteboard =",
+ "characters": [
+  {
+   "character": "loremaster",
+   "status": "open",
+   "direction": "[warm lore-keeper voice, inhabiting the world, unhurried]",
+   "predicted": {
+    "archetype": "supporting",
+    "delivery": "unmarked sleep narration",
+    "affect": {
+     "valence": 0.1,
+     "power": 0.0,
+     "arousal": -0.5,
+     "voice_words": [
+      "calm",
+      "slow",
+      "soft"
+     ]
+    },
+    "sounds_like": [
+     {
+      "voice": "Luna Lovegood",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     },
+     {
+      "voice": "Calm Sleep Narrator",
+      "shared": [
+       "calm",
+       "soft"
+      ]
+     }
+    ]
+   },
+   "why": "Channel pitch: One umbrella for ALL modern lore: cartoons, games, films, anything. Whiteboard = Chair brief: [warm lore-keeper voice, inhabiting the world, unhurried]"
+  }
+ ]
+}

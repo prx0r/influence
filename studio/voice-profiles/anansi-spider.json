@@ -30,6 +30,57 @@
    "voice_id": "en-US-GuyNeural"
   }
  },
+ "voice_profile": {
+  "pitch_hz": [
+   150,
+   250
+  ],
+  "pitch_source": "archetype:trickster (conf 0.8)",
+  "pace": {
+   "pack": 1.0,
+   "modulator_adjusted": 0.933,
+   "words": "fast urgent pacing"
+  },
+  "energy": {
+   "pack": 0.85,
+   "words": "high-energy"
+  },
+  "delivery": "sly musicality, delight in the game (via archetype; pack vibe empty). low restraint: feelings out loud, no filter",
+  "affect": {
+   "arousal": 0.367,
+   "valence": -0.133,
+   "power": 0.567
+  },
+  "mary": {
+   "rate_delta": 0.157,
+   "volume_db": 2.42,
+   "range_st": 5.47,
+   "pitch_direction": "falling",
+   "source": "mary_model.json rules on modulator-mean affect"
+  },
+  "register": "brag",
+  "restraint": "low",
+  "voice_words": [
+   "musicality",
+   "delight",
+   "game",
+   "archetype",
+   "pack",
+   "vibe",
+   "empty",
+   "bragquick",
+   "asideheavy",
+   "escalates",
+   "into",
+   "actout",
+   "brag",
+   "smug",
+   "condescending",
+   "exhausted"
+  ],
+  "direction": "Anansi, Spider: Trickster spider telling Anansi tales with boastful asides. Claims every story; often right. Speaks brag-quick, aside-heavy, escalates into act-out. Voice: high-energy, fast urgent pacing. sly musicality, delight in the game (via archetype; pack vibe empty). Register: brag. low restraint: feelings out loud, no filter",
+  "hold_ms": 700
+ },
  "archetype": {
   "name": "trickster",
   "confidence": 0.8,
@@ -57,11 +108,18 @@
    "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (gentle, calm, soft); tags match vibe: character-voice; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narrat"
   },
   {
-   "voice_id": "dbcbce60e6244a60a7f56a785c9f1bb1",
-   "name": "calm calm",
-   "score": 15.9,
-   "sample": "https://platform.r2.fish.audio/task/c28a9213c34947bd95207a0aefdc7a74.mp3",
-   "reason": "affect match (calm); tags match vibe: storytelling, history, story; owner taste (Calm Sleep Narrator, Luna Lovegood): social-media, storytelling, middle-aged, smooth; 1,754 prior uses (niche)"
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 16.0,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (gentle, calm, soft); tags match vibe: storytelling, low; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytel"
+  },
+  {
+   "voice_id": "0051da373e0a4ac282399909d1d31b69",
+   "name": "SpongeBob",
+   "score": 15.7,
+   "sample": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3",
+   "reason": "your loved voice (SpongeBob) — auto-included; tags match vibe: character-voice, high; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,584 prior u"
   },
   {
    "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
@@ -69,6 +127,13 @@
    "score": 15.6,
    "sample": "https://platform.r2.fish.audio/task/461d972bd74442b4a06be63d34228cff.mp3",
    "reason": "your loved voice (Verity) — auto-included; tags match vibe: character-voice, storytelling, character; owner taste (Luna Lovegood, Verity): character-voice, entertainment, social-media, storytelling; 1"
+  },
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 15.3,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (gentle, calm, slow); tags match vibe: character-voice, storytelling, character, bright; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, e"
   }
  ],
  "propose_error": null
