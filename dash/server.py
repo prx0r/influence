@@ -402,6 +402,23 @@ class Handler(SimpleHTTPRequestHandler):
             try:
                 body = open(full, "rb").read()
             except OSError:
+                # R2-archived voice? meta keeps r2_key → 302 presigned.
+                if q.get("kind", [""])[0] == "voice":
+                    try:
+                        sys.path.insert(0, os.path.dirname(ROOT))
+                        from pipeline.r2_presign import presign_get
+                        meta = json.load(open(full + ".json"))
+                        if meta.get("r2_key"):
+                            self.send_response(302)
+                            self.send_header(
+                                "Location",
+                                presign_get(meta.get("r2_bucket",
+                                                     "blog-video-assets"),
+                                            meta["r2_key"]))
+                            self.end_headers()
+                            return None
+                    except Exception:
+                        pass
                 return self._json({"error": "missing"}, 404)
             self.send_response(200)
             self.send_header("Content-Type", ctype)
@@ -819,11 +836,23 @@ class Handler(SimpleHTTPRequestHandler):
                 if self._route() == "/api/studio/pilots":
                     return self._json({"ok": True,
                                        "pilots": _st.list_pilots()})
+                if self._route() == "/api/studio/ship":
+                    # Archive bank to private R2, prune local disk.
+                    # Dry-run default; live=true uploads + HEAD-verifies,
+                    # then deletes local MP3s (metas stay, playback via
+                    # presigned URLs). Human only (POST auth gate above).
+                    sys.path.insert(0, os.path.join(
+                        os.path.dirname(ROOT), "scripts"))
+                    import ship_audio as _ship
+                    return self._json(_ship.ship(
+                        int(body.get("days", 3) or 3),
+                        dry_run=not (body.get("live") is True),
+                        channel=str(body.get("channel", "studio") or "studio")))
                 if self._route() == "/api/studio/pilot/render":
                     # $0 batch: damn script → prep/gate/poison → per-speaker
                     # free renders → master in bank. No grant, no credits.
                     return self._json(_st.render_pilot(
-                        str(body.get("path", "") or ""),
+                        str(body.get("path", "") or ""),                        str(body.get("path", "") or ""),
                         str(body.get("channel", "") or ""),
                         None, int(body.get("min_score", 70) or 70)))
                 if self._route() == "/api/studio/channel":

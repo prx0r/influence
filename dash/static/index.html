@@ -1167,7 +1167,7 @@ function renderStudio(main){
   <div id="st-gal"></div>
   <div style="font-size:11px;color:var(--dim)">latest video render</div>
   <div id="st-out"></div>
-  <div style="font-size:11px;color:var(--dim)">voice bank — every clip, player included <button onclick="studioFishBank()">refresh</button></div>
+  <div style="font-size:11px;color:var(--dim)">voice bank — every clip, player included <button onclick="studioFishBank()">refresh</button> <button onclick="studioShip()">ship old clips to R2</button></div>
   <div id="st-bank"></div>
   <div style="font-size:11px;color:var(--dim)">edge-tts clips</div>
   <div id="st-vox"></div>
@@ -1453,8 +1453,19 @@ async function studioFishApprove(){
 }
 async function studioFishBank(){
   try{const r=await api('POST','/api/studio/fish/bank',{});
-    document.getElementById('st-bank').innerHTML=(r.clips||[]).map(c=>`<div class="res"><span><b>${esc(c.name)}</b> <span style="color:var(--dim)">${esc(c.voice||c.backend||'')} · ${c.chars||'?'} chars${c.credits_quoted?' · '+c.credits_quoted+'cr':''}</span><br><audio controls preload="none" src="${c.url}&token=${encodeURIComponent(T)}" style="width:100%"></audio></span></div>`).join('')||'<div style="color:var(--dim)">bank empty</div>';
+    document.getElementById('st-bank').innerHTML=(r.clips||[]).map(c=>`<div class="res"><span><b>${esc(c.name)}</b> <span style="color:var(--dim)">${esc(c.voice||c.backend||'')} · ${c.chars||'?'} chars${c.credits_quoted?' · '+c.credits_quoted+'cr':''}${c.r2_key?' · <b>R2</b>':''}</span><br><audio controls preload="none" src="${c.url}&token=${encodeURIComponent(T)}" style="width:100%"></audio></span></div>`).join('')||'<div style="color:var(--dim)">bank empty</div>';
   }catch(e){}
+}
+async function studioShip(){
+  try{
+    const r=await api('POST','/api/studio/ship',{days:3},{timeoutMs:120000});
+    const n=(r.shipped||[]).length;
+    if(!n){alert('nothing old enough to ship (keeps 3 days local)');return}
+    if(!confirm(`Ship ${n} clips to private R2 and delete local MP3s?\nMetas stay; playback switches to presigned URLs.`))return;
+    const r2=await api('POST','/api/studio/ship',{days:3,live:true},{timeoutMs:300000});
+    alert(r2.ok?`shipped ${r2.shipped.length} · errors ${(r2.errors||[]).length}`:'ERR '+(r2.error||''));
+    studioFishBank();
+  }catch(e){alert('ERR '+e.message)}
 }
 async function studioPilots(){
   const m=document.getElementById('st-pilotmsg'); m.textContent='scanning…';

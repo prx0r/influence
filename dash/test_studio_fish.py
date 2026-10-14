@@ -172,3 +172,34 @@ def test_pilots_list_and_parse_offline():
         assert False, "path escape must raise"
     except ValueError:
         pass
+
+
+def test_r2_presign_offline():
+    import os as _o
+    _o.environ["R2_ENDPOINT"] = "https://x.r2.cloudflarestorage.com"
+    _o.environ["R2_ACCESS_KEY"] = "testkey"
+    _o.environ["R2_SECRET_KEY"] = "testsecret"
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from r2_presign import presign_get, audio_key
+    u = presign_get("bkt", "audio/studio/x.mp3", expires=60)
+    assert u.startswith("https://x.r2.cloudflarestorage.com/bkt/audio/studio/x.mp3?")
+    assert "X-Amz-Signature=" in u and "X-Amz-Expires=60" in u
+    assert audio_key("folk-and-fable", "a b.mp3") == "audio/folk-and-fable/a-b.mp3"
+    for k in ("R2_ENDPOINT", "R2_ACCESS_KEY", "R2_SECRET_KEY"):
+        _o.environ.pop(k, None)
+
+
+def test_ship_dryrun_offline():
+    import os as _o
+    _o.environ["R2_ENDPOINT"] = "https://x.r2.cloudflarestorage.com"
+    _o.environ["R2_ACCESS_KEY"] = "testkey"
+    _o.environ["R2_SECRET_KEY"] = "testsecret"
+    import sys as _s
+    _s.path.insert(0, "/root/influence")
+    from scripts import ship_audio
+    r = ship_audio.ship(days=9999, dry_run=True)
+    assert r["ok"] is True and r["dry_run"] is True
+    assert all("fresh" in s for s in r["skipped"])
+    for k in ("R2_ENDPOINT", "R2_ACCESS_KEY", "R2_SECRET_KEY"):
+        _o.environ.pop(k, None)

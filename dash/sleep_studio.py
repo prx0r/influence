@@ -560,14 +560,28 @@ def fish_narrate(text: str, voice_id: str, grant: dict | None = None) -> dict:
 
 
 def list_voice_bank() -> list:
-    """Every rendered clip (edge + fish), newest first, player-ready."""
-    out = []
+    """Every rendered clip (edge + fish), newest first, player-ready.
+    Includes R2-archived clips (mp3 pruned, meta + r2_key kept) — the
+    file route 302s those to presigned URLs."""
+    out, seen = [], set()
     for p in sorted(glob.glob(os.path.join(VOICE, "*.mp3")), reverse=True):
         n = os.path.basename(p)
         m = os.path.join(VOICE, n + ".json")
         meta = json.load(open(m)) if os.path.exists(m) else {}
         meta["name"] = n
         meta.setdefault("url", f"/api/studio/file?kind=voice&file={n}")
+        out.append(meta)
+        seen.add(n)
+    for m in sorted(glob.glob(os.path.join(VOICE, "*.json")), reverse=True):
+        try:
+            meta = json.load(open(m))
+        except Exception:
+            continue
+        nm = meta.get("name", os.path.basename(m)[:-5])
+        if nm in seen or not meta.get("r2_key"):
+            continue
+        meta["name"] = nm
+        meta.setdefault("url", f"/api/studio/file?kind=voice&file={nm}")
         out.append(meta)
     return out
 
