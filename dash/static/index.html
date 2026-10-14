@@ -1515,12 +1515,20 @@ async function studioPilots(){
     const ps=r.pilots||[];
     const ready=ps.filter(p=>p.ready).length;
     m.textContent=`${ready}/${ps.length} READY (prep≥70 + gate + poison)`;
-    const houses={};
-    ps.forEach((p,i)=>{(houses[p.house||'?']=houses[p.house||'?']||[]).push({...p,i})});
-    document.getElementById('st-pilots').innerHTML=Object.keys(houses).sort().map(h=>
-      `<div style="margin-top:6px;font-size:11px;color:var(--dim)">📁 ${esc(h)} (${houses[h].length})</div>`+
-      houses[h].map(p=>`<div class="res"><span><b>${esc(p.file.replace('.drama.txt','').replace('.read.txt',''))}</b> <span style="color:var(--dim)">${esc(p.kind||'')} · score ${p.score??'?'} · ${p.chunks??'?'} chunks ${p.ready?'<b style="color:var(--green)">READY</b>':'<b style="color:var(--yellow)">BLOCKED</b>'}</span><br>
-      <button onclick="studioVideo(${p.i})">open video</button> <button onclick="studioPilotRender(${p.i})">render master ($0)</button> <span id="st-pr-${p.i}" class="dim"></span><div id="st-vid-${p.i}"></div></span></div>`).join('')
+    const byColl={};
+    ps.forEach((p,i)=>{const c=p.collection||p.house||'?';(byColl[c]=byColl[c]||[]).push({...p,i})});
+    const talesHtml=(arr)=>{
+      const byTale={};
+      arr.forEach(p=>{(byTale[p.tale||p.file]=byTale[p.tale||p.file]||[]).push(p)});
+      return Object.keys(byTale).sort().map(t=>{
+        const cuts=byTale[t];
+        const head=cuts.length>1?`<div style="font-size:11px"><b>${esc(t)}</b> <span style="color:var(--dim)">${cuts.length} cuts (one tale)</span></div>`:'';
+        return head+cuts.map(p=>`<div class="res"><span><b>${esc(p.file.replace('.drama.txt','').replace('.read.txt',''))}</b> <span style="color:var(--dim)">${esc(p.cut||p.kind||'')} · <span style="font-family:monospace">${esc(p.video_id||'')}</span> · score ${p.score??'?'} · ${p.chunks??'?'} chunks ${p.ready?'<b style="color:var(--green)">READY</b>':'<b style="color:var(--yellow)">BLOCKED</b>'}</span><br>
+      <button onclick="studioVideo(${p.i})">open video</button> <button onclick="studioPilotRender(${p.i})">render master ($0)</button> <span id="st-pr-${p.i}" class="dim"></span><div id="st-vid-${p.i}"></div></span></div>`).join('');
+      }).join('');
+    };
+    document.getElementById('st-pilots').innerHTML=Object.keys(byColl).sort().map(h=>
+      `<div style="margin-top:6px;font-size:11px;color:var(--dim)">📁 collection: ${esc(h)} (${byColl[h].length})</div>`+talesHtml(byColl[h])
     ).join('');
     window._pilots=ps;
   }catch(e){m.textContent='ERR '+e.message}

@@ -211,18 +211,39 @@ async function selectChannel(slug){
 }
 
 /* ---------- pilots ---------- */
-function pilotItem(p){
+function pilotItem(p, tale){
   const name = p.file.replace(/\.(drama|read)\.txt$/,'').replace(/-/g,' ');
+  const cut = p.cut && p.cut !== 'full' ? ` <span class="sub">[${esc(p.cut)}]</span>` : '';
+  const vid = p.video_id ? ` <span class="sub" style="font-family:monospace">${esc(p.video_id)}</span>` : '';
   return `<div class="pi ${S.pilot && S.pilot.path===p.path?'on':''}" data-p="${esc(p.path)}" title="${esc(p.file)}">
     <span class="r ${p.ready?'y':''}" title="${p.ready?'ready':'not ready (score/gate)'}"></span>
-    <span class="t">${esc(name)}</span><span class="s">${p.score ?? ''}</span></div>`;
+    <span class="t">${esc(name)}</span>${cut}${vid}<span class="s">${p.score ?? ''}</span></div>`;
 }
 function renderPilots(){
   const v = S.view; if (!v) return;
   const mine = v.pilots || [], other = v.other_pilots || [];
+  const group = (arr) => {
+    const byColl = {};
+    arr.forEach(p => {
+      const c = p.collection || p.house || '?';
+      (byColl[c] = byColl[c] || []).push(p);
+    });
+    return Object.keys(byColl).sort().map(c => {
+      const tales = {};
+      byColl[c].forEach(p => { (tales[p.tale || p.file] = tales[p.tale || p.file] || []).push(p); });
+      return `<div class="sub" style="padding:4px 6px;color:var(--gold)">📁 ${esc(c)}</div>` +
+        Object.keys(tales).sort().map(t => {
+          const cuts = tales[t];
+          const head = cuts.length > 1
+            ? `<div style="padding:2px 6px;font-size:12px"><b>${esc(t)}</b> <span class="sub">${cuts.length} cuts</span></div>`
+            : '';
+          return head + cuts.map(p => pilotItem(p, t)).join('');
+        }).join('');
+    }).join('');
+  };
   $('#plist').innerHTML =
-    `<h3>${esc(v.name)} · ${mine.length}</h3>` + (mine.map(pilotItem).join('') || '<div class="sub" style="padding:6px">No pilots for this channel yet.</div>') +
-    (other.length ? `<details style="margin-top:10px"><summary style="padding:0 6px">Other houses (${other.length})</summary>${other.map(pilotItem).join('')}</details>` : '');
+    `<h3>${esc(v.name)} · ${mine.length}</h3>` + (group(mine) || '<div class="sub" style="padding:6px">No pilots for this channel yet.</div>') +
+    (other.length ? `<details style="margin-top:10px"><summary style="padding:0 6px">Other houses (${other.length})</summary>${group(other)}</details>` : '');
   $('#plist').querySelectorAll('.pi').forEach(el => el.onclick = () => {
     const p = [...mine, ...other].find(x => x.path === el.dataset.p);
     S.pilot = p; localStorage['ytPilot:'+S.slug] = p.path; renderPilots(); renderCtx();
@@ -275,7 +296,8 @@ function renderStage(){
   <div class="card" id="now">
     ${latest ? takeHtml(latest, true) : '<div class="sub">No takes yet. Hit “Hear preview”, listen, then tell Pi what to change.</div>'}
   </div>
-  ${takes.length > 1 ? `<div class="card"><div class="sub" style="margin-bottom:8px">Earlier takes (${takes.length-1})</div><div style="display:flex;flex-direction:column;gap:6px">${takes.filter(t=>t!==latest).slice(0,12).map(t=>takeHtml(t,false)).join('')}</div></div>` : ''}`;
+  ${takes.length > 1 ? `<div class="card"><div class="sub" style="margin-bottom:8px">Earlier takes (${takes.length-1})</div><div style="display:flex;flex-direction:column;gap:6px">${takes.filter(t=>t!==latest).slice(0,12).map(t=>takeHtml(t,false)).join('')}</div></div>` : ''}
+  <div class="card"><div class="row" style="justify-content:space-between"><div><h2>Video package</h2><div class="sub">titles + thumb + voices for this exact video</div></div><button class="ghost" id="b-vid">Open video workspace</button></div><div id="vidbox"></div></div>`;
   $('#stage').querySelectorAll('input[type=range]').forEach(el => el.oninput = () => {
     const k = el.dataset.k; S.knobs[k] = +el.value;
     $('#kv-'+k).textContent = ({speed:x=>(+x).toFixed(2)+'×',temperature:x=>(+x).toFixed(2),volume_db:x=>(+x>0?'+':'')+(+x).toFixed(1)+' dB',preview_segments:x=>x+' seg'})[k](el.value);

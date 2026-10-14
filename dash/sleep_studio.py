@@ -188,6 +188,41 @@ def prep_script(raw: str, chunk_limit: int = 1500) -> dict:
     return p
 
 
+# ---- pilot → collection map (which book each script came from) ----
+# Keys: pilot filename stems. Value: (collection dir, season).
+# tale: groups cuts of the SAME story (doorway excerpt + full + verbatim
+# are one tale, three cuts — not three videos). Fallback for unmapped:
+# house as collection, filename as tale.
+
+_PILOT_COLLECTIONS = {
+    "01-yuki-doorway": ("kwaidan-part-1", "S2-folklore", "yuki-onna", "excerpt"),
+    "01-yuki-onna-full-tale": ("kwaidan-part-1", "S2-folklore", "yuki-onna", "full"),
+    "01-yuki-onna-verbatim": ("kwaidan-part-1", "S2-folklore", "yuki-onna", "verbatim"),
+    "02-little-mermaid": ("andersen-part-1", "S1-fairy", "little-mermaid", "full"),
+    "03-baba-yaga": ("russian-fairy-tales-part-1", "S2-folklore", "baba-yaga", "full"),
+    "04-punchkin": ("russian-fairy-tales-part-1", "S2-folklore", "punchkin", "full"),
+    "05-deccan-sun-moon-wind": ("russian-fairy-tales-part-3", "S2-folklore", "deccan-sun-moon-wind", "full"),
+    "06-aesop-fables": ("aesop-front-to-back", "S1-fairy", "aesop-fables", "full"),
+}
+
+
+def _pilot_collection(path: str, house: str) -> dict:
+    """Collection + tale + cut for a pilot file. Numbering assigned later,
+    per collection group (kwaidan 01-03, andersen 01)."""
+    stem = os.path.basename(path).split(".")[0]
+    if stem in _PILOT_COLLECTIONS:
+        coll, season, tale, cut = _PILOT_COLLECTIONS[stem]
+    else:
+        tale = re.sub(r"^\d+[\-_ ]+", "", stem).replace("-", " ")
+        coll, season, cut = house, "S?-unknown", "full"
+    short = re.sub(r"^\d+[\-_ ]+", "", stem).replace("-", " ")
+    prefix = "FF" if house == "folk-and-fable" else "".join(
+        w[0] for w in house.split("-") if w).upper()[:4]
+    return {"collection": coll, "season": season, "tale": tale, "cut": cut,
+            "video_id": f"{prefix}-{season}-{coll}-00",
+            "title": short.title()}
+
+
 # ---- damn pilots: drama.txt → per-speaker $0 renders → master ----
 #
 # damn owns scripts + routines (readout/gate/poison over there); WE own
@@ -259,6 +294,7 @@ def list_pilots() -> list:
                     "readout" if "/readout/" in path else "video")
             out.append({"path": path, "house": house, "kind": kind,
                         "file": os.path.basename(path),
+                        **_pilot_collection(path, house),
                         "score": p["score_after"],
                         "chunks": p["n_chunks"],
                         "credits_or_free": p["credits_total"],
@@ -270,6 +306,14 @@ def list_pilots() -> list:
             out.append({"path": path, "house": "?", "kind": "?",
                         "file": os.path.basename(path),
                         "ready": False, "reason": str(e)[:120]})
+    # number video IDs within each collection (kwaidan 01-03, andersen 01)
+    counters: dict = {}
+    for o in out:
+        key = (o.get("house"), o.get("collection"))
+        counters[key] = counters.get(key, 0) + 1
+        if o.get("video_id"):
+            o["video_id"] = re.sub(r"-\d+$", f"-{counters[key]:02d}",
+                                   o["video_id"])
     return out
 
 
@@ -1035,3 +1079,85 @@ def save_video_picks(video_id: str, title: str = "", thumb_path: str = "",
     with open(p, "w", encoding="utf-8") as f:
         json.dump(item, f, indent=1)
     return {"ok": True, "stored": "bgraph item", "picks_learned": True}
+
+
+# ---- episode assembly: etch clips + narration master → YT final ----
+#
+# Sleepdraw renders silent draw clips (CPU, sleepdraw venv for cv2);
+# we concat, mux the bank master.mp3, and normalize to the YT spec
+# (MEDIA-PIPELINE final-mux flags), then compliance-gate. Background
+# job like renders (long CPU) — poll job_status.
+
+SLEEPDRAW_VENV_PY = "/root/sleepdraw/.venv/bin/python"
+
+
+def _etch_clip(art_path: str, outdir: str, knobs: dict) -> str:
+    """One still → draw clip via sleepdraw venv (cv2 lives there)."""
+    import subprocess as _sp
+    code = (
+        "import sys; sys.path.insert(0, '/root/sleepdraw');"
+        "from sleepdraw import draw as _d;"
+        f"_d.crop_169({art_path!r}, {os.path.join(outdir, 'crop.jpg')!r});"
+        f"mp4, frames, log = _d.render({os.path.join(outdir, 'crop.jpg')!r},"
+        f" {outdir!r}, {knobs!r}, duration_ms={int(knobs.get('dur', 30000))},"
+        f" no_hand={bool(knobs.get('no_hand', True))});"
+        "print('MP4:' + mp4)")
+    r = _sp.run([SLEEPDRAW_VENV_PY, "-c", code], capture_output=True,
+                text=True, timeout=3600)
+    m = re.search(r"MP4:(\S+)", r.stdout or "")
+    if not m or not os.path.isfile(m.group(1)):
+        raise RuntimeError("etch failed: " + (r.stderr or r.stdout)[-500:])
+    return m.group(1)
+
+
+def _assemble(name: str, art_paths: list, audio_path: str,
+              knobs: dict) -> dict:
+    import subprocess as _sp
+    if not art_paths:
+        raise ValueError("no art supplied")
+    if not os.path.isfile(audio_path):
+        raise ValueError("narration master missing")
+    workdir = os.path.join(REND, name + "-asm")
+    os.makedirs(workdir, exist_ok=True)
+    clips = []
+    per = max(1, int(knobs.get("dur", 30000)))
+    for i, art in enumerate(art_paths):
+        cdir = os.path.join(workdir, f"clip{i:02d}")
+        os.makedirs(cdir, exist_ok=True)
+        full = art if os.path.isfile(art) else os.path.join(ART, art)
+        if not os.path.isfile(full):
+            raise ValueError(f"art missing: {art}")
+        clips.append(_etch_clip(full, cdir, {**knobs, "dur": per}))
+    lst = os.path.join(workdir, "clips.lst")
+    with open(lst, "w") as f:
+        for c in clips:
+            f.write(f"file '{c}'\n")
+    vcat = os.path.join(workdir, "video.mp4")
+    _sp.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
+             "-i", lst, "-c", "copy", vcat], check=True, timeout=600)
+    final = os.path.join(workdir, name + "-final.mp4")
+    _sp.run(["ffmpeg", "-y", "-v", "error", "-i", vcat, "-i", audio_path,
+             "-vf", "scale=1920:1080,format=yuv420p",
+             "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
+             "-c:a", "aac", "-b:a", "128k", "-ar", "48000",
+             "-shortest", "-movflags", "+faststart", final],
+            check=True, timeout=1200)
+    return {"mp4": f"/api/studio/file?kind=rend&dir={name}-asm&file="
+                    f"{os.path.basename(final)}",
+            "mp4path": final, "clips": len(clips), "knobs": knobs}
+
+
+def start_assemble(name: str, art_paths: list, audio_path: str,
+                   knobs: dict) -> str:
+    jid = f"a{int(time.time())}"
+    JOBS[jid] = {"status": "running", "name": name, "kind": "assemble"}
+
+    def _t():
+        try:
+            JOBS[jid].update(_assemble(name, art_paths, audio_path, knobs))
+            JOBS[jid]["status"] = "done"
+        except Exception as e:  # noqa: BLE001
+            JOBS[jid] = {"status": "error", "error": str(e)[-1000:]}
+
+    threading.Thread(target=_t, daemon=True).start()
+    return jid
