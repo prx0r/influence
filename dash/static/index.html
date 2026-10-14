@@ -1515,10 +1515,43 @@ async function studioPilots(){
     const ps=r.pilots||[];
     const ready=ps.filter(p=>p.ready).length;
     m.textContent=`${ready}/${ps.length} READY (prep≥70 + gate + poison)`;
-    document.getElementById('st-pilots').innerHTML=ps.map((p,i)=>`<div class="res"><span><b>${esc(p.house)} · ${esc(p.file)}</b> <span style="color:var(--dim)">${esc(p.kind||'')} · score ${p.score??'?'} · ${p.chunks??'?'} chunks ${p.ready?'<b style="color:var(--green)">READY</b>':'<b style="color:var(--yellow)">BLOCKED</b>'}</span><br>
-      ${p.ready?`<button onclick="studioPilotRender(${i})">render master ($0)</button>`:''}<span id="st-pr-${i}" class="dim"></span></span></div>`).join('');
+    const houses={};
+    ps.forEach((p,i)=>{(houses[p.house||'?']=houses[p.house||'?']||[]).push({...p,i})});
+    document.getElementById('st-pilots').innerHTML=Object.keys(houses).sort().map(h=>
+      `<div style="margin-top:6px;font-size:11px;color:var(--dim)">📁 ${esc(h)} (${houses[h].length})</div>`+
+      houses[h].map(p=>`<div class="res"><span><b>${esc(p.file.replace('.drama.txt','').replace('.read.txt',''))}</b> <span style="color:var(--dim)">${esc(p.kind||'')} · score ${p.score??'?'} · ${p.chunks??'?'} chunks ${p.ready?'<b style="color:var(--green)">READY</b>':'<b style="color:var(--yellow)">BLOCKED</b>'}</span><br>
+      <button onclick="studioVideo(${p.i})">open video</button> <button onclick="studioPilotRender(${p.i})">render master ($0)</button> <span id="st-pr-${p.i}" class="dim"></span><div id="st-vid-${p.i}"></div></span></div>`).join('')
+    ).join('');
     window._pilots=ps;
   }catch(e){m.textContent='ERR '+e.message}
+}
+async function studioVideo(i){
+  const p=(window._pilots||[])[i]; if(!p)return;
+  const el=document.getElementById('st-vid-'+i); el.innerHTML='loading video workspace…';
+  try{
+    const chan=(typeof obChan!=='undefined'&&obChan)||'folk-and-fable';
+    const r=await api('POST','/api/studio/video/detail',{path:p.path,channel:chan});
+    if(!r.ok){el.innerHTML='ERR '+(r.error||r.reason||'');return}
+    const vvid=p.file.replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60);
+    el.innerHTML=`<div style="font-size:11px"><b>ID ${esc(vvid)}</b> · ${r.words} words · ${r.minutes} min · ${r.segments} segs · score ${r.score}<br>
+      <b>voices:</b> ${esc(Object.entries(r.voice_map||{}).map(([k,v])=>k+':'+(v.label||v.voice_id||'')).join(' · '))}<br>
+      <b>titles (pick one):</b><br>${(r.titles||[]).map((t,ti)=>`<div>“${esc(t.title)}” <span class="dim">${esc(t.formula)} — ${esc(t.reason)}</span> <button onclick="studioPickTitle('${vvid}',${i},${ti})">use</button></div>`).join('')}
+      <b>thumb draft:</b> ${r.thumb_draft&&r.thumb_draft.path?esc(r.thumb_draft.title)+' ('+r.thumb_draft.bytes+'b) <button onclick="studioPickThumb(\''+vvid+'\',\''+esc(r.thumb_draft.path)+'\')">use</button>':'unavailable'}<br>
+      <span id="st-pick-${vvid}" class="dim"></span></div>`;
+    window['_vt_'+vvid]={titles:r.titles,vid:vvid};
+  }catch(e){el.innerHTML='ERR '+e.message}
+}
+async function studioPickTitle(vvid,i,ti){
+  const t=(window['_vt_'+vvid]||{}).titles||[];
+  if(!t[ti])return;
+  try{const r=await api('POST','/api/studio/video/save',{video_id:vvid,title:t[ti].title,formula:t[ti].formula});
+    document.getElementById('st-pick-'+vvid).textContent=r.ok?'title saved — future drafts prefer '+t[ti].formula:'ERR';
+  }catch(e){}
+}
+async function studioPickThumb(vvid,path){
+  try{const r=await api('POST','/api/studio/video/save',{video_id:vvid,thumb_path:path});
+    document.getElementById('st-pick-'+vvid).textContent=r.ok?'thumb saved':'ERR';
+  }catch(e){}
 }
 async function studioPilotRender(i){
   const p=(window._pilots||[])[i]; if(!p)return;

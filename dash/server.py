@@ -859,6 +859,20 @@ class Handler(SimpleHTTPRequestHandler):
                 if self._route() == "/api/studio/pilots":
                     return self._json({"ok": True,
                                        "pilots": _st.list_pilots()})
+                if self._route() == "/api/studio/video/detail":
+                    # Per-video workspace: script meta + voice map + title
+                    # drafts + thumb draft. All free reads + $0 compose.
+                    return self._json(_st.video_detail(
+                        str(body.get("path", "") or ""),
+                        str(body.get("channel", "") or "")))
+                if self._route() == "/api/studio/video/save":
+                    vm = body.get("voice_map")
+                    return self._json(_st.save_video_picks(
+                        str(body.get("video_id", "") or ""),
+                        str(body.get("title", "") or ""),
+                        str(body.get("thumb_path", "") or ""),
+                        vm if isinstance(vm, dict) else None,
+                        str(body.get("formula", "") or "")))
                 if self._route() == "/api/studio/ship":
                     # Archive bank to private R2, prune local disk.
                     # Dry-run default; live=true uploads + HEAD-verifies,

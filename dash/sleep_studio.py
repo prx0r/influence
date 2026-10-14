@@ -896,3 +896,142 @@ def character_context(channel_slug: str, chair: str) -> dict:
                 "reason": f"no book character matches '{chair}'"}
     return {"ok": True, "chair": chair, "books": sorted(set(books)),
             "characters": profiles}
+
+
+# ---- per-video workspace: script + voices + titles + thumb in one view ----
+
+_TRADITIONS = {"yuki": "Japanese Folklore", "kwaidan": "Japanese Folklore",
+               "mermaid": "Danish Fairytale", "andersen": "Danish Fairytale",
+               "baba": "Russian Folklore", "grimm": "German Fairytale",
+               "anansi": "West African Folklore", "cyclops": "Greek Myth",
+               "orpheus": "Greek Myth", "rapunzel": "German Fairytale",
+               "snow-queen": "Danish Fairytale", "puss": "French Fairytale"}
+
+
+def _tradition(slug: str) -> str:
+    low = slug.lower()
+    for k, v in _TRADITIONS.items():
+        if k in low:
+            return v
+    return ""
+
+
+def video_detail(path: str, channel_slug: str = "") -> dict:
+    """One video workspace: script meta, voice map, title drafts, thumb
+    draft. All free reads + $0 local compose. Picks save to bgraph item."""
+    import sys as _s
+    _s.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+    _s.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                   "pipeline"))
+    from pipeline.titles import draft as _titles
+    try:
+        import tts_text as _tt
+    except ImportError:
+        from pipeline import tts_text as _tt
+    parsed = parse_drama(path)
+    body = "\n".join(s["text"] for s in parsed["segments"])
+    prep = _tt.prep(body[:6000])
+    words = len(body.split())
+    slug = os.path.basename(path).split(".")[0]
+    dur = f"{round(words / 105)} min" if words else ""
+    tale = re.sub(r"^\d+[\-_ ]+", "", slug).replace("-", " ").strip()
+    vid = re.sub(r"[^A-Za-z0-9]+", "-", slug).strip("-")[:60]
+    pref = []
+    try:
+        _vp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                           "studio", "video-picks.json")
+        _allp = json.load(open(os.path.normpath(_vp), encoding="utf-8"))
+        for _pid, _pk in _allp.items():
+            if isinstance(_pk, dict) and _pk.get("title"):
+                pref.append(_pk.get("formula") or "")
+    except Exception:
+        pass
+    titles = _titles(tale, _tradition(slug), dur,
+                     [p for p in pref if p] or None)
+    # voice map: locked channel chairs override header stand-ins.
+    # Header maps chair name -> speaker number, so each spk entry shows
+    # the LOCKED voice wherever known (no duplicate stand-in rows).
+    vmap: dict = {}
+    locked_by_chair: dict = {}
+    if channel_slug:
+        try:
+            from channel_character import load_channel
+            ch = load_channel(channel_slug)
+            for nm, c in (((ch.get("voice") or {}).get("chairs")) or {}).items():
+                if isinstance(c, dict) and c.get("fish_id"):
+                    vmap[nm] = {"voice_id": c["fish_id"],
+                                "label": (c.get("label", "") or "") + " (locked)"}
+                    locked_by_chair[nm] = c["fish_id"]
+        except Exception:
+            pass
+    for cname, c in parsed["chairs"].items():
+        if cname in locked_by_chair:
+            continue  # already shown as the locked chair above
+        vmap.setdefault("spk" + str(c["speaker"]),
+                        {"voice_id": c.get("voice_id", ""),
+                         "label": cname + " (script stand-in)"})
+    # thumb draft: channel art + short title, local compose ($0)
+    thumb = None
+    try:
+        from pipeline.thumb import compose as _compose
+        art = "/root/sleepdraw/assets/moon-lora1-flux-pencil.jpg"
+        short = " ".join(tale.split()[:3]).title()
+        tdir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            "..", "pipeline", "runs", channel_slug or "studio",
+                            "thumbs")
+        os.makedirs(tdir, exist_ok=True)
+        tp = os.path.join(tdir, slug + "-draft.jpg")
+        r = _compose(art, short, tp)
+        if r.get("ok"):
+            thumb = {"path": tp, "bytes": r["bytes"], "title": short}
+    except Exception as e:  # noqa: BLE001 — thumb draft is best-effort
+        thumb = {"error": str(e)[:120]}
+    return {"ok": True, "slug": slug, "house": parsed["house"],
+            "words": words, "minutes": round(words / 105, 1),
+            "segments": parsed["n_segments"],
+            "score": prep["score_after"],
+            "titles": titles, "voice_map": vmap, "thumb_draft": thumb,
+            "chairs": parsed["chairs"]}
+
+
+def save_video_picks(video_id: str, title: str = "", thumb_path: str = "",
+                     voice_map: dict | None = None,
+                     formula: str = "") -> dict:
+    """Save human picks onto the bgraph video item. Picks train future
+    drafts (preferred title formulas rank first). Path-guarded IDs."""
+    import re as _re2
+    if not _re2.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{1,80}", video_id or ""):
+        return {"ok": False, "reason": "bad video id"}
+    p = os.path.join("/root/bgraph/registry/content/items", video_id + ".json")
+    if not os.path.isfile(p):
+        # pilots not yet registered get a lightweight local record
+        p = None
+        reg = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                           "studio", "video-picks.json")
+        reg = os.path.normpath(reg)
+        try:
+            allp = json.load(open(reg, encoding="utf-8"))
+        except Exception:
+            allp = {}
+        allp[video_id] = {"title": title[:120], "thumb": thumb_path[:200],
+                          "voices": voice_map or {},
+                          "formula": formula[:60],
+                          "at": int(time.time())}
+        with open(reg, "w", encoding="utf-8") as f:
+            json.dump(allp, f, indent=1)
+        return {"ok": True, "stored": "studio/video-picks.json",
+                "picks_learned": bool(title or voice_map)}
+    with open(p, encoding="utf-8") as f:
+        item = json.load(f)
+    if title:
+        item["title_pick"] = title[:120]
+    if thumb_path:
+        item["thumb_pick"] = thumb_path[:200]
+    if voice_map:
+        item["voice_map"] = {str(k)[:40]: str(v)[:40]
+                             for k, v in list(voice_map.items())[:20]}
+    if formula:
+        item["title_formula"] = formula[:60]
+    with open(p, "w", encoding="utf-8") as f:
+        json.dump(item, f, indent=1)
+    return {"ok": True, "stored": "bgraph item", "picks_learned": True}
