@@ -603,3 +603,34 @@ def anchor_prompt(purpose: str, voice_ids: list | None = None,
             "sources": [a.get("title") for a in anchors],
             "purpose": purpose,
             "next": "approve $0.01 to generate candidates via design_voice"}
+
+
+def react_thumb(channel: str, thumb_ref: str, liked: bool,
+                note: str = "") -> dict:
+    """Tick/dismiss a thumbnail (+ optional style note like 'dark, no faces').
+    Stored with timestamps; compiled into taste profile lane rules."""
+    if (not channel.replace("-", "").replace("_", "").isalnum()
+            or not thumb_ref):
+        return {"ok": False, "reason": "bad channel or thumb"}
+    d = _taste(channel)
+    d.setdefault("thumb_likes", [])
+    d.setdefault("thumb_dismissed", [])
+    d.setdefault("feedback", [])
+    if liked and thumb_ref not in [t.get("ref") for t in d["thumb_likes"]]:
+        d["thumb_likes"].append({"ref": thumb_ref[:200],
+                                 "note": note.strip()[:300],
+                                 "ts": int(time.time())})
+    if not liked and thumb_ref not in d["thumb_dismissed"]:
+        d["thumb_dismissed"].append(thumb_ref[:200])
+    if note.strip():
+        d["feedback"].append({"chair": "thumbnail", "voice_id": "",
+                              "text": note.strip()[:500],
+                              "ts": int(time.time())})
+    _save_taste(channel, d)
+    try:
+        sys_path_push()
+        from taste_profile import compile_profile as _compile4
+        _compile4()
+    except Exception:
+        pass
+    return {"ok": True, "thumb_likes": len(d["thumb_likes"])}

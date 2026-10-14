@@ -54,5 +54,13 @@
  "art": {
   "file": "studio/channels/goodnight-news-art.jpg",
   "model": "CF flux schnell ($0)"
+ },
+ "profile": {
+  "demographic": "doomscrolling adults 25-45, habit-loop seekers",
+  "sleepy": 0.7,
+  "energy": "low-bright",
+  "use": "evening wind-down ritual",
+  "daypart": "22:00 nightly",
+  "persona": "warm anchor"
  }
 }

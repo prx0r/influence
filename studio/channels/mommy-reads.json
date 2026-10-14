@@ -58,5 +58,13 @@
  "art": {
   "file": "studio/channels/mommy-reads-art.jpg",
   "model": "CF flux schnell ($0)"
+ },
+ "profile": {
+  "demographic": "adults seeking comfort, parents previewing; 18-40 skew",
+  "sleepy": 0.9,
+  "energy": "low-warm",
+  "use": "comfort + sleep",
+  "daypart": "bedtime",
+  "persona": "maternal single voice"
  }
 }

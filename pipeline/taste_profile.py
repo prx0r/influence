@@ -41,6 +41,10 @@ def _load_json(path: str, default):
         return default
 
 
+_LANE_STOP = {"and", "for", "the", "with", "from", "that", "this",
+               "your", "our", "voice", "narrator", "chair"}
+
+
 def compile_profile() -> dict:
     """Scan all taste artifacts → weights + rules. Pure, deterministic."""
     pos: dict[str, float] = {}
@@ -111,10 +115,50 @@ def compile_profile() -> dict:
         if abs(w) >= 0.05:
             weights[f] = round(max(-1.0, min(1.0, w)), 3)
 
-    profile = {"version": 1, "compiled_at": int(time.time()),
+    # lane linkage: tags of voices locked on high-sleepy channels become
+    # the sleep-lane rule (evidence, not assertion). Thumb likes/notes feed
+    # visual rules the same way.
+    lanes: dict = {}
+    sleepy_tags: dict[str, float] = {}
+    visual: list[str] = []
+    if os.path.isdir(CHANNELS):
+        for fn in sorted(os.listdir(CHANNELS)):
+            if not fn.endswith(".json") or fn.endswith(
+                    (".seed.json", "-taste.json")):
+                continue
+            rec = _load_json(os.path.join(CHANNELS, fn), {})
+            if not isinstance(rec, dict):
+                continue
+            prof = rec.get("profile") or {}
+            slug = rec.get("channel", fn[:-5])
+            if float(prof.get("sleepy") or 0) >= 0.9:
+                for c in (((rec.get("voice") or {}).get("chairs"))
+                           or {}).values():
+                    if isinstance(c, dict) and c.get("fish_id"):
+                        for t in re.findall(
+                                r"[a-z]{3,}",
+                                ((c.get("label") or "") + " " +
+                                 (c.get("direction") or "")).lower()):
+                            if t not in _LANE_STOP:
+                                sleepy_tags[t] = sleepy_tags.get(t, 0.0) + 1.0
+            t = _load_json(os.path.join(CHANNELS, slug + "-taste.json"), {})
+            for tl in t.get("thumb_likes") or []:
+                if isinstance(tl, dict) and tl.get("note"):
+                    visual.append(tl["note"][:120])
+    if sleepy_tags:
+        top = sorted(sleepy_tags.items(), key=lambda kv: -kv[1])[:10]
+        lanes["sleepy"] = {"tags": [k for k, _ in top],
+                           "rule": "sleepy>=0.9 channels lock: " +
+                                   ", ".join(k for k, _ in top[:6])}
+    if visual:
+        lanes["visual"] = {"notes": visual[:10],
+                           "rule": "owner thumb notes (latest first)"}
+
+    profile = {"version": 2, "compiled_at": int(time.time()),
                "weights": dict(sorted(weights.items(),
                                       key=lambda kv: -abs(kv[1]))),
                "rules": rules[:40],
+               "lanes": lanes,
                "n_features": len(weights)}
     with open(PROFILE, "w", encoding="utf-8") as f:
         json.dump(profile, f, indent=1, ensure_ascii=False)

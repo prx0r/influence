@@ -56,5 +56,13 @@
  "art": {
   "file": "studio/channels/daimon-dreams-art.jpg",
   "model": "CF flux schnell ($0)"
+ },
+ "profile": {
+  "demographic": "adults 25-54 sleep listeners (refine me)",
+  "sleepy": 0.85,
+  "energy": "low",
+  "use": "sleep",
+  "daypart": "bedtime",
+  "persona": "narrator"
  }
 }

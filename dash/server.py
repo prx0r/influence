@@ -903,6 +903,19 @@ class Handler(SimpleHTTPRequestHandler):
                     return self._json(_st.prepare_cast(
                         coll, slug,
                         min(8, int(body.get("max_cast", 6) or 6))))
+                if self._route() == "/api/studio/assemble":
+                    # Episode assembly: etch art clip(s) + narration master
+                    # → YT-spec final. Background job (CPU minutes), $0.
+                    arts = body.get("art") or []
+                    knobs = body.get("knobs") if isinstance(
+                        body.get("knobs"), dict) else {}
+                    return self._json({
+                        "ok": True,
+                        "jid": _st.start_assemble(
+                            re.sub(r"[^A-Za-z0-9_-]", "", str(
+                                body.get("name", "ep") or "ep"))[:40],
+                            [str(a)[:200] for a in arts][:12],
+                            str(body.get("audio", "") or ""), knobs)})
                 if self._route() == "/api/studio/channel":
                     import json as _json2
                     slug = str(body.get("slug", "") or "")
@@ -935,11 +948,18 @@ class Handler(SimpleHTTPRequestHandler):
                         bool(body.get("dismissed")),
                         str(body.get("note", "") or "")))
                 if self._route() == "/api/studio/onboard/love":
-                    import channel_onboard as _ob
-                    return self._json(_ob.love(
+                    import channel_onboard as _obl
+                    return self._json(_obl.love(
                         str(body.get("voice_id", "") or ""),
                         [str(x) for x in (body.get("descriptors") or [])][:12],
                         str(body.get("context", "") or ""),
+                        str(body.get("note", "") or "")))
+                if self._route() == "/api/studio/onboard/thumb":
+                    import channel_onboard as _obt
+                    return self._json(_obt.react_thumb(
+                        str(body.get("channel", "") or ""),
+                        str(body.get("thumb", "") or ""),
+                        bool(body.get("liked")),
                         str(body.get("note", "") or "")))
                 if self._route() == "/api/studio/onboard/lock":
                     import channel_onboard as _ob

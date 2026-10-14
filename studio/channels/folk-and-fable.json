@@ -334,5 +334,13 @@
  "art": {
   "file": "studio/channels/folk-and-fable-art.jpg",
   "model": "CF flux schnell ($0)"
+ },
+ "profile": {
+  "demographic": "adults 25-54, folklore-curious, mythology overlap",
+  "sleepy": 0.95,
+  "energy": "low",
+  "use": "sleep onset + night waking",
+  "daypart": "bedtime",
+  "persona": "storyteller + tale cast"
  }
 }

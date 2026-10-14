@@ -217,7 +217,8 @@ def test_taste_profile_compiles_and_calibrates():
     _s.path.insert(0, "/root/influence/pipeline")
     from taste_profile import compile_profile, weight_of, load_profile
     p = compile_profile()
-    assert p["n_features"] > 10 and p["version"] == 1
+    assert p["n_features"] > 10 and p["version"] >= 2
+    assert "lanes" in p and "sleepy" in p["lanes"]
     assert weight_of("narration", 0.5) > 0.5  # learned positive
     assert weight_of("zzz-no-such-tag-zzz", 0.5) == 0.5  # default
     assert isinstance(load_profile().get("rules"), list)

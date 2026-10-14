@@ -51,5 +51,13 @@
  "mechanisms": {
   "difficulty-lullaby": "surrender — permission to stop tracking (AGI 11/38)",
   "proportion": "cosmic scale as sedative"
+ },
+ "profile": {
+  "demographic": "adults 25-54 sleep listeners (refine me)",
+  "sleepy": 0.85,
+  "energy": "low",
+  "use": "sleep",
+  "daypart": "bedtime",
+  "persona": "narrator"
  }
 }
