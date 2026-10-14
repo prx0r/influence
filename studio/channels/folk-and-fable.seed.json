@@ -3,6 +3,7 @@
  "character_id": "channel-folk-and-fable",
  "name": "Folk & Fable",
  "kind": "channel",
+ "category": "host",
  "status": "pilot",
  "seed": {
   "philosophy": {
@@ -26,21 +27,31 @@
   "chairs": {
    "minokichi": {
     "label": "",
+    "category": "narrator",
     "direction": "[young earnest male, slower than normal speech]",
     "voice_id": ""
    },
    "narrator": {
     "label": "Adrian",
+    "category": "narrator",
     "direction": "[calm, measured storyteller voice, slow and gentle for sleep, slower than normal speech]",
     "voice_id": "bf322df2096a46f18c579d0baa36f41d"
    },
    "yuki": {
     "label": "",
+    "category": "narrator",
     "direction": "[veiled whisper female, slower than normal speech]",
     "voice_id": ""
    }
   }
  },
+ "hosts": [
+  {
+   "channel_id": "folk-and-fable",
+   "content_type": "E2-reading",
+   "vibe": "Sleep fairytales: S1 Fairy, S2 Folklore, S3 Myth + etch films"
+  }
+ ],
  "profile": {
   "voice": "roster of 3 locked chairs",
   "branches": [
@@ -64,7 +75,8 @@
    "contract": "E2-reading: slow TTS + ambient bed + one scene per passage",
    "easy_engine": "E5c",
    "primary": "E2-reading",
-   "proven": "Bremen 8.2min master.mp3 + 3 draws, A/V locked, shipped review"
+   "proven": "Bremen 8.2min master.mp3 + 3 draws, A/V locked, shipped review",
+   "damn_engine": "E2-reading"
   }
  ]
 }

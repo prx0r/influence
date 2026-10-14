@@ -3,6 +3,7 @@
  "character_id": "channel-mommy-reads",
  "name": "Mommy Reads",
  "kind": "channel",
+ "category": "host",
  "status": "pilot",
  "seed": {
   "philosophy": {
@@ -26,11 +27,19 @@
   "chairs": {
    "mommy": {
     "label": "Mommy 208k uses (crown jewel)",
+    "category": "host",
     "direction": "[warm maternal voice, patient and smiling, close and unhurried, honey-time-for-bed, never rushed, stern, shared with ANY other project, slower than normal speech]",
     "voice_id": "60bd8f0f5bbc462a8fa1686dd81af336"
    }
   }
  },
+ "hosts": [
+  {
+   "channel_id": "mommy-reads",
+   "content_type": "E2-reading",
+   "vibe": "Bedtime stories read by Mommy. Honey, time for bed."
+  }
+ ],
  "profile": {
   "voice": "roster of 1 locked chairs",
   "branches": [
@@ -53,7 +62,8 @@
   {
    "contract": "E2-reading: slow TTS + ambient bed + one scene per passage",
    "primary": "E2-reading",
-   "proven": "damn pilots: honey-time-for-bed + snow-queen-part-1"
+   "proven": "damn pilots: honey-time-for-bed + snow-queen-part-1",
+   "damn_engine": "E2-reading/E5-talk"
   }
  ]
 }

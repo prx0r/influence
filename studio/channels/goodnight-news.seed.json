@@ -3,6 +3,7 @@
  "character_id": "channel-goodnight-news",
  "name": "Goodnight News",
  "kind": "channel",
+ "category": "host",
  "status": "pilot",
  "seed": {
   "philosophy": {
@@ -26,11 +27,19 @@
   "chairs": {
    "anchor": {
     "label": "Anchor News 13k uses",
+    "category": "host",
     "direction": "[warm nightly anchor voice, settling the day, unhurried, never bad-news voice, shared outside this project, slower than normal speech]",
     "voice_id": "63d5460e91e2411fa2e6bf95e7456f03"
    }
   }
  },
+ "hosts": [
+  {
+   "channel_id": "goodnight-news",
+   "content_type": "E6-freshness",
+   "vibe": "The world is getting better. Sleep on that. 5 good things, nightly."
+  }
+ ],
  "profile": {
   "voice": "roster of 1 locked chairs",
   "branches": [
