@@ -1,11 +1,11 @@
 """Audio flow — Fish Audio studio via MCP, grant-gated like images_flow.
 
-- voices()/balance()/estimate_*()/media_models()/workspaces(): FREE reads.
-- studio_create/import/status/read/find/write/recast/enhance: FREE (platform
-  pays the import LLM; reads/writes/adopt never bill).
-- speak()/generate_media()/studio_generate()/studio_export(): SPEND.
-  dry_run (default) → free quote + payload hash for human approval.
-  live → runtime.execute (generate_paid) with ctx grant. FAIL CLOSED.
+SPEND POLICY (owner law, 2026-10-14): ZERO package credits, ever, until
+the owner explicitly says otherwise. Enforced structurally, not by
+convention: every live (spending) path checks _spend_allowed(), which
+requires CREDIT_SPEND_ENABLED=1 in the server environment. Default off —
+grants, approvals, and fulfills all fail closed without it. Free reads
+and the $0 REST tier always work.
 """
 from __future__ import annotations
 
@@ -101,6 +101,9 @@ def speak(text: str, voice_id: str, dry_run: bool = True,
                 "reason": "no execution context with verified grant: FAIL CLOSED. "
                           "Run dry-run first, approve payload hash, then call "
                           "with ctx.grant."}
+    blocked = _spend_allowed()
+    if blocked:
+        return blocked
     try:
         from runtime import make_spec, execute
     except ImportError:
@@ -154,6 +157,9 @@ def generate_media(kind: str, workspace_id: str, model_id: str, prompt: str,
     if not ctx or not ctx.get("grant"):
         return {"ok": False,
                 "reason": "no execution context with verified grant: FAIL CLOSED."}
+    blocked = _spend_allowed()
+    if blocked:
+        return blocked
     try:
         from runtime import make_spec, execute
     except ImportError:
@@ -239,13 +245,23 @@ def studio_recast(project_id: str, from_voice_id: str,
                               "to_voice_id": to_voice_id})
 
 
+def _spend_allowed() -> dict | None:
+    """Owner kill-switch: credit spend needs explicit env opt-in."""
+    import os as _os2
+    if _os2.environ.get("CREDIT_SPEND_ENABLED", "") != "1":
+        return {"ok": False,
+                "reason": "CREDIT SPEND DISABLED by owner policy (0 credits "
+                          "until owner says otherwise). Free tier only."}
+    return None
+
+
 def _need_grant(ctx: dict | None) -> dict | None:
     if not ctx or not ctx.get("grant"):
         return {"ok": False,
                 "reason": "no execution context with verified grant: FAIL "
                           "CLOSED. Dry-run first, approve the quote, then "
                           "call with ctx.grant."}
-    return None
+    return _spend_allowed()  # owner kill-switch even with a valid grant
 
 
 def studio_generate(project_id: str, chapter: str = "",

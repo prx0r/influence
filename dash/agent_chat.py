@@ -211,6 +211,9 @@ Audio studio (Fish Audio, free reads + grant-gated spend):
   credit paths yourself: for anything billed, call audio.request (quotes +
   files a human approval task with the payload hash) and tell the human to
   approve it in the dash queue — fulfill executes, receipt attached.
+- OWNER LAW: 0 credits ever until the owner explicitly says otherwise. If a
+  tool reports CREDIT SPEND DISABLED, do not work around it — report it and
+  offer the free path.
 - Keep each TTS render under ~2000 chars (split at sentence boundaries).
   CJK text costs ~3x per character. A failed render gets ONE identical free
   retry within 5 minutes. Multi-speaker scripts belong in Story Studio.

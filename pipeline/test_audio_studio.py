@@ -120,3 +120,14 @@ def test_audio_request_queues_without_spending(tmp_path):
     from effects import get_task
     t = get_task(r["task_id"], db_path=db)
     assert t["state"] == "REVIEW_READY" and t["kind"] == "audio.speak"
+
+
+def test_spend_killswitch_blocks_live_paths():
+    from audio_flow import speak, generate_media, studio_generate
+    fake_grant = {"grant": {"action": "x", "payload_hash": "y",
+                            "expires_at": 9999999999}}
+    for r in (speak("hi", "v", dry_run=False, ctx=fake_grant),
+              generate_media("image", "w", "m", "p", 1, dry_run=False,
+                             ctx=fake_grant),
+              studio_generate("proj", dry_run=False, ctx=fake_grant)):
+        assert r["ok"] is False and "DISABLED" in r["reason"]
