@@ -94,3 +94,20 @@ def test_free_direct_converts_drama_tags():
     assert any("DRAMA-ONLY" in f for f in s["flags"])
     s2 = score("[whispering] hide me now")
     assert not any("DRAMA-ONLY" in f for f in s2["flags"])
+
+
+def test_stutter_dash_and_ranges():
+    from tts_text import normalize
+    t, _, _ = normalize("I—I—I cannot go.")
+    assert "I, " in t and "—" not in t
+    t2, _, _ = normalize("Walk 5-10 km daily.")
+    assert "five to ten kilometres" in t2 and "—" not in t2 and "-" not in t2
+
+
+def test_readout_parse_single_narrator():
+    import sys as _s, os as _o
+    _s.path.insert(0, "/root/influence/dash")
+    import sleep_studio as st
+    p = st.parse_drama("/root/damn/projects/folk-and-fable/readout/01-yuki-onna-verbatim.read.txt")
+    assert p["n_segments"] >= 1
+    assert {s["speaker"] for s in p["segments"]} == {0}

@@ -229,7 +229,9 @@ def list_pilots() -> list:
     for path in sorted(_glob.glob(os.path.join(
             DAMN, "projects", "*", "pilots", "*.drama.txt"))) + sorted(
             _glob.glob(os.path.join(DAMN, "projects", "*", "videos",
-                                    "*.drama.txt"))):
+                                    "*.drama.txt"))) + sorted(
+            _glob.glob(os.path.join(DAMN, "projects", "*", "readout",
+                                    "*.read.txt"))):
         try:
             raw = open(path, encoding="utf-8", errors="replace").read()
             body = "\n".join(l for l in raw.splitlines()
@@ -245,7 +247,8 @@ def list_pilots() -> list:
             except Exception:
                 pass
             house = path.split(os.sep)[-3]
-            kind = "pilot" if "/pilots/" in path else "video"
+            kind = ("pilot" if "/pilots/" in path else
+                    "readout" if "/readout/" in path else "video")
             out.append({"path": path, "house": house, "kind": kind,
                         "file": os.path.basename(path),
                         "score": p["score_after"],
@@ -263,12 +266,15 @@ def list_pilots() -> list:
 
 
 def parse_drama(path: str) -> dict:
-    """drama.txt → header chairs + speaker segments. Path-guarded to damn."""
+    """drama.txt (or readout .read.txt) → header chairs + speaker segments.
+    Path-guarded to damn. Readout files have no speaker tags: single
+    speaker 0 (narrator resolves from channel lock or override)."""
     full = os.path.realpath(path)
     if not full.startswith(os.path.realpath(DAMN) + os.sep):
         raise ValueError("pilot outside damn/")
-    if not full.endswith(".drama.txt") or not os.path.isfile(full):
-        raise ValueError("not a drama.txt pilot")
+    if ((not full.endswith(".drama.txt") and not full.endswith(".read.txt"))
+            or not os.path.isfile(full)):
+        raise ValueError("not a damn pilot/readout file")
     raw = open(full, encoding="utf-8", errors="replace").read()
     chairs: dict = {}
     for ln in raw.splitlines():
@@ -349,6 +355,12 @@ def render_pilot(path: str, channel_slug: str = "",
             spk_voice[int(spk)] = vid
         except (TypeError, ValueError):
             continue
+    # readout files: no chairs at all → channel narrator lock carries it
+    if not spk_voice and 0 not in spk_voice:
+        narr = next((v for k, v in locked.items()
+                     if "narr" in k.lower()), None) or next(iter(locked.values()), None)
+        if narr:
+            spk_voice[0] = narr
     if not spk_voice:
         return {"ok": False, "reason": "no voices: header has no IDs and "
                 "no locked chairs (pass voice_overrides)"}

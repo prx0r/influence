@@ -199,10 +199,12 @@ def studio_create(name: str, roster: dict, chapters: list,
     return _fish().call_tool("studio_create_project", args)
 
 
-def studio_import(text: str = "", name: str = "", rewrite: bool = True,
+def studio_import(text: str = "", name: str = "", rewrite: bool = False,
                   auto_tags: bool = True) -> dict:
     """Free: raw script/doc (≤1.5M chars) → background LLM structures it.
-    Returns immediately; poll studio_status(). Platform pays the LLM."""
+    Returns immediately; poll studio_status(). Platform pays the LLM.
+    rewrite defaults False (damn P0 verbatim law: read the book — never
+    rewrite, retell, or originalise without explicit per-item approval)."""
     if not text:
         return {"ok": False, "reason": "text required"}
     return _fish().call_tool("studio_import_document",

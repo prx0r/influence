@@ -377,6 +377,11 @@ def normalize(text: str) -> tuple[str, list, list]:
     # footnote/citation markers [12], (ed.), *asterisk asides*
     t = re.sub(r"\[\d+(?:,\s*\d+)*\]", " ", t)
     t = re.sub(r"\(\s*(?:ed|eds|trans|ibid|op cit)[^)]*\)", " ", t, flags=re.I)
+    # stutter-dash "I—I—I" → "I, I, I" (damn tts-poison truth: em-dash
+    # stutters read as glitches; punctuation normalised, words untouched)
+    t = re.sub(r"\b([A-Za-z])[—–](?=[A-Za-z]\b)", r"\1, ", t)
+    # numeric ranges "5-10 km" → "5 to 10 km" (never let dash eat meaning)
+    t = re.sub(r"(\d)\s*[-–—]\s*(?=\d)", r"\1 to ", t)
     t = _norm_numbers(t, subs)
     t = _norm_words(t, subs, flags)
     # leftover digit check
