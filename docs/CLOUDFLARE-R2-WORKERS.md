@@ -16,6 +16,15 @@ Copy-paste contract. Canonical code: `pipeline/providers/cloudflare.py`
   fallback `CLOUDFLARE_API_TOKEN`. Read at call time via
   `agent-vault vault credential get <KEY> --vault oracle`. NEVER in tree,
   NEVER in code, NEVER printed. Empty creds → fail closed, do not retry.
+- TOKEN TYPES ARE NOT INTERCHANGEABLE (hit 2026-10-14, cost an hour):
+  R2 bucket credentials (S3 access-key/secret pair, from the R2
+  bucket-credentials screen) can ONLY talk S3-compatible R2. They 401
+  against Workers AI and even against `/user/tokens/verify`. Workers AI
+  needs an API bearer token (`cfat_…`, My Profile → API Tokens → Workers
+  AI template or Custom with Account·Workers AI·Edit). If you see 401 on
+  an `/ai/run/` call, you grabbed the wrong screen — go back and mint
+  the `cfat_` one. Our vault `CLOUDFLARE_API_TOKEN` is verified good
+  (live flux+sdxl renders).
 - Response handling (BOTH shapes, this is where people break):
   1. `Content-Type: image/*` → body IS the bytes, return as-is.
   2. JSON → `json["result"]["image"]` is base64 → `base64.b64decode`.
