@@ -48,3 +48,6 @@
     - `video.agentcom.org` / `image.agentcom.org` — embed-only iframes
       inside the console's studio tabs (ports 7777/7778, other owners).
       Never modify; never depend on their uptime for YT flows.
+15. **Casting lane handover: `docs/HANDOVER-CASTING.md`.** Next agent starts
+    there (engine map, open threads, never-dos). This rule is the link —
+    keep the handover current when the lane changes hands.

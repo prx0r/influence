@@ -133,6 +133,19 @@ def propose(channel_slug: str, chair: str = "narrator",
                          "status": "ad-hoc"}
     chair_kw = _keywords((chairs[chair].get("direction", "") or "") + " " +
                          (chairs[chair].get("label", "") or ""))
+    # archetype vocabulary (research gets close): classify the chair,
+    # add its delivery words to the match set. Taste narrows within.
+    _arch, _arch_prof = "", {}
+    try:
+        sys_path_push()
+        from ensemble_cast import classify_archetype as _cla
+        _ar = _cla(chair + " " + (chairs[chair].get("direction", "") or ""),
+                   chairs[chair].get("direction", ""))
+        if _ar.get("confidence", 0) > 0:
+            _arch, _arch_prof = _ar["archetype"], _ar["profile"]
+            chair_kw |= _keywords(_arch_prof.get("delivery", "") or "")
+    except Exception:
+        pass
     pool: dict[str, dict] = {}
     for q in vibe_queries(channel, chair):
         r = af.voices(q, "", False, 10)
@@ -261,10 +274,11 @@ def propose(channel_slug: str, chair: str = "narrator",
                          key=lambda t: (-len(t), t))
         if _amatch:
             overlap_score = round(overlap_score + min(3.0, len(_amatch)), 1)
-            reasons.append(f"affect match ({', '.join(_amatch[:3])})")
         score = round(overlap_score + pop + (2 if lang_ok else -5)
                       - (8 if shared else 0), 1)
         reasons = []
+        if _amatch:
+            reasons.append(f"affect match ({', '.join(_amatch[:3])})")
         if overlap:
             if len(overlap) == 1 and len(overlap[0]) <= 5:
                 reasons.append(f"weak tag match ({overlap[0]}) — judge the sample")
@@ -353,6 +367,9 @@ def propose(channel_slug: str, chair: str = "narrator",
     liked = _liked_ids(channel_slug, chair)
     return {"ok": True, "channel": channel_slug, "chair": chair,
             "function": _fn,
+            "archetype": {"name": _arch,
+                          "pitch": _arch_prof.get("pitch"),
+                          "delivery": (_arch_prof.get("delivery") or "")[:160]} if _arch else None,
             "function_calibrated": bool(_fww),
             "bt_verdict": _verdict,
             "queries": vibe_queries(channel, chair),
