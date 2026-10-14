@@ -224,8 +224,13 @@ def record_ranking(function: str, ordered_ids: list,
     with open(PAIRS_PATH, "a", encoding="utf-8") as f:
         for p in pairs:
             f.write(json.dumps(p) + "\n")
-    return {"ok": True, "function": fn, "pairs": len(pairs),
-            "fit": fit_function(fn)}
+    out = {"ok": True, "function": fn, "pairs": len(pairs),
+           "fit": fit_function(fn)}
+    try:
+        out["bt"] = bt_refit(fn)
+    except Exception as e:  # noqa: BLE001 — BT needs 2+ pairs; tag fit stands
+        out["bt"] = {"ok": False, "reason": str(e)[:100]}
+    return out
 
 
 def _pairs_for(fn: str) -> list:
@@ -295,3 +300,55 @@ def chair_function(chair: str, direction: str = "") -> str:
     if any(k in s for k in ("announc", "anchor", "news", "host")):
         return "announcer"
     return "narration"
+
+
+# ---- BT calibration (mini-LoRe over ranking pairs) ----
+#
+# record_ranking stores w_tags/l_tags per pair. bt_refit fits Bradley-Terry
+# weights per function; propose() cites BT probability + unified verdict
+# when a fit exists, hand scores otherwise. Same verdict shape as
+# characters voice_battle (hot..cold + double_down/experiment/pivot).
+
+def bt_refit(fn: str) -> dict:
+    """Fit BT weights for a function from its stored pairs."""
+    import sys as _s2
+    _s2.path.insert(0, os.path.dirname(os.path.abspath(__file)))
+    from bt_fit import fit as _bt, voice_features as _vf
+    pairs = _pairs_for(fn)
+    feats = []
+    for p in pairs:
+        feats.append({
+            "winner": _vf(p.get("w_tags") or []),
+            "loser": _vf(p.get("l_tags") or []),
+        })
+    if len(feats) < 2:
+        return {"ok": False, "reason": "need 2+ pairs"}
+    r = _bt(feats)
+    prof = load_profile()
+    funcs = prof.get("functions") or {}
+    entry = funcs.get(fn) or {}
+    entry["bt"] = {"weights": r["weights"], "pairs": r["pairs"],
+                   "train_accuracy": r["train_accuracy"]}
+    funcs[fn] = entry
+    prof["functions"] = funcs
+    with open(PROFILE, "w", encoding="utf-8") as f:
+        import json as _j
+        _j.dump(prof, f, indent=1, ensure_ascii=False)
+    _CACHE["mtime"] = 0
+    return {"ok": True, "function": fn, **r}
+
+
+def bt_predict(fn: str, a_tags: list, b_tags: list) -> dict | None:
+    """P(a beats b) under the fitted function weights, else None."""
+    import sys as _s3
+    _s3.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from bt_fit import p_beats as _pb, voice_features as _vf
+    from bt_fit import verdict_from_margin as _vm
+    w = (_cached().get("functions") or {}).get(fn, {}).get("bt", {})
+    weights, acc = w.get("weights"), w.get("train_accuracy", 0)
+    if not weights:
+        return None
+    p = _pb(_vf(a_tags), _vf(b_tags), weights)
+    margin = abs(p - 0.5) * 10
+    return {"p": p, "train_accuracy": acc,
+            "verdict": _vm(margin, w.get("pairs", 0))}

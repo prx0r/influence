@@ -247,3 +247,28 @@ def test_calibration_studio_fits_functions():
     finally:
         _sh.copy(_bak_p, "/root/influence/studio/taste-pairs.jsonl")
         _sh.copy(_bak_j, "/root/influence/studio/taste-profile.json")
+
+
+def test_bt_fit_learns_and_predicts():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from bt_fit import (fit, p_beats, voice_features, profile_features,
+                        verdict_from_margin)
+    pairs = [
+        {"winner": voice_features(["whisper", "soft", "female"], 2),
+         "loser": voice_features(["loud", "energetic", "male"], 0)}
+        for _ in range(6)
+    ]
+    r = fit(pairs)
+    assert r["pairs"] == 6 and r["train_accuracy"] >= 0.9
+    w = r["weights"]
+    assert w.get("tag:whisper", 0) > w.get("tag:loud", 0)
+    p = p_beats(voice_features(["whisper", "soft"], 1),
+                voice_features(["loud"], 0), w)
+    assert p > 0.5
+    prof = profile_features({"modulator_range": ["smug"],
+                             "age": "old", "archetype": "bisociation"})
+    assert "want:smug" in prof and "want:old" in prof
+    assert verdict_from_margin(3.5, 6) == {"state": "hot",
+                                           "action": "double_down"}
+    assert verdict_from_margin(-1.0, 2)["action"] == "pivot"

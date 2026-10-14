@@ -272,6 +272,25 @@ def propose(channel_slug: str, chair: str = "narrator",
                        "uses": uses, "score": score,
                        "reason": "; ".join(reasons)})
     scored.sort(key=lambda c: c["score"], reverse=True)
+    # BT verdict: fitted pairwise model over the top two (when calibrated).
+    # Cited on the winner; same hot..cold shape as characters voice_battle.
+    _bt, _verdict = None, None
+    try:
+        sys_path_push()
+        from taste_profile import bt_predict as _btp
+        _bt = _btp(_fn, (scored[0].get("tags", []) if len(scored) > 0 else []),
+                   (scored[1].get("tags", []) if len(scored) > 1 else [])) \
+            if len(scored) > 1 else None
+    except Exception:
+        _bt = None
+    if _bt:
+        scored[0]["bt_p"] = _bt["p"]
+        scored[0]["reason"] += (f" | BT fit ({_fn}, acc {_bt['train_accuracy']}): "
+                                f"P={_bt['p']} → {_bt['verdict']['state']}/"
+                                f"{_bt['verdict']['action']}")
+        _verdict = _bt["verdict"]
+    else:
+        _verdict = None
     # loved voices always survive the cut: appended with marker when they
     # would otherwise fall off — owner taste is never paged out.
     _have = {c["voice_id"] for c in scored[:n]}
@@ -293,6 +312,7 @@ def propose(channel_slug: str, chair: str = "narrator",
     return {"ok": True, "channel": channel_slug, "chair": chair,
             "function": _fn,
             "function_calibrated": bool(_fww),
+            "bt_verdict": _verdict,
             "queries": vibe_queries(channel, chair),
             "liked": sorted(liked),
             "candidates": scored[:n],
