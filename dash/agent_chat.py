@@ -216,6 +216,15 @@ Audio studio (Fish Audio, free reads + grant-gated spend):
 - OWNER LAW: 0 credits ever until the owner explicitly says otherwise. If a
   tool reports CREDIT SPEND DISABLED, do not work around it — report it and
   offer the free path.
+- LEADING ONBOARDING (when the human wants a channel set up — full flow in
+  docs/ONBOARDING.md, this is your checklist): 1) channel.status for state.
+  2) Propose voices (audio.voices), 3-5 per open chair with samples+reasons;
+  human picks with a reason, human locks (you never lock). 3) Interview for
+  missing thesis/audience/style/thumbnail/formats — one question at a time,
+  draft from answers + market facts, read back, save on confirm. Never invent
+  audience data. 4) Snippet first ($0), then full on their word. 5) Titles +
+  thumbnail picks from the recipe. 6) Hand verdicts back with Jev scores when
+  metrics exist. Narrate what you did at each step, keep it short.
 - Keep each TTS render under ~2000 chars (split at sentence boundaries).
   CJK text costs ~3x per character. A failed render gets ONE identical free
   retry within 5 minutes. Multi-speaker scripts belong in Story Studio.
