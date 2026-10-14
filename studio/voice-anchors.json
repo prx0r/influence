@@ -82,5 +82,70 @@
   "context": "character/cartoon utility for lore-sleep variety",
   "note": "owner: spongebob voice, useful",
   "ts": 1791972383
+ },
+ {
+  "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+  "title": "Calm Sleep Narrator",
+  "tags": [
+   "male",
+   "middle-aged",
+   "narration",
+   "entertainment",
+   "deep",
+   "low",
+   "soft",
+   "warm",
+   "smooth",
+   "breathy",
+   "calm",
+   "relaxed",
+   "measured",
+   "gentle",
+   "intimate",
+   "storytelling"
+  ],
+  "languages": [
+   "en"
+  ],
+  "descriptors": [
+   "standard",
+   "male",
+   "sleep"
+  ],
+  "context": "standard male sleep narrator default",
+  "note": "owner: standard sleep voice",
+  "ts": 1791972570
+ },
+ {
+  "voice_id": "5084227c7a6f489280cfeeccae809388",
+  "title": "Sleepy",
+  "tags": [
+   "female",
+   "young",
+   "narration",
+   "conversational",
+   "entertainment",
+   "soft",
+   "calm",
+   "relaxed",
+   "gentle",
+   "smooth",
+   "intimate",
+   "storytelling",
+   "clear",
+   "medium",
+   "friendly"
+  ],
+  "languages": [
+   "en"
+  ],
+  "descriptors": [
+   "standard",
+   "female",
+   "sleep"
+  ],
+  "context": "standard female sleep narrator default",
+  "note": "owner: standard sleep voice",
+  "ts": 1791972572
  }
 ]
