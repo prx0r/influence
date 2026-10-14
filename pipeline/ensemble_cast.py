@@ -283,14 +283,18 @@ ARCHETYPE_SUBTYPES = {
 
 
 def subtype_for(archetype: str, vibes: list) -> dict | None:
-    """Story vibes -> subtype profile. None when archetype has no splits."""
+    """Story vibes -> subtype profile. None when archetype has no splits.
+    Subtype tags UNION the base archetype tags (vendors tag old/calm,
+    never hollow/dry — pure-theory vocabularies match nothing)."""
     subs = ARCHETYPE_SUBTYPES.get(archetype or "")
     if not subs:
         return None
     vl = [str(v).lower() for v in vibes]
     for _name, sub in subs.items():
         if any(v in vl for v in sub["vibes"]):
-            return dict(sub, name=_name)
+            base = list(ARCHETYPE_TAGS.get(archetype, ()))
+            tags = base + [t for t in sub["tags"] if t not in base]
+            return dict(sub, name=_name, tags=tags)
     return None
 
 
