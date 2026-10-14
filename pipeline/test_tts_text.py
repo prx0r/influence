@@ -106,8 +106,13 @@ def test_stutter_dash_and_ranges():
 
 def test_readout_parse_single_narrator():
     import sys as _s, os as _o
-    _s.path.insert(0, "/root/influence/dash")
+    import pytest as _pt
+    _damn = _o.environ.get("DAMN_DIR", "/root/damn")
+    if not _o.path.isdir(_damn):
+        _pt.skip("owner's damn tree not on this box")
+    _s.path.insert(0, _o.path.join(_o.path.dirname(_o.path.dirname(
+        _o.path.abspath(__file__))), "dash"))
     import sleep_studio as st
-    p = st.parse_drama("/root/damn/projects/folk-and-fable/readout/01-yuki-onna-verbatim.read.txt")
+    p = st.parse_drama(_damn + "/projects/folk-and-fable/readout/01-yuki-onna-verbatim.read.txt")
     assert p["n_segments"] >= 1
     assert {s["speaker"] for s in p["segments"]} == {0}
