@@ -304,3 +304,16 @@ def test_acoustics_cache_and_lies():
     assert any("250" in x for x in tag_lies(["deep", "low"], {"f0_mean": 250, "f0_std": 40, "voiced": 0.6}))
     assert tag_lies(["calm"], {"f0_mean": 150, "f0_std": 40, "voiced": 0.5}) == []
     assert tag_lies([], {}) == []
+
+
+def test_affect_selection_side():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from ensemble_cast import affect_for
+    w = affect_for("witch", "", None)
+    assert w["valence"] < 0 and w["power"] > 0
+    assert "dark" in w["voice_words"] and "calm" in w["voice_words"]
+    h = affect_for("fairy", "", None)
+    assert h["valence"] > 0 and "warm" in h["voice_words"]
+    r = affect_for(None, "", None)
+    assert r["arousal"] <= -0.2  # sleep clamp holds everywhere

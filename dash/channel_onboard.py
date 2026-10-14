@@ -214,6 +214,16 @@ def propose(channel_slug: str, chair: str = "narrator",
         _nm = _norm_name(pool[_vid])
         if _nm and _nm not in best:
             best[_nm] = pool[_vid]
+    # affect match (characters MARY lane, selection side): candidate
+    # tags in the chair's desired affect neighborhood score up. Capped —
+    # taste weights still dispose.
+    try:
+        sys_path_push()
+        from ensemble_cast import affect_for as _afffn
+        _aff = _afffn(None, chair + " " + " ".join(chair_kw))
+        _affwords = set(_aff.get("voice_words", []))
+    except Exception:
+        _affwords = set()
     scored = []
     # function fit once per propose (not per candidate): which calibration
     # function this chair maps to + its fitted weights ({} = uncalibrated).
@@ -247,6 +257,11 @@ def propose(channel_slug: str, chair: str = "narrator",
                                   for t in overlap)
                               + sum(_fww.get(t.lower(), 0.0) * 2.0
                                     for t in tags), 1)
+        _amatch = sorted({t for t in tags if t.lower() in _affwords},
+                         key=lambda t: (-len(t), t))
+        if _amatch:
+            overlap_score = round(overlap_score + min(3.0, len(_amatch)), 1)
+            reasons.append(f"affect match ({', '.join(_amatch[:3])})")
         score = round(overlap_score + pop + (2 if lang_ok else -5)
                       - (8 if shared else 0), 1)
         reasons = []

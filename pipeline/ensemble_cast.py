@@ -57,6 +57,46 @@ def story_function(name: str, role: str | None) -> str:
     return "supporting"
 
 
+# ---------- affect (MARY-compatible selection side) ----------
+#
+# Comedy lane calibrates DELIVERY from affect (their mary_model.json:
+# arousal/valence/power -> rate/volume/range/pitch-direction). We solve
+# the easier complementary problem, SELECTION: from story facts, estimate
+# the affect coords a character's voice should carry, then match voices
+# whose tags live in the same neighborhood. Same dims [-1,1], same
+# vocabulary — the two lanes stay interoperable by construction.
+# Sleep clamp: arousal never exceeds -0.2 here (sleep content); energy
+# belongs to lore-variety lanes, not the selection model.
+
+def affect_for(role: str | None, function: str = "",
+               age: str | None = None) -> dict:
+    """Story facts -> desired affect coords + voice words."""
+    r, fn = (role or "").lower(), (function or "").lower()
+    valence, power = 0.1, 0.0  # sleep baseline: mildly warm, no dominance
+    if any(k in r + fn for k in ("witch", "villain", "ogre", "troll",
+                                 "wolf", "dragon", "wicked", "cruel")):
+        valence, power = -0.5, 0.6
+    elif any(k in r + fn for k in ("king", "queen", "emperor", "ruler")):
+        valence, power = 0.0, 0.7
+    elif any(k in r + fn for k in ("helper", "fairy", "godmother", "mother",
+                                   "guide", "mermaid", "maiden")):
+        valence, power = 0.6, -0.2
+    elif any(k in r + fn for k in ("trickster", "fox", "anansi", "cat",
+                                   "spider")):
+        valence, power = 0.3, 0.2
+    elif any(k in r + fn for k in ("victim", "child", "lost", "poor",
+                                   "orphan")):
+        valence, power = -0.1, -0.5
+    words = []
+    words += ["warm", "kind", "gentle"] if valence > 0.2 else []
+    words += ["dark", "cold", "menacing"] if valence < -0.2 else []
+    words += ["deep", "commanding", "authoritative"] if power > 0.4 else []
+    words += ["soft", "small", "meek"] if power < -0.3 else []
+    words += ["calm", "slow", "soft"]  # sleep clamp, always
+    return {"valence": valence, "power": power, "arousal": -0.5,
+            "voice_words": sorted(set(words))}
+
+
 def brief_character(char: dict) -> str:
     """What should this voice sound like? Answered from story info."""
     name = char.get("name", "?")
@@ -67,6 +107,9 @@ def brief_character(char: dict) -> str:
     lo, hi = pitch_band(char.get("role"), char.get("age"), char.get("gender"))
     bits = [f"{name}: {age} {gender} {role} ({fn})",
             f"pitch around {lo}-{hi}Hz"]
+    aff = affect_for(char.get("role"), fn + " " + name)
+    bits.append(f"affect v{aff['valence']}/p{aff['power']}: "
+                f"{', '.join(aff['voice_words'][:6])}")
     if fn == "trickster":
         bits.append("quick, sly warmth — mischief, never menace")
     elif fn == "villain":
