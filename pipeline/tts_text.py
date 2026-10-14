@@ -388,6 +388,34 @@ def normalize(text: str) -> tuple[str, list, list]:
     return unmask_fish_tags(t.strip(), table), subs, flags
 
 
+# ---------- free-tier directing (damn drama-syntax.md) ----------
+#
+# Paired <tag>...</tag> is DRAMA-ONLY: on s2.1-pro-free it does nothing
+# (or leaks literally). Bracket [tags] are free-native. Speaker tags
+# <|speaker:N|> ARE S2-native and work free. So: convert paired → bracket
+# for free renders; never strip speaker tags.
+
+_PAIRED_TO_BRACKET = [
+    (re.compile(r"<whisper>(.*?)</whisper>", re.S | re.I), r"[whispering] \1"),
+    (re.compile(r"<soft>(.*?)</soft>", re.S | re.I), r"[soft voice] \1"),
+    (re.compile(r"<slow>(.*?)</slow>", re.S | re.I), r"[slowly] \1"),
+    (re.compile(r"<emphasis>(.*?)</emphasis>", re.S | re.I), r"\1"),
+    (re.compile(r"</?(?:whisper|soft|slow|emphasis|fast|stress|forceful)>", re.I), ""),
+]
+
+
+def free_direct(text: str) -> tuple[str, list]:
+    """Convert Drama-only paired tags to free-native brackets.
+    Returns (text, conversions). Speaker tags untouched (S2-native)."""
+    notes: list = []
+    t = text or ""
+    for pat, repl in _PAIRED_TO_BRACKET:
+        t, n = pat.subn(repl, t)
+        if n:
+            notes.append(f"paired→bracket x{n}")
+    return t, notes
+
+
 # ---------- score ----------
 
 def score(text: str) -> dict:
@@ -420,11 +448,18 @@ def score(text: str) -> dict:
     if caps:
         penalty += min(10, 2 * len(caps))
         flags.append(f"{len(caps)} caps words e.g. {caps[:3]}")
-    # bracket refs / markup
+    # bracket refs / markup (fish performance tags exempt — masked already)
     brackets = re.findall(r"\[\d+[^\]]*\]|\([^)]{60,}\)|<[^>]+>", t)
-    if brackets:
-        penalty += min(10, 3 * len(brackets))
-        flags.append(f"{len(brackets)} bracket/markup spans")
+    drama_only = [b for b in brackets if re.match(
+        r"</?(?:whisper|soft|slow|emphasis|fast|stress|forceful)>", b, re.I)]
+    if drama_only:
+        penalty += 15
+        flags.append(f"DRAMA-ONLY paired tags (dead on free tier): "
+                     f"{drama_only[:3]} — run free_direct first")
+    rest = [b for b in brackets if b not in drama_only]
+    if rest:
+        penalty += min(10, 3 * len(rest))
+        flags.append(f"{len(rest)} bracket/markup spans")
     # non-ascii beyond common punctuation
     odd = sorted(set(re.findall(r"[^\x00-\x7F\u2018\u2019\u201C\u201D\u2013\u2014\u2026\u00E9\u00E8\u00EA\u00E0\u00E7\u00F1\u00FC\u00F6\u00E4 ]", t)))
     if odd:
@@ -465,6 +500,7 @@ def prep(raw: str, chunk_limit: int = 1500) -> dict:
     frontmatter = list(_last_frontmatter_notes)
     before = score(raw)
     normed, subs, nflags = normalize(cleaned)
+    normed, conv_notes = free_direct(normed)
     after = score(normed)
     after["flags"] = after["flags"] + [f for f in nflags
                                        if f not in after["flags"]]
@@ -472,6 +508,7 @@ def prep(raw: str, chunk_limit: int = 1500) -> dict:
     return {"ok": True, "chars_raw": len(raw or ""),
             "chars_clean": len(normed),
             "frontmatter": frontmatter,
+            "free_direct": conv_notes,
             "score_before": before["score"], "flags_before": before["flags"],
             "score_after": after["score"], "flags_after": after["flags"],
             "substitutions": len(subs),

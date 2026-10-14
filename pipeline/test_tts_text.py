@@ -83,3 +83,14 @@ def test_prep_end_to_end():
     assert p["credits_total"] == sum(len(c.encode()) for c in p["chunks"])
     for c in p["chunks"]:
         assert not any(ch.isdigit() for ch in c), c[:80]
+
+
+def test_free_direct_converts_drama_tags():
+    from tts_text import free_direct, score
+    t, notes = free_direct("<whisper>hide me</whisper> and <slow>slow down</slow> keep <|speaker:1|> nightly.")
+    assert "[whispering] hide me" in t and "[slowly] slow down" in t
+    assert "<|speaker:1|>" in t and notes
+    s = score("a <whisper> b </whisper> c")
+    assert any("DRAMA-ONLY" in f for f in s["flags"])
+    s2 = score("[whispering] hide me now")
+    assert not any("DRAMA-ONLY" in f for f in s2["flags"])
