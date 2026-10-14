@@ -852,9 +852,20 @@ class Handler(SimpleHTTPRequestHandler):
                     # $0 batch: damn script → prep/gate/poison → per-speaker
                     # free renders → master in bank. No grant, no credits.
                     return self._json(_st.render_pilot(
-                        str(body.get("path", "") or ""),                        str(body.get("path", "") or ""),
+                        str(body.get("path", "") or ""),
                         str(body.get("channel", "") or ""),
                         None, int(body.get("min_score", 70) or 70)))
+                if self._route() == "/api/studio/cast/prepare":
+                    # GO button: collection → ensemble briefs + top-3
+                    # candidates per speaker + $0 audition each. Slug-guarded.
+                    slug = str(body.get("channel", "") or "")
+                    coll = str(body.get("collection", "") or "")
+                    if (not slug.replace("-", "").replace("_", "").isalnum()
+                            or not coll.replace("-", "").replace("_", "").isalnum()):
+                        return self._json({"error": "bad slug"}, 400)
+                    return self._json(_st.prepare_cast(
+                        coll, slug,
+                        min(8, int(body.get("max_cast", 6) or 6))))
                 if self._route() == "/api/studio/channel":
                     import json as _json2
                     slug = str(body.get("slug", "") or "")

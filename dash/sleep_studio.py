@@ -781,3 +781,61 @@ def design_voice(channel_slug: str, chair: str = "narrator", n: int = 2,
             "instruction": ins["instruction"], "usd": 0.01,
             "previews": previews,
             "next": "listen → lock the winner via casting UI with a reason"}
+
+
+# ---- go button: collection → cast sheet + sample per speaker ($0) ----
+#
+# Press go on a collection: dramatis exists → ensemble briefs → top
+# speakers searched (free) → one sample line each rendered free → bank.
+# Human + pi review the sheet, lock voices, then batch renders.
+
+def prepare_cast(collection: str, channel_slug: str = "",
+                 max_cast: int = 6) -> dict:
+    """Full cast prep for one collection. Free reads + $0 renders only."""
+    import json as _json
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                    "pipeline"))
+    try:
+        from ensemble_cast import compose_cast, contrast_notes
+    except ImportError:
+        from pipeline.ensemble_cast import compose_cast, contrast_notes
+    af = _audio_flow()
+    dpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                         "studio", "channels",
+                         (channel_slug or "folk-and-fable"),
+                         "dramatis", collection + ".json")
+    dpath = os.path.normpath(dpath)
+    if ".." in os.path.relpath(dpath, os.path.normpath(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                         "studio", "channels"))):
+        return {"ok": False, "reason": "bad collection"}
+    try:
+        with open(dpath, encoding="utf-8") as f:
+            dram = _json.load(f)
+    except OSError:
+        return {"ok": False, "reason": f"no dramatis for {collection}"}
+    cast = compose_cast(dram.get("characters", []),
+                        context=f"{channel_slug} sleep storytelling",
+                        max_cast=max_cast)
+    for c in cast:
+        v = af.voices(c["voice_query"], "en", False, 3)
+        cands = []
+        for vrow in ((v.get("data") or {}).get("voices") or [])[:3]:
+            cands.append({"voice_id": vrow.get("id"),
+                          "name": vrow.get("title"),
+                          "sample": vrow.get("sample_audio"),
+                          "uses": vrow.get("task_count")})
+        c["candidates"] = cands
+        line = (c.get("sample_line") or
+                f"I am {c['name']}. Listen well, for this tale is old.")[:220]
+        if cands:
+            m = free_narrate(line, cands[0]["voice_id"])
+            c["audition"] = {"clip": m.get("name"), "url": m.get("url"),
+                             "voice_id": cands[0]["voice_id"],
+                             "ok": m.get("ok")}
+        import time as _t
+        _t.sleep(0.3)
+    return {"ok": True, "collection": collection, "channel": channel_slug,
+            "cast": cast, "contrast_notes": contrast_notes(cast),
+            "next": "human + pi review sheet → lock voices → batch render"}

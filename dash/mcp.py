@@ -123,8 +123,10 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
     {"name": "audio.speak_free", "description": "Render TTS on the $0 free tier (pro quality, no credits, no grant) straight into the voice bank. ≤1500 chars. Logged, never billed.",
      "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "voice_id": {"type": "string"}}, "required": ["text", "voice_id"]}},
-    {"name": "audio.request", "description": "Ask to spend: quotes + freezes payload + files a human approval task (never spends). Human approves in dash queue, fulfill executes.",
-     "inputSchema": {"type": "object", "properties": {"kind": {"type": "string"}, "text": {"type": "string"}, "voice_id": {"type": "string"}, "media_kind": {"type": "string"}, "workspace_id": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}, "expected_credits": {"type": "integer"}}, "required": ["kind"]}},
+     {"name": "audio.request", "description": "Ask to spend: quotes + freezes payload + files a human approval task (never spends). Human approves in dash queue, fulfill executes.",
+      "inputSchema": {"type": "object", "properties": {"kind": {"type": "string"}, "text": {"type": "string"}, "voice_id": {"type": "string"}, "media_kind": {"type": "string"}, "workspace_id": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}, "expected_credits": {"type": "integer"}}, "required": ["kind"]}},
+     {"name": "audio.cast.prepare", "description": "GO button for a collection: ensemble briefs + top-3 candidates per speaker + $0 audition each into the bank. Free reads + free renders only.",
+      "inputSchema": {"type": "object", "properties": {"collection": {"type": "string"}, "channel": {"type": "string"}}, "required": ["collection"]}},
 ]
 
 GRAPH = [
@@ -700,7 +702,8 @@ def handle(state: dict, method: str, params: dict) -> dict:
                  "audio.estimate", "audio.generate",
                  "audio.studio.import", "audio.studio.status",
                  "audio.studio.generate", "audio.studio.export",
-                 "channel.status", "audio.speak_free", "audio.request"):
+                 "channel.status", "audio.speak_free", "audio.request",
+                 "audio.cast.prepare"):
         try:
             import sys as _sys2
             _sys2.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -829,6 +832,14 @@ def handle(state: dict, method: str, params: dict) -> dict:
                 import channel_onboard as _ob2
                 return {"result": _ob2.channel_status(
                     str(args.get("slug") or ""))}
+            if name == "audio.cast.prepare":
+                sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+                import sleep_studio as _st3
+                coll = str(args.get("collection") or "")
+                if (not coll.replace("-", "").replace("_", "").isalnum()):
+                    return {"error": "bad collection"}
+                return {"result": _st3.prepare_cast(
+                    coll, str(args.get("channel", "") or "folk-and-fable"))}
             if name == "audio.speak_free":
                 import time as _t3
                 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

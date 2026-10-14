@@ -131,5 +131,20 @@
   "free-111443-01.mp3",
   "free-111446-02.mp3",
   "free-111450-03.mp3"
- ]
+ ],
+ "videos": {
+  "target_minutes": [
+   120,
+   180
+  ],
+  "unit": "collection (verbatim P0: read the book)",
+  "n_collections": 45,
+  "seasons": {
+   "S1-fairy": "nostalgia surface",
+   "S2-folklore": "zero-competition depth",
+   "S3-myth": "crossover bait"
+  },
+  "registry": "bgraph registry/content/items/FF-*.json (44 compilations)",
+  "workflow": "prepare_cast (this button) → human+pi lock voices → pilots board batch render → R2 ship"
+ }
 }

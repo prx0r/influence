@@ -52,6 +52,7 @@ READONLY_TOOLS = [
     "audio.estimate",
     "audio.studio.status",
     "channel.status",
+    "audio.cast.prepare",
     "audio.speak_free",
     "audio.request",
 ]
@@ -137,6 +138,7 @@ TOOL_SCHEMAS = [
         "name": "audio.speak_free", "description": "Render TTS free ($0, no credits): text + locked voice_id → voice bank clip (≤1500 chars)",
         "parameters": {"type": "object", "properties": {
             "text": {"type": "string"}, "voice_id": {"type": "string"}}, "required": ["text", "voice_id"]}}},
+    {"type": "function", "function": {"name": "audio.cast.prepare", "description": "GO button: ensemble cast sheet + $0 auditions per speaker (free only)", "parameters": {"type": "object", "properties": {"collection": {"type": "string"}, "channel": {"type": "string"}}, "required": ["collection"]}}},
     {"type": "function", "function": {
         "name": "audio.request", "description": "Ask to spend credits: quotes + files a human approval task with payload hash (never spends; human approves, fulfill executes)",
         "parameters": {"type": "object", "properties": {

@@ -159,3 +159,26 @@ def test_cast_drops_common_nouns():
             "with Kai. Kai shouts for Gerda.")
     names = {c["name"] for c in dramatis(text, min_freq=2)}
     assert "Table" not in names and "Kai" in names and "Gerda" in names
+
+
+def test_ensemble_cast_offline():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from ensemble_cast import (pitch_band, brief_character,
+                               design_instruction_for, compose_cast,
+                               contrast_notes)
+    assert pitch_band("giant", None, None) == (70, 110)
+    assert pitch_band(None, None, "female") == (160, 240)
+    tree = {"name": "Oak", "role": None, "age": "old", "gender": None,
+            "dialogue_lines": 4}
+    mouse = {"name": "Nib", "role": None, "age": "young", "gender": None,
+             "dialogue_lines": 9}
+    assert "85-130Hz" in brief_character(tree) and "sleep baseline" in brief_character(tree)
+    di = design_instruction_for(mouse, "sleep tales")
+    assert "140-200Hz" in di and "sleep" in di.lower()
+    cast = compose_cast([mouse, tree], context="sleep tales")
+    assert cast[0]["name"] == "Nib" and len(cast) == 2
+    assert all("design_instruction" in c and "voice_query" in c for c in cast)
+    dup = compose_cast([dict(mouse, voice_query="young narration"),
+                        dict(tree, voice_query="young narration")])
+    assert any("contrast" in n or "share query" in n for n in contrast_notes(dup))
