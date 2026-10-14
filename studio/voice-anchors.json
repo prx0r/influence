@@ -147,5 +147,33 @@
   "context": "standard female sleep narrator default",
   "note": "owner: standard sleep voice",
   "ts": 1791972572
+ },
+ {
+  "voice_id": "3a561684e5fa46eb9528e8e6ff9000c9",
+  "title": "Darwin",
+  "tags": [
+   "neutral",
+   "young",
+   "social-media",
+   "character-voice",
+   "entertainment",
+   "energetic",
+   "playful",
+   "expressive",
+   "animated",
+   "Comedic"
+  ],
+  "languages": [
+   "en"
+  ],
+  "descriptors": [
+   "kid",
+   "child",
+   "character",
+   "young"
+  ],
+  "context": "kid/child character voices (Kai, Gerda, young Minokichi)",
+  "note": "owner: perfect kid character voice",
+  "ts": 1791973425
  }
 ]
