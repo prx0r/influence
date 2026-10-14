@@ -175,5 +175,32 @@
   "context": "kid/child character voices (Kai, Gerda, young Minokichi)",
   "note": "owner: perfect kid character voice",
   "ts": 1791973425
+ },
+ {
+  "voice_id": "ccf9e60669f34043b95c73ad73a775e5",
+  "title": "Corey Riffin",
+  "tags": [
+   "male",
+   "young",
+   "conversational",
+   "entertainment",
+   "energetic",
+   "enthusiastic",
+   "friendly",
+   "raspy",
+   "Skater"
+  ],
+  "languages": [
+   "en"
+  ],
+  "descriptors": [
+   "boy",
+   "youthful",
+   "kid",
+   "character"
+  ],
+  "context": "boy characters (Kai, young Minokichi, tale lads)",
+  "note": "owner: youthful boy character, could be useful",
+  "ts": 1791973587
  }
 ]
