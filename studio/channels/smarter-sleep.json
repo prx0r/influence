@@ -1,0 +1,40 @@
+{
+ "channel": "smarter-sleep",
+ "display_name": "Smarter Sleep",
+ "pitch": "All hard content lives here as seasons. Law: the paper is the script.",
+ "engine": {
+  "primary": "E5-talk",
+  "contract": "damn routines 01-07; snippet-first Studio renders"
+ },
+ "status": "scaffold",
+ "cadence": "",
+ "style": {
+  "accent": "",
+  "shelf": "",
+  "manner": "",
+  "visual": ""
+ },
+ "voice": {
+  "bed": "",
+  "pace": 0.85,
+  "chairs": {
+   "lecturer": {
+    "direction": "[precise lecturer voice, half speed, diagrams in words]",
+    "label": "V03 Lecturer fork",
+    "never": [
+     "hype",
+     "shared outside this project"
+    ],
+    "status": "casting"
+   }
+  },
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ },
+ "routines": "damn 01-cast through 07-ship",
+ "sources": {
+  "damn": "/root/damn/projects/smarter-sleep/",
+  "text_prep": "influence pipeline/tts_text (score gate 70)"
+ },
+ "receipts": "per-video vaults + studio voice bank",
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+}

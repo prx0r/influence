@@ -1,0 +1,39 @@
+{
+ "channel": "etymology",
+ "display_name": "Etymology",
+ "pitch": "Thesis: a word is a motif. 6-section essay (Word Today → Etymology → Historical",
+ "engine": {
+  "primary": "E5-talk",
+  "contract": "damn routines 01-07; snippet-first Studio renders"
+ },
+ "status": "scaffold",
+ "cadence": "",
+ "style": {
+  "accent": "",
+  "shelf": "",
+  "manner": "",
+  "visual": ""
+ },
+ "voice": {
+  "bed": "",
+  "pace": 0.85,
+  "chairs": {
+   "lecturer": {
+    "direction": "[clear lecturer voice, precise and unhurried, half speed]",
+    "label": "V03 Lecturer fork (clear, precise)",
+    "never": [
+     "shared outside this project"
+    ],
+    "status": "casting"
+   }
+  },
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ },
+ "routines": "damn 01-cast through 07-ship",
+ "sources": {
+  "damn": "/root/damn/projects/etymology/",
+  "text_prep": "influence pipeline/tts_text (score gate 70)"
+ },
+ "receipts": "per-video vaults + studio voice bank",
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+}

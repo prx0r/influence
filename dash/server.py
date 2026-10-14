@@ -790,6 +790,16 @@ class Handler(SimpleHTTPRequestHandler):
                 if self._route() == "/api/studio/channels":
                     return self._json({"ok": True,
                                        "channels": _st.list_channels()})
+                if self._route() == "/api/studio/pilots":
+                    return self._json({"ok": True,
+                                       "pilots": _st.list_pilots()})
+                if self._route() == "/api/studio/pilot/render":
+                    # $0 batch: damn script → prep/gate/poison → per-speaker
+                    # free renders → master in bank. No grant, no credits.
+                    return self._json(_st.render_pilot(
+                        str(body.get("path", "") or ""),
+                        str(body.get("channel", "") or ""),
+                        None, int(body.get("min_score", 70) or 70)))
                 if self._route() == "/api/studio/channel":
                     import json as _json2
                     slug = str(body.get("slug", "") or "")

@@ -1,0 +1,45 @@
+{
+ "channel": "corbin-sleep",
+ "display_name": "Corbin Sleep",
+ "pitch": "Literally sleep-shaped subject, unfilmed anywhere. Wave 1 bible + 4 shots banked",
+ "engine": {
+  "primary": "E2-reading/E3-guided",
+  "contract": "damn routines 01-07; snippet-first Studio renders"
+ },
+ "status": "scaffold",
+ "cadence": "",
+ "style": {
+  "accent": "#8B7BC7",
+  "shelf": "",
+  "manner": "",
+  "visual": ""
+ },
+ "voice": {
+  "bed": "",
+  "pace": 0.85,
+  "chairs": {
+   "imaginal": {
+    "direction": "[luminous reader voice, imaginal-paced, violet hour]",
+    "label": "imaginal reader (own fork)",
+    "never": [
+     "shared outside this project"
+    ],
+    "status": "casting"
+   },
+   "guest": {
+    "direction": "",
+    "label": "dialogue guest voice (S2 only)",
+    "never": [],
+    "status": "casting"
+   }
+  },
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ },
+ "routines": "damn 01-cast through 07-ship",
+ "sources": {
+  "damn": "/root/damn/projects/corbin-sleep/",
+  "text_prep": "influence pipeline/tts_text (score gate 70)"
+ },
+ "receipts": "per-video vaults + studio voice bank",
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+}

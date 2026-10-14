@@ -1,0 +1,40 @@
+{
+ "channel": "stonedoorway",
+ "display_name": "Stonedoorway",
+ "pitch": "Everything sleep-related esoteric. Laboratory at midnight: clinical, tender,",
+ "engine": {
+  "primary": "E2-reading/E3-guided",
+  "contract": "damn routines 01-07; snippet-first Studio renders"
+ },
+ "status": "scaffold",
+ "cadence": "",
+ "style": {
+  "accent": "",
+  "shelf": "",
+  "manner": "",
+  "visual": ""
+ },
+ "voice": {
+  "bed": "breath + slow clock + faint chimes",
+  "pace": 0.85,
+  "chairs": {
+   "clinician": {
+    "direction": "[clinical, tender, unhurried voice, midnight laboratory]",
+    "label": "clinical tender voice (own fork)",
+    "never": [
+     "guru claims",
+     "shared outside this project"
+    ],
+    "status": "casting"
+   }
+  },
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ },
+ "routines": "damn 01-cast through 07-ship",
+ "sources": {
+  "damn": "/root/damn/projects/stonedoorway/",
+  "text_prep": "influence pipeline/tts_text (score gate 70)"
+ },
+ "receipts": "per-video vaults + studio voice bank",
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+}

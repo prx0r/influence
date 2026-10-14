@@ -1,0 +1,41 @@
+{
+ "channel": "yogi-watch",
+ "display_name": "Yogi Watch",
+ "pitch": "Yes, specced: sleepdraw `styles/anakhya.md` (v1) + `films/anakhya-01/` + Wave 1",
+ "engine": {
+  "primary": "E5-talk",
+  "contract": "damn routines 01-07; snippet-first Studio renders"
+ },
+ "status": "scaffold",
+ "cadence": "",
+ "style": {
+  "accent": "#c1440e",
+  "shelf": "",
+  "manner": "",
+  "visual": ""
+ },
+ "voice": {
+  "bed": "tanpura drone + single temple bell + night insects, no rhythm",
+  "pace": 0.85,
+  "chairs": {
+   "documentarian": {
+    "direction": "[plainspoken narrator voice, miracles told plain, unhurried]",
+    "label": "plainspoken documentarian (own fork)",
+    "never": [
+     "guru voice",
+     "miracle claims",
+     "shared outside this project"
+    ],
+    "status": "casting"
+   }
+  },
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ },
+ "routines": "damn 01-cast through 07-ship",
+ "sources": {
+  "damn": "/root/damn/projects/yogi-watch/",
+  "text_prep": "influence pipeline/tts_text (score gate 70)"
+ },
+ "receipts": "per-video vaults + studio voice bank",
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+}

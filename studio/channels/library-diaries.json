@@ -1,0 +1,39 @@
+{
+ "channel": "library-diaries",
+ "display_name": "Library Diaries",
+ "pitch": "Every \"X's Library/Diary\" in the registry (mostly ready, all PD) + the long",
+ "engine": {
+  "primary": "E-LOG",
+  "contract": "damn routines 01-07; snippet-first Studio renders"
+ },
+ "status": "scaffold",
+ "cadence": "",
+ "style": {
+  "accent": "",
+  "shelf": "",
+  "manner": "",
+  "visual": ""
+ },
+ "voice": {
+  "bed": "",
+  "pace": 0.85,
+  "chairs": {
+   "narrator": {
+    "direction": "[unhurried reader voice, diary-paced, lights low]",
+    "label": "own fork per author-season (wry/brisk/tender as filed)",
+    "never": [
+     "shared across authors"
+    ],
+    "status": "casting"
+   }
+  },
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ },
+ "routines": "damn 01-cast through 07-ship",
+ "sources": {
+  "damn": "/root/damn/projects/library-diaries/",
+  "text_prep": "influence pipeline/tts_text (score gate 70)"
+ },
+ "receipts": "per-video vaults + studio voice bank",
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+}

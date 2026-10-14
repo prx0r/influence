@@ -1,0 +1,41 @@
+{
+ "channel": "daimon-dreams",
+ "display_name": "Daimon Dreams",
+ "pitch": "Anything western esoteric lives here. Eastern (tantra/sanskrit/shaivism/taoist/",
+ "engine": {
+  "primary": "E3-guided",
+  "contract": "damn routines 01-07; snippet-first Studio renders"
+ },
+ "status": "scaffold",
+ "cadence": "",
+ "style": {
+  "accent": "#7A6FF0",
+  "shelf": "",
+  "manner": "",
+  "visual": ""
+ },
+ "voice": {
+  "bed": "deep drone, near-static visual, no captions",
+  "pace": 0.85,
+  "chairs": {
+   "guide": {
+    "direction": "[low, steady guide voice, descending, unhurried]",
+    "label": "single guided voice (own fork, never shared)",
+    "never": [
+     "plot",
+     "rush",
+     "shared outside this project"
+    ],
+    "status": "casting"
+   }
+  },
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ },
+ "routines": "damn 01-cast through 07-ship",
+ "sources": {
+  "damn": "/root/damn/projects/daimon-dreams/",
+  "text_prep": "influence pipeline/tts_text (score gate 70)"
+ },
+ "receipts": "per-video vaults + studio voice bank",
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+}

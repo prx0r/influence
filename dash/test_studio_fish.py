@@ -157,3 +157,18 @@ def test_anchor_prompt_engine():
         "fe2619861dfc4bcab9da073029ca80a4"])
     assert r["ok"] is True and "Luna Lovegood" in r["sources"]
     assert "fairy" in r["instruction"] and len(r["instruction"]) <= 1800
+
+
+def test_pilots_list_and_parse_offline():
+    import sleep_studio as st
+    ps = st.list_pilots()
+    assert len(ps) >= 16, len(ps)
+    by = {p["file"]: p for p in ps}
+    assert "01-yuki-doorway.drama.txt" in by
+    p = st.parse_drama("/root/damn/projects/folk-and-fable/pilots/01-yuki-doorway.drama.txt")
+    assert p["n_segments"] >= 3 and "narrator" in p["chairs"]
+    try:
+        st.parse_drama("/etc/passwd")
+        assert False, "path escape must raise"
+    except ValueError:
+        pass

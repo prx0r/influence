@@ -306,11 +306,13 @@ def parse_drama(path: str) -> dict:
 
 def render_pilot(path: str, channel_slug: str = "",
                  voice_overrides: dict | None = None,
-                 min_score: int = 70) -> dict:
+                 min_score: int = 70,
+                 speaker_voices: dict | None = None) -> dict:
     """Batch a damn pilot to a master MP3 — $0, no grants, no credits.
     Prep-gate + damn gate + poison per segment, per-speaker free renders
     (locked channel chairs override header stand-ins), ffmpeg concat.
-    Returns master bank meta + per-segment receipt."""
+    speaker_voices maps raw speaker numbers when the file declares no
+    header chairs: {0: vid, 1: vid}."""
     import subprocess as _sp
     import time as _time
     sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
@@ -333,7 +335,7 @@ def render_pilot(path: str, channel_slug: str = "",
                     locked[nm] = c["fish_id"]
         except Exception:
             pass
-    spk_voice: dict = {}
+    spk_voice: dict = dict(speaker_voices or {})
     for cname, c in parsed["chairs"].items():
         if cname in (voice_overrides or {}):
             spk_voice[c["speaker"]] = (voice_overrides or {})[cname]
@@ -378,12 +380,21 @@ def render_pilot(path: str, channel_slug: str = "",
                             "reason": f"segment {i} blocked by tts-poison"}
             except Exception as e:  # noqa: BLE001
                 return {"ok": False, "reason": f"poison error seg {i}: {e}"[:120]}
-        # render each prep chunk to bank parts (free tier, saved files)
+        # render each prep chunk to bank parts (free tier, saved files).
+        # Channel pace → prosody speed (sleep recipe; neutral 1.0 default).
         af = _audio_flow()
         part_paths = []
+        seg_speed = 1.0
+        if channel_slug:
+            try:
+                from channel_character import load_channel as _lc
+                seg_speed = float(
+                    ((_lc(channel_slug).get("voice") or {}).get("pace")) or 1.0)
+            except Exception:
+                seg_speed = 1.0
         for j, ch_text in enumerate(prepped["chunks"]):
             pp = os.path.join(VOICE, f"{tag}-s{i:02d}p{j}.mp3")
-            r = af.speak_free(ch_text, vid, out_path=pp)
+            r = af.speak_free(ch_text, vid, out_path=pp, speed=seg_speed)
             if not r.get("ok") or not os.path.exists(pp):
                 return {"ok": False,
                         "reason": f"segment {i} render failed: "
@@ -613,17 +624,18 @@ def studio_render_episode(project_id: str, gen_grant: dict) -> dict:
                     "live with confirmed_credits + grant → master.mp3"}
 
 
-def free_narrate(text: str, voice_id: str) -> dict:
+def free_narrate(text: str, voice_id: str, speed: float = 1.0) -> dict:
     """$0 snippet render (REST s2.1-pro-free) straight into the voice bank.
     No grant, no credits, no dollars — the default ear-check path. Same
-    meta shape as narrate()/fish_narrate() so the player just works."""
+    meta shape as narrate()/fish_narrate() so the player just works.
+    speed: channel pace (sleep houses ~0.85, recipe 0.72)."""
     af = _audio_flow()
     if not text or not voice_id:
         return {"ok": False, "reason": "text and voice_id required"}
     SEQ[0] += 1
     name = f"free-{time.strftime('%H%M%S')}-{SEQ[0]:02d}.mp3"
     out = os.path.join(VOICE, name)
-    r = af.speak_free(text, voice_id, out_path=out)
+    r = af.speak_free(text, voice_id, out_path=out, speed=speed)
     if not r.get("ok"):
         return r
     meta = {"name": name, "voice": f"free:{voice_id}", "backend": "free",

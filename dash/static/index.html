@@ -1216,7 +1216,10 @@ function renderStudio(main){
   <div id="st-prep"></div>
   <button id="st-snippetbtn" onclick="studioSnippet()" style="display:none">render snippet (chunk 1) + review</button>
   <button id="st-fullbtn" onclick="studioFull()" style="display:none">approve ALL + render full</button> <span id="st-fullmsg"></span>
-  <div id="st-fullout"></div>`;
+  <div id="st-fullout"></div>
+  <h4>7 · damn pilots (batch $0)</h4>
+  <button onclick="studioPilots()">refresh pilots</button> <span id="st-pilotmsg" class="dim"></span>
+  <div id="st-pilots"></div>`;
   studioRefreshArt(); studioFishBank(); studioChannels();
 }
 let studioChanList=[];
@@ -1456,6 +1459,26 @@ async function studioFishBank(){
   try{const r=await api('POST','/api/studio/fish/bank',{});
     document.getElementById('st-bank').innerHTML=(r.clips||[]).map(c=>`<div class="res"><span><b>${esc(c.name)}</b> <span style="color:var(--dim)">${esc(c.voice||c.backend||'')} · ${c.chars||'?'} chars${c.credits_quoted?' · '+c.credits_quoted+'cr':''}</span><br><audio controls preload="none" src="${c.url}&token=${encodeURIComponent(T)}" style="width:100%"></audio></span></div>`).join('')||'<div style="color:var(--dim)">bank empty</div>';
   }catch(e){}
+}
+async function studioPilots(){
+  const m=document.getElementById('st-pilotmsg'); m.textContent='scanning…';
+  try{const r=await api('POST','/api/studio/pilots',{});
+    const ps=r.pilots||[];
+    const ready=ps.filter(p=>p.ready).length;
+    m.textContent=`${ready}/${ps.length} READY (prep≥70 + gate + poison)`;
+    document.getElementById('st-pilots').innerHTML=ps.map((p,i)=>`<div class="res"><span><b>${esc(p.house)} · ${esc(p.file)}</b> <span style="color:var(--dim)">${esc(p.kind||'')} · score ${p.score??'?'} · ${p.chunks??'?'} chunks ${p.ready?'<b style="color:var(--green)">READY</b>':'<b style="color:var(--yellow)">BLOCKED</b>'}</span><br>
+      ${p.ready?`<button onclick="studioPilotRender(${i})">render master ($0)</button>`:''}<span id="st-pr-${i}" class="dim"></span></span></div>`).join('');
+    window._pilots=ps;
+  }catch(e){m.textContent='ERR '+e.message}
+}
+async function studioPilotRender(i){
+  const p=(window._pilots||[])[i]; if(!p)return;
+  const m=document.getElementById('st-pr-'+i); m.textContent='rendering (minutes for long tales)…';
+  try{const r=await api('POST','/api/studio/pilot/render',{path:p.path,channel:p.house},{timeoutMs:600000});
+    if(!r.ok){m.textContent='BLOCKED '+(r.error||r.reason||'');return}
+    m.textContent=`done: ${r.name}`;
+    studioFishBank();
+  }catch(e){m.textContent='ERR '+e.message}
 }
 let prepChunks=[];
 async function studioPrep(){
