@@ -127,6 +127,8 @@ TOOLS = [
       "inputSchema": {"type": "object", "properties": {"kind": {"type": "string"}, "text": {"type": "string"}, "voice_id": {"type": "string"}, "media_kind": {"type": "string"}, "workspace_id": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}, "expected_credits": {"type": "integer"}}, "required": ["kind"]}},
      {"name": "audio.cast.prepare", "description": "GO button for a collection: ensemble briefs + top-3 candidates per speaker + $0 audition each into the bank. Free reads + free renders only.",
       "inputSchema": {"type": "object", "properties": {"collection": {"type": "string"}, "channel": {"type": "string"}}, "required": ["collection"]}},
+     {"name": "taste.profile", "description": "Owner taste profile: learned feature weights + standing rules compiled from locks/likes/anchors/notes (free read — check this before proposing voices)",
+      "inputSchema": {"type": "object", "properties": {}, "required": []}},
 ]
 
 GRAPH = [
@@ -706,7 +708,7 @@ def handle(state: dict, method: str, params: dict) -> dict:
                  "audio.studio.import", "audio.studio.status",
                  "audio.studio.generate", "audio.studio.export",
                  "channel.status", "audio.speak_free", "audio.request",
-                 "audio.cast.prepare"):
+                 "audio.cast.prepare", "taste.profile"):
         try:
             import sys as _sys2
             _sys2.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -835,6 +837,16 @@ def handle(state: dict, method: str, params: dict) -> dict:
                 import channel_onboard as _ob2
                 return {"result": _ob2.channel_status(
                     str(args.get("slug") or ""))}
+            if name == "taste.profile":
+                sys.path.insert(0, os.path.dirname(os.path.dirname(
+                    os.path.abspath(__file__))))
+                from pipeline.taste_profile import load_profile
+                p = load_profile()
+                return {"result": {"ok": True,
+                                   "n_features": len(p.get("weights", {})),
+                                   "top": dict(list(
+                                       p.get("weights", {}).items())[:20]),
+                                   "rules": p.get("rules", [])[:10]}}
             if name == "audio.cast.prepare":
                 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
                 import sleep_studio as _st3

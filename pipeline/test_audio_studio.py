@@ -210,3 +210,14 @@ def test_yt_compliance_gates():
     assert check_thumbnail("/nope.jpg")["ok"] is False
     assert check_package("/nope.mp4", "/nope.jpg", good)["ok"] is False
     assert check_package("/nope.mp4", "/nope.jpg", good)["quota_note"]
+
+
+def test_taste_profile_compiles_and_calibrates():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from taste_profile import compile_profile, weight_of, load_profile
+    p = compile_profile()
+    assert p["n_features"] > 10 and p["version"] == 1
+    assert weight_of("narration", 0.5) > 0.5  # learned positive
+    assert weight_of("zzz-no-such-tag-zzz", 0.5) == 0.5  # default
+    assert isinstance(load_profile().get("rules"), list)

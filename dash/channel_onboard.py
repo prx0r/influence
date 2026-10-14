@@ -141,6 +141,14 @@ def propose(channel_slug: str, chair: str = "narrator",
     for a in anchors:
         for t in (a.get("tags") or []) + (a.get("descriptors") or []):
             anchor_vocab.setdefault(str(t).lower(), a.get("title", "?"))
+    # calibrated taste weights (taste_profile.json, compiled from locks /
+    # likes / anchors / notes). Falls back to hand defaults when thin.
+    try:
+        sys_path_push()
+        from taste_profile import weight_of as _taste_w
+    except Exception:
+        def _taste_w(f, default=0.5):
+            return default
     # dedupe: same voice re-uploaded under new IDs (Zack D. Films x2).
     # Normalized name match → keep the highest-use copy. No dup cards.
     import re as _re
@@ -188,7 +196,11 @@ def propose(channel_slug: str, chair: str = "narrator",
             langs = [langs]
         lang_ok = any(str(l).startswith("en") for l in langs)
         shared = vid in siblings
-        score = round(len(overlap) * 3 + pop + (2 if lang_ok else -5)
+        # calibrated overlap: learned weight per tag, modulated around the
+        # old +3 default (w=1 → 3.0, w=-1 → 0). Unknown tags → neutral.
+        overlap_score = round(sum(1.5 + 1.5 * _taste_w(t, 0.5)
+                                  for t in overlap), 1)
+        score = round(overlap_score + pop + (2 if lang_ok else -5)
                       - (8 if shared else 0), 1)
         reasons = []
         if overlap:
@@ -259,6 +271,13 @@ def lock(channel_slug: str, chair: str, voice_id: str, reason: str,
         json.dump(rec, f, indent=1, ensure_ascii=False)
     os.replace(tmp, path)
     seed_path = save_seed(channel_slug)
+    # recompile taste profile (cheap, keeps ranking calibrated)
+    try:
+        sys_path_push()
+        from taste_profile import compile_profile as _compile
+        _compile()
+    except Exception:
+        pass
     return {"ok": True, "channel": channel_slug, "chair": chair,
             "voice_id": voice_id, "seed": seed_path}
 
@@ -490,6 +509,12 @@ def react(channel: str, chair: str, voice_id: str, name: str = "",
                               "text": note.strip()[:500],
                               "ts": int(time.time())})
     _save_taste(channel, d)
+    try:
+        sys_path_push()
+        from taste_profile import compile_profile as _compile2
+        _compile2()
+    except Exception:
+        pass
     return {"ok": True, "likes": len(d["likes"]),
             "dismissed": len(d["dismissed"])}
 
@@ -531,6 +556,12 @@ def love(voice_id: str, descriptors: list, context: str = "",
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(anchors, f, indent=1, ensure_ascii=False)
     os.replace(tmp, os.path.normpath(ANCHORS_PATH))
+    try:
+        sys_path_push()
+        from taste_profile import compile_profile as _compile3
+        _compile3()
+    except Exception:
+        pass
     return {"ok": True, "title": d.get("title"),
             "tags": d.get("tags"), "anchors": len(anchors)}
 

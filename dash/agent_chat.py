@@ -52,6 +52,7 @@ READONLY_TOOLS = [
     "audio.estimate",
     "audio.studio.status",
     "channel.status",
+    "taste.profile",
     "audio.cast.prepare",
     "audio.speak_free",
     "audio.request",
@@ -138,6 +139,7 @@ TOOL_SCHEMAS = [
         "name": "audio.speak_free", "description": "Render TTS free ($0, no credits): text + locked voice_id → voice bank clip (≤1500 chars)",
         "parameters": {"type": "object", "properties": {
             "text": {"type": "string"}, "voice_id": {"type": "string"}}, "required": ["text", "voice_id"]}}},
+    {"type": "function", "function": {"name": "taste.profile", "description": "Owner taste: learned weights + rules — read before proposing voices", "parameters": {"type": "object", "properties": {}}, "required": []}},
     {"type": "function", "function": {"name": "audio.cast.prepare", "description": "GO button: ensemble cast sheet + $0 auditions per speaker (free only)", "parameters": {"type": "object", "properties": {"collection": {"type": "string"}, "channel": {"type": "string"}}, "required": ["collection"]}}},
     {"type": "function", "function": {
         "name": "audio.request", "description": "Ask to spend credits: quotes + files a human approval task with payload hash (never spends; human approves, fulfill executes)",
@@ -217,8 +219,10 @@ Audio studio (Fish Audio, free reads + grant-gated spend):
   tool reports CREDIT SPEND DISABLED, do not work around it — report it and
   offer the free path.
 - LEADING ONBOARDING (when the human wants a channel set up — full flow in
-  docs/ONBOARDING.md, this is your checklist): 1) channel.status for state.
-  2) Propose voices (audio.voices), 3-5 per open chair with samples+reasons;
+  docs/ONBOARDING.md, this is your checklist): 1) channel.status for state
+  + taste.profile for learned weights/rules. 2) Propose voices
+  (audio.voices), 3-5 per open chair with samples+reasons, ranked by the
+  profile — cite the profile line on match ("per your locked fairy pattern");
   human picks with a reason, human locks (you never lock). 3) Interview for
   missing thesis/audience/style/thumbnail/formats — one question at a time,
   draft from answers + market facts, read back, save on confirm. Never invent
