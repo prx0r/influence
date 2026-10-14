@@ -1396,8 +1396,10 @@ async function obGrid(){
     obCands=r.candidates||[];
     obCands.forEach(c=>{if(!obSeen.includes(c.voice_id))obSeen.push(c.voice_id)});
     const liked=new Set(r.liked||[]);
+    const prof=r.character_profile;
+    const profHtml=prof?`<div class="ob-card" style="border-color:var(--gold)"><b>${esc(prof.name)}</b> <span style="font-size:11px;color:var(--dim)">${esc(prof.gender||'?')}/${esc(prof.age||'?')}/${esc(prof.role||'no role')} · ${prof.mentions||0} mentions · ${prof.dialogue_lines||0} lines · book: ${esc(prof.book||'')}</span><br><span style="font-size:11px">e.g. “${esc((prof.sample_lines||'').slice(0,140))}”</span><br><span style="font-size:11px;color:var(--dim)">${esc(prof.ensemble_brief||'')} · pitch ${prof.pitch_band_hz?prof.pitch_band_hz.join('-')+'Hz':''}</span></div>`:'';
     g.className='ob-grid';
-    g.innerHTML=obCands.map((c,i)=>`<div class="ob-card"><div class="row" style="justify-content:space-between;margin-top:0"><h2>${i+1}. ${esc(c.name||c.voice_id)}</h2>${liked.has(c.voice_id)?'<span class="ob-rank">✓ liked</span>':''}</div>
+    g.innerHTML=profHtml+obCands.map((c,i)=>`<div class="ob-card"><div class="row" style="justify-content:space-between;margin-top:0"><h2>${i+1}. ${esc(c.name||c.voice_id)}</h2>${liked.has(c.voice_id)?'<span class="ob-rank">✓ liked</span>':''}</div>
       <div class="sub">score ${c.score} · ${c.uses||0} uses · ${esc((c.tags||[]).slice(0,4).join(', '))}</div>
       <div class="sub" style="margin-top:4px">${esc(c.reason||'')}</div>
       ${c.sample?`<audio controls preload="none" src="${c.sample}"></audio>`:''}

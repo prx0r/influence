@@ -396,6 +396,7 @@ def propose(channel_slug: str, chair: str = "narrator",
             "archetype": {"name": _arch,
                           "pitch": _arch_prof.get("pitch"),
                           "delivery": (_arch_prof.get("delivery") or "")[:160]} if _arch else None,
+            "character_profile": _character_profile(channel_slug, chair),
             "function_calibrated": bool(_fww),
             "bt_verdict": _verdict,
             "queries": vibe_queries(channel, chair),
@@ -807,3 +808,49 @@ def react_thumb(channel: str, thumb_ref: str, liked: bool,
     except Exception:
         pass
     return {"ok": True, "thumb_likes": len(d["thumb_likes"])}
+
+
+def _character_profile(channel_slug: str, chair: str) -> dict | None:
+    """Full character profile for assessment: dramatis match (mentions,
+    dialogue, gender/age/role, sample lines, voice query) plus ensemble
+    brief (pitch band, function, delivery). Returns None when the chair
+    is a role (narrator) rather than a named character."""
+    import glob as _gg
+    ddir = os.path.join(CHANNELS_DIR, channel_slug, "dramatis")
+    if not os.path.isdir(ddir):
+        return None
+    want = chair.strip().lower()
+    best, best_n = None, 0
+    for fp in sorted(_gg.glob(os.path.join(ddir, "*.json"))):
+        try:
+            d = json.load(open(fp, encoding="utf-8"))
+        except Exception:
+            continue
+        for c in d.get("characters", []):
+            nm = str(c.get("name", ""))
+            if nm.lower() == want or want in nm.lower():
+                n = int(c.get("dialogue_lines") or 0)
+                if n >= best_n:
+                    best_n = n
+                    best = {"name": nm, "book": os.path.basename(fp)[:-5],
+                            "mentions": c.get("mentions", 0),
+                            "dialogue_lines": n,
+                            "gender": c.get("gender"), "age": c.get("age"),
+                            "role": c.get("role"),
+                            "voice_query": c.get("voice_query", ""),
+                            "sample_lines": (c.get("sample_line", "") or "")[:300],
+                            "dialogue_how": c.get("dialogue_how", "")}
+    if not best:
+        return None
+    try:
+        sys_path_push()
+        from ensemble_cast import brief_character, pitch_band
+        prof = {"name": best["name"], "role": best["role"],
+                "age": best["age"], "gender": best["gender"],
+                "dialogue_lines": best["dialogue_lines"]}
+        best["ensemble_brief"] = brief_character(prof)
+        best["pitch_band_hz"] = pitch_band(best["role"], best["age"],
+                                           best["gender"])
+    except Exception:
+        pass
+    return best

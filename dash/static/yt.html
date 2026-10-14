@@ -331,7 +331,9 @@ async function castGrid(chair){
   try{
     const r = await api('POST','/api/studio/onboard/propose',{channel:S.slug,chair,n:5});
     if(!r.ok){ el.innerHTML = '<div class="sub">ERR ' + esc(r.error||r.reason||'') + '</div>'; return; }
-    el.innerHTML = (r.candidates||[]).map((c,i) => `<div class="card" style="margin-top:8px"><div class="row" style="justify-content:space-between"><h2>${i+1}. ${esc(c.name||c.voice_id)}</h2><span class="chip">score ${c.score}</span></div>
+    const prof = r.character_profile;
+    const profHtml = prof ? `<div class="card" style="margin-top:8px;border-color:var(--gold)"><b>${esc(prof.name)}</b> <span class="sub">${esc(prof.gender||'?')}/${esc(prof.age||'?')}/${esc(prof.role||'no role')} · ${prof.mentions||0} mentions · ${prof.dialogue_lines||0} lines</span><div class="sub">e.g. “${esc((prof.sample_lines||'').slice(0,140))}”</div><div class="sub">${esc(prof.ensemble_brief||'')}</div></div>` : '';
+    el.innerHTML = profHtml + (r.candidates||[]).map((c,i) => `<div class="card" style="margin-top:8px"><div class="row" style="justify-content:space-between"><h2>${i+1}. ${esc(c.name||c.voice_id)}</h2><span class="chip">score ${c.score}</span></div>
       <div class="sub">${c.uses||0} uses · ${esc((c.tags||[]).slice(0,4).join(', '))}</div>
       <div class="sub" style="margin-top:4px">${esc(c.reason||'')}</div>
       ${c.sample?`<audio controls preload="metadata" src="${c.sample}" style="width:100%"></audio>`:''}

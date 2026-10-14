@@ -50,3 +50,11 @@ affect estimate → `propose()` top-N → `studio/voice-profiles/<pack>.json`
 
 Spend credits (kill-switch). Invent voice IDs. Lock without a human reason.
 Delete anchors, pairs, or seeds. Store secrets outside vault.
+
+## Update — character profiles in casting UI (2026-10-14)
+
+Casting grids (console onboard + studio Voices tab) now open with the full
+character profile: mentions, dialogue count, gender/age/role, voice query,
+actual book sample lines, ensemble brief, pitch band. Narrator-type chairs
+correctly show no profile (roles aren't people). Next: per-pack brief pages
+(`studio/voice-profiles/`) linked from the grid.
