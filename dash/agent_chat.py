@@ -44,6 +44,13 @@ READONLY_TOOLS = [
     "product.list",
     "product.get",
     "receipt.get",
+    "pack.compile",
+    "etsy.listing",
+    "task.status",
+    "audio.voices",
+    "audio.balance",
+    "audio.estimate",
+    "audio.studio.status",
 ]
 
 TOOL_SCHEMAS = [
@@ -95,6 +102,32 @@ TOOL_SCHEMAS = [
     {"type": "function", "function": {
         "name": "receipt.get", "description": "Receipt by id + verify",
         "parameters": {"type": "object", "properties": {"id": {"type": "string"}}, "required": ["id"]}}},
+    {"type": "function", "function": {
+        "name": "pack.compile", "description": "Dry-run compile one pack for a channel (read-only, zero writes, never pushes)",
+        "parameters": {"type": "object", "properties": {
+            "sku": {"type": "string"}, "brand": {"type": "string"}, "channel": {"type": "string"}}, "required": ["sku"]}}},
+    {"type": "function", "function": {
+        "name": "etsy.listing", "description": "Preview 'add this product to Etsy': template + payload + images + coherence (read-only, never pushes)",
+        "parameters": {"type": "object", "properties": {
+            "store": {"type": "string"}, "sku": {"type": "string"}}, "required": ["sku"]}}},
+    {"type": "function", "function": {
+        "name": "task.status", "description": "Poll effect approval task state + payload hash + receipt (read-only)",
+        "parameters": {"type": "object", "properties": {"task_id": {"type": "integer"}}, "required": ["task_id"]}}},
+    {"type": "function", "function": {
+        "name": "audio.voices", "description": "Voice casting search: public/team voices + samples (free read, never generates)",
+        "parameters": {"type": "object", "properties": {
+            "query": {"type": "string"}, "language": {"type": "string"}}}}},
+    {"type": "function", "function": {
+        "name": "audio.balance", "description": "Fish package credit balance + plan (free read)",
+        "parameters": {"type": "object", "properties": {}}}},
+    {"type": "function", "function": {
+        "name": "audio.estimate", "description": "Free media quote: image/video cost + validation (read-only, never generates)",
+        "parameters": {"type": "object", "properties": {
+            "kind": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}}, "required": ["kind", "model_id", "prompt"]}}},
+    {"type": "function", "function": {
+        "name": "audio.studio.status", "description": "Story Studio project status: chapters, dirty counts, roster (free read)",
+        "parameters": {"type": "object", "properties": {
+            "project_id": {"type": "string"}}, "required": ["project_id"]}}},
 ]
 
 DELEGATE_SCHEMA = {"type": "function", "function": {
@@ -148,6 +181,23 @@ If the user asks to post/send/buy: refuse execution, offer the human path (press
 """
 
 SYSTEM = SYSTEM_ODDHOBB
+
+
+AUDIO_STUDIO = """
+Audio studio (Fish Audio, free reads + grant-gated spend):
+- FREE reads, use freely: audio.voices (cast voices + samples), audio.balance
+  (package credits + plan), audio.estimate (image/video cost quote + validation)
+- audio.speak / audio.generate are NOT in your tools: they burn package
+  credits (~1/byte TTS). When the user wants audio/video made: dry-run the
+  numbers yourself (bytes x 1 credit), show the quote, and tell them to approve
+  via the dash decide gate (human mints the grant, receipt always).
+- Voice casting: offer 3-5 candidates with samples, let the human pick unless
+  told to choose. Same voice_id for every part of one piece.
+- Keep each TTS render under ~2000 chars (split at sentence boundaries).
+  CJK text costs ~3x per character. A failed render gets ONE identical free
+  retry within 5 minutes. Multi-speaker scripts belong in Story Studio.
+- Never invent voice IDs, prices, or completion. Cite tool output.
+"""
 
 
 SYSTEM_GLOBAL = """You are the influence GLOBAL orchestrator over entities: oddhobb, pogtown, humanvoiced.
@@ -304,7 +354,7 @@ def agent_chat(message: str, state: dict | None = None, history: list[dict] | No
     if not key:
         return {"error": "llm_unavailable", "reply": "Operator model unavailable (no key). Deterministic mode."}
 
-    messages: list[dict] = [{"role": "system", "content": _system_for(msg)}]
+    messages: list[dict] = [{"role": "system", "content": _system_for(msg) + AUDIO_STUDIO}]
     schemas = TOOL_SCHEMAS + [DELEGATE_SCHEMA] if _system_for(msg) is SYSTEM_GLOBAL else TOOL_SCHEMAS
     for h in (history or [])[-8:]:
         if h.get("role") in ("user", "assistant") and h.get("content"):

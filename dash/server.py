@@ -57,6 +57,41 @@ def _store_lock():
     return _STORE_LOCK
 
 
+def _yt_entities() -> list:
+    """Channels shaped as influencer entities (YT dash entity swap)."""
+    sys.path.insert(0, ROOT)
+    import sleep_studio as _st
+    out = []
+    for c in _st.list_channels():
+        resources = []
+        for ch in c.get("chair_detail", []):
+            locked = bool(ch.get("locked"))
+            resources.append({
+                "key": f"chair-{ch['name']}", "kind": "voice",
+                "label": f"Voice: {ch['name']}",
+                "status": "READY" if locked else "UNKNOWN",
+                "message": (f"locked ({(ch.get('reason') or '')[:80]})"
+                            if locked else "needs casting — onboard voices"),
+            })
+        resources.append({
+            "key": "brief", "kind": "brief", "label": "Channel brief",
+            "status": "READY" if c.get("brief") else "UNKNOWN",
+            "message": ("brief written" if c.get("brief")
+                        else "no brief yet"),
+        })
+        resources.append({
+            "key": "snippet", "kind": "audio", "label": "Voice snippet",
+            "status": "READY" if c.get("bank_clips", 0) > 0 else "UNKNOWN",
+            "message": (f"{c['bank_clips']} clips in bank"
+                        if c.get("bank_clips") else "render a snippet"),
+        })
+        out.append({"slug": c["slug"], "name": c["display_name"],
+                    "domain": "youtube.com", "handle": f"@{c['slug']}",
+                    "stage": c.get("status", "pilot"),
+                    "resources": resources})
+    return out
+
+
 def load_state() -> dict:
     import time as _t
     now = _t.time()
@@ -75,6 +110,10 @@ def load_state() -> dict:
         t["urgency"] = _urgency_of(t)
     tasks.sort(key=lambda t: (-t["urgency"]["score"], t.get("id", "")))
     d["tasks"] = tasks
+    if os.environ.get("YT_MODE", "") == "1":
+        # YT dash: identical UI, entities swapped — channels ARE the
+        # influencers. Fresh every call (locks/bank change under us).
+        d["influencers"] = _yt_entities()
     _STATE_CACHE["state"] = d
     _STATE_CACHE["at"] = now
     try:
@@ -662,6 +701,93 @@ class Handler(SimpleHTTPRequestHandler):
                         job["mp4path"],
                         str(body.get("title", "sleep-test")),
                         {"name": job.get("name"), "knobs": job.get("knobs")})})
+                # Fish Audio studio (web credits, grant-gated spend)
+                if self._route() == "/api/studio/fish/prep":
+                    return self._json({"ok": True, **_st.prep_script(
+                        str(body.get("raw", "") or ""),
+                        int(body.get("chunk_limit", 1500) or 1500))})
+                if self._route() == "/api/studio/fish/voices":
+                    return self._json({"ok": True, **_st.fish_voices(
+                        str(body.get("query", "") or ""),
+                        str(body.get("language", "en") or "en"),
+                        int(body.get("page_size", 8) or 8))})
+                if self._route() == "/api/studio/fish/quote":
+                    return self._json(_st.fish_narrate(
+                        str(body.get("text", "") or ""),
+                        str(body.get("voice_id", "") or "")))
+                if self._route() == "/api/studio/fish/bank":
+                    return self._json({"ok": True,
+                                       "clips": _st.list_voice_bank()})
+                if self._route() == "/api/studio/channels":
+                    return self._json({"ok": True,
+                                       "channels": _st.list_channels()})
+                if self._route() == "/api/studio/channel":
+                    import json as _json2
+                    slug = str(body.get("slug", "") or "")
+                    if not slug.replace("-", "").replace("_", "").isalnum():
+                        return self._json({"error": "bad slug"}, 400)
+                    p = os.path.join(ROOT, "..", "studio", "channels",
+                                     slug + ".json")
+                    p = os.path.normpath(p)
+                    try:
+                        with open(p, encoding="utf-8") as f:
+                            return self._json({"ok": True, "record":
+                                               _json2.load(f)})
+                    except OSError:
+                        return self._json({"error": "unknown channel"}, 404)
+                if self._route() == "/api/studio/onboard/propose":
+                    import channel_onboard as _ob
+                    return self._json(_ob.propose(
+                        str(body.get("channel", "") or ""),
+                        str(body.get("chair", "narrator") or "narrator"),
+                        int(body.get("n", 5) or 5)))
+                if self._route() == "/api/studio/onboard/lock":
+                    import channel_onboard as _ob
+                    return self._json(_ob.lock(
+                        str(body.get("channel", "") or ""),
+                        str(body.get("chair", "narrator") or "narrator"),
+                        str(body.get("voice_id", "") or ""),
+                        str(body.get("reason", "") or "")))
+                if self._route() == "/api/studio/onboard/picks":
+                    import channel_onboard as _ob
+                    return self._json({"ok": True,
+                                       "picks": _ob.locked_traits()})
+                if self._route() == "/api/studio/fish/approve":
+                    # Human pressed approve: recompute the dry-run server-side
+                    # (never trust client hash), bind grant to exact payload.
+                    import studio_grants as _sg
+                    text, vid = (str(body.get("text", "") or ""),
+                                 str(body.get("voice_id", "") or ""))
+                    dry = _st.fish_narrate(text, vid)
+                    if not dry.get("ok"):
+                        return self._json(dry, 409)
+                    g = _sg.issue(
+                        "audio.speak",
+                        {"tool": "text_to_speech", "text": text,
+                         "voice_id": vid,
+                         "credits": dry["quote"]["credits"]})
+                    return self._json({"ok": True, "grant_id": g["grant_id"],
+                                       "credits": dry["quote"]["credits"],
+                                       "payload_hash": g["payload_hash"],
+                                       "expires_in": 600})
+                if self._route() == "/api/studio/fish/narrate":
+                    import studio_grants as _sg
+                    grant = _sg.redeem(str(body.get("grant_id", "") or ""))
+                    if not grant:
+                        return self._json(
+                            {"ok": False,
+                             "reason": "no valid single-use grant: quote + "
+                                       "approve first (grants expire in 10m)"},
+                            409)
+                    return self._json(_st.fish_narrate(
+                        str(body.get("text", "") or ""),
+                        str(body.get("voice_id", "") or ""), grant=grant))
+                if self._route() == "/api/studio/fish/narrate-free":
+                    # $0 DEFAULT PATH: REST s2.1-pro-free, no grant, no
+                    # credits. Pro path (above) stays for Drama/duels.
+                    return self._json(_st.free_narrate(
+                        str(body.get("text", "") or ""),
+                        str(body.get("voice_id", "") or "")))
             except Exception as e:
                 return self._json({"error": str(e)[:300]}, 500)
             return self._json({"error": "not found"}, 404)

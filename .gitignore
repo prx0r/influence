@@ -33,8 +33,10 @@ dash/decisions.db
 dash/receipts.jsonl
 dash/spend.db
 runs/*.jsonl
+pipeline/runs/
 stevejobless/.env
 stevejobless/.env
 stevejobless/.env.example
 dash/phone_tunnel_token
+dash/studio_grants.json
 dash/*.log

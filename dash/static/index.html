@@ -1134,6 +1134,18 @@ async function studioNarrate(){
 function renderStudio(main){
   main.innerHTML=`<h3>🎨 Sleep Studio</h3>
   <div style="color:var(--dim)">FLUX art → draw knobs → 30s landscape → test channel. House rule: white-on-black, no text, minimal.</div>
+  <div id="st-channels" style="margin:8px 0"></div>
+  <div id="st-channelcard"></div>
+  <h4>outputs (latest first, labelled)</h4>
+  <div style="font-size:11px;color:var(--dim)">art gallery — click to select for render</div>
+  <div id="st-gal"></div>
+  <div style="font-size:11px;color:var(--dim)">latest video render</div>
+  <div id="st-out"></div>
+  <div style="font-size:11px;color:var(--dim)">voice bank — every clip, player included <button onclick="studioFishBank()">refresh</button></div>
+  <div id="st-bank"></div>
+  <div style="font-size:11px;color:var(--dim)">edge-tts clips</div>
+  <div id="st-vox"></div>
+  <h4>build (inputs — outputs land above)</h4>
   <h4>1 · art</h4>
   <input id="st-p" size="55" placeholder="crescent moon over still black water, extremely minimal, vast black">
   <select id="st-s"><option>pencil</option><option>paper</option><option>chalk</option></select>
@@ -1141,7 +1153,6 @@ function renderStudio(main){
   <button onclick="studioGen()">generate</button> <span id="st-msg"></span>
   <button onclick="studioLora1()" title="fill lora1 house recipe">lora1</button>
   <button onclick="studioLora2()" title="fill lora2 etched recipe">lora2</button>
-  <div id="st-gal"></div>
   <h4>2 · draw knobs</h4>
   duration <select id="st-dur"><option value="15000">15s</option><option value="30000" selected>30s</option><option value="60000">60s</option><option value="120000">2min</option></select>
   SKIP <input id="st-skip" size="2" value="4" title="cells/frame: higher=faster, jumpier">
@@ -1153,7 +1164,6 @@ function renderStudio(main){
   <label><input type="checkbox" id="st-smooth" checked> SMOOTH</label>
   <label><input type="checkbox" id="st-nohand"> NO-HAND</label>
   <button onclick="studioRender()">render selected</button> <span id="st-msg2"></span>
-  <div id="st-out"></div>
   <h4>3 · publish</h4>
   <input id="st-title" size="35" placeholder="sleep-draw-30s-moon">
   <button onclick="studioPublish()">publish to test channel</button> <span id="st-msg3"></span>
@@ -1161,8 +1171,167 @@ function renderStudio(main){
   <input id="st-text" size="55" placeholder="Settle in. Let the day dissolve behind you.">
   <select id="st-voice"><option>aria</option><option>guy</option><option>ana</option><option>christopher</option></select>
   <button onclick="studioNarrate()">narrate</button> <span id="st-msg4"></span>
-  <div id="st-vox"></div>`;
-  studioRefreshArt();
+  <h4>5 · fish voices (web credits)</h4>
+  <input id="st-fq" size="35" placeholder="warm english narrator">
+  <button onclick="studioFishSearch()">search</button> <span id="st-fmsg"></span>
+  <div id="st-fcards"></div>
+  <textarea id="st-ftext" rows="3" cols="60" placeholder="Paste the sleep script line here (≤2000 chars/render)"></textarea><br>
+  <button onclick="studioFishQuote()">quote</button> <span id="st-fquote"></span>
+  <button onclick="studioFreeRender()">render FREE ($0)</button>
+  <button id="st-fapprove" onclick="studioFishApprove()" style="display:none">approve + render (credits)</button> <span id="st-fmsg2"></span>
+  <div id="st-fout"></div>
+  <h4>5b · script prep (snippet-first)</h4>
+  <textarea id="st-raw" rows="5" cols="60" placeholder="Paste raw script (Gutenberg, fetch output, drafts) — prep cleans, normalizes numbers/dates, chunks, scores TTS-worthiness"></textarea><br>
+  <button onclick="studioPrep()">prep script</button> <span id="st-prepmsg"></span>
+  <div id="st-prep"></div>
+  <button id="st-snippetbtn" onclick="studioSnippet()" style="display:none">render snippet (chunk 1) + review</button>
+  <button id="st-fullbtn" onclick="studioFull()" style="display:none">approve ALL + render full</button> <span id="st-fullmsg"></span>
+  <div id="st-fullout"></div>`;
+  studioRefreshArt(); studioFishBank(); studioChannels();
+}
+let studioChanList=[];
+async function studioChannels(){
+  try{const r=await api('POST','/api/studio/channels',{});
+    studioChanList=r.channels||[];
+    document.getElementById('st-channels').innerHTML='<span style="font-size:11px;color:var(--dim)">channels: </span>'+
+      studioChanList.map(c=>`<button onclick="studioChannel('${c.slug}')" title="${esc(c.pitch||'')}">${esc(c.display_name)}${c.status==='pilot'?' 🧪':''}</button>`).join('');
+  }catch(e){}
+}
+function studioChannel(slug){
+  const c=studioChanList.find(x=>x.slug===slug); if(!c)return;
+  const card=document.getElementById('st-channelcard');
+  card.innerHTML=`<div class="res"><span><b>${esc(c.display_name)}</b> <span style="color:var(--dim)">${esc(c.status)} · ${esc(c.engine)} · ${esc(c.cadence||'')}</span><br><span style="font-size:11px">${esc(c.pitch||'')}</span><br><span style="font-size:11px;color:var(--dim)">chairs ${c.chairs_locked}/${c.chairs} locked · bank ${c.bank_clips} clips · brief ${c.brief?'✓':'—'}</span> <button onclick="studioOnboard('${c.slug}')">onboard voices</button></span></div><div id="st-onboard"></div>`;
+}
+async function studioOnboard(slug){
+  const el=document.getElementById('st-onboard');
+  el.innerHTML='<div style="color:var(--dim)">loading channel…</div>';
+  try{
+    const r=await api('POST','/api/studio/channel',{slug});
+    if(!r.ok&&!r.record){el.innerHTML='ERR '+(r.error||'');return}
+    const rec=r.record, chairs=(rec.voice||{}).chairs||{};
+    el.innerHTML=`<h4>onboarding: ${esc(rec.display_name||slug)}</h4>
+      <div style="font-size:11px"><b>thesis:</b> ${esc(rec.pitch||'')}</div>
+      <div style="font-size:11px"><b>pipeline:</b> ${esc(((rec.engine||{}).contract)||rec.engine||'')} → snippet ear-check → approve-all → bank → etch after verdict</div>
+      <div style="font-size:11px"><b>style:</b> ${(rec.style||{}).accent||''} ${(rec.style||{}).manner||''}</div>`
+      +Object.keys(chairs).map(ch=>`<div style="margin-top:6px;font-size:11px"><b>role: ${esc(ch)}</b> <span style="color:var(--dim)">${esc(chairs[ch].direction||'')}</span><br>
+        <span style="color:var(--dim)">locked: ${(chairs[ch].fish_id||'—').slice(0,12)}${chairs[ch].fish_id?'…':''} ${esc(chairs[ch].status||'open')}${chairs[ch].lock_reason?' — “'+esc(chairs[ch].lock_reason)+'”':''}</span>
+        <button onclick="studioPropose('${slug}','${esc(ch)}')">propose 5 voices</button><div id="st-prop-${esc(ch)}"></div></div>`).join('');
+  }catch(e){el.innerHTML='ERR '+e.message}
+}
+async function studioPropose(slug,chair){
+  const el=document.getElementById('st-prop-'+chair); el.innerHTML='casting…';
+  try{const r=await api('POST','/api/studio/onboard/propose',{channel:slug,chair,n:5});
+    if(!r.ok){el.innerHTML='ERR '+(r.error||r.reason||'');return}
+    el.innerHTML=(r.candidates||[]).map((c,i)=>`<div class="res"><span><b>${i+1}. ${esc(c.name||c.voice_id)}</b> <span style="color:var(--dim)">score ${c.score} · ${c.uses||0} uses · ${esc((c.tags||[]).slice(0,4).join(', '))}</span><br>
+      <span style="font-size:11px">${esc(c.reason||'')}</span><br>
+      ${c.sample?`<audio controls preload="none" src="${c.sample}" style="width:100%" onclick="event.stopPropagation()"></audio>`:''}
+      <input id="st-reason-${esc(chair)}-${i}" size="30" placeholder="why this one (your reason, saved)">
+      <button onclick="studioLock('${slug}','${esc(chair)}','${c.voice_id}',${i})">lock</button></span></div>`).join('');
+    window['_cand_'+chair]=r.candidates;
+  }catch(e){el.innerHTML='ERR '+e.message}
+}
+async function studioLock(slug,chair,vid,i){
+  const reason=(document.getElementById(`st-reason-${chair}-${i}`)||{}).value||'';
+  if(!reason){alert('give a reason — it trains future proposals');return}
+  try{const r=await api('POST','/api/studio/onboard/lock',{channel:slug,chair,voice_id:vid,reason});
+    if(!r.ok){alert('ERR '+(r.error||r.reason||''));return}
+    studioChannels(); studioChannel(slug);
+  }catch(e){alert('ERR '+e.message)}
+}
+let fishSel=null,fishQuoteCache=null;
+async function studioFishSearch(){
+  const m=document.getElementById('st-fmsg'); m.textContent='searching…';
+  try{const r=await api('POST','/api/studio/fish/voices',{query:document.getElementById('st-fq').value,language:'en'});
+    if(r.error||!r.ok){m.textContent='ERR '+(r.error||r.reason||'');return}
+    m.textContent=(r.cards||[]).length+' voices';
+    document.getElementById('st-fcards').innerHTML=(r.cards||[]).map(c=>`<div class="res" style="${fishSel===c.voice_id?'border-color:var(--gold);':''}cursor:pointer" onclick="fishSel='${c.voice_id}';studioFishSearch()">
+      <span><b>${esc(c.name||c.voice_id)}</b><br><span style="color:var(--dim)">${esc(c.language||'')} · ${c.task_count||'?'} uses<br><span style="font-family:monospace;font-size:10px">${esc((c.voice_id||'').slice(0,20))}…</span></span><br>
+      ${c.sample?`<audio controls preload="none" src="${c.sample}" style="width:100%" onclick="event.stopPropagation()"></audio>`:''}</span></div>`).join('')||'<div style="color:var(--dim)">no matches</div>';
+  }catch(e){m.textContent='ERR '+e.message}
+}
+async function studioFishQuote(){
+  const m=document.getElementById('st-fquote'); m.textContent='quoting…';
+  document.getElementById('st-fapprove').style.display='none';
+  try{const r=await api('POST','/api/studio/fish/quote',{text:document.getElementById('st-ftext').value,voice_id:fishSel});
+    if(!r.ok&&!r.quote){m.textContent='ERR '+(r.error||r.reason||'pick a voice first');return}
+    fishQuoteCache=r;
+    m.textContent=`${r.quote.bytes} bytes → ${r.quote.credits} credits`;
+    document.getElementById('st-fapprove').style.display='';
+  }catch(e){m.textContent='ERR '+e.message}
+}
+async function studioFreeRender(){
+  const m=document.getElementById('st-fmsg2');
+  if(!fishSel){m.textContent='pick a voice first (search above)';return}
+  const t=document.getElementById('st-ftext').value;
+  if(!t){m.textContent='paste text first';return}
+  m.textContent='rendering FREE ($0, pro quality)…';
+  try{const r=await api('POST','/api/studio/fish/narrate-free',{text:t,voice_id:fishSel});
+    if(!r.ok){m.textContent='ERR '+(r.error||r.reason||'');return}
+    m.textContent=`done (${r.chars} chars, $0)`;
+    document.getElementById('st-fout').innerHTML=`<audio controls src="${r.url}&token=${encodeURIComponent(T)}"></audio>`;
+    studioFishBank();
+  }catch(e){m.textContent='ERR '+e.message}
+}
+async function studioFishApprove(){
+  const m=document.getElementById('st-fmsg2'); m.textContent='approving (credits)…';  try{
+    const a=await api('POST','/api/studio/fish/approve',{text:document.getElementById('st-ftext').value,voice_id:fishSel});
+    if(!a.ok){m.textContent='ERR '+(a.error||a.reason||'');return}
+    m.textContent=`approved ${a.credits} credits — rendering…`;
+    const r=await api('POST','/api/studio/fish/narrate',{text:document.getElementById('st-ftext').value,voice_id:fishSel,grant_id:a.grant_id});
+    if(!r.ok){m.textContent='ERR '+(r.error||r.reason||'');return}
+    m.textContent=`done (${r.chars} chars, ${r.credits_quoted} credits)`;
+    document.getElementById('st-fout').innerHTML=`<audio controls src="${r.url}&token=${encodeURIComponent(T)}"></audio>`;
+    studioFishBank();
+  }catch(e){m.textContent='ERR '+e.message}
+}
+async function studioFishBank(){
+  try{const r=await api('POST','/api/studio/fish/bank',{});
+    document.getElementById('st-bank').innerHTML=(r.clips||[]).map(c=>`<div class="res"><span><b>${esc(c.name)}</b> <span style="color:var(--dim)">${esc(c.voice||c.backend||'')} · ${c.chars||'?'} chars${c.credits_quoted?' · '+c.credits_quoted+'cr':''}</span><br><audio controls preload="none" src="${c.url}&token=${encodeURIComponent(T)}" style="width:100%"></audio></span></div>`).join('')||'<div style="color:var(--dim)">bank empty</div>';
+  }catch(e){}
+}
+let prepChunks=[];
+async function studioPrep(){
+  const m=document.getElementById('st-prepmsg'); m.textContent='prepping…';
+  document.getElementById('st-snippetbtn').style.display='none';
+  document.getElementById('st-fullbtn').style.display='none';
+  try{const r=await api('POST','/api/studio/fish/prep',{raw:document.getElementById('st-raw').value});
+    if(!r.ok){m.textContent='ERR '+(r.error||'');return}
+    prepChunks=r.chunks||[];
+    m.textContent=`${r.chars_raw}→${r.chars_clean} chars · score ${r.score_before}→${r.score_after} · ${r.n_chunks} chunks · ${r.credits_total}cr total`;
+    document.getElementById('st-prep').innerHTML=
+      (r.flags_after.length?`<div style="color:var(--yellow);font-size:11px">flags: ${esc(r.flags_after.slice(0,8).join(' · '))}</div>`:'<div style="color:var(--green);font-size:11px">clean — nothing flagged</div>')+
+      (r.chunks_preview||[]).map((c,i)=>`<div style="font-size:11px;color:var(--dim)">${i+1}. ${esc(c)}…</div>`).join('');
+    if(prepChunks.length){
+      document.getElementById('st-snippetbtn').style.display='';
+      document.getElementById('st-fullbtn').style.display='';
+      document.getElementById('st-ftext').value=prepChunks[0];
+    }
+  }catch(e){m.textContent='ERR '+e.message}
+}
+async function studioSnippet(){
+  document.getElementById('st-ftext').value=prepChunks[0]||'';
+  await studioFishQuote();
+  document.getElementById('st-fmsg2').textContent='snippet quoted above — press approve + render to hear chunk 1, then approve ALL for the rest';
+}
+async function studioFull(){
+  const m=document.getElementById('st-fullmsg'); const out=document.getElementById('st-fullout');
+  if(!fishSel){m.textContent='pick a voice first (search above)';return}
+  if(!prepChunks.length){m.textContent='prep a script first';return}
+  out.innerHTML=''; let done=0;
+  for(let i=1;i<prepChunks.length;i++){
+    m.textContent=`chunk ${i+1}/${prepChunks.length} approving…`;
+    try{
+      const a=await api('POST','/api/studio/fish/approve',{text:prepChunks[i],voice_id:fishSel});
+      if(!a.ok){m.textContent=`chunk ${i+1} approve refused: ${a.error||a.reason||''} — stopped`;return}
+      m.textContent=`chunk ${i+1}/${prepChunks.length} rendering (${a.credits}cr)…`;
+      const r=await api('POST','/api/studio/fish/narrate',{text:prepChunks[i],voice_id:fishSel,grant_id:a.grant_id});
+      if(!r.ok){m.textContent=`chunk ${i+1} render failed: ${r.error||r.reason||''} — stopped`;return}
+      done++;
+      out.innerHTML+=`<div style="font-size:11px">${i+1}. <audio controls preload="none" src="${r.url}&token=${encodeURIComponent(T)}"></audio> ${r.chars}ch ${r.credits_quoted}cr</div>`;
+    }catch(e){m.textContent=`chunk ${i+1} error: ${e.message} — stopped`;return}
+  }
+  m.textContent=`done: snippet + ${done} chunks in bank`;
+  studioFishBank();
 }
 function brandColorFor(source, mailbox){
   const m=String(mailbox||source||'').toLowerCase();

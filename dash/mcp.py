@@ -1,5 +1,8 @@
-"""Influence MCP: dependency-graph flow as tools. Read-only; this surface can
-never spend, send, or mutate. Writes stay on REST behind the decide gate."""
+"""Influence MCP: dependency-graph flow as tools. Read-only by default; the only
+writes are draft rows (release.create) and the grant-gated image/audio tools
+(images.generate/images.upload, audio.speak/audio.generate — fail closed
+without a verified grant + human approval). This surface can never spend,
+send, or mutate otherwise. Writes stay on REST behind the decide gate."""
 from __future__ import annotations
 
 import json
@@ -92,6 +95,30 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "email.read", "description": "Read one email by message_id (meta + raw body from cmail)",
      "inputSchema": {"type": "object", "properties": {"message_id": {"type": "string"}}, "required": ["message_id"]}},
+    {"name": "images.plan", "description": "Etsy 5+1 image plan for a SKU: formulas + prompts preview + checklist (read-only, never generates)",
+     "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}, "provider": {"type": "string"}}, "required": ["sku"]}},
+    {"name": "images.generate", "description": "Generate slot images (dry-run preview by default; live needs approved grant, Cloudflare free)",
+     "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}, "slots": {"type": "array", "items": {"type": "integer"}}, "provider": {"type": "string"}, "live": {"type": "boolean"}, "grant": {"type": "object"}}, "required": ["sku"]}},
+    {"name": "images.upload", "description": "Upload images to Etsy ranks 1-5 (dry-run plan by default; live needs approved grant, human-gated)",
+     "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}, "items": {"type": "array", "items": {"type": "object"}}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["sku"]}},
+    {"name": "audio.voices", "description": "Voice casting search (free read: public/team voices, samples, popularity)",
+     "inputSchema": {"type": "object", "properties": {"query": {"type": "string"}, "language": {"type": "string"}, "self": {"type": "boolean"}, "page_size": {"type": "integer"}}}},
+    {"name": "audio.balance", "description": "Fish package credit balance + plan + TTS budget (free read)",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "audio.speak", "description": "TTS quote (dry-run, free) or live render (needs approved grant, burns package credits ~1/byte)",
+     "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "voice_id": {"type": "string"}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["text", "voice_id"]}},
+    {"name": "audio.estimate", "description": "Free server-side media quote: image/video generation cost + validation (read-only, never generates)",
+     "inputSchema": {"type": "object", "properties": {"kind": {"type": "string"}, "workspace_id": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}, "operation": {"type": "string"}}, "required": ["kind", "model_id", "prompt"]}},
+    {"name": "audio.generate", "description": "Image/video generation: dry-run returns free estimate; live needs approved grant + expected_credits, human-gated",
+     "inputSchema": {"type": "object", "properties": {"kind": {"type": "string"}, "workspace_id": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}, "operation": {"type": "string"}, "expected_credits": {"type": "integer"}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["kind", "model_id", "prompt"]}},
+    {"name": "audio.studio.import", "description": "Import a script into Story Studio (free: background LLM structures chapters/casts/tags, poll status)",
+     "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "name": {"type": "string"}}, "required": ["text"]}},
+    {"name": "audio.studio.status", "description": "Story Studio project status: chapters, dirty counts, roster, jobs (free read)",
+     "inputSchema": {"type": "object", "properties": {"project_id": {"type": "string"}}, "required": ["project_id"]}},
+    {"name": "audio.studio.generate", "description": "Render Studio blocks: dry-run free quote; live needs approved grant, cached blocks free",
+     "inputSchema": {"type": "object", "properties": {"project_id": {"type": "string"}, "chapter": {"type": "string"}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["project_id"]}},
+    {"name": "audio.studio.export", "description": "Export Studio master: free quote without confirmed_credits; live needs approved grant + confirmed number",
+     "inputSchema": {"type": "object", "properties": {"project_id": {"type": "string"}, "confirmed_credits": {"type": "integer"}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["project_id"]}},
 ]
 
 GRAPH = [
@@ -631,7 +658,12 @@ def handle(state: dict, method: str, params: dict) -> dict:
                                       str(args.get("sku") or ""))}
         except Exception as e:
             return {"error": str(e)[:250]}
-    if name in ("pack.list", "pack.compile", "release.create", "task.status", "campaign.list", "actions.list"):
+    if name in ("pack.list", "pack.compile", "release.create", "task.status", "campaign.list", "actions.list",
+                 "images.plan", "images.generate", "images.upload",
+                 "audio.voices", "audio.balance", "audio.speak",
+                 "audio.estimate", "audio.generate",
+                 "audio.studio.import", "audio.studio.status",
+                 "audio.studio.generate", "audio.studio.export"):
         try:
             import sys as _sys2
             _sys2.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -676,6 +708,86 @@ def handle(state: dict, method: str, params: dict) -> dict:
                                             args.get("status"), int(args.get("limit") or 20)),
                     "totals": totals(args.get("campaign")),
                 }}
+            if name in ("images.plan", "images.generate", "images.upload"):
+                from pipeline.images_flow import plan, generate, upload_batch
+                store = str(args.get("store") or "oddhobb")
+                sku = str(args.get("sku") or "")
+                if not sku:
+                    return {"error": "sku required"}
+                if name == "images.plan":
+                    return {"result": plan(store, sku, str(args.get("provider") or "cloudflare"))}
+                live = args.get("live") is True
+                grant = args.get("grant")
+                ctx = {"grant": grant} if grant else None
+                if name == "images.generate":
+                    return {"result": generate(store, sku, args.get("slots"),
+                                               str(args.get("provider") or "cloudflare"),
+                                               dry_run=not live, ctx=ctx)}
+                return {"result": upload_batch(store, sku, args.get("items"),
+                                               dry_run=not live, ctx=ctx,
+                                               campaign=args.get("campaign"))}
+            if name in ("audio.voices", "audio.balance", "audio.speak",
+                        "audio.estimate", "audio.generate"):
+                from pipeline.audio_flow import (voices, balance, speak,
+                                                 estimate_media,
+                                                 generate_media,
+                                                 studio_import,
+                                                 studio_status,
+                                                 studio_generate,
+                                                 studio_export)
+                if name == "audio.voices":
+                    return {"result": voices(str(args.get("query") or ""),
+                                             str(args.get("language") or ""),
+                                             bool(args.get("self")),
+                                             int(args.get("page_size") or 10))}
+                if name == "audio.balance":
+                    return {"result": balance()}
+                live = args.get("live") is True
+                grant = args.get("grant")
+                ctx = {"grant": grant} if grant else None
+                if name == "audio.speak":
+                    return {"result": speak(str(args.get("text") or ""),
+                                            str(args.get("voice_id") or ""),
+                                            dry_run=not live, ctx=ctx,
+                                            campaign=args.get("campaign"))}
+                if name == "audio.estimate":
+                    return {"result": estimate_media(
+                        str(args.get("kind") or ""),
+                        str(args.get("workspace_id") or ""),
+                        str(args.get("model_id") or ""),
+                        str(args.get("prompt") or ""),
+                        str(args.get("operation") or "t2v"))}
+                return {"result": generate_media(
+                    str(args.get("kind") or ""),
+                    str(args.get("workspace_id") or ""),
+                    str(args.get("model_id") or ""),
+                    str(args.get("prompt") or ""),
+                    int(args.get("expected_credits") or 0),
+                    dry_run=not live, ctx=ctx,
+                    operation=str(args.get("operation") or "t2v"),
+                    campaign=args.get("campaign"))}
+            if name in ("audio.studio.import", "audio.studio.status",
+                        "audio.studio.generate", "audio.studio.export"):
+                live = args.get("live") is True
+                grant = args.get("grant")
+                ctx = {"grant": grant} if grant else None
+                pid = str(args.get("project_id") or "")
+                if name == "audio.studio.import":
+                    return {"result": studio_import(
+                        str(args.get("text") or ""),
+                        str(args.get("name") or "episode"))}
+                if name == "audio.studio.status":
+                    return {"result": studio_status(pid)}
+                if name == "audio.studio.generate":
+                    return {"result": studio_generate(
+                        pid, str(args.get("chapter") or ""),
+                        dry_run=not live, ctx=ctx,
+                        campaign=args.get("campaign"))}
+                cc = args.get("confirmed_credits")
+                return {"result": studio_export(
+                    pid,
+                    confirmed_credits=int(cc) if cc is not None else None,
+                    ctx=ctx, campaign=args.get("campaign"))}
         except Exception as e:
             return {"error": str(e)[:250]}
     return {"error": f"unknown tool {name}"}

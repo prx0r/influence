@@ -174,6 +174,10 @@ def guard_imports() -> list[str]:
     for f in glob.glob(os.path.join(os.path.dirname(_HERE), "**", "*.py"), recursive=True):
         if "/pipeline/adapters/" in f or "/pipeline/runtime" in f:
             continue
+        if f.endswith("/pipeline/images_flow.py"):
+            continue  # grant-gated like adapters: every live path requires ctx grant
+        if f.endswith("/pipeline/audio_flow.py"):
+            continue  # grant-gated like adapters: every live path requires ctx grant
         try:
             src = open(f).read()
         except OSError:

@@ -1,0 +1,59 @@
+{
+ "schema_version": "character-graph.v1",
+ "character_id": "channel-goodnight-news",
+ "name": "Goodnight News",
+ "kind": "channel",
+ "status": "pilot",
+ "seed": {
+  "philosophy": {
+   "orientation": [
+    "The world is getting better. Sleep on that. 5 good things, nightly."
+   ],
+   "problem_space": [
+    "sleep induction via narrative"
+   ]
+  },
+  "modulator_range": [
+   "calm",
+   "measured",
+   "drowsy",
+   "warm"
+  ],
+  "canon": "studio/channels/goodnight-news.json",
+  "seed_version": 1
+ },
+ "who": {
+  "chairs": {
+   "anchor": {
+    "label": "Anchor News 13k uses",
+    "direction": "[warm nightly anchor voice, settling the day, unhurried, never bad-news voice, shared outside this project, slower than normal speech]",
+    "voice_id": "63d5460e91e2411fa2e6bf95e7456f03"
+   }
+  }
+ },
+ "profile": {
+  "voice": "roster of 1 locked chairs",
+  "branches": [
+   {
+    "branch_id": "youtube",
+    "platform": "youtube",
+    "enabled": true,
+    "account": {
+     "handle": "",
+     "status": "unclaimed"
+    }
+   }
+  ]
+ },
+ "instances": [],
+ "edges": [],
+ "analytics": {},
+ "provenance": [
+  "influence studio/channels",
+  {
+   "contract": "E6-freshness + E5-talk: daily scan -> 5-story pick -> brief -> render same-day -> ship nightly",
+   "primary": "E6-freshness",
+   "scan": "Tier 1 RSS (Good News Network, Reasons to be Cheerful, Future Crunch, PBS 5-good-news + 6); Tier 2 GDELT-positive, ReliefWeb, WB Data360 (to build)"
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+"""Channel onboarding — thesis → pipeline → roles → voice choice.
+
+Flow: pick a channel → see its thesis/pipeline/chairs → get 5 voice
+candidates matched to the channel vibe WITH reasons → human picks with
+a reason → lock writes the ID + reason into the channel record and
+recompiles the seed. Later proposals learn from locked picks.
+
+Voice matching (deterministic, no LLM): query terms from the chair
+direction + channel pitch/shelf; rank by tag overlap, uses (social
+proof), language; penalize voices already locked by sibling channels
+(differentiation law). Reasons cite the actual evidence.
+"""
+from __future__ import annotations
+
+import json
+import math
+import os
+import time
+
+from channel_character import load_channel, save_seed  # noqa: F401 (re-export)
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+CHANNELS_DIR = os.path.normpath(os.path.join(_HERE, "..", "studio", "channels"))
+
+STOP = {"the", "a", "an", "and", "for", "with", "voice", "sleep", "calm",
+        "male", "female", "use", "used", "uses", "own", "any", "its",
+        "into", "from", "that", "this", "soft"}
+
+
+def _audio_flow():
+    sys_path_push()
+    try:
+        import audio_flow as _af
+    except ImportError:
+        from pipeline import audio_flow as _af
+    return _af
+
+
+def sys_path_push():
+    import sys
+    base = os.path.normpath(os.path.join(_HERE, ".."))
+    if base not in sys.path:
+        sys.path.insert(0, base)
+    pipe = os.path.join(base, "pipeline")
+    if pipe not in sys.path:
+        sys.path.insert(0, pipe)
+
+
+def _keywords(text: str) -> set[str]:
+    import re
+    words = re.findall(r"[a-z]{3,}", (text or "").lower())
+    return {w for w in words if w not in STOP}
+
+
+def vibe_queries(channel: dict, chair_name: str) -> list[str]:
+    """2-3 Fish search queries from chair direction + channel pitch."""
+    chairs = (channel.get("voice") or {}).get("chairs", {})
+    chair = chairs.get(chair_name, {}) if isinstance(chairs, dict) else {}
+    direction = chair.get("direction", "") or ""
+    pitch = channel.get("pitch", "") or ""
+    # NOTE: chair label excluded — it names the incumbent (e.g. Adrian)
+    # and would bias search toward the status quo. Fresh ears each time.
+    kws = sorted(_keywords(direction + " " + pitch))
+    primary = " ".join(kws[:4]) or "calm narration"
+    queries = [primary]
+    _lbl = (chair.get("label", "") or "").lower()
+    if "whisper" in direction.lower() or "whisper" in _lbl:
+        queries.append("whisper soft spoken")
+    if "female" in _lbl or "she " in direction.lower():
+        queries.append("warm female narration")
+    elif "male" in _lbl:
+        queries.append("deep male narration")
+    queries.append((channel.get("display_name", "") + " storytelling").strip())
+    seen, out = set(), []
+    for q in queries:
+        if q and q not in seen:
+            seen.add(q)
+            out.append(q)
+        if len(out) == 3:
+            break
+    return out
+
+
+def _sibling_voice_ids(exclude_slug: str) -> set[str]:
+    ids = set()
+    if not os.path.isdir(CHANNELS_DIR):
+        return ids
+    for fn in os.listdir(CHANNELS_DIR):
+        if not fn.endswith(".json") or fn[:-5] == exclude_slug:
+            continue
+        try:
+            with open(os.path.join(CHANNELS_DIR, fn), encoding="utf-8") as f:
+                rec = json.load(f)
+            for c in ((rec.get("voice") or {}).get("chairs") or {}).values():
+                if isinstance(c, dict):
+                    if c.get("fish_id"):
+                        ids.add(c["fish_id"])
+                    for cand in c.get("candidates") or []:
+                        if cand.get("id"):
+                            ids.add(cand["id"])
+        except Exception:
+            continue
+    return ids
+
+
+def propose(channel_slug: str, chair: str = "narrator",
+            n: int = 5) -> dict:
+    """5 voice candidates matched to the channel vibe, each with samples
+    and a reason citing tags/uses/language/differentiation. Free reads."""
+    af = _audio_flow()
+    try:
+        channel = load_channel(channel_slug)
+    except OSError:
+        return {"ok": False, "reason": f"unknown channel {channel_slug}"}
+    chairs = (channel.get("voice") or {}).get("chairs", {})
+    if chair not in chairs:
+        return {"ok": False,
+                "reason": f"no chair '{chair}' (have: {sorted(chairs)})"}
+    chair_kw = _keywords((chairs[chair].get("direction", "") or "") + " " +
+                         (chairs[chair].get("label", "") or ""))
+    pool: dict[str, dict] = {}
+    for q in vibe_queries(channel, chair):
+        r = af.voices(q, "", False, 10)
+        for v in ((r.get("data") or {}).get("voices") or []):
+            vid = v.get("id") or v.get("voice_id", "")
+            if vid and vid not in pool:
+                pool[vid] = v
+    siblings = _sibling_voice_ids(channel_slug)
+    # incumbent always included for comparison (fresh challengers + status quo)
+    incumbent = (chairs[chair].get("fish_id") or "")
+    if incumbent and incumbent not in pool:
+        d = af.voice_detail(incumbent).get("data") or {}
+        if d.get("id") or d.get("voice_id"):
+            pool[incumbent] = {"id": incumbent,
+                               "title": d.get("title") or d.get("name"),
+                               "languages": d.get("languages") or [],
+                               "tags": d.get("tags") or [],
+                               "sample_audio": d.get("sample_audio"),
+                               "task_count": d.get("task_count") or 0}
+    scored = []
+    for vid, v in pool.items():
+        tags = set((v.get("tags") or []))
+        overlap = sorted({t for t in tags
+                          if any(k in t for k in chair_kw)})
+        uses = int(v.get("task_count") or 0)
+        pop = min(10.0, math.log10(max(10, uses)))
+        langs = v.get("languages") or v.get("language") or []
+        if isinstance(langs, str):
+            langs = [langs]
+        lang_ok = any(str(l).startswith("en") for l in langs)
+        shared = vid in siblings
+        score = round(len(overlap) * 3 + pop + (2 if lang_ok else -5)
+                      - (8 if shared else 0), 1)
+        reasons = []
+        if overlap:
+            reasons.append(f"tags match vibe: {', '.join(overlap[:4])}")
+        reasons.append(f"{uses:,} prior uses"
+                       + (" (proven)" if uses > 20000 else " (niche)"))
+        if not lang_ok:
+            reasons.append("WARNING: not English-first")
+        if shared:
+            reasons.append("WARNING: locked by a sibling channel")
+        if vid == incumbent:
+            reasons.append("current lock — re-pick to keep, or dethrone")
+            score = round(score + 0.5, 1)  # tie-break for the devil known
+        scored.append({"voice_id": vid,
+                       "name": v.get("title") or v.get("name"),
+                       "language": langs[0] if langs else "?",
+                       "tags": sorted(tags)[:8],
+                       "sample": v.get("sample_audio"),
+                       "uses": uses, "score": score,
+                       "reason": "; ".join(reasons)})
+    scored.sort(key=lambda c: c["score"], reverse=True)
+    return {"ok": True, "channel": channel_slug, "chair": chair,
+            "queries": vibe_queries(channel, chair),
+            "candidates": scored[:n],
+            "next": "human picks one with a reason → lock_voice writes it"}
+
+
+def lock(channel_slug: str, chair: str, voice_id: str, reason: str,
+         actor: str = "dash-human") -> dict:
+    """Human-picked lock: writes fish_id + reason + timestamp into the
+    channel record and recompiles the seed. Call ONLY from an
+    authenticated human handler."""
+    if not reason or not voice_id:
+        return {"ok": False, "reason": "voice_id and human reason required"}
+    path = os.path.join(CHANNELS_DIR, channel_slug + ".json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            rec = json.load(f)
+    except OSError:
+        return {"ok": False, "reason": f"unknown channel {channel_slug}"}
+    chairs = (rec.get("voice") or {}).get("chairs", {})
+    if chair not in chairs:
+        return {"ok": False, "reason": f"no chair '{chair}'"}
+    c = chairs[chair]
+    c["fish_id"] = voice_id
+    c["status"] = "locked"
+    c["lock_reason"] = reason
+    c["locked_by"] = actor
+    c["locked_at"] = int(time.time())
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(rec, f, indent=1, ensure_ascii=False)
+    os.replace(tmp, path)
+    seed_path = save_seed(channel_slug)
+    return {"ok": True, "channel": channel_slug, "chair": chair,
+            "voice_id": voice_id, "seed": seed_path}
+
+
+def locked_traits() -> list[dict]:
+    """What the human has picked so far — new proposals learn from this."""
+    out = []
+    if not os.path.isdir(CHANNELS_DIR):
+        return out
+    for fn in sorted(os.listdir(CHANNELS_DIR)):
+        if not fn.endswith(".json") or fn.endswith(".seed.json"):
+            continue
+        try:
+            with open(os.path.join(CHANNELS_DIR, fn), encoding="utf-8") as f:
+                rec = json.load(f)
+            for name, c in (((rec.get("voice") or {}).get("chairs"))
+                             or {}).items():
+                if isinstance(c, dict) and c.get("fish_id"):
+                    out.append({"channel": fn[:-5], "chair": name,
+                                "label": c.get("label", ""),
+                                "reason": c.get("lock_reason", "")})
+        except Exception:
+            continue
+    return out
