@@ -116,3 +116,18 @@ def test_readout_parse_single_narrator():
     p = st.parse_drama(_damn + "/projects/folk-and-fable/readout/01-yuki-onna-verbatim.read.txt")
     assert p["n_segments"] >= 1
     assert {s["speaker"] for s in p["segments"]} == {0}
+
+
+def test_thumb_compose_and_refuse():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from thumb import compose
+    import tempfile as _t
+    out = _t.mkdtemp() + "/th.jpg"
+    r = compose("/root/sleepdraw/assets/moon-lora1-flux-pencil.jpg",
+                "Yuki Onna", out)
+    assert r["ok"] is True and r["size"] == (1280, 720)
+    assert r["under_2mb"] is True
+    assert compose("/root/sleepdraw/assets/moon-lora1-flux-pencil.jpg",
+                   "one two three four", out + "2")["ok"] is False
+    assert compose("/nope.jpg", "hi", out + "3")["ok"] is False
