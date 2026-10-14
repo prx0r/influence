@@ -8,6 +8,18 @@ import sys
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _HERE)
+_REPO = os.path.dirname(_HERE)
+_CHAN = os.path.join(_REPO, "studio", "channels")
+_DAMN = os.environ.get("DAMN_DIR", "/root/damn")
+if not os.access(os.environ.get("SLEEPDRAW_DIR", "/root/sleepdraw"), os.W_OK) \
+        and not os.access("/root", os.W_OK):
+    import tempfile as _tf
+    os.environ["SLEEPDRAW_DIR"] = _tf.mkdtemp(prefix="sleepdraw-")
+
+import pytest  # noqa: E402
+
+needs_damn = pytest.mark.skipif(not os.path.isdir(_DAMN),
+                                reason="owner's damn tree not on this box")
 
 import studio_grants as sg
 
@@ -68,7 +80,7 @@ def test_onboard_queries_pure():
 def test_onboard_lock_cycle():
     import json as _j
     import channel_onboard as ob
-    fx = "/root/influence/studio/channels/_test_tmp.json"
+    fx = _CHAN + "/_test_tmp.json"
     rec = {"channel": "_test_tmp", "display_name": "Tmp",
            "voice": {"chairs": {"narrator": {"direction": "calm"}}}}
     open(fx, "w").write(_j.dumps(rec))
@@ -81,7 +93,7 @@ def test_onboard_lock_cycle():
         assert back["voice"]["chairs"]["narrator"]["fish_id"] == "v123"
         assert back["voice"]["chairs"]["narrator"]["lock_reason"] == "sounds right"
     finally:
-        for p in (fx, "/root/influence/studio/channels/_test_tmp.seed.json"):
+        for p in (fx, _CHAN + "/_test_tmp.seed.json"):
             try: os.remove(p)
             except OSError: pass
 
@@ -89,7 +101,7 @@ def test_onboard_lock_cycle():
 def test_save_config_allowlist():
     import json as _j
     import channel_onboard as ob
-    fx = "/root/influence/studio/channels/_test_cfg.json"
+    fx = _CHAN + "/_test_cfg.json"
     open(fx, "w").write(_j.dumps({"channel": "_test_cfg",
         "voice": {"chairs": {}}, "engine": "E2"}))
     try:
@@ -126,7 +138,7 @@ def test_onboard_react_cycle():
     assert "v-test-2" in ob._dismissed_ids("folk-and-fable")
     # cleanup test traces
     import json as _j
-    p = "/root/influence/studio/channels/folk-and-fable-taste.json"
+    p = _CHAN + "/folk-and-fable-taste.json"
     d = _j.load(open(p))
     d["likes"] = [l for l in d.get("likes", []) if not l.get("voice_id", "").startswith("v-test-")]
     d["dismissed"] = [x for x in d.get("dismissed", []) if not x.startswith("v-test-")]
@@ -141,7 +153,7 @@ def test_design_instruction_pure_and_gated():
     assert st.design_instruction("nope", "n")["ok"] is False
     assert st.design_instruction("folk-and-fable", "nobody")["ok"] is False
     import sys as _s
-    _s.path.insert(0, "/root/influence/pipeline")
+    _s.path.insert(0, os.path.join(_REPO, "pipeline"))
     from providers import fish_rest
     try:
         fish_rest.voice_design("warm voice", approved=False)
@@ -159,13 +171,14 @@ def test_anchor_prompt_engine():
     assert "fairy" in r["instruction"] and len(r["instruction"]) <= 1800
 
 
+@needs_damn
 def test_pilots_list_and_parse_offline():
     import sleep_studio as st
     ps = st.list_pilots()
     assert len(ps) >= 16, len(ps)
     by = {p["file"]: p for p in ps}
     assert "01-yuki-doorway.drama.txt" in by
-    p = st.parse_drama("/root/damn/projects/folk-and-fable/pilots/01-yuki-doorway.drama.txt")
+    p = st.parse_drama(_DAMN + "/projects/folk-and-fable/pilots/01-yuki-doorway.drama.txt")
     assert p["n_segments"] >= 3 and "narrator" in p["chairs"]
     try:
         st.parse_drama("/etc/passwd")

@@ -20,14 +20,35 @@ SLEEP_BANDS = {
 }
 
 
-def measure(path: str, text: str = "") -> dict:
-    """F0/energy/duration stats for one clip. Requires numpy."""
+def _pcm16_mono(path: str) -> tuple:
+    """Any clip (Fish renders MP3) → (int16 mono samples bytes, rate).
+    WAV that is already 16-bit mono is read directly; everything else goes
+    through ffmpeg (downmix + 16-bit), so stereo never reads interleaved."""
     import wave
+    if path.lower().endswith(".wav"):
+        try:
+            with wave.open(path) as w:
+                if w.getsampwidth() == 2 and w.getnchannels() == 1:
+                    return w.readframes(w.getnframes()), w.getframerate()
+        except wave.Error:
+            pass
+    import subprocess
+    sr = 22050
+    r = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1",
+                        "-ar", str(sr), "-f", "s16le", "-"],
+                       capture_output=True)
+    if r.returncode != 0:
+        raise ValueError(f"cannot decode {path}: "
+                         f"{r.stderr.decode(errors='replace')[-160:]}")
+    return r.stdout, sr
+
+
+def measure(path: str, text: str = "") -> dict:
+    """F0/energy/duration stats for one clip (WAV or MP3). Requires numpy."""
     import numpy as _np
-    w = wave.open(path)
-    n = w.getnframes()
-    sr = w.getframerate()
-    x = _np.frombuffer(w.readframes(n), dtype=_np.int16).astype(float)
+    raw, sr = _pcm16_mono(path)
+    n = len(raw) // 2
+    x = _np.frombuffer(raw[:n * 2], dtype=_np.int16).astype(float)
     dur = n / sr
     x = x / max(1, float(_np.abs(x).max()))
     fl, hop = int(sr * 0.03), int(sr * 0.01)
