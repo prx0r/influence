@@ -192,3 +192,21 @@ def test_fal_gates():
     assert F.run("x", ctx=None)["ok"] is False
     p = F.build_request("moon", "flux_schnell")
     assert p["est_usd"] == 0.01 and "queue.fal.run" in p["endpoint"]
+
+
+def test_yt_compliance_gates():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from yt_compliance import check_metadata, check_thumbnail, check_package
+    good = {"title": "Yuki-Onna — Sleep Reading | 1 Hour",
+            "description": "Ritual line.", "tags": ["sleep", "folklore"],
+            "categoryId": "27", "madeForKids": False,
+            "privacyStatus": "unlisted"}
+    assert check_metadata(good)["ok"] is True
+    bad = dict(good, title="x" * 101, madeForKids=None,
+               privacyStatus="public")
+    r = check_metadata(bad)
+    assert r["ok"] is False and len(r["failures"]) == 3
+    assert check_thumbnail("/nope.jpg")["ok"] is False
+    assert check_package("/nope.mp4", "/nope.jpg", good)["ok"] is False
+    assert check_package("/nope.mp4", "/nope.jpg", good)["quota_note"]
