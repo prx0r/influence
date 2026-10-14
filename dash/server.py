@@ -110,9 +110,10 @@ def load_state() -> dict:
         t["urgency"] = _urgency_of(t)
     tasks.sort(key=lambda t: (-t["urgency"]["score"], t.get("id", "")))
     d["tasks"] = tasks
-    if os.environ.get("YT_MODE", "") == "1":
-        # YT dash: identical UI, entities swapped — channels ARE the
-        # influencers. Fresh every call (locks/bank change under us).
+    if (os.environ.get("YT_MODE", "") == "1"
+            or os.environ.get("CHANNEL_ENTITIES", "") == "1"):
+        # Channels ARE the entities: YT dash always; main dash when flagged.
+        # Old influencer rows stay untouched in the DB (revert = unset flag).
         d["influencers"] = _yt_entities()
     _STATE_CACHE["state"] = d
     _STATE_CACHE["at"] = now
@@ -752,6 +753,12 @@ class Handler(SimpleHTTPRequestHandler):
                     import channel_onboard as _ob
                     return self._json({"ok": True,
                                        "picks": _ob.locked_traits()})
+                if self._route() == "/api/studio/channel/save":
+                    import channel_onboard as _ob
+                    return self._json(_ob.save_config(
+                        str(body.get("slug", "") or ""),
+                        body.get("patch") if isinstance(
+                            body.get("patch"), dict) else {}))
                 if self._route() == "/api/studio/fish/approve":
                     # Human pressed approve: recompute the dry-run server-side
                     # (never trust client hash), bind grant to exact payload.

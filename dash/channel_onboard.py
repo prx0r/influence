@@ -182,6 +182,8 @@ def lock(channel_slug: str, chair: str, voice_id: str, reason: str,
     """Human-picked lock: writes fish_id + reason + timestamp into the
     channel record and recompiles the seed. Call ONLY from an
     authenticated human handler."""
+    if not channel_slug.replace("-", "").replace("_", "").isalnum():
+        return {"ok": False, "reason": "bad slug"}
     if not reason or not voice_id:
         return {"ok": False, "reason": "voice_id and human reason required"}
     path = os.path.join(CHANNELS_DIR, channel_slug + ".json")
@@ -228,3 +230,76 @@ def locked_traits() -> list[dict]:
         except Exception:
             continue
     return out
+
+
+# ---- interactive channel config (brand identity, styles, thumbnails, formats)
+
+# Allowlisted editable fields. Voices lock via lock() (with reason), never
+# here. Engine/pipeline are code-owned; everything presentational is human.
+CONFIG_TEXT = ("display_name", "pitch", "cadence")
+CONFIG_STYLE = ("accent", "manner", "visual", "shelf")
+CONFIG_THUMB = ("type", "rules")
+
+
+def get_config(slug: str) -> dict:
+    from channel_character import load_channel
+    try:
+        rec = load_channel(slug)
+    except OSError:
+        return {"ok": False, "reason": f"unknown channel {slug}"}
+    return {"ok": True, "record": rec}
+
+
+def save_config(slug: str, patch: dict) -> dict:
+    """Human-owned presentational config. Allowlisted keys only; unknown
+    keys ignored (never silently stored). Returns the updated record."""
+    from channel_character import load_channel
+    if (not slug.replace("-", "").replace("_", "").isalnum()
+            or not isinstance(patch, dict)):
+        return {"ok": False, "reason": "bad slug or patch"}
+    try:
+        rec = load_channel(slug)
+    except OSError:
+        return {"ok": False, "reason": f"unknown channel {slug}"}
+    applied = []
+    for k in CONFIG_TEXT:
+        if isinstance(patch.get(k), str) and patch[k].strip():
+            rec[k] = patch[k].strip()[:300]
+            applied.append(k)
+    if isinstance(patch.get("style"), dict):
+        rec.setdefault("style", {})
+        for k in CONFIG_STYLE:
+            v = patch["style"].get(k)
+            if isinstance(v, str) and v.strip():
+                rec["style"][k] = v.strip()[:500]
+                applied.append(f"style.{k}")
+    if isinstance(patch.get("thumbnail"), dict):
+        rec.setdefault("thumbnail", {})
+        t = patch["thumbnail"]
+        if isinstance(t.get("type"), str) and t["type"].strip():
+            rec["thumbnail"]["type"] = t["type"].strip()[:300]
+            applied.append("thumbnail.type")
+        if isinstance(t.get("rules"), list):
+            rec["thumbnail"]["rules"] = [str(r)[:200] for r in t["rules"][:12]]
+            applied.append("thumbnail.rules")
+    if isinstance(patch.get("formats"), list):
+        fmts = []
+        for f in patch["formats"][:20]:
+            if not isinstance(f, dict):
+                continue
+            name = str(f.get("name", ""))[:80]
+            if not name:
+                continue
+            fmts.append({"name": name,
+                         "length": str(f.get("length", ""))[:40],
+                         "reasoning": str(f.get("reasoning", ""))[:500]})
+        rec["formats"] = fmts
+        applied.append(f"formats[{len(fmts)}]")
+    if not applied:
+        return {"ok": False, "reason": "nothing allowlisted to save"}
+    path = os.path.join(CHANNELS_DIR, slug + ".json")
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as fh:
+        json.dump(rec, fh, indent=1, ensure_ascii=False)
+    os.replace(tmp, path)
+    return {"ok": True, "applied": applied, "record": rec}

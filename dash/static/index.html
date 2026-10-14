@@ -1212,7 +1212,8 @@ async function studioOnboard(slug){
     el.innerHTML=`<h4>onboarding: ${esc(rec.display_name||slug)}</h4>
       <div style="font-size:11px"><b>thesis:</b> ${esc(rec.pitch||'')}</div>
       <div style="font-size:11px"><b>pipeline:</b> ${esc(((rec.engine||{}).contract)||rec.engine||'')} → snippet ear-check → approve-all → bank → etch after verdict</div>
-      <div style="font-size:11px"><b>style:</b> ${(rec.style||{}).accent||''} ${(rec.style||{}).manner||''}</div>`
+      <div style="font-size:11px"><b>style:</b> ${(rec.style||{}).accent||''} ${(rec.style||{}).manner||''}</div>
+      <button onclick="studioConfig('${slug}')">configure identity · style · thumbnails · formats</button><div id="st-cfg"></div>`
       +Object.keys(chairs).map(ch=>`<div style="margin-top:6px;font-size:11px"><b>role: ${esc(ch)}</b> <span style="color:var(--dim)">${esc(chairs[ch].direction||'')}</span><br>
         <span style="color:var(--dim)">locked: ${(chairs[ch].fish_id||'—').slice(0,12)}${chairs[ch].fish_id?'…':''} ${esc(chairs[ch].status||'open')}${chairs[ch].lock_reason?' — “'+esc(chairs[ch].lock_reason)+'”':''}</span>
         <button onclick="studioPropose('${slug}','${esc(ch)}')">propose 5 voices</button><div id="st-prop-${esc(ch)}"></div></div>`).join('');
@@ -1237,6 +1238,48 @@ async function studioLock(slug,chair,vid,i){
     if(!r.ok){alert('ERR '+(r.error||r.reason||''));return}
     studioChannels(); studioChannel(slug);
   }catch(e){alert('ERR '+e.message)}
+}
+async function studioConfig(slug){
+  const el=document.getElementById('st-cfg'); el.innerHTML='loading…';
+  try{const r=await api('POST','/api/studio/channel',{slug});
+    if(!r.record){el.innerHTML='ERR';return}
+    const rec=r.record, st=rec.style||{}, th=rec.thumbnail||{};
+    const fmts=(rec.formats||[]).map((f,i)=>`<div>name <input id="cfg-fn-${i}" size="22" value="${esc(f.name||'')}"> len <input id="cfg-fl-${i}" size="8" value="${esc(f.length||'')}"><br>why <input id="cfg-fr-${i}" size="55" value="${esc(f.reasoning||'')}"></div>`).join('');
+    el.innerHTML=`<div style="font-size:11px;margin-top:6px"><b>identity</b><br>
+      name <input id="cfg-name" size="25" value="${esc(rec.display_name||'')}"><br>
+      thesis <input id="cfg-pitch" size="60" value="${esc(rec.pitch||'')}"><br>
+      cadence <input id="cfg-cad" size="40" value="${esc(rec.cadence||'')}"><br>
+      <b>style</b><br>
+      accent <input id="cfg-accent" size="10" value="${esc(st.accent||'')}"> shelf <input id="cfg-shelf" size="12" value="${esc(st.shelf||'')}"><br>
+      manner <input id="cfg-manner" size="60" value="${esc(st.manner||'')}"><br>
+      visual <input id="cfg-visual" size="60" value="${esc(st.visual||'')}"><br>
+      <b>thumbnail</b><br>
+      type <input id="cfg-tht" size="60" value="${esc(th.type||'')}"><br>
+      rules (one per line)<br><textarea id="cfg-thr" rows="3" cols="60">${esc((th.rules||[]).join('\n'))}</textarea><br>
+      <b>formats</b> <button onclick="studioFmtAdd('${slug}')">+ format</button><div id="cfg-fmts">${fmts}</div>
+      <button onclick="studioCfgSave('${slug}',${(rec.formats||[]).length})">save config</button> <span id="cfg-msg" class="dim"></span></div>`;
+  }catch(e){el.innerHTML='ERR '+e.message}
+}
+function studioFmtAdd(slug){
+  const d=document.getElementById('cfg-fmts');
+  const i=d.children.length;
+  d.insertAdjacentHTML('beforeend',`<div>name <input id="cfg-fn-${i}" size="22"> len <input id="cfg-fl-${i}" size="8"><br>why <input id="cfg-fr-${i}" size="55"></div>`);
+}
+async function studioCfgSave(slug,n){
+  const fmts=[];
+  for(let i=0;i<document.getElementById('cfg-fmts').children.length;i++){
+    const name=(document.getElementById('cfg-fn-'+i)||{}).value||'';
+    if(!name)continue;
+    fmts.push({name,length:(document.getElementById('cfg-fl-'+i)||{}).value||'',reasoning:(document.getElementById('cfg-fr-'+i)||{}).value||''});
+  }
+  const patch={display_name:document.getElementById('cfg-name').value,pitch:document.getElementById('cfg-pitch').value,cadence:document.getElementById('cfg-cad').value,
+    style:{accent:document.getElementById('cfg-accent').value,shelf:document.getElementById('cfg-shelf').value,manner:document.getElementById('cfg-manner').value,visual:document.getElementById('cfg-visual').value},
+    thumbnail:{type:document.getElementById('cfg-tht').value,rules:document.getElementById('cfg-thr').value.split('\n').map(s=>s.trim()).filter(Boolean)},
+    formats:fmts};
+  try{const r=await api('POST','/api/studio/channel/save',{slug,patch});
+    document.getElementById('cfg-msg').textContent=r.ok?('saved: '+r.applied.join(', ')):('ERR '+(r.error||r.reason||''));
+    if(r.ok){studioChannels();studioChannel(slug);}
+  }catch(e){document.getElementById('cfg-msg').textContent='ERR '+e.message}
 }
 let fishSel=null,fishQuoteCache=null;
 async function studioFishSearch(){

@@ -21,6 +21,8 @@ CHANNELS_DIR = os.path.normpath(os.path.join(_HERE, "..", "studio", "channels"))
 
 
 def load_channel(slug: str) -> dict:
+    if not slug.replace("-", "").replace("_", "").isalnum():
+        raise OSError(f"bad slug {slug!r}")
     p = os.path.join(CHANNELS_DIR, slug + ".json")
     with open(p, encoding="utf-8") as f:
         return json.load(f)

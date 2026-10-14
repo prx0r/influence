@@ -84,3 +84,32 @@ def test_onboard_lock_cycle():
         for p in (fx, "/root/influence/studio/channels/_test_tmp.seed.json"):
             try: os.remove(p)
             except OSError: pass
+
+
+def test_save_config_allowlist():
+    import json as _j
+    import channel_onboard as ob
+    fx = "/root/influence/studio/channels/_test_cfg.json"
+    open(fx, "w").write(_j.dumps({"channel": "_test_cfg",
+        "voice": {"chairs": {}}, "engine": "E2"}))
+    try:
+        assert ob.save_config("../x", {})["ok"] is False
+        assert ob.save_config("_test_cfg", "nope")["ok"] is False
+        assert ob.save_config("_test_cfg", {"engine": "HAX",
+            "voice": {"x": 1}})["ok"] is False
+        r = ob.save_config("_test_cfg", {
+            "display_name": "Tmp!", "pitch": "p", "cadence": "daily",
+            "style": {"accent": "#000", "manner": "m", "visual": "v",
+                      "shelf": "S", "evil": "drop"},
+            "thumbnail": {"type": "t", "rules": ["r1", "r2"]},
+            "formats": [{"name": "F1", "length": "10min",
+                         "reasoning": "why", "evil": 1}, {"length": "x"}]})
+        assert r["ok"] is True, r
+        back = _j.load(open(fx))
+        assert back["display_name"] == "Tmp!"
+        assert back["engine"] == "E2" and "evil" not in str(back)
+        assert back["formats"] == [{"name": "F1", "length": "10min",
+                                    "reasoning": "why"}]
+    finally:
+        try: os.remove(fx)
+        except OSError: pass
