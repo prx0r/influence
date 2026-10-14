@@ -7,6 +7,7 @@
    "chair": "minokichi",
    "status": "recommended",
    "direction": "young earnest male",
+   "brief_draft": "",
    "archetype": "hero",
    "coherence": 0.214,
    "recommended": {
@@ -49,8 +50,9 @@
    "chair": "yuki",
    "status": "recommended",
    "direction": "veiled whisper female",
+   "brief_draft": "",
    "archetype": "fae",
-   "coherence": 0.512,
+   "coherence": 0.439,
    "recommended": {
     "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
     "name": "Luna Lovegood",
@@ -64,11 +66,6 @@
      "score": 12.9
     },
     {
-     "voice_id": "1192d7b74dfa415bb27a158c7d84a919",
-     "name": "NSFW Soft Spoken Woman",
-     "score": 12.4
-    },
-    {
      "voice_id": "10fdb130e2704b48902d6b7c39cc2ec1",
      "name": "Soft Whisper",
      "score": 12.3
@@ -77,6 +74,11 @@
      "voice_id": "7e168beaa7b04c78a376b833b5956f06",
      "name": "Soft Spoken Young Woman",
      "score": 12.1
+    },
+    {
+     "voice_id": "f68a49d4802d4452b2fe33dc19cb3faf",
+     "name": "Fairy zzz",
+     "score": 11.0
     }
    ],
    "audition": "/audition.html?m=auditions/folk-and-fable-yuki.json (render on request)"

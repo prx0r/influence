@@ -7,37 +7,39 @@
    "chair": "narrator",
    "status": "recommended",
    "direction": "[unhurried reader voice, diary-paced, lights low]",
+   "brief_draft": "",
    "archetype": null,
-   "coherence": 0.263,
+   "coherence": 0.214,
    "recommended": {
     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
     "name": "Calm Sleep Narrator",
-    "score": 9.7,
-    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); weak tag match (low) — judge the sample; owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, no"
+    "score": 11.0,
+    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); tags match vibe: storytelling, narration, low; owner taste (Luna Lovegood, Verity): entertainment, middle-aged, breathy, gentle; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not "
    },
    "alternatives": [
     {
      "voice_id": "5084227c7a6f489280cfeeccae809388",
      "name": "Sleepy",
-     "score": 9.1
+     "score": 10.6
     },
     {
      "voice_id": "df498963e8be486a9d9f1ebcd6ec4b00",
      "name": "Deep Voice Storytelling",
-     "score": 8.2
+     "score": 10.0
     },
     {
      "voice_id": "8e90926676d147ffa27b22773bcfeb3f",
      "name": "Storytelling Philosophy Deep",
-     "score": 8.0
+     "score": 9.8
     },
     {
-     "voice_id": "46d7d5cb70554f74b88f6d7c23f7c1f5",
-     "name": "Reaper(overwatch) ",
-     "score": 6.6
+     "voice_id": "48ba8ee64ea9491d8f9a796fc1633fc8",
+     "name": "storytelling ai ",
+     "score": 9.6
     }
    ],
-   "audition": "/audition.html?m=auditions/library-diaries-narrator.json (render on request)"
+   "audition": "/audition.html?m=auditions/library-diaries-narrator.json (render on request)",
+   "note": "shares house voice with channeled-wisdom"
   }
  ]
 }

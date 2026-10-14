@@ -7,37 +7,39 @@
    "chair": "companion",
    "status": "recommended",
    "direction": "[warm companion voice, settling, never alarming]",
+   "brief_draft": "",
    "archetype": null,
-   "coherence": 0.139,
+   "coherence": 0.194,
    "recommended": {
-    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
-    "name": "Calm Sleep Narrator",
-    "score": 9.7,
-    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); weak tag match (warm) — judge the sample; owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, n"
+    "voice_id": "5084227c7a6f489280cfeeccae809388",
+    "name": "Sleepy",
+    "score": 11.2,
+    "why": "your loved voice (Sleepy); affect match (calm, soft); tags match vibe: conversational, friendly, gentle; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, narration, intimate; 352 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (wavefor"
    },
    "alternatives": [
     {
-     "voice_id": "5084227c7a6f489280cfeeccae809388",
-     "name": "Sleepy",
-     "score": 9.1
+     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+     "name": "Calm Sleep Narrator",
+     "score": 10.4
+    },
+    {
+     "voice_id": "40c51732e4874636b8eff988df6807b2",
+     "name": "neaer",
+     "score": 6.7
+    },
+    {
+     "voice_id": "0e1f4217920e4c8aaa6163351c8d6f8f",
+     "name": "Emily Compagno ",
+     "score": 6.7
     },
     {
      "voice_id": "7d805071401d4b738334f332a8c320c2",
      "name": "old man bible storytelling",
      "score": 6.6
-    },
-    {
-     "voice_id": "df498963e8be486a9d9f1ebcd6ec4b00",
-     "name": "Deep Voice Storytelling",
-     "score": 6.4
-    },
-    {
-     "voice_id": "5c8dc6a69c0b4edfb32634db6384bf34",
-     "name": "Warm Storyteller",
-     "score": 6.3
     }
    ],
-   "audition": "/audition.html?m=auditions/company-comfort-companion.json (render on request)"
+   "audition": "/audition.html?m=auditions/company-comfort-companion.json (render on request)",
+   "note": "shares house voice with agi-scenarios"
   }
  ]
 }

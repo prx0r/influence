@@ -7,37 +7,39 @@
    "chair": "clinician",
    "status": "recommended",
    "direction": "[clinical, tender, unhurried voice, midnight laboratory]",
+   "brief_draft": "",
    "archetype": "mentor",
-   "coherence": 0.198,
+   "coherence": 0.222,
    "recommended": {
     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
     "name": "Calm Sleep Narrator",
-    "score": 14.8,
-    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags);"
+    "score": 16.6,
+    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (soft); tags match vibe: measured, gentle, low; owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measu"
    },
    "alternatives": [
     {
      "voice_id": "7d805071401d4b738334f332a8c320c2",
      "name": "old man bible storytelling",
-     "score": 13.8
+     "score": 15.7
+    },
+    {
+     "voice_id": "43013a9bfee048e288ea36d9dd69a274",
+     "name": "Midnight Historian",
+     "score": 13.0
     },
     {
      "voice_id": "5084227c7a6f489280cfeeccae809388",
      "name": "Sleepy",
-     "score": 11.4
+     "score": 12.9
     },
     {
      "voice_id": "48ba8ee64ea9491d8f9a796fc1633fc8",
      "name": "storytelling ai ",
      "score": 9.8
-    },
-    {
-     "voice_id": "780f45f809cc4cf795bb2373889dd65f",
-     "name": "Storytelling",
-     "score": 9.2
     }
    ],
-   "audition": "/audition.html?m=auditions/stonedoorway-clinician.json (render on request)"
+   "audition": "/audition.html?m=auditions/stonedoorway-clinician.json (render on request)",
+   "note": "shares house voice with channeled-wisdom"
   }
  ]
 }

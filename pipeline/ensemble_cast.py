@@ -282,6 +282,77 @@ ARCHETYPE_SUBTYPES = {
 }
 
 
+# ---- brief -> catalogue vocabulary (the translator) ----
+#
+# Chair briefs are written in human words (precise, luminous, violet hour);
+# vendors tag in catalogue words (clear, measured, narration). Without this
+# map, briefs match nothing and every chair resolves to the same default.
+# Human word -> vendor tag equivalents. Unmappable words (violet hour)
+# are dropped, never guessed.
+BRIEF_VOCAB = {
+    "precise": ("clear", "measured", "crisp"),
+    "exact": ("clear", "measured"),
+    "lecturer": ("narration", "educational", "documentary"),
+    "teacher": ("narration", "educational", "warm"),
+    "explain": ("educational", "clear", "conversational"),
+    "diagrams": ("educational",),
+    "warm": ("warm", "gentle", "friendly"),
+    "companion": ("warm", "friendly", "conversational", "gentle"),
+    "settling": ("calm", "soothing", "slow"),
+    "luminous": ("bright", "clear", "airy"),
+    "imaginal": ("airy", "soft", "dreamy"),
+    "steady": ("calm", "measured", "deep"),
+    "methodical": ("measured", "calm", "slow"),
+    "foreman": ("deep", "calm", "male"),
+    "workmanlike": ("calm", "clear", "male"),
+    "clinical": ("calm", "neutral-tone", "low", "clear"),
+    "tender": ("gentle", "soft", "warm"),
+    "midnight": ("dark", "low", "slow"),
+    "laboratory": ("measured", "calm"),
+    "plainspoken": ("conversational", "clear", "narration"),
+    "documentarian": ("documentary", "narration", "calm"),
+    "miracles": ("storytelling", "warm"),
+    "navigator": ("calm", "deep", "steady"),
+    "directional": ("clear", "calm"),
+    "crew": ("warm", "friendly", "conversational"),
+    "tower": ("clear", "calm", "measured"),
+    "ground": ("calm", "clear", "measured"),
+    "reader": ("narration", "calm", "storytelling"),
+    "diary": ("intimate", "soft", "calm"),
+    "guide": ("warm", "calm", "slow"),
+    "descending": ("low", "slow", "deep"),
+    "lore": ("storytelling", "warm", "narration"),
+    "keeper": ("warm", "calm", "old"),
+    "inhabiting": ("character-voice", "warm"),
+    "half": ("slow",),
+    "unhurried": ("slow", "calm"),
+    "lights": ("soft", "low"),
+    "channeling": ("airy", "calm", "slow"),
+    "certain": ("confident", "calm"),
+    "visualising": ("slow", "soft"),
+    "esoteric": ("mysterious", "low", "slow"),
+    "dreams": ("soft", "slow", "dreamy"),
+    "liturgy": ("measured", "low", "slow"),
+    "utilitarian": ("clear", "calm"),
+    "paper": ("educational", "measured"),
+    "law": ("authoritative", "measured"),
+    "seasons": ("storytelling",),
+    "cockpit": ("calm", "clear"),
+    "ambience": ("soft", "low"),
+}
+
+
+def brief_vendor_words(direction: str) -> list[str]:
+    """Human brief -> catalogue tag words (dedupe, ordered)."""
+    out = []
+    for w in str(direction or "").lower().replace(",", " ").split():
+        w = "".join(c for c in w if c.isalpha())
+        for v in BRIEF_VOCAB.get(w, ()):
+            if v not in out:
+                out.append(v)
+    return out
+
+
 def subtype_for(archetype: str, vibes: list) -> dict | None:
     """Story vibes -> subtype profile. None when archetype has no splits.
     Subtype tags UNION the base archetype tags (vendors tag old/calm,

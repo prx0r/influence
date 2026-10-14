@@ -7,13 +7,14 @@
    "chair": "loremaster",
    "status": "recommended",
    "direction": "[warm lore-keeper voice, inhabiting the world, unhurried]",
+   "brief_draft": "",
    "archetype": "mentor",
-   "coherence": 0.244,
+   "coherence": 0.225,
    "recommended": {
     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
     "name": "Calm Sleep Narrator",
-    "score": 14.8,
-    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags);"
+    "score": 15.4,
+    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (soft); tags match vibe: gentle; owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 8"
    },
    "alternatives": [
     {
@@ -27,17 +28,18 @@
      "score": 14.1
     },
     {
+     "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+     "name": "Luna Lovegood",
+     "score": 12.5
+    },
+    {
      "voice_id": "85bdb3ca9bd941fc8ad25a32da43cee2",
      "name": "Lord ",
      "score": 11.8
-    },
-    {
-     "voice_id": "c97c6987eaf944d5b738c592c82ed0e9",
-     "name": "Sleep history ",
-     "score": 11.7
     }
    ],
-   "audition": "/audition.html?m=auditions/lore-sleep-loremaster.json (render on request)"
+   "audition": "/audition.html?m=auditions/lore-sleep-loremaster.json (render on request)",
+   "note": "shares house voice with channeled-wisdom"
   }
  ]
 }

@@ -165,6 +165,18 @@ def propose(channel_slug: str, chair: str = "narrator",
     # the ghost-tale brief sat unused). Merge its words + lead query.
     _dir_kw = _keywords(direction) if direction else set()
     chair_kw |= _dir_kw
+    # brief translator: human words -> catalogue words. Without this,
+    # briefs match nothing and every chair resolves to the default.
+    try:
+        sys_path_push()
+        from ensemble_cast import brief_vendor_words as _bvw
+        for _vw in _bvw((chairs[chair].get("direction", "") or "") + " " +
+                        (direction or "") + " " +
+                        (chairs[chair].get("label", "") or "")):
+            if len(_vw) >= 3:
+                chair_kw.add(_vw)
+    except Exception:
+        pass
     # collection context (folk-and-fable theses): vibe + tradition +
     # narrator prediction lead the brief. Cached per process.
     _coll = None
@@ -405,6 +417,7 @@ def propose(channel_slug: str, chair: str = "narrator",
                                           "story", "stories", "relax", "voice"} and len(_words) == 1) or
                  bool(_wl & {"null", "none", "test", "testing", "trial", "demo",
                              "sample", "temp", "xxx", "untitled"}) or
+                 bool(_wl & {"nsfw", "explicit", "lewd", "erotic", "porn"}) or
                  bool(__import__("re").search(r"['\"0-9_]", _nm)))
         if (_junk or _uses < 200) and vid != incumbent and not _anchored:
             continue

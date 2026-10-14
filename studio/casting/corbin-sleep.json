@@ -7,70 +7,73 @@
    "chair": "imaginal",
    "status": "recommended",
    "direction": "[luminous reader voice, imaginal-paced, violet hour]",
+   "brief_draft": "",
    "archetype": null,
-   "coherence": 0.174,
+   "coherence": 0.254,
    "recommended": {
     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
     "name": "Calm Sleep Narrator",
-    "score": 9.1,
-    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags)"
+    "score": 10.4,
+    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); tags match vibe: storytelling, narration; owner taste (Luna Lovegood, Verity): entertainment, middle-aged, breathy, gentle; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags)"
    },
    "alternatives": [
     {
-     "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
-     "name": "Verity",
-     "score": 8.5
-    },
-    {
-     "voice_id": "ab968a074e82446db1ea8a752f358971",
-     "name": "Boring History for Sleep",
-     "score": 7.6
-    },
-    {
      "voice_id": "4a5fe6e200c44bee98666c4c8476b8b2",
      "name": "sleepy",
-     "score": 6.7
+     "score": 10.2
+    },
+    {
+     "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+     "name": "Luna Lovegood",
+     "score": 10.0
     },
     {
      "voice_id": "f14c67a9fdf54e26aa63da0c6da0bdb7",
      "name": "Sleep Historian",
-     "score": 6.3
+     "score": 9.8
+    },
+    {
+     "voice_id": "ab968a074e82446db1ea8a752f358971",
+     "name": "Boring History for Sleep",
+     "score": 9.6
     }
    ],
-   "audition": "/audition.html?m=auditions/corbin-sleep-imaginal.json (render on request)"
+   "audition": "/audition.html?m=auditions/corbin-sleep-imaginal.json (render on request)",
+   "note": "shares house voice with channeled-wisdom"
   },
   {
    "chair": "guest",
    "status": "recommended",
    "direction": "",
-   "archetype": null,
-   "coherence": 0.174,
+   "brief_draft": "quiet guest voice, first-time wonder, unhurried",
+   "archetype": "fae",
+   "coherence": 0.182,
    "recommended": {
-    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
-    "name": "Calm Sleep Narrator",
-    "score": 9.1,
-    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags)"
+    "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+    "name": "Luna Lovegood",
+    "score": 14.2,
+    "why": "your loved voice (Luna Lovegood); theory fit (fae: female, gentle, soft); affect match (calm); no tag overlap — sample decides; 3,108 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 100.0 (waveform, not tags); heard: F0 280.7Hz, 2.55/s, fit 7.67/13.0"
    },
    "alternatives": [
     {
-     "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
-     "name": "Verity",
-     "score": 8.5
+     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+     "name": "Calm Sleep Narrator",
+     "score": 12.1
     },
     {
      "voice_id": "ab968a074e82446db1ea8a752f358971",
      "name": "Boring History for Sleep",
-     "score": 7.6
+     "score": 11.8
     },
     {
-     "voice_id": "4a5fe6e200c44bee98666c4c8476b8b2",
-     "name": "sleepy",
-     "score": 6.7
+     "voice_id": "95dbc78c860547b1ad5eb9f0fe32d459",
+     "name": "Wonder Woman ",
+     "score": 11.3
     },
     {
-     "voice_id": "f14c67a9fdf54e26aa63da0c6da0bdb7",
-     "name": "Sleep Historian",
-     "score": 6.3
+     "voice_id": "7dd0957c09f0438b99f0307c7e31f46e",
+     "name": "Subject ",
+     "score": 9.5
     }
    ],
    "audition": "/audition.html?m=auditions/corbin-sleep-guest.json (render on request)"
