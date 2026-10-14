@@ -100,5 +100,36 @@
    "length": "~15min",
    "reasoning": "Baba Yaga: reuses doorway grammar; proves the S2 system repeats, not just one video"
   }
+ ],
+ "instances": [
+  {
+   "id": "sleepy",
+   "label": "Pure sleepy",
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "voice_status": "candidate (Adrian also locked)",
+   "framing": "None. The tale, slow and low. Bed-first.",
+   "direction": "deep slow male sleep narration, never rush, never brightness"
+  },
+  {
+   "id": "mommy",
+   "label": "Mommy tells you a bedtime story (comfort)",
+   "voice_id": "60bd8f0f5bbc462a8fa1686dd81af336",
+   "voice_status": "locked (mommy-reads crown jewel)",
+   "framing": "'Honey, time for bed' open + goodnight-kiss sign-off",
+   "direction": "warm maternal voice, patient and smiling, close and unhurried"
+  },
+  {
+   "id": "wizard",
+   "label": "Wizard reveals secret mythology (magical)",
+   "voice_id": "291a58aa51a94326aed08115c06f0e09",
+   "voice_status": "candidate ear-check pending (Old Wizard, narration/deep/calm)",
+   "framing": "'Listen well, for this tale is older than the hills'",
+   "direction": "old wizard, deep and calm, keeper of secret myth"
+  }
+ ],
+ "proof_3way": [
+  "free-111443-01.mp3",
+  "free-111446-02.mp3",
+  "free-111450-03.mp3"
  ]
 }
