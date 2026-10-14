@@ -836,6 +836,19 @@ def prepare_cast(collection: str, channel_slug: str = "",
                              "ok": m.get("ok")}
         import time as _t
         _t.sleep(0.3)
-    return {"ok": True, "collection": collection, "channel": channel_slug,
-            "cast": cast, "contrast_notes": contrast_notes(cast),
-            "next": "human + pi review sheet → lock voices → batch render"}
+    sheet = {"ok": True, "collection": collection, "channel": channel_slug,
+             "cast": cast, "contrast_notes": contrast_notes(cast),
+             "next": "human + pi review sheet → lock voices → batch render"}
+    cdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                        "studio", "channels", channel_slug or "folk-and-fable",
+                        "casts")
+    cdir = os.path.normpath(cdir)
+    if cdir.startswith(os.path.normpath(os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "..", "studio",
+            "channels")) + os.sep):
+        os.makedirs(cdir, exist_ok=True)
+        with open(os.path.join(cdir, collection + ".cast.json"), "w",
+                  encoding="utf-8") as f:
+            json.dump(sheet, f, indent=1, ensure_ascii=False)
+        sheet["saved"] = f"studio/channels/{channel_slug}/casts/{collection}.cast.json"
+    return sheet
