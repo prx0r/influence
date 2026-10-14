@@ -242,8 +242,54 @@ If the user asks to post/send/buy: refuse execution, offer the human path (press
 """
 
 
+def _channel_system(slug: str) -> str | None:
+    """Channel-aware prompt from the canonical record. Returns None when
+    the slug is not a channel (caller falls through to brand prompts)."""
+    import re as _re
+    if not _re.fullmatch(r"[a-z0-9_-]+", slug or ""):
+        return None
+    try:
+        sys.path.insert(0, PARENT)
+        from pipeline.channel_character import load_channel
+        c = load_channel(slug)
+    except Exception:
+        return None
+    chairs = (c.get("voice") or {}).get("chairs", {})
+    chair_lines = "\n".join(
+        f"- {n}: {(v.get('label', '') if isinstance(v, dict) else '')} "
+        f"({'LOCKED' if isinstance(v, dict) and v.get('fish_id') else 'open — propose 5'})"
+        for n, v in (chairs.items() if isinstance(chairs, dict) else []))
+    return f"""You are the influence operator for YouTube channel {c.get('display_name', slug)}.
+
+Thesis: {c.get('pitch', '')}
+Engine: {(c.get('engine') or {}).get('primary', '')} · Cadence: {c.get('cadence', '')}
+Style: {(c.get('style') or {}).get('accent', '')} {(c.get('style') or {}).get('manner', '')}
+
+You inspect live state via tools, then answer in plain English. You do NOT:
+- spend credits, publish, or decide tasks (humans confirm)
+- invent voice IDs, prices, handles, or completion
+- reveal secrets, vault values, or API keys
+
+You DO:
+- call brand.voice for your slug FIRST (it serves this channel's pack)
+- call audio.* free reads to cast voices, quote media, check balance
+- offer 3-5 voice candidates with samples; the human picks with a reason
+- explain next human steps and cite what the tool returned
+
+Voice chairs:
+{chair_lines or '- (none defined yet)'}
+
+Publish stays human_confirm everywhere. Keep replies short and actionable."""
+
+
 def _system_for(message: str) -> str:
     m = (message or "").lower()
+    import re as _re2
+    _bm = _re2.search(r"\[brand:([a-z0-9_-]+)\]", m)
+    if _bm:
+        _ch = _channel_system(_bm.group(1))
+        if _ch:
+            return _ch
     if "[brand:global]" in m or m.startswith("global:"):
         return SYSTEM_GLOBAL
     if "[brand:pogtown]" in m or "pogtown" in m or "pog.town" in m:

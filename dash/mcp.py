@@ -373,7 +373,37 @@ def handle(state: dict, method: str, params: dict) -> dict:
             with open(os.path.join(root, "bgraph", "registry", "brands", f"{slug}.json")) as f:
                 b = json.load(f)
         except Exception:
-            return {"error": f"unknown brand {slug}"}
+            # Channel fallback: studio channel records inhabit like brands
+            # (voice chairs, style lock, formats). Path-traversal guarded.
+            if not slug.replace("-", "").replace("_", "").isalnum():
+                return {"error": f"unknown brand {slug}"}
+            try:
+                with open(os.path.join(root, "influence", "studio",
+                                       "channels", f"{slug}.json")) as f:
+                    c = json.load(f)
+            except Exception:
+                return {"error": f"unknown brand {slug}"}
+            chairs = (c.get("voice") or {}).get("chairs", {})
+            return {"result": {
+                "slug": slug, "display_name": c.get("display_name", slug),
+                "domain": "youtube.com",
+                "email": "", "kind": "youtube-channel",
+                "handles": {"primary": f"@{slug}"},
+                "voice": c.get("pitch", ""),
+                "style_lock": c.get("style", {}),
+                "thumbnail": c.get("thumbnail", {}),
+                "formats": c.get("formats", []),
+                "chairs": {n: {"label": (v.get("label", "") if isinstance(v, dict) else ""),
+                               "locked": bool(isinstance(v, dict) and v.get("fish_id")),
+                               "direction": (v.get("direction", "") if isinstance(v, dict) else "")}
+                           for n, v in (chairs.items() if isinstance(chairs, dict) else [])},
+                "branches": [{"platform": "youtube", "handle": f"@{slug}",
+                              "status": "pilot",
+                              "content_types": ["longform", "short"]}],
+                "publish_gate": "human_confirm",
+                "instructions": (f"Inhabit {c.get('display_name', slug)}: {c.get('pitch', '')} "
+                                 f"Drafts only — publish stays human_confirm. "
+                                 f"Locked voices only; propose 5 for open chairs.")}}
         ident = b.get("identity", {}) or {}
         branches = []
         for br in b.get("branches", []):

@@ -193,6 +193,7 @@ const api=(m,p,b,o)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),o
 let S=null, openTabs=[], activeTab=null, curPath="";
 let BRAND_SLUG='oddhobb';
 let STUDIO_TAB='chat';
+const YT=location.hostname==='youtube.agentcom.org';
 const STUDIO_TABS={chat:{label:'💬 Chat'},video:{label:'🎬 Video',src:'https://video.agentcom.org/'},image:{label:'🎨 Image',src:'https://image.agentcom.org/'}};
 function paintStudioTabs(){
   const bar=document.getElementById('studio-tabs');
@@ -213,6 +214,23 @@ function setStudioTab(k){
   main.innerHTML=`<iframe src="${t.src}" style="width:100%;height:100%;min-height:78vh;border:0" title="${k} studio"></iframe>`;
 }
 const BRANDS={oddhobb:{name:'OddHobb',mailbox:'hello@oddhobb.com',domain:'oddhobb.com',logo:'brands/oddhobb.svg',accent:'#AC64F6'},pogtown:{name:'PogTown',mailbox:'hello@pogtown.com',domain:'pogtown.com',logo:'api/brand-logo?slug=pogtown',accent:'#E8A33D'},humanvoiced:{name:'HumanVoiced',mailbox:'hello@humanvoiced.com',domain:'humanvoiced.com',logo:'api/brand-logo?slug=humanvoiced',accent:'#22B8D4'}};
+async function ytBrands(){
+  // YT dash: identical UI, brand bar swapped to channels. Main dash untouched.
+  try{
+    const r=await api('POST','/api/studio/channels',{});
+    const CHS=(r.channels||[]);
+    if(!CHS.length)return false;
+    for(const k of Object.keys(BRANDS))delete BRANDS[k];
+    CHS.forEach((c,i)=>{
+      BRANDS[c.slug]={name:c.display_name,domain:'youtube.com',logo:'',accent:i===0?'#D4A94E':'#E8A33D',channel:true};
+    });
+    BRAND_SLUG=CHS[0].slug;
+    try{document.documentElement.style.setProperty('--accent',BRANDS[BRAND_SLUG].accent)}catch(e){}
+    const ci=document.getElementById('chat-in-main');
+    if(ci)ci.placeholder='ask anything · try: cast a voice, prep a script, channel status';
+    return true;
+  }catch(e){return false}
+}
 function paintBrandBar(){
   const bar=document.getElementById('brand-bar');
   if(!bar)return;
@@ -220,8 +238,17 @@ function paintBrandBar(){
   const emb=(slug,inner,ring,title)=>compact
     ?`<button onclick="setBrand('${slug}')" title="${esc(title)}" style="pointer-events:auto;width:30px;height:30px;border-radius:50%;border:2px solid ${ring};background:rgba(20,20,20,.85);padding:0;cursor:pointer;overflow:hidden">${inner.replace('width="46" height="46"','width="26" height="26"').replace('font-size:22px;line-height:46px','font-size:14px;line-height:26px')}</button>`
     :`<div style="display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:auto"><button onclick="setBrand('${slug}')" title="${esc(title)}" style="width:52px;height:52px;border-radius:50%;border:3px solid ${ring};background:var(--bg2);padding:0;cursor:pointer;overflow:hidden;${slug===BRAND_SLUG?'box-shadow:0 0 0 2px var(--bg),0 0 12px '+ring:''}">${inner}</button><span style="font-size:10px;color:var(--text);background:rgba(20,20,20,.7);border-radius:4px;padding:0 4px">${esc(title)}</span></div>`;
-  bar.innerHTML=Object.entries(BRANDS).map(([slug,b])=>emb(slug,`<img src="${esc(b.logo)}" width="46" height="46" style="border-radius:50%" alt="">`,b.accent,b.name)).join('')
-    +emb('global',`<span style="font-size:22px;line-height:46px">🌐</span>`,BRAND_SLUG==='global'?'var(--accent)':'var(--border)','Global');
+  bar.innerHTML=Object.entries(BRANDS).map(([slug,b])=>{
+    const inner=b.logo?`<img src="${esc(b.logo)}" width="46" height="46" style="border-radius:50%" alt="">`
+      :`<span style="font-size:22px;line-height:46px">${esc((b.name||slug).slice(0,1))}</span>`;
+    return emb(slug,inner,b.accent,b.name);
+  }).join('')
+    +(YT?'':emb('global',`<span style="font-size:22px;line-height:46px">🌐</span>`,BRAND_SLUG==='global'?'var(--accent)':'var(--border)','Global'));
+  if(YT)ytDefaultChat();
+}
+function ytDefaultChat(){
+  const st=document.getElementById('sidebar-title');
+  if(st&&BRANDS[BRAND_SLUG])st.textContent='Chat · '+BRANDS[BRAND_SLUG].name;
 }
 function paintTitleBrand(){
   const t=document.getElementById('title-brand');
@@ -243,15 +270,16 @@ function fileMenu(e){
 function setBrand(slug){
   if(slug!=='global'&&!BRANDS[slug])return;
   BRAND_SLUG=slug;
-  if(slug!=='global')EMAIL_MAILBOX=BRANDS[slug].mailbox;
-  try{if(slug!=='global')document.documentElement.style.setProperty('--accent',BRANDS[slug].accent)}catch(e){}
-  try{let l=document.querySelector('link[rel="icon"]');if(!l){l=document.createElement('link');l.rel='icon';document.head.appendChild(l)}if(slug!=='global')l.href=BRANDS[slug].logo}catch(e){}
+  const B=BRANDS[slug]||{};
+  if(slug!=='global'&&B.mailbox)EMAIL_MAILBOX=B.mailbox;
+  try{if(slug!=='global'&&B.accent)document.documentElement.style.setProperty('--accent',B.accent)}catch(e){}
+  try{let l=document.querySelector('link[rel="icon"]');if(!l){l=document.createElement('link');l.rel='icon';document.head.appendChild(l)}if(slug!=='global'&&B.logo)l.href=B.logo}catch(e){}
   paintBrandBar();
   paintStudioTabs();
   const mb=document.getElementById('email-mbox');
   if(mb)mb.value=EMAIL_MAILBOX;
   const st=document.getElementById('sidebar-title');
-  if(st&&st.textContent.indexOf('Chat')===0)st.textContent='Chat · '+(slug==='global'?'Global':BRANDS[slug].name);
+  if(st&&st.textContent.indexOf('Chat')===0)st.textContent='Chat · '+(slug==='global'?'Global':(B.name||slug));
   fetchEmail(15);
   if(typeof refresh==='function')refresh();
 }
@@ -560,7 +588,7 @@ function renderRail(){
   const smsBanner=freshSms?`<div class="otp-strip" style="margin:0 0 8px;cursor:pointer" onclick="dismissSms()" title="Dismiss">SMS code <div class="code">${esc(otp)}</div><div class="meta">${esc(latest.from||'')} · ${esc(latest.at||'')}</div></div>`:'';
   const all=(S?.tasks||[]);
   const mine=BRAND_SLUG==='global'?all:all.filter(t=>t.influencer===BRAND_SLUG);
-  const scope=BRAND_SLUG==='global'?'all entities':BRANDS[BRAND_SLUG].name;
+  const scope=BRAND_SLUG==='global'?'all entities':(BRANDS[BRAND_SLUG]||{}).name||BRAND_SLUG;
   el.innerHTML=smsBanner+`<div style="padding:4px 8px;color:var(--dim);font-size:10px">${esc(scope)} · ${mine.length}/${all.length}</div>`+(mine.map(t=>`
     <div class="task"><div class="t">${esc(taskAction(t))}</div>
     <div class="opts"><button onclick="startTask('${t.id}')" title="Walk me through this in chat">▶ start</button><button onclick="resourceDone('${t.influencer}','${t.resource_key}')" title="Mark done — closes this task">✓</button></div></div>`).join('')||'<div style="padding:8px;color:var(--dim)">Queue empty. Clean.</div>');
@@ -728,8 +756,8 @@ function draftReply(messageId){
     'From: '+(meta.sender||'?'),
     'Subject: Re: '+(meta.subject||'(no subject)'),
     '',
-    'Write a short warm '+(BRAND_SLUG==='global'?'influence':BRANDS[BRAND_SLUG].name)+' reply. Draft only — do not send.',
-    'Brand: '+(BRAND_SLUG==='global'?'all entities':BRANDS[BRAND_SLUG].mailbox+' · site '+BRANDS[BRAND_SLUG].domain),
+    'Write a short warm '+(BRAND_SLUG==='global'?'influence':((BRANDS[BRAND_SLUG]||{}).name||BRAND_SLUG))+' reply. Draft only — do not send.',
+    'Brand: '+(BRAND_SLUG==='global'?'all entities':(((BRANDS[BRAND_SLUG]||{}).mailbox||'youtube channel')+' · '+(((BRANDS[BRAND_SLUG]||{}).domain)||''))),
   ];
   chatMsgMain('draft ● '+messageId, lines.join('\n'));
   quickChat('draft a reply to '+(meta.sender||'customer')+' about '+(meta.subject||'their email'));
@@ -1500,7 +1528,7 @@ function logBottom(text,cls='info'){
     document.addEventListener('mouseup',()=>{on=false});
   }
 })();
-renderChatSidebar();refresh();startSmsPolling();startEmailPolling();startNotifPolling();paintBottom();setInterval(refresh,15000);
+renderChatSidebar();(async()=>{if(YT)await ytBrands();refresh()})();startSmsPolling();startEmailPolling();startNotifPolling();paintBottom();setInterval(refresh,15000);
 </script>
 </body>
 </html>
