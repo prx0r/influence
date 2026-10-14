@@ -202,7 +202,8 @@ FUNCTIONS = ("narration", "whisper", "lecture", "character", "announcer")
 
 
 def record_ranking(function: str, ordered_ids: list,
-                   cards: list | None = None) -> dict:
+                   cards: list | None = None,
+                   pack: str = "") -> dict:
     """Store a human ranking (best-first IDs) as pairs + refit function."""
     fn = str(function or "").strip().lower() or "general"
     ids = [str(x) for x in (ordered_ids or []) if str(x).strip()][:8]
@@ -217,7 +218,8 @@ def record_ranking(function: str, ordered_ids: list,
     pairs = []
     for i, w in enumerate(ids):
         for l in ids[i + 1:]:
-            pairs.append({"function": fn, "winner": w, "loser": l,
+            pairs.append({"function": fn, "pack": str(pack or "")[:60],
+                          "winner": w, "loser": l,
                           "ts": int(time.time()),
                           "w_tags": (by_id.get(w) or {}).get("tags", []),
                           "l_tags": (by_id.get(l) or {}).get("tags", [])})
@@ -372,6 +374,23 @@ def pairs_per_function() -> dict[str, int]:
                     continue
                 if isinstance(p, dict) and p.get("function"):
                     counts[p["function"]] = counts.get(p["function"], 0) + 1
+    except OSError:
+        pass
+    return counts
+
+
+def pairs_per_pack() -> dict[str, int]:
+    """Rankings recorded per character-graph pack (calibration coverage)."""
+    counts: dict[str, int] = {}
+    try:
+        with open(PAIRS_PATH, encoding="utf-8") as f:
+            for line in f:
+                try:
+                    p = json.loads(line)
+                except Exception:
+                    continue
+                if isinstance(p, dict) and p.get("pack"):
+                    counts[p["pack"]] = counts.get(p["pack"], 0) + 1
     except OSError:
         pass
     return counts

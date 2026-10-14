@@ -16,6 +16,7 @@ input{background:#0f0d0f;color:var(--text);border:1px solid var(--border);border
 .pill{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:#2a2530;color:var(--dim)}
 </style></head><body>
 <h1>🎯 Cali <span class="sub">calibration studio — predict, taste, improve</span></h1>
+<div class="row"><button onclick="SRC='books';boot()">📚 books</button><button onclick="SRC='packs';boot()">🎭 character graph</button><span id="src" class="sub"></span></div>
 <div id="next" class="card"><div class="sub">picking the most informative character…</div></div>
 <h2>Top 5 — rank them</h2>
 <div class="sub">Same stack as casting: engine scores + measured sleep-fit. Rank best-first, submit, weights refit.</div>
@@ -26,8 +27,11 @@ const T=new URLSearchParams(location.search).get("token")||"";
 const api=(m,p,b)=>fetch(p+'?token='+encodeURIComponent(T),{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined}).then(r=>r.json());
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let CANDS=[];
+let SRC='books';
 async function boot(){
   const ch=(new URLSearchParams(location.search).get('channel'))||'folk-and-fable';
+  document.getElementById('src').textContent = SRC==='packs' ? 'character graph packs' : 'book characters';
+  if(SRC==='packs'){ await bootPack(); return; }
   const nx=await api('POST','/api/studio/cali/next',{channel:ch});
   const p=nx.pick;
   if(!p){document.getElementById('next').innerHTML='nothing left to calibrate 🎉';return}
@@ -50,10 +54,24 @@ async function submitRank(){
   if(order.length<2){document.getElementById('msg').textContent='rank at least 2';return}
   order.sort((a,b)=>a.v-b.v);
   const r=await api('POST','/api/studio/onboard/rank',{function:window._fn||'general',
+    pack:window._pack||'',
     ordered_ids:order.map(o=>o.id),
     cards:CANDS.map(c=>({voice_id:c.voice_id,tags:c.tags||[]}))});
   document.getElementById('msg').textContent=r.ok?`calibrated (${r.pairs} pairs) — next character loading…`:'ERR';
   if(r.ok)setTimeout(boot,1200);
+}
+async function bootPack(){
+  const r=await api('POST','/api/studio/cali/next-pack',{});
+  if(!r.ok||!r.pick){document.getElementById('next').innerHTML='nothing left 🎉';return}
+  const p=r.pick;
+  document.getElementById('next').innerHTML=`<b>${esc(p.name)}</b> <span class="pill">${esc(p.archetype||'')}</span><div class="sub">${esc(p.why)}</div><div class="sub" style="margin-top:4px">${esc((p.persona||'').slice(0,220))}</div><div class="sub">modulators: ${esc((p.modulators||[]).join(', '))}</div>`;
+  CANDS=(r.picks||[]).slice(0,5);
+  window._fn='character';
+  window._pack=p.pack;
+  document.getElementById('grid').innerHTML=CANDS.map((c,i)=>`<div class="card"><div class="row" style="justify-content:space-between;margin-top:0"><b>${i+1}. ${esc(c.name||c.voice_id)}</b><span class="pill">${c.score??''}</span></div>
+    <div class="sub">${esc((c.reason||'').slice(0,160))}</div>
+    ${c.sample?`<audio controls preload="metadata" src="${c.sample}"></audio>`:''}
+    <div class="row">rank <input id="rk-${i}" size="2" placeholder="#"></div></div>`).join('');
 }
 boot();
 </script></body></html>

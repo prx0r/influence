@@ -964,7 +964,45 @@ class Handler(SimpleHTTPRequestHandler):
                     return self._json(record_ranking(
                         str(body.get("function", "general") or "general"),
                         [str(x) for x in (body.get("ordered_ids") or [])][:8],
-                        cards if isinstance(cards, list) else None))
+                        cards if isinstance(cards, list) else None,
+                        str(body.get("pack", "") or "")))
+                if self._route() == "/api/studio/cali/next-pack":
+                    # Uncertainty over the CHARACTER GRAPH (freaks packs):
+                    # least-ranked pack + its brief (profile + top picks).
+                    sys.path.insert(0, os.path.dirname(ROOT))
+                    from pipeline.taste_profile import pairs_per_pack
+                    import glob as _gg2
+                    pp = pairs_per_pack()
+                    best, best_n = None, None
+                    bdir = "/root/influence/studio/voice-profiles"
+                    for fp in sorted(_gg2.glob(os.path.join(bdir, "*.json"))):
+                        slug = os.path.basename(fp)[:-5]
+                        n = pp.get(slug, 0)
+                        if best is None or n < best_n:
+                            best, best_n = slug, n
+                    if not best:
+                        return self._json({"ok": False,
+                                           "reason": "no pack briefs"})
+                    import json as _js4
+                    try:
+                        brief = _js4.load(open(os.path.join(
+                            bdir, best + ".json"), encoding="utf-8"))
+                    except Exception as e:
+                        return self._json({"ok": False,
+                                           "reason": str(e)[:120]})
+                    prof = brief.get("profile", {})
+                    return self._json({
+                        "ok": True,
+                        "pick": {"pack": best, "name": prof.get("name", best),
+                                 "persona": str(prof.get("persona", ""))[:400],
+                                 "motivations": prof.get("motivations", []),
+                                 "modulators": prof.get("modulators", []),
+                                 "archetype": (brief.get("archetype") or {}).get("name", ""),
+                                 "affect": brief.get("affect", {}),
+                                 "pairs_so_far": best_n,
+                                 "why": (f"least-ranked pack ({best_n} pairs) — "
+                                         f"your taste here teaches the most")},
+                        "picks": brief.get("picks", [])[:5]})
                 if self._route() == "/api/studio/cali/next":
                     # Uncertainty sampling: most informative character to
                     # calibrate next (thinnest function region + most lines).
