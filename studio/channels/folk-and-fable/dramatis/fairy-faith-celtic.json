@@ -1,0 +1,1268 @@
+{
+ "source": "/root/easy/folk-and-fable/fairy-faith-celtic/source.txt",
+ "characters": [
+  {
+   "name": "Celtic",
+   "aliases": [
+    "Celtic"
+   ],
+   "mentions": 72,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 33M/40F",
+   "age": "old",
+   "age_evidence": "1y/10o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Faith",
+   "aliases": [
+    "Faith"
+   ],
+   "mentions": 54,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "16M/73F cues",
+   "age": "old",
+   "age_evidence": "3y/8o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ireland",
+   "aliases": [
+    "Ireland",
+    "West Ireland"
+   ],
+   "mentions": 53,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 49M/35F",
+   "age": "old",
+   "age_evidence": "11y/15o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Irish",
+   "aliases": [
+    "Irish"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 17M/15F",
+   "age": "old",
+   "age_evidence": "4y/7o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Brittany",
+   "aliases": [
+    "Brittany"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 9M/8F",
+   "age": "old",
+   "age_evidence": "0y/6o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tara",
+   "aliases": [
+    "Tara"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 23M/28F",
+   "age": "young",
+   "age_evidence": "14y/13o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Until\n\nthe day mentioned with your father, you must carry me as a rat in your\n\npocket.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fairyland",
+   "aliases": [
+    "Fairyland"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/14F",
+   "age": "young",
+   "age_evidence": "6y/4o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Scotland",
+   "aliases": [
+    "Scotland"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/8F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wales",
+   "aliases": [
+    "Wales"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/6F cues",
+   "age": "old",
+   "age_evidence": "2y/4o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Celts",
+   "aliases": [
+    "Celts"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/7F",
+   "age": "old",
+   "age_evidence": "0y/6o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Theory",
+   "aliases": [
+    "Naturalistic Theory",
+    "Psychological Theory",
+    "Pygmy Theory"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "11M/24F cues",
+   "age": "old",
+   "age_evidence": "1y/6o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cornwall",
+   "aliases": [
+    "Cornwall"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Isle",
+   "aliases": [
+    "Isle"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/4F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Celt",
+   "aliases": [
+    "Celt"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 52M/51F",
+   "age": "old",
+   "age_evidence": "1y/17o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Carnac",
+   "aliases": [
+    "Carnac"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arthur",
+   "aliases": [
+    "Arthur"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 16M/12F",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Grange",
+   "aliases": [
+    "New Grange"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "3M/7F cues",
+   "age": null,
+   "age_evidence": "tied 3y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Welsh",
+   "aliases": [
+    "Welsh"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/5F cues",
+   "age": "old",
+   "age_evidence": "1y/3o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tuatha",
+   "aliases": [
+    "Tuatha"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Danann",
+   "aliases": [
+    "Danann"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Druids",
+   "aliases": [
+    "Druids"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Britain",
+   "aliases": [
+    "Britain"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Christian",
+   "aliases": [
+    "Christian"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/8F",
+   "age": "old",
+   "age_evidence": "0y/6o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rhys",
+   "aliases": [
+    "Rhys"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cuchulainn",
+   "aliases": [
+    "Cuchulainn"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fairy",
+   "aliases": [
+    "Celtic Fairy"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "84M/190F cues",
+   "age": "young",
+   "age_evidence": "31y/27o",
+   "role": "fairy",
+   "role_evidence": "in name",
+   "voice_query": "young female fairy narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Erin",
+   "aliases": [
+    "Erin"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/4F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hon",
+   "aliases": [
+    "Right Hon"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "16M/7F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Braz",
+   "aliases": [
+    "Braz"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Conclusion",
+   "aliases": [
+    "Conclusion"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Otherworld",
+   "aliases": [
+    "Otherworld"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/5F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Christianity",
+   "aliases": [
+    "Christianity"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "France",
+   "aliases": [
+    "France"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Egypt",
+   "aliases": [
+    "Egypt"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Manx",
+   "aliases": [
+    "Manx"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Aranmore",
+   "aliases": [
+    "Aranmore"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": null,
+   "age_evidence": "tied 4y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Faerie",
+   "aliases": [
+    "Faerie"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "States",
+   "aliases": [
+    "United States"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Armorica",
+   "aliases": [
+    "Armorica"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Anatole",
+   "aliases": [
+    "Professor Anatole"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 23M/12F",
+   "age": "old",
+   "age_evidence": "3y/6o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Evolution",
+   "aliases": [
+    "Evolution"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Paris",
+   "aliases": [
+    "Paris"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Europe",
+   "aliases": [
+    "Europe"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "American",
+   "aliases": [
+    "American"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Breton",
+   "aliases": [
+    "Breton"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "European",
+   "aliases": [
+    "European"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Druidesses",
+   "aliases": [
+    "Druidesses"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Galway",
+   "aliases": [
+    "Galway"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/1F cues",
+   "age": "old",
+   "age_evidence": "1y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "People",
+   "aliases": [
+    "Good People"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 44M/30F",
+   "age": "old",
+   "age_evidence": "13y/14o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "January",
+   "aliases": [
+    "January"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sophia",
+   "aliases": [
+    "Miss Sophia"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Morrison",
+   "aliases": [
+    "Morrison"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Voyage",
+   "aliases": [
+    "Voyage"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Return",
+   "aliases": [
+    "Return"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dance",
+   "aliases": [
+    "Dance"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Research",
+   "aliases": [
+    "Psychical Research"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "2M/5F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Faculty",
+   "aliases": [
+    "Faculty"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "America",
+   "aliases": [
+    "America"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rev",
+   "aliases": [
+    "Rev"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 10M/9F",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "England",
+   "aliases": [
+    "England"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "June",
+   "aliases": [
+    "June"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Connemara",
+   "aliases": [
+    "Connemara"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Boyne",
+   "aliases": [
+    "Boyne"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/5F",
+   "age": "old",
+   "age_evidence": "2y/5o",
+   "role": "witch",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "old witch narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bulbin",
+   "aliases": [
+    "Ben Bulbin"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Patrick",
+   "aliases": [
+    "Patrick"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Highlands",
+   "aliases": [
+    "Highlands"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Skye",
+   "aliases": [
+    "Skye"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hebrides",
+   "aliases": [
+    "Hebrides"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ringlestown",
+   "aliases": [
+    "Ringlestown"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Morgan",
+   "aliases": [
+    "Owen Morgan"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": null,
+   "age_evidence": "tied 3y/3o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Halls",
+   "aliases": [
+    "Halls"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/4F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Patsy",
+   "aliases": [
+    "Old Patsy"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": "young",
+   "age_evidence": "5y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Quarter",
+   "aliases": [
+    "Oak Quarter"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 74,
+ "speaking": 1
+}

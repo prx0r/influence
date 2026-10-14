@@ -1,0 +1,1384 @@
+{
+ "source": "/root/easy/folk-and-fable/bulfinchs-mythology/source.txt",
+ "characters": [
+  {
+   "name": "Jupiter",
+   "aliases": [
+    "Jupiter"
+   ],
+   "mentions": 31,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "99M/44F cues",
+   "age": "young",
+   "age_evidence": "9y/4o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Excellent old man, and woman worthy of such a\n\nhusband, speak, tell us your wishes; what favor have you to ask of\n\nus?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Apollo",
+   "aliases": [
+    "Apollo"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "47M/13F cues",
+   "age": "young",
+   "age_evidence": "8y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Edinburgh\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Juno",
+   "aliases": [
+    "Juno"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 26M/35F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"decree of the Parcae,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Continued",
+   "aliases": [
+    "Continued"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "22M/7F cues",
+   "age": "young",
+   "age_evidence": "13y/2o",
+   "role": "prince",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "young male prince narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Diana",
+   "aliases": [
+    "Diana"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 17M/27F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Your own face will forbid it.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Saturn",
+   "aliases": [
+    "Saturn"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "31M/6F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Footnote",
+   "aliases": [
+    "Footnote"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "11M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"shell\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thisbe",
+   "aliases": [
+    "Thisbe"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 4,
+   "gender": "female",
+   "gender_evidence": "6M/13F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\"Cruel wall,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jove",
+   "aliases": [
+    "Jove"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "17M/5F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Phaeton",
+   "aliases": [
+    "Phaeton"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "25M/3F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\" said he, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Baucis",
+   "aliases": [
+    "Baucis"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "9M/4F cues",
+   "age": "old",
+   "age_evidence": "1y/8o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"We ask to be priests and\n\nguardians of this your temple; and since here we have passed our\n\nlives in love and concord, we wish that one and the same hour may\n\n",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Philemon",
+   "aliases": [
+    "Philemon"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/7o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Olympus",
+   "aliases": [
+    "Olympus"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"So saying, Minerva, goddess azure-eyed,\n\nRose to Olympus, the reputed seat\n\nEternal of the gods, which never storms\n\nDisturb, rains drench, or snow invades, bu",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mercury",
+   "aliases": [
+    "Mercury"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "22M/4F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Milton",
+   "aliases": [
+    "Milton"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "14M/2F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Comus\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Pyramus",
+   "aliases": [
+    "Pyramus"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 6M/9F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"O hapless girl,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Actaeon",
+   "aliases": [
+    "Actaeon"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "17M/5F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"'Midst others of less note came one frail form,\n\nA phantom among men: companionless\n\nAs the last cloud of an expiring storm,\n\nWhose thunder is its knell; he, a",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Latona",
+   "aliases": [
+    "Latona"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 10M/10F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Prometheus",
+   "aliases": [
+    "Prometheus"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "32M/8F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Argus",
+   "aliases": [
+    "Argus"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 19M/10F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Young\n\nman,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Midas",
+   "aliases": [
+    "Midas"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "35M/9F cues",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Wife of Bath's Tale,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bulfinch",
+   "aliases": [
+    "Bulfinch"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"The Age of Fable\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Procris",
+   "aliases": [
+    "Procris"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 19M/16F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\"It cannot be true;\n\nI will not believe it unless I myself am a witness to it.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Venus",
+   "aliases": [
+    "Venus"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 15M/13F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Prophecy of Capys.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Pan",
+   "aliases": [
+    "Pan"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "40M/18F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fable",
+   "aliases": [
+    "Fable"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "14M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Pilgrim's Progress,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rome",
+   "aliases": [
+    "Rome"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "36M/9F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"the Niobe of nations,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Greece",
+   "aliases": [
+    "Greece"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Song of a Hyperborean,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Stories of Gods and Heroes\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Roman",
+   "aliases": [
+    "Roman"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "16M/4F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Of Arthur, who, to upper light restored,\n\nWith that terrific sword,\n\nWhich yet he brandishes for future war,\n\nShall lift his country's fame above the polar sta",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Pandora",
+   "aliases": [
+    "Pandora"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/8F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Greeks",
+   "aliases": [
+    "Greeks"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Minerva",
+   "aliases": [
+    "Minerva"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 8M/6F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Can tyrants but by tyrants conquered be,\n\nAnd Freedom find no champion and no child,\n\nSuch as Columbia saw arise, when she\n\nSprang forth a Pallas, armed and un",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rhea",
+   "aliases": [
+    "Rhea"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/6F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Titans",
+   "aliases": [
+    "Titans"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Vulcan",
+   "aliases": [
+    "Vulcan"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "18M/9F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Syrinx",
+   "aliases": [
+    "Syrinx"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"So did he feel who pulled the bough aside,\n\nThat we might look into a forest wide,\n\nTelling us how fair trembling Syrinx fled\n\nArcadian Pan, with such a fearfu",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Phoebus",
+   "aliases": [
+    "Phoebus"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "19M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"My son, you deserve not to be\n\ndisowned, and I confirm what your mother has told you. To put an\n\nend to your doubts, ask what you will, the gift shall be yours",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Charlemagne",
+   "aliases": [
+    "Charlemagne"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Poetry of the Age of Fable,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lost",
+   "aliases": [
+    "Paradise Lost"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "13M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"And fabled how the serpent, whom they called\n\nOphion, with Eurynome, (the wide-\n\nEncroaching Eve perhaps,) had first the rule\n\nOf high Olympus, thence by Satur",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Italy",
+   "aliases": [
+    "Italy"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cupid",
+   "aliases": [
+    "Cupid"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "10M/5F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Daughter, you\n\nowe me a son-in-law; you owe me grandchildren.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Romans",
+   "aliases": [
+    "Romans"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Daphne",
+   "aliases": [
+    "Daphne"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Yet what he sung in his immortal strain,\n\nThough unsuccessful, was not sung in vain.\n\nAll but the nymph that should redress his wrong,\n\nAttend his passion and ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Callisto",
+   "aliases": [
+    "Callisto"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/10F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Chaos",
+   "aliases": [
+    "Chaos"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Eros",
+   "aliases": [
+    "Eros"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Neptune",
+   "aliases": [
+    "Neptune"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"O wife,\n\nonly surviving woman, joined to me first by the ties of kindred\n\nand marriage, and now by a common danger, would that we possessed\n\nthe power of our a",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Epimetheus",
+   "aliases": [
+    "Epimetheus"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "21M/5F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Shelley",
+   "aliases": [
+    "Shelley"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Adonais\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Byron",
+   "aliases": [
+    "Byron"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "8M/4F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Childe Harold,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bear",
+   "aliases": [
+    "Little Bear"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 22M/14F",
+   "age": "young",
+   "age_evidence": "7y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\" etc.\n\nAnd Prometheus, in J. R. Lowell's poem, says:\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Proverbial",
+   "aliases": [
+    "See Proverbial"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Expressions",
+   "aliases": [
+    "Expressions"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Samor,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wagner",
+   "aliases": [
+    "Wagner"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Hero Myths of the\n\nBritish Race\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Comus",
+   "aliases": [
+    "Comus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"On\n\nthe Morning of the Nativity\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dictionary",
+   "aliases": [
+    "Classical Dictionary"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Stories of Gods and Heroes\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Heroes",
+   "aliases": [
+    "Heroes"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"King Arthur and His Knights\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Isoude",
+   "aliases": [
+    "Isoude"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Shakspeare",
+   "aliases": [
+    "Shakspeare"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Midsummer Night's Dream.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Scylla",
+   "aliases": [
+    "Scylla"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Pomona",
+   "aliases": [
+    "Pomona"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"\n\nIf any of our young readers can be so hard-hearted as to enjoy a\n\nlaugh at the expense of poor Pyramus and Thisbe, they may find an\n\nopportunity by turning t",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Aurora",
+   "aliases": [
+    "Aurora"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 8M/7F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Go, ungrateful\n\nmortal, keep your wife, whom, if I am not much mistaken, you will\n\none day be very sorry you ever saw again.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fountain",
+   "aliases": [
+    "Fountain"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/3F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Erbin",
+   "aliases": [
+    "Erbin"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/3F cues",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": "prince",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male prince narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Moon",
+   "aliases": [
+    "Moon"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/4F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Muses",
+   "aliases": [
+    "Muses"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Odyssey\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cronos",
+   "aliases": [
+    "Cronos"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Oceanus",
+   "aliases": [
+    "Oceanus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "old",
+   "age_evidence": "1y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hyperion",
+   "aliases": [
+    "Hyperion"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Themis",
+   "aliases": [
+    "Themis"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/3F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Eurynome",
+   "aliases": [
+    "Eurynome"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Grecian",
+   "aliases": [
+    "Grecian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tartarus",
+   "aliases": [
+    "Tartarus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Pluto",
+   "aliases": [
+    "Pluto"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Age",
+   "aliases": [
+    "Golden Age"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "55M/18F cues",
+   "age": "young",
+   "age_evidence": "14y/8o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"The Boy Inventor,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Penates",
+   "aliases": [
+    "Penates"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Python",
+   "aliases": [
+    "Python"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"What have you to do with\n\nwarlike weapons, saucy boy? Leave them for hands worthy of them.\n\nBehold the conquest I have won by means of them over the vast\n\nserp",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Peneus",
+   "aliases": [
+    "Peneus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/8F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tmolus",
+   "aliases": [
+    "Tmolus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Phrygia",
+   "aliases": [
+    "Phrygia"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 81,
+ "speaking": 44
+}

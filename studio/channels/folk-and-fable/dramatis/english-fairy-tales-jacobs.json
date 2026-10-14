@@ -1,0 +1,381 @@
+{
+ "source": "/root/easy/folk-and-fable/english-fairy-tales-jacobs/source.txt",
+ "characters": [
+  {
+   "name": "Jack",
+   "aliases": [
+    "Jack"
+   ],
+   "mentions": 89,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "271M/65F cues",
+   "age": "young",
+   "age_evidence": "57y/14o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Lord save you!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Well",
+   "aliases": [
+    "Well"
+   ],
+   "mentions": 49,
+   "dialogue_lines": 100,
+   "gender": null,
+   "gender_evidence": "contested 182M/136F",
+   "age": "young",
+   "age_evidence": "58y/6o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cGo you, and get one o' them\n\nthere pies. I dare say they've come again now.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 12,
+   "gender": "male",
+   "gender_evidence": "227M/81F cues",
+   "age": "young",
+   "age_evidence": "63y/12o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\u201cNo, but I am the King\n\nof all the little mice in the world, and I will call them all up in the\n\nmorning, and maybe they have seen something of it.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nothing",
+   "aliases": [
+    "Nothing"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 16,
+   "gender": null,
+   "gender_evidence": "contested 118M/64F",
+   "age": "young",
+   "age_evidence": "35y/2o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cO, I'll give you that and\n\nmy thanks into the bargain.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nought",
+   "aliases": [
+    "Nix Nought"
+   ],
+   "mentions": 23,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "100M/50F cues",
+   "age": "young",
+   "age_evidence": "28y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cI'll carry you over.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rushes",
+   "aliases": [
+    "Rushes"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 24,
+   "gender": null,
+   "gender_evidence": "contested 34M/51F",
+   "age": "young",
+   "age_evidence": "17y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cWhat was that?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 23,
+   "gender": "male",
+   "gender_evidence": "58M/24F cues",
+   "age": "young",
+   "age_evidence": "19y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cand my hands are as warm\n\nas possible this cold November day.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Binnorie",
+   "aliases": [
+    "Binnorie"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 35M/32F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cO sister, sister, reach me your hand!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cap",
+   "aliases": [
+    "Cap"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 37M/49F",
+   "age": "young",
+   "age_evidence": "16y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Titty",
+   "aliases": [
+    "Titty"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/7F",
+   "age": "young",
+   "age_evidence": "5y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tatty",
+   "aliases": [
+    "Tatty"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/11F",
+   "age": null,
+   "age_evidence": "tied 5y/5o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "Titty's dead,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Noo",
+   "aliases": [
+    "Noo"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 14,
+   "gender": null,
+   "gender_evidence": "contested 11M/21F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cNot one of 'em?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Milky",
+   "aliases": [
+    "Milky"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 10M/7F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cWhat shall we do, what shall we do?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tales",
+   "aliases": [
+    "Fairy Tales"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 6,
+   "gender": "female",
+   "gender_evidence": "3M/17F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cFairy Tales,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mrs",
+   "aliases": [
+    "Mrs"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cLiterary\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mouse",
+   "aliases": [
+    "Tatty Mouse"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "35M/16F cues",
+   "age": "young",
+   "age_evidence": "14y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fairy",
+   "aliases": [
+    "English Fairy"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "2M/16F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": "fairy",
+   "role_evidence": "in name",
+   "voice_query": "young female fairy narration",
+   "sample_line": "\u201cAucassin et Nicolette.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hannaford",
+   "aliases": [
+    "Jack Hannaford"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 15M/11F",
+   "age": "old",
+   "age_evidence": "3y/5o",
+   "role": "soldier",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "old soldier narration",
+   "sample_line": "Yes, he did,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Scotch",
+   "aliases": [
+    "Lowland Scotch"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cPopular Rhymes of Scotland,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "William",
+   "aliases": [
+    "William"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 13M/15F",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cLet us\n\ngo and see our father's boats come in at the bonny mill-stream of\n\nBinnorie.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Please",
+   "aliases": [
+    "Please"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "12M/2F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cLittle pig, little pig, let me come in.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Beelzebub",
+   "aliases": [
+    "Beelzebub"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cSet me a task!\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 22,
+ "speaking": 19
+}

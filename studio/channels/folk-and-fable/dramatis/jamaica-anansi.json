@@ -1,0 +1,748 @@
+{
+ "source": "/root/easy/folk-and-fable/jamaica-anansi/source.txt",
+ "characters": [
+  {
+   "name": "Anansi",
+   "aliases": [
+    "Anansi",
+    "Brar Anansi",
+    "Brer Anansi"
+   ],
+   "mentions": 233,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "589M/107F cues",
+   "age": "young",
+   "age_evidence": "66y/16o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Oh, no!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Tiger",
+   "aliases": [
+    "Brar Tiger",
+    "Bredder Tiger",
+    "Brer Tiger",
+    "Tiger",
+    "Tita Tiger"
+   ],
+   "mentions": 223,
+   "dialogue_lines": 80,
+   "gender": "male",
+   "gender_evidence": "444M/53F cues",
+   "age": "young",
+   "age_evidence": "43y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWhat you have in that basket,\n\nsah?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tacoomah",
+   "aliases": [
+    "Brar Tacoomah",
+    "Bredder Tacoomah",
+    "Tacoomah"
+   ],
+   "mentions": 62,
+   "dialogue_lines": 24,
+   "gender": "male",
+   "gender_evidence": "87M/15F cues",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cLook me pickney Tacoomah come!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hanansi",
+   "aliases": [
+    "Hanansi"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 29,
+   "gender": "male",
+   "gender_evidence": "44M/0F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cBrar Tiger, you foot short!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nansi",
+   "aliases": [
+    "Brar Nansi",
+    "Bredder Nansi",
+    "Brer Nansi"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "657M/118F cues",
+   "age": "young",
+   "age_evidence": "66y/16o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cLaw pass dat eb\u2019ry man have\n\ntree mus\u2019 tie on it \u2019cause going to get a heavy storm.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Monkey",
+   "aliases": [
+    "Monkey"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "24M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cBrer Monkey, how much cunnie you have?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mandeville",
+   "aliases": [
+    "Mandeville"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "20M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lion",
+   "aliases": [
+    "Lion"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "21M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mrs",
+   "aliases": [
+    "Mrs"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 10M/6F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cruz",
+   "aliases": [
+    "Santa Cruz"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mountains",
+   "aliases": [
+    "Mountains"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Che",
+   "aliases": [
+    "Che"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 13M/13F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cWha\u2019 me tell you say yo\u2019 pickney name?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yellow",
+   "aliases": [
+    "Yellow"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cunnie",
+   "aliases": [
+    "Cunnie"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "27M/2F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cyam\n\nfoofoo.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Parrot",
+   "aliases": [
+    "Parrot"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cock",
+   "aliases": [
+    "Cock"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lawd",
+   "aliases": [
+    "Lawd"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/3F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cNo, jus\u2019 carry me go where dat\n\nbig smoke is yonder!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ram",
+   "aliases": [
+    "Ram"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "26M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cBrar Ram-goat, I swap me shirt, gi\u2019 you one\n\nnew one fe you ol\u2019 one!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jamaica",
+   "aliases": [
+    "Jamaica"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cMy\n\nfather has in his yard\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "River",
+   "aliases": [
+    "Dry River"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/7F cues",
+   "age": "young",
+   "age_evidence": "9y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Heaven",
+   "aliases": [
+    "Heaven"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Baby",
+   "aliases": [
+    "Baby"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/2F cues",
+   "age": "young",
+   "age_evidence": "10y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fortune",
+   "aliases": [
+    "Fortune"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bay",
+   "aliases": [
+    "Bay"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rabbit",
+   "aliases": [
+    "Brar Rabbit"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "31M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cAnansi stories\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Reindeer",
+   "aliases": [
+    "Reindeer"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Green",
+   "aliases": [
+    "Green"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cherry",
+   "aliases": [
+    "Cherry"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Libber",
+   "aliases": [
+    "Libber"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cLibber me yum yum!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kyan",
+   "aliases": [
+    "Brar Kyan"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "31M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cLibber me yum yum!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Goat",
+   "aliases": [
+    "Brar Goat"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "79M/3F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWhen Tiger come, blow dis in a\n\neye!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Air",
+   "aliases": [
+    "Air"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "16M/4F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": "queen",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young male queen narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Harry",
+   "aliases": [
+    "Harry"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Westmoreland",
+   "aliases": [
+    "Westmoreland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Pretty",
+   "aliases": [
+    "Pretty"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cPretty little snapper this!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ant",
+   "aliases": [
+    "Brer Ant"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "72M/3F cues",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Madder",
+   "aliases": [
+    "Miss Madder"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cAll right,\n\nMr. Anansi, I don\u2019 wan\u2019 to hear any more talkin\u2019; tak\u2019 de las\u2019 sheep\n\nan\u2019 go.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Blinkie",
+   "aliases": [
+    "Blinkie"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWho\n\nwan\u2019 little egg?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Claremont",
+   "aliases": [
+    "Claremont"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mama",
+   "aliases": [
+    "Mama"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 12M/9F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Duppy",
+   "aliases": [
+    "Bredder Duppy"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "18M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": "queen",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young male queen narration",
+   "sample_line": "\u201cGo up, me chin-chin, go up!\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 43,
+ "speaking": 19
+}

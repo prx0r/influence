@@ -1,0 +1,927 @@
+{
+ "source": "/root/easy/folk-and-fable/golden-bough/source.txt",
+ "characters": [
+  {
+   "name": "Diana",
+   "aliases": [
+    "Diana",
+    "Tauric Diana"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 41M/27F",
+   "age": "old",
+   "age_evidence": "4y/5o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nemi",
+   "aliases": [
+    "Nemi"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "18M/9F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Diana's Mirror,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hippolytus",
+   "aliases": [
+    "Hippolytus"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "23M/7F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"But the truth\n\nis,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Virbius",
+   "aliases": [
+    "Virbius"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "25M/11F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wood",
+   "aliases": [
+    "Wood"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "32M/15F cues",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Indians",
+   "aliases": [
+    "Indians"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 15M/15F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Aricia",
+   "aliases": [
+    "Aricia"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"The Killing of the Khazar Kings,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Egeria",
+   "aliases": [
+    "Egeria"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/5F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Italy",
+   "aliases": [
+    "Italy"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 9M/5F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Greek",
+   "aliases": [
+    "Greek"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "17M/8F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Soul",
+   "aliases": [
+    "Soul"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fires",
+   "aliases": [
+    "Fires"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rome",
+   "aliases": [
+    "Rome"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/5o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Artemis",
+   "aliases": [
+    "Artemis"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/11F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Magic",
+   "aliases": [
+    "Imitative Magic",
+    "Sympathetic Magic"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "73M/9F cues",
+   "age": "young",
+   "age_evidence": "5y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "India",
+   "aliases": [
+    "India"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 28M/16F",
+   "age": null,
+   "age_evidence": "tied 4y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Adonis",
+   "aliases": [
+    "Adonis"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Orestes",
+   "aliases": [
+    "Orestes"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Expulsion",
+   "aliases": [
+    "Expulsion"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bough",
+   "aliases": [
+    "Golden Bough"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "16M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Italian",
+   "aliases": [
+    "Italian"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arician",
+   "aliases": [
+    "Arician"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Troezen",
+   "aliases": [
+    "Troezen"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Malay",
+   "aliases": [
+    "Malay"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 7M/4F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"It is not wax that I am scorching,\n\nIt is the liver, heart, and spleen of So-and-so that I scorch.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Galelareese",
+   "aliases": [
+    "Galelareese"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Control",
+   "aliases": [
+    "Control"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gods",
+   "aliases": [
+    "Gods"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/4F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Pig",
+   "aliases": [
+    "Pig"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/4F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Evils",
+   "aliases": [
+    "Evils"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Europe",
+   "aliases": [
+    "Europe"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Vesta",
+   "aliases": [
+    "Vesta"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Attis",
+   "aliases": [
+    "Attis"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "3M/6F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Roman",
+   "aliases": [
+    "Roman"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/8F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Greece",
+   "aliases": [
+    "Greece"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Madagascar",
+   "aliases": [
+    "Madagascar"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "\"as it is feared that this animal, from its propensity of coiling up\n\ninto a ball when alarmed, will impart a timid shrinking disposition\n\nto those who partake ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Greeks",
+   "aliases": [
+    "Greeks"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"not drunken,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chapter",
+   "aliases": [
+    "Adonis Chapter"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 23M/14F",
+   "age": "old",
+   "age_evidence": "5y/9o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Scapegoat",
+   "aliases": [
+    "Scapegoat"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "July",
+   "aliases": [
+    "July"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Alban",
+   "aliases": [
+    "Alban"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Latium",
+   "aliases": [
+    "Latium"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Romans",
+   "aliases": [
+    "Romans"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Phaedra",
+   "aliases": [
+    "Phaedra"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Servius",
+   "aliases": [
+    "Servius"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 4M/4F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\"that he is a deity associated with Diana, as\n\nAttis is associated with the Mother of the Gods, and Erichthonius\n\nwith Minerva, and Adonis with Venus.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Venus",
+   "aliases": [
+    "Venus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/5F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tusculum",
+   "aliases": [
+    "Tusculum"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Latin",
+   "aliases": [
+    "Latin"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Egerius",
+   "aliases": [
+    "Manius Egerius"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"There are many Manii\n\nat Aricia.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sumatra",
+   "aliases": [
+    "Sumatra"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/5F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Borneo",
+   "aliases": [
+    "Borneo"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sarawak",
+   "aliases": [
+    "Sarawak"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/4F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dyak",
+   "aliases": [
+    "Dyak"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 9M/7F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"butter-fingered\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Malagasy",
+   "aliases": [
+    "Malagasy"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": "soldier",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "male soldier narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mexico",
+   "aliases": [
+    "Mexico"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "2M/6F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "\"the long-haired mother,\"",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 54,
+ "speaking": 10
+}

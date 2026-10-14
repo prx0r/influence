@@ -1,0 +1,296 @@
+{
+ "source": "/root/easy/folk-and-fable/aesop-front-to-back/source.txt",
+ "characters": [
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "116M/7F cues",
+   "age": "young",
+   "age_evidence": "11y/2o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\"Idylls of the King.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tortoise",
+   "aliases": [
+    "Tortoise"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "33M/7F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I don't care for going out,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ills",
+   "aliases": [
+    "Ills"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bat",
+   "aliases": [
+    "Bat"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "25M/1F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"I'm not a bird at all: I'm a\n\nmouse.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Weasel",
+   "aliases": [
+    "Weasel"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Oh, but,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lamb",
+   "aliases": [
+    "Lamb"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 16,
+   "gender": null,
+   "gender_evidence": "contested 8M/7F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Last year, sirrah, you grossly insulted me.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Oxen",
+   "aliases": [
+    "Oxen"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "17M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"What has induced you to come in here? Aren't you aware of the risk\n\nyou are running of being captured by the herdsmen?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Apes",
+   "aliases": [
+    "Apes"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "33M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Goods",
+   "aliases": [
+    "Goods"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Stork",
+   "aliases": [
+    "Stork"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\" she said, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rhodes",
+   "aliases": [
+    "Rhodes"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 6M/4F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\"Just go to Rhodes and ask them,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Grimm",
+   "aliases": [
+    "Grimm"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": "fairy",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "fairy narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Phrygian",
+   "aliases": [
+    "Phrygian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Remus",
+   "aliases": [
+    "Uncle Remus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "German",
+   "aliases": [
+    "German"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hares",
+   "aliases": [
+    "Hares"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Stop, my friends, take heart; don't let us destroy\n\nourselves after all: see, here are creatures who are afraid of us, and\n\nwho must, therefore, be still more ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ape",
+   "aliases": [
+    "Ape"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "63M/1F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"And what, sir, is your\n\nopinion?\"",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 17,
+ "speaking": 10
+}

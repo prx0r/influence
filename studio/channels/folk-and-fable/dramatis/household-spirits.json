@@ -1,0 +1,725 @@
+{
+ "source": "/root/easy/folk-and-fable/household-spirits/source.txt",
+ "characters": [
+  {
+   "name": "Jack",
+   "aliases": [
+    "Jack",
+    "Lazy Jack"
+   ],
+   "mentions": 83,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "374M/55F cues",
+   "age": "young",
+   "age_evidence": "38y/16o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Say'st thou so,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Bear",
+   "aliases": [
+    "Huge Bear",
+    "Middle Bear",
+    "Wee Bear"
+   ],
+   "mentions": 40,
+   "dialogue_lines": 9,
+   "gender": null,
+   "gender_evidence": "contested 64M/98F",
+   "age": "young",
+   "age_evidence": "73y/40o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cSomebody has been at my porridge!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cocky",
+   "aliases": [
+    "Cocky"
+   ],
+   "mentions": 30,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "33M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWhere are you going, Henny-penny?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Henny",
+   "aliases": [
+    "Henny"
+   ],
+   "mentions": 29,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "37M/7F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "Goodness gracious me!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Ducky",
+   "aliases": [
+    "Ducky"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "28M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWhere are you going to, Henny-penny and Cocky-locky?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tom",
+   "aliases": [
+    "Tom"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "150M/60F cues",
+   "age": "young",
+   "age_evidence": "29y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cAn oak-leaf hat he had for his crown;\n\nHis shirt of web by spiders spun;\n\nWith jacket wove of thistle's down;\n\nHis trowsers were of feathers done.\n\nHis stockin",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Goosey",
+   "aliases": [
+    "Goosey"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "24M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "Where are you going to, Henny-penny, Cocky-locky and\n\nDucky-daddles?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Molly",
+   "aliases": [
+    "Molly"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 14,
+   "gender": null,
+   "gender_evidence": "contested 83M/73F",
+   "age": "young",
+   "age_evidence": "14y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cWell,\n\nMolly, you are a clever girl, and you have managed well; but, if you\n\nwould manage better, and go back, and steal the giant's sword that hangs\n\non the b",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Turkey",
+   "aliases": [
+    "Turkey"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "20M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "May I come with you? Henny-penny,\n\nCocky-locky, Ducky-daddles and Goosey-poosey?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Johnny",
+   "aliases": [
+    "Johnny"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 21,
+   "gender": "male",
+   "gender_evidence": "69M/23F cues",
+   "age": "young",
+   "age_evidence": "27y/16o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cYou watch the Johnny-cake while your father and I go out\n\nto work in the garden.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rowland",
+   "aliases": [
+    "Childe Rowland"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 51M/28F",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Canst thou tell me,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Bears",
+   "aliases": [
+    "Bears",
+    "Three Bears"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "8M/34F cues",
+   "age": "young",
+   "age_evidence": "18y/11o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Small",
+   "aliases": [
+    "Small"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 41M/35F",
+   "age": "young",
+   "age_evidence": "25y/5o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ellen",
+   "aliases": [
+    "Burd Ellen"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 36M/27F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cThe fair\n\nBurd Ellen,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mary",
+   "aliases": [
+    "Lady Mary"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 18M/17F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "I dreamed,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Foxy",
+   "aliases": [
+    "Foxy"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "14M/3F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWe're going to tell\n\nthe king the sky's a-falling.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Elfland",
+   "aliases": [
+    "Elfland"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 8,
+   "gender": null,
+   "gender_evidence": "contested 27M/14F",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cIf it is possible to bring her back,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tommy",
+   "aliases": [
+    "Tommy"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "35M/14F cues",
+   "age": "young",
+   "age_evidence": "11y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "And don't you have anything else but boy-meat? No pudding?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Somebody",
+   "aliases": [
+    "Somebody"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/15F",
+   "age": "young",
+   "age_evidence": "12y/8o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Merlin",
+   "aliases": [
+    "Warlock Merlin"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "40M/19F cues",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cmust have been carried off by the\n\nfairies, because she went round the church 'wider shins'--the opposite\n\nway to the sun. She is now in the Dark Tower of the ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Arthur",
+   "aliases": [
+    "King Arthur"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "44M/4F cues",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ettin",
+   "aliases": [
+    "Ettin"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "53M/20F cues",
+   "age": "young",
+   "age_evidence": "12y/8o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cSnouk but and snouk ben,\n\nI find the smell of an earthly man,\n\nBe he living, or be he dead,\n\nHis heart this night shall kitchen my bread.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mrs",
+   "aliases": [
+    "Mrs"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "18M/3F cues",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "Mostly, my dear,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Mar",
+   "aliases": [
+    "Earl Mar"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 84M/71F",
+   "age": "young",
+   "age_evidence": "38y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cCoo-my-dove, my dear, come down to me and I will give you a\n\ngolden cage. I'll take you home and pet you well, as well as any bird\n\nof them all.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Why",
+   "aliases": [
+    "Why"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 12M/8F",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tower",
+   "aliases": [
+    "Dark Tower"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 9M/12F",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cI cannot tell\n\nthee,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Whuppie",
+   "aliases": [
+    "Molly Whuppie"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 11M/15F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cTwice yet, carle,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Florentine",
+   "aliases": [
+    "Prince Florentine"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 17M/19F",
+   "age": "young",
+   "age_evidence": "14y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "No, mother,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Mount",
+   "aliases": [
+    "Mount"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "27M/1F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cOh, Giant,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wales",
+   "aliases": [
+    "Wales"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "16M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cGo bury the dead, and let his creditors\n\ncome to my lodging, and there their debts shall be paid.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Alas",
+   "aliases": [
+    "Alas"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "12M/3F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cwhat shall we do there?\n\nHe'll certainly chop us up at a mouthful. Nay, we are scarce enough to\n\nfill one of his hollow teeth!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lucifer",
+   "aliases": [
+    "Lucifer"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "10M/5F cues",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cBut now,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hrumph",
+   "aliases": [
+    "Hrumph"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/3F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Coo",
+   "aliases": [
+    "Coo"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 13M/11F",
+   "age": "young",
+   "age_evidence": "9y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "Oh, oh!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Grimes",
+   "aliases": [
+    "Tommy Grimes"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 10M/6F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Why, my mother is making a pudding this very day,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Cornwall",
+   "aliases": [
+    "Cornwall"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cormoran",
+   "aliases": [
+    "Cormoran"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThe giant's treasure,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Welsh",
+   "aliases": [
+    "Welsh"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fee",
+   "aliases": [
+    "Fee"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "29M/6F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cSay'st thou so,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bridge",
+   "aliases": [
+    "Bridge"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "23M/7F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWoe worth ye, Molly Whuppie! never ye come\n\nagain.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Spain",
+   "aliases": [
+    "Spain"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 12M/7F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sally",
+   "aliases": [
+    "Sally"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 42,
+ "speaking": 32
+}

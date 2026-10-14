@@ -1,0 +1,467 @@
+{
+ "source": "/root/easy/folk-and-fable/grimm-part-4/source.txt",
+ "characters": [
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 58,
+   "dialogue_lines": 40,
+   "gender": null,
+   "gender_evidence": "contested 284M/292F",
+   "age": "young",
+   "age_evidence": "103y/29o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young king narration",
+   "sample_line": "\u201cI cannot,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Queen",
+   "aliases": [
+    "Queen"
+   ],
+   "mentions": 33,
+   "dialogue_lines": 14,
+   "gender": "female",
+   "gender_evidence": "46M/110F cues",
+   "age": "young",
+   "age_evidence": "21y/10o",
+   "role": "queen",
+   "role_evidence": "in name",
+   "voice_query": "young female queen narration",
+   "sample_line": "\u201cWho knows,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Snow",
+   "aliases": [
+    "Little Snow",
+    "Snow"
+   ],
+   "mentions": 32,
+   "dialogue_lines": 38,
+   "gender": "female",
+   "gender_evidence": "19M/124F cues",
+   "age": "young",
+   "age_evidence": "41y/7o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cTake the child away into the forest; I will no longer have her in my\n\nsight. Kill her, and bring me back her heart as a token.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Marlinchen",
+   "aliases": [
+    "Marlinchen"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 61M/56F",
+   "age": "young",
+   "age_evidence": "15y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Mother,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Thumbling",
+   "aliases": [
+    "Thumbling"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "43M/5F cues",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Mistress, if\n\nyou give us no better food,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Death",
+   "aliases": [
+    "Death"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "77M/20F cues",
+   "age": "young",
+   "age_evidence": "21y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "I cannot,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Fundevogel",
+   "aliases": [
+    "Fundevogel"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "12M/3F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cIf thou wilt never leave me, I too will never leave thee.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thrushbeard",
+   "aliases": [
+    "King Thrushbeard"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 13,
+   "gender": null,
+   "gender_evidence": "contested 26M/21F",
+   "age": "young",
+   "age_evidence": "9y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cAh,\n\nunhappy girl that I am, if I had but taken King Thrushbeard!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mrs",
+   "aliases": [
+    "Mrs"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 17M/13F",
+   "age": "old",
+   "age_evidence": "4y/8o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "Then let him\n\ncome upstairs,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Gathered",
+   "aliases": [
+    "Gathered"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 20M/25F",
+   "age": "young",
+   "age_evidence": "7y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tied",
+   "aliases": [
+    "Tied"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 15M/24F",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cLaid them beneath\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kywitt",
+   "aliases": [
+    "Kywitt"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 11,
+   "gender": null,
+   "gender_evidence": "contested 26M/18F",
+   "age": "young",
+   "age_evidence": "10y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cMy mother she killed me,\n\nMy father he ate me,\n\nMy sister, little Marlinchen,\n\nGathered together all my bones,\n\nTied them in a silken handkerchief,\n\nLaid them ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Briar",
+   "aliases": [
+    "Briar"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "25M/10F cues",
+   "age": "young",
+   "age_evidence": "7y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Alas",
+   "aliases": [
+    "Alas"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 13M/18F",
+   "age": "young",
+   "age_evidence": "5y/3o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cMarlinchen,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lina",
+   "aliases": [
+    "Lina"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 10,
+   "gender": null,
+   "gender_evidence": "contested 7M/6F",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cHark you, old Sanna, why are\n\nyou fetching so much water?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 10,
+   "gender": null,
+   "gender_evidence": "contested 40M/41F",
+   "age": "young",
+   "age_evidence": "19y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201che has.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Trude",
+   "aliases": [
+    "Frau Trude"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 13,
+   "gender": "female",
+   "gender_evidence": "5M/18F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cI have heard so\n\nmuch of Frau Trude, I will go to her some day. People say that\n\neverything about her does look so strange, and that there are such odd\n\nthings",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Korbes",
+   "aliases": [
+    "Herr Korbes"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWhere are you going?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Devil",
+   "aliases": [
+    "Devil"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 10,
+   "gender": null,
+   "gender_evidence": "contested 16M/12F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cWhat seekest thou? If thou wilt take me as a godfather\n\nfor thy child, I will give him gold in plenty and all the joys of the\n\nworld as well.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fitcher",
+   "aliases": [
+    "Fitcher"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 6M/10F",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": "bride",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "young bride narration",
+   "sample_line": "\u201cI come from Fitcher\u2019s house quite near.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "87M/16F cues",
+   "age": "young",
+   "age_evidence": "21y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cPoor man, I pity thee. I will hold\n\nthy child at its christening, and will take charge of it and make it\n\nhappy on earth.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nay",
+   "aliases": [
+    "Nay"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 9,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cI do not sing twice for nothing; thou must give\n\nme something.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sultan",
+   "aliases": [
+    "Old Sultan"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "21M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/7o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cTo-morrow I intend to shoot Old Sultan, he is no longer of any\n\nuse.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Neither",
+   "aliases": [
+    "Neither"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cat",
+   "aliases": [
+    "Miss Cat"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 32M/25F",
+   "age": "young",
+   "age_evidence": "10y/9o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cWhat may you be about, Miss Cat?\n\nDo you sleep or do you wake?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tis",
+   "aliases": [
+    "Tis"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "female",
+   "gender_evidence": "3M/10F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cTurn back, turn back, young maiden dear,\n\n\u2019Tis a murderer\u2019s house you enter here.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Women",
+   "aliases": [
+    "Wise Women"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cThe King\u2019s daughter shall in her fifteenth year prick herself\n\nwith a spindle, and fall down dead.\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 27,
+ "speaking": 24
+}

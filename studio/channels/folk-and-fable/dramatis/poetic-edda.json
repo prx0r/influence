@@ -1,0 +1,1506 @@
+{
+ "source": "/root/easy/folk-and-fable/poetic-edda/source.txt",
+ "characters": [
+  {
+   "name": "Othin",
+   "aliases": [
+    "Othin"
+   ],
+   "mentions": 68,
+   "dialogue_lines": 14,
+   "gender": "male",
+   "gender_evidence": "112M/48F cues",
+   "age": "young",
+   "age_evidence": "30y/8o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cVolva,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Snorri",
+   "aliases": [
+    "Snorri"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "22M/6F cues",
+   "age": "young",
+   "age_evidence": "9y/2o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThis book is called Edda,\n\nwhich Snorri Sturluson composed.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Regius",
+   "aliases": [
+    "Codex Regius",
+    "Regius"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "20M/7F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cthe Greenland poem,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Loddfafnir",
+   "aliases": [
+    "Loddfafnir"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 20M/12F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cchanter\u2019s\n\nstool,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Profit",
+   "aliases": [
+    "Profit"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 18M/12F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Norse",
+   "aliases": [
+    "Norse",
+    "Old Norse"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": "old",
+   "age_evidence": "1y/12o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cTales of a Grandmother,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Loki",
+   "aliases": [
+    "Loki"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "40M/9F cues",
+   "age": "young",
+   "age_evidence": "7y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cAnd there he lies bound till the end.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Eddic",
+   "aliases": [
+    "Eddic"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cfolk-poetry,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Baldr",
+   "aliases": [
+    "Baldr"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "38M/8F cues",
+   "age": "young",
+   "age_evidence": "7y/6o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cfields unsowed bear ripened fruit\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hauksbok",
+   "aliases": [
+    "Hauksbok"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cI know\n\nthat Vali | his brother gnawed, / With his bowels then | was\n\nLoki bound.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wanes",
+   "aliases": [
+    "Wanes"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "19M/6F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cshe remembers,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Edda",
+   "aliases": [
+    "Poetic Edda",
+    "Prose Edda"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "11M/5F cues",
+   "age": "old",
+   "age_evidence": "1y/14o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cPoetics,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Iceland",
+   "aliases": [
+    "Iceland"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/5o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cWestern\n\nIsles,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hel",
+   "aliases": [
+    "Hel"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "23M/9F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cout of six things: the noise of a cat\u2019s step, the\n\nbeards of women, the roots of mountains, the nerves of bears, the\n\nbreath of fishes, and the spittle of bird",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Suttung",
+   "aliases": [
+    "Suttung"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "22M/4F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201clittle\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fenrir",
+   "aliases": [
+    "Fenrir"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "13M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201csoon,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nor",
+   "aliases": [
+    "Nor"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "64M/14F cues",
+   "age": "old",
+   "age_evidence": "14y/20o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Icelandic",
+   "aliases": [
+    "Icelandic"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201chousehold remedies\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hovamol",
+   "aliases": [
+    "Hovamol"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 4M/4F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cIn a light, clear sky | or a laughing throng,\n\nIn the howl of a dog | or a harlot\u2019s grief.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Heimdall",
+   "aliases": [
+    "Heimdall"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWhat hast thou to ask? | why comest thou hither?\n\nOthin, I know | where thine eye is hidden.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hor",
+   "aliases": [
+    "Hor"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "60M/15F cues",
+   "age": "young",
+   "age_evidence": "14y/4o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThe High One\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Norns",
+   "aliases": [
+    "Norns"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "8M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cgiant-maids\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Grimnismol",
+   "aliases": [
+    "Grimnismol"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "7M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cField of Deeds\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Voluspo",
+   "aliases": [
+    "Voluspo"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yggdrasil",
+   "aliases": [
+    "Yggdrasil"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "9M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cthe Dark Crags\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thor",
+   "aliases": [
+    "Thor"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "30M/7F cues",
+   "age": "young",
+   "age_evidence": "13y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mimir",
+   "aliases": [
+    "Mimir"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cshe knows\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Norwegian",
+   "aliases": [
+    "Norwegian"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Germanic",
+   "aliases": [
+    "Germanic"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "1M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "\u201cinterpolations\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Volva",
+   "aliases": [
+    "Volva"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "5M/12F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rigsthula",
+   "aliases": [
+    "Rigsthula"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cgreat-grandmother.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fornyrthislag",
+   "aliases": [
+    "Fornyrthislag"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cOld Verse\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mim",
+   "aliases": [
+    "Mim"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gunnloth",
+   "aliases": [
+    "Gunnloth"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 14M/8F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "American",
+   "aliases": [
+    "American"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Foundation",
+   "aliases": [
+    "Scandinavian Foundation"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Christianity",
+   "aliases": [
+    "Christianity"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Norway",
+   "aliases": [
+    "Norway"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Valkyries",
+   "aliases": [
+    "Valkyries"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cChoosers of the Slain\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Urth",
+   "aliases": [
+    "Urth"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cThe Past\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hoth",
+   "aliases": [
+    "Hoth"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/2F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Frigg",
+   "aliases": [
+    "Frigg"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "16M/6F cues",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Freyja",
+   "aliases": [
+    "Freyja"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/3F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bolverk",
+   "aliases": [
+    "Bolverk"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cthe Evil-Doer\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "North",
+   "aliases": [
+    "North"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cSouth,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Skirnismol",
+   "aliases": [
+    "Skirnismol"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cballad.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thrymskvitha",
+   "aliases": [
+    "Thrymskvitha"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Reginsmol",
+   "aliases": [
+    "Reginsmol"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fafnismol",
+   "aliases": [
+    "Fafnismol"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Guthrunarkvitha",
+   "aliases": [
+    "Guthrunarkvitha"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Jonsson",
+   "aliases": [
+    "Finnur Jonsson"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Atli",
+   "aliases": [
+    "Atli"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cwrote\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sturluson",
+   "aliases": [
+    "Snorri Sturluson"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Oddi",
+   "aliases": [
+    "Oddi"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cBook of the Flat Island\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Celtic",
+   "aliases": [
+    "Celtic"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "South",
+   "aliases": [
+    "South"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 4M/7F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cEast,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jorth",
+   "aliases": [
+    "Jorth"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "13M/1F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cEarth\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dvalin",
+   "aliases": [
+    "Dvalin"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fjalar",
+   "aliases": [
+    "Fjalar"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cGold-Comb\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Valhall",
+   "aliases": [
+    "Valhall"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cHall\n\nof the Slain\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Surt",
+   "aliases": [
+    "Surt"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mithgarthsorm",
+   "aliases": [
+    "Mithgarthsorm"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Harbarthsljoth",
+   "aliases": [
+    "Harbarthsljoth"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lokasenna",
+   "aliases": [
+    "Lokasenna"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "6M/3F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cMiddle Dwelling\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "German",
+   "aliases": [
+    "German"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/4F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Neckel",
+   "aliases": [
+    "Neckel"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sigurth",
+   "aliases": [
+    "Sigurth"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Brynhild",
+   "aliases": [
+    "Brynhild"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ljothahattr",
+   "aliases": [
+    "Ljothahattr"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cSong Measure\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Christian",
+   "aliases": [
+    "Christian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ymir",
+   "aliases": [
+    "Ymir"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Brimir",
+   "aliases": [
+    "Brimir"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cthe\n\nbloody moisture\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Blain",
+   "aliases": [
+    "Blain"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Durin",
+   "aliases": [
+    "Durin"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cNorth,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Eikinskjaldi",
+   "aliases": [
+    "Eikinskjaldi"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cOak Shield\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lofar",
+   "aliases": [
+    "Lofar"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Skuld",
+   "aliases": [
+    "Skuld"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cPast,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gollveig",
+   "aliases": [
+    "Gollveig"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "0M/5F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "\u201cGold-Might\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gnipahellir",
+   "aliases": [
+    "Gnipahellir"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cthe\n\nCliff-Cave\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Byleist",
+   "aliases": [
+    "Byleist"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Vithar",
+   "aliases": [
+    "Vithar"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rig",
+   "aliases": [
+    "Rig"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "44M/21F cues",
+   "age": "young",
+   "age_evidence": "10y/6o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Asgarth",
+   "aliases": [
+    "Asgarth"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Freyr",
+   "aliases": [
+    "Freyr"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/3F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (giant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Vali",
+   "aliases": [
+    "Vali"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ljothatal",
+   "aliases": [
+    "Ljothatal"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cCertain is that | which is sought from runes,\n\nThe runes\u2014,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Billing",
+   "aliases": [
+    "Billing"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "1M/7F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cOthin, again | at evening come,\n\nIf a woman thou wouldst win;\n\nEvil it were | if others than we\n\nShould know of such a sin.\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 88,
+ "speaking": 47
+}

@@ -1,0 +1,500 @@
+{
+ "source": "/root/easy/folk-and-fable/grimm-part-1/source.txt",
+ "characters": [
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 110,
+   "dialogue_lines": 108,
+   "gender": null,
+   "gender_evidence": "contested 404M/213F",
+   "age": "young",
+   "age_evidence": "97y/18o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young king narration",
+   "sample_line": "\u201cWhat ails thee, King\u2019s\n\ndaughter? Thou weepest so that even a stone would show pity.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Die",
+   "aliases": [
+    "Die"
+   ],
+   "mentions": 44,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 105M/64F",
+   "age": "young",
+   "age_evidence": "65y/29o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "John",
+   "aliases": [
+    "Faithful John"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "119M/34F cues",
+   "age": "young",
+   "age_evidence": "13y/6o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "That is the princess of the Golden Dwelling,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Queen",
+   "aliases": [
+    "Queen"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 12,
+   "gender": "female",
+   "gender_evidence": "42M/86F cues",
+   "age": "young",
+   "age_evidence": "30y/3o",
+   "role": "queen",
+   "role_evidence": "in name",
+   "voice_query": "young female queen narration",
+   "sample_line": "\u201cNo,\n\nI did not open the forbidden door;\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jew",
+   "aliases": [
+    "Jew"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "43M/1F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cOh, wonder! what a luck-child\n\nthou art! I will change it for thee, I will change it for thee into\n\nsmall coins, what dost thou want with the great thalers?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 25,
+   "gender": null,
+   "gender_evidence": "contested 66M/35F",
+   "age": "young",
+   "age_evidence": "16y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cby all means go, and if you get anything very good, think of me, I\n\nshould like a drop of sweet red christening wine too.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Das",
+   "aliases": [
+    "Das"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "22M/9F cues",
+   "age": "young",
+   "age_evidence": "28y/4o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mary",
+   "aliases": [
+    "Virgin Mary"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 10,
+   "gender": "female",
+   "gender_evidence": "10M/35F cues",
+   "age": "young",
+   "age_evidence": "19y/0o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cDear child, I am about to make a long\n\njourney, so take into thy keeping the keys of the thirteen doors of\n\nheaven. Twelve of these thou mayest open, and behol",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Legend",
+   "aliases": [
+    "Legend"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/5F",
+   "age": "old",
+   "age_evidence": "6y/7o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Benjamin",
+   "aliases": [
+    "Benjamin"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 14,
+   "gender": null,
+   "gender_evidence": "contested 16M/16F",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cDear mother, why art thou so sad?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hans",
+   "aliases": [
+    "Hans"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/3F cues",
+   "age": "young",
+   "age_evidence": "12y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Devil",
+   "aliases": [
+    "Devil"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/4F",
+   "age": "young",
+   "age_evidence": "5y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 13M/17F",
+   "age": "young",
+   "age_evidence": "8y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cthou shalt soon learn what it is\n\nto shudder, but thou wilt not earn thy bread by that.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dwelling",
+   "aliases": [
+    "Golden Dwelling"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 12M/16F",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Von",
+   "aliases": [
+    "Von"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": "young",
+   "age_evidence": "8y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bird",
+   "aliases": [
+    "Bird"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": "young",
+   "age_evidence": "5y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Himmel",
+   "aliases": [
+    "Himmel"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fuchs",
+   "aliases": [
+    "Der Fuchs"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tales",
+   "aliases": [
+    "Household Tales"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Grimm",
+   "aliases": [
+    "Brothers Grimm"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lady",
+   "aliases": [
+    "Lady"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "2M/5F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wolf",
+   "aliases": [
+    "Der Wolf"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "71M/27F cues",
+   "age": "young",
+   "age_evidence": "7y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cDear children, I have to go into the forest, be\n\non your guard against the wolf; if he come in, he will devour you\n\nall\u2014skin, hair, and all. The wretch often d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gretel",
+   "aliases": [
+    "Gretel"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Thumbling",
+   "aliases": [
+    "Thumbling"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rose",
+   "aliases": [
+    "Rose"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Goose",
+   "aliases": [
+    "Goose"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Alas",
+   "aliases": [
+    "Alas"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cnow I see what has happened, now it comes to light! You are\n\na true friend! You have devoured all when you were standing godmother.\n\nFirst top off, then half d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hark",
+   "aliases": [
+    "Hark"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cYes, if thou hast any money.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Stop",
+   "aliases": [
+    "Stop"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "9M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cI\n\nwill warm thee a little,\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 29,
+ "speaking": 12
+}

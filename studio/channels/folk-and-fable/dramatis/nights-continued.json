@@ -1,0 +1,756 @@
+{
+ "source": "/root/easy/folk-and-fable/nights-continued/source.txt",
+ "characters": [
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 105,
+   "dialogue_lines": 16,
+   "gender": "male",
+   "gender_evidence": "490M/49F cues",
+   "age": "young",
+   "age_evidence": "38y/3o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\" or--\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God",
+    "May God"
+   ],
+   "mentions": 52,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "123M/9F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"In the name of God,\n\nthe Compassionate, the Merciful.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Efreet",
+   "aliases": [
+    "Efreet"
+   ],
+   "mentions": 36,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "96M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wezeer",
+   "aliases": [
+    "Wezeer"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "145M/14F cues",
+   "age": "young",
+   "age_evidence": "21y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Ten \u1e33eer\u00e1\u1e6ds, the price of naphtha and reeds, for burning\n\nthe body of Ja\u1ea1far, the son of Ya\u1e25y\u00e0.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Illustration",
+   "aliases": [
+    "Illustration"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "52M/11F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"El-Ins\u00e1n el-K\u00e1mil,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Arabs",
+   "aliases": [
+    "Arabs"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "17M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"a piece of gold,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Allah",
+   "aliases": [
+    "Allah"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "23M/10F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Khaleefeh",
+   "aliases": [
+    "Khaleefeh"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "28M/3F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Seeing that this company had girded on the saddles\n\nTo repair to thy overflowing river, I came with my jar.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cairo",
+   "aliases": [
+    "Cairo"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"abw\u00e1\u1e33\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Egypt",
+   "aliases": [
+    "Egypt"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Muslim",
+   "aliases": [
+    "Muslim"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"\u1e33um\u1e33um\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Muslims",
+   "aliases": [
+    "Muslims"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"a\n\nreward for bringing good news,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Prophet",
+   "aliases": [
+    "Prophet"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "18M/4F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Vengeance is mine; I will repay, saith the Lord.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "37M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "How",
+   "aliases": [
+    "How"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "32M/7F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\" said El-A\u1e63ma'ee, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Emeers",
+   "aliases": [
+    "Emeers"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "20M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wezeers",
+   "aliases": [
+    "Wezeers"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "19M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Jinnee",
+   "aliases": [
+    "Jinnee"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "20M/8F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\u1e62akhr el-Jinn.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Arab",
+   "aliases": [
+    "Arab"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "28M/1F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I give myself to thee,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Calcutta",
+   "aliases": [
+    "Calcutta"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"'Efreeteh,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Persians",
+   "aliases": [
+    "Persians"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\" as in my translation; but in\n\nthe Cairo edition, he is said to have been \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chamberlains",
+   "aliases": [
+    "Chamberlains"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "16M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Solomon",
+   "aliases": [
+    "Solomon"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "11M/3F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"[150]\n\nNOTE 10. \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Aboo",
+   "aliases": [
+    "Aboo"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"The huntsmen,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Abd",
+   "aliases": [
+    "Abd"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Eastern",
+   "aliases": [
+    "Eastern"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Jinn",
+   "aliases": [
+    "Jinn"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "28M/11F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Great",
+   "aliases": [
+    "Most Great"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "44M/4F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Whosoever",
+   "aliases": [
+    "Whosoever"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bring",
+   "aliases": [
+    "Bring"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "25M/7F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Praise",
+   "aliases": [
+    "Praise"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Syria",
+   "aliases": [
+    "Syria"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Persia",
+   "aliases": [
+    "Persia"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arabian",
+   "aliases": [
+    "Arabian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"The sun's saluting the\n\nOrnament of the Good,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Arabic",
+   "aliases": [
+    "Arabic"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Soo\u1e33s;\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Persian",
+   "aliases": [
+    "Persian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Idem",
+   "aliases": [
+    "Idem"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nuzhet",
+   "aliases": [
+    "Nuzhet"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Modern Egyptians,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Egyptians",
+   "aliases": [
+    "Modern Egyptians"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Modern Egyptians,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Efreets",
+   "aliases": [
+    "Efreets"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Greek",
+   "aliases": [
+    "Greek"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ornament",
+   "aliases": [
+    "Ornament"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\" or--\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jews",
+   "aliases": [
+    "Jews"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cherkh",
+   "aliases": [
+    "Cherkh"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"[165]\n\nThe hunting of the wild ass is another sport of the Persians and Arabs,\n\nbut one of a more difficult nature. This animal is found in Syria, and\n\nin the ",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 44,
+ "speaking": 23
+}

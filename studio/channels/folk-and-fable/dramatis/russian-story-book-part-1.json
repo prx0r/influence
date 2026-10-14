@@ -1,0 +1,721 @@
+{
+ "source": "/root/easy/folk-and-fable/russian-story-book-part-1/source.txt",
+ "characters": [
+  {
+   "name": "Ilya",
+   "aliases": [
+    "Ilya"
+   ],
+   "mentions": 173,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "425M/79F cues",
+   "age": "young",
+   "age_evidence": "91y/63o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Nay, I ask no gifts from you,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Dunai",
+   "aliases": [
+    "Dunai"
+   ],
+   "mentions": 54,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 137M/72F",
+   "age": "young",
+   "age_evidence": "56y/2o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "You shall find her in Kiev town,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Vladimir",
+   "aliases": [
+    "Prince Vladimir"
+   ],
+   "mentions": 50,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "179M/40F cues",
+   "age": "young",
+   "age_evidence": "87y/12o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Good youth,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Cloudfall",
+   "aliases": [
+    "Cloudfall"
+   ],
+   "mentions": 43,
+   "dialogue_lines": 14,
+   "gender": "male",
+   "gender_evidence": "103M/10F cues",
+   "age": "young",
+   "age_evidence": "12y/11o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Lend me your aid, my shaggy bay steed,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kiev",
+   "aliases": [
+    "Kiev"
+   ],
+   "mentions": 41,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "78M/29F cues",
+   "age": "young",
+   "age_evidence": "36y/6o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nThen all the guests grew silent, and for a long time no man spoke a\n\nword; and as often as the eye of Vladimir sought out one man, he took\n\npains to hide him",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Murom",
+   "aliases": [
+    "Murom"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "56M/10F cues",
+   "age": "old",
+   "age_evidence": "14y/27o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Good youth,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hunter",
+   "aliases": [
+    "Hunter"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "55M/9F cues",
+   "age": "old",
+   "age_evidence": "9y/10o",
+   "role": "hunter",
+   "role_evidence": "in name",
+   "voice_query": "old male hunter narration",
+   "sample_line": "\"we shall be\n\nsafe from the horror that stalks in the darkness by reason of the\n\nbarrier of Ilya of Murom.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nikitich",
+   "aliases": [
+    "Nikitich"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "68M/19F cues",
+   "age": "young",
+   "age_evidence": "24y/8o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "It will be better,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Falcon",
+   "aliases": [
+    "Falcon"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "64M/14F cues",
+   "age": "old",
+   "age_evidence": "11y/12o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"'Tis not for youths even of\n\nsupernatural wisdom to pursue me in the open plain. It is high time\n\nthat you were hiding from me in the deep depths of a feather-",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Robber",
+   "aliases": [
+    "Robber"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "46M/11F cues",
+   "age": "young",
+   "age_evidence": "10y/9o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"His enormous nest is built upon the tops of seven oaks which saw\n\nthe dawn of history. When he whistles like a nightingale, roars like\n\na lion, and hisses like",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nightingale",
+   "aliases": [
+    "Nightingale"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "41M/12F cues",
+   "age": "young",
+   "age_evidence": "10y/7o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Fools all!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Apraxia",
+   "aliases": [
+    "Princess Apraxia"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 37M/39F",
+   "age": "young",
+   "age_evidence": "36y/1o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Surely,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "143M/54F cues",
+   "age": "young",
+   "age_evidence": "47y/9o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\"Ho, there, ye headsmen, seize quiet Dunai by his white hands, lead\n\nhim out upon the open steppe and chop off his turbulent head.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Svyatogor",
+   "aliases": [
+    "Svyatogor"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "59M/4F cues",
+   "age": "young",
+   "age_evidence": "6y/3o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Nothing but melting snow\n\nand moist land,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Russia",
+   "aliases": [
+    "Holy Russia"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "39M/5F cues",
+   "age": "young",
+   "age_evidence": "11y/6o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Ho, ho! Ilya, do you\n\nsleep there and take your ease, unmindful of the great misfortune\n\nthat threatens to o'erwhelm you? The hero Svyatogor is coming to his\n\n",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Earth",
+   "aliases": [
+    "Mother Earth"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "53M/23F cues",
+   "age": "old",
+   "age_evidence": "3y/10o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"You have done well, younger brother,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bird",
+   "aliases": [
+    "Magic Bird"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "30M/7F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Nay, children,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Russian",
+   "aliases": [
+    "Russian"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nastasya",
+   "aliases": [
+    "Princess Nastasya"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 31M/38F",
+   "age": "young",
+   "age_evidence": "22y/2o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Go not to this banquet, quiet Dunai, for there will be much eating\n\nand more drinking, and when the boasting time comes near the end of\n\nthe feast you will bra",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lithuania",
+   "aliases": [
+    "Lithuania"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "24M/7F cues",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Prince Vladimir,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Zenira",
+   "aliases": [
+    "Princess Zenira"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 12M/12F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Do not eat or drink of\n\nthese things until you are satisfied, good youth,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "East",
+   "aliases": [
+    "East"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "130M/24F cues",
+   "age": "young",
+   "age_evidence": "28y/11o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mountains",
+   "aliases": [
+    "Holy Mountains"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "20M/2F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"This casket shall fit him for whom it has been hewn from the rock.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tatars",
+   "aliases": [
+    "Tatars"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Chernigof",
+   "aliases": [
+    "Chernigof"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sun",
+   "aliases": [
+    "Fair Sun"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "55M/18F cues",
+   "age": "young",
+   "age_evidence": "14y/8o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nay",
+   "aliases": [
+    "Nay"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 10M/6F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\"it is Ilya the Old\n\nCoss\u00e1ck on his shaggy bay steed Cloudfall, and he rides towards us,\n\nbringing our Father as a prisoner.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "North",
+   "aliases": [
+    "North"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "South",
+   "aliases": [
+    "South"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/3F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "West",
+   "aliases": [
+    "West"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/3F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Marina",
+   "aliases": [
+    "Princess Marina"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/11F",
+   "age": "young",
+   "age_evidence": "14y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nikita",
+   "aliases": [
+    "Nikita"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Welcome, my brave and merry little fellow,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Novgorod",
+   "aliases": [
+    "Novgorod"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Easter",
+   "aliases": [
+    "Easter"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Welcome",
+   "aliases": [
+    "Welcome"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "16M/0F cues",
+   "age": "young",
+   "age_evidence": "6y/4o",
+   "role": "giant",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male giant narration",
+   "sample_line": "\"Welcome, and thrice\n\nwelcome! Have you been far afield?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tatar",
+   "aliases": [
+    "Tatar"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Morass",
+   "aliases": [
+    "Black Morass"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Thereupon",
+   "aliases": [
+    "Thereupon"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tsars",
+   "aliases": [
+    "Tsars"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/3F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hail",
+   "aliases": [
+    "Hail"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/2F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"and pardon\n\nmy coming without announcement. Will you wed with Prince Vladimir,\n\nthe Fair Sun of Kiev?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dnieper",
+   "aliases": [
+    "Dnieper"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 42,
+ "speaking": 25
+}

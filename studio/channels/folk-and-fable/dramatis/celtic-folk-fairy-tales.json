@@ -1,0 +1,891 @@
+{
+ "source": "/root/easy/folk-and-fable/celtic-folk-fairy-tales/source.txt",
+ "characters": [
+  {
+   "name": "Guleesh",
+   "aliases": [
+    "Guleesh"
+   ],
+   "mentions": 59,
+   "dialogue_lines": 11,
+   "gender": null,
+   "gender_evidence": "contested 178M/104F",
+   "age": "young",
+   "age_evidence": "64y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "By my hand,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Donald",
+   "aliases": [
+    "Donald"
+   ],
+   "mentions": 32,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "53M/17F cues",
+   "age": "young",
+   "age_evidence": "13y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "I won't have her, I tell you; I won't have her!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Hudden",
+   "aliases": [
+    "Hudden"
+   ],
+   "mentions": 31,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "44M/15F cues",
+   "age": "young",
+   "age_evidence": "9y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "Let's kill Daisy,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Conall",
+   "aliases": [
+    "Conall"
+   ],
+   "mentions": 29,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "95M/13F cues",
+   "age": "young",
+   "age_evidence": "16y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "This is what I am thinking,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Deirdre",
+   "aliases": [
+    "Deirdre"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 62M/52F",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "What men are these you refer to?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Dudden",
+   "aliases": [
+    "Dudden"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "31M/12F cues",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "Sit still, you vagabond,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Tom",
+   "aliases": [
+    "Tom"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "49M/6F cues",
+   "age": "young",
+   "age_evidence": "10y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "Dear me,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Naois",
+   "aliases": [
+    "Naois"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "65M/29F cues",
+   "age": "young",
+   "age_evidence": "11y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "No! yonder is a woman's cry of\n\ndistress,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Illustration",
+   "aliases": [
+    "Illustration"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 30M/20F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"It can't be,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Connla",
+   "aliases": [
+    "Connla"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 46M/37F",
+   "age": "young",
+   "age_evidence": "13y/2o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Whence comest thou, maiden?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Celtic",
+   "aliases": [
+    "Celtic"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 13M/8F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Erin",
+   "aliases": [
+    "Erin"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "61M/19F cues",
+   "age": "young",
+   "age_evidence": "10y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"O Conall, is it\n\nyou that are here?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 21M/13F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\" She\n\ngave him no answer. \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Neary",
+   "aliases": [
+    "Neary"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "18M/6F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Let's kill Daisy,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Connachar",
+   "aliases": [
+    "Connachar"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "56M/22F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"What is the reason of your journey?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "France",
+   "aliases": [
+    "France"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 30M/17F",
+   "age": "young",
+   "age_evidence": "11y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"He'll have no good to get out of the young girl,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lepracaun",
+   "aliases": [
+    "Lepracaun"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "22M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Dig under that boliaun, and you'll get the\n\ngreat crock all full of guineas.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Daisy",
+   "aliases": [
+    "Daisy"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 15M/11F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Some of your best whisky,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Uisnech",
+   "aliases": [
+    "Uisnech"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "20M/5F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"What piercing, shrill cry is that--the most melodious my ear ever\n\nheard, and the shrillest that ever struck my heart of all the cries I\n\never heard?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ulster",
+   "aliases": [
+    "Ulster"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "28M/11F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gaelic",
+   "aliases": [
+    "Gaelic"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Irish",
+   "aliases": [
+    "Irish"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 4M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Ossian\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Conn",
+   "aliases": [
+    "Conn"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 121M/70F",
+   "age": "young",
+   "age_evidence": "23y/5o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "To whom art thou talking, my son?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Lochlann",
+   "aliases": [
+    "Lochlann"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "15M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\" said Conall, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lake",
+   "aliases": [
+    "Brown Lake"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 27M/16F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"I'll have her now! I'll have her now!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ireland",
+   "aliases": [
+    "Ireland"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/7F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Druid",
+   "aliases": [
+    "Druid"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 13M/13F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Malcolm",
+   "aliases": [
+    "Malcolm"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 12M/8F",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Are you doing any soothsaying?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tales",
+   "aliases": [
+    "Fairy Tales"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 8M/11F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"FOLK-LORE\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Celts",
+   "aliases": [
+    "Celts"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "0M/3F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "\"The Horned Women\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kennedy",
+   "aliases": [
+    "Kennedy"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "0M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "\"Grimm's Goblins\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yellowclaw",
+   "aliases": [
+    "Conall Yellowclaw"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Myddvai",
+   "aliases": [
+    "Myddvai"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 8M/7F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arden",
+   "aliases": [
+    "Arden"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "10M/4F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"What like are these men when seen, if we were to see them?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mac",
+   "aliases": [
+    "Ferchar Mac"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "18M/2F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Folk",
+   "aliases": [
+    "Celtic Folk"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 12M/18F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Campbell",
+   "aliases": [
+    "Campbell"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Scotland",
+   "aliases": [
+    "Scotland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Messrs",
+   "aliases": [
+    "Messrs"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/4F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Celt",
+   "aliases": [
+    "Celt"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 17M/11F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"They went forth to battle, but they always\n\nfell,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Maiden",
+   "aliases": [
+    "Fairy Maiden"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 81M/75F",
+   "age": "young",
+   "age_evidence": "16y/1o",
+   "role": "maiden",
+   "role_evidence": "in name",
+   "voice_query": "young maiden narration",
+   "sample_line": "\"To whom art thou talking, my son?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hair",
+   "aliases": [
+    "Fiery Hair"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 11M/7F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"\n\nThe king in fear at what the maiden said, which he heard though he\n\ncould not see her, called aloud to his Druid, Coran by name.\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fights",
+   "aliases": [
+    "Hundred Fights"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 9M/6F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Whence comest thou, maiden?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Plain",
+   "aliases": [
+    "Plain"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "27M/13F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"'Tis a glorious place, forsooth, that Connla holds among shortlived\n\nmortals awaiting the day of death. But now the folk of life, the\n\never-living ones, beg an",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Coran",
+   "aliases": [
+    "Coran"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 13M/9F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\" he said, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tis",
+   "aliases": [
+    "Tis"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 16M/15F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Unbaked is thy bread,\n\nI will not have thee,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hie",
+   "aliases": [
+    "Hie"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Hie over cap!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mary",
+   "aliases": [
+    "Mary"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 7M/5F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"My horse, my bridle, and\n\nsaddle!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 38M/22F",
+   "age": "young",
+   "age_evidence": "7y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Well, I do not mind taking soothsaying from you, if you had\n\nsoothsaying for me, and you would be willing to do it.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Och",
+   "aliases": [
+    "Och"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "39M/14F cues",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"that's turning round, turning round, as you please yourself, and no\n\nman can put you back. I wish I was the same as you.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Allen",
+   "aliases": [
+    "Allen"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/4F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 52,
+ "speaking": 38
+}

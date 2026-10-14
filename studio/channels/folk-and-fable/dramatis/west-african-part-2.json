@@ -1,0 +1,398 @@
+{
+ "source": "/root/easy/folk-and-fable/west-african-part-2/source.txt",
+ "characters": [
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "214M/45F cues",
+   "age": "young",
+   "age_evidence": "11y/1o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\u201cI have found the ring! I have\n\nfound the ring!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ohia",
+   "aliases": [
+    "Ohia"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "76M/31F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Omanhene",
+   "aliases": [
+    "Omanhene"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "51M/1F cues",
+   "age": "young",
+   "age_evidence": "13y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cI have only one riddle left. If you are able\n\nto answer that, you may put me to death.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "States",
+   "aliases": [
+    "United States"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cProject Gutenberg\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Klo",
+   "aliases": [
+    "Klo"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "39M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cI was sent by His Majesty Mauri, the ruler of the world,\n\nto buy him palm wine.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Awirehu",
+   "aliases": [
+    "Awirehu"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 19M/15F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Kwesi",
+   "aliases": [
+    "Kwesi"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 22M/20F",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": "princess",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "young princess narration",
+   "sample_line": "While you were an elephant I was the mat you lay on,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Quarcoo",
+   "aliases": [
+    "Quarcoo"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "41M/4F cues",
+   "age": "young",
+   "age_evidence": "12y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cI will go\n\nto the farm\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kwofi",
+   "aliases": [
+    "Kwofi"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "38M/13F cues",
+   "age": "young",
+   "age_evidence": "15y/7o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cOh, my son Kwofi, there is none left for\n\nyou! You must go to the field and get some ripe paw-paw.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mawu",
+   "aliases": [
+    "Maku Mawu"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "40M/4F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cOh,\n\ndear! I do not think it is any use carrying this stone home. How I wish\n\nit were a yam! Then I could cook it for dinner.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mybrow",
+   "aliases": [
+    "Mybrow"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "23M/9F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWho is there,\n\ncutting down the bushes?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Koklovi",
+   "aliases": [
+    "Koklovi"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "17M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "Whether he\u2019s ruler of the world or not,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Tsin",
+   "aliases": [
+    "Kweku Tsin"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "19M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tiger",
+   "aliases": [
+    "King Tiger"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "80M/7F cues",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Go home,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Place",
+   "aliases": [
+    "Assembly Place"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "57M/11F cues",
+   "age": "young",
+   "age_evidence": "11y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "22M/1F cues",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Depor",
+   "aliases": [
+    "Depor"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "8M/4F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cO my\n\njuju Depor! What shall I do?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Majesty",
+   "aliases": [
+    "Majesty"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThere stands\n\nthe worst traitor\u2014for he gave up the kind host who had saved his life.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mauri",
+   "aliases": [
+    "Mauri"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWhether he\u2019s ruler of the world or not,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fia",
+   "aliases": [
+    "Maku Fia"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "19M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Moo",
+   "aliases": [
+    "Moo"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "19M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cMoo,\n\nmoo.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chameleon",
+   "aliases": [
+    "Chameleon"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "14M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cA king without subjects is no king.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Coast",
+   "aliases": [
+    "Gold Coast"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cAnimals\u2019 Language,\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 23,
+ "speaking": 17
+}

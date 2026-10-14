@@ -1,0 +1,315 @@
+{
+ "source": "/root/easy/folk-and-fable/west-african-part-1/source.txt",
+ "characters": [
+  {
+   "name": "Anansi",
+   "aliases": [
+    "Anansi",
+    "Egya Anansi",
+    "Father Anansi"
+   ],
+   "mentions": 93,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "357M/52F cues",
+   "age": "young",
+   "age_evidence": "54y/17o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Oh, yes!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Spider",
+   "aliases": [
+    "Spider"
+   ],
+   "mentions": 30,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "111M/5F cues",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": "fisherman",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young male fisherman narration",
+   "sample_line": "Can you not see?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "169M/7F cues",
+   "age": "young",
+   "age_evidence": "9y/2o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\u201cI know Lizard is a rogue, because he stole\n\nmy three wives from me. Perhaps he is the thief.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tsin",
+   "aliases": [
+    "Kweku Tsin"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "68M/1F cues",
+   "age": "young",
+   "age_evidence": "15y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cFather, why do you\n\nnot hang the pot on your back? Then you could easily climb the tree.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lizard",
+   "aliases": [
+    "Lizard"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "65M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nyankupon",
+   "aliases": [
+    "Nyankupon"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "29M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cHe will just be as long as this stick\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Adzanumee",
+   "aliases": [
+    "Adzanumee"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 5,
+   "gender": "female",
+   "gender_evidence": "14M/53F cues",
+   "age": "young",
+   "age_evidence": "14y/0o",
+   "role": "mother",
+   "role_evidence": "12 nearby mentions",
+   "voice_query": "young female mother narration",
+   "sample_line": "\u201cWhere can Adzanumee\n\nbe? She does not deserve that beautiful name. She is only a yam.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ant",
+   "aliases": [
+    "Ant"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "129M/23F cues",
+   "age": "young",
+   "age_evidence": "21y/8o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "I\n\nknow your tricks, Anansi,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Akim",
+   "aliases": [
+    "Akim"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "19M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cMr Min\u016b must be very rich.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thunder",
+   "aliases": [
+    "Thunder"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "26M/2F cues",
+   "age": "old",
+   "age_evidence": "2y/5o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Coast",
+   "aliases": [
+    "Gold Coast"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "14M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cthese people of\n\nthe West Coast were for the most part the broken fragments of races\n\nthat have been driven to the sea by the stronger races of the\n\ninterior.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Accra",
+   "aliases": [
+    "Accra"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cTo whom do these cows belong?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "European",
+   "aliases": [
+    "European"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sunrise",
+   "aliases": [
+    "Sunrise"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 17M/17F",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cHad she lived, surely she would have been my wife.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "African",
+   "aliases": [
+    "West African"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "24M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cNo, they will not be able,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kofi",
+   "aliases": [
+    "Kofi"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cIt is time we had started.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dong",
+   "aliases": [
+    "Dong"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 11M/12F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": "witch",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "witch narration",
+   "sample_line": "\u201cThank you\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 18,
+ "speaking": 14
+}

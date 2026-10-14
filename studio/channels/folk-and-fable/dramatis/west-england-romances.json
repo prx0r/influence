@@ -1,0 +1,1114 @@
+{
+ "source": "/root/easy/folk-and-fable/west-england-romances/source.txt",
+ "characters": [
+  {
+   "name": "Cornwall",
+   "aliases": [
+    "Cornwall",
+    "Old Cornwall"
+   ],
+   "mentions": 48,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "56M/11F cues",
+   "age": "young",
+   "age_evidence": "10y/7o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201c\u2018Have you any stories like that, gudewife?\u2019\n\n\u201c\u2018Ah,\u2019 she said; \u2018there were plenty of people that could tell those\n\nstories once. I used to hear them telling the",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Leven",
+   "aliases": [
+    "Leven"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "15M/7F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWhen, with panniers astride,\n\nA packhorse one can ride\n\nThrough St Leven\u2019s Stone,\n\nThe world will be done.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cornish",
+   "aliases": [
+    "Cornish"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "21M/6F cues",
+   "age": "young",
+   "age_evidence": "4y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWonder\n\nGatherer\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Neot",
+   "aliases": [
+    "Neot"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "21M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cSante Brechane,\n\ncum omnibus sanctis, ora pro nobis,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nectan",
+   "aliases": [
+    "Nectan"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cdeep waters.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Arthur",
+   "aliases": [
+    "King Arthur"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "104M/7F cues",
+   "age": "young",
+   "age_evidence": "15y/12o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201ca tyrannical and bloody king.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Keverne",
+   "aliases": [
+    "Keverne"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "30M/1F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Just",
+   "aliases": [
+    "Just"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "25M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cIronstone\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kieve",
+   "aliases": [
+    "Kieve"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "14M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201ccommune with Nature\u2019s works, and view her charms unrolled,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Keyne",
+   "aliases": [
+    "Keyne"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 3,
+   "gender": "female",
+   "gender_evidence": "2M/10F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cthe strength of her purity.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "18M/6F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThere is no help for thee, unless thou cleansest the holy well.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Piran",
+   "aliases": [
+    "Piran"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "End",
+   "aliases": [
+    "End"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "123M/19F cues",
+   "age": "young",
+   "age_evidence": "11y/9o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cLittle Jack Horner,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "German",
+   "aliases": [
+    "German"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "15M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (emperor shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cCurse your persecutors,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ludgvan",
+   "aliases": [
+    "Ludgvan"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "13M/4F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cEnglish cholera.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Danes",
+   "aliases": [
+    "Danes"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "11M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cBollait,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "England",
+   "aliases": [
+    "England"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Kea",
+   "aliases": [
+    "Kea"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "9M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cCunning Man,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Constantine",
+   "aliases": [
+    "Constantine"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nun",
+   "aliases": [
+    "Nun"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/4F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tintagel",
+   "aliases": [
+    "Tintagel"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "16M/0F cues",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cFor there was no man knew from whence he came;\n\nBut after tempest, when the long wave broke\n\nAll down the thundering shores of Bude and Boas,\n\nThere came a day",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Johana",
+   "aliases": [
+    "Johana"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 9M/17F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Well",
+   "aliases": [
+    "Holy Well",
+    "Madron Well"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 106M/86F",
+   "age": "young",
+   "age_evidence": "33y/17o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cup the attempt to discover Nighton\u2019s Kieve;\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sennen",
+   "aliases": [
+    "Sennen"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThe northmen wild once more shall land,\n\nAnd leave their bones on Escol\u2019s sand.\n\nThe soil of Vellan-Druchar\u2019s plain,\n\nAgain shall take a sanguine stain;\n\nAnd o",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Grace",
+   "aliases": [
+    "Grace"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWest\n\nCountrie.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Vellan",
+   "aliases": [
+    "Vellan"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Christian",
+   "aliases": [
+    "Christian"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (emperor shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cCleanse the well\u2014wash, and drink,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Irish",
+   "aliases": [
+    "Irish"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThe Fool of the Forest\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ireland",
+   "aliases": [
+    "Ireland"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cTravels in Persia,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Probus",
+   "aliases": [
+    "Probus"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "10M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cSaint Probus and Grace,\n\nNot the first, but the last;\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mayor",
+   "aliases": [
+    "Mayor"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Heaven",
+   "aliases": [
+    "Heaven"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bodellen",
+   "aliases": [
+    "Bodellen"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cHeadland of Blood.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rovier",
+   "aliases": [
+    "Rovier"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cA well there is in the west country,\n\nAnd a clearer one never was seen.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Alcie",
+   "aliases": [
+    "Aunt Alcie"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 8,
+   "gender": "female",
+   "gender_evidence": "4M/12F cues",
+   "age": "old",
+   "age_evidence": "1y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "\u201cI am so anxious. I have not heard of\n\nJohn for six long months. I could not sleep last night, so I rose with\n\nthe light, and came here, determined to ask the w",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mount",
+   "aliases": [
+    "Mount"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cthe waters were the strongest, at\n\nthe flowing of the tide;\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Penzance",
+   "aliases": [
+    "Penzance"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Campbell",
+   "aliases": [
+    "Campbell"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cWest Highland Tales,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "March",
+   "aliases": [
+    "March"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dennis",
+   "aliases": [
+    "Dennis"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cHistory of the Saints of the Church of Rome.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gundred",
+   "aliases": [
+    "Gundred"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Chough",
+   "aliases": [
+    "Chough"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cTalons and beak all red with blood\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Pengerswick",
+   "aliases": [
+    "Pengerswick"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "0M/4F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": "witch",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "old female witch narration",
+   "sample_line": "\u201cWith great pretended spiritual motions,\n\nAnd many fine whimsical notions,\n\nWith blind zeal and large devotions.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Eve",
+   "aliases": [
+    "Eve"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "204M/59F cues",
+   "age": "young",
+   "age_evidence": "33y/5o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cTokens,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ives",
+   "aliases": [
+    "Ives"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cThe Furry,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bodmin",
+   "aliases": [
+    "Bodmin"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wales",
+   "aliases": [
+    "Wales"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cGUERNSEY.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "History",
+   "aliases": [
+    "History"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Chiwidden",
+   "aliases": [
+    "Chiwidden"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Barius",
+   "aliases": [
+    "Barius"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gilbert",
+   "aliases": [
+    "Davies Gilbert"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cParochial History:\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hayle",
+   "aliases": [
+    "Hayle"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Riviere",
+   "aliases": [
+    "Riviere"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Michael",
+   "aliases": [
+    "Michael"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/3F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Maddern",
+   "aliases": [
+    "Maddern"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Esq",
+   "aliases": [
+    "Esq"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cParochial History of Cornwall.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mardren",
+   "aliases": [
+    "Mardren"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Welsh",
+   "aliases": [
+    "Welsh"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cSurvey of Cornwall,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Camelford",
+   "aliases": [
+    "Camelford"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThere is a place within\n\nThe winding shore of Severne sea\n\nOn mids of rock, about whose foote\n\nThe tydes turne\u2014keeping play.\n\nA towery-topped castle here,\n\nWid",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "British",
+   "aliases": [
+    "British"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cpieces of\n\narmour, rings, and brass furniture for horses are sometimes digged up\n\nhere by the countrymen; and after so many ages, the tradition of a bloody\n\nvi",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Druchar",
+   "aliases": [
+    "Druchar"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cbrought home a west wind\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Saxons",
+   "aliases": [
+    "Saxons"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Igerna",
+   "aliases": [
+    "Igerna"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/5F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Modred",
+   "aliases": [
+    "Modred"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cCamulus is another name of the god of war, occurring in two of Gruter\u2019s\n\ninscriptions.\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 65,
+ "speaking": 41
+}

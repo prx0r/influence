@@ -1,0 +1,810 @@
+{
+ "source": "/root/easy/folk-and-fable/south-african-folk-tales/source.txt",
+ "characters": [
+  {
+   "name": "Jackal",
+   "aliases": [
+    "Cousin Jackal",
+    "Jackal",
+    "Little Jackal"
+   ],
+   "mentions": 181,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "560M/127F cues",
+   "age": "young",
+   "age_evidence": "92y/23o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "What a foolish fellow you are,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Lion",
+   "aliases": [
+    "Lion",
+    "Uncle Lion"
+   ],
+   "mentions": 166,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "553M/162F cues",
+   "age": "young",
+   "age_evidence": "104y/21o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Is this the strong man?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Tortoise",
+   "aliases": [
+    "Little Tortoise",
+    "Tortoise"
+   ],
+   "mentions": 47,
+   "dialogue_lines": 27,
+   "gender": "male",
+   "gender_evidence": "69M/5F cues",
+   "age": "young",
+   "age_evidence": "15y/4o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Look here,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Baboon",
+   "aliases": [
+    "Baboon"
+   ],
+   "mentions": 32,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "74M/15F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nIn this manner Baboon questioned them all, one after the other, but they\n\neach denied the charge. Then he addressed the following words to them,\n\nand said,\n\n",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Elephant",
+   "aliases": [
+    "Elephant"
+   ],
+   "mentions": 23,
+   "dialogue_lines": 14,
+   "gender": "male",
+   "gender_evidence": "33M/0F cues",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nLion and Jackal stepped aside to consult with one another, and then Lion\n\nwanted to know what form of security he would have that Crocodile would\n\nkeep to hi",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wolf",
+   "aliases": [
+    "Wolf"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "81M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "I acknowledge, I acknowledge!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Mother",
+   "aliases": [
+    "Mother"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 12,
+   "gender": null,
+   "gender_evidence": "contested 59M/103F",
+   "age": "young",
+   "age_evidence": "37y/8o",
+   "role": "mother",
+   "role_evidence": "in name",
+   "voice_query": "young mother narration",
+   "sample_line": "\"Mother! take me up!\n\nGrandmother! take me up! Oh me! Alas!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rabbit",
+   "aliases": [
+    "Rabbit"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 16,
+   "gender": "male",
+   "gender_evidence": "42M/1F cues",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"I will not go and dance. All of you are mad to\n\nattempt to get water from the ground by dancing.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hyena",
+   "aliases": [
+    "Hyena"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "54M/21F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (bride shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"\n\nHyena declared the same, saying, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Monkey",
+   "aliases": [
+    "Monkey"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "61M/3F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "I do not want it,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Tiger",
+   "aliases": [
+    "Tiger"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "48M/13F cues",
+   "age": "young",
+   "age_evidence": "14y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Friend Jackal, I am quite out of breath, and am half dead\n\nwith fright, for I have just seen a terrible looking fellow, with a\n\nlarge and thick head, and on my",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Crocodile",
+   "aliases": [
+    "Crocodile"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "31M/3F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "Well,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Boer",
+   "aliases": [
+    "Boer"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "28M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\" The two had it mighty hard in the\n\nburning sun, and on the dry veldt, but eventually they reached Lion and\n\nhanded him the treaty.\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mrs",
+   "aliases": [
+    "Mrs"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 11M/12F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "But I would like to see them, Cousin Jackal,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Snake",
+   "aliases": [
+    "Snake"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 41M/28F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"The Ostrich, because he is the largest,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ram",
+   "aliases": [
+    "Ram"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "45M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Good day, friend! What\n\nmay your name be?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bushmen",
+   "aliases": [
+    "Bushmen"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"South-African folklore is,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Woman",
+   "aliases": [
+    "Woman"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": "female",
+   "gender_evidence": "21M/50F cues",
+   "age": "young",
+   "age_evidence": "9y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\" Then they said to the\n\nowner of the sweet food, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Please",
+   "aliases": [
+    "Please"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "17M/4F cues",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"You are my match.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Why",
+   "aliases": [
+    "Why"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "36M/16F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Give me a fresh thong.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Vulture",
+   "aliases": [
+    "Vulture"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 14,
+   "gender": "male",
+   "gender_evidence": "22M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"No, Vulture is too dirty, his odor is terrible.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cows",
+   "aliases": [
+    "Cows"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "female",
+   "gender_evidence": "13M/38F cues",
+   "age": "young",
+   "age_evidence": "6y/4o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\" The Mother (of the kraal) said, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mouse",
+   "aliases": [
+    "Mouse"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 10M/6F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"\n\nShe did so.\n\nHe then put the same question to Cat, and when she exculpated herself,\n\nBaboon called to Dog, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hottentots",
+   "aliases": [
+    "Hottentots"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Look here!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dove",
+   "aliases": [
+    "Dove"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 10M/12F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Give me one of your little ones.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sun",
+   "aliases": [
+    "Sun"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "28M/4F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "From to-day thou shalt have a (certain) time of dying.\n\nThis is thy curse, that thou hast a (certain) time of dying.\n\nAnd day and night shalt thou eat,\n\nBut the",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Kaffir",
+   "aliases": [
+    "Kaffir"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"You Whites\n\nhave got everything. We Kaffirs have only cattle, while the Amalouw, or\n\nHottentots, have nothing.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Anteater",
+   "aliases": [
+    "Anteater"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "38M/3F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Man",
+   "aliases": [
+    "White Man"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "232M/102F cues",
+   "age": "young",
+   "age_evidence": "37y/13o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Stop! let us both go first to some wise people.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Heron",
+   "aliases": [
+    "Heron"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "20M/8F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Dove, why do\n\nyou cry?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Giraffe",
+   "aliases": [
+    "Giraffe"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/3F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"At once I could swallow you.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ostriches",
+   "aliases": [
+    "Ostriches"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Let us, on both sides, stand in rows near\n\neach other, and let one go to hunt the Ostriches, so that they must flee\n\nalong through the midst of us.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Itkler",
+   "aliases": [
+    "Itkler"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"\n\nThus he spake, and Baboon assembled them for trial. Then they made the\n\nsame excuses which had been mentioned by Itkler, each one putting the\n\nblame upon the",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wood",
+   "aliases": [
+    "Wood"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/6F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Stallion",
+   "aliases": [
+    "Stallion"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 11M/6F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Thou gum-eater's child!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "European",
+   "aliases": [
+    "European"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Africa",
+   "aliases": [
+    "Africa"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"vast strides South Africa is making in\n\nthe progress of civilization, the native races will either be swept away\n\nor so altered as to lose many of their ancien",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kaffirs",
+   "aliases": [
+    "Kaffirs"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"That black and white cow is mine!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cockcrow",
+   "aliases": [
+    "Cockcrow"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "9M/1F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Cockcrow\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Saturday",
+   "aliases": [
+    "Saturday"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Owl",
+   "aliases": [
+    "Owl"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "56M/10F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Not Owl, he is ashamed of the light.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gurikhoisip",
+   "aliases": [
+    "Gurikhoisip"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "13M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\" said\n\nLion. Gurikhoisip said also, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Horse",
+   "aliases": [
+    "Horse"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "James",
+   "aliases": [
+    "James"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"They are not game, but cattle.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dutch",
+   "aliases": [
+    "Dutch"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Jackals",
+   "aliases": [
+    "Jackals"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "12M/4F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"That wretch!\"",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 47,
+ "speaking": 40
+}

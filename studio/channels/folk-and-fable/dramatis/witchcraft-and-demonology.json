@@ -1,0 +1,1504 @@
+{
+ "source": "/root/easy/folk-and-fable/witchcraft-and-demonology/source.txt",
+ "characters": [
+  {
+   "name": "Witchcraft",
+   "aliases": [
+    "Witchcraft"
+   ],
+   "mentions": 53,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 17M/15F",
+   "age": "old",
+   "age_evidence": "2y/6o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\u201cHar!\n\nHar! Har! Altri! Altri!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Church",
+   "aliases": [
+    "Catholic Church",
+    "Church"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "18M/6F cues",
+   "age": "old",
+   "age_evidence": "0y/7o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cseem to have\n\nbeen undoubtedly the victims of unscrupulous and designing knaves, who\n\npersonated Satan\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "29M/9F cues",
+   "age": "old",
+   "age_evidence": "2y/6o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cand took severall peices thereof,\n\nas the feet, hands, a pairt of the head, and a pairt of the buttock,\n\nand they made a py thereof, that they might eat of it,",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Devil",
+   "aliases": [
+    "Devil"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "23M/10F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cthe Devil\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Christian",
+   "aliases": [
+    "Christian"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/5F cues",
+   "age": "old",
+   "age_evidence": "3y/12o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201ccan be traced back\n\nto pre-Christian times, and appears to be the ancient religion of\n\nWestern Europe.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sabbat",
+   "aliases": [
+    "Sabbat"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 8,
+   "gender": null,
+   "gender_evidence": "contested 14M/14F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cthat both she\n\nand her mother used to mount on a broom, and so making their exit by the\n\nchimney in this fashion they flew through the air to the Sabbat.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Manichees",
+   "aliases": [
+    "Manichees"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "12M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cInterea iussu Alduini flammis exust\u00e6 sunt mulieres\n\nmalefic\u00e6 extra urbem.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Professor",
+   "aliases": [
+    "Professor"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/7o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cThe ointment and lotion are just of no use at all to witches\n\nto aid their journey to the Sabbat,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Murray",
+   "aliases": [
+    "Miss Murray"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 13,
+   "gender": "female",
+   "gender_evidence": "7M/22F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cthe statements do not bear the construction put upon\n\nthem,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Europe",
+   "aliases": [
+    "Europe"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 8M/5F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\u201cbrother\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ages",
+   "aliases": [
+    "Middle Ages"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 11M/11F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cC\u2019est une mauvaise plaisanterie,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Satan",
+   "aliases": [
+    "Satan"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "14M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cinquisition\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Christ",
+   "aliases": [
+    "Christ"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "27M/12F cues",
+   "age": "old",
+   "age_evidence": "5y/12o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cTwo problems borrowed\n\nfrom heathen philosophy,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Christianity",
+   "aliases": [
+    "Christianity"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 7M/5F",
+   "age": "old",
+   "age_evidence": "2y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cthe Devil\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gnostic",
+   "aliases": [
+    "Gnostic"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "14M/1F cues",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cthe Jewish Messias, whom the Jews crucified,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "2M/7F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "\u201cSorcier est celuy qui par moyens Diaboliques sciemment s\u2019efforce\n\nde paruenir a quel que chose.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Saints",
+   "aliases": [
+    "Saints"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cthe odour of sanctity\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Innocent",
+   "aliases": [
+    "Innocent"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cgave a fearful impetus to\n\nthe persecution.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tanchelin",
+   "aliases": [
+    "Tanchelin"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Satanism",
+   "aliases": [
+    "Satanism"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cthe Devil\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "France",
+   "aliases": [
+    "France"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Italy",
+   "aliases": [
+    "Italy"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rais",
+   "aliases": [
+    "Rais"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cfor the fact that the bodies of witches, male\n\nor female, were always burnt and the ashes scattered,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "England",
+   "aliases": [
+    "England"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Pope",
+   "aliases": [
+    "Pope"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cthe abstracts and brief chronicles of the\n\ntime\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bull",
+   "aliases": [
+    "Bull"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bishop",
+   "aliases": [
+    "Bishop"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "28M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": "king",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "male king narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lord",
+   "aliases": [
+    "Lord"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "13M/4F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cRed Cap,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gnostics",
+   "aliases": [
+    "Gnostics"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWhy\n\nshould I shrink from speaking of the things you do not fear to do? By\n\nspeaking thus, I hope to fill you with horror of the turpitudes you\n\ncommit.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Archbishop",
+   "aliases": [
+    "Archbishop"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cqui in Kalendas Ianuarii in ceruulo et in\n\nuitula uadit,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Edinburgh",
+   "aliases": [
+    "Edinburgh"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\u201cconvict and burnt.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rome",
+   "aliases": [
+    "Rome"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cDe mathematicis Italia pellendis factum Senatus consultum, atrox\n\net irritum,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Son",
+   "aliases": [
+    "Son"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 67M/35F",
+   "age": "young",
+   "age_evidence": "13y/5o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gilles",
+   "aliases": [
+    "Gilles"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "2M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Inquisitors",
+   "aliases": [
+    "Inquisitors"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Alexander",
+   "aliases": [
+    "Alexander"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lyons",
+   "aliases": [
+    "Lyons"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201co\u00f9 toutes les h\u00e9r\u00e9sies survivent,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cathari",
+   "aliases": [
+    "Cathari"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "April",
+   "aliases": [
+    "April"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 5M/5F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cSacrifice of the incarnate deity\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mass",
+   "aliases": [
+    "Holy Mass"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Examinates",
+   "aliases": [
+    "Examinates"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bodin",
+   "aliases": [
+    "Bodin"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cHar, har, diable,\n\ndiable, saute icy, saute l\u00e0, io\u00fce icy, io\u00fce l\u00e0,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lancre",
+   "aliases": [
+    "Lancre"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "State",
+   "aliases": [
+    "State"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 10M/8F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sabbats",
+   "aliases": [
+    "Sabbats"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cthe Devil\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Milan",
+   "aliases": [
+    "Milan"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cI know by the heavenly fragrance in this sanctuary that a great Servant\n\nof God lies buried here!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Council",
+   "aliases": [
+    "Council"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cthat filthy book of this heresy,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Albigenses",
+   "aliases": [
+    "Albigenses"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cI think it misleading to\n\ncall these sects, even the Albigensians, by the name of Manichees.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bogomiles",
+   "aliases": [
+    "Bogomiles"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Toulouse",
+   "aliases": [
+    "Toulouse"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dianic",
+   "aliases": [
+    "Dianic"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cancient religion\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sacrifice",
+   "aliases": [
+    "Sacrifice"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ghost",
+   "aliases": [
+    "Holy Ghost"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Litt",
+   "aliases": [
+    "Litt"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/4F",
+   "age": "young",
+   "age_evidence": "7y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "French",
+   "aliases": [
+    "French"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cL\u2019\u00c9volution de l\u2019Humanit\u00e9.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Illustration",
+   "aliases": [
+    "Illustration"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lady",
+   "aliases": [
+    "Lady"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Germany",
+   "aliases": [
+    "Germany"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Magie",
+   "aliases": [
+    "Magie"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "German",
+   "aliases": [
+    "German"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Notestein",
+   "aliases": [
+    "Professor Notestein"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThe concurring evidence in the Malking Tower story is of no\n\nmore compelling character than that to be found in a multitude of\n\nContinental stories of witch ga",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Guazzo",
+   "aliases": [
+    "Guazzo"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sacraments",
+   "aliases": [
+    "Sacraments"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cVers les\n\nstupres impurs et les baisers immondes.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Elizabeth",
+   "aliases": [
+    "Elizabeth"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cOuld Birtles, the great devil, Roger Birtles and his wife, and\n\nAnne Birtles.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Scotland",
+   "aliases": [
+    "Scotland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 4M/5F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": "queen",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "old queen narration",
+   "sample_line": "\u201cquhair a notabill sorceres callit Nicniven was\n\ncondemnit to the death and burnt.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sampson",
+   "aliases": [
+    "Agnes Sampson"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThe deuell wes cled in ane\n\nblak goun with ane blak hat vpon his head.... His faice was terrible, his\n\nnoise lyk the bek of ane egle, greet bournyng eyn; his h",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Greek",
+   "aliases": [
+    "Greek"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "December",
+   "aliases": [
+    "December"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cinquisitor\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Papal",
+   "aliases": [
+    "Papal"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Diocletian",
+   "aliases": [
+    "Diocletian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Abbot",
+   "aliases": [
+    "Abbot"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Patarini",
+   "aliases": [
+    "Patarini"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Narbonne",
+   "aliases": [
+    "Narbonne"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gnosticism",
+   "aliases": [
+    "Gnosticism"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Creator",
+   "aliases": [
+    "Creator"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Testament",
+   "aliases": [
+    "Old Testament"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Messalians",
+   "aliases": [
+    "Messalians"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Christians",
+   "aliases": [
+    "Christians"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mary",
+   "aliases": [
+    "Mary"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 7M/5F",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cThe survival of the names of some of the early gods\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Valentinians",
+   "aliases": [
+    "Valentinians"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Valentinus",
+   "aliases": [
+    "Valentinus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Reformers",
+   "aliases": [
+    "Reformers"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arc",
+   "aliases": [
+    "Arc"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "28M/2F cues",
+   "age": "old",
+   "age_evidence": "3y/6o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cbelonged to the ancient religion, not to\n\nthe Christian.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Weir",
+   "aliases": [
+    "Major Weir"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 9M/7F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201coffered\n\nhimself up and was executed as a witch in Edinburgh.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Antwerp",
+   "aliases": [
+    "Antwerp"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Basque",
+   "aliases": [
+    "Basque"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cIn nomine patrica, Aragueaco Petrica, Gastellaco Ianicot,\n\nEquid\u00e6 ipordian pot.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hon",
+   "aliases": [
+    "Hon"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Breton",
+   "aliases": [
+    "Breton"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 88,
+ "speaking": 45
+}

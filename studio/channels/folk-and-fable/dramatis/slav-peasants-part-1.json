@@ -1,0 +1,536 @@
+{
+ "source": "/root/easy/folk-and-fable/slav-peasants-part-1/source.txt",
+ "characters": [
+  {
+   "name": "George",
+   "aliases": [
+    "George"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "63M/25F cues",
+   "age": "young",
+   "age_evidence": "19y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "I am going to put an end to your quarrel,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Illustration",
+   "aliases": [
+    "Illustration"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 15,
+   "gender": null,
+   "gender_evidence": "contested 54M/41F",
+   "age": "young",
+   "age_evidence": "26y/5o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"The Plentiful Tablecloth,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Marouckla",
+   "aliases": [
+    "Marouckla"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 5,
+   "gender": "female",
+   "gender_evidence": "8M/61F cues",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "Under the trees on the mountain slope,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God",
+    "May God"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 23,
+   "gender": null,
+   "gender_evidence": "contested 51M/42F",
+   "age": "young",
+   "age_evidence": "24y/7o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Good\n\npeople, take pity on my distress. I am very poor, no one cares for me,\n\nI have not even a fire in my cottage; will you let me warm myself at\n\nyours?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Helen",
+   "aliases": [
+    "Helen"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 7,
+   "gender": "female",
+   "gender_evidence": "7M/70F cues",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "You wretched creature! Do you dare to disobey me?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Dede",
+   "aliases": [
+    "Dede"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "45M/11F cues",
+   "age": "young",
+   "age_evidence": "11y/6o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Vsevede",
+   "aliases": [
+    "Vsevede"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 13,
+   "gender": "male",
+   "gender_evidence": "54M/12F cues",
+   "age": "young",
+   "age_evidence": "13y/10o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I know not which way to go,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Setchene",
+   "aliases": [
+    "Setchene"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 16M/22F",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": "maiden",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young maiden narration",
+   "sample_line": "This is not the season for violets; dost thou not see the snow\n\neverywhere?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Jean",
+   "aliases": [
+    "Jean"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "40M/18F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "I never forget a promise once made,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Plavacek",
+   "aliases": [
+    "Plavacek"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "54M/21F cues",
+   "age": "young",
+   "age_evidence": "13y/8o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "May God comfort you in your distress,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Moon",
+   "aliases": [
+    "Moon"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "36M/16F cues",
+   "age": "young",
+   "age_evidence": "8y/1o",
+   "role": "queen",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young male queen narration",
+   "sample_line": "\"Would you kindly stop one moment? there are a few\n\nquestions I should like to ask you.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Pietnotka",
+   "aliases": [
+    "Pietnotka",
+    "Princess Pietnotka"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 23M/22F",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Here is your daughter, whom I now\n\nclaim as my wife, for it is I who have restored her to you. She was\n\ncarried off by a terrible sorcerer who fought with me t",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dobrotek",
+   "aliases": [
+    "Prince Dobrotek"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "46M/18F cues",
+   "age": "young",
+   "age_evidence": "17y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I am in great trouble,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mountain",
+   "aliases": [
+    "Crystal Mountain"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 10,
+   "gender": null,
+   "gender_evidence": "contested 68M/64F",
+   "age": "young",
+   "age_evidence": "11y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"I may meet with as good luck as my brother,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thereupon",
+   "aliases": [
+    "Thereupon"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "14M/5F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"The man who brings you this letter is the most dangerous of all\n\nmy enemies. Have his head cut off at once; no delay, no pity, he\n\nmust be executed before my r",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kovlad",
+   "aliases": [
+    "Kovlad"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 14M/17F",
+   "age": "young",
+   "age_evidence": "9y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Certainly, madam, with pleasure,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Maid",
+   "aliases": [
+    "Maid"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 23M/20F",
+   "age": "young",
+   "age_evidence": "10y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Death",
+   "aliases": [
+    "Death"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "19M/7F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Krak, krak, we know very well where to find some. Wait a moment.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Annette",
+   "aliases": [
+    "Annette"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 21M/11F",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Vlaska",
+   "aliases": [
+    "Zlato Vlaska"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 18M/15F",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"\n\nWhen George reached the island he lost no time in making his way to\n\nthe palace, and demanded from the king the hand of his daughter,\n\nPrincess Zlato Vlaska,",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hair",
+   "aliases": [
+    "Golden Hair"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 87M/50F",
+   "age": "young",
+   "age_evidence": "36y/16o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"\n\nGeorge went into the meadow, which was of great length and stretched\n\naway far out of sight. He went down on his knees and hunted between\n\nthe tufts of grass",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Horse",
+   "aliases": [
+    "Dappled Horse"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "111M/18F cues",
+   "age": "young",
+   "age_evidence": "24y/5o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tales",
+   "aliases": [
+    "Fairy Tales"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/6F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Peasants",
+   "aliases": [
+    "Slav Peasants"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Emily",
+   "aliases": [
+    "Emily"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/3F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Men",
+   "aliases": [
+    "Men"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 116M/78F",
+   "age": "young",
+   "age_evidence": "25y/7o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sea",
+   "aliases": [
+    "Black Sea"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "77M/38F cues",
+   "age": "young",
+   "age_evidence": "21y/6o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"May God bless you, old boatman,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fate",
+   "aliases": [
+    "Fate"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"What do you want, mother?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Locks",
+   "aliases": [
+    "Golden Locks"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/10F",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"No, not a single one.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Beard",
+   "aliases": [
+    "Long Beard"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "60M/22F cues",
+   "age": "young",
+   "age_evidence": "14y/6o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mane",
+   "aliases": [
+    "Mane"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 31,
+ "speaking": 21
+}

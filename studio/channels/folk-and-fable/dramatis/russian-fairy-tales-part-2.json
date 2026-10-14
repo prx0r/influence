@@ -1,0 +1,875 @@
+{
+ "source": "/root/easy/folk-and-fable/russian-fairy-tales-part-2/source.txt",
+ "characters": [
+  {
+   "name": "Ivan",
+   "aliases": [
+    "Prince Ivan"
+   ],
+   "mentions": 76,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "374M/169F cues",
+   "age": "young",
+   "age_evidence": "151y/22o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "What are you talking about, God bless you! You've been\n\nflying through Russia, and got the air up your nostrils, that's\n\nwhy you fancy it's here,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King",
+    "Water King"
+   ],
+   "mentions": 65,
+   "dialogue_lines": 44,
+   "gender": "male",
+   "gender_evidence": "295M/102F cues",
+   "age": "young",
+   "age_evidence": "59y/6o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\"Whoever will destroy the\n\nNorka, to him will I give the half of my kingdom.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Koshchei",
+   "aliases": [
+    "Koshchei"
+   ],
+   "mentions": 48,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "134M/46F cues",
+   "age": "young",
+   "age_evidence": "48y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Thanks, Prince Ivan!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Snake",
+   "aliases": [
+    "Snake"
+   ],
+   "mentions": 32,
+   "dialogue_lines": 12,
+   "gender": null,
+   "gender_evidence": "contested 91M/53F",
+   "age": "young",
+   "age_evidence": "14y/4o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Zoological Mythology\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Deathless",
+   "aliases": [
+    "Deathless"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "74M/22F cues",
+   "age": "young",
+   "age_evidence": "24y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"death\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Morevna",
+   "aliases": [
+    "Marya Morevna"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 16,
+   "gender": null,
+   "gender_evidence": "contested 80M/43F",
+   "age": "young",
+   "age_evidence": "41y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Hail Prince!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Eagle",
+   "aliases": [
+    "Eagle"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 14,
+   "gender": "male",
+   "gender_evidence": "92M/26F cues",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Hail, Prince Ivan! Before I came as a guest, but now I\n\nhave come as a wooer!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Russian",
+   "aliases": [
+    "Russian"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 8,
+   "gender": null,
+   "gender_evidence": "contested 18M/10F",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Panchatantra,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yaga",
+   "aliases": [
+    "Baba Yaga"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 14,
+   "gender": null,
+   "gender_evidence": "contested 31M/20F",
+   "age": "young",
+   "age_evidence": "17y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"But how did you get across the fiery river?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Norka",
+   "aliases": [
+    "Norka"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "33M/5F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Well, brothers, farewell! Lower me into the other world,\n\nand don't go away from here, but as soon as the cord is jerked,\n\npull it up.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "34M/17F cues",
+   "age": "young",
+   "age_evidence": "11y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Thus and thus,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Afanasief",
+   "aliases": [
+    "Afanasief"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 5M/7F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Crown Serf,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Osip",
+   "aliases": [
+    "Osip"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 13,
+   "gender": "female",
+   "gender_evidence": "17M/38F cues",
+   "age": "young",
+   "age_evidence": "12y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\"Good day, mother!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Beast",
+   "aliases": [
+    "Beast"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "36M/6F cues",
+   "age": "young",
+   "age_evidence": "13y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nthe reader is referred (as I have stated in the preface) to Professor\n\nde Gubernatis's \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Raven",
+   "aliases": [
+    "Raven"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "29M/12F cues",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Fly, and tell my wife\n\nto come and devour Ivan Popyalof.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Marya",
+   "aliases": [
+    "Princess Marya"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 91M/53F",
+   "age": "young",
+   "age_evidence": "48y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"If you find favor in the eyes of my sister, I will not interfere\n\nwith her wishes. Let her marry you in God's name!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Falcon",
+   "aliases": [
+    "Falcon"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "22M/7F cues",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"How can I but stumble,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Why",
+   "aliases": [
+    "Why"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "34M/15F cues",
+   "age": "young",
+   "age_evidence": "14y/4o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Prince Ivan has come and carried off Marya Morevna.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Queen",
+   "aliases": [
+    "Queen"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 44M/42F",
+   "age": "young",
+   "age_evidence": "13y/2o",
+   "role": "queen",
+   "role_evidence": "in name",
+   "voice_query": "young queen narration",
+   "sample_line": "\"her love\n\nis hidden far away.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chudo",
+   "aliases": [
+    "Chudo"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yudo",
+   "aliases": [
+    "Yudo"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"a twelve-headed Chudo-Yudo,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hail",
+   "aliases": [
+    "Hail"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "19M/9F cues",
+   "age": "young",
+   "age_evidence": "10y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"whither does God send you?\n\nand is it of your free will or against your will?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Slavonic",
+   "aliases": [
+    "Slavonic"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Popyalof",
+   "aliases": [
+    "Ivan Popyalof"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "13M/5F cues",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Stop, brothers!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Eaglet",
+   "aliases": [
+    "Eaglet"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "18M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"Don't shoot me, my lord King! better take me home with\n\nyou; some time or other I shall be of service to you.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Indian",
+   "aliases": [
+    "Indian"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Kathasaritsagara.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Servian",
+   "aliases": [
+    "Servian"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "9M/3F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Vuk\n\nKarajich,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gubernatis",
+   "aliases": [
+    "Gubernatis"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"the first Brutus of popular tradition.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mythology",
+   "aliases": [
+    "Zoological Mythology"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"\n\n[69] Afanasief, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Russia",
+   "aliases": [
+    "Russia"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 21M/13F",
+   "age": "young",
+   "age_evidence": "8y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"What are you talking about, Koshchei? There's no one\n\nwith me,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "European",
+   "aliases": [
+    "European"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Europe",
+   "aliases": [
+    "Europe"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/3F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Anna",
+   "aliases": [
+    "Princess Anna"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 15M/13F",
+   "age": "young",
+   "age_evidence": "10y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Give your sisters in marriage to the very first suitors\n\nwho come to woo them. Don't go keeping them by you!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Satou",
+   "aliases": [
+    "Satou"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"in the flowers of the acacia-tree,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wise",
+   "aliases": [
+    "Wise"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 12M/8F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Do give me my shift!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "German",
+   "aliases": [
+    "German"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 4,
+   "gender": "female",
+   "gender_evidence": "0M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "\"Marienkind,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hahn",
+   "aliases": [
+    "Hahn"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/4F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"a fair maiden, shining like the sun,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Usuinya",
+   "aliases": [
+    "Usuinya"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Usuinya-Bird,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Olga",
+   "aliases": [
+    "Princess Olga"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 17M/11F",
+   "age": "young",
+   "age_evidence": "12y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Whatever",
+   "aliases": [
+    "Whatever"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "18M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"How could we help coming home?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Anastasia",
+   "aliases": [
+    "Anastasia"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"hung up by one of its ribs.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Anepou",
+   "aliases": [
+    "Anepou"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "9M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"I will leave this celestial sphere.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Karajich",
+   "aliases": [
+    "Vuk Karajich"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Scissors-story,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Professor",
+   "aliases": [
+    "Professor"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Berichte der phil. hist. Classe der K.\n\nSaechs. Gesellschaft der Wissenschaften,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Drakos",
+   "aliases": [
+    "Drakos"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wherefore",
+   "aliases": [
+    "Wherefore"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 17M/9F",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Grimm",
+   "aliases": [
+    "Grimm"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 12,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\" Haltrich, No. 66. Asbjoernsen and Moe,\n\nNo. 10. (Dasent No. 24, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rakshasa",
+   "aliases": [
+    "Rakshasa"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 9M/6F",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Maehrchensammlung des\n\nSomadeva Bhatta,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Norse",
+   "aliases": [
+    "Norse"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": "giant",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male giant narration",
+   "sample_line": "\"the grain of\n\nsand that lies under the ninth tongue in the ninth head\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hard",
+   "aliases": [
+    "Hard"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 9M/12F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arise",
+   "aliases": [
+    "Arise"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 51,
+ "speaking": 42
+}

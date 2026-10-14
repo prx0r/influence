@@ -1,0 +1,705 @@
+{
+ "source": "/root/easy/folk-and-fable/andersen-part-1/source.txt",
+ "characters": [
+  {
+   "name": "Tree",
+   "aliases": [
+    "Fir Tree",
+    "Tree"
+   ],
+   "mentions": 57,
+   "dialogue_lines": 50,
+   "gender": "male",
+   "gender_evidence": "146M/26F cues",
+   "age": "young",
+   "age_evidence": "66y/11o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cOh! Were I but such a high tree as the others are,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Emperor",
+   "aliases": [
+    "Emperor"
+   ],
+   "mentions": 35,
+   "dialogue_lines": 35,
+   "gender": "male",
+   "gender_evidence": "114M/24F cues",
+   "age": "young",
+   "age_evidence": "26y/5o",
+   "role": "emperor",
+   "role_evidence": "in name",
+   "voice_query": "young male emperor narration",
+   "sample_line": "\u201cHad I\n\nsuch a suit, I might at once find out what men in my realms are unfit\n\nfor their office, and also be able to distinguish the wise from the\n\nfoolish! Thi",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Princess",
+   "aliases": [
+    "Princess"
+   ],
+   "mentions": 31,
+   "dialogue_lines": 42,
+   "gender": null,
+   "gender_evidence": "contested 86M/87F",
+   "age": "young",
+   "age_evidence": "69y/3o",
+   "role": "princess",
+   "role_evidence": "in name",
+   "voice_query": "young princess narration",
+   "sample_line": "\u201cVisiting,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Councillor",
+   "aliases": [
+    "Councillor"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 26,
+   "gender": "male",
+   "gender_evidence": "47M/7F cues",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cAs to a pavement, I can find no traces of one, and all the lamps, it\n\nseems, have gone to sleep.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mice",
+   "aliases": [
+    "Mice"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "11M/4F cues",
+   "age": "young",
+   "age_evidence": "12y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cand what can you do?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Street",
+   "aliases": [
+    "East Street"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 12,
+   "gender": "male",
+   "gender_evidence": "42M/5F cues",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cNow let us see what we can do to amuse ourselves.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fortune",
+   "aliases": [
+    "Fortune"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 9,
+   "gender": null,
+   "gender_evidence": "contested 21M/12F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cI must tell you,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Prince",
+   "aliases": [
+    "Prince"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 120M/104F",
+   "age": "young",
+   "age_evidence": "95y/4o",
+   "role": "prince",
+   "role_evidence": "in name",
+   "voice_query": "young prince narration",
+   "sample_line": "\u201cGood day to my lord, the Emperor!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dumpy",
+   "aliases": [
+    "Dumpy"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 11M/7F",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cIvedy-Avedy,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Humpy",
+   "aliases": [
+    "Humpy"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 10M/7F",
+   "age": "young",
+   "age_evidence": "10y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Copenhagen",
+   "aliases": [
+    "Copenhagen"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWell! This is too bad! How dirty it is here!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thou",
+   "aliases": [
+    "Thou"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "156M/34F cues",
+   "age": "young",
+   "age_evidence": "44y/14o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cAch! du lieber Augustin,\n\nAlles ist weg, weg, weg!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Canary",
+   "aliases": [
+    "Canary"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "12M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cmy good\n\nPolly.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Parrot",
+   "aliases": [
+    "Parrot"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cCome, let us be men!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kay",
+   "aliases": [
+    "Kay"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 15M/9F",
+   "age": "young",
+   "age_evidence": "9y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "It is the white bees that are swarming,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Majesty",
+   "aliases": [
+    "Majesty"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (emperor shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cthe cloth which the weavers are preparing\n\nis extraordinarily magnificent.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hans",
+   "aliases": [
+    "King Hans"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "14M/3F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cHow strange they look! The good folks come probably from a masquerade!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Heaven",
+   "aliases": [
+    "Heaven"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "18M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cIt is really dreadful,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Danish",
+   "aliases": [
+    "Danish"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Christmas",
+   "aliases": [
+    "Christmas"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gerda",
+   "aliases": [
+    "Gerda"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 9M/6F",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cIt is the white bees that are swarming,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Andersen",
+   "aliases": [
+    "Andersen"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/11F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cBut Copenhagen has its East Street.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Why",
+   "aliases": [
+    "Why"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThey belong no doubt to the\n\nlieutenant who lives over the way. They lie close to the door.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bachelor",
+   "aliases": [
+    "Bachelor"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cI mean those new fangled novels, twisting and writhing themselves in\n\nthe dust of commonplace, which also expect to find a reading public.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Polly",
+   "aliases": [
+    "Polly"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "11M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cTo-day is Polly's\n\nbirthday,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rejoice",
+   "aliases": [
+    "Rejoice"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "12M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cRejoice in thy vigorous\n\ngrowth, and in the fresh life that moveth within thee!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ivedy",
+   "aliases": [
+    "Ivedy"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Avedy",
+   "aliases": [
+    "Avedy"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cHumpy-Dumpy,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ach",
+   "aliases": [
+    "Ach"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "61M/21F cues",
+   "age": "young",
+   "age_evidence": "20y/2o",
+   "role": null,
+   "role_evidence": "contested role (emperor shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Augustin",
+   "aliases": [
+    "Augustin"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/7F",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Alles",
+   "aliases": [
+    "Alles"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cAh! dear Augustine!\n\nAll is gone, gone, gone!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bishop",
+   "aliases": [
+    "Bishop"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cGood Heavens! What has taken possession of the Bishop?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Christianshafen",
+   "aliases": [
+    "Christianshafen"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hostess",
+   "aliases": [
+    "Hostess"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cI've felt so queer all of a sudden; would you have the\n\ngoodness to send for a hackney-coach to take me to Christianshafen?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cMap of the Moon.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Russian",
+   "aliases": [
+    "Russian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cIt is the most dreadful moment of my life: the whole world is leagued\n\nagainst me!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fredericksburg",
+   "aliases": [
+    "Fredericksburg"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cfor I, poor beast of burden that I am, have so much to annoy me, that I\n\ndon't know what a good appetite is. 'Tis a bitter crust, alas! at which\n\nI am condemne",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Divine",
+   "aliases": [
+    "Divine"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cLend me your Galoshes,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Switzerland",
+   "aliases": [
+    "Switzerland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Italy",
+   "aliases": [
+    "Italy"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Rats",
+   "aliases": [
+    "Rats"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cOnly that one,\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 41,
+ "speaking": 32
+}

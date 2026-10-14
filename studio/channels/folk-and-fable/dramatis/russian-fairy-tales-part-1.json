@@ -1,0 +1,891 @@
+{
+ "source": "/root/easy/folk-and-fable/russian-fairy-tales-part-1/source.txt",
+ "characters": [
+  {
+   "name": "Russian",
+   "aliases": [
+    "Russian"
+   ],
+   "mentions": 59,
+   "dialogue_lines": 26,
+   "gender": null,
+   "gender_evidence": "contested 48M/29F",
+   "age": "old",
+   "age_evidence": "5y/6o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\"creations of the Slavonic\n\nmind,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Marusia",
+   "aliases": [
+    "Marusia"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 35,
+   "gender": null,
+   "gender_evidence": "contested 53M/71F",
+   "age": "young",
+   "age_evidence": "12y/7o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Hail, fair maidens!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Demon",
+   "aliases": [
+    "Demon"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 20,
+   "gender": "male",
+   "gender_evidence": "71M/30F cues",
+   "age": "young",
+   "age_evidence": "18y/11o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"The Bad Wife!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Simpleton",
+   "aliases": [
+    "Simpleton"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 27,
+   "gender": "male",
+   "gender_evidence": "36M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"I'll go, too, brothers, and take my ox for sale.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Afanasief",
+   "aliases": [
+    "Afanasief"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 13,
+   "gender": "male",
+   "gender_evidence": "11M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"legends,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Skazkas",
+   "aliases": [
+    "Skazkas"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 14,
+   "gender": "male",
+   "gender_evidence": "16M/7F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Siddhi Kuer\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Petrusha",
+   "aliases": [
+    "Petrusha"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "37M/11F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": "maiden",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male maiden narration",
+   "sample_line": "I don't want anything,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Tartar",
+   "aliases": [
+    "Tartar"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "36M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Get me a surety,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Marko",
+   "aliases": [
+    "Marko"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "38M/4F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "Yes. What do you want?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Smith",
+   "aliases": [
+    "Smith"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "79M/10F cues",
+   "age": "young",
+   "age_evidence": "16y/9o",
+   "role": "smith",
+   "role_evidence": "in name",
+   "voice_query": "young male smith narration",
+   "sample_line": "\"Why shouldn't I?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Birch",
+   "aliases": [
+    "Birch"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "25M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"What is the Birch creaking about?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Russia",
+   "aliases": [
+    "Russia"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 52M/34F",
+   "age": "old",
+   "age_evidence": "7y/10o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\"Zoological Mythology\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 12,
+   "gender": "male",
+   "gender_evidence": "25M/5F cues",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"What are you talking about, batyushka? I will tell you the\n\nexact truth. I have not robbed, nor plundered, nor killed anyone.\n\nA treasure tumbled into my hands",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Devil",
+   "aliases": [
+    "Devil"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "30M/14F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Ours is a holy spot![34]\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rich",
+   "aliases": [
+    "Rich"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "62M/14F cues",
+   "age": "old",
+   "age_evidence": "5y/7o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Harkye, neighbor, lend me a copeck. I want to give that\n\npoor man something, but I've no small change.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Spider",
+   "aliases": [
+    "Spider"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "14M/6F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Good father Spider! please not to kill me. I've ever so\n\nmany little ones. Without me they'll be orphans left, and from\n\ndoor to door have to beg their bread a",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Golova",
+   "aliases": [
+    "Golova"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 16M/29F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\"Whom have you chosen?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Popular",
+   "aliases": [
+    "Russian Popular"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/10F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Europe",
+   "aliases": [
+    "Europe"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/6F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 11,
+   "gender": null,
+   "gender_evidence": "contested 23M/22F",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Harkye Marusia! When you go to where the girls are to-morrow,\n\ntake a ball of thread with you, make a noose in it, and,\n\nwhen you are going to see him off, thr",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "German",
+   "aliases": [
+    "German"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "\"chap-book tales,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tales",
+   "aliases": [
+    "Popular Tales"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 20,
+   "gender": "female",
+   "gender_evidence": "6M/13F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "female narration",
+   "sample_line": "\"THE SONGS OF THE RUSSIAN\n\nPEOPLE,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "European",
+   "aliases": [
+    "European"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 4M/6F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"were common in germ at least to the Aryan\n\ntribes before their migration,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Diachok",
+   "aliases": [
+    "Diachok"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "12M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"What's that, brothers, you're bringing from the forest?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Skazki",
+   "aliases": [
+    "Skazki"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Legends",
+   "aliases": [
+    "Legends"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fiend",
+   "aliases": [
+    "Fiend"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 12,
+   "gender": "female",
+   "gender_evidence": "5M/14F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\"Tell me; were you in the church?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Khudyakof",
+   "aliases": [
+    "Khudyakof"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Songs of the\n\nRussian People,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Skazka",
+   "aliases": [
+    "Skazka"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 17M/9F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Mythical Skazkas\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hail",
+   "aliases": [
+    "Hail"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "8M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Hail, good youth!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "One",
+   "aliases": [
+    "Evil One"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "369M/157F cues",
+   "age": "young",
+   "age_evidence": "51y/43o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nShe was afraid, and didn't stir. Then all the other girls\n\nopened out upon her.\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Suppose",
+   "aliases": [
+    "Suppose"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 8M/11F",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"Good-day, granny!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Semiletka",
+   "aliases": [
+    "Semiletka"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 7M/8F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\"The Voyvode marvelled at her wisdom, and made peace with her. He and\n\nshe then returned home and went on living prosperously.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Voyvode",
+   "aliases": [
+    "Voyvode"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 15M/17F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\"'Who brought me here?'\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Boyar",
+   "aliases": [
+    "Boyar"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "6M/12F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "\"The Bad Wife has come! the Bad Wife has come!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wife",
+   "aliases": [
+    "Bad Wife"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 108M/115F",
+   "age": "old",
+   "age_evidence": "10y/15o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\"Yes, you bugbear, I shall go!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cossack",
+   "aliases": [
+    "Cossack"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 7M/12F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Where, oh where can I hide myself?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kazan",
+   "aliases": [
+    "Kazan"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Why have ye fallen? Wherefore as in death do ye lie\n\nhere? Truly no longer lives the Spider, the wrestler, the hero\n\nbold. They've sent him to Kazan and in Kaz",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fairy",
+   "aliases": [
+    "Russian Fairy"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "1M/10F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": "fairy",
+   "role_evidence": "in name",
+   "voice_query": "female fairy narration",
+   "sample_line": "\"Popular Tales\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Erlenvein",
+   "aliases": [
+    "Erlenvein"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Chudinsky",
+   "aliases": [
+    "Chudinsky"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gubernatis",
+   "aliases": [
+    "Gubernatis"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"solar theory\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Asbjoernsen",
+   "aliases": [
+    "Asbjoernsen"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Norske Folke-Eventyr,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lord",
+   "aliases": [
+    "Lord"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "19M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"the Giant who had no\n\nHeart in his Body\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Snake",
+   "aliases": [
+    "Snake"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 8M/5F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "India",
+   "aliases": [
+    "India"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 2M/2F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"to the common heirloom of the\n\nIndo-European race;\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ivan",
+   "aliases": [
+    "Ivan"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 9M/7F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": "princess",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young princess narration",
+   "sample_line": "\"But if any one purchases it,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Trofim",
+   "aliases": [
+    "Trofim"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 4M/6F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"real blood and\n\nmilk! When she's got on her holiday clothes, she's as fine as a\n\npeacock!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Listen",
+   "aliases": [
+    "Listen"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 13M/7F",
+   "age": "old",
+   "age_evidence": "3y/4o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\"we've a goat, haven't we?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lutonya",
+   "aliases": [
+    "Lutonya"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Chap",
+   "aliases": [
+    "Chap"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/4F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"The Minstrelsy of the Scottish Border,\"",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 52,
+ "speaking": 43
+}

@@ -1,0 +1,75 @@
+{
+ "source": "/root/easy/folk-and-fable/yuki-onna/source.txt",
+ "characters": [
+  {
+   "name": "Minokichi",
+   "aliases": [
+    "Minokichi"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 41M/35F",
+   "age": "young",
+   "age_evidence": "15y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cI intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,\u2014because you\n\nare so young... You are a pretty boy, Minokichi; and I w",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yuki",
+   "aliases": [
+    "Yuki"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "16M/35F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cTell me about her... Where did you see her?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mosaku",
+   "aliases": [
+    "Mosaku"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "26M/6F cues",
+   "age": null,
+   "age_evidence": "tied 6y/6o",
+   "role": "ferryman",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "male ferryman narration",
+   "sample_line": "\u201cAsleep or awake, that was the only time that I saw a being as\n\nbeautiful as you. Of course, she was not a human being; and I was\n\nafraid of her,\u2014very much afra",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yedo",
+   "aliases": [
+    "Yedo"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "0M/11F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201chonorable daughter-in-law.\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 4,
+ "speaking": 4
+}

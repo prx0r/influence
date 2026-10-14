@@ -1,0 +1,1609 @@
+{
+ "source": "/root/easy/folk-and-fable/thousand-nights-part-1/source.txt",
+ "characters": [
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 44,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "47M/5F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Sunnees\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King",
+    "Young King"
+   ],
+   "mentions": 44,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "195M/44F cues",
+   "age": "young",
+   "age_evidence": "21y/15o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\"the Lord\n\nof all creatures\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wezeer",
+   "aliases": [
+    "Wezeer"
+   ],
+   "mentions": 38,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "104M/18F cues",
+   "age": null,
+   "age_evidence": "tied 8y/8o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"The Garden of Delight\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Notes",
+   "aliases": [
+    "Notes"
+   ],
+   "mentions": 35,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "43M/7F cues",
+   "age": "young",
+   "age_evidence": "10y/6o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arabic",
+   "aliases": [
+    "Arabic"
+   ],
+   "mentions": 34,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "21M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"[8]\n\nI have only to add one more extract from Mr. Lane's Preface.\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Head",
+   "aliases": [
+    "Head"
+   ],
+   "mentions": 30,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "57M/18F cues",
+   "age": "old",
+   "age_evidence": "9y/11o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arabs",
+   "aliases": [
+    "Arabs"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "11M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"\n\n[3] \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Barber",
+   "aliases": [
+    "Barber"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "52M/2F cues",
+   "age": "old",
+   "age_evidence": "4y/6o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Thousand",
+   "aliases": [
+    "Thousand"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "16M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"I have shewn it to be my opinion that all the complete\n\ncopies of 'The Thousand and One Nights' now known are in the main\n\nderived, though not immediately, fro",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nights",
+   "aliases": [
+    "Arabian Nights",
+    "One Nights"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "21M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"\n\nI have already mentioned that the literary history of \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Illustration",
+   "aliases": [
+    "Illustration"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "42M/8F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tail",
+   "aliases": [
+    "Tail"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "35M/8F cues",
+   "age": "old",
+   "age_evidence": "3y/9o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arab",
+   "aliases": [
+    "Arab"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "55M/7F cues",
+   "age": "old",
+   "age_evidence": "3y/9o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Thousand Nights,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jinn",
+   "aliases": [
+    "Jinn"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 17M/9F",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\" (sing.\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Muslims",
+   "aliases": [
+    "Muslims"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Deen",
+   "aliases": [
+    "Deen"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "37M/7F cues",
+   "age": "young",
+   "age_evidence": "14y/10o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cairo",
+   "aliases": [
+    "Cairo"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Modern\n\nEgyptians,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Prophet",
+   "aliases": [
+    "Prophet"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "16M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Compassionate\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Egypt",
+   "aliases": [
+    "Egypt"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arabian",
+   "aliases": [
+    "Arabian"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "13M/2F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"as a bed\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Persian",
+   "aliases": [
+    "Persian"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"\n\nWhen these facts are considered in reference to each other, the date\n\nassigned, in the Review, to the composition of the work cannot\n\nreasonably be regarded ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Efreet",
+   "aliases": [
+    "Efreet"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 17M/10F",
+   "age": null,
+   "age_evidence": "tied 3y/3o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Jinnee",
+   "aliases": [
+    "Jinnee"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 12M/8F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Ginnee\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lady",
+   "aliases": [
+    "Lady"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/14F",
+   "age": "old",
+   "age_evidence": "6y/13o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Garden",
+   "aliases": [
+    "Garden"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "17M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"The Garden of Delight\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Muslim",
+   "aliases": [
+    "Muslim"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "17M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"There is no deity but God: Mo\u1e25ammad is God's Apostle:\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Allah",
+   "aliases": [
+    "Allah"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 22M/12F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Fisherman",
+   "aliases": [
+    "Fisherman"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "22M/1F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": "fisherman",
+   "role_evidence": "in name",
+   "voice_query": "young male fisherman narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Egyptian",
+   "aliases": [
+    "Egyptian"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Modern Egyptians\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Azeez",
+   "aliases": [
+    "Azeez"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 8M/9F",
+   "age": "old",
+   "age_evidence": "0y/6o",
+   "role": null,
+   "role_evidence": "contested role (bride shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Calcutta",
+   "aliases": [
+    "Calcutta"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"the Calcutta edition of the complete work.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ladies",
+   "aliases": [
+    "Ladies",
+    "Three Ladies"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Brother",
+   "aliases": [
+    "Fifth Brother",
+    "Sixth Brother"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "138M/8F cues",
+   "age": "old",
+   "age_evidence": "3y/9o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Angels",
+   "aliases": [
+    "Angels"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Galland",
+   "aliases": [
+    "Galland"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "European",
+   "aliases": [
+    "European"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "1y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\"the familiar names of childhood,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Review",
+   "aliases": [
+    "Review"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Thousand and One\n\nNights\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Azeezeh",
+   "aliases": [
+    "Azeezeh"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/3F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Noor",
+   "aliases": [
+    "Noor"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "16M/3F cues",
+   "age": "young",
+   "age_evidence": "8y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Prince",
+   "aliases": [
+    "Second Prince"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "30M/5F cues",
+   "age": "young",
+   "age_evidence": "17y/8o",
+   "role": "prince",
+   "role_evidence": "in name",
+   "voice_query": "young male prince narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Iblees",
+   "aliases": [
+    "Iblees"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"El-J\u00e1nn\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Genii",
+   "aliases": [
+    "Genii"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Mel\u00e1ikeh\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "India",
+   "aliases": [
+    "India"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Memlook",
+   "aliases": [
+    "Memlook"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hammer",
+   "aliases": [
+    "Von Hammer"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Continuation",
+   "aliases": [
+    "Continuation"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Porter",
+   "aliases": [
+    "Porter"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mendicant",
+   "aliases": [
+    "Mendicant"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "tied 4y/4o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bedr",
+   "aliases": [
+    "Bedr"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "18M/2F cues",
+   "age": "young",
+   "age_evidence": "5y/4o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "East",
+   "aliases": [
+    "East"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "17M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Eastern",
+   "aliases": [
+    "Eastern"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"half lie?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "China",
+   "aliases": [
+    "China"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sacy",
+   "aliases": [
+    "Sacy"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"The Thousand Nights\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Son",
+   "aliases": [
+    "Son"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "143M/36F cues",
+   "age": "young",
+   "age_evidence": "31y/29o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Humpback",
+   "aliases": [
+    "Humpback"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mulook",
+   "aliases": [
+    "Mulook"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/4F cues",
+   "age": "old",
+   "age_evidence": "0y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Merciful",
+   "aliases": [
+    "Merciful"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Merciful in great things;\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ditto",
+   "aliases": [
+    "Ditto"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": "old",
+   "age_evidence": "2y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Adam",
+   "aliases": [
+    "Adam"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\" also signifies \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jennet",
+   "aliases": [
+    "Jennet"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hell",
+   "aliases": [
+    "Hell"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"the fuel of which\n\nis men and stones:\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Indian",
+   "aliases": [
+    "Indian"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Turkish",
+   "aliases": [
+    "Turkish"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Introduction",
+   "aliases": [
+    "Introduction"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Breslau",
+   "aliases": [
+    "Breslau"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ibn",
+   "aliases": [
+    "Ibn"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Enees",
+   "aliases": [
+    "Enees"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Jelees",
+   "aliases": [
+    "Jelees"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Compassionate",
+   "aliases": [
+    "Compassionate"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Merciful\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Motto",
+   "aliases": [
+    "Motto"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"Small things stir up great\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Know",
+   "aliases": [
+    "Know"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "31M/15F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\" he adds, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Paradise",
+   "aliases": [
+    "Paradise"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ocean",
+   "aliases": [
+    "Circumambient Ocean"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"el-Ba\u1e25r el-Mo\u1e25ee\u1e6d;\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rasheed",
+   "aliases": [
+    "Rasheed"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Aboo",
+   "aliases": [
+    "Aboo"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Khaleefeh",
+   "aliases": [
+    "Khaleefeh"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (fisherman shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Shems",
+   "aliases": [
+    "Shems"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "German",
+   "aliases": [
+    "German"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"The Thousand and One Nights\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mule",
+   "aliases": [
+    "Mule"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Conclusion",
+   "aliases": [
+    "Conclusion"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tailor",
+   "aliases": [
+    "Tailor"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": "tailor",
+   "role_evidence": "in name",
+   "voice_query": "male tailor narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Meeting",
+   "aliases": [
+    "Meeting"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/3F cues",
+   "age": "old",
+   "age_evidence": "2y/4o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tomb",
+   "aliases": [
+    "Tomb"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": "old",
+   "age_evidence": "3y/4o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ape",
+   "aliases": [
+    "Ape"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Woman",
+   "aliases": [
+    "Old Woman"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/12F",
+   "age": "old",
+   "age_evidence": "2y/5o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bride",
+   "aliases": [
+    "Bride"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/3F",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": "bride",
+   "role_evidence": "in name",
+   "voice_query": "old bride narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Damascus",
+   "aliases": [
+    "Damascus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/4F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (bride shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Throne",
+   "aliases": [
+    "Throne"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mohammadan",
+   "aliases": [
+    "Mohammadan"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mohammadans",
+   "aliases": [
+    "Mohammadans"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Jahennem\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mekkeh",
+   "aliases": [
+    "Mekkeh"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wardee",
+   "aliases": [
+    "Wardee"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"the Sea of Darkness\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jahennem",
+   "aliases": [
+    "Jahennem"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 94,
+ "speaking": 34
+}

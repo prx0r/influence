@@ -1,0 +1,331 @@
+{
+ "source": "/root/easy/folk-and-fable/grimm-part-3/source.txt",
+ "characters": [
+  {
+   "name": "Hans",
+   "aliases": [
+    "Hans"
+   ],
+   "mentions": 80,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 59M/117F",
+   "age": "young",
+   "age_evidence": "12y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Well,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 44,
+   "dialogue_lines": 41,
+   "gender": null,
+   "gender_evidence": "contested 190M/135F",
+   "age": "young",
+   "age_evidence": "81y/16o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young king narration",
+   "sample_line": "\u201cShe stole into my room\n\nin the night and questioned me, otherwise she could not have discovered\n\nit.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Grethel",
+   "aliases": [
+    "Grethel"
+   ],
+   "mentions": 44,
+   "dialogue_lines": 55,
+   "gender": "female",
+   "gender_evidence": "19M/63F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cBehave well, Hans.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Elsie",
+   "aliases": [
+    "Clever Elsie",
+    "Elsie"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 48M/46F",
+   "age": "young",
+   "age_evidence": "20y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Ah, dear Hans,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Cap",
+   "aliases": [
+    "Cap"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 24,
+   "gender": "female",
+   "gender_evidence": "33M/71F cues",
+   "age": "old",
+   "age_evidence": "27y/29o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "\u201cLittle Red-Cap.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Queen",
+   "aliases": [
+    "Queen"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 11,
+   "gender": null,
+   "gender_evidence": "contested 46M/48F",
+   "age": "young",
+   "age_evidence": "21y/4o",
+   "role": "queen",
+   "role_evidence": "in name",
+   "voice_query": "young queen narration",
+   "sample_line": "\u201cJust as the King commands,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thumbling",
+   "aliases": [
+    "Thumbling"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "58M/15F cues",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Oh father,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 37M/35F",
+   "age": "young",
+   "age_evidence": "13y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cTake all water away from her, that she may no\n\nlonger be able to wash herself, for otherwise I have no power over\n\nher.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Red",
+   "aliases": [
+    "Little Red"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 271M/197F",
+   "age": "young",
+   "age_evidence": "94y/58o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "I will take great care,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 21,
+   "gender": null,
+   "gender_evidence": "contested 59M/49F",
+   "age": "young",
+   "age_evidence": "14y/9o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cso far, so good;\n\nbut there are three things besides that I want to know: why a fountain\n\nwhich once flowed with wine has become dry, and no longer gives even\n",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lord",
+   "aliases": [
+    "Lord"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "34M/16F cues",
+   "age": "young",
+   "age_evidence": "11y/3o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cHere all\n\ndwell free.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Holle",
+   "aliases": [
+    "Mother Holle"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "4M/42F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "You shall have that because you have been so industrious,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Whither",
+   "aliases": [
+    "Whither"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 9M/11F",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bremen",
+   "aliases": [
+    "Bremen"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThere,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bricklebrit",
+   "aliases": [
+    "Bricklebrit"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "14M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThat is a fine thing,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thereupon",
+   "aliases": [
+    "Thereupon"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "female",
+   "gender_evidence": "10M/21F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cYou shall have that because you have been so industrious,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Peter",
+   "aliases": [
+    "Saint Peter"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "22M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "Honest indeed,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Wherewithal",
+   "aliases": [
+    "Wherewithal"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWhat do I hear?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sorrowful",
+   "aliases": [
+    "Sorrowful"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 13M/7F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cGo out with\n\nthy child, thy husband hath come.\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 19,
+ "speaking": 18
+}

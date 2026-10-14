@@ -1,0 +1,1047 @@
+{
+ "source": "/root/easy/folk-and-fable/book-of-were-wolves/source.txt",
+ "characters": [
+  {
+   "name": "Saga",
+   "aliases": [
+    "Eyrbyggja Saga",
+    "Hrolfs Saga",
+    "Saga"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "40M/9F cues",
+   "age": "young",
+   "age_evidence": "8y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201che changed form; the\n\nbodies lay as though sleeping or dead, but he was a bird or a beast, a\n\nfish, or a woman, and went in a twinkling to far distant lands, d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Odd",
+   "aliases": [
+    "Odd"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 19M/23F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Katla",
+   "aliases": [
+    "Katla"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 20M/32F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cevil eye.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thorir",
+   "aliases": [
+    "Thorir"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "29M/3F cues",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cat times there came\n\nover Thorir berserkr fits, and it was considered a sad misfortune to\n\nsuch a man, as they were quite beyond control.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Skallagrim",
+   "aliases": [
+    "Skallagrim"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "46M/16F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": "witch",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male witch narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Pierre",
+   "aliases": [
+    "Pierre"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "29M/12F cues",
+   "age": "young",
+   "age_evidence": "6y/3o",
+   "role": "maiden",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young male maiden narration",
+   "sample_line": "\u201cIn vain,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sigmund",
+   "aliases": [
+    "Sigmund"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "35M/7F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cSigmund flew at him and rent him so that he fell, for he had bitten\n\nthrough his throat. That day they could not leave their wolf-forms.\n\nSigmund laid him on h",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bera",
+   "aliases": [
+    "Bera"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 27M/31F",
+   "age": "young",
+   "age_evidence": "17y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201c\u2018Maybe you have had sufficient,\u2019 said the queen, and she\n\nlaughed.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Arnkell",
+   "aliases": [
+    "Arnkell"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 14M/14F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hring",
+   "aliases": [
+    "Hring",
+    "King Hring"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "28M/13F cues",
+   "age": "young",
+   "age_evidence": "7y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Norse",
+   "aliases": [
+    "Norse"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "old",
+   "age_evidence": "2y/5o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Kveldulf",
+   "aliases": [
+    "Kveldulf"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "19M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lycanthropy",
+   "aliases": [
+    "Lycanthropy"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cto become a were-wolf, to change shape.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Carle",
+   "aliases": [
+    "Carle"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 22M/24F",
+   "age": "young",
+   "age_evidence": "17y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "22M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThat is true,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thorsteinn",
+   "aliases": [
+    "Thorsteinn"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hallvard",
+   "aliases": [
+    "Hallvard"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Kraka",
+   "aliases": [
+    "Kraka"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "John",
+   "aliases": [
+    "John"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201che\n\nwas of the Ossyrian race, of which a man and a woman were doomed to\n\nspend a certain number of years in wolf\u2019s form. Only after seven years\n\nmight they ret",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Verdung",
+   "aliases": [
+    "Michel Verdung"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Roulet",
+   "aliases": [
+    "Roulet"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "23M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cWhat is your name, and what your estate?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Petronius",
+   "aliases": [
+    "Petronius"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Magnus",
+   "aliases": [
+    "Olaus Magnus"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bisclaveret",
+   "aliases": [
+    "Bisclaveret"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Marshal",
+   "aliases": [
+    "Marshal"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Jupiter",
+   "aliases": [
+    "Jupiter"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Geirrid",
+   "aliases": [
+    "Geirrid"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "3M/11F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Thorarinn",
+   "aliases": [
+    "Thorarinn"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Egill",
+   "aliases": [
+    "Egill"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 13M/10F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": "witch",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young witch narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Court",
+   "aliases": [
+    "Court"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dole",
+   "aliases": [
+    "Dole"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 7M/4F",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Greek",
+   "aliases": [
+    "Greek"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sidetes",
+   "aliases": [
+    "Marcellus Sidetes"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ovid",
+   "aliases": [
+    "Ovid"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "11M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cMetamorphoses,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hrolf",
+   "aliases": [
+    "Hrolf"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/4F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Derivation",
+   "aliases": [
+    "Derivation"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cHamr:\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Pericofcius",
+   "aliases": [
+    "Albertus Pericofcius"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cLet him who has slain,\n\neat; if God chooses, let him devour me as well.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Prague",
+   "aliases": [
+    "Prague"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Vidal",
+   "aliases": [
+    "Pierre Vidal"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bodin",
+   "aliases": [
+    "Bodin"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Forestus",
+   "aliases": [
+    "Forestus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bourgot",
+   "aliases": [
+    "Pierre Bourgot"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gandillon",
+   "aliases": [
+    "Gandillon"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Cannibalism",
+   "aliases": [
+    "Cannibalism"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "French",
+   "aliases": [
+    "French"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cMonsieur can never go back to-night across\n\nthe flats, because of the\u2014the\u2014\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Picou",
+   "aliases": [
+    "Picou"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cMon Dieu! if I met the monster, I should run,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Northern",
+   "aliases": [
+    "Northern"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Lycaon",
+   "aliases": [
+    "Lycaon"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arcadia",
+   "aliases": [
+    "Arcadia"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Scandinavian",
+   "aliases": [
+    "Scandinavian"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cThe Anio flows into the Tiber; pure as crystal it\n\nmeets the tawny stream, and is lost in it, so that there is no more\n\nAnio, but the united stream is all Tibe",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Norway",
+   "aliases": [
+    "Norway"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Iceland",
+   "aliases": [
+    "Iceland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hvit",
+   "aliases": [
+    "Hvit"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/8F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sagas",
+   "aliases": [
+    "Sagas"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cThereupon came Thorarinn and his men upon them, and Nagli led the way;\n\nbut when he saw weapons drawn he was frightened, and ran away up the\n\nmountain, and bec",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Thord",
+   "aliases": [
+    "Thord"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gothic",
+   "aliases": [
+    "Gothic"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cLeu warou, sanglante beste.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Livonia",
+   "aliases": [
+    "Livonia"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Courland",
+   "aliases": [
+    "Courland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Parliament",
+   "aliases": [
+    "Parliament"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Chastenoy",
+   "aliases": [
+    "Chastenoy"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/4F",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Georges",
+   "aliases": [
+    "Georges"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/5F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 61,
+ "speaking": 18
+}

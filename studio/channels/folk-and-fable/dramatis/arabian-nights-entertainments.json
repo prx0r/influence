@@ -1,0 +1,535 @@
+{
+ "source": "/root/easy/folk-and-fable/arabian-nights-entertainments/source.txt",
+ "characters": [
+  {
+   "name": "Sultan",
+   "aliases": [
+    "Sultan"
+   ],
+   "mentions": 53,
+   "dialogue_lines": 52,
+   "gender": "male",
+   "gender_evidence": "163M/51F cues",
+   "age": "young",
+   "age_evidence": "30y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"The Arabian\n\nNights\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Zobeida",
+   "aliases": [
+    "Zobeida"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 41M/30F",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "But listen, friend,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Caliph",
+   "aliases": [
+    "Caliph"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "31M/10F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"We must do our duty,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Scheherazade",
+   "aliases": [
+    "Scheherazade"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 33M/33F",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Then listen,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Amina",
+   "aliases": [
+    "Amina"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "11M/30F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "Let him stay,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Calenders",
+   "aliases": [
+    "Calenders"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "25M/9F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"This,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sadie",
+   "aliases": [
+    "Sadie"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 12M/21F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\"Take\n\none of those dogs to my sister Amina and give me the other.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sire",
+   "aliases": [
+    "Sire"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 12,
+   "gender": "male",
+   "gender_evidence": "56M/10F cues",
+   "age": "young",
+   "age_evidence": "8y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"it is her own wish. Even the sad\n\nfate that awaits her could not hold her back.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Greek",
+   "aliases": [
+    "Greek"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 13,
+   "gender": "male",
+   "gender_evidence": "51M/1F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Sire,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Arabian",
+   "aliases": [
+    "Arabian"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 19,
+   "gender": null,
+   "gender_evidence": "contested 43M/28F",
+   "age": "young",
+   "age_evidence": "8y/3o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"and I am not afraid to\n\nthink of it. If I fail, my death will be a glorious one, and if I\n\nsucceed I shall have done a great service to my country.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bagdad",
+   "aliases": [
+    "Bagdad"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "14M/5F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (merchant shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Pick up your basket\n\nand follow me.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dinarzade",
+   "aliases": [
+    "Dinarzade"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "8M/19F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old female narration",
+   "sample_line": "Indeed, sister,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Alas",
+   "aliases": [
+    "Alas"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 18,
+   "gender": null,
+   "gender_evidence": "contested 15M/10F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": "princess",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young princess narration",
+   "sample_line": "\"I shall kill you,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "The",
+   "aliases": [
+    "Bagdad The",
+    "King The"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 107,
+   "gender": "male",
+   "gender_evidence": "4065M/1271F cues",
+   "age": "young",
+   "age_evidence": "686y/204o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"The Arabian Nights\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Isles",
+   "aliases": [
+    "Black Isles"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "17M/0F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Do you know it is a whole year's journey from here? You came here in\n\na few hours because it was enchanted. But I will accompany you on your\n\njourney.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nights",
+   "aliases": [
+    "Nights"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/3F",
+   "age": "old",
+   "age_evidence": "1y/4o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Raschid",
+   "aliases": [
+    "Raschid"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Persia",
+   "aliases": [
+    "Persia"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/6F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Arab",
+   "aliases": [
+    "Arab"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 9M/9F",
+   "age": "old",
+   "age_evidence": "2y/5o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Schahriar",
+   "aliases": [
+    "Schahriar"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/6F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Douban",
+   "aliases": [
+    "Douban"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "16M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\"What had the\n\nvizir done,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Indian",
+   "aliases": [
+    "Indian"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 9M/7F",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"and whilst riding in the country I fell asleep and\n\ntumbled off. My horse has run away, and I do not know what has become\n\nof him.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Entertainments",
+   "aliases": [
+    "Nights Entertainments"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Haroun",
+   "aliases": [
+    "Haroun"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "India",
+   "aliases": [
+    "India"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 11M/8F",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "French",
+   "aliases": [
+    "French"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Galland",
+   "aliases": [
+    "Monsieur Galland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Highness",
+   "aliases": [
+    "Highness"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/4F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sindbad",
+   "aliases": [
+    "King Sindbad"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "18M/2F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"This vizir,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Giafar",
+   "aliases": [
+    "Giafar"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"Is this,\"",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 31,
+ "speaking": 19
+}

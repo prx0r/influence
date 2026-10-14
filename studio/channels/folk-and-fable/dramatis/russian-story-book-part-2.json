@@ -1,0 +1,926 @@
+{
+ "source": "/root/easy/folk-and-fable/russian-story-book-part-2/source.txt",
+ "characters": [
+  {
+   "name": "Kiev",
+   "aliases": [
+    "Kiev"
+   ],
+   "mentions": 68,
+   "dialogue_lines": 15,
+   "gender": null,
+   "gender_evidence": "contested 101M/57F",
+   "age": "young",
+   "age_evidence": "60y/6o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"It is a journey of a year on foot and then three months on\n\nthe bosom of the deep blue sea.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ilya",
+   "aliases": [
+    "Ilya"
+   ],
+   "mentions": 65,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "150M/20F cues",
+   "age": "young",
+   "age_evidence": "31y/25o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "You did well, Alyosha,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Diuk",
+   "aliases": [
+    "Diuk",
+    "Lord Diuk"
+   ],
+   "mentions": 58,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "112M/32F cues",
+   "age": "young",
+   "age_evidence": "35y/11o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Is the journey long?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Nikitich",
+   "aliases": [
+    "Nikitich"
+   ],
+   "mentions": 54,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "106M/46F cues",
+   "age": "young",
+   "age_evidence": "22y/8o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "If I go into the palace,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Vladimir",
+   "aliases": [
+    "Prince Vladimir"
+   ],
+   "mentions": 53,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "214M/75F cues",
+   "age": "young",
+   "age_evidence": "105y/8o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "And can you buy such steeds as yours cheaply in India the\n\nGlorious?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "India",
+   "aliases": [
+    "India"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "51M/13F cues",
+   "age": "young",
+   "age_evidence": "19y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Murom",
+   "aliases": [
+    "Murom"
+   ],
+   "mentions": 26,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "47M/12F cues",
+   "age": "old",
+   "age_evidence": "12y/17o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\"These were no psalm-singers,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Coat",
+   "aliases": [
+    "Coat"
+   ],
+   "mentions": 25,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "50M/15F cues",
+   "age": "young",
+   "age_evidence": "9y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nThen the psalm-singers replied:\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Glorious",
+   "aliases": [
+    "Glorious"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 11,
+   "gender": "male",
+   "gender_evidence": "49M/15F cues",
+   "age": "young",
+   "age_evidence": "20y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Is the journey long?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Russia",
+   "aliases": [
+    "Holy Russia"
+   ],
+   "mentions": 23,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "60M/7F cues",
+   "age": "young",
+   "age_evidence": "9y/3o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Shed not my\n\nblood, young Lord Diuk. Ride on across the open steppe and you will\n\nfind an adversary worthy of your stout bow and your shining arrows.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rough",
+   "aliases": [
+    "Rough"
+   ],
+   "mentions": 23,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "71M/17F cues",
+   "age": "young",
+   "age_evidence": "10y/5o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "That is well,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Apraxia",
+   "aliases": [
+    "Princess Apraxia"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 32M/35F",
+   "age": "young",
+   "age_evidence": "32y/3o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"The washerwoman, I suppose.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kasyan",
+   "aliases": [
+    "Kasyan"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "39M/19F cues",
+   "age": "young",
+   "age_evidence": "20y/4o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Nay, not so,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Old",
+   "aliases": [
+    "Old"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 266M/137F",
+   "age": "young",
+   "age_evidence": "80y/42o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Somewhere in the white world Russian heroes are fighting\n\none another. That is not well, for their strength must be kept for\n\nbattle with accursed Tatars.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Churilo",
+   "aliases": [
+    "Churilo"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "35M/2F cues",
+   "age": "young",
+   "age_evidence": "13y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Let Alyosha go,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Cloudfall",
+   "aliases": [
+    "Cloudfall"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "47M/3F cues",
+   "age": "old",
+   "age_evidence": "2y/4o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\" he cried in heroic\n\nanger, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Stavr",
+   "aliases": [
+    "Stavr"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "50M/24F cues",
+   "age": "young",
+   "age_evidence": "18y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "I have enough of which I might boast,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Marina",
+   "aliases": [
+    "Marina"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 31M/42F",
+   "age": "young",
+   "age_evidence": "13y/1o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"I will not. I have no desire to calm the fiery dragon\n\nand charm the poisonous serpent but to fight and kill them. Nor would\n\nrest without labour have any char",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ivan",
+   "aliases": [
+    "Ivan"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "46M/8F cues",
+   "age": "young",
+   "age_evidence": "10y/7o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Do let me\n\ngo also,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Horde",
+   "aliases": [
+    "Golden Horde"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "42M/6F cues",
+   "age": "young",
+   "age_evidence": "7y/5o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"You are a mere boaster,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tress",
+   "aliases": [
+    "Golden Tress"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "42M/12F cues",
+   "age": "young",
+   "age_evidence": "8y/4o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I heard in my own home,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yermak",
+   "aliases": [
+    "Yermak"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "35M/1F cues",
+   "age": "young",
+   "age_evidence": "7y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "If you do not give me the charger, uncle,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Exquisite",
+   "aliases": [
+    "Exquisite"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "26M/2F cues",
+   "age": "young",
+   "age_evidence": "10y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\" Even as\n\nhe spoke the white oaken doors of the banquet-hall were flung open,\n\nand Churilo the Exquisite entered with a graceful bow to North,\n\nSouth, East, an",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Vasilissa",
+   "aliases": [
+    "Vasilissa"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 19M/36F",
+   "age": "young",
+   "age_evidence": "12y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Stupider and stupider,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Earth",
+   "aliases": [
+    "Mother Earth"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 33M/21F",
+   "age": null,
+   "age_evidence": "tied 3y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\"Tear not my sides with spurs, dear master; lash me not with your\n\nwhip of silk; tighten not the bridle upon my faithful head; but when\n\nI speed cling to my man",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Alyosha",
+   "aliases": [
+    "Alyosha"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "27M/2F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Why fight against each other,\n\nye heroes of Holy Russia?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kalin",
+   "aliases": [
+    "Tsar Kalin"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "21M/4F cues",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I will pour out his heart's blood.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Why",
+   "aliases": [
+    "Why"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "21M/8F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"For a good reason,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "North",
+   "aliases": [
+    "North"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/4F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "South",
+   "aliases": [
+    "South"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "East",
+   "aliases": [
+    "East"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "76M/31F cues",
+   "age": "young",
+   "age_evidence": "30y/5o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Foolish princess,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "West",
+   "aliases": [
+    "West"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "14M/4F cues",
+   "age": "young",
+   "age_evidence": "7y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Come\n\nforth, Ilya,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chernigof",
+   "aliases": [
+    "Chernigof"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "17M/8F cues",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nAt last Vladimir was a little moved. \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yetmanuila",
+   "aliases": [
+    "King Yetmanuila"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "21M/5F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Yetmanuilovich",
+   "aliases": [
+    "Yetmanuilovich"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "19M/5F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"and I am on my way to collect tribute from any princes who\n\nvalue their lives above roubles. Whither away, yourself?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nay",
+   "aliases": [
+    "Nay"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 10M/8F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\" said Marina, \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sun",
+   "aliases": [
+    "Fair Sun"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "30M/15F cues",
+   "age": "young",
+   "age_evidence": "11y/3o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Maiden",
+   "aliases": [
+    "Dream Maiden"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 32M/27F",
+   "age": "young",
+   "age_evidence": "10y/3o",
+   "role": "maiden",
+   "role_evidence": "in name",
+   "voice_query": "young maiden narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "16M/4F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"I am in search of my mother, Golden Tress,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Russian",
+   "aliases": [
+    "Russian"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hail",
+   "aliases": [
+    "Hail"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 16M/10F",
+   "age": "young",
+   "age_evidence": "7y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tatars",
+   "aliases": [
+    "Tatars"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/1F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dnieper",
+   "aliases": [
+    "Mother Dnieper"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 4M/6F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"I have only my travelling nag with me,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "White",
+   "aliases": [
+    "Great White"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "140M/50F cues",
+   "age": "young",
+   "age_evidence": "33y/10o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"My dear boys,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Svyatogor",
+   "aliases": [
+    "Svyatogor"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Easter",
+   "aliases": [
+    "Easter"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"And can you buy such steeds as yours cheaply in India the\n\nGlorious?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Jerusalem",
+   "aliases": [
+    "Jerusalem"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Falcon",
+   "aliases": [
+    "Falcon"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 14M/8F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hunter",
+   "aliases": [
+    "Hunter"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "11M/2F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": "hunter",
+   "role_evidence": "in name",
+   "voice_query": "young male hunter narration",
+   "sample_line": "\"If I had by me my good sword,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Samarcand",
+   "aliases": [
+    "Samarcand"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"\n\nThinking deeply and somewhat depressed at his heavy loss, Diuk once\n\nmore mounted Rough-Coat and gave him the rein for home. As he sped\n\nonward he overtook a",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Turkish",
+   "aliases": [
+    "Turkish"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mass",
+   "aliases": [
+    "Mass"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/3F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Samson",
+   "aliases": [
+    "Samson"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Ho, there,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Whirlwind",
+   "aliases": [
+    "Whirlwind"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 54,
+ "speaking": 39
+}

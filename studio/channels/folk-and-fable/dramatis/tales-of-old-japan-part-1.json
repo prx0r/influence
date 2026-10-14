@@ -1,0 +1,639 @@
+{
+ "source": "/root/easy/folk-and-fable/tales-of-old-japan-part-1/source.txt",
+ "characters": [
+  {
+   "name": "Japanese",
+   "aliases": [
+    "Japanese"
+   ],
+   "mentions": 43,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "35M/12F cues",
+   "age": "young",
+   "age_evidence": "10y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\" 4 a.m. \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yedo",
+   "aliases": [
+    "Yedo"
+   ],
+   "mentions": 33,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "32M/14F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"My lord, you told me\n\nat first that your debauchery was but a trick to make your enemy relax\n\nin watchfulness. But indeed, indeed, this has gone too far. I pra",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kami",
+   "aliases": [
+    "Kami"
+   ],
+   "mentions": 31,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "45M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Here,\n\nmy Lord of Takumi, the ribbon of my sock has come untied; be so good\n\nas to tie it up for me.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Takumi",
+   "aliases": [
+    "Asano Takumi",
+    "Takumi"
+   ],
+   "mentions": 29,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "47M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\" is based upon the Confucian books. Dr. Legge, in his\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Japan",
+   "aliases": [
+    "Japan",
+    "Old Japan"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "44M/13F cues",
+   "age": "young",
+   "age_evidence": "14y/10o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Tale of a Sword.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yoshiwara",
+   "aliases": [
+    "Yoshiwara"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 20M/16F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"The Three Sea-coasts.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Gompachi",
+   "aliases": [
+    "Gompachi"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "52M/18F cues",
+   "age": "young",
+   "age_evidence": "10y/2o",
+   "role": "maiden",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male maiden narration",
+   "sample_line": "What is this?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Footnote",
+   "aliases": [
+    "Footnote"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "22M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"wave-man\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chikara",
+   "aliases": [
+    "Chikara",
+    "Oishi Chikara"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "38M/6F cues",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"We, the R\u00f4nins who were formerly in\n\nthe service of Asano Takumi no Kami, are this night about to break\n\ninto the palace of K\u00f4tsuk\u00e9 no Suk\u00e9, to avenge our lord",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Government",
+   "aliases": [
+    "Government"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "12M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"To-night we shall attack our enemy in his palace; his retainers will\n\ncertainly resist us, and we shall be obliged to kill them. But to slay\n\nold men and women",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Prince",
+   "aliases": [
+    "Prince"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "58M/4F cues",
+   "age": "young",
+   "age_evidence": "19y/3o",
+   "role": "prince",
+   "role_evidence": "in name",
+   "voice_query": "young male prince narration",
+   "sample_line": "\"\n\nwho was selected on account of his merits. These \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Court",
+   "aliases": [
+    "Court"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "32M/2F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\" And as he spoke his face became livid with\n\nrage.\n\n[Footnote 4: Councillor, lit. \"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Illustration",
+   "aliases": [
+    "Illustration"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "17M/2F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"When I saw you\n\nlying drunk by the roadside at Yamashina, in Ki\u00f4to, I knew not that\n\nyou were plotting to avenge your lord; and, thinking you to be a\n\nfaithles",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Shogun",
+   "aliases": [
+    "Shogun"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "10M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Barbarian-repressing Commander-in-chief.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Komurasaki",
+   "aliases": [
+    "Komurasaki"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 12M/18F",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\"Little Purple,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Samurai",
+   "aliases": [
+    "Samurai"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/1F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Imperial",
+   "aliases": [
+    "Imperial"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sengakuji",
+   "aliases": [
+    "Sengakuji"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"\n\nThe second paper is a document explanatory of their conduct, a copy of\n\nwhich was found on the person of each of the forty-seven men:--\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sama",
+   "aliases": [
+    "Kamei Sama"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "29M/1F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"K\u00f4tsuk\u00e9 no\n\nSuk\u00e9 alone is our enemy; let some one go inside and bring him forth.\n\ndead or alive!\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kira",
+   "aliases": [
+    "Kira"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"15th year of Genroku. 12th month.\n\n\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hatamotos",
+   "aliases": [
+    "Hatamotos"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "16M/5F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Meguro",
+   "aliases": [
+    "Meguro"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 9M/6F",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mikado",
+   "aliases": [
+    "Mikado"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Niurai",
+   "aliases": [
+    "Yakushi Niurai"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "14M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\"Verily, thou hast travelled far that the sacred laws might be\n\nrevealed for the salvation of many men; now, therefore, take my image,\n\nwhich thou carriest in t",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yokohama",
+   "aliases": [
+    "Yokohama"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "European",
+   "aliases": [
+    "European"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tycoon",
+   "aliases": [
+    "Tycoon"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Sendai",
+   "aliases": [
+    "Sendai"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I thank you, sir,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "State",
+   "aliases": [
+    "State"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "21M/1F cues",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Buddhist",
+   "aliases": [
+    "Buddhist"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mikawa",
+   "aliases": [
+    "Mikawa"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 15M/10F",
+   "age": "young",
+   "age_evidence": "6y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Emperor",
+   "aliases": [
+    "Emperor"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": "emperor",
+   "role_evidence": "in name",
+   "voice_query": "male emperor narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Takanawa",
+   "aliases": [
+    "Takanawa"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Genroku",
+   "aliases": [
+    "Genroku"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "England",
+   "aliases": [
+    "England"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Europe",
+   "aliases": [
+    "Europe"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\"going to worship at the hour of the ox,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kazuma",
+   "aliases": [
+    "Kazuma"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "18M/4F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 37,
+ "speaking": 21
+}

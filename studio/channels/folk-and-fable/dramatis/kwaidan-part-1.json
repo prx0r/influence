@@ -1,0 +1,688 @@
+{
+ "source": "/root/easy/folk-and-fable/kwaidan-part-1/source.txt",
+ "characters": [
+  {
+   "name": "Japanese",
+   "aliases": [
+    "Japanese"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 8M/5F",
+   "age": "old",
+   "age_evidence": "1y/3o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\u201csilent\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tomotada",
+   "aliases": [
+    "Tomotada"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 47M/27F",
+   "age": "young",
+   "age_evidence": "20y/4o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cAh, how pitiful!\u2014a young gentleman\n\ntraveling alone in such weather!... Deign, young master, to enter.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Minokichi",
+   "aliases": [
+    "Minokichi"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 42M/35F",
+   "age": "young",
+   "age_evidence": "15y/3o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cI intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,\u2014because you\n\nare so young... You are a pretty boy, Minokichi; and I w",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sir",
+   "aliases": [
+    "Honored Sir",
+    "Sir"
+   ],
+   "mentions": 16,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "51M/12F cues",
+   "age": "young",
+   "age_evidence": "9y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cDoes not the priest on the hill sometimes perform the funeral service\n\nfor your dead?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Aoyagi",
+   "aliases": [
+    "Aoyagi"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 25M/14F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cthe\n\nCherry-tree of the Sixteenth Day,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yuki",
+   "aliases": [
+    "Yuki"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 21M/36F",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cTell me about her... Where did you see her?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sono",
+   "aliases": [
+    "Sono"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 22M/25F",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cA woman is fond of\n\nher small things; and O-Sono was much attached to her belongings.\n\nPerhaps she has come back to look at them. Many dead persons will do\n\nth",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Buddhist",
+   "aliases": [
+    "Buddhist"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/3F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Japan",
+   "aliases": [
+    "Japan"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 12M/7F",
+   "age": "old",
+   "age_evidence": "2y/5o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\u201cso strangely mingled\n\ntogether out of the austere dreams of India and the subtle beauty of\n\nJapan and the relentless science of Europe.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nagao",
+   "aliases": [
+    "Nagao"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 27M/22F",
+   "age": "young",
+   "age_evidence": "8y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cAnd in that\n\nPure Land (2) there will be no pain of separation.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rokuro",
+   "aliases": [
+    "Rokuro"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "13M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Kubi",
+   "aliases": [
+    "Kubi"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "13M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cThe\n\npriest! the priest!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tei",
+   "aliases": [
+    "Tei"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 27M/15F",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Akanuma",
+   "aliases": [
+    "Akanuma"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "11M/5F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cAt the coming of twilight I invited him to return with me\u2014! Now to\n\nsleep alone in the shadow of the rushes of Akanuma\u2014ah! what misery\n\nunspeakable!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tsuyu",
+   "aliases": [
+    "Tsuyu"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "2M/13F cues",
+   "age": "young",
+   "age_evidence": "10y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mosaku",
+   "aliases": [
+    "Mosaku"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "28M/6F cues",
+   "age": null,
+   "age_evidence": "tied 6y/6o",
+   "role": "ferryman",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "male ferryman narration",
+   "sample_line": "\u201cAsleep or awake, that was the only time that I saw a being as\n\nbeautiful as you. Of course, she was not a human being; and I was\n\nafraid of her,\u2014very much afra",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Dan",
+   "aliases": [
+    "Dan"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "47M/12F cues",
+   "age": null,
+   "age_evidence": "tied 2y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201ceven the goblins [_kijin_] could not\n\nrefrain from tears.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kii",
+   "aliases": [
+    "Kii"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cO-joch\u016b,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chinese",
+   "aliases": [
+    "Chinese"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cDream of\n\nAkinosuk\u00e9,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Amidaji",
+   "aliases": [
+    "Amidaji"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201c_Kaimon!_\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "San",
+   "aliases": [
+    "San"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "35M/9F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cyou are bewitched!...\n\nH\u014d\u00efchi San!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sama",
+   "aliases": [
+    "Sama"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "3M/10F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cTo wait for you, my betrothed, were no less a joy than a duty. We are\n\npledged to each other for the time of seven existences.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mugen",
+   "aliases": [
+    "Mugen"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 9M/10F",
+   "age": "old",
+   "age_evidence": "2y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cI have come to answer your fervent prayer as it deserves\n\nto be answered. Take, therefore, this jar.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Suwa",
+   "aliases": [
+    "Suwa"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Noto",
+   "aliases": [
+    "Noto"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/2F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hearn",
+   "aliases": [
+    "Lafcadio Hearn"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cAtlantic\n\nMonthly\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mugenyama",
+   "aliases": [
+    "Mugenyama"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "3M/7F cues",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tokoyo",
+   "aliases": [
+    "Tokoyo"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "\u201cYou have already been informed as to the reason of your having been\n\nsummoned to Our presence. We have decided that you shall become the\n\nadopted husband of Ou",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "92M/27F cues",
+   "age": "young",
+   "age_evidence": "19y/1o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Things",
+   "aliases": [
+    "Strange Things"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 11M/14F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cMy friend,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cKWAIDAN\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Antoku",
+   "aliases": [
+    "Antoku"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Echizen",
+   "aliases": [
+    "Echizen"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Tokubei",
+   "aliases": [
+    "Tokubei"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/4F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Shape",
+   "aliases": [
+    "Shape"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cWhat you have told us, reverend Sir, agrees with what has been said\n\nabout this matter from ancient time.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Isogai",
+   "aliases": [
+    "Isogai"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Kai",
+   "aliases": [
+    "Kai"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Daigen",
+   "aliases": [
+    "Daigen"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 4M/4F",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cThere must be something about which she\n\nis anxious, in or near that _tansu_.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yedo",
+   "aliases": [
+    "Yedo"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "0M/11F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201chonorable daughter-in-law.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hosokawa",
+   "aliases": [
+    "Lord Hosokawa"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "15M/1F cues",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cNow he will order my death,\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 40,
+ "speaking": 27
+}

@@ -1,0 +1,313 @@
+{
+ "source": "/root/easy/folk-and-fable/grimm-part-2/source.txt",
+ "characters": [
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 89,
+   "dialogue_lines": 76,
+   "gender": null,
+   "gender_evidence": "contested 460M/289F",
+   "age": "young",
+   "age_evidence": "110y/13o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young king narration",
+   "sample_line": "\u201cFor your life leave the\n\ncurtains closed; the Queen ought not to see the light yet, and must\n\nhave rest.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hansel",
+   "aliases": [
+    "Hansel"
+   ],
+   "mentions": 40,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 46M/69F",
+   "age": "young",
+   "age_evidence": "34y/12o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Be quiet,\n\nGrethel,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Flounder",
+   "aliases": [
+    "Flounder"
+   ],
+   "mentions": 35,
+   "dialogue_lines": 31,
+   "gender": null,
+   "gender_evidence": "contested 120M/93F",
+   "age": "young",
+   "age_evidence": "6y/4o",
+   "role": null,
+   "role_evidence": "contested role (emperor shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cHark, you Fisherman, I pray you, let me live, I am no Flounder really,\n\nbut an enchanted prince. What good will it do you to kill me? I should\n\nnot be good to ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Grethel",
+   "aliases": [
+    "Grethel"
+   ],
+   "mentions": 29,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 38M/66F",
+   "age": "young",
+   "age_evidence": "27y/9o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "And no boat crosses either,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Queen",
+   "aliases": [
+    "Queen"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 23,
+   "gender": "female",
+   "gender_evidence": "31M/102F cues",
+   "age": "young",
+   "age_evidence": "27y/4o",
+   "role": "queen",
+   "role_evidence": "in name",
+   "voice_query": "young female queen narration",
+   "sample_line": "\u201cHow fares my child, how fares my roe?\n\nTwice shall I come, then never more.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Cinderella",
+   "aliases": [
+    "Cinderella"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 18,
+   "gender": null,
+   "gender_evidence": "contested 50M/60F",
+   "age": "young",
+   "age_evidence": "20y/4o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cDear child, be good and pious, and then the good God will always\n\nprotect thee, and I will look down on thee from heaven and be near\n\nthee.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Rapunzel",
+   "aliases": [
+    "Rapunzel"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 7,
+   "gender": null,
+   "gender_evidence": "contested 58M/43F",
+   "age": "young",
+   "age_evidence": "22y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cRapunzel, Rapunzel,\n\nLet down thy hair to me.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Emperor",
+   "aliases": [
+    "Emperor"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "78M/39F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": "emperor",
+   "role_evidence": "in name",
+   "voice_query": "young male emperor narration",
+   "sample_line": "\u201cAlas, wife, why do you wish to be\n\nEmperor?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Pope",
+   "aliases": [
+    "Pope"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 11,
+   "gender": null,
+   "gender_evidence": "contested 48M/35F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (emperor shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cHusband,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 13,
+   "gender": null,
+   "gender_evidence": "contested 30M/35F",
+   "age": "young",
+   "age_evidence": "13y/0o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cGet up, you sluggards! we are going\n\ninto the forest to fetch wood.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Alas",
+   "aliases": [
+    "Alas"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 11,
+   "gender": null,
+   "gender_evidence": "contested 33M/27F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (emperor shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cshe wants to live in a great stone castle.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 10,
+   "gender": null,
+   "gender_evidence": "contested 69M/54F",
+   "age": "young",
+   "age_evidence": "20y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cshe has spared no trouble to fatten herself, and has been waiting to\n\nbe roasted long enough.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ilsabil",
+   "aliases": [
+    "Ilsabil"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 15M/18F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Wills",
+   "aliases": [
+    "Wills"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 14M/18F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cWell, what does she want, then?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Fisherman",
+   "aliases": [
+    "Fisherman"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "21M/5F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": "fisherman",
+   "role_evidence": "in name",
+   "voice_query": "young male fisherman narration",
+   "sample_line": "\u201cthere is no need for so many words about it\u2014a fish\n\nthat can talk I should certainly let go, anyhow,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Early",
+   "aliases": [
+    "Early"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 6M/8F",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cNo, wife,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hark",
+   "aliases": [
+    "Hark"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "8M/2F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThou art such a great fellow, and\n\nyet canst not even carry the tree!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Shiver",
+   "aliases": [
+    "Shiver"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/5F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 18,
+ "speaking": 16
+}

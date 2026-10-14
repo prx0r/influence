@@ -131,3 +131,31 @@ def test_spend_killswitch_blocks_live_paths():
                              ctx=fake_grant),
               studio_generate("proj", dry_run=False, ctx=fake_grant)):
         assert r["ok"] is False and "DISABLED" in r["reason"]
+
+
+def test_cast_extract_yuki():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from cast_extract import cast_book
+    r = cast_book("/root/easy/folk-and-fable/yuki-onna/source.txt",
+                  min_freq=2)
+    names = {c["name"] for c in r["characters"]}
+    assert {"Minokichi", "Yuki", "Mosaku"} <= names
+    yuki = next(c for c in r["characters"] if c["name"] == "Yuki")
+    assert yuki["gender"] == "female" and "female" in yuki["voice_query"]
+    mos = next(c for c in r["characters"] if c["name"] == "Mosaku")
+    assert mos["gender"] == "male"
+    assert all("dialogue_how" in c and "voice_query" in c
+               for c in r["characters"])
+
+
+def test_cast_drops_common_nouns():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from cast_extract import dramatis
+    text = ("The old table stood in the hall, and Kai loved the table. "
+            "Birds sat on the table while Kai watched the old table. "
+            "Gerda loves Kai. Kai runs to Gerda. Gerda sings "
+            "with Kai. Kai shouts for Gerda.")
+    names = {c["name"] for c in dramatis(text, min_freq=2)}
+    assert "Table" not in names and "Kai" in names and "Gerda" in names

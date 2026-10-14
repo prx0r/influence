@@ -1,0 +1,330 @@
+{
+ "source": "/root/easy/folk-and-fable/slav-peasants-part-2/source.txt",
+ "characters": [
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 28,
+   "dialogue_lines": 15,
+   "gender": "male",
+   "gender_evidence": "65M/27F cues",
+   "age": "young",
+   "age_evidence": "17y/10o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I can help you,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Kostey",
+   "aliases": [
+    "Kostey"
+   ],
+   "mentions": 23,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "69M/31F cues",
+   "age": "young",
+   "age_evidence": "20y/2o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Without legs it walks. Without arms it strikes.\n\nWithout life it moves continually.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Matthias",
+   "aliases": [
+    "Matthias"
+   ],
+   "mentions": 22,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "78M/38F cues",
+   "age": "young",
+   "age_evidence": "24y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "Whither are you going?",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Illustration",
+   "aliases": [
+    "Illustration"
+   ],
+   "mentions": 15,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "36M/14F cues",
+   "age": "young",
+   "age_evidence": "16y/5o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Prayers and threats are equally out of place,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yaga",
+   "aliases": [
+    "Yaga"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 9,
+   "gender": null,
+   "gender_evidence": "contested 26M/23F",
+   "age": "old",
+   "age_evidence": "7y/12o",
+   "role": "witch",
+   "role_evidence": "4 nearby mentions",
+   "voice_query": "old witch narration",
+   "sample_line": "\"What, Prince Junak! How have you come\n\nhere, where no one ever enters?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Niezguinek",
+   "aliases": [
+    "Niezguinek"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "28M/6F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Do not choke me, Niezguinek.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Broad",
+   "aliases": [
+    "Broad"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "33M/8F cues",
+   "age": "young",
+   "age_evidence": "9y/3o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "If there is nothing bad in it I am quite willing,",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Junak",
+   "aliases": [
+    "Prince Junak"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "38M/4F cues",
+   "age": "young",
+   "age_evidence": "15y/3o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Turn round, little house, turn round,\n\nI want to come inside;\n\nLet thy back to the forest be found,\n\nThy door to me open wide.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Flame",
+   "aliases": [
+    "Flame"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 10,
+   "gender": "male",
+   "gender_evidence": "35M/13F cues",
+   "age": "young",
+   "age_evidence": "7y/3o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I warrant I'll\n\ndislodge this clever magician.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hair",
+   "aliases": [
+    "Golden Hair"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 36M/37F",
+   "age": "young",
+   "age_evidence": "28y/3o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"My much honoured and noble sire and lord, the prince my bridegroom\n\nknows of the vow I made when carried off by the hurricane, that I\n\nwould only give my hand ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Vikher",
+   "aliases": [
+    "Vikher"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "25M/9F cues",
+   "age": "young",
+   "age_evidence": "14y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"And how is this thief Vikher to be got at?\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Knight",
+   "aliases": [
+    "Invisible Knight"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 5,
+   "gender": "male",
+   "gender_evidence": "45M/21F cues",
+   "age": "young",
+   "age_evidence": "20y/0o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Behold me, prince, at your service,\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sudolisu",
+   "aliases": [
+    "Princess Sudolisu"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 10M/17F",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\"Shining Star, God's light on high,\n\nLook down and prithee see;\n\nBehold me weep and hear me sigh,\n\nThen help and pity me.\n\nWhere my love is canst thou tell?\n\nTh",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Hand",
+   "aliases": [
+    "Golden Hand"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "159M/79F cues",
+   "age": "young",
+   "age_evidence": "60y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"Fiery Horse with strength of wing,\n\nI am now your lord;\n\nDo my will in everything,\n\nBe your law my word.\n\nWhere I point there you must go\n\nAt once, at once. Th",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Behold",
+   "aliases": [
+    "Behold"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "9M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\"Your good health, my friend. By what happy fortune do you return safe\n\nand sound to my court? The chamberlain told me that through your own\n\ncarelessness you h",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mane",
+   "aliases": [
+    "Golden Mane"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "18M/1F cues",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Steppes",
+   "aliases": [
+    "Steppes"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 7M/12F",
+   "age": "old",
+   "age_evidence": "3y/4o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "\"I demand\n\npayment for showing the way, and my payment is always in kisses.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Life",
+   "aliases": [
+    "Eternal Life"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "47M/14F cues",
+   "age": "young",
+   "age_evidence": "12y/1o",
+   "role": null,
+   "role_evidence": "contested role (prince shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"You shall have it as soon as I have proved that the water is of the\n\nright sort.\"",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Youth",
+   "aliases": [
+    "Youth"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "12M/5F cues",
+   "age": "young",
+   "age_evidence": "8y/4o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\"I give you my word of honour that I will bring you some.\"",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 19,
+ "speaking": 18
+}

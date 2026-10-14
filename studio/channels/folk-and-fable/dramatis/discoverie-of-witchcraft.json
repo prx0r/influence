@@ -1,0 +1,1487 @@
+{
+ "source": "/root/easy/folk-and-fable/discoverie-of-witchcraft/source.txt",
+ "characters": [
+  {
+   "name": "Scot",
+   "aliases": [
+    "Reginald Scot",
+    "Scot"
+   ],
+   "mentions": 51,
+   "dialogue_lines": 14,
+   "gender": "male",
+   "gender_evidence": "168M/56F cues",
+   "age": "young",
+   "age_evidence": "37y/5o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cREGINALDUS SCOTUS, _Anglus_, _tractatum de Incantamentis_\n\nscripsit, in quo plerasque traditiones de Magia Melancholi\u00e6, &\n\nmorbis variis, aut artibus histrioni",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Esq",
+   "aliases": [
+    "Esq"
+   ],
+   "mentions": 35,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "23M/4F cues",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": "prince",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male prince narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "London",
+   "aliases": [
+    "London"
+   ],
+   "mentions": 21,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "11M/0F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Thomas",
+   "aliases": [
+    "Sir Thomas"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 8,
+   "gender": "male",
+   "gender_evidence": "45M/11F cues",
+   "age": "young",
+   "age_evidence": "13y/2o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201ccousin\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "God",
+   "aliases": [
+    "God"
+   ],
+   "mentions": 18,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "12M/6F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Kent",
+   "aliases": [
+    "Kent"
+   ],
+   "mentions": 14,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "30M/13F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cReinalde Scotte Trench mayster for his Enterteinment at iiij^s\n\np^r diem, and due to him for the same tyme iiij^{li} viij^s.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Elizabeth",
+   "aliases": [
+    "Elizabeth"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 25M/19F",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201ca\n\nCollector of subsidies to Q. Elizabeth in 15..., for the county of\n\nKent.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wier",
+   "aliases": [
+    "Wier"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "22M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cinfants\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "William",
+   "aliases": [
+    "Sir William"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "25M/7F cues",
+   "age": "young",
+   "age_evidence": "7y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201c_inquistors_\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Reynold",
+   "aliases": [
+    "Reynold"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 15M/20F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": "mother",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young mother narration",
+   "sample_line": "\u201cet amplius\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Brabourne",
+   "aliases": [
+    "Brabourne"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "contested 15M/8F",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cM[*] Reignold Scott and Jane Cobbe\n\nwere maryed the xi^{th} of October 1658.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lordship",
+   "aliases": [
+    "Lordship"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "English",
+   "aliases": [
+    "English"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "11M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cwhich\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "John",
+   "aliases": [
+    "Sir John"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 41M/31F",
+   "age": "young",
+   "age_evidence": "17y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Smeeth",
+   "aliases": [
+    "Smeeth"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "22M/7F cues",
+   "age": "young",
+   "age_evidence": "5y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Esquire",
+   "aliases": [
+    "Esquire"
+   ],
+   "mentions": 8,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cfor greate is the trouble my poor wief hath\n\nhad with me, and small is the comforte she hath receyved at my hands\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Glasgow",
+   "aliases": [
+    "Glasgow"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Edinburgh",
+   "aliases": [
+    "Edinburgh"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "University",
+   "aliases": [
+    "University"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "6M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "England",
+   "aliases": [
+    "England"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "17M/3F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Reginald",
+   "aliases": [
+    "Sir Reginald"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "61M/10F cues",
+   "age": "young",
+   "age_evidence": "15y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cunto Rainolde Scotte, son and heire of my brother\n\nRichard Scotte, dec^{d}\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Henry",
+   "aliases": [
+    "Henry"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "6M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cgenerosi\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Divels",
+   "aliases": [
+    "Divels"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 4,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cDivels\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Wood",
+   "aliases": [
+    "Wood"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "10M/5F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cMeane\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "James",
+   "aliases": [
+    "James"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/2F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "October",
+   "aliases": [
+    "October"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "15M/6F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cThe\n\nMemorials\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Alice",
+   "aliases": [
+    "Alice"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 7M/11F",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cThe Memorials\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Latin",
+   "aliases": [
+    "Latin"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "12M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cFinally\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Stationers",
+   "aliases": [
+    "Stationers"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cprovided he shall get the bishop of London his alowance to\n\nyt\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lord",
+   "aliases": [
+    "Lord"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "8M/3F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Discourse",
+   "aliases": [
+    "Discourse"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cyears\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Oct",
+   "aliases": [
+    "Oct"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "27M/13F cues",
+   "age": "young",
+   "age_evidence": "6y/1o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Aldington",
+   "aliases": [
+    "Aldington"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Charles",
+   "aliases": [
+    "Charles"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 13M/8F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201ca right noble seate, uniformely built, with\n\na handsome gallery. It stands in a park well stor\u2019d, the land fat and\n\ngood. We were exceedingly feasted by the yo",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Earl",
+   "aliases": [
+    "Earl"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "19M/7F cues",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Anne",
+   "aliases": [
+    "Anne"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 19M/13F",
+   "age": "young",
+   "age_evidence": "9y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Marsh",
+   "aliases": [
+    "Romney Marsh"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "15M/5F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Memorials",
+   "aliases": [
+    "Memorials"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 8M/10F",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cRainolde\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Registers",
+   "aliases": [
+    "Registers"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 1M/1F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cBy Reginald Scot Esquire\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Landes",
+   "aliases": [
+    "Landes"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Queen",
+   "aliases": [
+    "Queen"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 8M/9F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": "queen",
+   "role_evidence": "in name",
+   "voice_query": "young queen narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Raynold",
+   "aliases": [
+    "Raynold"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "November",
+   "aliases": [
+    "November"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Justices",
+   "aliases": [
+    "Justices"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/4F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Edward",
+   "aliases": [
+    "Edward"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 10M/6F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Collyar",
+   "aliases": [
+    "Collyar"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/9F cues",
+   "age": "young",
+   "age_evidence": "4y/0o",
+   "role": "mother",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "young female mother narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Philipot",
+   "aliases": [
+    "Philipot"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gower",
+   "aliases": [
+    "John Gower"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 16M/10F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Edw",
+   "aliases": [
+    "Edw"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 15M/11F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Maidstone",
+   "aliases": [
+    "Maidstone"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "\u201cmanie other such miracles had beene latelie printed,\n\nwhereof diverse had beene bewraied.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Muster",
+   "aliases": [
+    "Muster"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Christ",
+   "aliases": [
+    "Christ"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 8M/6F",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "contested role (witch shared across cast)",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Ady",
+   "aliases": [
+    "Ady"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "21M/7F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cA\n\nsingle volume sent forth from the privacy of a retired student, by its\n\nsilent influence may mark an epoch in the history of the human mind.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Leyden",
+   "aliases": [
+    "Leyden"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201comitting some formul\u00e6\n\nof malediction and other matters which would more interest English\n\nreaders,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Italics",
+   "aliases": [
+    "Italics"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cThe \u2014 Chapter\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Romans",
+   "aliases": [
+    "Romans"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cThe \u2014 Booke\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Bart",
+   "aliases": [
+    "Bart"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Justice",
+   "aliases": [
+    "Chief Justice"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "25M/8F cues",
+   "age": "old",
+   "age_evidence": "1y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Brighton",
+   "aliases": [
+    "Brighton"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Bristol",
+   "aliases": [
+    "Bristol"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Essex",
+   "aliases": [
+    "Essex"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 4M/4F",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Museum",
+   "aliases": [
+    "British Museum"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cinfames\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Oxford",
+   "aliases": [
+    "Oxford"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Scotland",
+   "aliases": [
+    "Scotland"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Introduction",
+   "aliases": [
+    "Introduction"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Record",
+   "aliases": [
+    "Public Record"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": "young",
+   "age_evidence": "2y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Scotts",
+   "aliases": [
+    "Scotts"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Turnor",
+   "aliases": [
+    "Sackville Turnor"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 2M/3F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Scott",
+   "aliases": [
+    "Reginald Scott"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "68M/29F cues",
+   "age": "young",
+   "age_evidence": "24y/1o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cMemorials of the Scott\n\nFamily\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sirname",
+   "aliases": [
+    "Sirname"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Pympe",
+   "aliases": [
+    "Reginald Pympe"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 13M/7F",
+   "age": "young",
+   "age_evidence": "6y/0o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dover",
+   "aliases": [
+    "Dover"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "7M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cCountrie\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "December",
+   "aliases": [
+    "December"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/1F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Baron",
+   "aliases": [
+    "Baron"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Exchequer",
+   "aliases": [
+    "Exchequer"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "3M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cin these causes such experience\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Southwark",
+   "aliases": [
+    "Southwark"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Majesty",
+   "aliases": [
+    "Majesty"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "3M/6F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cthat she had no more controul over\n\nher passions than an untamed heifer.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Booke",
+   "aliases": [
+    "Booke"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Shepway",
+   "aliases": [
+    "Shepway"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dec",
+   "aliases": [
+    "Dec"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "39M/7F cues",
+   "age": "young",
+   "age_evidence": "6y/3o",
+   "role": null,
+   "role_evidence": "contested role (father shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Eliz",
+   "aliases": [
+    "Eliz"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 28M/23F",
+   "age": "young",
+   "age_evidence": "11y/0o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Brenchley",
+   "aliases": [
+    "Brenchley"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "1M/4F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Peace",
+   "aliases": [
+    "Peace"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "9M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cmanie poore\n\nold women convented before him for ... witchcraft\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Agrippa",
+   "aliases": [
+    "Cornelius Agrippa"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Act",
+   "aliases": [
+    "Act"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "71M/8F cues",
+   "age": "old",
+   "age_evidence": "3y/5o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Genevan",
+   "aliases": [
+    "Genevan"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "5M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Gods",
+   "aliases": [
+    "Gods"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  }
+ ],
+ "n_characters": 87,
+ "speaking": 33
+}

@@ -1,0 +1,518 @@
+{
+ "source": "/root/easy/folk-and-fable/andersen-part-2/source.txt",
+ "characters": [
+  {
+   "name": "Gerda",
+   "aliases": [
+    "Gerda"
+   ],
+   "mentions": 104,
+   "dialogue_lines": 15,
+   "gender": "female",
+   "gender_evidence": "86M/231F cues",
+   "age": "young",
+   "age_evidence": "118y/23o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "What!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Kay",
+   "aliases": [
+    "Kay"
+   ],
+   "mentions": 62,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 82M/108F",
+   "age": "young",
+   "age_evidence": "73y/14o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "Look, how clever!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Raven",
+   "aliases": [
+    "Raven"
+   ],
+   "mentions": 27,
+   "dialogue_lines": 19,
+   "gender": null,
+   "gender_evidence": "contested 44M/58F",
+   "age": "young",
+   "age_evidence": "42y/6o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cIt may be--it may be!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Princess",
+   "aliases": [
+    "Princess"
+   ],
+   "mentions": 24,
+   "dialogue_lines": 8,
+   "gender": null,
+   "gender_evidence": "contested 37M/49F",
+   "age": "young",
+   "age_evidence": "47y/1o",
+   "role": "princess",
+   "role_evidence": "in name",
+   "voice_query": "young princess narration",
+   "sample_line": "\u201cDoes he live with a Princess?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Queen",
+   "aliases": [
+    "Snow Queen"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 15,
+   "gender": "female",
+   "gender_evidence": "28M/64F cues",
+   "age": "young",
+   "age_evidence": "22y/6o",
+   "role": "queen",
+   "role_evidence": "in name",
+   "voice_query": "young female queen narration",
+   "sample_line": "\u201cWe have travelled fast,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Yes",
+   "aliases": [
+    "Yes"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 23,
+   "gender": null,
+   "gender_evidence": "contested 103M/93F",
+   "age": "young",
+   "age_evidence": "61y/28o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cHe will, no doubt, be glad to see you--to hear what a long way you have\n\ncome for his sake; to know how unhappy all at home were when he did not\n\ncome back.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Reindeer",
+   "aliases": [
+    "Reindeer"
+   ],
+   "mentions": 20,
+   "dialogue_lines": 14,
+   "gender": "female",
+   "gender_evidence": "17M/48F cues",
+   "age": "young",
+   "age_evidence": "17y/3o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cIce and snow is there! There it is, glorious and beautiful!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Finland",
+   "aliases": [
+    "Finland"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "8M/36F cues",
+   "age": "young",
+   "age_evidence": "9y/0o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cYou are so clever,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Death",
+   "aliases": [
+    "Death"
+   ],
+   "mentions": 10,
+   "dialogue_lines": 15,
+   "gender": null,
+   "gender_evidence": "contested 24M/34F",
+   "age": "young",
+   "age_evidence": "19y/6o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cWhat is that?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lapland",
+   "aliases": [
+    "Lapland"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 2,
+   "gender": "female",
+   "gender_evidence": "6M/22F cues",
+   "age": "young",
+   "age_evidence": "8y/1o",
+   "role": null,
+   "role_evidence": "contested role (queen shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cyou have far to run still. You\n\nhave more than a hundred miles to go before you get to Finland; there\n\nthe Snow Queen has her country-house, and burns blue lig",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 82M/53F",
+   "age": "young",
+   "age_evidence": "45y/16o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young king narration",
+   "sample_line": "\u201cfor it is not so amusing where there is no prize to jump for.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tree",
+   "aliases": [
+    "Elder Tree"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 5,
+   "gender": null,
+   "gender_evidence": "contested 60M/40F",
+   "age": "young",
+   "age_evidence": "39y/29o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cIt is lovely here in spring!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Son",
+   "aliases": [
+    "Son"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 6,
+   "gender": "male",
+   "gender_evidence": "76M/23F cues",
+   "age": "young",
+   "age_evidence": "28y/8o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cBut there we shall not meet,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Snail",
+   "aliases": [
+    "Father Snail",
+    "Mother Snail"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 20M/18F",
+   "age": "old",
+   "age_evidence": "7y/12o",
+   "role": "father",
+   "role_evidence": "8 nearby mentions",
+   "voice_query": "old father narration",
+   "sample_line": "Hear how it beats like a drum on the dock-leaves!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Prayer",
+   "aliases": [
+    "Prayer"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 7M/8F",
+   "age": null,
+   "age_evidence": "tied 3y/3o",
+   "role": null,
+   "role_evidence": "contested role (maiden shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cIt is delightful here in Spring, Summer,\n\nAutumn, and Winter\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Prince",
+   "aliases": [
+    "Prince"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 53M/66F",
+   "age": "young",
+   "age_evidence": "67y/2o",
+   "role": "prince",
+   "role_evidence": "in name",
+   "voice_query": "young prince narration",
+   "sample_line": "Farewell! Farewell!",
+   "dialogue_how": "attributed"
+  },
+  {
+   "name": "Flea",
+   "aliases": [
+    "Flea"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 7M/4F",
+   "age": "young",
+   "age_evidence": "3y/1o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cShe may have the old\n\nLeap-frog, for all I care. I jumped the highest; but in this world\n\nmerit seldom meets its reward. A fine exterior is what people look at",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Leap",
+   "aliases": [
+    "Leap"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "contested 15M/11F",
+   "age": "young",
+   "age_evidence": "6y/4o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cI will give my daughter to him who jumps highest,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Elderbush",
+   "aliases": [
+    "Elderbush"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 6M/6F",
+   "age": "old",
+   "age_evidence": "4y/6o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nanny",
+   "aliases": [
+    "Nanny"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 10,
+   "gender": null,
+   "gender_evidence": "contested 10M/16F",
+   "age": null,
+   "age_evidence": "tied 10y/10o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cBut that is no fairy tale,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Lord",
+   "aliases": [
+    "Lord"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 8M/9F",
+   "age": "young",
+   "age_evidence": "5y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Booths",
+   "aliases": [
+    "New Booths"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": null,
+   "age_evidence": "tied 6y/6o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cTo-day is the fiftieth anniversary!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Sunday",
+   "aliases": [
+    "Sunday"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "7M/0F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cI say, master! will you give this to the old man over the way from me?\n\nI have two pewter soldiers--this is one of them, and he shall have it,\n\nfor I know he i",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ranunculus",
+   "aliases": [
+    "Ranunculus"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "female",
+   "gender_evidence": "1M/3F cues",
+   "age": "young",
+   "age_evidence": "3y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cMy poor old grandmother!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Ravens",
+   "aliases": [
+    "Ravens"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 3,
+   "gender": "female",
+   "gender_evidence": "2M/6F cues",
+   "age": "young",
+   "age_evidence": "8y/2o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "\u201cPoor little thing!\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Farewell",
+   "aliases": [
+    "Farewell"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "6M/12F cues",
+   "age": "young",
+   "age_evidence": "10y/0o",
+   "role": null,
+   "role_evidence": "contested role (princess shared across cast)",
+   "voice_query": "young female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Grasshopper",
+   "aliases": [
+    "Grasshopper"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "young",
+   "age_evidence": "1y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cYes, a fine exterior is everything--a fine\n\nexterior is what people care about.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Granny",
+   "aliases": [
+    "Granny"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": "female",
+   "gender_evidence": "0M/5F cues",
+   "age": "old",
+   "age_evidence": "0y/3o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old female narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Mary",
+   "aliases": [
+    "Mary"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/3F",
+   "age": "young",
+   "age_evidence": "4y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Nay",
+   "aliases": [
+    "Nay"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 6,
+   "gender": null,
+   "gender_evidence": "contested 10M/6F",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cYou must not let it grieve you so much,\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 30,
+ "speaking": 25
+}

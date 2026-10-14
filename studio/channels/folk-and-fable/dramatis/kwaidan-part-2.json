@@ -1,0 +1,415 @@
+{
+ "source": "/root/easy/folk-and-fable/kwaidan-part-2/source.txt",
+ "characters": [
+  {
+   "name": "Japanese",
+   "aliases": [
+    "Japanese"
+   ],
+   "mentions": 43,
+   "dialogue_lines": 31,
+   "gender": "male",
+   "gender_evidence": "15M/5F cues",
+   "age": "old",
+   "age_evidence": "9y/12o",
+   "role": "prince",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "old male prince narration",
+   "sample_line": "\u201cThe\n\nSunward-turning;\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Chinese",
+   "aliases": [
+    "Chinese"
+   ],
+   "mentions": 23,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "19M/8F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": "emperor",
+   "role_evidence": "3 nearby mentions",
+   "voice_query": "young male emperor narration",
+   "sample_line": "\u201cromantic love\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Buddhist",
+   "aliases": [
+    "Buddhist"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 9,
+   "gender": "male",
+   "gender_evidence": "6M/2F cues",
+   "age": "old",
+   "age_evidence": "4y/7o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cat the rate of once ounce for every fifteen square\n\nfeet of water-surface, and a proportionate quantity for any less\n\nsurface.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Riki",
+   "aliases": [
+    "Riki"
+   ],
+   "mentions": 19,
+   "dialogue_lines": 7,
+   "gender": "male",
+   "gender_evidence": "58M/17F cues",
+   "age": "old",
+   "age_evidence": "4y/6o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cRiki-Baka,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Foundation",
+   "aliases": [
+    "Foundation"
+   ],
+   "mentions": 17,
+   "dialogue_lines": 2,
+   "gender": "male",
+   "gender_evidence": "2M/0F cues",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "male narration",
+   "sample_line": "\u201cthe\n\nFoundation\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "States",
+   "aliases": [
+    "United States"
+   ],
+   "mentions": 13,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "\u201cProject\n\nGutenberg\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Archive",
+   "aliases": [
+    "Literary Archive"
+   ],
+   "mentions": 12,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Robert",
+   "aliases": [
+    "Robert"
+   ],
+   "mentions": 11,
+   "dialogue_lines": 8,
+   "gender": null,
+   "gender_evidence": "contested 21M/11F",
+   "age": "young",
+   "age_evidence": "6y/4o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cGoblins,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "License",
+   "aliases": [
+    "License"
+   ],
+   "mentions": 9,
+   "dialogue_lines": 3,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cProject Gutenberg\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "King",
+   "aliases": [
+    "King"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "16M/8F cues",
+   "age": "young",
+   "age_evidence": "5y/2o",
+   "role": "king",
+   "role_evidence": "in name",
+   "voice_query": "young male king narration",
+   "sample_line": "\u201cand there is\n\nthe palace of Tokoyo!... How extraordinary!... Raish\u016b ought to lie\n\nsomewhere southwest of it\u2014to the left of that big root... Yes!\u2014here it\n\nis!..",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Mothers",
+   "aliases": [
+    "Mothers"
+   ],
+   "mentions": 7,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cHuman Population in\n\nthe Future,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Baka",
+   "aliases": [
+    "Baka"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "23M/6F cues",
+   "age": "young",
+   "age_evidence": "4y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Akiko",
+   "aliases": [
+    "Akiko"
+   ],
+   "mentions": 6,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 20M/15F",
+   "age": "young",
+   "age_evidence": "14y/1o",
+   "role": null,
+   "role_evidence": "contested role (mother shared across cast)",
+   "voice_query": "young narration",
+   "sample_line": "\u201cBut who was Akiko, mother?\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Tokoyo",
+   "aliases": [
+    "Tokoyo"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "8M/1F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "old male narration",
+   "sample_line": "\u201cThese are the words which our august master, the King of Tokoyo,\n\ncommands that I repeat to you: \u2018We will now send you back to your own\n\npeople and country. As",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Emperor",
+   "aliases": [
+    "Emperor"
+   ],
+   "mentions": 5,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "10M/2F cues",
+   "age": "old",
+   "age_evidence": "0y/1o",
+   "role": "emperor",
+   "role_evidence": "in name",
+   "voice_query": "old male emperor narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Dragon",
+   "aliases": [
+    "Dragon"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 3M/4F",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "contested role (king shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "China",
+   "aliases": [
+    "China"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 3M/2F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cI am not a woman: I am the goddess whom you\n\nhave so long and so faithfully worshiped; and I have now come to prove\n\nto you that your devotion has not been in ",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Elect",
+   "aliases": [
+    "Elect"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 0,
+   "gender": "male",
+   "gender_evidence": "4M/0F cues",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old male narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Literally",
+   "aliases": [
+    "Literally"
+   ],
+   "mentions": 4,
+   "dialogue_lines": 4,
+   "gender": "male",
+   "gender_evidence": "3M/1F cues",
+   "age": "young",
+   "age_evidence": "2y/1o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young male narration",
+   "sample_line": "\u201cfive-circle [or five-zone] stone.\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Nanigashi",
+   "aliases": [
+    "Nanigashi"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "contested 5M/4F",
+   "age": "young",
+   "age_evidence": "3y/0o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "young narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Welsh",
+   "aliases": [
+    "Welsh"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": null,
+   "gender_evidence": "contested 6M/5F",
+   "age": null,
+   "age_evidence": "tied 1y/1o",
+   "role": null,
+   "role_evidence": "contested role (fairy shared across cast)",
+   "voice_query": "narration",
+   "sample_line": "\u201cThey eat nothing but the points of needles, you know,\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Japan",
+   "aliases": [
+    "Japan"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 1,
+   "gender": "male",
+   "gender_evidence": "18M/5F cues",
+   "age": "old",
+   "age_evidence": "9y/12o",
+   "role": "prince",
+   "role_evidence": "2 nearby mentions",
+   "voice_query": "old male prince narration",
+   "sample_line": "\u201cfashions and the changes and the\n\ndisintegrations of Meiji\u201d",
+   "dialogue_how": "proximity"
+  },
+  {
+   "name": "Meiji",
+   "aliases": [
+    "Meiji"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 0,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": "old",
+   "age_evidence": "0y/2o",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "old narration",
+   "sample_line": "",
+   "dialogue_how": "none"
+  },
+  {
+   "name": "Hearn",
+   "aliases": [
+    "Hearn"
+   ],
+   "mentions": 3,
+   "dialogue_lines": 2,
+   "gender": null,
+   "gender_evidence": "too little evidence",
+   "age": null,
+   "age_evidence": "no age cues",
+   "role": null,
+   "role_evidence": "no role cues",
+   "voice_query": "narration",
+   "sample_line": "\u201cThe modest nymph beheld her God, and blushed.\u201d",
+   "dialogue_how": "proximity"
+  }
+ ],
+ "n_characters": 24,
+ "speaking": 17
+}
