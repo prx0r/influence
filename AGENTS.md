@@ -33,3 +33,18 @@
 13. **Owner law: 0 credits ever** (CREDIT_SPEND_ENABLED unset — kill-switch in
     `pipeline/audio_flow.py`). Free tier only until the owner explicitly says
     otherwise. No workarounds, no exceptions, no "just this once".
+14. **URL map (read before touching any frontend):**
+    - `youtube.agentcom.org/studio` — THE STUDIO. Channel rail, Pilots
+      (preview/full/formula), Voices (casting grid), Thumbnail + Titles
+      templates, Formats, pinned Pi bar. Owner's daily surface. Served from
+      `dash/static/yt.html` by the :8795 process (YT_MODE=1).
+    - `youtube.agentcom.org/` and `/classic` — FULL CONSOLE on the YT box.
+      Same backend as the studio plus queue, receipts, chat, explorer,
+      monitor, review canvas. Debug here, live here when the studio lacks
+      a control. Served from `dash/static/index.html`.
+    - `agentcom.org` — LEGACY commerce dash (:8793, oddhobb/Etsy/phone
+      queue). Working system, different lane. Do not repurpose, do not
+      remove commerce surfaces, do not send studio links here.
+    - `video.agentcom.org` / `image.agentcom.org` — embed-only iframes
+      inside the console's studio tabs (ports 7777/7778, other owners).
+      Never modify; never depend on their uptime for YT flows.
