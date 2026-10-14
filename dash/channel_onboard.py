@@ -15,7 +15,15 @@ from __future__ import annotations
 import json
 import math
 import os
+import sys as _sys
 import time
+
+# self-sufficient imports: works from server.py (dash on path), mcp.py
+# (parent on path), and tests (either). No caller setup required.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+for _p in (os.path.dirname(_HERE), os.path.join(os.path.dirname(_HERE), "pipeline")):
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
 
 from channel_character import load_channel, save_seed  # noqa: F401 (re-export)
 
@@ -104,9 +112,10 @@ def _sibling_voice_ids(exclude_slug: str) -> set[str]:
 
 
 def propose(channel_slug: str, chair: str = "narrator",
-            n: int = 5) -> dict:
+            n: int = 5, exclude: list | None = None) -> dict:
     """5 voice candidates matched to the channel vibe, each with samples
-    and a reason citing tags/uses/language/differentiation. Free reads."""
+    and a reason citing tags/uses/language/differentiation. Free reads.
+    exclude = voice IDs already seen (more-buttons, dismissed)."""
     af = _audio_flow()
     try:
         channel = load_channel(channel_slug)
@@ -126,6 +135,7 @@ def propose(channel_slug: str, chair: str = "narrator",
             if vid and vid not in pool:
                 pool[vid] = v
     siblings = _sibling_voice_ids(channel_slug)
+    seen_ids = set(exclude or []) | _dismissed_ids(channel_slug)
     # incumbent always included for comparison (fresh challengers + status quo)
     incumbent = (chairs[chair].get("fish_id") or "")
     if incumbent and incumbent not in pool:
@@ -139,6 +149,8 @@ def propose(channel_slug: str, chair: str = "narrator",
                                "task_count": d.get("task_count") or 0}
     scored = []
     for vid, v in pool.items():
+        if vid in seen_ids:
+            continue
         tags = set((v.get("tags") or []))
         overlap = sorted({t for t in tags
                           if any(k in t for k in chair_kw)})
@@ -171,8 +183,10 @@ def propose(channel_slug: str, chair: str = "narrator",
                        "uses": uses, "score": score,
                        "reason": "; ".join(reasons)})
     scored.sort(key=lambda c: c["score"], reverse=True)
+    liked = _liked_ids(channel_slug, chair)
     return {"ok": True, "channel": channel_slug, "chair": chair,
             "queries": vibe_queries(channel, chair),
+            "liked": sorted(liked),
             "candidates": scored[:n],
             "next": "human picks one with a reason → lock_voice writes it"}
 
@@ -303,3 +317,103 @@ def save_config(slug: str, patch: dict) -> dict:
         json.dump(rec, fh, indent=1, ensure_ascii=False)
     os.replace(tmp, path)
     return {"ok": True, "applied": applied, "record": rec}
+
+
+def channel_status(slug: str) -> dict:
+    """Per-entity answer seed for pi: record + chairs + bank + readiness.
+    Free read. YT metrics attach once bgraph channel_id is claimed."""
+    from channel_character import load_channel
+    try:
+        rec = load_channel(slug)
+    except OSError:
+        return {"ok": False, "reason": f"unknown channel {slug}"}
+    import sleep_studio as _st
+    bank = _st.list_voice_bank()
+    chairs = (rec.get("voice") or {}).get("chairs", {})
+    locked = [n for n, c in (chairs.items() if isinstance(chairs, dict) else [])
+              if isinstance(c, dict) and c.get("fish_id")]
+    open_chairs = [n for n in (chairs if isinstance(chairs, dict) else [])
+                   if n not in locked]
+    return {"ok": True, "slug": slug,
+            "display_name": rec.get("display_name", slug),
+            "status": rec.get("status", "pilot"),
+            "pitch": rec.get("pitch", ""),
+            "engine": (rec.get("engine") or {}).get("primary", ""),
+            "cadence": rec.get("cadence", ""),
+            "chairs_total": len(chairs), "chairs_locked": locked,
+            "chairs_open": open_chairs,
+            "brief": bool(os.path.isfile(
+                os.path.join(CHANNELS_DIR, slug + "-brief.md"))),
+            "bank_clips": len(bank),
+            "formats": [f.get("name", "") for f in rec.get("formats", [])],
+            "youtube": {"channel_id": None, "metrics": "no uploads yet — "
+                        "stats attach after first unlisted upload"},
+            "next": ("onboard voices for: " + ", ".join(open_chairs)
+                     if open_chairs else "all chairs locked — render pilots")}
+
+
+# ---- taste: likes, dismissals, general feedback (trains future proposes)
+
+def _taste_path(slug: str) -> str:
+    return os.path.join(CHANNELS_DIR, slug + "-taste.json")
+
+
+def _taste(slug: str) -> dict:
+    try:
+        with open(_taste_path(slug), encoding="utf-8") as f:
+            d = json.load(f)
+            return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_taste(slug: str, d: dict) -> None:
+    if (not slug.replace("-", "").replace("_", "").isalnum()):
+        raise ValueError("bad slug")
+    tmp = _taste_path(slug) + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(d, f, indent=1, ensure_ascii=False)
+    os.replace(tmp, _taste_path(slug))
+
+
+def _dismissed_ids(slug: str) -> set[str]:
+    return set(_taste(slug).get("dismissed") or [])
+
+
+def _liked_ids(slug: str, chair: str = "") -> set[str]:
+    out = set()
+    for lk in (_taste(slug).get("likes") or []):
+        if isinstance(lk, dict) and (not chair or lk.get("chair") == chair):
+            if lk.get("voice_id"):
+                out.add(lk["voice_id"])
+    return out
+
+
+def react(channel: str, chair: str, voice_id: str, name: str = "",
+          liked: bool | None = None, dismissed: bool = False,
+          note: str = "") -> dict:
+    """Tick (like), dismiss, and/or note on a voice card. All stored with
+    timestamps; propose() auto-excludes dismissed; picks cite likes."""
+    if (not channel.replace("-", "").replace("_", "").isalnum()
+            or not voice_id):
+        return {"ok": False, "reason": "bad channel or voice"}
+    d = _taste(channel)
+    d.setdefault("likes", [])
+    d.setdefault("dismissed", [])
+    d.setdefault("feedback", [])
+    if dismissed and voice_id not in d["dismissed"]:
+        d["dismissed"].append(voice_id)
+    if liked is True and voice_id not in [l.get("voice_id") for l in d["likes"]]:
+        d["likes"].append({"chair": chair, "voice_id": voice_id,
+                           "name": name, "note": note.strip()[:300],
+                           "ts": int(time.time())})
+    if liked is False:
+        d["likes"] = [l for l in d["likes"]
+                      if l.get("voice_id") != voice_id]
+    if note.strip() and liked is None and not dismissed:
+        d["feedback"].append({"chair": chair, "voice_id": voice_id,
+                              "text": note.strip()[:500],
+                              "ts": int(time.time())})
+    _save_taste(channel, d)
+    return {"ok": True, "likes": len(d["likes"]),
+            "dismissed": len(d["dismissed"])}

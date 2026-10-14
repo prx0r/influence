@@ -741,7 +741,18 @@ class Handler(SimpleHTTPRequestHandler):
                     return self._json(_ob.propose(
                         str(body.get("channel", "") or ""),
                         str(body.get("chair", "narrator") or "narrator"),
-                        int(body.get("n", 5) or 5)))
+                        int(body.get("n", 5) or 5),
+                        [str(x) for x in (body.get("exclude") or [])][:50]))
+                if self._route() == "/api/studio/onboard/react":
+                    import channel_onboard as _ob
+                    return self._json(_ob.react(
+                        str(body.get("channel", "") or ""),
+                        str(body.get("chair", "") or ""),
+                        str(body.get("voice_id", "") or ""),
+                        str(body.get("name", "") or ""),
+                        body.get("liked"),
+                        bool(body.get("dismissed")),
+                        str(body.get("note", "") or "")))
                 if self._route() == "/api/studio/onboard/lock":
                     import channel_onboard as _ob
                     return self._json(_ob.lock(

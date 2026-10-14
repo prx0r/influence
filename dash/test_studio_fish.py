@@ -113,3 +113,22 @@ def test_save_config_allowlist():
     finally:
         try: os.remove(fx)
         except OSError: pass
+
+
+def test_onboard_react_cycle():
+    import channel_onboard as ob
+    r = ob.react("folk-and-fable", "narrator", "v-test-1", "Test Voice",
+                 liked=True, note="warm")
+    assert r["ok"] is True and r["likes"] >= 1
+    assert "v-test-1" in ob._liked_ids("folk-and-fable", "narrator")
+    r2 = ob.react("folk-and-fable", "narrator", "v-test-2", dismissed=True)
+    assert r2["ok"] is True
+    assert "v-test-2" in ob._dismissed_ids("folk-and-fable")
+    # cleanup test traces
+    import json as _j
+    p = "/root/influence/studio/channels/folk-and-fable-taste.json"
+    d = _j.load(open(p))
+    d["likes"] = [l for l in d.get("likes", []) if not l.get("voice_id", "").startswith("v-test-")]
+    d["dismissed"] = [x for x in d.get("dismissed", []) if not x.startswith("v-test-")]
+    _j.dump(d, open(p, "w"))
+    assert ob.react("xx", "n", "", liked=True)["ok"] is False

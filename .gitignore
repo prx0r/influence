@@ -40,3 +40,4 @@ stevejobless/.env.example
 dash/phone_tunnel_token
 dash/studio_grants.json
 dash/*.log
+*-taste.json
