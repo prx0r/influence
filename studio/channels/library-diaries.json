@@ -35,5 +35,14 @@
   "text_prep": "influence pipeline/tts_text (score gate 70)"
  },
  "receipts": "per-video vaults + studio voice bank",
- "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)"
+ "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)",
+ "thesis": "Library Diaries sleep channel — thesis to confirm from damn README + sleepintel registry",
+ "audience": "Adults 25-54 sleep listeners — refine per sleepintel hypotheses",
+ "sourcing": {
+  "method": "damn project scripts + PD sources on disk; pi proposes from registry gaps",
+  "feeds": [
+   "/root/damn/projects/library-diaries/"
+  ],
+  "pi_job": "inventory feeds, propose next 3 episodes with reasons"
+ }
 }

@@ -42,5 +42,16 @@
   "pace": 0.9,
   "render_default": "free (REST s2.1-pro-free, $0)",
   "render_hero": "drama-3 grant-gated"
+ },
+ "thesis": "One voice, one ritual: honey-time-for-bed. Comfort originals + retold tales through a maternal persona; variety via seasons, winners get more.",
+ "audience": "Adults seeking comfort listening (loneliness-adjacent), parents previewing for kids (not made for kids), ASMR-adjacent females 18-40.",
+ "sourcing": {
+  "method": "Reuse F&F tale library + company-comfort originals with mom-framing intros; never re-record without new framing",
+  "feeds": [
+   "folk-and-fable collections",
+   "company-comfort originals",
+   "smarter physics (mom explains)"
+  ],
+  "pi_job": "pick tales that survive maternal framing (kind endings); draft 2-line mom intros; flag scary tales out"
  }
 }

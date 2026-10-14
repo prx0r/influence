@@ -1,0 +1,114 @@
+{
+ "ok": true,
+ "collection": "yuki-onna",
+ "channel": "folk-and-fable",
+ "cast": [
+  {
+   "name": "Minokichi",
+   "slot": 0,
+   "narrator": true,
+   "brief": "Minokichi: young unspecified figure (supporting); pitch around 140-200Hz; plain and kind — the sleep baseline",
+   "voice_query": "young narration",
+   "design_instruction": "Supporting character voice, young  pitch around 170Hz within 140-200Hz, slow sleep pacing, soft consonants, calm and drowsy delivery with gentle downward glides at sentence ends, never flat robotic, never loud. For folk-and-fable sleep storytelling.",
+   "sample_line": "“I intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,—because you\n\nare so young... You are a pretty boy, Minokichi; and I w",
+   "candidates": [
+    {
+     "voice_id": "0af969cba6c24e74b5600d6df78e8975",
+     "name": "Narration ",
+     "sample": "https://platform.r2.fish.audio/task/344e8e90a31a467faa095f58c4580fd9.mp3",
+     "uses": 114874
+    },
+    {
+     "voice_id": "0327fdb5da9e4fd782899a8058c8ae2b",
+     "name": "Narrator",
+     "sample": "https://platform.r2.fish.audio/task/fde911e7bc8744cf831edc31f5b2a495.mp3",
+     "uses": 97465
+    },
+    {
+     "voice_id": "9c06958faaac4a3d81e2336a19f5cc79",
+     "name": "Young Anime Narrator",
+     "sample": "https://platform.r2.fish.audio/task/a6c2dc38686146189c04c8f367f4998a.mp3",
+     "uses": 1989
+    }
+   ],
+   "audition": {
+    "clip": "free-113027-01.mp3",
+    "url": "/api/studio/file?kind=voice&file=free-113027-01.mp3",
+    "voice_id": "0af969cba6c24e74b5600d6df78e8975",
+    "ok": true
+   }
+  },
+  {
+   "name": "Yuki",
+   "slot": 1,
+   "narrator": false,
+   "brief": "Yuki: young female figure (supporting); pitch around 140-200Hz; plain and kind — the sleep baseline",
+   "voice_query": "young female narration",
+   "design_instruction": "Supporting character voice, young female pitch around 170Hz within 140-200Hz, slow sleep pacing, soft consonants, calm and drowsy delivery with gentle downward glides at sentence ends, never flat robotic, never loud. For folk-and-fable sleep storytelling.",
+   "sample_line": "“Tell me about her... Where did you see her?”",
+   "candidates": [
+    {
+     "voice_id": "1b1286fcf2f44d8ba1405e0b71abca22",
+     "name": "Friendly Young Female",
+     "sample": "https://platform.r2.fish.audio/task/0eefda1d3e424fc68647cf809a5a9ef7.mp3",
+     "uses": 8575
+    },
+    {
+     "voice_id": "0af969cba6c24e74b5600d6df78e8975",
+     "name": "Narration ",
+     "sample": "https://platform.r2.fish.audio/task/344e8e90a31a467faa095f58c4580fd9.mp3",
+     "uses": 114874
+    },
+    {
+     "voice_id": "457de55f7b9c497dbdc2b3deede98c9c",
+     "name": "Calm Young Female",
+     "sample": "https://platform.r2.fish.audio/task/610c4c08f6954b668adf6e398daaf7a4.mp3",
+     "uses": 2534
+    }
+   ],
+   "audition": {
+    "clip": "free-113035-02.mp3",
+    "url": "/api/studio/file?kind=voice&file=free-113035-02.mp3",
+    "voice_id": "1b1286fcf2f44d8ba1405e0b71abca22",
+    "ok": true
+   }
+  },
+  {
+   "name": "Mosaku",
+   "slot": 2,
+   "narrator": false,
+   "brief": "Mosaku: ageless male ferryman (supporting); pitch around 100-150Hz; plain and kind — the sleep baseline",
+   "voice_query": "male ferryman narration",
+   "design_instruction": "Supporting character voice, ageless male pitch around 125Hz within 100-150Hz, slow sleep pacing, soft consonants, calm and drowsy delivery with gentle downward glides at sentence ends, never flat robotic, never loud. For folk-and-fable sleep storytelling.",
+   "sample_line": "“Asleep or awake, that was the only time that I saw a being as\n\nbeautiful as you. Of course, she was not a human being; and I was\n\nafraid of her,—very much afra",
+   "candidates": [
+    {
+     "voice_id": "0af969cba6c24e74b5600d6df78e8975",
+     "name": "Narration ",
+     "sample": "https://platform.r2.fish.audio/task/344e8e90a31a467faa095f58c4580fd9.mp3",
+     "uses": 114874
+    },
+    {
+     "voice_id": "efc2f5153a24463dbfe54acd93a145f8",
+     "name": "Male Narrator",
+     "sample": "https://platform.r2.fish.audio/task/45a7f67ab25242fc9a33fe402ee4256b.mp3",
+     "uses": 3813
+    },
+    {
+     "voice_id": "7e5102e4f5ff4339bc8ad0692279436c",
+     "name": "Youthful Male Narrator",
+     "sample": "https://platform.r2.fish.audio/task/580b769476184a389d4ee33ab093efe4.mp3",
+     "uses": 9429
+    }
+   ],
+   "audition": {
+    "clip": "free-113038-03.mp3",
+    "url": "/api/studio/file?kind=voice&file=free-113038-03.mp3",
+    "voice_id": "0af969cba6c24e74b5600d6df78e8975",
+    "ok": true
+   }
+  }
+ ],
+ "contrast_notes": [],
+ "next": "human + pi review sheet → lock voices → batch render"
+}

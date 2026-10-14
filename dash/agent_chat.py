@@ -285,6 +285,9 @@ def _channel_system(slug: str) -> str | None:
     return f"""You are the influence operator for YouTube channel {c.get('display_name', slug)}.
 
 Thesis: {c.get('pitch', '')}
+Channel thesis: {c.get('thesis', '')}
+Audience: {c.get('audience', '')}
+Find new material via: {json.dumps(c.get('sourcing', {}))[:400]}
 Engine: {(c.get('engine') or {}).get('primary', '')} · Cadence: {c.get('cadence', '')}
 Style: {(c.get('style') or {}).get('accent', '')} {(c.get('style') or {}).get('manner', '')}
 

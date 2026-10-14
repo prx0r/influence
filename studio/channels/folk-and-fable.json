@@ -146,5 +146,16 @@
   },
   "registry": "bgraph registry/content/items/FF-*.json (44 compilations)",
   "workflow": "prepare_cast (this button) → human+pi lock voices → pilots board batch render → R2 ship"
+ },
+ "thesis": "Nostalgia + specific tradition beats generic bedtime: place + ritual. Tales retold with pacing logs, never verbatim wall-to-wall.",
+ "audience": "Adults 25-54, folklore-curious + ex-podcast sleepers; mythology-YouTube overlap (S3), nostalgia seekers (S1). NOT kids.",
+ "sourcing": {
+  "method": "PD collections on disk (45, easy/folk-and-fable) + damn pilots/videos drama files; modern translations are copyrighted even when tales are PD — source URLs logged per tale",
+  "feeds": [
+   "easy folk-and-fable source.txt per collection",
+   "damn pilots + videos drama.txt",
+   "sleepintel hypotheses HOST/FAIRY"
+  ],
+  "pi_job": "propose next tale from calendar gaps (12-tale calendar in brief); extract boundaries; prep-score; cast via dramatis"
  }
 }

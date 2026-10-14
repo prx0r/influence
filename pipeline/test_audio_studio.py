@@ -182,3 +182,13 @@ def test_ensemble_cast_offline():
     dup = compose_cast([dict(mouse, voice_query="young narration"),
                         dict(tree, voice_query="young narration")])
     assert any("contrast" in n or "share query" in n for n in contrast_notes(dup))
+
+
+def test_fal_gates():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from providers import fal as F
+    assert F._spend_allowed()["ok"] is False
+    assert F.run("x", ctx=None)["ok"] is False
+    p = F.build_request("moon", "flux_schnell")
+    assert p["est_usd"] == 0.01 and "queue.fal.run" in p["endpoint"]

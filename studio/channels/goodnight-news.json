@@ -1,1 +1,54 @@
-{"cadence": "nightly 22:00, same beats (ritual IS the product)", "channel": "goodnight-news", "display_name": "Goodnight News", "engine": {"contract": "E6-freshness + E5-talk: daily scan -> 5-story pick -> brief -> render same-day -> ship nightly", "primary": "E6-freshness", "scan": "Tier 1 RSS (Good News Network, Reasons to be Cheerful, Future Crunch, PBS 5-good-news + 6); Tier 2 GDELT-positive, ReliefWeb, WB Data360 (to build)"}, "pitch": "The world is getting better. Sleep on that. 5 good things, nightly.", "receipts": "per-video vaults + studio voice bank", "routines": "damn 01-07 + nightly brief slot (sleepintel next.json #7)", "sources": {"feeds": "Tier 1 RSS (manual nightly brief until scan loop built)", "text_prep": "influence pipeline/tts_text (settle-rule: never enumerate anxieties)"}, "status": "pilot", "style": {"accent": "#F5C86B", "manner": "sunrise sketches, paper-light", "shelf": "FRESH", "visual": "black + 1 still first"}, "voice": {"bed": "soft evening room tone, ducks under voice", "chairs": {"anchor": {"direction": "warm nightly anchor voice, settling the day, unhurried", "fish_id": "63d5460e91e2411fa2e6bf95e7456f03", "label": "Anchor News 13k uses", "never": ["bad-news voice", "shared outside this project"], "status": "ear-check pending"}}, "pace": 0.9, "render_default": "free (REST s2.1-pro-free, $0)", "render_hero": "drama-3 grant-gated"}}
+{
+ "cadence": "nightly 22:00, same beats (ritual IS the product)",
+ "channel": "goodnight-news",
+ "display_name": "Goodnight News",
+ "engine": {
+  "contract": "E6-freshness + E5-talk: daily scan -> 5-story pick -> brief -> render same-day -> ship nightly",
+  "primary": "E6-freshness",
+  "scan": "Tier 1 RSS (Good News Network, Reasons to be Cheerful, Future Crunch, PBS 5-good-news + 6); Tier 2 GDELT-positive, ReliefWeb, WB Data360 (to build)"
+ },
+ "pitch": "The world is getting better. Sleep on that. 5 good things, nightly.",
+ "receipts": "per-video vaults + studio voice bank",
+ "routines": "damn 01-07 + nightly brief slot (sleepintel next.json #7)",
+ "sources": {
+  "feeds": "Tier 1 RSS (manual nightly brief until scan loop built)",
+  "text_prep": "influence pipeline/tts_text (settle-rule: never enumerate anxieties)"
+ },
+ "status": "pilot",
+ "style": {
+  "accent": "#F5C86B",
+  "manner": "sunrise sketches, paper-light",
+  "shelf": "FRESH",
+  "visual": "black + 1 still first"
+ },
+ "voice": {
+  "bed": "soft evening room tone, ducks under voice",
+  "chairs": {
+   "anchor": {
+    "direction": "warm nightly anchor voice, settling the day, unhurried",
+    "fish_id": "63d5460e91e2411fa2e6bf95e7456f03",
+    "label": "Anchor News 13k uses",
+    "never": [
+     "bad-news voice",
+     "shared outside this project"
+    ],
+    "status": "ear-check pending"
+   }
+  },
+  "pace": 0.9,
+  "render_default": "free (REST s2.1-pro-free, $0)",
+  "render_hero": "drama-3 grant-gated"
+ },
+ "thesis": "End-of-day cortisol meets its opposite signal: progress with proof. Watch → feel better → sleep well → return. Settle, never enumerate anxieties.",
+ "audience": "Doomscrolling adults 25-45 wanting a calm nightly ritual; habit-loop viewers (same beats nightly).",
+ "sourcing": {
+  "method": "Tier 1 RSS nightly scan → 5-story pick → brief → render same-day (E6 freshness, manual until scan loop built)",
+  "feeds": [
+   "Good News Network",
+   "Reasons to be Cheerful",
+   "Future Crunch",
+   "PBS 5-good-news"
+  ],
+  "pi_job": "pull feeds nightly, pick 5 ( hopeful + proven + visual ), draft brief in ritual beats, never anxiety-first"
+ }
+}
