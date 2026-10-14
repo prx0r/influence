@@ -701,10 +701,9 @@ class Handler(SimpleHTTPRequestHandler):
                 pass
             return self._json(out)
         if self._route() == "/":
-            # YT dash gets the focused studio; the full console stays at
-            # /classic (and is still the default on the main dash).
-            self.path = ("/yt.html" if os.environ.get("YT_MODE", "") == "1"
-                         else "/index.html")
+            # The full console is always home. The experimental focused
+            # studio is opt-in only at /studio; never swap it in at /.
+            self.path = "/index.html"
         elif self._route() in ("/classic", "/classic/"):
             self.path = "/index.html"
         elif self._route() in ("/studio", "/studio/"):
