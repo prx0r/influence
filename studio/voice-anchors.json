@@ -56,5 +56,31 @@
   "context": "any narration needing life",
   "note": "owner: INSANE variability, measured 29st span dense delivery",
   "ts": 1791972194
+ },
+ {
+  "voice_id": "0051da373e0a4ac282399909d1d31b69",
+  "title": "SpongeBob",
+  "tags": [
+   "female",
+   "middle-aged",
+   "character-voice",
+   "entertainment",
+   "high",
+   "energetic",
+   "cheerful",
+   "animated",
+   "enthusiastic"
+  ],
+  "languages": [
+   "en"
+  ],
+  "descriptors": [
+   "cartoon",
+   "high-energy",
+   "playful"
+  ],
+  "context": "character/cartoon utility for lore-sleep variety",
+  "note": "owner: spongebob voice, useful",
+  "ts": 1791972383
  }
 ]

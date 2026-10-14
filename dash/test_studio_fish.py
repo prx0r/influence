@@ -148,3 +148,12 @@ def test_design_instruction_pure_and_gated():
         assert False, "unapproved design must raise"
     except PermissionError:
         pass
+
+
+def test_anchor_prompt_engine():
+    import channel_onboard as ob
+    assert ob.anchor_prompt("x", voice_ids=["nope"])["ok"] is False
+    r = ob.anchor_prompt("sleep fairy", voice_ids=[
+        "fe2619861dfc4bcab9da073029ca80a4"])
+    assert r["ok"] is True and "Luna Lovegood" in r["sources"]
+    assert "fairy" in r["instruction"] and len(r["instruction"]) <= 1800

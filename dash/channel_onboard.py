@@ -497,3 +497,42 @@ def love(voice_id: str, descriptors: list, context: str = "",
     os.replace(tmp, os.path.normpath(ANCHORS_PATH))
     return {"ok": True, "title": d.get("title"),
             "tags": d.get("tags"), "anchors": len(anchors)}
+
+
+# ---- prompt-to-voice engine: anchors → voice-design instruction ----
+#
+# The owner sends voices they love with descriptors. This compiles them
+# into a voice-design prompt: anchor tags + owner words + purpose, so
+# Fish generates new voices in the taste we've demonstrated, not random.
+# Generation itself ($0.01) stays behind explicit approval (studio UI
+# confirm dialog / design_voice approved=True).
+
+_GENERIC_TAGS = {"male", "female", "young", "middle-aged", "old",
+                 "character-voice", "entertainment", "english"}
+
+
+def anchor_prompt(purpose: str, voice_ids: list | None = None,
+                  max_anchors: int = 4) -> dict:
+    """Compile loved voices into a voice-design instruction. Pure, $0."""
+    anchors = _anchors()
+    if voice_ids:
+        wanted = set(voice_ids)
+        anchors = [a for a in anchors if a.get("voice_id") in wanted]
+    if not anchors:
+        return {"ok": False, "reason": "no anchors (love some voices first)"}
+    anchors = anchors[-max_anchors:]
+    quals: list = []
+    seen: set = set()
+    for a in anchors:
+        for t in (a.get("tags") or []) + (a.get("descriptors") or []):
+            t = str(t).strip()
+            if t and t.lower() not in _GENERIC_TAGS and t.lower() not in seen:
+                seen.add(t.lower())
+                quals.append(t)
+    names = ", ".join(a.get("title", "?") for a in anchors)
+    instruction = (f"A voice combining {', '.join(quals[:14])}. "
+                   f"In the spirit of {names}. For {purpose}.")
+    return {"ok": True, "instruction": instruction[:1800],
+            "sources": [a.get("title") for a in anchors],
+            "purpose": purpose,
+            "next": "approve $0.01 to generate candidates via design_voice"}
