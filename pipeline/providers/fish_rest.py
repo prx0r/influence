@@ -41,9 +41,13 @@ def api_key() -> str:
 
 
 def tts(text: str, voice_id: str, model: str = MODEL_FREE,
-        out_path: str = "") -> dict:
+        out_path: str = "", speed: float = 1.0, volume_db: float = 0.0,
+        temperature: float | None = None) -> dict:
     """Render MP3 bytes. Defaults to the FREE model; anything else raises
-    unless explicitly passed (callers gate paid models behind grants)."""
+    unless explicitly passed (callers gate paid models behind grants).
+    Fish knobs (characters voice-engine, sleep recipe: speed .72 vol -1.5):
+    speed 0.5-2.0, volume dB, temperature 0-1. Free tier accepts all three.
+    """
     if model != MODEL_FREE:
         raise PermissionError(f"fish_rest: model {model} is billed — use the "
                               "grant-gated MCP path instead")
@@ -53,10 +57,15 @@ def tts(text: str, voice_id: str, model: str = MODEL_FREE,
     if n > PER_CALL_BYTES:
         return {"ok": False,
                 "reason": f"{n} bytes over per-call budget — split first"}
+    payload: dict = {"text": text, "reference_id": voice_id,
+                     "format": "mp3", "normalize": True,
+                     "prosody": {"speed": max(0.5, min(2.0, speed))}}
+    if volume_db:
+        payload["prosody"]["volume"] = volume_db
+    if temperature is not None:
+        payload["temperature"] = max(0.0, min(1.0, float(temperature)))
     req = urllib.request.Request(
-        f"{API_BASE}/v1/tts",
-        data=json.dumps({"text": text, "reference_id": voice_id,
-                         "format": "mp3", "normalize": True}).encode(),
+        f"{API_BASE}/v1/tts", data=json.dumps(payload).encode(),
         headers={"Authorization": f"Bearer {api_key()}",
                  "Content-Type": "application/json", "model": model})
     with urllib.request.urlopen(req, timeout=120) as r:

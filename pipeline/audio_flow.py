@@ -412,14 +412,18 @@ def studio_pull(project_id: str) -> dict:
 # same pro quality, fair-use free tier. Default for snippets, casting,
 # and bulk narration. Drama/multi-speaker stays on the grant-gated MCP.
 
-def speak_free(text: str, voice_id: str, out_path: str = "") -> dict:
+def speak_free(text: str, voice_id: str, out_path: str = "",
+               speed: float = 1.0, volume_db: float = 0.0,
+               temperature: float | None = None) -> dict:
     """$0 TTS via REST free tier. No grant needed (no consequence), but
-    callers log it. Paid models are unreachable from here by construction."""
+    callers log it. Paid models are unreachable from here by construction.
+    Fish knobs: speed 0.5-2.0 (sleep ~0.72-0.85), volume dB, temp 0-1."""
     try:
         from providers import fish_rest
     except ImportError:
         from pipeline.providers import fish_rest
-    return fish_rest.tts(text, voice_id, out_path=out_path)
+    return fish_rest.tts(text, voice_id, out_path=out_path, speed=speed,
+                         volume_db=volume_db, temperature=temperature)
 
 
 # ---- request: pi/human asks to spend → human task queue (no direct spend)
