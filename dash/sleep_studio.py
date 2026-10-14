@@ -15,7 +15,7 @@ import sys
 import threading
 import time
 
-SLEEPDRAW = "/root/sleepdraw"
+SLEEPDRAW = os.environ.get("SLEEPDRAW_DIR", "/root/sleepdraw")
 sys.path.insert(0, SLEEPDRAW)
 STUDIO = os.path.join(SLEEPDRAW, "runs", "studio")
 ART = os.path.join(STUDIO, "art")
@@ -174,6 +174,10 @@ def prep_script(raw: str, chunk_limit: int = 1500) -> dict:
     sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
     sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
                                     "pipeline"))
+    _repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for _p in (_repo, os.path.join(_repo, "pipeline")):
+        if _p not in sys.path:
+            sys.path.append(_p)  # this checkout, after the /root tree
     try:
         import tts_text as _tt
     except ImportError:
@@ -193,7 +197,7 @@ def prep_script(raw: str, chunk_limit: int = 1500) -> dict:
 # Their gate.py + tts-poison.py run as extra validators (imported, not
 # copied). No duplication: scripts live in damn, audio lands here.
 
-DAMN = "/root/damn"
+DAMN = os.environ.get("DAMN_DIR", "/root/damn")
 
 
 def _damn_gate():
@@ -221,6 +225,10 @@ def list_pilots() -> list:
     sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
     sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
                                     "pipeline"))
+    _repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for _p in (_repo, os.path.join(_repo, "pipeline")):
+        if _p not in sys.path:
+            sys.path.append(_p)  # this checkout, after the /root tree
     try:
         import tts_text as _tt
     except ImportError:
@@ -313,7 +321,13 @@ def parse_drama(path: str) -> dict:
 def render_pilot(path: str, channel_slug: str = "",
                  voice_overrides: dict | None = None,
                  min_score: int = 70,
-                 speaker_voices: dict | None = None) -> dict:
+                 speaker_voices: dict | None = None,
+                 speed: float | None = None,
+                 temperature: float | None = None,
+                 volume_db: float = 0.0,
+                 max_segments: int = 0,
+                 tag_prefix: str = "pilot",
+                 extra_meta: dict | None = None) -> dict:
     """Batch a damn pilot to a master MP3 — $0, no grants, no credits.
     Prep-gate + damn gate + poison per segment, per-speaker free renders
     (locked channel chairs override header stand-ins), ffmpeg concat.
@@ -324,6 +338,10 @@ def render_pilot(path: str, channel_slug: str = "",
     sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
     sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
                                     "pipeline"))
+    _repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for _p in (_repo, os.path.join(_repo, "pipeline")):
+        if _p not in sys.path:
+            sys.path.append(_p)  # this checkout, after the /root tree
     try:
         import tts_text as _tt
     except ImportError:
@@ -370,7 +388,10 @@ def render_pilot(path: str, channel_slug: str = "",
     except Exception:
         poison = None
     SEQ[0] += 1
-    tag = f"pilot-{_time.strftime('%H%M%S')}-{SEQ[0]:02d}"
+    tag = f"{tag_prefix}-{_time.strftime('%H%M%S')}-{SEQ[0]:02d}"
+    if max_segments and max_segments > 0:
+        # preview: first N segments only (the vibe check, not the episode)
+        parsed = dict(parsed, segments=parsed["segments"][:max_segments])
     seg_paths = []
     receipt = {"pilot": parsed["path"], "house": parsed["house"],
                "channel": channel_slug, "segments": []}
@@ -410,9 +431,12 @@ def render_pilot(path: str, channel_slug: str = "",
                     ((_lc(channel_slug).get("voice") or {}).get("pace")) or 1.0)
             except Exception:
                 seg_speed = 1.0
+        if speed is not None:
+            seg_speed = max(0.5, min(2.0, float(speed)))
         for j, ch_text in enumerate(prepped["chunks"]):
             pp = os.path.join(VOICE, f"{tag}-s{i:02d}p{j}.mp3")
-            r = af.speak_free(ch_text, vid, out_path=pp, speed=seg_speed)
+            r = af.speak_free(ch_text, vid, out_path=pp, speed=seg_speed,
+                              volume_db=volume_db, temperature=temperature)
             if not r.get("ok") or not os.path.exists(pp):
                 return {"ok": False,
                         "reason": f"segment {i} render failed: "
@@ -448,6 +472,9 @@ def render_pilot(path: str, channel_slug: str = "",
                 s["chars"] for s in receipt["segments"]),
             "credits_quoted": 0, "pilot": receipt,
             "url": f"/api/studio/file?kind=voice&file={os.path.basename(master)}"}
+    if extra_meta:
+        meta.update({k: v for k, v in extra_meta.items()
+                     if k not in ("name", "url")})
     json.dump(meta, open(master + ".json", "w"), indent=1)
     return {"ok": True, **meta}
 

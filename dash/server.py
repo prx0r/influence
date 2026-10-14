@@ -292,7 +292,7 @@ class Handler(SimpleHTTPRequestHandler):
                 f"dash_auth={TOKEN}; Path=/; HttpOnly; SameSite=Lax; Max-Age=31536000",
             )
             self._want_cookie = False
-        if urlparse(self.path).path in ("/", "/index.html"):
+        if urlparse(self.path).path in ("/", "/index.html", "/yt.html"):
             self.send_header("Cache-Control", "no-store, must-revalidate")
         super().end_headers()
 
@@ -319,6 +319,23 @@ class Handler(SimpleHTTPRequestHandler):
             return
         if not self._auth_gate():
             return
+        if self._route().startswith("/api/studio/yt/"):
+            # YT studio loop (yt.html): channel rail, pilot takes, formula.
+            sys.path.insert(0, ROOT)
+            import yt_studio as _yt
+            q = parse_qs(urlparse(self.path).query)
+            try:
+                if self._route() == "/api/studio/yt/channels":
+                    return self._json({"ok": True, "channels": _yt.channels()})
+                if self._route() == "/api/studio/yt/view":
+                    return self._json(_yt.channel_view(q.get("slug", [""])[0]))
+                if self._route() == "/api/studio/yt/job":
+                    return self._json(_yt.job(q.get("id", [""])[0]))
+            except (OSError, ValueError) as e:
+                return self._json({"error": str(e)[:200]}, 404)
+            except Exception as e:
+                return self._json({"error": str(e)[:200]}, 500)
+            return self._json({"error": "not found"}, 404)
         if self._route() == "/api/vault":
             sys.path.insert(0, os.path.dirname(ROOT))
             from core.vault.store import Vault
@@ -667,11 +684,20 @@ class Handler(SimpleHTTPRequestHandler):
                 pass
             return self._json(out)
         if self._route() == "/":
+            # YT dash gets the focused studio; the full console stays at
+            # /classic (and is still the default on the main dash).
+            self.path = ("/yt.html" if os.environ.get("YT_MODE", "") == "1"
+                         else "/index.html")
+        elif self._route() in ("/classic", "/classic/"):
             self.path = "/index.html"
+        elif self._route() in ("/studio", "/studio/"):
+            self.path = "/yt.html"
         return super().do_GET()
 
     def do_POST(self):
-        if not self._authed():
+        # _authed() returns (ok, set_cookie); a bare tuple is always truthy,
+        # which left every POST open when DASH_TOKEN was set.
+        if not self._authed()[0]:
             return self._json({"error": "forbidden"}, 403)
         if self._route() == "/api/release/create":
             # Draft release + ReviewBundle + effect task. Never pushes.
@@ -903,6 +929,29 @@ class Handler(SimpleHTTPRequestHandler):
                     return self._json(_st.free_narrate(
                         str(body.get("text", "") or ""),
                         str(body.get("voice_id", "") or "")))
+                if self._route().startswith("/api/studio/yt/"):
+                    import yt_studio as _yt
+                    slug = str(body.get("channel", "") or "")
+                    if self._route() == "/api/studio/yt/take":
+                        return self._json(_yt.start_take(
+                            str(body.get("path", "") or ""), slug,
+                            body.get("knobs") or {},
+                            full=bool(body.get("full")),
+                            note=str(body.get("note", "") or "")))
+                    if self._route() == "/api/studio/yt/vibe":
+                        return self._json(_yt.vibe(
+                            slug, str(body.get("note", "") or ""),
+                            body.get("knobs") or {},
+                            str(body.get("path", "") or "")))
+                    if self._route() == "/api/studio/yt/formula":
+                        t = body.get("titles")
+                        return self._json(_yt.save_formula(
+                            slug, body.get("knobs") or {},
+                            str(body.get("take", "") or ""),
+                            str(body.get("note", "") or ""),
+                            [str(x) for x in t] if isinstance(t, list)
+                            else None))
+                    return self._json({"error": "not found"}, 404)
                 if self._route() == "/api/studio/fulfill":
                     # Human pressed fulfill on an APPROVED audio task:
                     # mint single-use payload-bound grant → run the state
