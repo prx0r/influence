@@ -126,13 +126,17 @@ def _sibling_voice_ids(exclude_slug: str) -> set[str]:
 
 def propose(channel_slug: str, chair: str = "narrator",
             n: int = 5, exclude: list | None = None,
-            direction: str = "", voice_profile: dict | None = None) -> dict:
+            direction: str = "", voice_profile: dict | None = None,
+            collection: str = "") -> dict:
     """5 voice candidates matched to the channel vibe, each with samples
     and a reason citing tags/uses/language/differentiation. Free reads.
     exclude = voice IDs already seen (more-buttons, dismissed).
     direction = ad-hoc chair brief (calibration studio: any character).
     voice_profile = mapped character delivery-spec (character_to_voice):
-    its voice_words join the match set, and it is returned for display."""
+    its voice_words join the match set, and it is returned for display.
+    collection = collection slug (folk-and-fable): the collection's vibe,
+    tradition and narrator prediction lead the brief — a kwaidan narrator
+    and an anansi narrator must never be the same search."""
     af = _audio_flow()
     try:
         channel = load_channel(channel_slug)
@@ -161,6 +165,36 @@ def propose(channel_slug: str, chair: str = "narrator",
     # the ghost-tale brief sat unused). Merge its words + lead query.
     _dir_kw = _keywords(direction) if direction else set()
     chair_kw |= _dir_kw
+    # collection context (folk-and-fable theses): vibe + tradition +
+    # narrator prediction lead the brief. Cached per process.
+    _coll = None
+    if collection:
+        try:
+            sys_path_push()
+            import time as _t
+            _th_path = os.path.join(os.path.dirname(CHANNELS_DIR),
+                                    "voice-thesis", channel_slug + ".json")
+            _th_mtime = os.path.getmtime(_th_path)
+            if not hasattr(propose, "_th_cache") or \
+                    getattr(propose, "_th_mtime", 0) != _th_mtime:
+                propose._th_cache = json.load(open(_th_path, encoding="utf-8"))
+                propose._th_mtime = _th_mtime
+            for _c in (propose._th_cache.get("collections") or []):
+                if _c.get("collection") == collection:
+                    _coll = _c
+                    break
+        except Exception:
+            _coll = None
+    if _coll:
+        _ctext = " ".join([
+            _coll.get("tradition", ""),
+            " ".join(v.get("vibe", "") for v in _coll.get("vibes", [])),
+            ((_coll.get("narrator") or {}).get("voice", "")),
+            ((_coll.get("narrator") or {}).get("why", ""))[:200],
+        ])
+        for _w in _keywords_ordered(_ctext)[:14]:
+            if len(_w) >= 3:
+                chair_kw.add(_w)
     # archetype vocabulary (research gets close): classify the chair,
     # add its delivery words to the match set. Taste narrows within.
     _arch, _arch_prof = "", {}
@@ -168,7 +202,11 @@ def propose(channel_slug: str, chair: str = "narrator",
         sys_path_push()
         from ensemble_cast import classify_archetype as _cla
         _ar = _cla(chair + " " + (chairs[chair].get("direction", "") or "") +
-                  " " + (direction or ""),
+                  " " + (direction or "") +
+                  " " + ((_coll or {}).get("tradition", "") or "") +
+                  " " + " ".join(v.get("vibe", "")
+                                  for v in ((_coll or {}).get("vibes", []) or [])) +
+                  " " + (((_coll or {}).get("narrator") or {}).get("voice", "") or ""),
                   (chairs[chair].get("direction", "") or "") + " " + (direction or ""))
         if _ar.get("confidence", 0) > 0:
             _arch, _arch_prof = _ar["archetype"], _ar["profile"]
@@ -213,15 +251,30 @@ def propose(channel_slug: str, chair: str = "narrator",
             _qw = "".join(c for c in _qw if c.isalpha())
             if len(_qw) >= 4 and _qw not in STOP:
                 chair_kw.add(_qw)
+    _NARRATOR_CHAIRS = {"narrator", "monk", "lecturer", "anchor",
+                        "loremaster", "guide", "companion", "documentarian",
+                        "clinician", "foreman", "imaginal", "guest", "crew",
+                        "ground", "mommy"}
+    # role: narrator (carries long passages warmly) vs character (persona
+    # over carrier). Without this, narrator and tortoise briefs spend the
+    # same vendor words and crown the same voices out of a 30-voice pool.
+    _is_narrator = chair.strip().lower() in _NARRATOR_CHAIRS
     pool: dict[str, dict] = {}
     # graph queries narrow (species truth), vibe queries widen (recall),
     # ad-hoc brief leads (explicit instruction beats channel default);
     # unioned so "tiger" finds tortoise-slow voices AND narration voices.
     _lead = [" ".join(_keywords_ordered(direction)[:6])] if _dir_kw else []
+    if _coll:
+        _cth = " ".join([
+            ((_coll.get("narrator") or {}).get("voice", "")),
+            _coll.get("tradition", ""),
+            " ".join(v.get("vibe", "") for v in _coll.get("vibes", [])),
+        ])
+        _lead = [" ".join(_keywords_ordered(_cth)[:6])] + _lead
     _all_q = list(dict.fromkeys(
         _lead + list(_queries or []) + vibe_queries(channel, chair)))
     for q in _all_q:
-        r = af.voices(q, "", False, 10)
+        r = af.voices(q, "", False, 15)
         for v in ((r.get("data") or {}).get("voices") or []):
             vid = v.get("id") or v.get("voice_id", "")
             if vid and vid not in pool:
@@ -468,15 +521,29 @@ def propose(channel_slug: str, chair: str = "narrator",
                     break
         if _anch_from:
             reasons.insert(0, f"your loved voice ({_anch_from})")
+        # role fit: narrators carry (storytelling/narration + sleep-fit
+        # counts double — the carrier metric); characters personify
+        # (character-voice/delivery tags over generic narration).
+        _toks_all = set().union(*_tag_toks.values()) if _tag_toks else set()
+        if _is_narrator:
+            if _toks_all & {"storytelling", "narration"}:
+                score = round(score + 1.5, 1)
+                reasons.append("carrier: storytelling/narration voice")
+        else:
+            if _toks_all & {"character-voice", "animated", "dramatic",
+                            "character", "entertainment"}:
+                score = round(score + 1.5, 1)
+                reasons.append("persona: character voice, not carrier")
         _meas = (_ac or {}).get(vid, {})
         _sf = ((_meas.get("sleep_fit") or {}).get("score")
                if isinstance(_meas, dict) else None)
+        _sf_mult = 2.0 if _is_narrator else 1.0
         if _sf is not None:
             if _sf >= 80:
-                score = round(score + 1.5, 1)
+                score = round(score + 1.5 * _sf_mult, 1)
                 reasons.append(f"measured sleep-fit {_sf} (waveform, not tags)")
             elif _sf < 55:
-                score = round(score - 1.5, 1)
+                score = round(score - 1.5 * _sf_mult, 1)
                 reasons.append(f"measured sleep-fit {_sf} — sample runs hot")
         scored.append({"voice_id": vid,
                        "name": v.get("title") or v.get("name"),

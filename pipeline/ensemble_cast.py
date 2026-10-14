@@ -250,8 +250,9 @@ _ARCHETYPE_KEYS = {
             "gremlin", "anansi", "fox", "spider", "trick"),
     "hero": ("hero", "prince", "knight", "protagonist", "minokichi"),
     "mentor": ("mentor", "sensei", "master", "sage", "guide", "father",
-               "grandfather"),
-    "fae": ("fairy", "fae", "elf", "spirit", "yuki", "mermaid", "sylph"),
+               "grandfather", "keeper", "tender", "referee"),
+    "fae": ("fairy", "fae", "elf", "spirit", "yuki", "mermaid", "sylph",
+            "wonder", "scheherazade", "beguiling"),
     "crone": ("witch", "crone", "hag", "baba", "yaga", "yubaba", "stepmother"),
     "beast": ("reptilian", "beast", "dragon", "bear", "wolf", "lion",
               "serpent", "crocodile", "lizard"),
@@ -260,7 +261,8 @@ _ARCHETYPE_KEYS = {
                  "apprentice"),
     "elder": ("tree", "oak", "ancient", "mountain", "ent", "tortoise",
               "grandmother", "grandfather", "ghost", "grave", "tomb",
-              "crypt", "ancestor"),
+              "crypt", "ancestor", "elder", "storyteller", "skald",
+              "griot", "bard", "authority", "weight", "winter"),
 }
 
 
