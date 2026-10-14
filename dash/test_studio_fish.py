@@ -132,3 +132,19 @@ def test_onboard_react_cycle():
     d["dismissed"] = [x for x in d.get("dismissed", []) if not x.startswith("v-test-")]
     _j.dump(d, open(p, "w"))
     assert ob.react("xx", "n", "", liked=True)["ok"] is False
+
+
+def test_design_instruction_pure_and_gated():
+    import sleep_studio as st
+    r = st.design_instruction("folk-and-fable", "narrator")
+    assert r["ok"] is True and "Adrian" in r["instruction"]
+    assert st.design_instruction("nope", "n")["ok"] is False
+    assert st.design_instruction("folk-and-fable", "nobody")["ok"] is False
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from providers import fish_rest
+    try:
+        fish_rest.voice_design("warm voice", approved=False)
+        assert False, "unapproved design must raise"
+    except PermissionError:
+        pass

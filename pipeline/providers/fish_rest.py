@@ -66,3 +66,37 @@ def tts(text: str, voice_id: str, model: str = MODEL_FREE,
             f.write(audio)
     return {"ok": True, "model": model, "bytes": len(audio),
             "usd": 0.0, "credits": 0, "path": out_path or ""}
+
+
+def voice_design(instruction: str, n: int = 2, language: str = "en",
+                 reference_text: str = "", speed: float = 1.0,
+                 approved: bool = False) -> dict:
+    """Generate original voices from a text prompt ($0.01/request, API
+    dollars — NOT free tier, NOT package credits). REQUIRES approved=True
+    with explicit owner yes. Returns candidates with base64 preview audio.
+    P0 engine for prompting the perfect narrator voice per channel."""
+    if not approved:
+        raise PermissionError("voice_design bills $0.01/request: pass "
+                              "approved=True with explicit owner yes")
+    if not instruction or len(instruction) > 2000:
+        return {"ok": False, "reason": "instruction 1..2000 chars"}
+    body: dict = {"instruction": instruction, "language": language,
+                  "n": max(1, min(4, n)), "speed": speed}
+    if reference_text:
+        body["reference_text"] = reference_text[:150]
+    req = urllib.request.Request(
+        f"{API_BASE}/v1/voice-design", data=json.dumps(body).encode(),
+        headers={"Authorization": f"Bearer {api_key()}",
+                 "Content-Type": "application/json",
+                 "model": "voice-design-1"})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        data = json.load(r)
+    cands = []
+    for c in data.get("candidates", []):
+        cands.append({"voice_id": c.get("id") or c.get("voice_id") or "",
+                      "title": c.get("title") or "",
+                      "audio_b64": (c.get("audio") or "")[:50] + "..."
+                      if c.get("audio") else "",
+                      "_audio_b64_full": c.get("audio") or ""})
+    return {"ok": True, "model": "voice-design-1", "usd": 0.01,
+            "instruction": instruction, "candidates": cands}

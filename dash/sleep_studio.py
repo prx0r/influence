@@ -10,6 +10,7 @@ from __future__ import annotations
 import glob
 import json
 import os
+import re
 import sys
 import threading
 import time
@@ -181,6 +182,245 @@ def prep_script(raw: str, chunk_limit: int = 1500) -> dict:
     # trim chunk bodies for the UI (full text stays server-side per render)
     p["chunks_preview"] = [c[:120] for c in p["chunks"][:12]]
     return p
+
+
+# ---- damn pilots: drama.txt → per-speaker $0 renders → master ----
+#
+# damn owns scripts + routines (readout/gate/poison over there); WE own
+# execution. Pilot files declare chairs + voice IDs in // headers; locked
+# channel chairs override stand-ins. Each speaker segment renders on its
+# own chair voice (free tier), concatenated to one master in the bank.
+# Their gate.py + tts-poison.py run as extra validators (imported, not
+# copied). No duplication: scripts live in damn, audio lands here.
+
+DAMN = "/root/damn"
+
+
+def _damn_gate():
+    import importlib.util as _ilu
+    mod = _ilu.spec_from_file_location(
+        "damn_gate", os.path.join(DAMN, "fish", "gate.py"))
+    g = _ilu.module_from_spec(mod)
+    mod.loader.exec_module(g)
+    return g
+
+
+def _damn_poison():
+    import importlib.util as _ilu
+    mod = _ilu.spec_from_file_location(
+        "damn_tts_poison", os.path.join(DAMN, "fish", "tts-poison.py"))
+    g = _ilu.module_from_spec(mod)
+    mod.loader.exec_module(g)
+    return g
+
+
+def list_pilots() -> list:
+    """Every pilots/*.drama.txt + videos/*.drama.txt with readiness
+    (our prep score + their gate + poison). Pure reads until render."""
+    import glob as _glob
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                    "pipeline"))
+    try:
+        import tts_text as _tt
+    except ImportError:
+        from pipeline import tts_text as _tt
+    out = []
+    for path in sorted(_glob.glob(os.path.join(
+            DAMN, "projects", "*", "pilots", "*.drama.txt"))) + sorted(
+            _glob.glob(os.path.join(DAMN, "projects", "*", "videos",
+                                    "*.drama.txt"))):
+        try:
+            raw = open(path, encoding="utf-8", errors="replace").read()
+            body = "\n".join(l for l in raw.splitlines()
+                             if not l.startswith("//")).strip()
+            p = _tt.prep(body)
+            gate, poison = {"pass": None}, {"pass": None}
+            try:
+                gate = _damn_gate().gate(body)
+            except Exception:
+                pass
+            try:
+                poison = _damn_poison().poison(body)
+            except Exception:
+                pass
+            house = path.split(os.sep)[-3]
+            kind = "pilot" if "/pilots/" in path else "video"
+            out.append({"path": path, "house": house, "kind": kind,
+                        "file": os.path.basename(path),
+                        "score": p["score_after"],
+                        "chunks": p["n_chunks"],
+                        "credits_or_free": p["credits_total"],
+                        "gate": bool(gate.get("pass")),
+                        "poison": bool(poison.get("pass")),
+                        "ready": p["score_after"] >= 70 and gate.get("pass")
+                        and poison.get("pass")})
+        except Exception as e:  # noqa: BLE001 — one bad file can't kill list
+            out.append({"path": path, "house": "?", "kind": "?",
+                        "file": os.path.basename(path),
+                        "ready": False, "reason": str(e)[:120]})
+    return out
+
+
+def parse_drama(path: str) -> dict:
+    """drama.txt → header chairs + speaker segments. Path-guarded to damn."""
+    full = os.path.realpath(path)
+    if not full.startswith(os.path.realpath(DAMN) + os.sep):
+        raise ValueError("pilot outside damn/")
+    if not full.endswith(".drama.txt") or not os.path.isfile(full):
+        raise ValueError("not a drama.txt pilot")
+    raw = open(full, encoding="utf-8", errors="replace").read()
+    chairs: dict = {}
+    for ln in raw.splitlines():
+        if not ln.startswith("//"):
+            continue
+        m = re.match(r"//\s*(\w+)\s+<\|speaker:(\d+)\|>\s*(\S+)?\s*([0-9a-f]{32})?",
+                     ln)
+        if m:
+            chairs[m.group(1)] = {"speaker": int(m.group(2)),
+                                  "label": m.group(3) or "",
+                                  "voice_id": m.group(4) or ""}
+    body = "\n".join(l for l in raw.splitlines()
+                     if not l.startswith("//")).strip()
+    # split body on speaker tags, keeping text per speaker
+    import re as _re2
+    parts = _re2.split(r"(<\|speaker:\d+\|>)", body)
+    segs, cur_spk, buf = [], 0, []
+    for part in parts:
+        mm = _re2.fullmatch(r"<\|speaker:(\d+)\|>", part.strip())
+        if mm:
+            if buf:
+                segs.append({"speaker": cur_spk,
+                             "text": "\n".join(buf).strip()})
+                buf = []
+            cur_spk = int(mm.group(1))
+        elif part.strip():
+            buf.append(part.strip())
+    if buf:
+        segs.append({"speaker": cur_spk, "text": "\n".join(buf).strip()})
+    segs = [s for s in segs if s["text"]]
+    return {"path": full, "house": full.split(os.sep)[-3],
+            "chairs": chairs, "segments": segs,
+            "n_segments": len(segs)}
+
+
+def render_pilot(path: str, channel_slug: str = "",
+                 voice_overrides: dict | None = None,
+                 min_score: int = 70) -> dict:
+    """Batch a damn pilot to a master MP3 — $0, no grants, no credits.
+    Prep-gate + damn gate + poison per segment, per-speaker free renders
+    (locked channel chairs override header stand-ins), ffmpeg concat.
+    Returns master bank meta + per-segment receipt."""
+    import subprocess as _sp
+    import time as _time
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                    "pipeline"))
+    try:
+        import tts_text as _tt
+    except ImportError:
+        from pipeline import tts_text as _tt
+    parsed = parse_drama(path)
+    # locked chairs override stand-in IDs from the header
+    locked: dict = {}
+    if channel_slug:
+        try:
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            from channel_character import load_channel
+            ch = load_channel(channel_slug)
+            for nm, c in (((ch.get("voice") or {}).get("chairs")) or {}).items():
+                if isinstance(c, dict) and c.get("fish_id"):
+                    locked[nm] = c["fish_id"]
+        except Exception:
+            pass
+    spk_voice: dict = {}
+    for cname, c in parsed["chairs"].items():
+        if cname in (voice_overrides or {}):
+            spk_voice[c["speaker"]] = (voice_overrides or {})[cname]
+        elif cname in locked:
+            spk_voice[c["speaker"]] = locked[cname]
+        elif c.get("voice_id"):
+            spk_voice[c["speaker"]] = c["voice_id"]
+    if not spk_voice:
+        return {"ok": False, "reason": "no voices: header has no IDs and "
+                "no locked chairs (pass voice_overrides)"}
+    gate = _damn_gate()
+    try:
+        poison = _damn_poison()
+    except Exception:
+        poison = None
+    SEQ[0] += 1
+    tag = f"pilot-{_time.strftime('%H%M%S')}-{SEQ[0]:02d}"
+    seg_paths = []
+    receipt = {"pilot": parsed["path"], "house": parsed["house"],
+               "channel": channel_slug, "segments": []}
+    for i, s in enumerate(parsed["segments"]):
+        vid = spk_voice.get(s["speaker"])
+        if not vid:
+            return {"ok": False,
+                    "reason": f"speaker {s['speaker']} has no voice"}
+        prepped = _tt.prep(s["text"])
+        if prepped["score_after"] < min_score:
+            return {"ok": False,
+                    "reason": f"segment {i} score {prepped['score_after']} "
+                              f"< gate {min_score}",
+                    "flags": prepped["flags_after"][:6]}
+        try:
+            if not gate.gate(s["text"])["pass"]:
+                return {"ok": False,
+                        "reason": f"segment {i} blocked by damn gate"}
+        except Exception as e:  # noqa: BLE001 — gate infra hiccup, report
+            return {"ok": False, "reason": f"gate error seg {i}: {e}"[:120]}
+        if poison is not None:
+            try:
+                if not poison.poison(s["text"])["pass"]:
+                    return {"ok": False,
+                            "reason": f"segment {i} blocked by tts-poison"}
+            except Exception as e:  # noqa: BLE001
+                return {"ok": False, "reason": f"poison error seg {i}: {e}"[:120]}
+        # render each prep chunk to bank parts (free tier, saved files)
+        af = _audio_flow()
+        part_paths = []
+        for j, ch_text in enumerate(prepped["chunks"]):
+            pp = os.path.join(VOICE, f"{tag}-s{i:02d}p{j}.mp3")
+            r = af.speak_free(ch_text, vid, out_path=pp)
+            if not r.get("ok") or not os.path.exists(pp):
+                return {"ok": False,
+                        "reason": f"segment {i} render failed: "
+                                  f"{r.get('reason', 'no file')}"}
+            part_paths.append(pp)
+        seg_paths.extend(part_paths)
+        receipt["segments"].append({
+            "i": i, "speaker": s["speaker"], "voice_id": vid,
+            "score": prepped["score_after"],
+            "chars": sum(len(c.encode()) for c in prepped["chunks"]),
+            "parts": [os.path.basename(p) for p in part_paths]})
+        _time.sleep(0.3)  # fair-use pacing between free calls
+    # concat to master
+    lst = os.path.join(VOICE, tag + ".lst")
+    with open(lst, "w") as f:
+        for p in seg_paths:
+            f.write(f"file '{p}'\n")
+    master = os.path.join(VOICE, tag + "-master.mp3")
+    r = _sp.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", lst,
+                 "-c", "copy", master],
+                capture_output=True, text=True)
+    for p in seg_paths + [lst]:
+        try:
+            os.remove(p)
+        except OSError:
+            pass
+    if r.returncode != 0 or not os.path.exists(master):
+        return {"ok": False, "reason": "ffmpeg concat failed: "
+                + (r.stderr or "")[-200:]}
+    meta = {"name": os.path.basename(master),
+            "voice": f"pilot:{parsed['house']}",
+            "backend": "free-batch", "chars": sum(
+                s["chars"] for s in receipt["segments"]),
+            "credits_quoted": 0, "pilot": receipt,
+            "url": f"/api/studio/file?kind=voice&file={os.path.basename(master)}"}
+    json.dump(meta, open(master + ".json", "w"), indent=1)
+    return {"ok": True, **meta}
 
 
 # ---- Fish Audio (web-credit voices, grant-gated spend) ----
@@ -391,3 +631,82 @@ def free_narrate(text: str, voice_id: str) -> dict:
             "url": f"/api/studio/file?kind=voice&file={name}"}
     json.dump(meta, open(out + ".json", "w"), indent=1)
     return {"ok": True, **meta}
+
+
+# ---- voice-design casting engine (P0: prompt the perfect narrator) ----
+#
+# Channel record → instruction prompt → Fish voice-design ($0.01/req,
+# approved-only) → preview MP3s in the bank → human locks. The instruction
+# builder IS the engine: chair direction + nevers + pace + shelf + pitch.
+
+def design_instruction(channel_slug: str, chair: str = "narrator") -> dict:
+    """Build the voice-design prompt for a chair. Pure, $0, no approval."""
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                    "pipeline"))
+    try:
+        import channel_character
+    except ImportError:
+        from pipeline import channel_character
+    try:
+        ch = channel_character.load_channel(channel_slug)
+    except OSError:
+        return {"ok": False, "reason": f"unknown channel {channel_slug}"}
+    chairs = (ch.get("voice") or {}).get("chairs", {})
+    c = chairs.get(chair)
+    if not c:
+        return {"ok": False,
+                "reason": f"no chair '{chair}' (have: {sorted(chairs)})"}
+    pace = ((ch.get("voice") or {}).get("pace") or 1.0)
+    parts = [f"{c.get('label', chair)}.",
+             f"{c.get('direction', '')}."]
+    if c.get("never"):
+        parts.append(f"Never {', '.join(c['never'][:4])}.")
+    if pace != 1.0:
+        parts.append("Slower than normal speech." if pace < 1.0
+                     else "Brisker than normal speech.")
+    parts.append(f"For {ch.get('display_name', channel_slug)} sleep content: "
+                 f"{ch.get('pitch', '')}")
+    instruction = " ".join(p for p in parts if p)[:1800]
+    return {"ok": True, "channel": channel_slug, "chair": chair,
+            "instruction": instruction}
+
+
+def design_voice(channel_slug: str, chair: str = "narrator", n: int = 2,
+                 approved: bool = False) -> dict:
+    """Generate + bank original voice candidates. $0.01/req — approved only."""
+    import base64 as _b64
+    ins = design_instruction(channel_slug, chair)
+    if not ins.get("ok"):
+        return ins
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+    sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                    "pipeline"))
+    try:
+        from providers import fish_rest
+    except ImportError:
+        from pipeline.providers import fish_rest
+    r = fish_rest.voice_design(ins["instruction"], n=n, approved=approved)
+    if not r.get("ok"):
+        return r
+    SEQ[0] += 1
+    previews = []
+    for i, c in enumerate(r.get("candidates", [])):
+        raw = c.get("_audio_b64_full", "")
+        if not raw:
+            continue
+        nm = (f"designed-{time.strftime('%H%M%S')}-{SEQ[0]:02d}-{i}.mp3")
+        out = os.path.join(VOICE, nm)
+        with open(out, "wb") as f:
+            f.write(_b64.b64decode(raw))
+        meta = {"name": nm, "voice": f"designed:{c.get('voice_id', '')[:8]}",
+                "backend": "voice-design", "instruction": ins["instruction"],
+                "usd": 0.01,
+                "url": f"/api/studio/file?kind=voice&file={nm}"}
+        json.dump(meta, open(out + ".json", "w"), indent=1)
+        previews.append({"name": nm, "voice_id": c.get("voice_id", ""),
+                         "title": c.get("title", ""), "url": meta["url"]})
+    return {"ok": True, "channel": channel_slug, "chair": chair,
+            "instruction": ins["instruction"], "usd": 0.01,
+            "previews": previews,
+            "next": "listen → lock the winner via casting UI with a reason"}

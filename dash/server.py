@@ -832,6 +832,18 @@ class Handler(SimpleHTTPRequestHandler):
                     import channel_onboard as _ob
                     return self._json({"ok": True,
                                        "picks": _ob.locked_traits()})
+                if self._route() == "/api/studio/cast/design":
+                    # P0 voice-design: instruction preview is free; generate
+                    # bills $0.01 and needs explicit approved:true from human.
+                    if body.get("approved") is True:
+                        return self._json(_st.design_voice(
+                            str(body.get("channel", "") or ""),
+                            str(body.get("chair", "narrator") or "narrator"),
+                            min(4, int(body.get("n", 2) or 2)),
+                            approved=True))
+                    return self._json(_st.design_instruction(
+                        str(body.get("channel", "") or ""),
+                        str(body.get("chair", "narrator") or "narrator")))
                 if self._route() == "/api/studio/channel/save":
                     import channel_onboard as _ob
                     return self._json(_ob.save_config(

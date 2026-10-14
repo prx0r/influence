@@ -1,0 +1,59 @@
+{
+ "schema_version": "character-graph.v1",
+ "character_id": "channel-mommy-reads",
+ "name": "Mommy Reads",
+ "kind": "channel",
+ "status": "pilot",
+ "seed": {
+  "philosophy": {
+   "orientation": [
+    "Bedtime stories read by Mommy. Honey, time for bed."
+   ],
+   "problem_space": [
+    "sleep induction via narrative"
+   ]
+  },
+  "modulator_range": [
+   "calm",
+   "measured",
+   "drowsy",
+   "warm"
+  ],
+  "canon": "studio/channels/mommy-reads.json",
+  "seed_version": 1
+ },
+ "who": {
+  "chairs": {
+   "mommy": {
+    "label": "Mommy 208k uses (crown jewel)",
+    "direction": "[warm maternal voice, patient and smiling, close and unhurried, honey-time-for-bed, never rushed, stern, shared with ANY other project, slower than normal speech]",
+    "voice_id": "5233336f5f44460ea0902b0802375451"
+   }
+  }
+ },
+ "profile": {
+  "voice": "roster of 1 locked chairs",
+  "branches": [
+   {
+    "branch_id": "youtube",
+    "platform": "youtube",
+    "enabled": true,
+    "account": {
+     "handle": "",
+     "status": "unclaimed"
+    }
+   }
+  ]
+ },
+ "instances": [],
+ "edges": [],
+ "analytics": {},
+ "provenance": [
+  "influence studio/channels",
+  {
+   "contract": "E2-reading: slow TTS + ambient bed + one scene per passage",
+   "primary": "E2-reading",
+   "proven": "damn pilots: honey-time-for-bed + snow-queen-part-1"
+  }
+ ]
+}
