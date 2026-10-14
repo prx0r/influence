@@ -1,0 +1,43 @@
+{
+ "channel": "channeled-wisdom",
+ "display_name": "Channeled Wisdom",
+ "pitch": "- `frontier/channeling/`: LawofOne 63M (full 106 sessions txt), Seth 64M, Cassiopaea 29 sessions, PKD exegesis + Densities frameworks",
+ "assignments": [
+  {
+   "chair": "guide",
+   "status": "recommended",
+   "direction": "[warm, certain guide voice, visualising slowly]",
+   "archetype": "mentor",
+   "coherence": 0.259,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 15.2,
+    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (gentle, soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, no"
+   },
+   "alternatives": [
+    {
+     "voice_id": "f0acad7e4ed24b04a80f6c3fd3bce228",
+     "name": "Wisdom",
+     "score": 14.1
+    },
+    {
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "name": "old man bible storytelling",
+     "score": 13.8
+    },
+    {
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "name": "Sleepy",
+     "score": 12.0
+    },
+    {
+     "voice_id": "993fc2c70a514264baab97fd49a11511",
+     "name": "Stoic Wisdom",
+     "score": 11.4
+    }
+   ],
+   "audition": "/audition.html?m=auditions/channeled-wisdom-guide.json (render on request)"
+  }
+ ]
+}

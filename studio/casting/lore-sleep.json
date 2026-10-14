@@ -1,0 +1,43 @@
+{
+ "channel": "lore-sleep",
+ "display_name": "Lore Sleep",
+ "pitch": "One umbrella for ALL modern lore: cartoons, games, films, anything. Whiteboard =",
+ "assignments": [
+  {
+   "chair": "loremaster",
+   "status": "recommended",
+   "direction": "[warm lore-keeper voice, inhabiting the world, unhurried]",
+   "archetype": "mentor",
+   "coherence": 0.244,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 14.8,
+    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags);"
+   },
+   "alternatives": [
+    {
+     "voice_id": "ab968a074e82446db1ea8a752f358971",
+     "name": "Boring History for Sleep",
+     "score": 14.7
+    },
+    {
+     "voice_id": "4a5fe6e200c44bee98666c4c8476b8b2",
+     "name": "sleepy",
+     "score": 14.1
+    },
+    {
+     "voice_id": "85bdb3ca9bd941fc8ad25a32da43cee2",
+     "name": "Lord ",
+     "score": 11.8
+    },
+    {
+     "voice_id": "c97c6987eaf944d5b738c592c82ed0e9",
+     "name": "Sleep history ",
+     "score": 11.7
+    }
+   ],
+   "audition": "/audition.html?m=auditions/lore-sleep-loremaster.json (render on request)"
+  }
+ ]
+}

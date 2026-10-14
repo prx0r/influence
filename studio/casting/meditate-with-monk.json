@@ -1,0 +1,43 @@
+{
+ "channel": "meditate-with-monk",
+ "display_name": "Meditate With Monk",
+ "pitch": "Super basic meditation instruction + breath visualisation. No lore, no stories —",
+ "assignments": [
+  {
+   "chair": "monk",
+   "status": "recommended",
+   "direction": "[low plain meditation guide voice, exact and kind, unhurried]",
+   "archetype": "mentor",
+   "coherence": 0.301,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 15.8,
+    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (gentle, soft); weak tag match (low) — judge the sample; owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voi"
+   },
+   "alternatives": [
+    {
+     "voice_id": "464388beaa724f8f8947a9fda096f0f5",
+     "name": "delila - Relax meditate",
+     "score": 14.7
+    },
+    {
+     "voice_id": "a325095a7cc049cebf39b1de9464fc73",
+     "name": "Emily (meditation)",
+     "score": 14.4
+    },
+    {
+     "voice_id": "644b0bd04223488590a8088ea29c0dcd",
+     "name": "jameson guided meditation",
+     "score": 14.0
+    },
+    {
+     "voice_id": "b92c032afbca4a928cefe0b073a686fb",
+     "name": "Emili meditation ",
+     "score": 13.3
+    }
+   ],
+   "audition": "/audition.html?m=auditions/meditate-with-monk-monk.json (render on request)"
+  }
+ ]
+}

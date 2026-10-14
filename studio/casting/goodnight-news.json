@@ -1,0 +1,13 @@
+{
+ "channel": "goodnight-news",
+ "display_name": "Goodnight News",
+ "pitch": "The world is getting better. Sleep on that. 5 good things, nightly.",
+ "assignments": [
+  {
+   "chair": "anchor",
+   "status": "locked",
+   "voice_id": "63d5460e91e2411fa2e6bf95e7456f03",
+   "label": "Anchor News 13k uses"
+  }
+ ]
+}

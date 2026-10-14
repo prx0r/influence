@@ -1,0 +1,13 @@
+{
+ "channel": "mommy-reads",
+ "display_name": "Mommy Reads",
+ "pitch": "Bedtime stories read by Mommy. Honey, time for bed.",
+ "assignments": [
+  {
+   "chair": "mommy",
+   "status": "locked",
+   "voice_id": "60bd8f0f5bbc462a8fa1686dd81af336",
+   "label": "Mommy 208k uses (crown jewel)"
+  }
+ ]
+}

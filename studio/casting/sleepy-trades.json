@@ -1,0 +1,43 @@
+{
+ "channel": "sleepy-trades",
+ "display_name": "Sleepy Trades",
+ "pitch": "The killer utilitarian lane: trades read like liturgy. Zero competition,",
+ "assignments": [
+  {
+   "chair": "foreman",
+   "status": "recommended",
+   "direction": "[steady workmanlike voice, methodical, no rush]",
+   "archetype": null,
+   "coherence": 0.133,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 9.1,
+    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags)"
+   },
+   "alternatives": [
+    {
+     "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
+     "name": "Verity",
+     "score": 8.5
+    },
+    {
+     "voice_id": "c68a0bfe83e141a491dffb0cf936f87d",
+     "name": "Sleepy angel",
+     "score": 7.0
+    },
+    {
+     "voice_id": "7cbd02ddef254af4ad16fec8b706eee4",
+     "name": "Sleepy Voice",
+     "score": 6.9
+    },
+    {
+     "voice_id": "4a5fe6e200c44bee98666c4c8476b8b2",
+     "name": "sleepy",
+     "score": 6.7
+    }
+   ],
+   "audition": "/audition.html?m=auditions/sleepy-trades-foreman.json (render on request)"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "channel": "etymology",
+ "display_name": "Word Hoard",
+ "pitch": "Etymology, grammar, thesaurus, roots and idioms — one word per video, read to sleep.",
+ "assignments": [
+  {
+   "chair": "lecturer",
+   "status": "recommended",
+   "direction": "[clear lecturer voice, precise and unhurried, half speed]",
+   "archetype": null,
+   "coherence": 0.212,
+   "recommended": {
+    "voice_id": "5084227c7a6f489280cfeeccae809388",
+    "name": "Sleepy",
+    "score": 9.8,
+    "why": "your loved voice (Sleepy); affect match (calm, soft); weak tag match (clear) — judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, narration, friendly; 352 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not t"
+   },
+   "alternatives": [
+    {
+     "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
+     "name": "Verity",
+     "score": 9.2
+    },
+    {
+     "voice_id": "72ce3441bbae4abba24e875d03539490",
+     "name": "max Clear",
+     "score": 6.7
+    },
+    {
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "name": "old man bible storytelling",
+     "score": 6.6
+    },
+    {
+     "voice_id": "9b61b17b4abe42c18b97f82de713b324",
+     "name": "Precise Female Narrator",
+     "score": 6.5
+    }
+   ],
+   "audition": "/audition.html?m=auditions/etymology-lecturer.json (render on request)"
+  }
+ ]
+}

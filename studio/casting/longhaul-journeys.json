@@ -1,0 +1,115 @@
+{
+ "channel": "longhaul-journeys",
+ "display_name": "Longhaul Journeys",
+ "pitch": "One channel, subfolders per mode. The room IS the content (E4 ambience + E5 talk",
+ "assignments": [
+  {
+   "chair": "narrator",
+   "status": "recommended",
+   "direction": "[steady navigator voice, directional and calm]",
+   "archetype": null,
+   "coherence": 0.232,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 9.1,
+    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags)"
+   },
+   "alternatives": [
+    {
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "name": "Sleepy",
+     "score": 9.1
+    },
+    {
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "name": "old man bible storytelling",
+     "score": 6.6
+    },
+    {
+     "voice_id": "df498963e8be486a9d9f1ebcd6ec4b00",
+     "name": "Deep Voice Storytelling",
+     "score": 6.4
+    },
+    {
+     "voice_id": "8e90926676d147ffa27b22773bcfeb3f",
+     "name": "Storytelling Philosophy Deep",
+     "score": 6.2
+    }
+   ],
+   "audition": "/audition.html?m=auditions/longhaul-journeys-narrator.json (render on request)"
+  },
+  {
+   "chair": "crew",
+   "status": "recommended",
+   "direction": "",
+   "archetype": null,
+   "coherence": 0.139,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 9.7,
+    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); weak tag match (warm) — judge the sample; owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, n"
+   },
+   "alternatives": [
+    {
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "name": "Sleepy",
+     "score": 9.1
+    },
+    {
+     "voice_id": "d239a0965ccb4a9b9b905fd23cc3b7bb",
+     "name": "One tpot",
+     "score": 6.9
+    },
+    {
+     "voice_id": "4f1ec94f5b134dca8d863cd7744899b5",
+     "name": "Psychology Channel",
+     "score": 6.7
+    },
+    {
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "name": "old man bible storytelling",
+     "score": 6.6
+    }
+   ],
+   "audition": "/audition.html?m=auditions/longhaul-journeys-crew.json (render on request)"
+  },
+  {
+   "chair": "ground",
+   "status": "recommended",
+   "direction": "",
+   "archetype": null,
+   "coherence": 0.223,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 9.1,
+    "why": "your loved voice (Calm Sleep Narrator); affect match (calm, soft); owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voice; measured sleep-fit 85.0 (waveform, not tags)"
+   },
+   "alternatives": [
+    {
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "name": "Sleepy",
+     "score": 9.1
+    },
+    {
+     "voice_id": "4f1ec94f5b134dca8d863cd7744899b5",
+     "name": "Psychology Channel",
+     "score": 6.7
+    },
+    {
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "name": "old man bible storytelling",
+     "score": 6.6
+    },
+    {
+     "voice_id": "df498963e8be486a9d9f1ebcd6ec4b00",
+     "name": "Deep Voice Storytelling",
+     "score": 6.4
+    }
+   ],
+   "audition": "/audition.html?m=auditions/longhaul-journeys-ground.json (render on request)"
+  }
+ ]
+}

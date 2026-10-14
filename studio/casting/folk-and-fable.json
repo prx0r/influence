@@ -1,0 +1,85 @@
+{
+ "channel": "folk-and-fable",
+ "display_name": "Folk & Fable",
+ "pitch": "Sleep fairytales: S1 Fairy, S2 Folklore, S3 Myth + etch films",
+ "assignments": [
+  {
+   "chair": "minokichi",
+   "status": "recommended",
+   "direction": "young earnest male",
+   "archetype": "hero",
+   "coherence": 0.214,
+   "recommended": {
+    "voice_id": "5084227c7a6f489280cfeeccae809388",
+    "name": "Sleepy",
+    "score": 14.6,
+    "why": "your loved voice (Sleepy); theory fit (hero: clear, young); affect match (calm, soft); tags match vibe: conversational, narration; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, friendly, intimate; 352 prior uses (niche); persona: character voice, not carrier; measure"
+   },
+   "alternatives": [
+    {
+     "voice_id": "ccf9e60669f34043b95c73ad73a775e5",
+     "name": "Corey Riffin",
+     "score": 11.6
+    },
+    {
+     "voice_id": "26ae2223417a49b59644c83d1377cf08",
+     "name": "Warm Storytelling Voice",
+     "score": 11.1
+    },
+    {
+     "voice_id": "44e179e61b9c4b2cbfca693d46a28a3c",
+     "name": "Bright Youthful Voice",
+     "score": 10.7
+    },
+    {
+     "voice_id": "48ba8ee64ea9491d8f9a796fc1633fc8",
+     "name": "storytelling ai ",
+     "score": 10.6
+    }
+   ],
+   "audition": "/audition.html?m=auditions/folk-and-fable-minokichi.json (render on request)"
+  },
+  {
+   "chair": "narrator",
+   "status": "locked",
+   "voice_id": "bf322df2096a46f18c579d0baa36f41d",
+   "label": "Adrian"
+  },
+  {
+   "chair": "yuki",
+   "status": "recommended",
+   "direction": "veiled whisper female",
+   "archetype": "fae",
+   "coherence": 0.512,
+   "recommended": {
+    "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+    "name": "Luna Lovegood",
+    "score": 14.7,
+    "why": "your loved voice (Luna Lovegood); theory fit (fae: female, gentle, soft); affect match (calm); tags match vibe: narration; 3,108 prior uses (niche); persona: character voice, not carrier; measured sleep-fit 100.0 (waveform, not tags); heard: F0 280.7Hz, 2.55/s, fit 7.67/13.0"
+   },
+   "alternatives": [
+    {
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "name": "Sleepy",
+     "score": 12.9
+    },
+    {
+     "voice_id": "1192d7b74dfa415bb27a158c7d84a919",
+     "name": "NSFW Soft Spoken Woman",
+     "score": 12.4
+    },
+    {
+     "voice_id": "10fdb130e2704b48902d6b7c39cc2ec1",
+     "name": "Soft Whisper",
+     "score": 12.3
+    },
+    {
+     "voice_id": "7e168beaa7b04c78a376b833b5956f06",
+     "name": "Soft Spoken Young Woman",
+     "score": 12.1
+    }
+   ],
+   "audition": "/audition.html?m=auditions/folk-and-fable-yuki.json (render on request)"
+  }
+ ]
+}

@@ -58,3 +58,26 @@ character profile: mentions, dialogue count, gender/age/role, voice query,
 actual book sample lines, ensemble brief, pitch band. Narrator-type chairs
 correctly show no profile (roles aren't people). Next: per-pack brief pages
 (`studio/voice-profiles/`) linked from the grid.
+
+## Update — ship mode: audition protocol + engine + assignments (2026-10-14)
+
+Narrator is per-collection (Adrian demoted to candidate). Casting order:
+narrator first (reference voice), characters tune against it (contrast +
+relationships), ranks last. Objective audition protocol
+(`pipeline/audition.py` + `/audition.html`): same passage from the graph's
+own lines, fixed speed from archetype pace target, $0 free-tier takes in
+the bank, take-fit outranks tag-score. Judge takes, not vendor samples.
+
+Character engine (`pipeline/character_engine.py`): graph -> bioacoustic
+band (size->pitch/formants, motivation->texture, arousal->tempo) ->
+search -> listen (`pipeline/voice_listen.py`, numpy/ffmpeg, no librosa)
+-> fit/13 -> render recipe (pace target / measured rate -> prosody.speed
+on s2.1-pro-free) -> learn (ranks -> pairs -> BT, taste sits ON taste
+layer only; theory needs no ballots). Their repo owns delivery truth
+(modulators/MARY/VIBE); we map (`character_to_voice.py`) + cast sleep.
+
+Casting lanes: `studio/voice-thesis/<slug>.json` (predictions+whys),
+`studio/casting/<slug>.json` (per-chair recommendations, never locks),
+`studio/voice-measurements.json` (listen cache), cali page (?character=),
+audition page (?m=manifest). Law unchanged: no lock without human reason,
+0 credits, free tier only.

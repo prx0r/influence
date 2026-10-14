@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Audition — hear every voice on the same lines</title>
+<style>
+:root{--bg:#141114;--bg2:#1e1a1e;--text:#e8e0e8;--dim:#9a8fa0;--gold:#D4A94E;--border:#2e2830}
+body{background:var(--bg);color:var(--text);font:14px system-ui;margin:0;padding:20px;max-width:860px}
+h1{font-size:18px}h2{font-size:15px;margin:22px 0 4px}
+.sub{color:var(--dim);font-size:12px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:10px}
+.role{border-left:3px solid var(--gold)}
+audio{width:100%;height:36px;margin-top:6px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+button{background:var(--bg2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 12px;cursor:pointer}
+button.primary{border-color:var(--gold)}
+input{background:#0f0d0f;color:var(--text);border:1px solid var(--border);border-radius:4px;padding:5px}
+.take{padding:8px 0;border-top:1px solid var(--border)}
+.take:first-child{border-top:none}
+.pill{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:#2a2530;color:var(--dim)}
+</style></head><body>
+<h1>🎙️ Audition <span class="sub" id="sub">loading…</span></h1>
+<div id="ctx" class="card"></div>
+<div id="roles"></div>
+<div class="card"><div class="row"><button class="primary" onclick="submitAll()">submit all rankings → calibrate</button><span id="msg" class="sub"></span></div></div>
+<script>
+const Q=new URLSearchParams(location.search);
+const T=Q.get("token")||"";
+const MANIFEST=Q.get("m")||"auditions/folk-and-fable-kwaidan-part-1.json";
+const api=(m,p,b)=>fetch(p+'?token='+encodeURIComponent(T),{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined}).then(r=>r.json());
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let M=null;
+async function boot(){
+  M=await fetch(MANIFEST+'?token='+encodeURIComponent(T)).then(r=>r.json());
+  document.getElementById('sub').textContent=`${M.channel} · ${M.collection} · ${M.roles.length} roles`;
+  document.getElementById('ctx').innerHTML=`<b>${esc(M.collection)}</b> <span class="pill">${esc(M.tradition||'')}</span><div class="sub">${esc(M.vibe||'')}</div><div class="sub" style="margin-top:4px">${esc(M.story||'')}</div>`;
+  document.getElementById('roles').innerHTML=M.roles.map((r,ri)=>`<div class="card role"><h2>${esc(r.role)}</h2><div class="sub">${esc(r.brief||'')} · passage: “${esc(r.passage||'')}”</div>
+    ${r.takes.map((t,ti)=>`<div class="take"><div class="row" style="justify-content:space-between;margin-top:0"><b>${ti+1}. ${esc(t.voice)}</b><span class="pill">${t.score??''} ${t.note||''}</span></div>
+    <audio controls preload="metadata" src="${esc(t.url)}"></audio>
+    <div class="row">rank <input id="rk-${ri}-${ti}" size="2" placeholder="#"><input id="why-${ri}" size="30" placeholder="why ${esc(r.role)} (saved on lock)"></div></div>`).join('')}
+    <div class="row"><button class="primary" onclick="lock(${ri})">lock ${esc(r.role)}</button><span id="lockmsg-${ri}" class="sub"></span></div></div>`).join('');
+}
+async function lock(ri){
+  const r=M.roles[ri];
+  const order=[];
+  r.takes.forEach((t,ti)=>{const v=parseInt(((document.getElementById(`rk-${ri}-${ti}`)||{}).value||''),10);if(v>0)order.push({v,id:t.voice_id});});
+  if(!order.length){document.getElementById('lockmsg-'+ri).textContent='rank first, then lock';return}
+  order.sort((a,b)=>a.v-b.v);
+  const why=((document.getElementById('why-'+ri)||{}).value||'').trim()||`audition winner for ${r.role}`;
+  const res=await api('POST','/api/studio/onboard/lock',{channel:M.channel,chair:r.chair,voice_id:order[0].id,reason:why});
+  document.getElementById('lockmsg-'+ri).textContent=res.ok?`locked → ${order[0].id.slice(0,8)}`:'ERR '+(res.error||res.reason||'');
+  // losing ranks still train: record full order as pairs
+  await api('POST','/api/studio/onboard/rank',{function:'general',pack:'',ordered_ids:order.map(o=>o.id),cards:r.takes.map(t=>({voice_id:t.voice_id,tags:t.tags||[]}))});
+}
+async function submitAll(){
+  document.getElementById('msg').textContent='use per-role lock buttons — each records winner + full ranking';
+}
+boot();
+</script></body></html>

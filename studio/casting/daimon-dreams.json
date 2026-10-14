@@ -1,0 +1,43 @@
+{
+ "channel": "daimon-dreams",
+ "display_name": "Daimon Dreams",
+ "pitch": "Anything western esoteric lives here. Eastern (tantra/sanskrit/shaivism/taoist/",
+ "assignments": [
+  {
+   "chair": "guide",
+   "status": "recommended",
+   "direction": "[low, steady guide voice, descending, unhurried]",
+   "archetype": "mentor",
+   "coherence": 0.115,
+   "recommended": {
+    "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+    "name": "Calm Sleep Narrator",
+    "score": 15.8,
+    "why": "your loved voice (Calm Sleep Narrator); theory fit (mentor: calm, deep, warm); affect match (gentle, soft); weak tag match (low) — judge the sample; owner taste (Luna Lovegood, Verity): entertainment, storytelling, middle-aged, narration; 1,337 prior uses (niche); carrier: storytelling/narration voi"
+   },
+   "alternatives": [
+    {
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "name": "Sleepy",
+     "score": 12.0
+    },
+    {
+     "voice_id": "a457b63ea0c749b2839d896f02e2457c",
+     "name": "Low story",
+     "score": 10.2
+    },
+    {
+     "voice_id": "c60527f6bc474e3d9a399c832634c6f3",
+     "name": "Strade",
+     "score": 9.9
+    },
+    {
+     "voice_id": "780f45f809cc4cf795bb2373889dd65f",
+     "name": "Storytelling",
+     "score": 9.2
+    }
+   ],
+   "audition": "/audition.html?m=auditions/daimon-dreams-guide.json (render on request)"
+  }
+ ]
+}

@@ -1,0 +1,361 @@
+{
+ "channel": "folk-and-fable",
+ "collection": "kwaidan-part-1",
+ "tradition": "Japanese folklore",
+ "vibe": "scary \u2014 dread in the tale, safety in the teller",
+ "story": "Snow spirits and vengeful dead. Mosaku and Minokichi caught in a snowstorm; Yuki appears. Adults 25-54, bedtime.",
+ "roles": [
+  {
+   "role": "Narrator",
+   "chair": "narrator",
+   "brief": "Winter ghost tale: old, male, slow, low, grave-but-safe. Japanese folklore, scary.",
+   "passage": "In a village of Musashi Province, there lived two woodcutters: Mosaku and Minokichi.",
+   "takes": [
+    {
+     "voice": "Calm Sleep Narrator",
+     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+     "score": 16.0,
+     "tags": [
+      "breathy",
+      "calm",
+      "deep",
+      "entertainment",
+      "gentle",
+      "intimate",
+      "low",
+      "male"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-191936-01.mp3"
+    },
+    {
+     "voice": "Adrian",
+     "voice_id": "bf322df2096a46f18c579d0baa36f41d",
+     "score": 14.1,
+     "tags": [
+      "deep",
+      "dramatic",
+      "male",
+      "measured",
+      "middle-aged",
+      "narration",
+      "serious",
+      "slow"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-191940-02.mp3"
+    },
+    {
+     "voice": "old man bible storytelling",
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "score": 13.4,
+     "tags": [
+      "calm",
+      "deep",
+      "documentary",
+      "educational",
+      "male",
+      "measured",
+      "narration",
+      "old"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-191943-03.mp3"
+    },
+    {
+     "voice": "Sleepy",
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "score": 11.8,
+     "tags": [
+      "calm",
+      "clear",
+      "conversational",
+      "entertainment",
+      "female",
+      "friendly",
+      "gentle",
+      "intimate"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-191947-04.mp3"
+    },
+    {
+     "voice": "Shalini-Slow",
+     "voice_id": "9064cbda60d0461098b5ddc176a424d3",
+     "score": 11.8,
+     "tags": [
+      "British Accent",
+      "calm",
+      "female",
+      "gentle",
+      "middle-aged",
+      "narration",
+      "soft",
+      "storytelling"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-191952-05.mp3"
+    }
+   ]
+  },
+  {
+   "role": "Tomotada",
+   "chair": "Tomotada",
+   "brief": "Young gentleman, 6 lines, flowing speaker.",
+   "passage": "Ah, how pitiful! A young gentleman traveling alone in such weather!",
+   "takes": [
+    {
+     "voice": "Calm Sleep Narrator",
+     "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+     "score": 14.5,
+     "tags": [
+      "breathy",
+      "calm",
+      "deep",
+      "entertainment",
+      "gentle",
+      "intimate",
+      "low",
+      "male"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192003-06.mp3"
+    },
+    {
+     "voice": "old man bible storytelling",
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "score": 13.0,
+     "tags": [
+      "calm",
+      "deep",
+      "documentary",
+      "educational",
+      "male",
+      "measured",
+      "narration",
+      "old"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192006-07.mp3"
+    },
+    {
+     "voice": "Young Narrator",
+     "voice_id": "6683c71baefc49059ab0e672bca8700f",
+     "score": 11.7,
+     "tags": [
+      "calm",
+      "character-voice",
+      "clear",
+      "crisp",
+      "dramatic",
+      "entertainment",
+      "expressive",
+      "male"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192010-08.mp3"
+    },
+    {
+     "voice": "Old",
+     "voice_id": "a13e872561444f73a2e74d6c0ec6af5b",
+     "score": 11.5,
+     "tags": [
+      "calm",
+      "clear",
+      "educational",
+      "male",
+      "narration",
+      "old",
+      "professional",
+      "smooth"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192013-09.mp3"
+    },
+    {
+     "voice": "Sage",
+     "voice_id": "05ebc5721353471f900561a781c96cd9",
+     "score": 11.4,
+     "tags": [
+      "Soothing",
+      "calm",
+      "empathetic",
+      "female",
+      "gentle",
+      "narration",
+      "smooth",
+      "storytelling"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192017-10.mp3"
+    }
+   ]
+  },
+  {
+   "role": "Minokichi",
+   "chair": "Minokichi",
+   "brief": "18-year-old apprentice, 10 lines across 2 books, carries dialogue.",
+   "passage": "I intended to treat you like the other man. But I cannot help feeling some pity for you, because you are so young.",
+   "takes": [
+    {
+     "voice": "Sleepy",
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "score": 14.6,
+     "tags": [
+      "calm",
+      "clear",
+      "conversational",
+      "entertainment",
+      "female",
+      "friendly",
+      "gentle",
+      "intimate"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192027-11.mp3"
+    },
+    {
+     "voice": "Old",
+     "voice_id": "a13e872561444f73a2e74d6c0ec6af5b",
+     "score": 14.1,
+     "tags": [
+      "calm",
+      "clear",
+      "educational",
+      "male",
+      "narration",
+      "old",
+      "professional",
+      "smooth"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192031-12.mp3"
+    },
+    {
+     "voice": "Corey Riffin",
+     "voice_id": "ccf9e60669f34043b95c73ad73a775e5",
+     "score": 11.6,
+     "tags": [
+      "Skater",
+      "conversational",
+      "energetic",
+      "entertainment",
+      "enthusiastic",
+      "friendly",
+      "male",
+      "raspy"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192035-13.mp3"
+    },
+    {
+     "voice": "old man bible storytelling",
+     "voice_id": "7d805071401d4b738334f332a8c320c2",
+     "score": 11.5,
+     "tags": [
+      "calm",
+      "deep",
+      "documentary",
+      "educational",
+      "male",
+      "measured",
+      "narration",
+      "old"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192040-14.mp3"
+    },
+    {
+     "voice": "Deep Voice Storytelling",
+     "voice_id": "df498963e8be486a9d9f1ebcd6ec4b00",
+     "score": 11.3,
+     "tags": [
+      "authoritative",
+      "cinematic",
+      "deep",
+      "dramatic",
+      "entertainment",
+      "low",
+      "male",
+      "narration"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192044-15.mp3"
+    }
+   ]
+  },
+  {
+   "role": "Yuki",
+   "chair": "Yuki",
+   "brief": "Snow spirit, 2 lines, terse and veiled.",
+   "passage": "Tell me about her... Where did you see her?",
+   "takes": [
+    {
+     "voice": "Sage",
+     "voice_id": "05ebc5721353471f900561a781c96cd9",
+     "score": 15.3,
+     "tags": [
+      "Soothing",
+      "calm",
+      "empathetic",
+      "female",
+      "gentle",
+      "narration",
+      "smooth",
+      "storytelling"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192054-16.mp3"
+    },
+    {
+     "voice": "Luna Lovegood",
+     "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+     "score": 14.7,
+     "tags": [
+      "British Accent",
+      "breathy",
+      "calm",
+      "character-voice",
+      "female",
+      "gentle",
+      "middle-aged",
+      "narration"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192056-17.mp3"
+    },
+    {
+     "voice": "Sleepy",
+     "voice_id": "5084227c7a6f489280cfeeccae809388",
+     "score": 13.6,
+     "tags": [
+      "calm",
+      "clear",
+      "conversational",
+      "entertainment",
+      "female",
+      "friendly",
+      "gentle",
+      "intimate"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192058-18.mp3"
+    },
+    {
+     "voice": "Young Calm Narrator",
+     "voice_id": "cdf755d95f3b42509c4e458a3d420b23",
+     "score": 12.0,
+     "tags": [
+      "calm",
+      "cheerful",
+      "clear",
+      "educational",
+      "entertainment",
+      "expressive",
+      "friendly",
+      "gentle"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192100-19.mp3"
+    },
+    {
+     "voice": "Sea Fairy Cookie",
+     "voice_id": "53e75ad664874f4d8494a38d05d1b136",
+     "score": 11.8,
+     "tags": [
+      "Ethereal",
+      "breathy",
+      "calm",
+      "character-voice",
+      "cinematic",
+      "dramatic",
+      "female",
+      "friendly"
+     ],
+     "url": "/api/studio/file?kind=voice&file=free-192103-20.mp3"
+    }
+   ]
+  }
+ ]
+}
