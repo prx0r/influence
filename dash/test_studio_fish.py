@@ -204,6 +204,7 @@ def test_r2_presign_offline():
 
 
 def test_ship_dryrun_offline():
+    pytest.importorskip("boto3")
     import os as _o
     _o.environ["R2_ENDPOINT"] = "https://x.r2.cloudflarestorage.com"
     _o.environ["R2_ACCESS_KEY"] = "testkey"

@@ -24,9 +24,11 @@ a{color:var(--chan)}
 #rail .ch.on{border-color:var(--c,var(--acc));background:var(--bg4)}
 #rail .ch .dot{position:absolute;right:-2px;bottom:-2px;width:9px;height:9px;border-radius:50%;background:var(--ok);border:2px solid var(--bg2)}
 #rail .sep{width:28px;border-top:1px solid var(--line);margin:4px 0}
-#rail .tip{position:fixed;left:62px;background:#000;color:#fff;padding:4px 8px;border-radius:5px;font-size:12px;pointer-events:none;white-space:nowrap;z-index:50;display:none}
+#rail .tip{position:fixed;left:62px;background:#000;color:#fff;padding:4px 8px;border-radius:5px;font-size:12px;pointer-events:none;white-space:nowrap;z-index:200;display:none;box-shadow:0 2px 8px #0008}
 #rail .foot{margin-top:auto;font-size:10px;color:var(--dim);text-align:center}
-#rail .foot a{color:var(--dim);text-decoration:none;display:block;padding:4px}
+#rail .foot{border-top:1px solid var(--line);padding-top:6px;width:40px}
+#rail .foot a{color:var(--dim);text-decoration:none;display:block;padding:4px;font-size:16px}
+#rail .foot a:hover{color:var(--text)}
 
 /* main */
 #main{display:flex;flex-direction:column;min-width:0;min-height:0}
@@ -51,7 +53,7 @@ a{color:var(--chan)}
 .pi.on{background:var(--bg4)}
 .pi .r{width:8px;height:8px;border-radius:50%;flex:0 0 8px;background:var(--bad)}
 .pi .r.y{background:var(--ok)}
-.pi .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pi .t{flex:1;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-word;line-height:1.25}
 .pi .s{font-size:11px;color:var(--dim)}
 #stage{overflow:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
 .card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px}
@@ -79,7 +81,8 @@ details summary{cursor:pointer;color:var(--dim);font-size:12px}
 .empty{color:var(--dim);padding:30px;text-align:center}
 
 /* config tabs */
-.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:16px 20px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;padding:16px 20px;align-content:start}
+#tab-thumb textarea,#tab-titles textarea{min-height:220px}
 .kv{display:grid;grid-template-columns:110px 1fr;gap:6px 10px;margin-top:10px;font-size:12px}
 .kv div:nth-child(odd){color:var(--dim)}
 textarea{width:100%;min-height:90px;resize:vertical}
@@ -174,7 +177,7 @@ function renderRail(){
     rail.appendChild(d);
   }
   const f = document.createElement('div'); f.className = 'foot';
-  f.innerHTML = '<a href="/classic" title="Full console">console</a>';
+  f.innerHTML = '<a href="/classic" title="Old full console (/classic)">⌂</a>';
   rail.appendChild(f);
 }
 
@@ -209,7 +212,7 @@ async function selectChannel(slug){
 
 /* ---------- pilots ---------- */
 function pilotItem(p){
-  const name = p.file.replace(/\.drama\.txt$/,'');
+  const name = p.file.replace(/\.(drama|read)\.txt$/,'').replace(/-/g,' ');
   return `<div class="pi ${S.pilot && S.pilot.path===p.path?'on':''}" data-p="${esc(p.path)}" title="${esc(p.file)}">
     <span class="r ${p.ready?'y':''}" title="${p.ready?'ready':'not ready (score/gate)'}"></span>
     <span class="t">${esc(name)}</span><span class="s">${p.score ?? ''}</span></div>`;
@@ -293,7 +296,7 @@ function takeHtml(t, big){
   const meta = [k.speed!=null?`pace ${(+k.speed).toFixed(2)}`:'', k.temperature!=null?`expr ${(+k.temperature).toFixed(2)}`:'', Object.keys(k.voices||{}).length?`${Object.keys(k.voices).length} voice swap`:''].filter(Boolean).join(' · ');
   return `<div class="take ${isFull?'full':''}" style="${big?'grid-template-columns:auto 1fr auto;padding:12px':''}">
     <span class="badge ${isFull?'full':''}">${isFull?'full':'take'}</span>
-    <div><audio controls preload="none" src="${esc(t.url)}"></audio>
+    <div><audio controls preload="metadata" src="${esc(t.url)}"></audio>
       <div class="k">${esc(meta || t.voice || '')}${t.note?` · “${esc(t.note)}”`:''}</div></div>
     ${k.speed!=null ? `<button class="ghost" data-reuse="${esc(t.name)}" title="Load these knobs">reuse</button>` : '<span></span>'}
   </div>`;
@@ -357,7 +360,7 @@ function renderConfigTabs(){
     <div class="card"><h2>Style</h2><div class="kv">${Object.entries(v.style||{}).map(([k,x])=>`<div>${esc(k)}</div><div>${esc(x)}</div>`).join('')}</div></div></div>`;
   const f = v.formula || {};
   $('#tab-titles').innerHTML = `<div class="grid2"><div class="card"><h2>Title formulas</h2><div class="sub">Patterns Pi reuses for new videos. One per line, e.g. “The {Creature} Who {Verb}s | Sleep Story”.</div>
-    <div class="knob" style="margin-top:10px"><textarea id="ti-list" style="min-height:160px">${esc((f.titles||[]).join('\n'))}</textarea></div>
+    <div class="knob" style="margin-top:10px"><textarea id="ti-list" style="min-height:220px" placeholder="The {Creature} Who {Verb}s | Sleep Story\n{Tale} — Told Slowly for Sleep\nThe Quiet Legend of {Place} | {Length} Bedtime Tale">${esc((f.titles||[]).join('\n'))}</textarea></div>
     <div class="row" style="margin-top:10px"><button class="primary" id="ti-save">Save titles</button><button class="ghost" data-ask="Write 5 title formulas for ${esc(v.name)} that match the thumbnail template">Ask Pi for 5</button><span class="status" id="ti-st"></span></div></div></div>`;
   $('#tab-formats').innerHTML = `<div class="grid2">${(v.formats||[]).map(x=>`<div class="card"><div class="row" style="justify-content:space-between"><h2>${esc(x.name)}</h2><span class="chip">${esc(x.length||'')}</span></div><div class="sub" style="margin-top:6px">${esc(x.reasoning||'')}</div></div>`).join('') || '<div class="empty">No formats yet.</div>'}
     <div class="card"><h2>Cadence</h2><div class="sub">${esc(v.cadence||'not set')}</div><div class="row" style="margin-top:10px"><button data-ask="Propose 3 new formats for ${esc(v.name)} with length and why">Ask Pi for formats</button></div></div></div>`;
