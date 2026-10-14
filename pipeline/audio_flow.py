@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 
 # 1 package credit per UTF-8 byte of spoken text (2x for another team's pro clone).
 CREDITS_PER_BYTE = 1
@@ -129,20 +130,9 @@ def generate_media(kind: str, workspace_id: str, model_id: str, prompt: str,
                    ctx: dict | None = None, brand: str = "oddhobb",
                    operation: str = "t2v",
                    campaign: str | None = None) -> dict:
-    """Media generation with grant gate. dry_run returns the free estimate;
-    live requires ctx grant AND the human-confirmed expected_credits."""
-    est = estimate_media(kind, workspace_id, model_id, prompt, operation)
-    if dry_run:
-        return {"ok": True, "dry_run": True, "estimate": est,
-                "next": "human approves estimate → live call with grant + "
-                        "expected_credits"}
-    if not ctx or not ctx.get("grant"):
-        return {"ok": False,
-                "reason": "no execution context with verified grant: FAIL CLOSED."}
-    try:
-        from runtime import make_spec, execute
-    except ImportError:
-        from pipeline.runtime import make_spec, execute
+    """Media generation with grant gate. dry_run returns the free estimate
+    + the exact live payload hash (one construction — dry and live can
+    never drift); live requires ctx grant AND human-confirmed credits."""
     tool = "generate_image" if kind == "image" else "generate_video"
     args: dict = {"workspace_id": workspace_id, "model_id": model_id,
                   "prompt": prompt, "expected_credits": expected_credits}
@@ -153,6 +143,21 @@ def generate_media(kind: str, workspace_id: str, model_id: str, prompt: str,
     if kind == "video":
         args["operation"] = operation
     payload = {"tool": tool, **args}
+    if dry_run:
+        return {"ok": True, "dry_run": True,
+                "estimate": estimate_media(kind, workspace_id, model_id,
+                                           prompt, operation),
+                "payload": payload,
+                "payload_hash": _payload_hash(payload),
+                "next": "human approves estimate → live call with grant + "
+                        "expected_credits"}
+    if not ctx or not ctx.get("grant"):
+        return {"ok": False,
+                "reason": "no execution context with verified grant: FAIL CLOSED."}
+    try:
+        from runtime import make_spec, execute
+    except ImportError:
+        from pipeline.runtime import make_spec, execute
     spec = make_spec(brand, f"audio.{tool}", "generate_paid",
                      "pipeline.providers.fish_mcp:call_tool",
                      f"{kind}:{model_id}:{_payload_hash(payload)[:12]}", payload,
@@ -399,3 +404,55 @@ def speak_free(text: str, voice_id: str, out_path: str = "") -> dict:
     except ImportError:
         from pipeline.providers import fish_rest
     return fish_rest.tts(text, voice_id, out_path=out_path)
+
+
+# ---- request: pi/human asks to spend → human task queue (no direct spend)
+
+def audio_request(kind: str, params: dict, brand: str = "sleepdraw",
+                  db_path: str | None = None) -> dict:
+    """Quote + freeze + queue. kind=speak|generate. Dry-runs server-side,
+    stores the EXACT live payload in a review bundle, proposes an effect
+    task (PROPOSED → REVIEW_READY). Human approves in dash queue; fulfill
+    executes with a payload-bound grant. Never spends here."""
+    try:
+        from runtime import make_spec  # noqa: F401 (validates consequence)
+    except ImportError:
+        from pipeline.runtime import make_spec  # noqa: F401
+    try:
+        from effects import create_bundle, propose, transition
+    except ImportError:
+        from pipeline.effects import create_bundle, propose, transition
+    import os as _os
+    _db = db_path or _os.environ.get(
+        "DASH_DB", _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
+                                 "..", "dash", "influence.db"))
+    if kind == "speak":
+        dry = speak(str(params.get("text", "") or ""),
+                    str(params.get("voice_id", "") or ""), dry_run=True)
+        if not dry.get("ok"):
+            return dry
+        payload, quote = dry["payload"], dry["quote"]
+        cost_note = {"credits": quote["credits"]}
+    elif kind == "generate":
+        dry = generate_media(str(params.get("kind", "image") or "image"),
+                             str(params.get("workspace_id", "") or ""),
+                             str(params.get("model_id", "") or ""),
+                             str(params.get("prompt", "") or ""),
+                             int(params.get("expected_credits", 0) or 0),
+                             dry_run=True)
+        if not dry.get("ok"):
+            return dry
+        payload = dry["payload"]
+        cost_note = {"estimate": dry.get("estimate")}
+    else:
+        return {"ok": False, "reason": f"kind={kind}: use speak|generate "
+                "(studio kinds go through the studio UI approve flow)"}
+    b = create_bundle(f"audio.{kind}", brand, payload,
+                      cost_estimate_usd=0.0,
+                      consequence=cost_note, db_path=_db)
+    t = propose(brand, f"audio.{kind}", b["id"], risk_class="low",
+                cost_cap_usd=0.0, consequence=f"audio.{kind}", db_path=_db)
+    transition(t["task_id"], "REVIEW_READY", by="audio.request", db_path=_db)
+    return {"ok": True, "task_id": t["task_id"], "state": "REVIEW_READY",
+            "payload_hash": b["payload_hash"], "quote": cost_note,
+            "next": "human approves in dash queue → fulfill executes"}

@@ -57,6 +57,74 @@ def _store_lock():
     return _STORE_LOCK
 
 
+def _fulfill_audio_task(task_id) -> dict:
+    """Human fulfill on an APPROVED audio.* task. Mints a single-use
+    payload-bound grant for the frozen bundle payload, walks the state
+    machine, executes, attaches receipt. Fails closed everywhere."""
+    sys.path.insert(0, os.path.dirname(ROOT))
+    sys.path.insert(0, ROOT)
+    try:
+        from pipeline.effects import get_task, get_bundle, transition
+        import studio_grants as _sg
+        from pipeline import audio_flow as _af
+    except ImportError as e:
+        return {"ok": False, "reason": f"import: {e}"}
+    try:
+        tid = int(task_id or 0)
+    except (TypeError, ValueError):
+        return {"ok": False, "reason": "task_id required"}
+    t = get_task(tid)
+    if not t:
+        return {"ok": False, "reason": "unknown task"}
+    if not str(t.get("kind", "")).startswith("audio."):
+        return {"ok": False, "reason": "fulfill handles audio.* tasks only"}
+    if t.get("state") != "APPROVED":
+        return {"ok": False,
+                "reason": f"task is {t.get('state')}: approve it in the queue first"}
+    b = get_bundle(t.get("review_bundle_id"))
+    if not b:
+        return {"ok": False, "reason": "bundle missing"}
+    payload = json.loads(b.get("payload_json") or "{}")
+    kind = str(t.get("kind", ""))
+    try:
+        g = _sg.issue(kind, payload)
+        grant = {"action": kind, "payload_hash": g["payload_hash"],
+                 "expires_at": g["expires_at"]}
+        transition(tid, "GRANTED", by="dash-human", grant_id=g["grant_id"])
+        transition(tid, "EXECUTING", by="dash-human")
+        if kind == "audio.speak":
+            res = _af.speak(str(payload.get("text", "")),
+                            str(payload.get("voice_id", "")), dry_run=False,
+                            ctx={"grant": grant})
+        elif kind == "audio.generate":
+            p = dict(payload)
+            res = _af.generate_media(
+                "image" if p.get("tool") == "generate_image" else "video",
+                str(p.get("workspace_id", "")), str(p.get("model_id", "")),
+                str(p.get("prompt", "")),
+                int(p.get("expected_credits", 0) or 0),
+                pricing_version=str(p.get("pricing_version", "") or ""),
+                idempotency_key=str(p.get("idempotency_key", "") or ""),
+                operation=str(p.get("operation", "t2v") or "t2v"),
+                dry_run=False, ctx={"grant": grant})
+        else:
+            return {"ok": False, "reason": f"kind {kind}: fulfill via studio UI"}
+        transition(tid, "VERIFYING", by="dash-human")
+        receipt = str((res.get("response") or {}).get("external_id", "")
+                      or res.get("external_id", "") or tid)
+        transition(tid, "PROVEN_TRUE" if res.get("ok") else "PROVEN_FALSE",
+                   by="dash-human", receipt_id=receipt)
+        return {"ok": res.get("ok", False), "task_id": tid,
+                "state": "PROVEN_TRUE" if res.get("ok") else "PROVEN_FALSE",
+                "receipt": receipt, "result": res.get("response")}
+    except Exception as e:  # noqa: BLE001 — fail closed, task stays inspectable
+        try:
+            transition(tid, "UNKNOWN_RECONCILE", by="dash-human")
+        except Exception:
+            pass
+        return {"ok": False, "reason": str(e)[:200]}
+
+
 def _yt_entities() -> list:
     """Channels shaped as influencer entities (YT dash entity swap)."""
     sys.path.insert(0, ROOT)
@@ -806,6 +874,12 @@ class Handler(SimpleHTTPRequestHandler):
                     return self._json(_st.free_narrate(
                         str(body.get("text", "") or ""),
                         str(body.get("voice_id", "") or "")))
+                if self._route() == "/api/studio/fulfill":
+                    # Human pressed fulfill on an APPROVED audio task:
+                    # mint single-use payload-bound grant → run the state
+                    # machine GRANTED → EXECUTING → VERIFY → PROVEN + receipt.
+                    return self._json(_fulfill_audio_task(
+                        body.get("task_id")))
             except Exception as e:
                 return self._json({"error": str(e)[:300]}, 500)
             return self._json({"error": "not found"}, 404)

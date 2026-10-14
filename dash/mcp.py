@@ -119,6 +119,12 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"project_id": {"type": "string"}, "chapter": {"type": "string"}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["project_id"]}},
     {"name": "audio.studio.export", "description": "Export Studio master: free quote without confirmed_credits; live needs approved grant + confirmed number",
      "inputSchema": {"type": "object", "properties": {"project_id": {"type": "string"}, "confirmed_credits": {"type": "integer"}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["project_id"]}},
+    {"name": "channel.status", "description": "Per-entity channel read: thesis, chairs locked/open, brief, bank, formats, YT state (free read — ask me this per channel)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "audio.speak_free", "description": "Render TTS on the $0 free tier (pro quality, no credits, no grant) straight into the voice bank. ≤1500 chars. Logged, never billed.",
+     "inputSchema": {"type": "object", "properties": {"text": {"type": "string"}, "voice_id": {"type": "string"}}, "required": ["text", "voice_id"]}},
+    {"name": "audio.request", "description": "Ask to spend: quotes + freezes payload + files a human approval task (never spends). Human approves in dash queue, fulfill executes.",
+     "inputSchema": {"type": "object", "properties": {"kind": {"type": "string"}, "text": {"type": "string"}, "voice_id": {"type": "string"}, "media_kind": {"type": "string"}, "workspace_id": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}, "expected_credits": {"type": "integer"}}, "required": ["kind"]}},
 ]
 
 GRAPH = [
@@ -693,7 +699,8 @@ def handle(state: dict, method: str, params: dict) -> dict:
                  "audio.voices", "audio.balance", "audio.speak",
                  "audio.estimate", "audio.generate",
                  "audio.studio.import", "audio.studio.status",
-                 "audio.studio.generate", "audio.studio.export"):
+                 "audio.studio.generate", "audio.studio.export",
+                 "channel.status", "audio.speak_free", "audio.request"):
         try:
             import sys as _sys2
             _sys2.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -818,6 +825,42 @@ def handle(state: dict, method: str, params: dict) -> dict:
                     pid,
                     confirmed_credits=int(cc) if cc is not None else None,
                     ctx=ctx, campaign=args.get("campaign"))}
+            if name == "channel.status":
+                import channel_onboard as _ob2
+                return {"result": _ob2.channel_status(
+                    str(args.get("slug") or ""))}
+            if name == "audio.speak_free":
+                import time as _t3
+                sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+                from pipeline.audio_flow import speak_free as _sf
+                text, vid = (str(args.get("text") or ""),
+                             str(args.get("voice_id") or ""))
+                if not text or len(text) > 1500:
+                    return {"error": "text 1..1500 chars"}
+                import sleep_studio as _st2
+                nm = (f"pi-{_t3.strftime('%H%M%S')}.mp3")
+                out = os.path.join(_st2.VOICE, nm)
+                r = _sf(text, vid, out_path=out)
+                if not r.get("ok"):
+                    return {"result": r}
+                meta = {"name": nm, "voice": f"pi:{vid}",
+                        "backend": "free", "chars": len(text),
+                        "credits_quoted": 0,
+                        "url": f"/api/studio/file?kind=voice&file={nm}"}
+                json.dump(meta, open(out + ".json", "w"), indent=1)
+                return {"result": {"ok": True, **meta}}
+            if name == "audio.request":
+                from pipeline.audio_flow import audio_request as _ar
+                kind = str(args.get("kind") or "")
+                params = {"text": str(args.get("text") or ""),
+                          "voice_id": str(args.get("voice_id") or ""),
+                          "kind": str(args.get("media_kind") or "image"),
+                          "workspace_id": str(args.get("workspace_id") or ""),
+                          "model_id": str(args.get("model_id") or ""),
+                          "prompt": str(args.get("prompt") or ""),
+                          "expected_credits": int(
+                              args.get("expected_credits") or 0)}
+                return {"result": _ar(kind, params)}
         except Exception as e:
             return {"error": str(e)[:250]}
     return {"error": f"unknown tool {name}"}

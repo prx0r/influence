@@ -104,3 +104,19 @@ def test_channel_character_binding():
     s = cc.to_seed(ch)
     assert s['character_id'] == 'channel-folk-and-fable'
     assert s['seed']['modulator_range'] and s['instances'] == []
+
+
+def test_audio_request_queues_without_spending(tmp_path):
+    from audio_flow import audio_request
+    db = str(tmp_path / "t.db")
+    assert audio_request("nope", {}, db_path=db)["ok"] is False
+    assert audio_request("speak", {"text": "", "voice_id": "v"},
+                         db_path=db)["ok"] is False
+    r = audio_request("speak", {"text": "Settle in.", "voice_id": "v-test"},
+                      brand="sleepdraw", db_path=db)
+    assert r["ok"] is True and r["state"] == "REVIEW_READY"
+    assert r["payload_hash"].startswith("sha256:")
+    assert r["quote"]["credits"] == 10
+    from effects import get_task
+    t = get_task(r["task_id"], db_path=db)
+    assert t["state"] == "REVIEW_READY" and t["kind"] == "audio.speak"

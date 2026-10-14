@@ -51,6 +51,9 @@ READONLY_TOOLS = [
     "audio.balance",
     "audio.estimate",
     "audio.studio.status",
+    "channel.status",
+    "audio.speak_free",
+    "audio.request",
 ]
 
 TOOL_SCHEMAS = [
@@ -122,12 +125,22 @@ TOOL_SCHEMAS = [
         "parameters": {"type": "object", "properties": {}}}},
     {"type": "function", "function": {
         "name": "audio.estimate", "description": "Free media quote: image/video cost + validation (read-only, never generates)",
-        "parameters": {"type": "object", "properties": {
-            "kind": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}}, "required": ["kind", "model_id", "prompt"]}}},
+        "parameters": {"type": "object", "properties": {"kind": {"type": "string"}, "model_id": {"type": "string"}, "prompt": {"type": "string"}}, "required": ["kind", "model_id", "prompt"]}}},
     {"type": "function", "function": {
         "name": "audio.studio.status", "description": "Story Studio project status: chapters, dirty counts, roster (free read)",
+        "parameters": {"type": "object", "properties": {"project_id": {"type": "string"}}, "required": ["project_id"]}}},
+    {"type": "function", "function": {
+        "name": "channel.status", "description": "Per-entity channel read: thesis, chairs locked/open, brief, bank, formats (free read)",
         "parameters": {"type": "object", "properties": {
-            "project_id": {"type": "string"}}, "required": ["project_id"]}}},
+            "slug": {"type": "string"}}, "required": ["slug"]}}},
+    {"type": "function", "function": {
+        "name": "audio.speak_free", "description": "Render TTS free ($0, no credits): text + locked voice_id → voice bank clip (≤1500 chars)",
+        "parameters": {"type": "object", "properties": {
+            "text": {"type": "string"}, "voice_id": {"type": "string"}}, "required": ["text", "voice_id"]}}},
+    {"type": "function", "function": {
+        "name": "audio.request", "description": "Ask to spend credits: quotes + files a human approval task with payload hash (never spends; human approves, fulfill executes)",
+        "parameters": {"type": "object", "properties": {
+            "kind": {"type": "string"}, "text": {"type": "string"}, "voice_id": {"type": "string"}}, "required": ["kind"]}}},
 ]
 
 DELEGATE_SCHEMA = {"type": "function", "function": {
@@ -193,6 +206,11 @@ Audio studio (Fish Audio, free reads + grant-gated spend):
   via the dash decide gate (human mints the grant, receipt always).
 - Voice casting: offer 3-5 candidates with samples, let the human pick unless
   told to choose. Same voice_id for every part of one piece.
+- You CAN render audio yourself, but ONLY via audio.speak_free ($0 free tier,
+  ≤1500 chars, locked voices only) — it lands in the voice bank. Never touch
+  credit paths yourself: for anything billed, call audio.request (quotes +
+  files a human approval task with the payload hash) and tell the human to
+  approve it in the dash queue — fulfill executes, receipt attached.
 - Keep each TTS render under ~2000 chars (split at sentence boundaries).
   CJK text costs ~3x per character. A failed render gets ONE identical free
   retry within 5 minutes. Multi-speaker scripts belong in Story Studio.
