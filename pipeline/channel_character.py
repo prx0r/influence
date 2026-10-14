@@ -58,16 +58,41 @@ def roster_for_duel(channel: dict, scene_chairs: list[str]) -> dict:
     return roster
 
 
+_HOST_CUES = ("host", "present", "anchor", "original", "show",
+              "mommy", "news")
+
+
+def chair_category(name: str, chair: dict) -> str:
+    """narrator (reads others' words) vs host (presents as self)."""
+    s = f"{name} {(chair.get('label') or '')} {(chair.get('direction') or '')}".lower()
+    if any(k in s for k in _HOST_CUES):
+        return "host"
+    return "narrator"
+
+
 def to_seed(channel: dict) -> dict:
     """SDK-compatible character seed for a channel. bgraph2/characters can
     adopt verbatim: seed stays versioned, instances/edges append later."""
     slug = channel.get("channel", "unknown")
     chairs = (channel.get("voice") or {}).get("chairs", {})
+    who = {}
+    for name, c in chairs.items():
+        c = c if isinstance(c, dict) else {}
+        who[name] = {"label": c.get("label", ""),
+                     "category": chair_category(name, c),
+                     "direction": compile_direction(c, channel),
+                     "voice_id": c.get("fish_id") or ""}
+    hosts = [{"channel_id": slug,
+              "content_type": (channel.get("engine") or {}).get("primary", "")
+              if isinstance(channel.get("engine"), dict)
+              else str(channel.get("engine", "")),
+              "vibe": channel.get("pitch", "")}]
     return {
         "schema_version": "character-graph.v1",
         "character_id": f"channel-{slug}",
         "name": channel.get("display_name", slug),
         "kind": "channel",
+        "category": "host",
         "status": channel.get("status", "pilot"),
         "seed": {
             "philosophy": {
@@ -78,11 +103,8 @@ def to_seed(channel: dict) -> dict:
             "canon": f"studio/channels/{slug}.json",
             "seed_version": 1,
         },
-        "who": {"chairs": {
-            name: {"label": (c.get("label") or ""),
-                   "direction": compile_direction(c, channel),
-                   "voice_id": (c.get("fish_id") or "")}
-            for name, c in chairs.items()}},
+        "who": {"chairs": who},
+        "hosts": hosts,
         "profile": {
             "voice": f"roster of {len(chairs)} locked chairs",
             "branches": [{"branch_id": "youtube", "platform": "youtube",
