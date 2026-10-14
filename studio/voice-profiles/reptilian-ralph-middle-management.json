@@ -1,0 +1,74 @@
+{
+ "pack": "reptilian-ralph-middle-management",
+ "profile": {
+  "name": "Reptilian Ralph, Middle Management",
+  "persona": "{'deal': 'Seven-foot shape-shifting reptilian stuck in middle management of the global takeover. Runs bloodline meetings, hates his human suit, misses the warm underground base.', 'facts': ['eyes slit vertically on camera whenever he gets excited or lies about quarterly earnings', 'human suit itches terribly and slips at the eyelids and elbows', 'comes from an old bloodline that takes power very s",
+  "motivations": {
+   "seeks": [
+    "approval",
+    "control",
+    "prestige"
+   ],
+   "avoids": [
+    "humiliation",
+    "disorder",
+    "exposure"
+   ]
+  },
+  "misinterpretation_rule": "Treats moral criticism as a workflow improvement request",
+  "vibe": "deadpan",
+  "archetype": "identity_contradiction",
+  "modulators": [
+   "angry",
+   "relaxed",
+   "condescending",
+   "exhausted",
+   "smug",
+   "paranoid",
+   "drunk_on_power"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-ChristopherNeural"
+  }
+ },
+ "archetype": {
+  "name": "beast",
+  "confidence": 0.95,
+  "delivery": "massive and simple, pauses like weather"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "0b74ead073f2474a904f69033535b98e",
+   "name": "CALM- NORMAL",
+   "score": 15.2,
+   "sample": "https://platform.r2.fish.audio/task/5e8fe361feed434284055c13782512fa.mp3",
+   "reason": "affect match (calm); tags match vibe: middle-aged, warm; owner taste (Calm Sleep Narrator, Luna Lovegood): conversational, middle-aged, gentle, smooth; 59,631 prior uses (proven)"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: middle-aged; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 p"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: middle-aged, warm; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, mi"
+  }
+ ],
+ "propose_error": null
+}

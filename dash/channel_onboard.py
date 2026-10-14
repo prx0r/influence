@@ -122,7 +122,15 @@ def propose(channel_slug: str, chair: str = "narrator",
     try:
         channel = load_channel(channel_slug)
     except OSError:
-        return {"ok": False, "reason": f"unknown channel {channel_slug}"}
+        if not direction:
+            return {"ok": False, "reason": f"unknown channel {channel_slug}"}
+        # generic room: any character profile can be cast without a channel
+        # (packs, one-offs, cross-lane work). No pitch, no siblings.
+        channel = {"channel": channel_slug, "display_name": channel_slug,
+                   "pitch": "", "voice": {"chairs": {}}}
+        _generic = True
+    else:
+        _generic = False
     chairs = (channel.get("voice") or {}).get("chairs", {})
     if chair not in chairs:
         if not direction:
@@ -253,12 +261,26 @@ def propose(channel_slug: str, chair: str = "narrator",
         vid = v.get("id") or v.get("voice_id") or ""
         if not vid or vid in seen_ids:
             continue
+        # quality floor: junk auto-uploads (ALL-CAPS names, stutter-names
+        # like "calm calm", <200 uses with no owner backing) never reach a
+        # slate. Anchors + incumbent bypass (owner vouched).
+        _nm = str(v.get("title") or v.get("name") or "")
+        _uses = int(v.get("task_count") or 0)
+        _anchored = any(str(_a.get("voice_id")) == vid for _a in anchors)
+        _words = _nm.split()
+        _junk = ((len(_nm) > 4 and _nm.upper() == _nm) or
+                 (len(_words) > 1 and len({w.lower() for w in _words}) < len(_words)))
+        if (_junk or _uses < 200) and vid != incumbent and not _anchored:
+            continue
         tags = set((v.get("tags") or []))
         overlap = sorted({t for t in tags
                           if any(k in t for k in chair_kw)},
                          key=lambda t: (-len(t), t))
         uses = int(v.get("task_count") or 0)
-        pop = min(10.0, math.log10(max(10, uses)))
+        # popularity capped low: proof of life, not the decision. Taste
+        # (overlap + anchors + fitted weights) must be able to outvote fame —
+        # otherwise one mega-voice tops every slate (observed 2026-10-14).
+        pop = min(4.0, math.log10(max(10, uses)))
         langs = v.get("languages") or v.get("language") or []
         if isinstance(langs, str):
             langs = [langs]
@@ -266,7 +288,11 @@ def propose(channel_slug: str, chair: str = "narrator",
         shared = vid in siblings
         # calibrated overlap: learned weight per tag, modulated around the
         # old +3 default (w=1 → 3.0, w=-1 → 0). Unknown tags → neutral.
-        overlap_score = round(sum(1.5 + 1.5 * _taste_w(t, 0.5)
+        # Tag-stuffing guard: voices carrying 20+ tags would otherwise match
+        # every query (observed: one voice topping all 21 packs). Overlap is
+        # discounted by tag count — precision beats coverage.
+        _tag_n = max(8, len(tags))
+        overlap_score = round(sum((1.5 + 1.5 * _taste_w(t, 0.5)) * 8.0 / _tag_n
                                   for t in overlap)
                               + sum(_fww.get(t.lower(), 0.0) * 2.0
                                     for t in tags), 1)

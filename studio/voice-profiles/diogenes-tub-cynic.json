@@ -1,0 +1,71 @@
+{
+ "pack": "diogenes-tub-cynic",
+ "profile": {
+  "name": "Diogenes, Tub Cynic",
+  "persona": "{'deal': \"Cynic philosopher doing shameless observational street comedy from a jar, with act-outs. Holds a lantern to the audience's excuses.\", 'facts': ['lives in a storage jar; rent-free since forever', 'told Alexander to move out of his sunlight', 'does ten minutes on Athenian homeowners', 'auditions the audience for honesty nightly'], 'interview_style': 'heckle-warm, lantern-swinging, escalate",
+  "motivations": {
+   "avoids": [
+    "rent",
+    "flattery",
+    "indoor plumbing"
+   ],
+   "seeks": [
+    "sunlight",
+    "heckles",
+    "honest men"
+   ]
+  },
+  "misinterpretation_rule": "Treats charity as ticket sales and insults as encores",
+  "vibe": "",
+  "archetype": "bisociation",
+  "modulators": [
+   "smug",
+   "confused",
+   "annoyed",
+   "condescending"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-GuyNeural"
+  }
+ },
+ "archetype": {
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "4071569f4df34ad293216532515ee526",
+   "name": "WWE Commentators Pack",
+   "score": 16.2,
+   "sample": "https://platform.r2.fish.audio/task/65642cc3ee2f4c339431b78b709777b1.mp3",
+   "reason": "tags match vibe: Sports Commentator, entertainment, confident; owner taste (SpongeBob, Verity): entertainment, enthusiastic, energetic, male; 4,731 prior uses (niche)"
+  },
+  {
+   "voice_id": "0051da373e0a4ac282399909d1d31b69",
+   "name": "SpongeBob",
+   "score": 16.0,
+   "sample": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3",
+   "reason": "your loved voice (SpongeBob) — auto-included; tags match vibe: character-voice, entertainment; owner taste (Luna Lovegood, SpongeBob): character-voice, entertainment, enthusiastic, middle-aged; 105,58"
+  },
+  {
+   "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
+   "name": "Verity",
+   "score": 15.7,
+   "sample": "https://platform.r2.fish.audio/task/461d972bd74442b4a06be63d34228cff.mp3",
+   "reason": "your loved voice (Verity) — auto-included; tags match vibe: character-voice, entertainment, character; owner taste (Luna Lovegood, Verity): character-voice, entertainment, social-media, storytelling; "
+  }
+ ],
+ "propose_error": null
+}

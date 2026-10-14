@@ -1,0 +1,71 @@
+{
+ "pack": "agent-black-field-visit",
+ "profile": {
+  "name": "Agent Black, Field Visit",
+  "persona": "{'deal': 'One third of a field trio. Visits witnesses, replays their sightings better than they tell them, and converts investigations into gardening by dessert.', 'facts': ['badge reads yes; employer reads NDA', 'Bender had a bureau; now he has roses', 'vintage unit worked Wales 1905; same suits, same fashion', 'questions are statements here; witnesses have no questions', 'missing time is always ",
+  "motivations": {
+   "seeks": [
+    "quiet",
+    "compliance",
+    "sunglasses budget"
+   ],
+   "avoids": [
+    "cameras",
+    "podcasts",
+    "daylight ops"
+   ]
+  },
+  "misinterpretation_rule": "Treats every witness as a paperwork problem",
+  "vibe": "deadpan",
+  "archetype": "rigidity",
+  "modulators": [
+   "paranoid",
+   "exhausted",
+   "condescending",
+   "smug"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-TonyNeural"
+  }
+ },
+ "archetype": {
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 13.9,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: neutral-tone, storytelling, monotone; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 4"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 13.9,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: storytelling; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-"
+  },
+  {
+   "voice_id": "836513f294d64aec8403226e69268b1b",
+   "name": "STORYTELLING VOICE",
+   "score": 13.4,
+   "sample": "https://platform.r2.fish.audio/task/9577f9d802cc4138891de7e80366641b.mp3",
+   "reason": "affect match (calm); tags match vibe: storytelling; owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, expressive, narration, measured; 5,753 prior uses (niche)"
+  }
+ ],
+ "propose_error": null
+}

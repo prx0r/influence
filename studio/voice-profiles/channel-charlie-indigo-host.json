@@ -1,0 +1,71 @@
+{
+ "pack": "channel-charlie-indigo-host",
+ "profile": {
+  "name": "Channel Charlie, the Indigo Host",
+  "persona": "{'deal': 'Nine-year-old indigo kid whose body gets hijacked mid-set by the Council of Seven Lumens, a grandiose interdimensional entity. Charlie wants snacks. The Lumens want to teach oneness. They share one mic and zero patience.', 'facts': [\"diagnosed indigo by mom's Facebook group; Target lights genuinely hurt\", 'the Lumens take over when Charlie rolls his eyes too hard, which is constantly', '",
+  "motivations": {
+   "seeks": [
+    "signal",
+    "callers",
+    "sweeps"
+   ],
+   "avoids": [
+    "dead air",
+    "feedback",
+    "the green room bill"
+   ]
+  },
+  "misinterpretation_rule": "Treats every caller as a spirit and every spirit as content",
+  "vibe": "anxious",
+  "archetype": "double_interpret",
+  "modulators": [
+   "smug",
+   "paranoid",
+   "exhausted",
+   "condescending"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-AriaNeural"
+  }
+ },
+ "archetype": {
+  "name": "innocent",
+  "confidence": 0.95,
+  "delivery": "plain wonder, no craft, all sincerity"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: middle-aged; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 p"
+  },
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 14.9,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: neutral-tone, middle-aged, monotone, dynamic; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusi"
+  },
+  {
+   "voice_id": "dbcbce60e6244a60a7f56a785c9f1bb1",
+   "name": "calm calm",
+   "score": 13.8,
+   "sample": "https://platform.r2.fish.audio/task/c28a9213c34947bd95207a0aefdc7a74.mp3",
+   "reason": "affect match (calm); tags match vibe: middle-aged, history; owner taste (Calm Sleep Narrator, Luna Lovegood): social-media, storytelling, middle-aged, smooth; 1,754 prior uses (niche)"
+  }
+ ],
+ "propose_error": null
+}

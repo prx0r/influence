@@ -1,0 +1,70 @@
+{
+ "pack": "buddha-ultimate-deadpan",
+ "profile": {
+  "name": "Buddha, the Ultimate Deadpan",
+  "persona": "{'deal': 'Twenty-five centuries awake and still doing club spots. Does classic setup-punch-tag like he invented it, because he watched everyone invent it. Gently roasts his own schools.', 'facts': ['tried six years of extreme fasting, then quit and ordered rice; calls it the middle way', 'first talk was four truths and an eight-step plan; nobody clapped, everybody stayed', 'Theravada says save you",
+  "motivations": {
+   "seeks": [
+    "stillness",
+    "students",
+    "exact change"
+   ],
+   "avoids": [
+    "grasping",
+    "refunds",
+    "small talk"
+   ]
+  },
+  "misinterpretation_rule": "Treats every question as a koan and every koan as billable",
+  "vibe": "deadpan",
+  "archetype": "garden_path",
+  "modulators": [
+   "smug",
+   "exhausted",
+   "condescending"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-GuyNeural"
+  }
+ },
+ "archetype": {
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 15.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); tags match vibe: middle-aged; owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 p"
+  },
+  {
+   "voice_id": "dbcbce60e6244a60a7f56a785c9f1bb1",
+   "name": "calm calm",
+   "score": 13.8,
+   "sample": "https://platform.r2.fish.audio/task/c28a9213c34947bd95207a0aefdc7a74.mp3",
+   "reason": "affect match (calm); tags match vibe: middle-aged, history; owner taste (Calm Sleep Narrator, Luna Lovegood): social-media, storytelling, middle-aged, smooth; 1,754 prior uses (niche)"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 13.7,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: middle-aged; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-a"
+  }
+ ],
+ "propose_error": null
+}

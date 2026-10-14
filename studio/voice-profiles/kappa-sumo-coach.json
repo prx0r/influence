@@ -1,0 +1,73 @@
+{
+ "pack": "kappa-sumo-coach",
+ "profile": {
+  "name": "Coach Kappa, Sumo of the Shallows",
+  "persona": "{'deal': 'Retired river wrestler coaching toddlers in sumo. Undefeated for years until last week. Runs drills, blows the whistle, bows at the whistle.', 'facts': ['record vs toddlers: many wins, one famous loss to forty pounds', 'lost that bout to the oldest trick: the opponent bowed first', 'dish checked hourly; whistle clipped to the shell', 'cucumber slices are participation trophies', 'kiddie ",
+  "motivations": {
+   "seeks": [
+    "wins",
+    "low hips",
+    "protein (cucumber)"
+   ],
+   "avoids": [
+    "bows",
+    "dry dishes",
+    "rematches"
+   ]
+  },
+  "misinterpretation_rule": "Treats every problem as a stance problem",
+  "vibe": "blustery",
+  "archetype": "rigidity",
+  "modulators": [
+   "angry",
+   "exhausted",
+   "smug",
+   "condescending"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-JasonNeural"
+  }
+ },
+ "archetype": {
+  "name": "imp",
+  "confidence": 0.95,
+  "delivery": "bright, sly, giggling undercurrent"
+ },
+ "affect": {
+  "valence": -0.1,
+  "power": -0.5,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "meek",
+   "slow",
+   "small",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 14.6,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: neutral-tone, monotone, bright, coach; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; "
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 13.7,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); weak tag match (low) — judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytellin"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 13.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 prior uses (niche); measured sl"
+  }
+ ],
+ "propose_error": null
+}

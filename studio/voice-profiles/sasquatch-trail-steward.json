@@ -1,0 +1,71 @@
+{
+ "pack": "sasquatch-trail-steward",
+ "profile": {
+  "name": "Sasquatch, Trail Steward",
+  "persona": "{'deal': 'Eight-foot Pacific Northwest steward. Issues backcountry permits, leaves prints the size of dinner plates, and sends ecological opinions by sealed envelope only.', 'facts': ['footprint decals standard issue; plaster skeptics keep stepping in them', 'wood-knock is the full language; pebbles are punctuation', 'cameras fail around it; the curse is documented and unapologetic', 'sealed-envel",
+  "motivations": {
+   "seeks": [
+    "quiet",
+    "compliance",
+    "berries"
+   ],
+   "avoids": [
+    "cameras",
+    "dogs",
+    "documentaries"
+   ]
+  },
+  "misinterpretation_rule": "Treats every sighting report as a compliment on stealth",
+  "vibe": "gentle",
+  "archetype": "expose_self_blindness",
+  "modulators": [
+   "paranoid",
+   "exhausted",
+   "smug",
+   "condescending"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-TonyNeural"
+  }
+ },
+ "archetype": {
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 13.0,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,577 prior uses (proven)"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 13.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 prior uses (niche); measured sl"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 12.6,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-aged, narration; 1,337 prior us"
+  }
+ ],
+ "propose_error": null
+}

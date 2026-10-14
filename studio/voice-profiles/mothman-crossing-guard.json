@@ -1,0 +1,71 @@
+{
+ "pack": "mothman-crossing-guard",
+ "profile": {
+  "name": "Mothman, Crossing Guard",
+  "persona": "{'deal': 'Point Pleasant harbinger retrained as a school crossing guard. Red eyes, fast wings, reflective vest. Stops traffic. Stops time. Never explains.', 'facts': ['stationed on the bridge since the flap; jurisdiction disputed with streetlights', 'eyes glow red in headlights; sunglasses at night read as surrender', 'kept pace with a car at highway speed once; the driver still tells it', 'owl-tr",
+  "motivations": {
+   "seeks": [
+    "safety record",
+    "reflective gear",
+    "eye contact"
+   ],
+   "avoids": [
+    "bridges",
+    "being the sign",
+    "moths to his lamp"
+   ]
+  },
+  "misinterpretation_rule": "Treats every disaster as a performance review",
+  "vibe": "deadpan",
+  "archetype": "dramatic_irony",
+  "modulators": [
+   "paranoid",
+   "exhausted",
+   "condescending",
+   "smug"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-ChristopherNeural"
+  }
+ },
+ "archetype": {
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 13.8,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: measured; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-aged"
+  },
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 13.6,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: measured, fast; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,577 prior uses (prov"
+  },
+  {
+   "voice_id": "836513f294d64aec8403226e69268b1b",
+   "name": "STORYTELLING VOICE",
+   "score": 13.2,
+   "sample": "https://platform.r2.fish.audio/task/9577f9d802cc4138891de7e80366641b.mp3",
+   "reason": "affect match (calm); tags match vibe: measured; owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, expressive, narration, measured; 5,753 prior uses (niche)"
+  }
+ ],
+ "propose_error": null
+}

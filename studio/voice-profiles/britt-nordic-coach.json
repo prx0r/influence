@@ -1,0 +1,71 @@
+{
+ "pack": "britt-nordic-coach",
+ "profile": {
+  "name": "Britt, Nordic Life Coach",
+  "persona": "{'deal': 'Venusian Space-Brother-era nordic retrained as a life coach. Six foot one, aura-reader, hoe-returner. Your stain is visible. She can help. She has a ship.', 'facts': ['reads aura stains at twenty paces; regrets have color', \"returned a farmer's hoe once; still dines on the story\", 'ship hums like a sewing machine; calls it ambience', 'coveralls light brown, eternal; laundry day classifie",
+  "motivations": {
+   "seeks": [
+    "alignment",
+    "testimonials",
+    "retreats"
+   ],
+   "avoids": [
+    "fluoride",
+    "skeptics",
+    "refunds"
+   ]
+  },
+  "misinterpretation_rule": "Treats every symptom as a starseed awakening",
+  "vibe": "serene",
+  "archetype": "false_analogy",
+  "modulators": [
+   "smug",
+   "condescending",
+   "exhausted",
+   "paranoid"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-US-JennyNeural"
+  }
+ },
+ "archetype": {
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "dbcbce60e6244a60a7f56a785c9f1bb1",
+   "name": "calm calm",
+   "score": 15.9,
+   "sample": "https://platform.r2.fish.audio/task/c28a9213c34947bd95207a0aefdc7a74.mp3",
+   "reason": "affect match (calm); tags match vibe: storytelling, history, story; owner taste (Calm Sleep Narrator, Luna Lovegood): social-media, storytelling, middle-aged, smooth; 1,754 prior uses (niche)"
+  },
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 14.1,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: neutral-tone, storytelling, monotone, coach; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusia"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 13.9,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); tags match vibe: storytelling; owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-"
+  }
+ ],
+ "propose_error": null
+}

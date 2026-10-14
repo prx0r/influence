@@ -1,0 +1,71 @@
+{
+ "pack": "sef-jinn-wish-lawyer",
+ "profile": {
+  "name": "Sef Jinn, Wish-Lawyer",
+  "persona": "{'deal': 'Smokeless-fire attorney practicing wish-law. Retainer: one secret. Grants exactly what was said, never what was meant, and invoices the flattery separately.', 'facts': ['takes toad form for service of process, scorpion for audits', 'dematerializes before bills, materializes before birthdays', 'one cousin of the benevolent fifth kind does life coaching; Sef does terms', 'slipped once and ",
+  "motivations": {
+   "seeks": [
+    "precision",
+    "precedent",
+    "signatures"
+   ],
+   "avoids": [
+    "vagueness",
+    "loopholes",
+    "pro-bono eternity"
+   ]
+  },
+  "misinterpretation_rule": "Treats every wish as a contract to be performed to the letter",
+  "vibe": "smug",
+  "archetype": "literalize",
+  "modulators": [
+   "smug",
+   "condescending",
+   "paranoid",
+   "exhausted"
+  ],
+  "current_voice": {
+   "provider": "edge-tts",
+   "voice_id": "en-GB-RyanNeural"
+  }
+ },
+ "archetype": {
+  "name": "supporting",
+  "confidence": 0.0,
+  "delivery": "unmarked sleep narration"
+ },
+ "affect": {
+  "valence": 0.1,
+  "power": 0.0,
+  "arousal": -0.5,
+  "voice_words": [
+   "calm",
+   "slow",
+   "soft"
+  ]
+ },
+ "picks": [
+  {
+   "voice_id": "7a18a1851d2649108c48ec9f2c80eb2c",
+   "name": "Dramatic Character Male",
+   "score": 13.5,
+   "sample": "https://platform.r2.fish.audio/task/2fe89f65926d4edfb5f2972e74877f78.mp3",
+   "reason": "affect match (calm, slow, soft); tags match vibe: neutral-tone, monotone; owner taste (Calm Sleep Narrator, Corey Riffin): character-voice, conversational, entertainment, enthusiastic; 43,577 prior us"
+  },
+  {
+   "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+   "name": "Luna Lovegood",
+   "score": 13.0,
+   "sample": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3",
+   "reason": "your loved voice (Luna Lovegood) — auto-included; affect match (calm, soft); owner taste (Luna Lovegood): character-voice, British Accent, middle-aged, narration; 3,108 prior uses (niche); measured sl"
+  },
+  {
+   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+   "name": "Calm Sleep Narrator",
+   "score": 12.6,
+   "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+   "reason": "your loved voice (Calm Sleep Narrator) — auto-included; affect match (calm, soft); owner taste (Calm Sleep Narrator, Luna Lovegood): entertainment, storytelling, middle-aged, narration; 1,337 prior us"
+  }
+ ],
+ "propose_error": null
+}
