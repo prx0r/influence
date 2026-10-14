@@ -1,7 +1,7 @@
 {
  "channel": "etymology",
- "display_name": "Etymology",
- "pitch": "Thesis: a word is a motif. 6-section essay (Word Today → Etymology → Historical",
+ "display_name": "Word Hoard",
+ "pitch": "Etymology, grammar, thesaurus, roots and idioms — one word per video, read to sleep.",
  "engine": {
   "primary": "E5-talk",
   "contract": "damn routines 01-07; snippet-first Studio renders"
@@ -36,13 +36,22 @@
  },
  "receipts": "per-video vaults + studio voice bank",
  "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)",
- "thesis": "Etymology sleep channel — thesis to confirm from damn README + sleepintel registry",
- "audience": "Adults 25-54 sleep listeners — refine per sleepintel hypotheses",
+ "thesis": "A word is a motif: 6-section essays (word today, etymology, history, philosophy, science, return) that make language itself the lullaby.",
+ "audience": "Word lovers, trivia sleepers, language learners winding down; Etymonline/Wiktionary overlap.",
  "sourcing": {
-  "method": "damn project scripts + PD sources on disk; pi proposes from registry gaps",
+  "method": "damn smarter seasons-words/etymology + sleepvids word pipelines (E2a/E5b)",
   "feeds": [
-   "/root/damn/projects/etymology/"
+   "damn seasons-words/etymology pilots+videos",
+   "sleepvids etymology sections"
   ],
-  "pi_job": "inventory feeds, propose next 3 episodes with reasons"
- }
+  "pi_job": "one word per video; pull sections Word/Etym/Journey/Philosophy/Science/Return"
+ },
+ "formats": [
+  {
+   "name": "One word",
+   "length": "~20min",
+   "tag": "wordsingle",
+   "reasoning": "single-word deep dive, lowest effort per video"
+  }
+ ]
 }

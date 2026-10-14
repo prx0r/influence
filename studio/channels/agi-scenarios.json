@@ -1,0 +1,50 @@
+{
+ "cadence": "",
+ "channel": "agi-scenarios",
+ "display_name": "AGI Scenarios",
+ "engine": {
+  "contract": "E5a essay inputs: research brief + host essay, same renderer as E2",
+  "primary": "E5a"
+ },
+ "pitch": "What happens when AI surpasses us — the singularity, explained slowly for sleep.",
+ "receipts": "per-video vaults + studio voice bank",
+ "routines": "damn 01-cast through 07-ship; snippet-first",
+ "sourcing": {
+  "feeds": [
+   "sleepvids/channels/agi_scenarios/videos/*.json (scripted specs)",
+   "Levin papers + singularity canon"
+  ],
+  "method": "sleepvids video specs (mechanisms, shelf, SEO) + E5a essay renderer",
+  "pi_job": "next scenario from visionaries/world_states; 85-min essay shape; difficulty-lullaby + proportion mechanisms"
+ },
+ "status": "scaffold",
+ "style": {
+  "accent": "",
+  "manner": "",
+  "shelf": "shelf:mind",
+  "visual": ""
+ },
+ "thesis": "Hard ideas at sleep pace: difficulty as lullaby. Big questions, small voice, no urgency.",
+ "videos": {
+  "target_minutes": [
+   60,
+   90
+  ],
+  "unit": "scenario essay"
+ },
+ "voice": {
+  "chairs": {
+   "lecturer": {
+    "direction": "precise lecturer voice, half speed, diagrams in words",
+    "status": "casting",
+    "recommended": {
+     "voice_id": "",
+     "label": "Half-Life Scientist (clear, conversational)",
+     "reason": "diagrams-in-words needs clarity + friendliness; ear-check pending"
+    }
+   }
+  },
+  "pace": 0.7,
+  "render_default": "free (REST s2.1-pro-free, $0)"
+ }
+}
