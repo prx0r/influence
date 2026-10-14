@@ -1,0 +1,60 @@
+[
+ {
+  "voice_id": "fe2619861dfc4bcab9da073029ca80a4",
+  "title": "Luna Lovegood",
+  "tags": [
+   "female",
+   "middle-aged",
+   "character-voice",
+   "narration",
+   "soft",
+   "breathy",
+   "calm",
+   "gentle",
+   "British Accent"
+  ],
+  "languages": [
+   "en"
+  ],
+  "descriptors": [
+   "fairy",
+   "dainty",
+   "soothing"
+  ],
+  "context": "female characters in magic stories",
+  "note": "owner: perfect for fairy-tale females",
+  "ts": 1791972193
+ },
+ {
+  "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
+  "title": "Verity",
+  "tags": [
+   "male",
+   "middle-aged",
+   "character-voice",
+   "entertainment",
+   "social-media",
+   "cheerful",
+   "expressive",
+   "animated",
+   "playful",
+   "friendly",
+   "character",
+   "storytelling",
+   "energetic",
+   "clear",
+   "crisp"
+  ],
+  "languages": [
+   "en"
+  ],
+  "descriptors": [
+   "versatile",
+   "animated",
+   "wide range"
+  ],
+  "context": "any narration needing life",
+  "note": "owner: INSANE variability, measured 29st span dense delivery",
+  "ts": 1791972194
+ }
+]

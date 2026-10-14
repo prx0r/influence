@@ -821,6 +821,13 @@ class Handler(SimpleHTTPRequestHandler):
                         body.get("liked"),
                         bool(body.get("dismissed")),
                         str(body.get("note", "") or "")))
+                if self._route() == "/api/studio/onboard/love":
+                    import channel_onboard as _ob
+                    return self._json(_ob.love(
+                        str(body.get("voice_id", "") or ""),
+                        [str(x) for x in (body.get("descriptors") or [])][:12],
+                        str(body.get("context", "") or ""),
+                        str(body.get("note", "") or "")))
                 if self._route() == "/api/studio/onboard/lock":
                     import channel_onboard as _ob
                     return self._json(_ob.lock(

@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import re
 import sys as _sys
 import time
 
@@ -55,7 +56,6 @@ def sys_path_push():
 
 
 def _keywords(text: str) -> set[str]:
-    import re
     words = re.findall(r"[a-z]{3,}", (text or "").lower())
     return {w for w in words if w not in STOP}
 
@@ -136,6 +136,11 @@ def propose(channel_slug: str, chair: str = "narrator",
                 pool[vid] = v
     siblings = _sibling_voice_ids(channel_slug)
     seen_ids = set(exclude or []) | _dismissed_ids(channel_slug)
+    anchors = _anchors()
+    anchor_vocab: dict[str, str] = {}  # tag/word -> anchor title
+    for a in anchors:
+        for t in (a.get("tags") or []) + (a.get("descriptors") or []):
+            anchor_vocab.setdefault(str(t).lower(), a.get("title", "?"))
     # dedupe: same voice re-uploaded under new IDs (Zack D. Films x2).
     # Normalized name match → keep the highest-use copy. No dup cards.
     import re as _re
@@ -191,8 +196,15 @@ def propose(channel_slug: str, chair: str = "narrator",
                 reasons.append(f"weak tag match ({overlap[0]}) — judge the sample")
             else:
                 reasons.append(f"tags match vibe: {', '.join(overlap[:4])}")
-        else:
+        anchor_hit = sorted({t for t in tags if t.lower() in anchor_vocab},
+                            key=lambda t: (-len(t), t))
+        if not overlap and not anchor_hit:
             reasons.append("no tag overlap — sample decides")
+        if anchor_hit:
+            cited = sorted({anchor_vocab[t.lower()] for t in anchor_hit})
+            reasons.append(f"owner taste ({', '.join(cited[:2])}): "
+                           f"{', '.join(anchor_hit[:4])}")
+            score = round(score + min(4.0, 2.0 * len(anchor_hit)), 1)
         reasons.append(f"{uses:,} prior uses"
                        + (" (proven)" if uses > 20000 else " (niche)"))
         if not lang_ok:
@@ -444,3 +456,44 @@ def react(channel: str, chair: str, voice_id: str, name: str = "",
     _save_taste(channel, d)
     return {"ok": True, "likes": len(d["likes"]),
             "dismissed": len(d["dismissed"])}
+
+
+# ---- loved-voice anchors (weight the recommender by owner taste)
+
+ANCHORS_PATH = os.path.join(CHANNELS_DIR, "..", "voice-anchors.json")
+
+
+def _anchors() -> list:
+    try:
+        with open(os.path.normpath(ANCHORS_PATH), encoding="utf-8") as f:
+            d = json.load(f)
+            return d if isinstance(d, list) else []
+    except Exception:
+        return []
+
+
+def love(voice_id: str, descriptors: list, context: str = "",
+         note: str = "") -> dict:
+    """Anchor a loved voice: fetch its card, store tags + owner descriptors.
+    propose() boosts candidates sharing anchor DNA and cites the anchor."""
+    if not voice_id or not re.fullmatch(r"[0-9a-f]{32}", voice_id):
+        return {"ok": False, "reason": "bad voice id"}
+    af = _audio_flow()
+    d = af.voice_detail(voice_id).get("data") or {}
+    if not d.get("id"):
+        return {"ok": False, "reason": "voice not found"}
+    desc = [str(x).lower()[:40] for x in (descriptors or []) if str(x).strip()][:12]
+    anchors = _anchors()
+    anchors = [a for a in anchors if a.get("voice_id") != voice_id]
+    anchors.append({"voice_id": voice_id,
+                    "title": d.get("title") or "",
+                    "tags": d.get("tags") or [],
+                    "languages": d.get("languages") or [],
+                    "descriptors": desc, "context": context[:120],
+                    "note": note[:300], "ts": int(time.time())})
+    tmp = os.path.normpath(ANCHORS_PATH) + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(anchors, f, indent=1, ensure_ascii=False)
+    os.replace(tmp, os.path.normpath(ANCHORS_PATH))
+    return {"ok": True, "title": d.get("title"),
+            "tags": d.get("tags"), "anchors": len(anchors)}
