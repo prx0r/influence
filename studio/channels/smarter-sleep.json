@@ -4,7 +4,8 @@
  "pitch": "All hard content lives here as seasons. Law: the paper is the script.",
  "engine": {
   "primary": "E5-talk",
-  "contract": "damn routines 01-07; snippet-first Studio renders"
+  "contract": "damn routines 01-07; snippet-first Studio renders",
+  "damn_engine": "E5-talk"
  },
  "status": "scaffold",
  "cadence": "",
@@ -25,7 +26,12 @@
      "hype",
      "shared outside this project"
     ],
-    "status": "casting"
+    "status": "casting",
+    "recommended": {
+     "voice_id": "59e9dc1cb20c452584788a2690c80970",
+     "label": "ALLE",
+     "reason": "owner taste (Darwin, Sleepy): conversational, enthusiastic, social-media, expressive; 390,619 prior uses (proven)"
+    }
    }
   },
   "render_default": "free (REST s2.1-pro-free, $0)"
@@ -45,5 +51,9 @@
    "/root/damn/projects/smarter-sleep/"
   ],
   "pi_job": "inventory feeds, propose next 3 episodes with reasons"
+ },
+ "art": {
+  "file": "studio/channels/smarter-sleep-art.jpg",
+  "model": "CF flux schnell ($0)"
  }
 }

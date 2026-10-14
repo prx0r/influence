@@ -4,7 +4,8 @@
  "pitch": "Everything sleep-related esoteric. Laboratory at midnight: clinical, tender,",
  "engine": {
   "primary": "E2-reading/E3-guided",
-  "contract": "damn routines 01-07; snippet-first Studio renders"
+  "contract": "damn routines 01-07; snippet-first Studio renders",
+  "damn_engine": "E2-reading/E3-guided"
  },
  "status": "scaffold",
  "cadence": "",
@@ -25,7 +26,12 @@
      "guru claims",
      "shared outside this project"
     ],
-    "status": "casting"
+    "status": "casting",
+    "recommended": {
+     "voice_id": "780f45f809cc4cf795bb2373889dd65f",
+     "label": "Storytelling",
+     "reason": "owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, middle-aged, narration, smooth; 7,938 prior uses (niche)"
+    }
    }
   },
   "render_default": "free (REST s2.1-pro-free, $0)"
@@ -45,5 +51,9 @@
    "/root/damn/projects/stonedoorway/"
   ],
   "pi_job": "inventory feeds, propose next 3 episodes with reasons"
+ },
+ "art": {
+  "file": "studio/channels/stonedoorway-art.jpg",
+  "model": "CF flux schnell ($0)"
  }
 }

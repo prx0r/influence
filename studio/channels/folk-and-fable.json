@@ -6,7 +6,8 @@
   "contract": "E2-reading: slow TTS + ambient bed + one scene per passage",
   "easy_engine": "E5c",
   "primary": "E2-reading",
-  "proven": "Bremen 8.2min master.mp3 + 3 draws, A/V locked, shipped review"
+  "proven": "Bremen 8.2min master.mp3 + 3 draws, A/V locked, shipped review",
+  "damn_engine": "E2-reading"
  },
  "pitch": "Sleep fairytales: S1 Fairy, S2 Folklore, S3 Myth + etch films",
  "receipts": "per-video vaults (powvid videos/<ID>/ pattern) + studio voice bank",
@@ -35,7 +36,12 @@
      }
     ],
     "direction": "young earnest male",
-    "status": "casting"
+    "status": "casting",
+    "recommended": {
+     "voice_id": "536d3a5e000945adb7038665781a4aca",
+     "label": "Ethan (young earnest)",
+     "reason": "young male ballad — deep house default wrong for a lad; ear-check pending"
+    }
    },
    "narrator": {
     "direction": "[calm, measured storyteller voice, slow and gentle for sleep]",
@@ -324,5 +330,9 @@
     "inherit": true
    }
   }
- ]
+ ],
+ "art": {
+  "file": "studio/channels/folk-and-fable-art.jpg",
+  "model": "CF flux schnell ($0)"
+ }
 }

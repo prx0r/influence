@@ -25,7 +25,12 @@
      "excitement",
      "shared outside this project"
     ],
-    "status": "casting"
+    "status": "casting",
+    "recommended": {
+     "voice_id": "7310adde3caf490b8abac105cf8e4a81",
+     "label": "Chance",
+     "reason": "owner taste (Luna Lovegood, Sleepy): character-voice, entertainment, energetic, animated; 10,163 prior uses (niche)"
+    }
    },
    "crew": {
     "direction": "",
@@ -57,5 +62,9 @@
    "/root/damn/projects/longhaul-journeys/"
   ],
   "pi_job": "inventory feeds, propose next 3 episodes with reasons"
+ },
+ "art": {
+  "file": "studio/channels/longhaul-journeys-art.jpg",
+  "model": "CF flux schnell ($0)"
  }
 }

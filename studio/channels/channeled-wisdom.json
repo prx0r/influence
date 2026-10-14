@@ -4,7 +4,8 @@
  "pitch": "- `frontier/channeling/`: LawofOne 63M (full 106 sessions txt), Seth 64M, Cassiopaea 29 sessions, PKD exegesis + Densities frameworks",
  "engine": {
   "primary": "E3-guided/E2-reading",
-  "contract": "damn routines 01-07; snippet-first Studio renders"
+  "contract": "damn routines 01-07; snippet-first Studio renders",
+  "damn_engine": "E3-guided/E2-reading"
  },
  "status": "scaffold",
  "cadence": "",
@@ -25,7 +26,12 @@
      "channeling persona claims",
      "shared outside this project"
     ],
-    "status": "casting"
+    "status": "casting",
+    "recommended": {
+     "voice_id": "f0acad7e4ed24b04a80f6c3fd3bce228",
+     "label": "Wisdom",
+     "reason": "owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, narration, calm, deep; 10,504 prior uses (niche)"
+    }
    }
   },
   "render_default": "free (REST s2.1-pro-free, $0)"
@@ -45,5 +51,9 @@
    "/root/damn/projects/channeled-wisdom/"
   ],
   "pi_job": "inventory feeds, propose next 3 episodes with reasons"
+ },
+ "art": {
+  "file": "studio/channels/channeled-wisdom-art.jpg",
+  "model": "CF flux schnell ($0)"
  }
 }

@@ -50,5 +50,9 @@
    "PBS 5-good-news"
   ],
   "pi_job": "pull feeds nightly, pick 5 ( hopeful + proven + visual ), draft brief in ritual beats, never anxiety-first"
+ },
+ "art": {
+  "file": "studio/channels/goodnight-news-art.jpg",
+  "model": "CF flux schnell ($0)"
  }
 }

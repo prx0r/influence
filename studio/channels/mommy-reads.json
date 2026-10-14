@@ -5,7 +5,8 @@
  "engine": {
   "contract": "E2-reading: slow TTS + ambient bed + one scene per passage",
   "primary": "E2-reading",
-  "proven": "damn pilots: honey-time-for-bed + snow-queen-part-1"
+  "proven": "damn pilots: honey-time-for-bed + snow-queen-part-1",
+  "damn_engine": "E2-reading/E5-talk"
  },
  "pitch": "Bedtime stories read by Mommy. Honey, time for bed.",
  "receipts": "per-video vaults + studio voice bank",
@@ -53,5 +54,9 @@
    "smarter physics (mom explains)"
   ],
   "pi_job": "pick tales that survive maternal framing (kind endings); draft 2-line mom intros; flag scary tales out"
+ },
+ "art": {
+  "file": "studio/channels/mommy-reads-art.jpg",
+  "model": "CF flux schnell ($0)"
  }
 }

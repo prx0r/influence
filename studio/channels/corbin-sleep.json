@@ -4,7 +4,8 @@
  "pitch": "Literally sleep-shaped subject, unfilmed anywhere. Wave 1 bible + 4 shots banked",
  "engine": {
   "primary": "E2-reading/E3-guided",
-  "contract": "damn routines 01-07; snippet-first Studio renders"
+  "contract": "damn routines 01-07; snippet-first Studio renders",
+  "damn_engine": "E2-reading/E3-guided"
  },
  "status": "scaffold",
  "cadence": "",
@@ -24,7 +25,12 @@
     "never": [
      "shared outside this project"
     ],
-    "status": "casting"
+    "status": "casting",
+    "recommended": {
+     "voice_id": "109f28529b1744888c0c809a73f4eb00",
+     "label": "BANKAI",
+     "reason": "owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, expressive, energetic, narration; 75,432 prior uses (proven)"
+    }
    },
    "guest": {
     "direction": "",
@@ -50,5 +56,9 @@
    "/root/damn/projects/corbin-sleep/"
   ],
   "pi_job": "inventory feeds, propose next 3 episodes with reasons"
+ },
+ "art": {
+  "file": "studio/channels/corbin-sleep-art.jpg",
+  "model": "CF flux schnell ($0)"
  }
 }
