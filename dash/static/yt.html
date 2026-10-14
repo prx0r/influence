@@ -324,8 +324,31 @@ function takeHtml(t, big){
   </div>`;
 }
 
-async function take(full, note){
-  if (!S.pilot){ say('pi','Pick a pilot first.'); return; }
+async function castGrid(chair){
+  const el = document.getElementById('cast-'+chair);
+  if(!el) return;
+  el.innerHTML = '<div class="sub">casting…</div>';
+  try{
+    const r = await api('POST','/api/studio/onboard/propose',{channel:S.slug,chair,n:5});
+    if(!r.ok){ el.innerHTML = '<div class="sub">ERR ' + esc(r.error||r.reason||'') + '</div>'; return; }
+    el.innerHTML = (r.candidates||[]).map((c,i) => `<div class="card" style="margin-top:8px"><div class="row" style="justify-content:space-between"><h2>${i+1}. ${esc(c.name||c.voice_id)}</h2><span class="chip">score ${c.score}</span></div>
+      <div class="sub">${c.uses||0} uses · ${esc((c.tags||[]).slice(0,4).join(', '))}</div>
+      <div class="sub" style="margin-top:4px">${esc(c.reason||'')}</div>
+      ${c.sample?`<audio controls preload="metadata" src="${c.sample}" style="width:100%"></audio>`:''}
+      <div class="row" style="margin-top:8px"><input id="ck-why-${i}" size="24" placeholder="why (saved on lock)"><button class="primary" onclick="castLock('${esc(chair)}',${i})">lock</button></div></div>`).join('')
+      || '<div class="sub">no candidates</div>';
+    window._cast = r.candidates;
+  }catch(e){ el.innerHTML = '<div class="sub">ERR ' + esc(e.message) + '</div>'; }
+}
+async function castLock(chair, i){
+  const c = (window._cast||[])[i]; if(!c) return;
+  const why = ((document.getElementById('ck-why-'+i)||{}).value||'').trim() || prompt('why this one? (saved, trains future proposals)');
+  if(!why) return;
+  const r = await api('POST','/api/studio/onboard/lock',{channel:S.slug,chair,voice_id:c.voice_id,reason:why});
+  if(!r.ok){ alert('ERR ' + (r.error||r.reason||'')); return; }
+  renderConfigTabs();
+}
+async function take(full, note){  if (!S.pilot){ say('pi','Pick a pilot first.'); return; }
   if (S.job){ say('pi','Still rendering the last take. One at a time keeps the free tier happy.'); return; }
   const r = await api('POST','/api/studio/yt/take',{channel:S.slug, path:S.pilot.path, knobs:S.knobs, full, note:note||''});
   if (!r.ok){ say('pi', 'Could not start: ' + (r.error || r.reason || 'unknown')); return; }
@@ -369,11 +392,12 @@ function renderConfigTabs(){
   $('#tab-voices').innerHTML = `<div class="grid2">${(v.chairs||[]).map(c => `
     <div class="card"><div class="row" style="justify-content:space-between"><h2>${esc(c.name)}</h2><span class="chip ${c.locked?'ok':'warn'}">${c.locked?'locked':esc(c.status||'open')}</span></div>
     <div class="sub">${esc(c.direction)}</div>
-    <div style="margin-top:8px">${c.options.map(o => `<div class="vopt"><span>${esc(o.label)}${o.locked?' ★':''}</span>
+    <div style="margin-top:8px" id="cast-${esc(c.name)}">${c.options.map(o => `<div class="vopt"><span>${esc(o.label)}${o.locked?' ★':''}</span>
       <button class="ghost" data-ask="Propose 5 alternatives to ${esc(o.label)} for the ${esc(c.name)} chair">alternatives</button></div>`).join('') || '<div class="sub">No candidates yet.</div>'}</div>
-    <div class="row" style="margin-top:10px"><button data-ask="Propose 5 ${esc(c.name)} voices for ${esc(v.name)} with samples and one-line reasons">Ask Pi for 5 voices</button></div>
+    <div class="row" style="margin-top:10px"><button data-cast="${esc(c.name)}">Cast 5 voices</button><button data-ask="Propose 5 ${esc(c.name)} voices for ${esc(v.name)} with samples and one-line reasons">Ask Pi for 5 voices</button></div>
     </div>`).join('') || '<div class="empty">No voice chairs on this channel.</div>'}
     <div class="card"><h2>Bed</h2><div class="sub">${esc(v.bed || 'none set')}</div><div class="kv"><div>Pace</div><div>${v.pace ?? 'default'}</div></div></div></div>`;
+  document.querySelectorAll('#tab-voices [data-cast]').forEach(b => b.onclick = () => castGrid(b.dataset.cast));
   const th = v.thumbnail || {};
   $('#tab-thumb').innerHTML = `<div class="grid2"><div class="card"><h2>Thumbnail template</h2><div class="sub">The look that makes the shelf recognisable.</div>
     <div class="knob" style="margin-top:10px"><label>Template</label><textarea id="th-type">${esc(th.type||'')}</textarea></div>
