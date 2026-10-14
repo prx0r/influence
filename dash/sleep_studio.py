@@ -335,7 +335,7 @@ def render_pilot(path: str, channel_slug: str = "",
                     locked[nm] = c["fish_id"]
         except Exception:
             pass
-    spk_voice: dict = dict(speaker_voices or {})
+    spk_voice: dict = {}
     for cname, c in parsed["chairs"].items():
         if cname in (voice_overrides or {}):
             spk_voice[c["speaker"]] = (voice_overrides or {})[cname]
@@ -343,6 +343,12 @@ def render_pilot(path: str, channel_slug: str = "",
             spk_voice[c["speaker"]] = locked[cname]
         elif c.get("voice_id"):
             spk_voice[c["speaker"]] = c["voice_id"]
+    # explicit speaker map wins over everything (auditioning new voices)
+    for spk, vid in (speaker_voices or {}).items():
+        try:
+            spk_voice[int(spk)] = vid
+        except (TypeError, ValueError):
+            continue
     if not spk_voice:
         return {"ok": False, "reason": "no voices: header has no IDs and "
                 "no locked chairs (pass voice_overrides)"}
