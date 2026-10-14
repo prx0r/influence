@@ -1,0 +1,108 @@
+{
+ "fe2619861dfc4bcab9da073029ca80a4": {
+  "stats": {
+   "duration_s": 13.0,
+   "f0_mean": 297.0,
+   "f0_std": 67.0,
+   "f0_span_st": 15.9,
+   "voiced": 0.65
+  },
+  "sleep_fit": {
+   "score": 100.0,
+   "notes": [],
+   "bands": "sleep v1 (characters transfer tests)"
+  }
+ },
+ "8d21b053e2804e2a890e1cf62f267b6f": {
+  "stats": {
+   "duration_s": 10.9,
+   "f0_mean": 261.0,
+   "f0_std": 83.0,
+   "f0_span_st": 29.5,
+   "voiced": 0.67
+  },
+  "sleep_fit": {
+   "score": 100.0,
+   "notes": [],
+   "bands": "sleep v1 (characters transfer tests)"
+  }
+ },
+ "0051da373e0a4ac282399909d1d31b69": {
+  "stats": {
+   "duration_s": 15.0,
+   "f0_mean": 284.0,
+   "f0_std": 83.0,
+   "f0_span_st": 25.3,
+   "voiced": 0.74
+  },
+  "sleep_fit": {
+   "score": 100.0,
+   "notes": [],
+   "bands": "sleep v1 (characters transfer tests)"
+  }
+ },
+ "22dfd973f6054822b0c03dcdc51fdf14": {
+  "stats": {
+   "duration_s": 10.3,
+   "f0_mean": 198.0,
+   "f0_std": 146.0,
+   "f0_span_st": 28.5,
+   "voiced": 0.32
+  },
+  "sleep_fit": {
+   "score": 85.0,
+   "notes": [
+    "pitch swings wide (wakes the room)"
+   ],
+   "bands": "sleep v1 (characters transfer tests)"
+  }
+ },
+ "5084227c7a6f489280cfeeccae809388": {
+  "stats": {
+   "duration_s": 12.7,
+   "f0_mean": 237.0,
+   "f0_std": 121.0,
+   "f0_span_st": 23.0,
+   "voiced": 0.74
+  },
+  "sleep_fit": {
+   "score": 85.0,
+   "notes": [
+    "pitch swings wide (wakes the room)"
+   ],
+   "bands": "sleep v1 (characters transfer tests)"
+  }
+ },
+ "3a561684e5fa46eb9528e8e6ff9000c9": {
+  "stats": {
+   "duration_s": 12.3,
+   "f0_mean": 340.0,
+   "f0_std": 70.0,
+   "f0_span_st": 19.7,
+   "voiced": 0.69
+  },
+  "sleep_fit": {
+   "score": 90.0,
+   "notes": [
+    "mean pitch outside human band (measure noise?)"
+   ],
+   "bands": "sleep v1 (characters transfer tests)"
+  }
+ },
+ "ccf9e60669f34043b95c73ad73a775e5": {
+  "stats": {
+   "duration_s": 12.6,
+   "f0_mean": 324.0,
+   "f0_std": 85.0,
+   "f0_span_st": 24.1,
+   "voiced": 0.61
+  },
+  "sleep_fit": {
+   "score": 90.0,
+   "notes": [
+    "mean pitch outside human band (measure noise?)"
+   ],
+   "bands": "sleep v1 (characters transfer tests)"
+  }
+ }
+}

@@ -112,10 +112,12 @@ def _sibling_voice_ids(exclude_slug: str) -> set[str]:
 
 
 def propose(channel_slug: str, chair: str = "narrator",
-            n: int = 5, exclude: list | None = None) -> dict:
+            n: int = 5, exclude: list | None = None,
+            direction: str = "") -> dict:
     """5 voice candidates matched to the channel vibe, each with samples
     and a reason citing tags/uses/language/differentiation. Free reads.
-    exclude = voice IDs already seen (more-buttons, dismissed)."""
+    exclude = voice IDs already seen (more-buttons, dismissed).
+    direction = ad-hoc chair brief (calibration studio: any character)."""
     af = _audio_flow()
     try:
         channel = load_channel(channel_slug)
@@ -123,8 +125,12 @@ def propose(channel_slug: str, chair: str = "narrator",
         return {"ok": False, "reason": f"unknown channel {channel_slug}"}
     chairs = (channel.get("voice") or {}).get("chairs", {})
     if chair not in chairs:
-        return {"ok": False,
-                "reason": f"no chair '{chair}' (have: {sorted(chairs)})"}
+        if not direction:
+            return {"ok": False,
+                    "reason": f"no chair '{chair}' (have: {sorted(chairs)})"}
+        chairs = dict(chairs)
+        chairs[chair] = {"direction": direction, "label": chair,
+                         "status": "ad-hoc"}
     chair_kw = _keywords((chairs[chair].get("direction", "") or "") + " " +
                          (chairs[chair].get("label", "") or ""))
     pool: dict[str, dict] = {}
@@ -166,6 +172,17 @@ def propose(channel_slug: str, chair: str = "narrator",
             best[nm] = v
     # incumbent always included for comparison (fresh challengers + status quo)
     incumbent = (chairs[chair].get("fish_id") or "")
+    # measured acoustics cache (studio/voice-acoustics.json): sleep-fit
+    # from waveforms, not tags. Tags lie; measurements don't (sample-scoped).
+    try:
+        with open(os.path.join(os.path.dirname(CHANNELS_DIR),
+                               "voice-acoustics.json"),
+                  encoding="utf-8") as _af:
+            import json as _js2
+            _ac = _js2.load(_af)
+            _ac = _ac if isinstance(_ac, dict) else {}
+    except Exception:
+        _ac = {}
     if incumbent and incumbent not in pool:
         d = af.voice_detail(incumbent).get("data") or {}
         if d.get("id") or d.get("voice_id"):
@@ -264,6 +281,16 @@ def propose(channel_slug: str, chair: str = "narrator",
                     break
         if _anch_from:
             reasons.insert(0, f"your loved voice ({_anch_from}) — auto-included")
+        _meas = (_ac or {}).get(vid, {})
+        _sf = ((_meas.get("sleep_fit") or {}).get("score")
+               if isinstance(_meas, dict) else None)
+        if _sf is not None:
+            if _sf >= 80:
+                score = round(score + 1.5, 1)
+                reasons.append(f"measured sleep-fit {_sf} (waveform, not tags)")
+            elif _sf < 55:
+                score = round(score - 1.5, 1)
+                reasons.append(f"measured sleep-fit {_sf} — sample runs hot")
         scored.append({"voice_id": vid,
                        "name": v.get("title") or v.get("name"),
                        "language": langs[0] if langs else "?",

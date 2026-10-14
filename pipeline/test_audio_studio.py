@@ -272,3 +272,35 @@ def test_bt_fit_learns_and_predicts():
     assert verdict_from_margin(3.5, 6) == {"state": "hot",
                                            "action": "double_down"}
     assert verdict_from_margin(-1.0, 2)["action"] == "pivot"
+
+
+def test_next_character_picks_thinnest():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from taste_profile import next_character
+    cands = [{"name": "A", "direction": "calm male", "dialogue_lines": 30},
+             {"name": "B", "direction": "whisper female", "dialogue_lines": 5}]
+    p = next_character(cands)
+    assert p is not None and "why" in p and "function" in p
+    locked = [dict(cands[0], locked=True), cands[1]]
+    assert next_character(locked)["name"] == "B"
+    assert next_character([]) is None
+
+
+def test_propose_direction_override():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/dash")
+    _s.path.insert(0, "/root/influence/pipeline")
+    import channel_onboard as ob
+    assert ob.propose("folk-and-fable", "nosuchchair")["ok"] is False
+    assert ob.propose("folk-and-fable", "nosuchchair",
+                      direction="")["ok"] is False
+
+
+def test_acoustics_cache_and_lies():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from voice_acoustics import tag_lies
+    assert any("250" in x for x in tag_lies(["deep", "low"], {"f0_mean": 250, "f0_std": 40, "voiced": 0.6}))
+    assert tag_lies(["calm"], {"f0_mean": 150, "f0_std": 40, "voiced": 0.5}) == []
+    assert tag_lies([], {}) == []

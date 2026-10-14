@@ -352,3 +352,54 @@ def bt_predict(fn: str, a_tags: list, b_tags: list) -> dict | None:
     margin = abs(p - 0.5) * 10
     return {"p": p, "train_accuracy": acc,
             "verdict": _vm(margin, w.get("pairs", 0))}
+
+
+# ---- uncertainty picker: which character teaches us the most ----
+#
+# Active learning, honest version: rank candidate characters by how
+# little we know about their region (few pairs in their function +
+# low fitted-weight mass there). Skip locked chairs and already-ranked
+# names. Returns the single most-informative next calibration.
+
+def pairs_per_function() -> dict[str, int]:
+    counts: dict[str, int] = {}
+    try:
+        with open(PAIRS_PATH, encoding="utf-8") as f:
+            for line in f:
+                try:
+                    p = json.loads(line)
+                except Exception:
+                    continue
+                if isinstance(p, dict) and p.get("function"):
+                    counts[p["function"]] = counts.get(p["function"], 0) + 1
+    except OSError:
+        pass
+    return counts
+
+
+def next_character(candidates: list[dict]) -> dict | None:
+    """Pick the most informative character to calibrate next.
+
+    candidates: [{name, chair/function hints, locked}]. Score =
+    1/(1+pairs) per function (ignorance) minus locked penalty.
+    Ties break toward most dialogue (more evidence per rank)."""
+    ppf = pairs_per_function()
+    best, best_key = None, None
+    for c in candidates:
+        name = str(c.get("name") or "")
+        if not name or c.get("locked"):
+            continue
+        fn = chair_function(name, str(c.get("direction") or ""))
+        ignorance = 1.0 / (1.0 + ppf.get(fn, 0))
+        evidence = min(1.0, float(c.get("dialogue_lines") or 0) / 20.0)
+        key = (ignorance, evidence)
+        if best_key is None or key > best_key:
+            best_key, best = key, {"name": name, "function": fn,
+                                   "direction": " ".join(x for x in
+                                       [str(c.get("age") or ""),
+                                        str(c.get("gender") or "")] if x),
+                                   "pairs_so_far": ppf.get(fn, 0),
+                                   "dialogue_lines": c.get("dialogue_lines", 0),
+                                   "why": (f"{fn} has {ppf.get(fn, 0)} ranked pairs — "
+                                           f"thinnest region; {name} speaks most there")}
+    return best

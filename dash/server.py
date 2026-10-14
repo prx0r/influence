@@ -936,7 +936,8 @@ class Handler(SimpleHTTPRequestHandler):
                         str(body.get("channel", "") or ""),
                         str(body.get("chair", "narrator") or "narrator"),
                         int(body.get("n", 5) or 5),
-                        [str(x) for x in (body.get("exclude") or [])][:50]))
+                        [str(x) for x in (body.get("exclude") or [])][:50],
+                        str(body.get("direction", "") or "")))
                 if self._route() == "/api/studio/onboard/react":
                     import channel_onboard as _ob
                     return self._json(_ob.react(
@@ -964,6 +965,42 @@ class Handler(SimpleHTTPRequestHandler):
                         str(body.get("function", "general") or "general"),
                         [str(x) for x in (body.get("ordered_ids") or [])][:8],
                         cards if isinstance(cards, list) else None))
+                if self._route() == "/api/studio/cali/next":
+                    # Uncertainty sampling: most informative character to
+                    # calibrate next (thinnest function region + most lines).
+                    sys.path.insert(0, os.path.dirname(ROOT))
+                    from pipeline.taste_profile import next_character
+                    import glob as _gg
+                    slug = str(body.get("channel", "folk-and-fable") or
+                               "folk-and-fable")
+                    if not slug.replace("-", "").replace("_", "").isalnum():
+                        return self._json({"error": "bad channel"}, 400)
+                    ddir = os.path.normpath(os.path.join(
+                        ROOT, "..", "studio", "channels", slug, "dramatis"))
+                    cands = []
+                    if os.path.isdir(ddir):
+                        import json as _js3
+                        for fp in sorted(_gg.glob(os.path.join(ddir, "*.json"))):
+                            try:
+                                dd = _js3.load(open(fp, encoding="utf-8"))
+                            except Exception:
+                                continue
+                            for c in dd.get("characters", []):
+                                cands.append({
+                                    "name": c.get("name", ""),
+                                    "direction": " ".join(x for x in
+                                        [c.get("age") or "", c.get("gender") or "",
+                                         c.get("role") or ""] if x),
+                                    "dialogue_lines": c.get("dialogue_lines", 0),
+                                    "book": os.path.basename(fp)[:-5]})
+                    # de-dupe by name, keep max dialogue
+                    seen: dict = {}
+                    for c in cands:
+                        if (c["name"] not in seen or c["dialogue_lines"] >
+                                seen[c["name"]]["dialogue_lines"]):
+                            seen[c["name"]] = c
+                    return self._json({"ok": True,
+                                       "pick": next_character(list(seen.values()))})
                 if self._route() == "/api/studio/onboard/thumb":
                     import channel_onboard as _obt
                     return self._json(_obt.react_thumb(
