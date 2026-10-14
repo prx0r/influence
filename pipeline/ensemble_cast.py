@@ -243,6 +243,57 @@ ARCHETYPE_TAGS = {
     "elder": ("deep", "old", "slow", "low", "calm", "measured"),
 }
 
+# ---- archetype subtypes (criteria granularity) ----
+#
+# One tag set per archetype crowns one voice per archetype (Calm Sleep
+# ruling 34 collections). Subtypes split by story vibe: a kwaidan elder
+# (grave restraint) is acoustically distinct from a grimm elder (warm
+# roundness) or an edda elder (projected weight). Vibe selects subtype.
+ARCHETYPE_SUBTYPES = {
+    "elder": {
+        "grave": {"vibes": ("scary", "grim", "winter"),
+                  "tags": ("deep", "low", "slow", "dark", "dry", "hollow"),
+                  "pitch": (70, 120), "pace": "rooted",
+                  "delivery": "grave restraint, cold tale told warmly flat"},
+        "warm": {"vibes": ("sleepy", "romantic", "playful"),
+                 "tags": ("warm", "round", "gentle", "affectionate", "soft",
+                           "kind"),
+                 "pitch": (90, 150), "pace": "unhurried",
+                 "delivery": "hearth warmth, affectionate roundness"},
+        "epic": {"vibes": ("epic", "magical"),
+                 "tags": ("weighty", "vast", "commanding", "resonant",
+                           "unhurried", "deep"),
+                 "pitch": (80, 130), "pace": "monumental",
+                 "delivery": "projected weight, rooms quiet when they speak"},
+    },
+    "fae": {
+        "veiled": {"vibes": ("scary", "winter", "grim"),
+                   "tags": ("veiled", "still", "quiet", "pale", "distant",
+                             "cold"),
+                   "pitch": (180, 260), "pace": "drifting",
+                   "delivery": "still veiled cold, half-smiling detachment"},
+        "wonder": {"vibes": ("magical", "romantic", "sleepy", "playful",
+                             "epic"),
+                   "tags": ("bright", "lilting", "curious", "light",
+                             "enchanted", "warm"),
+                   "pitch": (200, 300), "pace": "lilting",
+                   "delivery": "bright curiosity, enchanted lift"},
+    },
+}
+
+
+def subtype_for(archetype: str, vibes: list) -> dict | None:
+    """Story vibes -> subtype profile. None when archetype has no splits."""
+    subs = ARCHETYPE_SUBTYPES.get(archetype or "")
+    if not subs:
+        return None
+    vl = [str(v).lower() for v in vibes]
+    for _name, sub in subs.items():
+        if any(v in vl for v in sub["vibes"]):
+            return dict(sub, name=_name)
+    return None
+
+
 _ARCHETYPE_KEYS = {
     "overlord": ("giant", "overlord", "emperor", "sorcerer", "darth", "scar",
                  "evil chancellor", "don", "brute", "troll-", "ogre", "dragon"),

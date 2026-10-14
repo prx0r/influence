@@ -214,13 +214,23 @@ def propose(channel_slug: str, chair: str = "narrator",
     except Exception:
         pass
     # theory tags: what a voice OF the predicted archetype is tagged by
-    # vendors. Scored as its own term so the prediction carries points.
+    # vendors. Subtype narrows by story vibe (grave/warm/epic elder) so
+    # kwaidan and grimm stop sharing identical criteria. Scored as its
+    # own term so the prediction carries points.
     _arch_tags: set = set()
+    _sub_name = ""
     if _arch:
         try:
             sys_path_push()
             from ensemble_cast import ARCHETYPE_TAGS as _ATT
+            from ensemble_cast import subtype_for as _subfor
             _arch_tags = set(_ATT.get(_arch, ()))
+            _vibes = [v.get("vibe", "")
+                      for v in ((_coll or {}).get("vibes", []) or [])]
+            _sub = _subfor(_arch, _vibes)
+            if _sub:
+                _arch_tags = set(_sub["tags"])
+                _sub_name = f"{_arch}-{_sub['name']}"
         except Exception:
             pass
     _vp = voice_profile
