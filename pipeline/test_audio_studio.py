@@ -222,3 +222,28 @@ def test_taste_profile_compiles_and_calibrates():
     assert weight_of("narration", 0.5) > 0.5  # learned positive
     assert weight_of("zzz-no-such-tag-zzz", 0.5) == 0.5  # default
     assert isinstance(load_profile().get("rules"), list)
+
+
+def test_calibration_studio_fits_functions():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    import shutil as _sh
+    _bak_p, _bak_j = "/tmp/tp-pairs.bak", "/tmp/tp-profile.bak"
+    _sh.copy("/root/influence/studio/taste-pairs.jsonl", _bak_p)
+    _sh.copy("/root/influence/studio/taste-profile.json", _bak_j)
+    try:
+        from taste_profile import record_ranking, function_weights, chair_function
+    assert chair_function("yuki", "veiled whisper female") == "whisper"
+    assert chair_function("narrator", "calm male") == "narration"
+    assert chair_function("lecturer", "") == "lecture"
+    cards = [{"voice_id": "a", "tags": ["whisper", "soft", "female"]},
+             {"voice_id": "b", "tags": ["loud", "energetic", "male"]}]
+    r = record_ranking("whisper", ["a", "b"], cards)
+    assert r["ok"] is True and r["pairs"] == 1
+    w = function_weights("whisper")
+    assert w.get("whisper", 0) > w.get("loud", 0)
+    assert function_weights("nosuchfn") == {}
+    assert record_ranking("x", ["only"])["ok"] is False
+    finally:
+        _sh.copy(_bak_p, "/root/influence/studio/taste-pairs.jsonl")
+        _sh.copy(_bak_j, "/root/influence/studio/taste-profile.json")

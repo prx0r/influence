@@ -181,6 +181,17 @@ def propose(channel_slug: str, chair: str = "narrator",
                        >= int(best[nm].get("task_count") or 0)):
                 best[nm] = pool[incumbent]
     scored = []
+    # function fit once per propose (not per candidate): which calibration
+    # function this chair maps to + its fitted weights ({} = uncalibrated).
+    try:
+        sys_path_push()
+        from taste_profile import chair_function as _cfn
+        from taste_profile import function_weights as _fw
+        _fn = _cfn(chair, " ".join(
+            sorted(_keywords((chairs[chair].get("direction", "") or "")))))
+        _fww = _fw(_fn)
+    except Exception:
+        _fn, _fww = "narration", {}
     for v in best.values():
         vid = v.get("id") or v.get("voice_id") or ""
         if not vid or vid in seen_ids:
@@ -199,7 +210,9 @@ def propose(channel_slug: str, chair: str = "narrator",
         # calibrated overlap: learned weight per tag, modulated around the
         # old +3 default (w=1 → 3.0, w=-1 → 0). Unknown tags → neutral.
         overlap_score = round(sum(1.5 + 1.5 * _taste_w(t, 0.5)
-                                  for t in overlap), 1)
+                                  for t in overlap)
+                              + sum(_fww.get(t.lower(), 0.0) * 2.0
+                                    for t in tags), 1)
         score = round(overlap_score + pop + (2 if lang_ok else -5)
                       - (8 if shared else 0), 1)
         reasons = []
@@ -236,6 +249,8 @@ def propose(channel_slug: str, chair: str = "narrator",
     scored.sort(key=lambda c: c["score"], reverse=True)
     liked = _liked_ids(channel_slug, chair)
     return {"ok": True, "channel": channel_slug, "chair": chair,
+            "function": _fn,
+            "function_calibrated": bool(_fww),
             "queries": vibe_queries(channel, chair),
             "liked": sorted(liked),
             "candidates": scored[:n],

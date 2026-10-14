@@ -954,6 +954,16 @@ class Handler(SimpleHTTPRequestHandler):
                         [str(x) for x in (body.get("descriptors") or [])][:12],
                         str(body.get("context", "") or ""),
                         str(body.get("note", "") or "")))
+                if self._route() == "/api/studio/onboard/rank":
+                    # Calibration studio: human-ordered IDs + cards →
+                    # pairwise fit per function. Human-authenticated POST.
+                    sys.path.insert(0, os.path.dirname(ROOT))
+                    from pipeline.taste_profile import record_ranking
+                    cards = body.get("cards")
+                    return self._json(record_ranking(
+                        str(body.get("function", "general") or "general"),
+                        [str(x) for x in (body.get("ordered_ids") or [])][:8],
+                        cards if isinstance(cards, list) else None))
                 if self._route() == "/api/studio/onboard/thumb":
                     import channel_onboard as _obt
                     return self._json(_obt.react_thumb(

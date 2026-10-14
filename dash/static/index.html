@@ -1360,7 +1360,7 @@ async function renderOnboard(main){
   <div id="ob-channels" style="margin:8px 0"></div>
   <div id="ob-chairs" style="margin:6px 0"></div>
   <div id="ob-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-top:8px"></div>
-  <div style="margin-top:8px"><button onclick="obMore()">more like these</button> <button onclick="obPi()">ask pi for more</button> <button onclick="obDesign()">design new voice ($0.01)</button> <span id="ob-msg" class="dim"></span></div>
+  <div style="margin-top:8px"><button onclick="obMore()">more like these</button> <button onclick="obPi()">ask pi for more</button> <button onclick="obDesign()">design new voice ($0.01)</button> <button onclick="obRank()">submit ranking → calibrate</button> <span id="ob-msg" class="dim"></span></div>
   <div style="margin-top:8px;font-size:11px;color:var(--dim)">general feedback for this chair:<br><textarea id="ob-note" rows="2" cols="60" placeholder="e.g. too chipper, want older and slower"></textarea> <button onclick="obNote()">save note</button></div>`;
   obLoadChannels();
 }
@@ -1393,6 +1393,7 @@ async function obGrid(){
       <span style="font-size:11px">${esc(c.reason||'')}</span><br>
       ${c.sample?`<audio controls preload="none" src="${c.sample}" style="width:100%"></audio>`:''}
       <div style="margin-top:4px"><button onclick="obReact(${i},true)">✓ like</button><button onclick="obReact(${i},false)">✗</button>
+      rank <input id="ob-rank-${i}" size="2" placeholder="#">
       <input id="ob-why-${i}" size="18" placeholder="why (saved on lock)"></div>
       <div style="margin-top:4px"><button onclick="obHear(${i})">hear our line ($0)</button> <button onclick="obLock(${i})">lock</button></div></div>`).join('')
       ||'<div style="color:var(--dim)">no candidates — try “more like these”</div>';
@@ -1430,6 +1431,22 @@ async function obLock(i){
 async function obMore(){
   document.getElementById('ob-msg').textContent='fresh 5, excluding seen…';
   obGrid();
+}
+async function obRank(){
+  const m=document.getElementById('ob-msg');
+  const order=[];
+  for(let i=0;i<obCands.length;i++){
+    const r=parseInt(((document.getElementById('ob-rank-'+i)||{}).value||''),10);
+    if(r>0)order.push({r,vid:obCands[i].voice_id});
+  }
+  if(order.length<2){m.textContent='rank at least 2 cards (1 = best)';return}
+  order.sort((a,b)=>a.r-b.r);
+  try{
+    const r=await api('POST','/api/studio/onboard/rank',{function:obChair||'narrator',
+      ordered_ids:order.map(o=>o.vid),
+      cards:obCands.map(c=>({voice_id:c.voice_id,tags:c.tags||[]}))});
+    m.textContent=r.ok?`calibrated ${r.function}: ${r.pairs} pairs — future ${r.function} rankings use fitted weights`:'ERR '+(r.error||r.reason||'');
+  }catch(e){m.textContent='ERR '+e.message}
 }
 function obPi(){
   try{quickChat(`propose 5 more ${obChair||'narrator'} voices for [brand:${obChan||'folk-and-fable'}], different from the ones already shown — whisper/calm storytellers with samples and one-line reasons each`)}catch(e){openTab('chat',true)}

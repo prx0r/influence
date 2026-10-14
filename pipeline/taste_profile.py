@@ -187,3 +187,111 @@ def weight_of(feature: str, default: float = 0.5) -> float:
     """Calibrated weight for one tag/word, or default when unknown."""
     w = _cached().get("weights", {}).get(str(feature).lower())
     return float(w) if w is not None else default
+
+
+# ---- calibration studio: pairwise rankings → per-function weights ----
+#
+# Human ranks 5 options per function (narration/whisper/lecture/...);
+# engine ranks too. Pairs (winner > loser) fit per-function weights:
+# winner tags/descriptors +, loser -. Stored in profile["functions"].
+# propose() blends global weights with the chair's function weights.
+
+PAIRS_PATH = os.path.join(STUDIO, "taste-pairs.jsonl")
+
+FUNCTIONS = ("narration", "whisper", "lecture", "character", "announcer")
+
+
+def record_ranking(function: str, ordered_ids: list,
+                   cards: list | None = None) -> dict:
+    """Store a human ranking (best-first IDs) as pairs + refit function."""
+    fn = str(function or "").strip().lower() or "general"
+    ids = [str(x) for x in (ordered_ids or []) if str(x).strip()][:8]
+    if len(ids) < 2:
+        return {"ok": False, "reason": "need 2+ ranked ids"}
+    by_id = {}
+    if cards:
+        for c in cards:
+            vid = str((c.get("voice_id") or ""))
+            if vid:
+                by_id[vid] = c
+    pairs = []
+    for i, w in enumerate(ids):
+        for l in ids[i + 1:]:
+            pairs.append({"function": fn, "winner": w, "loser": l,
+                          "ts": int(time.time()),
+                          "w_tags": (by_id.get(w) or {}).get("tags", []),
+                          "l_tags": (by_id.get(l) or {}).get("tags", [])})
+    with open(PAIRS_PATH, "a", encoding="utf-8") as f:
+        for p in pairs:
+            f.write(json.dumps(p) + "\n")
+    return {"ok": True, "function": fn, "pairs": len(pairs),
+            "fit": fit_function(fn)}
+
+
+def _pairs_for(fn: str) -> list:
+    out = []
+    try:
+        with open(PAIRS_PATH, encoding="utf-8") as f:
+            for line in f:
+                try:
+                    p = json.loads(line)
+                except Exception:
+                    continue
+                if isinstance(p, dict) and p.get("function") == fn:
+                    out.append(p)
+    except OSError:
+        pass
+    return out
+
+
+def fit_function(fn: str) -> dict:
+    """Fit per-function weights from pairs; persist into profile."""
+    pairs = _pairs_for(fn)
+    pos: dict[str, float] = {}
+    neg: dict[str, float] = {}
+    for p in pairs:
+        for t in p.get("w_tags") or []:
+            t = str(t).strip().lower()
+            if len(t) >= 3:
+                pos[t] = pos.get(t, 0.0) + 1.0
+        for t in p.get("l_tags") or []:
+            t = str(t).strip().lower()
+            if len(t) >= 3:
+                neg[t] = neg.get(t, 0.0) + 1.0
+    weights = {}
+    for f in set(pos) | set(neg):
+        w = (pos.get(f, 0.0) - neg.get(f, 0.0)) / (
+            pos.get(f, 0.0) + neg.get(f, 0.0) + 2.0)
+        if abs(w) >= 0.05:
+            weights[f] = round(max(-1.0, min(1.0, w)), 3)
+    prof = load_profile()
+    funcs = prof.get("functions") or {}
+    funcs[fn] = {"weights": dict(sorted(
+        weights.items(), key=lambda kv: -abs(kv[1]))),
+        "pairs": len(pairs), "fitted_at": int(time.time())}
+    prof["functions"] = funcs
+    with open(PROFILE, "w", encoding="utf-8") as f:
+        json.dump(prof, f, indent=1, ensure_ascii=False)
+    _CACHE["mtime"] = 0  # bust weight cache
+    return {"function": fn, "pairs": len(pairs),
+            "weights": funcs[fn]["weights"]}
+
+
+def function_weights(fn: str) -> dict:
+    """Fitted weights for a function, {} when uncalibrated."""
+    return (_cached().get("functions") or {}).get(fn, {}).get("weights", {})
+
+
+def chair_function(chair: str, direction: str = "") -> str:
+    """Map a chair to a calibration function by keywords."""
+    s = f"{chair} {direction}".lower()
+    if any(k in s for k in ("whisper", "yuki", "ghost", "veiled")):
+        return "whisper"
+    if any(k in s for k in ("lectur", "teacher", "professor", "explain")):
+        return "lecture"
+    if any(k in s for k in ("character", "goblin", "witch", "giant",
+                            "mouse", "kid", "boy", "girl")):
+        return "character"
+    if any(k in s for k in ("announc", "anchor", "news", "host")):
+        return "announcer"
+    return "narration"
