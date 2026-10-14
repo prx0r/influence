@@ -608,7 +608,7 @@ def list_voice_bank() -> list:
     Includes R2-archived clips (mp3 pruned, meta + r2_key kept) — the
     file route 302s those to presigned URLs."""
     out, seen = [], set()
-    for p in sorted(glob.glob(os.path.join(VOICE, "*.mp3")), reverse=True):
+    for p in sorted(glob.glob(os.path.join(VOICE, "*.mp3")), key=os.path.getmtime, reverse=True):
         n = os.path.basename(p)
         m = os.path.join(VOICE, n + ".json")
         meta = json.load(open(m)) if os.path.exists(m) else {}
@@ -616,7 +616,7 @@ def list_voice_bank() -> list:
         meta.setdefault("url", f"/api/studio/file?kind=voice&file={n}")
         out.append(meta)
         seen.add(n)
-    for m in sorted(glob.glob(os.path.join(VOICE, "*.json")), reverse=True):
+    for m in sorted(glob.glob(os.path.join(VOICE, "*.json")), key=os.path.getmtime, reverse=True):
         try:
             meta = json.load(open(m))
         except Exception:
