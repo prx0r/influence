@@ -136,7 +136,7 @@ body{font:13px/1.5 'Segoe UI',system-ui,sans-serif;background:var(--bg);color:va
 <body>
 
 <div class="titlebar" style="height:auto;min-height:30px;flex-wrap:wrap;row-gap:4px">
-  <div class="menu"><span onclick="fileMenu(event)" style="cursor:pointer">File ▾</span><span onclick="quickChat('/help')" style="cursor:pointer">Help</span></div>
+  <div class="menu"><span onclick="fileMenu(event)" style="cursor:pointer">File ▾</span><span id="chan-menu-btn" onclick="channelMenu(event)" style="cursor:pointer;color:var(--text)">Channel ▾</span><span onclick="quickChat('/help')" style="cursor:pointer">Help</span></div>
   <div class="brandfloat" id="brand-bar" style="display:flex;gap:10px;align-items:flex-start;margin-left:12px"></div>
   <div class="modefloat" id="studio-tabs" style="display:flex;gap:6px;align-items:center;margin-left:8px"></div>
   <span style="margin-left:auto" id="title-brand">influence</span>
@@ -225,7 +225,8 @@ async function ytBrands(){
     CHS.forEach((c,i)=>{
       BRANDS[c.slug]={name:c.display_name,domain:'youtube.com',logo:'',accent:i===0?'#D4A94E':'#E8A33D',channel:true};
     });
-    BRAND_SLUG=CHS[0].slug;
+    let saved='';try{saved=localStorage.getItem('activeBrand:'+location.hostname)||''}catch(e){}
+    BRAND_SLUG=BRANDS[saved]?saved:CHS[0].slug;
     try{document.documentElement.style.setProperty('--accent',BRANDS[BRAND_SLUG].accent)}catch(e){}
     const ci=document.getElementById('chat-in-main');
     if(ci)ci.placeholder='ask anything · try: cast a voice, prep a script, channel status';
@@ -233,8 +234,14 @@ async function ytBrands(){
   }catch(e){return false}
 }
 function paintBrandBar(){
+  // Avatar row replaced by the Channel ▾ menu (more room). Active entity shown in the menu label.
   const bar=document.getElementById('brand-bar');
   if(!bar)return;
+  const btn=document.getElementById('chan-menu-btn');
+  if(btn){const B=BRANDS[BRAND_SLUG];const dot=B&&B.accent?`<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${B.accent};margin-right:5px"></span>`:'';btn.innerHTML=dot+esc(BRAND_SLUG==='global'?'Global':((B&&B.name)||BRAND_SLUG))+' ▾'}
+  bar.innerHTML='';bar.style.display='none';
+  if(YT)ytDefaultChat();
+  return;
   const compact=STUDIO_TAB!=='chat';
   const emb=(slug,inner,ring,title)=>compact
     ?`<button onclick="setBrand('${slug}')" title="${esc(title)}" style="pointer-events:auto;width:30px;height:30px;border-radius:50%;border:2px solid ${ring};background:rgba(20,20,20,.85);padding:0;cursor:pointer;overflow:hidden">${inner.replace('width="46" height="46"','width="26" height="26"').replace('font-size:22px;line-height:46px','font-size:14px;line-height:26px')}</button>`
@@ -268,9 +275,26 @@ function fileMenu(e){
   const close=ev=>{if(!d.contains(ev.target)){d.remove();document.removeEventListener('click',close)}};
   setTimeout(()=>document.addEventListener('click',close),0);
 }
+function channelMenu(e){
+  e.stopPropagation();
+  const old=document.getElementById('chan-menu');
+  if(old){old.remove();return}
+  const d=document.createElement('div');
+  d.id='chan-menu';
+  const tb=document.querySelector('.titlebar'),b=document.getElementById('chan-menu-btn');
+  const left=b?b.getBoundingClientRect().left:60;
+  d.style.cssText='position:fixed;top:'+((tb?tb.offsetHeight:32)+4)+'px;left:'+left+'px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:4px;z-index:99;min-width:220px;max-height:70vh;overflow:auto';
+  const items=Object.entries(BRANDS).map(([slug,B])=>[slug,B.name||slug,B.accent]);
+  if(!YT)items.push(['global','🌐 Global','var(--border)']);
+  d.innerHTML=items.map(([slug,name,acc])=>`<div class="tree-item" style="${slug===BRAND_SLUG?'font-weight:600;background:var(--bg4)':''}" onclick="document.getElementById('chan-menu').remove();setBrand('${slug}')"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${acc||'var(--border)'};margin-right:8px"></span>${esc(name)}</div>`).join('');
+  document.body.appendChild(d);
+  const close=ev=>{if(!d.contains(ev.target)){d.remove();document.removeEventListener('click',close)}};
+  setTimeout(()=>document.addEventListener('click',close),0);
+}
 function setBrand(slug){
   if(slug!=='global'&&!BRANDS[slug])return;
   BRAND_SLUG=slug;
+  try{localStorage.setItem('activeBrand:'+location.hostname,slug)}catch(e){}
   const B=BRANDS[slug]||{};
   if(slug!=='global'&&B.mailbox)EMAIL_MAILBOX=B.mailbox;
   try{if(slug!=='global'&&B.accent)document.documentElement.style.setProperty('--accent',B.accent)}catch(e){}
