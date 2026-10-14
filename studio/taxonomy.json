@@ -1,0 +1,40 @@
+{
+ "description": "Format + status + engine tag taxonomy. Tags are data: formats, videos, pilots carry them; pi filters by them; verdicts aggregate by them.",
+ "formats": {
+  "talefull": {
+   "desc": "Complete flagship tale, full cast, hero render",
+   "length": "~12min"
+  },
+  "excerpt": {
+   "desc": "Opening chapters of a long tale; full spec after retention verdict",
+   "length": "~10min"
+  },
+  "mythcrossover": {
+   "desc": "Mythology-YouTube bait; tests adjacent-audience conversion",
+   "length": "~10min"
+  },
+  "andersensingle": {
+   "desc": "Single Andersen tale, no new chairs; isolates story-vs-voice",
+   "length": "~15min"
+  },
+  "systemrepeat": {
+   "desc": "Second tale in a proven system; tests system over video",
+   "length": "~15min"
+  }
+ },
+ "engines": {
+  "E1-hosted-music": "host intro + music whole + bridges + wedge",
+  "E2-reading": "slow TTS + ambient bed + one scene per passage (the workhorse)",
+  "E3-guided": "yoga-nidra narration over drone, descent only",
+  "E4-ambience": "synthesized bed + slow visual loop, cheapest per hour",
+  "E5-talk": "research brief + host essay + whiteboard diagrams",
+  "E6-freshness": "daily scan to brief to render, same-day"
+ },
+ "status": {
+  "scaffold": "record exists, chairs open",
+  "pilot": "proving (snippet, full, verdict)",
+  "proven": "retention verdict passed, etch chain unlocked",
+  "live": "uploading on cadence",
+  "blocked": "waiting on voice lock, source, or key"
+ }
+}

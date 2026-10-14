@@ -78,27 +78,32 @@
   {
    "name": "Tale full (S2 flagship)",
    "length": "~12min",
-   "reasoning": "Yuki-Onna: zero-competition depth; tests narrator + 2 chairs + SFX discipline at once"
+   "reasoning": "Yuki-Onna: zero-competition depth; tests narrator + 2 chairs + SFX discipline at once",
+   "tag": "talefull"
   },
   {
    "name": "Tale excerpt (S1 entry)",
    "length": "~10min",
-   "reasoning": "Snow Queen: nostalgia surface + search demand; excerpt first, 45min spec after verdict"
+   "reasoning": "Snow Queen: nostalgia surface + search demand; excerpt first, 45min spec after verdict",
+   "tag": "excerpt"
   },
   {
    "name": "Myth crossover (S3 bait)",
    "length": "~10min",
-   "reasoning": "Cyclops: mythology-YouTube adjacent audience, highest-value crossover test"
+   "reasoning": "Cyclops: mythology-YouTube adjacent audience, highest-value crossover test",
+   "tag": "mythcrossover"
   },
   {
    "name": "Andersen single (S1 cadence)",
    "length": "~15min",
-   "reasoning": "Emperor: prepped 62->96 already; no new chairs, isolates story-vs-voice"
+   "reasoning": "Emperor: prepped 62->96 already; no new chairs, isolates story-vs-voice",
+   "tag": "andersensingle"
   },
   {
    "name": "System repeat (S2 proof)",
    "length": "~15min",
-   "reasoning": "Baba Yaga: reuses doorway grammar; proves the S2 system repeats, not just one video"
+   "reasoning": "Baba Yaga: reuses doorway grammar; proves the S2 system repeats, not just one video",
+   "tag": "systemrepeat"
   }
  ],
  "instances": [
