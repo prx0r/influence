@@ -168,3 +168,119 @@ def contrast_notes(cast: list[dict]) -> list[str]:
         else:
             seen[sig] = c["name"]
     return notes
+
+
+# ---- archetype voice table (research-grounded selection) ----
+#
+# Sources: anime MRI study (heroes open/breathy, villains-M constricted,
+# villains-F lowered-larynx), Evil-Sounds-Deep vs Creepy-High split
+# (big/powerful evil = deep; small/sneaky/fair-folk evil = high),
+# anime 3 P's per archetype (pitch/pace/projection), opera tessitura
+# opposition (villain takes highest OR lowest vs hero range).
+# This is the Jev-style typed classifier: archetype in -> voice profile
+# out (pitch band, pace, projection, delivery). Deterministic now;
+# model-judged later. Same dims as MARY (arousal/valence/power).
+
+ARCHETYPES = {
+    # big evil: deep, harsh, commanding, slow (Vader/Scar/Overlord)
+    "overlord": {"pitch": (70, 110), "pace": "slow", "projection": "commanding",
+                 "delivery": "deep, harsh edge, unhurried menace",
+                 "valence": -0.6, "power": 0.9, "arousal": -0.1},
+    # sneaky evil: high, nasal, quick (imps, goblins, fair folk, Joker)
+    "imp": {"pitch": (200, 320), "pace": "quick", "projection": "nasal",
+            "delivery": "bright, sly, giggling undercurrent",
+            "valence": -0.4, "power": -0.2, "arousal": 0.5},
+    # hero: open, breathy, bright, grounded (audience anchor)
+    "hero": {"pitch": (140, 220), "pace": "even", "projection": "bright-forward",
+             "delivery": "open throat, grounded, conversational courage",
+             "valence": 0.5, "power": 0.3, "arousal": 0.2},
+    # mentor: warm + weight, calm authority (sensei lane)
+    "mentor": {"pitch": (90, 150), "pace": "slow", "projection": "warm-weight",
+               "delivery": "warm and weighty, tragic patience",
+               "valence": 0.4, "power": 0.5, "arousal": -0.4},
+    # ethereal: high, breathy, light (fairies, spirits, fae)
+    "fae": {"pitch": (200, 300), "pace": "drifting", "projection": "breathy-light",
+            "delivery": "airy, veiled, half-smiling detachment",
+            "valence": 0.2, "power": -0.4, "arousal": -0.3},
+    # crone/witch: low female, textured, knowing (Yubaba split: shrill OR alto)
+    "crone": {"pitch": (130, 200), "pace": "measured", "projection": "textured",
+              "delivery": "knowing, dry, amused at mortals",
+              "valence": -0.2, "power": 0.5, "arousal": -0.3},
+    # beast/creature: big, resonant, simple (reptilian lane)
+    "beast": {"pitch": (70, 120), "pace": "heavy", "projection": "resonant",
+              "delivery": "massive and simple, pauses like weather",
+              "valence": -0.1, "power": 0.8, "arousal": -0.2},
+    # trickster: quick, sly, musical (Anansi, fox, Loki-lite)
+    "trickster": {"pitch": (150, 250), "pace": "quick", "projection": "musical",
+                  "delivery": "sly musicality, delight in the game",
+                  "valence": 0.3, "power": 0.1, "arousal": 0.4},
+    # innocent: high, small, plain (children, lambs, first-timers)
+    "innocent": {"pitch": (220, 320), "pace": "plain", "projection": "small-clear",
+                 "delivery": "plain wonder, no craft, all sincerity",
+                 "valence": 0.5, "power": -0.5, "arousal": 0.0},
+    # elder: low, slow, rooted (trees, ancients, mountains that talk)
+    "elder": {"pitch": (80, 130), "pace": "rooted", "projection": "low-vast",
+              "delivery": "geological patience, words like sediment",
+              "valence": 0.1, "power": 0.6, "arousal": -0.5},
+}
+
+_ARCHETYPE_KEYS = {
+    "overlord": ("giant", "overlord", "emperor", "sorcerer", "darth", "scar",
+                 "evil chancellor", "don", "brute", "troll-", "ogre", "dragon"),
+    "imp": ("imp", "goblin", "clown", "joker", "gnome", "banshee", "siren",
+            "gremlin", "anansi", "fox", "spider", "trick"),
+    "hero": ("hero", "prince", "knight", "protagonist", "minokichi"),
+    "mentor": ("mentor", "sensei", "master", "sage", "guide", "father",
+               "grandfather"),
+    "fae": ("fairy", "fae", "elf", "spirit", "yuki", "mermaid", "sylph",
+            "ghost"),
+    "crone": ("witch", "crone", "hag", "baba", "yubaba", "stepmother"),
+    "beast": ("reptilian", "beast", "dragon", "bear", "wolf", "lion",
+              "serpent", "crocodile", "lizard"),
+    "trickster": ("trickster", "fox", "anansi", "cat", "raven", "coyote"),
+    "innocent": ("child", "kid", "baby", "lamb", "kai", "gerda", "lad",
+                 "apprentice"),
+    "elder": ("tree", "oak", "ancient", "mountain", "ent", "tortoise",
+              "grandmother", "grandfather"),
+}
+
+
+def classify_archetype(name: str, role: str | None = None,
+                       tags: list | None = None) -> dict:
+    """Character description -> archetype voice profile (the Jev-style
+    typed decision: choice of archetype with pitch/pace/projection).
+    Returns {archetype, profile, confidence, why}. Unknown -> {} default."""
+    import re as _re2
+    text = f"{name} {role or ''} {' '.join(tags or [])}".lower()
+    scored = []
+    for arch, keys in _ARCHETYPE_KEYS.items():
+        hits = [k for k in keys if _re2.search(r"\b" + _re2.escape(k) + r"\b", text)]
+        if hits:
+            scored.append((len(hits), arch, hits))
+    if not scored:
+        return {"archetype": "supporting", "confidence": 0.0,
+                "profile": {"pitch": (100, 200), "pace": "even",
+                            "projection": "plain",
+                            "delivery": "unmarked sleep narration",
+                            "valence": 0.1, "power": 0.0, "arousal": -0.4},
+                "why": "no archetype keywords — neutral sleep voice"}
+    scored.sort(reverse=True)
+    n, arch, hits = scored[0]
+    total = sum(s[0] for s in scored)
+    return {"archetype": arch, "confidence": round(min(0.95, n / max(1, total) + 0.3), 2),
+            "profile": ARCHETYPES[arch],
+            "why": f"matched {hits} → {arch} ({ARCHETYPES[arch]['delivery']})"}
+
+
+def oppose_band(hero_band: tuple[int, int], villainous: bool = True) -> tuple[int, int]:
+    """Opera tessitura rule: the villain takes highest OR lowest vs the
+    hero range — never the same band (vocal dissonance reads as threat)."""
+    lo, hi = hero_band
+    mid = (lo + hi) / 2
+    if not villainous:
+        return hero_band
+    # pick the farther extreme: below for menace-with-weight, above for
+    # unhinged/small evil (director's choice recorded in reason)
+    if mid >= 160:
+        return (max(60, lo - 60), max(80, lo - 10))
+    return (hi + 10, hi + 80)

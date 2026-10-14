@@ -317,3 +317,18 @@ def test_affect_selection_side():
     assert h["valence"] > 0 and "warm" in h["voice_words"]
     r = affect_for(None, "", None)
     assert r["arousal"] <= -0.2  # sleep clamp holds everywhere
+
+
+def test_archetype_classifier():
+    import sys as _s
+    _s.path.insert(0, "/root/influence/pipeline")
+    from ensemble_cast import classify_archetype, oppose_band
+    assert classify_archetype("Reptilian guard")["archetype"] == "beast"
+    assert classify_archetype("Yuki", "whisper")["archetype"] == "fae"
+    assert classify_archetype("Baba Yaga", "witch")["archetype"] == "crone"
+    assert classify_archetype("Kai", "boy")["archetype"] == "innocent"
+    assert classify_archetype("Xyzzy Qqq")["confidence"] == 0.0
+    lo, hi = oppose_band((140, 220))
+    assert hi < 140  # villain drops below hero band
+    lo2, hi2 = oppose_band((90, 130))
+    assert lo2 > 130  # villain floats above low hero band
