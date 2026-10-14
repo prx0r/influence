@@ -599,13 +599,16 @@ def list_channels() -> list:
     if not os.path.isdir(chan_dir):
         return out
     for fn in sorted(os.listdir(chan_dir)):
-        if not fn.endswith(".json") or fn.endswith(".seed.json"):
+        if (not fn.endswith(".json") or fn.endswith(".seed.json")
+                or fn.endswith("-taste.json")):
             continue
         try:
             with open(os.path.join(chan_dir, fn), encoding="utf-8") as f:
                 rec = json.load(f)
         except Exception:
             continue
+        if not isinstance(rec, dict) or not rec.get("channel"):
+            continue  # taste files, seeds, fragments are not channels
         slug = rec.get("channel", fn[:-5])
         chairs = (rec.get("voice") or {}).get("chairs", {})
         locked = sum(1 for c in chairs.values()

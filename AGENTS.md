@@ -24,3 +24,12 @@
    drives voice `BUSINESS_CONFIG` and the brain kernel — copy, never fork.
 11. **Keep the queue human-sized.** Wake-now is for emergencies. Everything else
     batches to morning. Alert fatigue is a security bug (see `docs/SECURITY.md`).
+12. **youtube.agentcom.org is THE dash. agentcom.org is legacy — do not touch.**
+    All studio/channel/voice/casting work ships to and is verified on the YT
+    dash (:8795, YT_MODE=1). Never send the owner agentcom.org links for
+    studio content. Verify with `curl https://youtube.agentcom.org/api/health`
+    + the actual route before reporting live. Restart :8795 (not :8793) after
+    backend changes; static files need no restart but hard-refresh to confirm.
+13. **Owner law: 0 credits ever** (CREDIT_SPEND_ENABLED unset — kill-switch in
+    `pipeline/audio_flow.py`). Free tier only until the owner explicitly says
+    otherwise. No workarounds, no exceptions, no "just this once".
