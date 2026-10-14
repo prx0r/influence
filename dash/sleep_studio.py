@@ -979,7 +979,21 @@ def video_detail(path: str, channel_slug: str = "") -> dict:
     slug = os.path.basename(path).split(".")[0]
     dur = f"{round(words / 105)} min" if words else ""
     tale = re.sub(r"^\d+[\-_ ]+", "", slug).replace("-", " ").strip()
-    vid = re.sub(r"[^A-Za-z0-9]+", "-", slug).strip("-")[:60]
+    # video_id: same numbering list_pilots assigns (per-collection order),
+    # so frontend/backend/bgraph all share one ID per video.
+    vid = ""
+    try:
+        import glob as _glob2
+        sibs = sorted(_glob2.glob(os.path.join(
+            os.path.dirname(path), "*" + os.path.splitext(path)[1])))
+        same = [p for p in sibs
+                if _pilot_collection(p, parsed["house"])["collection"]
+                == _pilot_collection(path, parsed["house"])["collection"]]
+        n = sum(1 for p in same if p <= path)
+        base_id = _pilot_collection(path, parsed["house"])["video_id"]
+        vid = re.sub(r"-\d+$", f"-{max(1, n):02d}", base_id)
+    except Exception:
+        vid = f"{channel_slug or parsed['house']}--{slug}"
     pref = []
     try:
         _vp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
@@ -1014,7 +1028,8 @@ def video_detail(path: str, channel_slug: str = "") -> dict:
         vmap.setdefault("spk" + str(c["speaker"]),
                         {"voice_id": c.get("voice_id", ""),
                          "label": cname + " (script stand-in)"})
-    # thumb draft: channel art + short title, local compose ($0)
+    # thumb draft: channel art + short title, local compose ($0).
+    # Filename IS the video_id (channel+video bound, bgraph-style).
     thumb = None
     try:
         from pipeline.thumb import compose as _compose
@@ -1024,13 +1039,14 @@ def video_detail(path: str, channel_slug: str = "") -> dict:
                             "..", "pipeline", "runs", channel_slug or "studio",
                             "thumbs")
         os.makedirs(tdir, exist_ok=True)
-        tp = os.path.join(tdir, slug + "-draft.jpg")
+        tp = os.path.join(tdir, vid + ".jpg")
         r = _compose(art, short, tp)
         if r.get("ok"):
-            thumb = {"path": tp, "bytes": r["bytes"], "title": short}
+            thumb = {"path": tp, "bytes": r["bytes"], "title": short,
+                     "video_id": vid}
     except Exception as e:  # noqa: BLE001 — thumb draft is best-effort
         thumb = {"error": str(e)[:120]}
-    return {"ok": True, "slug": slug, "house": parsed["house"],
+    return {"ok": True, "slug": slug, "video_id": vid, "house": parsed["house"],
             "words": words, "minutes": round(words / 105, 1),
             "segments": parsed["n_segments"],
             "score": prep["score_after"],

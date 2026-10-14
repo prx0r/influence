@@ -1540,7 +1540,7 @@ async function studioVideo(i){
     const chan=(typeof obChan!=='undefined'&&obChan)||'folk-and-fable';
     const r=await api('POST','/api/studio/video/detail',{path:p.path,channel:chan});
     if(!r.ok){el.innerHTML='ERR '+(r.error||r.reason||'');return}
-    const vvid=p.file.replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60);
+    const vvid=r.video_id||p.file.replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60);
     el.innerHTML=`<div style="font-size:11px"><b>ID ${esc(vvid)}</b> · ${r.words} words · ${r.minutes} min · ${r.segments} segs · score ${r.score}<br>
       <b>voices:</b> ${esc(Object.entries(r.voice_map||{}).map(([k,v])=>k+':'+(v.label||v.voice_id||'')).join(' · '))}<br>
       <b>titles (pick one):</b><br>${(r.titles||[]).map((t,ti)=>`<div>“${esc(t.title)}” <span class="dim">${esc(t.formula)} — ${esc(t.reason)}</span> <button onclick="studioPickTitle('${vvid}',${i},${ti})">use</button></div>`).join('')}
