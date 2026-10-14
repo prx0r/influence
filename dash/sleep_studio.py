@@ -855,3 +855,44 @@ def prepare_cast(collection: str, channel_slug: str = "",
             json.dump(sheet, f, indent=1, ensure_ascii=False)
         sheet["saved"] = f"studio/channels/{channel_slug}/casts/{collection}.cast.json"
     return sheet
+
+
+# ---- character context: who is this, in the books' own words ----
+
+def character_context(channel_slug: str, chair: str) -> dict:
+    """Who is this character? Aggregated from the channel's dramatis files:
+    books they appear in, profile, and actual sample lines from the books.
+    Powers human casting tasks ('confirm the voice for X')."""
+    import glob as _glob
+    ddir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                        "studio", "channels", channel_slug, "dramatis")
+    ddir = os.path.normpath(ddir)
+    if (".." in os.path.relpath(ddir, os.path.normpath(os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "..", "studio",
+            "channels")))):
+        return {"ok": False, "reason": "bad channel"}
+    books, profiles = [], {}
+    sensible = chair.strip().lower()
+    for fp in sorted(_glob.glob(os.path.join(ddir, "*.json"))):
+        try:
+            d = json.load(open(fp, encoding="utf-8"))
+        except Exception:
+            continue
+        for c in d.get("characters", []):
+            nm = str(c.get("name", ""))
+            if nm.lower() == sensible or sensible in nm.lower():
+                books.append(os.path.basename(fp)[:-5])
+                profiles[nm] = {
+                    "mentions": c.get("mentions", 0),
+                    "dialogue_lines": c.get("dialogue_lines", 0),
+                    "gender": c.get("gender"), "age": c.get("age"),
+                    "role": c.get("role"),
+                    "voice_query": c.get("voice_query", ""),
+                    "sample_line": (c.get("sample_line", "") or "").strip(
+                        "“”\"' \n")[:220],
+                    "dialogue_how": c.get("dialogue_how", "")}
+    if not profiles:
+        return {"ok": False,
+                "reason": f"no book character matches '{chair}'"}
+    return {"ok": True, "chair": chair, "books": sorted(set(books)),
+            "characters": profiles}

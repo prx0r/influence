@@ -141,6 +141,30 @@ def _yt_entities() -> list:
                 "message": (f"locked ({(ch.get('reason') or '')[:80]})"
                             if locked else "needs casting — onboard voices"),
             })
+        # open chairs become human casting tasks, with who-they-are context
+        # straight from the books (sample lines included).
+        for ch in c.get("chair_detail", []):
+            if ch.get("locked"):
+                continue
+            try:
+                ctx = _st.character_context(c["slug"], ch["name"])
+            except Exception:
+                ctx = {"ok": False}
+            if ctx.get("ok"):
+                who = "; ".join(
+                    f"{nm} ({p.get('gender') or '?'}"
+                    f"/{p.get('age') or '?'}"
+                    f"/{p.get('role') or 'no role'}"
+                    f"{': ' + chr(8220) + (p.get('sample_line') or '')[:90] + chr(8221) if p.get('sample_line') else ''})"
+                    for nm, p in list(ctx["characters"].items())[:3])
+                resources.append({
+                    "key": f"cast-{ch['name']}", "kind": "human",
+                    "label": f"Cast {ch['name']} — confirm the voice",
+                    "status": "UNKNOWN",
+                    "message": (f"{who} Books: "
+                                f"{', '.join(ctx.get('books', [])[:3])}. "
+                                f"Open casting view, play 5, lock with reason."),
+                })
         resources.append({
             "key": "brief", "kind": "brief", "label": "Channel brief",
             "status": "READY" if c.get("brief") else "UNKNOWN",
