@@ -23,7 +23,9 @@
   ],
   "context": "female characters in magic stories",
   "note": "owner: perfect for fairy-tale females",
-  "ts": 1791972193
+  "ts": 1791972193,
+  "task_count": 3108,
+  "sample_audio": "https://platform.r2.fish.audio/task/cbad5c93835a4f60a2271801f4a7af0b.mp3"
  },
  {
   "voice_id": "8d21b053e2804e2a890e1cf62f267b6f",
@@ -55,7 +57,9 @@
   ],
   "context": "any narration needing life",
   "note": "owner: INSANE variability, measured 29st span dense delivery",
-  "ts": 1791972194
+  "ts": 1791972194,
+  "task_count": 1934509,
+  "sample_audio": "https://platform.r2.fish.audio/task/461d972bd74442b4a06be63d34228cff.mp3"
  },
  {
   "voice_id": "0051da373e0a4ac282399909d1d31b69",
@@ -81,7 +85,9 @@
   ],
   "context": "character/cartoon utility for lore-sleep variety",
   "note": "owner: spongebob voice, useful",
-  "ts": 1791972383
+  "ts": 1791972383,
+  "task_count": 105584,
+  "sample_audio": "https://platform.r2.fish.audio/task/b9271e85bf1d4a47935df022e27db610.mp3"
  },
  {
   "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
@@ -114,7 +120,9 @@
   ],
   "context": "standard male sleep narrator default",
   "note": "owner: standard sleep voice",
-  "ts": 1791972570
+  "ts": 1791972570,
+  "task_count": 1337,
+  "sample_audio": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3"
  },
  {
   "voice_id": "5084227c7a6f489280cfeeccae809388",
@@ -146,7 +154,9 @@
   ],
   "context": "standard female sleep narrator default",
   "note": "owner: standard sleep voice",
-  "ts": 1791972572
+  "ts": 1791972572,
+  "task_count": 352,
+  "sample_audio": "https://platform.r2.fish.audio/task/42c09de8d9454651b811cec66af4031f.mp3"
  },
  {
   "voice_id": "3a561684e5fa46eb9528e8e6ff9000c9",
@@ -174,7 +184,9 @@
   ],
   "context": "kid/child character voices (Kai, Gerda, young Minokichi)",
   "note": "owner: perfect kid character voice",
-  "ts": 1791973425
+  "ts": 1791973425,
+  "task_count": 15118,
+  "sample_audio": "https://platform.r2.fish.audio/task/72b24dc9fbd046ebb116d30ce349c1e8.mp3"
  },
  {
   "voice_id": "ccf9e60669f34043b95c73ad73a775e5",
@@ -201,6 +213,8 @@
   ],
   "context": "boy characters (Kai, young Minokichi, tale lads)",
   "note": "owner: youthful boy character, could be useful",
-  "ts": 1791973587
+  "ts": 1791973587,
+  "task_count": 280,
+  "sample_audio": "https://platform.r2.fish.audio/task/f1fc7bb4c64f4effa31384a13619c365.mp3"
  }
 ]

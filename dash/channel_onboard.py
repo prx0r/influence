@@ -165,7 +165,6 @@ def propose(channel_slug: str, chair: str = "narrator",
         if nm not in best or uses > int(best[nm].get("task_count") or 0):
             best[nm] = v
     # incumbent always included for comparison (fresh challengers + status quo)
-    # incumbent always included for comparison (fresh challengers + status quo)
     incumbent = (chairs[chair].get("fish_id") or "")
     if incumbent and incumbent not in pool:
         d = af.voice_detail(incumbent).get("data") or {}
@@ -174,12 +173,30 @@ def propose(channel_slug: str, chair: str = "narrator",
                                "title": d.get("title") or d.get("name"),
                                "languages": d.get("languages") or [],
                                "tags": d.get("tags") or [],
-                               "sample_audio": d.get("sample_audio"),
+                               "sample_audio": d.get("sample_audio") or (
+                                   d.get("sample") or {}).get("audio", ""),
                                "task_count": d.get("task_count") or 0}
             nm = _norm_name(pool[incumbent])
             if nm and (nm not in best or int(pool[incumbent].get("task_count") or 0)
                        >= int(best[nm].get("task_count") or 0)):
                 best[nm] = pool[incumbent]
+    # loved voices always included (owner taste anchors — Calm Sleep
+    # Narrator, Sleepy, Luna…): English-first, marked so reasons cite them.
+    for _a in _anchors():
+        _vid = str(_a.get("voice_id") or "")
+        _langs = _a.get("languages") or ["en"]
+        if not _vid or _vid in pool:
+            continue
+        if not any(str(_l).startswith("en") for _l in _langs):
+            continue
+        pool[_vid] = {"id": _vid, "title": _a.get("title") or "loved voice",
+                      "languages": _langs, "tags": _a.get("tags") or [],
+                      "sample_audio": _a.get("sample_audio"),
+                      "task_count": _a.get("task_count") or 0,
+                      "_anchor": _a.get("title", "?")}
+        _nm = _norm_name(pool[_vid])
+        if _nm and _nm not in best:
+            best[_nm] = pool[_vid]
     scored = []
     # function fit once per propose (not per candidate): which calibration
     # function this chair maps to + its fitted weights ({} = uncalibrated).
@@ -239,6 +256,14 @@ def propose(channel_slug: str, chair: str = "narrator",
         if vid == incumbent:
             reasons.append("current lock — re-pick to keep, or dethrone")
             score = round(score + 0.5, 1)  # tie-break for the devil known
+        _anch_from = v.get("_anchor")
+        if not _anch_from:
+            for _aa in anchors:
+                if str(_aa.get("voice_id")) == vid:
+                    _anch_from = _aa.get("title", "?")
+                    break
+        if _anch_from:
+            reasons.insert(0, f"your loved voice ({_anch_from}) — auto-included")
         scored.append({"voice_id": vid,
                        "name": v.get("title") or v.get("name"),
                        "language": langs[0] if langs else "?",
@@ -247,6 +272,23 @@ def propose(channel_slug: str, chair: str = "narrator",
                        "uses": uses, "score": score,
                        "reason": "; ".join(reasons)})
     scored.sort(key=lambda c: c["score"], reverse=True)
+    # loved voices always survive the cut: appended with marker when they
+    # would otherwise fall off — owner taste is never paged out.
+    _have = {c["voice_id"] for c in scored[:n]}
+    for _a in anchors:
+        _vid = str(_a.get("voice_id") or "")
+        if not _vid or _vid in _have or _vid in seen_ids:
+            continue
+        scored.append({"voice_id": _vid,
+                       "name": _a.get("title") or "loved voice",
+                       "language": ((_a.get("languages") or ["?"])[0]
+                                    if isinstance(_a.get("languages"), list)
+                                    else _a.get("languages")),
+                       "tags": sorted(set(_a.get("tags") or []))[:8],
+                       "sample": _a.get("sample_audio"),
+                       "uses": int(_a.get("task_count") or 0),
+                       "score": 5.0,
+                       "reason": f"your loved voice ({_a.get('title', '?')}) — auto-included"})
     liked = _liked_ids(channel_slug, chair)
     return {"ok": True, "channel": channel_slug, "chair": chair,
             "function": _fn,
@@ -276,11 +318,19 @@ def lock(channel_slug: str, chair: str, voice_id: str, reason: str,
     if chair not in chairs:
         return {"ok": False, "reason": f"no chair '{chair}'"}
     c = chairs[chair]
+    prev = {"voice_id": c.get("fish_id", ""),
+            "label": c.get("label", ""),
+            "reason": c.get("lock_reason", "")}
     c["fish_id"] = voice_id
     c["status"] = "locked"
     c["lock_reason"] = reason
     c["locked_by"] = actor
     c["locked_at"] = int(time.time())
+    c["previous"] = [p for p in (c.get("previous") or [])
+                     if isinstance(p, dict)]
+    if prev["voice_id"] and prev["voice_id"] != voice_id:
+        c["previous"].append(prev)
+    # dethroned history kept — re-lock restores in one click
     tmp = path + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(rec, f, indent=1, ensure_ascii=False)
@@ -561,10 +611,13 @@ def love(voice_id: str, descriptors: list, context: str = "",
     desc = [str(x).lower()[:40] for x in (descriptors or []) if str(x).strip()][:12]
     anchors = _anchors()
     anchors = [a for a in anchors if a.get("voice_id") != voice_id]
+    _samp = d.get("sample_audio") or (d.get("sample") or {}).get("audio", "")
     anchors.append({"voice_id": voice_id,
                     "title": d.get("title") or "",
                     "tags": d.get("tags") or [],
                     "languages": d.get("languages") or [],
+                    "task_count": d.get("task_count") or 0,
+                    "sample_audio": _samp,
                     "descriptors": desc, "context": context[:120],
                     "note": note[:300], "ts": int(time.time())})
     tmp = os.path.normpath(ANCHORS_PATH) + ".tmp"
