@@ -136,6 +136,22 @@ def propose(channel_slug: str, chair: str = "narrator",
                 pool[vid] = v
     siblings = _sibling_voice_ids(channel_slug)
     seen_ids = set(exclude or []) | _dismissed_ids(channel_slug)
+    # dedupe: same voice re-uploaded under new IDs (Zack D. Films x2).
+    # Normalized name match → keep the highest-use copy. No dup cards.
+    import re as _re
+    def _norm_name(v):
+        return _re.sub(r"[^a-z0-9]", "", str(v.get("title") or v.get("name") or "").lower())
+    best = {}
+    for vid, v in pool.items():
+        if vid in seen_ids:
+            continue
+        nm = _norm_name(v)
+        if not nm:
+            continue
+        uses = int(v.get("task_count") or 0)
+        if nm not in best or uses > int(best[nm].get("task_count") or 0):
+            best[nm] = v
+    # incumbent always included for comparison (fresh challengers + status quo)
     # incumbent always included for comparison (fresh challengers + status quo)
     incumbent = (chairs[chair].get("fish_id") or "")
     if incumbent and incumbent not in pool:
@@ -147,13 +163,19 @@ def propose(channel_slug: str, chair: str = "narrator",
                                "tags": d.get("tags") or [],
                                "sample_audio": d.get("sample_audio"),
                                "task_count": d.get("task_count") or 0}
+            nm = _norm_name(pool[incumbent])
+            if nm and (nm not in best or int(pool[incumbent].get("task_count") or 0)
+                       >= int(best[nm].get("task_count") or 0)):
+                best[nm] = pool[incumbent]
     scored = []
-    for vid, v in pool.items():
-        if vid in seen_ids:
+    for v in best.values():
+        vid = v.get("id") or v.get("voice_id") or ""
+        if not vid or vid in seen_ids:
             continue
         tags = set((v.get("tags") or []))
         overlap = sorted({t for t in tags
-                          if any(k in t for k in chair_kw)})
+                          if any(k in t for k in chair_kw)},
+                         key=lambda t: (-len(t), t))
         uses = int(v.get("task_count") or 0)
         pop = min(10.0, math.log10(max(10, uses)))
         langs = v.get("languages") or v.get("language") or []
@@ -165,7 +187,12 @@ def propose(channel_slug: str, chair: str = "narrator",
                       - (8 if shared else 0), 1)
         reasons = []
         if overlap:
-            reasons.append(f"tags match vibe: {', '.join(overlap[:4])}")
+            if len(overlap) == 1 and len(overlap[0]) <= 5:
+                reasons.append(f"weak tag match ({overlap[0]}) — judge the sample")
+            else:
+                reasons.append(f"tags match vibe: {', '.join(overlap[:4])}")
+        else:
+            reasons.append("no tag overlap — sample decides")
         reasons.append(f"{uses:,} prior uses"
                        + (" (proven)" if uses > 20000 else " (niche)"))
         if not lang_ok:

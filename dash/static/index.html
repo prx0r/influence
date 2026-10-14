@@ -1327,7 +1327,7 @@ async function obLoadChannels(){
   try{const r=await api('POST','/api/studio/channels',{});
     const chs=r.channels||[];
     if(!obChan&&chs.length)obChan=chs[0].slug;
-    document.getElementById('ob-channels').innerHTML=chs.map(c=>`<button onclick="obChan='${c.slug}';obChairs()" style="${obChan===c.slug?'border-color:var(--gold);':''}">${esc(c.display_name)}</button>`).join('');
+    document.getElementById('ob-channels').innerHTML=chs.map(c=>`<button onclick="obChan='${c.slug}';obChairs()" style="margin:2px;${obChan===c.slug?'border-color:var(--gold);':''}">${esc(c.display_name)}</button>`).join('');
     obChairs();
   }catch(e){}
 }
@@ -1336,7 +1336,7 @@ async function obChairs(){
     const chairs=(((r.record||{}).voice||{}).chairs||{});
     const names=Object.keys(chairs);
     if(!obChair||!names.includes(obChair))obChair=names[0];
-    document.getElementById('ob-chairs').innerHTML='role: '+names.map(n=>`<button onclick="obChair='${n}';obSeen=[];obGrid()" style="${obChair===n?'border-color:var(--gold);':''}">${esc(n)}${chairs[n].fish_id?' 🔒':''}</button>`).join('');
+    document.getElementById('ob-chairs').innerHTML='<span style="font-size:11px;color:var(--dim)">role: </span>'+names.map(n=>`<button onclick="obChair='${n}';obSeen=[];obGrid()" style="margin:2px;${obChair===n?'border-color:var(--gold);':''}">${esc(n)}${chairs[n].fish_id?' 🔒':''}</button>`).join('');
     obSeen=[];obGrid();
   }catch(e){}
 }
@@ -1347,7 +1347,7 @@ async function obGrid(){
     obCands=r.candidates||[];
     obCands.forEach(c=>{if(!obSeen.includes(c.voice_id))obSeen.push(c.voice_id)});
     const liked=new Set(r.liked||[]);
-    g.innerHTML=obCands.map((c,i)=>`<div class="res" style="${liked.has(c.voice_id)?'border-color:var(--green);':''}"><b>${esc(c.name||c.voice_id)}</b> ${liked.has(c.voice_id)?'✓':''}<br>
+    g.innerHTML=obCands.map((c,i)=>`<div class="res" style="line-height:1.7;${liked.has(c.voice_id)?'border-color:var(--green);':''}"><b>${esc(c.name||c.voice_id)}</b> ${liked.has(c.voice_id)?'✓':''}<br>
       <span style="font-size:11px;color:var(--dim)">score ${c.score} · ${c.uses||0} uses · ${esc((c.tags||[]).slice(0,4).join(', '))}</span><br>
       <span style="font-size:11px">${esc(c.reason||'')}</span><br>
       ${c.sample?`<audio controls preload="none" src="${c.sample}" style="width:100%"></audio>`:''}
