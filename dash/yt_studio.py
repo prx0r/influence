@@ -29,7 +29,7 @@ if ROOT not in sys.path:
 JOBS: dict = {}
 _LOCK = threading.Lock()
 
-DEFAULT_KNOBS = {"speed": None, "temperature": 0.7, "volume_db": 0.0,
+DEFAULT_KNOBS = {"speed": None, "temperature": None, "volume_db": 0.0,
                  "preview_segments": 4, "voices": {}}
 
 

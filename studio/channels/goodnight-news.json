@@ -32,17 +32,49 @@
      "bad-news voice",
      "shared outside this project"
     ],
-    "status": "ear-check pending"
+    "status": "ear-check pending",
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "gentle anchor",
+     "energy": "warm-low",
+     "shelf": "warm lull",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "middle",
+     "register": "mid",
+     "texture": [
+      "warm",
+      "soft",
+      "close"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "anchor",
+      "close",
+      "gentle",
+      "lull",
+      "soft",
+      "warm"
+     ],
+     "truth": "A gentle anchor reading you to sleep."
+    }
    }
   },
-  "pace": 0.9,
+  "pace": 1.0,
   "render_default": "free (REST s2.1-pro-free, $0)",
   "render_hero": "drama-3 grant-gated"
  },
- "thesis": "End-of-day cortisol meets its opposite signal: progress with proof. Watch → feel better → sleep well → return. Settle, never enumerate anxieties.",
+ "thesis": "End-of-day cortisol meets its opposite signal: progress with proof. Watch \u2192 feel better \u2192 sleep well \u2192 return. Settle, never enumerate anxieties.",
  "audience": "Doomscrolling adults 25-45 wanting a calm nightly ritual; habit-loop viewers (same beats nightly).",
  "sourcing": {
-  "method": "Tier 1 RSS nightly scan → 5-story pick → brief → render same-day (E6 freshness, manual until scan loop built)",
+  "method": "Tier 1 RSS nightly scan \u2192 5-story pick \u2192 brief \u2192 render same-day (E6 freshness, manual until scan loop built)",
   "feeds": [
    "Good News Network",
    "Reasons to be Cheerful",

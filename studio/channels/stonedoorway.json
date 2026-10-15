@@ -17,7 +17,7 @@
  },
  "voice": {
   "bed": "breath + slow clock + faint chimes",
-  "pace": 0.85,
+  "pace": 1.0,
   "chairs": {
    "clinician": {
     "direction": "[clinical, tender, unhurried voice, midnight laboratory]",
@@ -31,6 +31,41 @@
      "voice_id": "780f45f809cc4cf795bb2373889dd65f",
      "label": "Storytelling",
      "reason": "owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, middle-aged, narration, smooth; 7,938 prior uses (niche)"
+    },
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "midnight clinician",
+     "energy": "low",
+     "shelf": "ritual-calm",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "low",
+      "measured",
+      "still"
+     ],
+     "presence": "circle",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "calm",
+      "clinician",
+      "low",
+      "measured",
+      "midnight",
+      "ritual",
+      "still"
+     ],
+     "truth": "A midnight clinician reading you to sleep."
     }
    }
   },
@@ -42,9 +77,9 @@
   "text_prep": "influence pipeline/tts_text (score gate 70)"
  },
  "receipts": "per-video vaults + studio voice bank",
- "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)",
- "thesis": "Stonedoorway sleep channel — thesis to confirm from damn README + sleepintel registry",
- "audience": "Adults 25-54 sleep listeners — refine per sleepintel hypotheses",
+ "imported_from": "damn profiles.json (scaffold \u2014 confirm thesis/style/cadence)",
+ "thesis": "Stonedoorway sleep channel \u2014 thesis to confirm from damn README + sleepintel registry",
+ "audience": "Adults 25-54 sleep listeners \u2014 refine per sleepintel hypotheses",
  "sourcing": {
   "method": "damn project scripts + PD sources on disk; pi proposes from registry gaps",
   "feeds": [

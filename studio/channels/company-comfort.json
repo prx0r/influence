@@ -17,7 +17,7 @@
  },
  "voice": {
   "bed": "",
-  "pace": 0.85,
+  "pace": 1.0,
   "chairs": {
    "companion": {
     "direction": "[warm companion voice, settling, never alarming]",
@@ -30,7 +30,38 @@
     "recommended": {
      "voice_id": "802a5f6a9b0941b2b020857cadb6587a",
      "label": "Singing Companion",
-     "reason": "weak tag match (warm) — judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): character-voice, entertainment, social-media, storytelling; 288 prior uses (niche)"
+     "reason": "weak tag match (warm) \u2014 judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): character-voice, entertainment, social-media, storytelling; 288 prior uses (niche)"
+    },
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "warm companion",
+     "energy": "warm-low",
+     "shelf": "warm lull",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "warm",
+      "soft",
+      "close"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "close",
+      "companion",
+      "lull",
+      "soft",
+      "warm"
+     ],
+     "truth": "A warm companion reading you to sleep."
     }
    }
   },
@@ -42,9 +73,9 @@
   "text_prep": "influence pipeline/tts_text (score gate 70)"
  },
  "receipts": "per-video vaults + studio voice bank",
- "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)",
- "thesis": "Company Comfort sleep channel — thesis to confirm from damn README + sleepintel registry",
- "audience": "Adults 25-54 sleep listeners — refine per sleepintel hypotheses",
+ "imported_from": "damn profiles.json (scaffold \u2014 confirm thesis/style/cadence)",
+ "thesis": "Company Comfort sleep channel \u2014 thesis to confirm from damn README + sleepintel registry",
+ "audience": "Adults 25-54 sleep listeners \u2014 refine per sleepintel hypotheses",
  "sourcing": {
   "method": "damn project scripts + PD sources on disk; pi proposes from registry gaps",
   "feeds": [

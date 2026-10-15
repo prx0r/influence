@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Folk &amp; Fable — sleep stories</title>
+<style>
+:root{--bg:#131316;--card:#1a1a1f;--line:#34343c;--text:#eceaf0;--dim:#9c9aa6;--gold:#D4A94E;--chan:#9b7ede}
+html[data-theme="light"]{--bg:#fafafc;--card:#fff;--line:#e4e4ea;--text:#17171c;--dim:#6b6b78}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.6 "Geist",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);max-width:760px;margin:0 auto;padding:32px 20px 80px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+h1{font-size:30px;letter-spacing:-.02em}
+h1 .moon{color:var(--gold)}
+.sub{color:var(--dim);margin-bottom:28px;max-width:56ch}
+#theme{background:transparent;border:1px solid var(--line);color:var(--text);border-radius:999px;width:36px;height:36px;cursor:pointer;font-size:16px}
+.ep{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 8px 30px #0007}
+.ep h2{font-size:19px;letter-spacing:-.01em;text-transform:capitalize}
+.meta{color:var(--dim);font-size:12.5px;margin:4px 0 12px}
+.meta b{color:var(--chan);font-weight:600}
+audio{width:100%;height:40px;accent-color:var(--chan)}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-right:6px;color:var(--dim)}
+.empty{color:var(--dim);text-align:center;padding:40px}
+footer{color:var(--dim);font-size:12px;margin-top:32px;text-align:center}
+</style>
+</head>
+<body>
+<header><h1><span class="moon">☾</span> Folk &amp; Fable</h1><button id="theme" title="light / dark">◐</button></header>
+<p class="sub">Sleep fairytales, folklore and myth — read slowly by lamplight. New tales Monday, Wednesday, Friday. Headphones on, phone face-down.</p>
+<div id="eps"><div class="empty">Loading episodes…</div></div>
+<footer>Not made for kids · AI-voiced · public-domain tales, retold for sleep</footer>
+<script>
+try{document.documentElement.dataset.theme=localStorage.ffTheme||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(e){}
+document.getElementById('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=t;try{localStorage.ffTheme=t}catch(e){}};
+const pretty=n=>n.replace(/\.mp3$/,'').replace(/^(yuki-full|full|take|pilot)-/,'').replace(/-/g,' ').replace(/\d{6} \d{2}/,'').trim()||n;
+const mins=c=>c>500?' · ~'+Math.round(c/900)+' min':"";
+fetch('/api/studio/fish/bank',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'}).then(r=>r.json()).then(j=>{
+  const clips=(j.clips||[]).filter(c=>/master\.mp3$/.test(c.name||''));
+  if(!clips.length){document.getElementById('eps').innerHTML='<div class="empty">First tale is on its way.</div>';return;}
+  document.getElementById('eps').innerHTML=clips.map(c=>`<div class="ep"><h2>${pretty(c.name)}</h2>
+    <div class="meta"><b>Folk &amp; Fable</b>${mins(c.chars||0)} · <span class="tag">sleep reading</span><span class="tag">$0 · clean voice</span></div>
+    <audio controls preload="none" src="/api/studio/file?kind=voice&file=${encodeURIComponent(c.name)}"></audio></div>`).join('');
+}).catch(()=>{document.getElementById('eps').innerHTML='<div class="empty">Could not load episodes.</div>';});
+</script>
+</body>
+</html>

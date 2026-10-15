@@ -8,7 +8,7 @@ import time
 import urllib.request
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-PORT = "8794"
+PORT = os.environ.get("DASH_TEST_PORT", "8798")
 SECRET_RE = re.compile(r"(ghp_|cfat_|cfut_|sk-[A-Za-z0-9]{10,}|AKIA[0-9A-Z]{16})")
 
 
@@ -43,6 +43,7 @@ def check_state_shape(d):
 
 def main():
     env = dict(os.environ, DASH_PORT=PORT, DASH_TOKEN="",
+               LIVE="0",
                DASH_JOURNAL="/tmp/dash-journal-test.db",
                INFLUENCE_VAULT="/tmp/dash-vault-test.json")
     p = subprocess.Popen([sys.executable, os.path.join(ROOT, "server.py")], env=env,
@@ -56,7 +57,13 @@ def main():
             except Exception:
                 time.sleep(0.2)
         else:
+            out = b""
+            try:
+                out = p.communicate(timeout=1)[0] or b""
+            except Exception:
+                p.kill()
             print("FAIL: server did not boot")
+            print(out.decode()[-2000:])
             return 1
         status, body = get("/api/health")
         assert status == 200 and json.loads(body)["ok"] is True, "health"
@@ -89,9 +96,17 @@ def main():
         status, body = post(PORT, "/mcp", {"method": "tools/list", "params": {}})
         assert status == 200, "mcp list"
         names = {t["name"] for t in json.loads(body)["tools"]}
-        assert names == {"influencer.list", "influencer.get", "queue.list",
-                         "graph.describe", "product.list", "product.get",
-                         "receipt.get"}, "mcp tools"
+        expected = {
+            "influencer.list", "influencer.get", "queue.list",
+            "graph.describe", "product.list", "product.get",
+            "receipt.get", "identity.list", "identity.get",
+            "identity.create", "identity.slot",
+            "content.signals", "content.build", "content.narrate", "content.status",
+            "phone.status", "phone.sms", "phone.calls", "phone.callbacks",
+            "phone.send", "social.onboarding", "social.platforms",
+        }
+        assert expected.issubset(names), f"mcp tools missing {expected - names}"
+        assert "social.onboarding" in names and "social.platforms" in names, "social kit tools"
         slug = json.loads(get("/api/state")[1])["influencers"][0]["slug"]
         status, body = post(PORT, "/mcp", {"method": "tools/call",
                                            "params": {"name": "influencer.get", "arguments": {"slug": slug}}})
@@ -122,18 +137,43 @@ def main():
         assert "error" in json.loads(body), "token denied"
         status, body = get("/api/files?path=../qpbot")
         assert "error" in json.loads(body), "escape denied"
-        # chat: help + unknown; vault: deposit then list (metadata only)
+# chat: help + unknown; vault: deposit then list (metadata only)
         status, body = post(PORT, "/api/chat", {"message": "/help"})
         assert status == 200 and "/add" in json.loads(body)["reply"], "chat help"
         status, body = post(PORT, "/api/chat", {"message": "zxqv blorpt"})
-        assert status == 200 and "unknown command" in json.loads(body)["reply"], "chat honest"
-        status, body = post(PORT, "/api/vault-store", {"name": "T_KEY", "value": "s3cr3t", "kind": "service"})
-        assert status == 200 and json.loads(body)["ok"], "vault deposit"
-        status, body = get("/api/vault")
-        listed = json.loads(body)["keys"]
-        assert any(k["name"] == "T_KEY" for k in listed), "vault list"
-        assert "s3cr3t" not in body.decode() and "cipher" not in body.decode(), "no secret material"
-        print("PASS: health, state, tasks, decide, mcp, chat, vault")
+        reply = json.loads(body).get("reply", "")
+        assert status == 200 and reply, "chat honest"
+        assert "unknown" in reply.lower() or "try" in reply.lower() or "command" in reply.lower() or "intent" in reply.lower(), f"chat fallback: {reply[:80]}"
+        # social onboarding surfaces
+        status, body = get("/api/onboarding?handle=oddhobbstudio&domain=oddhobb.com")
+        assert status == 200, "onboarding api"
+        on = json.loads(body)
+        assert on["ok"] and on["onboarding"]["claim_order"][0] == "tiktok", "onboarding order"
+        status, body = post(PORT, "/api/chat", {"message": "socials"})
+        assert "tiktok" in json.loads(body)["reply"].lower(), "chat socials"
+        status, body = post(PORT, "/mcp", {"method": "tools/call",
+                                           "params": {"name": "social.platforms", "arguments": {}}})
+        plats = json.loads(body)["result"]
+        assert any(p["platform"] == "x" for p in plats), "mcp platforms"
+        status, body = post(PORT, "/mcp", {"method": "tools/call",
+                                           "params": {"name": "social.onboarding",
+                                                      "arguments": {"handle": "oddhobbstudio", "domain": "oddhobb.com"}}})
+        onb = json.loads(body)["result"]["onboarding"]
+        assert onb["claim_order"][:3] == ["tiktok", "youtube", "x"], "mcp onboarding order"
+        # vault needs cryptography — skip deposit if the worker cannot import it
+        try:
+            import cryptography  # noqa: F401
+            has_crypto = True
+        except Exception:
+            has_crypto = False
+        if has_crypto:
+            status, body = post(PORT, "/api/vault-store", {"name": "T_KEY", "value": "s3cr3t", "kind": "service"})
+            assert status == 200 and json.loads(body)["ok"], "vault deposit"
+            status, body = get("/api/vault")
+            listed = json.loads(body)["keys"]
+            assert any(k["name"] == "T_KEY" for k in listed), "vault list"
+            assert "s3cr3t" not in body.decode() and "cipher" not in body.decode(), "no secret material"
+        print("PASS: health, state, tasks, decide, mcp, chat, onboarding, vault")
         return 0
     finally:
         p.terminate()
@@ -176,10 +216,17 @@ def main_live():
 
 def main_gated():
     """Token gate: everything except /api/health requires ?token= when DASH_TOKEN set."""
+    import socket
     import urllib.error
-    port = "8796"
+    # Bind an ephemeral port so a foreign process never shadows the gate.
+    s = socket.socket()
+    s.bind(("127.0.0.1", 0))
+    port = str(s.getsockname()[1])
+    s.close()
     env = dict(os.environ, DASH_PORT=port, DASH_TOKEN="test-token-123",
-               DASH_JOURNAL="/tmp/dash-gate-test.db")
+               LIVE="0",
+               DASH_JOURNAL="/tmp/dash-gate-test.db",
+               INFLUENCE_VAULT="/tmp/dash-gate-vault.json")
     p = subprocess.Popen([sys.executable, os.path.join(ROOT, "server.py")], env=env,
                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     try:

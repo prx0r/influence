@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "updated": "2026-10-15",
+  "note": "Owner house tops. Defaults for sleepy lanes; per-project locks fork from here (damn: one narrator per project, never shared).",
+  "tops": {
+    "sleepy_male": {
+      "voice_id": "22dfd973f6054822b0c03dcdc51fdf14",
+      "name": "Calm Sleep Narrator",
+      "status": "owner-top",
+      "reason": "owner top sleepy male; audition 16.0 top narrator (kwaidan), 14.5 top Tomotada",
+      "tags": ["male", "middle-aged", "narration", "entertainment", "deep", "low", "soft", "warm", "smooth", "breathy", "calm", "relaxed", "measured", "gentle", "intimate", "storytelling"],
+      "sample": "https://platform.r2.fish.audio/task/d2b71d33e8ea48fc9f561be50c167cf3.mp3",
+      "task_count": 1347,
+      "audition": "dash/static/auditions/folk-and-fable-kwaidan-part-1.json"
+    },
+    "sleepy_female": {
+      "voice_id": "5084227c7a6f489280cfeeccae809388",
+      "name": "Sleepy",
+      "status": "owner-top",
+      "reason": "owner top sleepy female; audition 14.6 top Minokichi, 13.6 Yuki shortlist",
+      "tags": ["female", "young", "narration", "conversational", "entertainment", "soft", "calm", "relaxed", "gentle", "smooth", "intimate", "storytelling", "clear", "medium", "friendly"],
+      "sample": "https://platform.r2.fish.audio/task/42c09de8d9454651b811cec66af4031f.mp3",
+      "task_count": 354,
+      "audition": "dash/static/auditions/folk-and-fable-kwaidan-part-1.json"
+    },
+    "young_female": {
+      "voice_id": "a71f0b05f92b4b749b477f5b1001c95f",
+      "name": "Friendly Teen Voice",
+      "status": "owner-top",
+      "reason": "owner pick for young female; engine missed it (pool too narrow) — Fish: energetic friendly young, relatable storytelling, 82 likes, 6708 uses",
+      "tags": ["neutral", "young", "social-media", "entertainment", "conversational", "energetic", "friendly", "clear", "bright", "expressive", "animated", "storytelling", "female", "calm", "cheerful", "breathy"],
+      "sample": "https://platform.r2.fish.audio/task/374722ef854f47078002507c083e3fdd.mp3",
+      "task_count": 6708,
+      "audition": ""
+    },
+    "wise_old_man": {
+      "voice_id": "394578d869ee4f99aa6fa500ba664528",
+      "name": "old man",
+      "status": "owner-top",
+      "reason": "owner pick as wise old man; Fish: deep, raspy, authoritative, slow measured pace, reflective — wisdom and experience, dramatic storytelling",
+      "tags": ["male", "old", "narration", "character-voice", "deep", "raspy", "calm", "measured", "storytelling"],
+      "sample": "https://platform.r2.fish.audio/task/2705cf1b87014456a22a5eb29e279d62.mp3",
+      "task_count": 763,
+      "audition": ""
+    },
+    "storytelling": {
+      "voice_id": "4b5f0c6f0a4b49988f449d0a04039a95",
+      "name": "old man",
+      "status": "owner-top-locked",
+      "reason": "THE voice — owner: perfect for storytelling; Fish: deep, resonant, warm weathered, calm smooth authoritative, nostalgic storytelling, narration + documentary",
+      "tags": ["male", "old", "narration", "deep", "warm", "smooth", "calm", "storytelling", "documentary"],
+      "sample": "https://platform.r2.fish.audio/task/567ffcefcf2841668c71d084ea2f00dd.mp3",
+      "task_count": 1024,
+      "audition": ""
+    },
+    "young_character_female": {
+      "voice_id": "aaf2e6c3410d40d0b3d4bd9c242e5486",
+      "name": "Twilight Sparkle (The Show Stoppers)",
+      "status": "owner-reference",
+      "reason": "owner reference for what he likes: female character voice, kid/teen. Fish: bright animated playful expressive, 207 likes, 18092 uses. Reference only — energy too high for sleep whisper roles",
+      "tags": ["young", "character-voice", "entertainment", "bright", "animated", "playful", "expressive", "friendly", "energetic", "female", "storytelling", "gentle", "calm"],
+      "sample": "https://platform.r2.fish.audio/task/b2bc220200974e898f6bec830c03088f.mp3",
+      "task_count": 18092,
+      "audition": ""
+    },
+    "breathy_frosty_female": {
+      "voice_id": "511587b8341d471897655a634340a296",
+      "name": "Witch",
+      "status": "owner-top",
+      "reason": "owner pick for breathy frosty female (Yuki lane); Fish: sophisticated commanding, refined mature, intense mysterious dramatic, cinematic narration. Deep soft dark raspy calm — frost archetype, not whisper-genre",
+      "tags": ["female", "middle-aged", "character-voice", "deep", "soft", "dark", "raspy", "conversational", "narration", "entertainment", "authoritative", "mysterious", "dramatic", "serious", "calm", "cinematic", "storytelling"],
+      "sample": "https://platform.r2.fish.audio/task/350f633126324b1eae6de4edfbcc5ef7.mp3",
+      "task_count": 1154,
+      "audition": ""
+    }
+  }
+}

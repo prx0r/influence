@@ -28,20 +28,20 @@
    "minokichi": {
     "label": "",
     "category": "narrator",
-    "direction": "[young earnest male, slower than normal speech]",
+    "direction": "[young earnest male]",
     "voice_id": ""
    },
    "narrator": {
-    "label": "Adrian",
+    "label": "old man (THE storytelling voice)",
     "category": "narrator",
-    "direction": "[calm, measured storyteller voice, slow and gentle for sleep, slower than normal speech]",
-    "voice_id": "bf322df2096a46f18c579d0baa36f41d"
+    "direction": "[calm, measured storyteller voice, slow and gentle for sleep]",
+    "voice_id": "4b5f0c6f0a4b49988f449d0a04039a95"
    },
    "yuki": {
     "label": "",
     "category": "narrator",
-    "direction": "[veiled whisper female, slower than normal speech]",
-    "voice_id": ""
+    "direction": "[veiled whisper female]",
+    "voice_id": "511587b8341d471897655a634340a296"
    }
   }
  },

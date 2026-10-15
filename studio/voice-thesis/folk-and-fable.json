@@ -46,7 +46,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "elder referee",
+     "energy": "warm-low",
+     "shelf": "warm elder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "soft",
+      "calm",
+      "low"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "neutral",
+     "voice_words": [
+      "calm",
+      "elder",
+      "low",
+      "referee",
+      "soft",
+      "warm"
+     ],
+     "truth": "An elder referee who calls tricksters fairly and never competes."
+    }
    }
   },
   {
@@ -93,7 +125,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "female",
+     "gender_conf": "med",
+     "era": "timeless",
+     "archetype": "lull keeper",
+     "energy": "warm-low",
+     "shelf": "warm lull",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "warm",
+      "soft",
+      "close"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "close",
+      "keeper",
+      "lull",
+      "soft",
+      "warm"
+     ],
+     "truth": "A lull keeper humming underneath the story."
+    }
    }
   },
   {
@@ -140,7 +203,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -184,7 +281,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -227,7 +355,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -271,7 +433,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "epic herald",
+     "energy": "mid-low",
+     "shelf": "epic narration",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weighty",
+      "measured"
+     ],
+     "presence": "hall",
+     "pace": "steady",
+     "warmth": "neutral",
+     "voice_words": [
+      "deep",
+      "epic",
+      "herald",
+      "measured",
+      "narration",
+      "weighty"
+     ],
+     "truth": "A herald who carries weight and lets rooms go quiet."
+    }
    }
   },
   {
@@ -321,7 +515,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -364,7 +589,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   },
   {
@@ -421,7 +684,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   },
   {
@@ -470,7 +771,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -520,7 +852,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -576,7 +939,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -619,7 +1013,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "epic herald",
+     "energy": "mid-low",
+     "shelf": "epic narration",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weighty",
+      "measured"
+     ],
+     "presence": "hall",
+     "pace": "steady",
+     "warmth": "neutral",
+     "voice_words": [
+      "deep",
+      "epic",
+      "herald",
+      "measured",
+      "narration",
+      "weighty"
+     ],
+     "truth": "A herald who carries weight and lets rooms go quiet."
+    }
    }
   },
   {
@@ -666,7 +1092,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -713,7 +1173,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -760,7 +1254,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -807,7 +1335,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -850,7 +1412,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -901,7 +1497,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "elder referee",
+     "energy": "warm-low",
+     "shelf": "warm elder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "soft",
+      "calm",
+      "low"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "neutral",
+     "voice_words": [
+      "calm",
+      "elder",
+      "low",
+      "referee",
+      "soft",
+      "warm"
+     ],
+     "truth": "An elder referee who calls tricksters fairly and never competes."
+    }
    }
   },
   {
@@ -944,7 +1572,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   },
   {
@@ -987,7 +1653,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   },
   {
@@ -1036,7 +1740,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -1083,7 +1818,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -1127,7 +1893,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "epic herald",
+     "energy": "mid-low",
+     "shelf": "epic narration",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weighty",
+      "measured"
+     ],
+     "presence": "hall",
+     "pace": "steady",
+     "warmth": "neutral",
+     "voice_words": [
+      "deep",
+      "epic",
+      "herald",
+      "measured",
+      "narration",
+      "weighty"
+     ],
+     "truth": "A herald who carries weight and lets rooms go quiet."
+    }
    }
   },
   {
@@ -1176,7 +1974,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -1220,7 +2049,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "epic herald",
+     "energy": "mid-low",
+     "shelf": "epic narration",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weighty",
+      "measured"
+     ],
+     "presence": "hall",
+     "pace": "steady",
+     "warmth": "neutral",
+     "voice_words": [
+      "deep",
+      "epic",
+      "herald",
+      "measured",
+      "narration",
+      "weighty"
+     ],
+     "truth": "A herald who carries weight and lets rooms go quiet."
+    }
    }
   },
   {
@@ -1264,7 +2125,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "epic herald",
+     "energy": "mid-low",
+     "shelf": "epic narration",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weighty",
+      "measured"
+     ],
+     "presence": "hall",
+     "pace": "steady",
+     "warmth": "neutral",
+     "voice_words": [
+      "deep",
+      "epic",
+      "herald",
+      "measured",
+      "narration",
+      "weighty"
+     ],
+     "truth": "A herald who carries weight and lets rooms go quiet."
+    }
    }
   },
   {
@@ -1331,7 +2224,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   },
   {
@@ -1384,7 +2315,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -1439,7 +2401,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -1482,7 +2475,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -1525,7 +2552,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -1573,7 +2634,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "old sailor",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "old",
+      "sailor",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "An old sailor who has seen the far water and lived to tell it slow."
+    }
    }
   },
   {
@@ -1616,7 +2709,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -1659,7 +2786,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -1702,7 +2863,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -1745,7 +2940,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -1792,7 +3021,38 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "wonder keeper",
+     "energy": "warm-low",
+     "shelf": "wonder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": null,
+     "register": "mid",
+     "texture": [
+      "soft",
+      "warm",
+      "clear"
+     ],
+     "presence": "fireside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "clear",
+      "keeper",
+      "soft",
+      "warm",
+      "wonder"
+     ],
+     "truth": "A wonder keeper who leaves the door ajar but never pushes."
+    }
    }
   },
   {
@@ -1842,7 +3102,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -1890,7 +3184,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "elder referee",
+     "energy": "warm-low",
+     "shelf": "warm elder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "soft",
+      "calm",
+      "low"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "neutral",
+     "voice_words": [
+      "calm",
+      "elder",
+      "low",
+      "referee",
+      "soft",
+      "warm"
+     ],
+     "truth": "An elder referee who calls tricksters fairly and never competes."
+    }
    }
   },
   {
@@ -1937,7 +3263,39 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "elder referee",
+     "energy": "warm-low",
+     "shelf": "warm elder",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "soft",
+      "calm",
+      "low"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "neutral",
+     "voice_words": [
+      "calm",
+      "elder",
+      "low",
+      "referee",
+      "soft",
+      "warm"
+     ],
+     "truth": "An elder referee who calls tricksters fairly and never competes."
+    }
    }
   },
   {
@@ -1980,7 +3338,41 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "sleep keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "keeper",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sleep keeper holding the lamp low until you go."
+    }
    }
   },
   {
@@ -2038,7 +3430,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   },
   {
@@ -2094,7 +3524,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   },
   {
@@ -2144,7 +3612,45 @@
        "soft"
       ]
      }
-    ]
+    ],
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "grave keeper",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "intimate",
+      "playful",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "grave",
+      "keeper",
+      "low",
+      "sleep",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "A grave keeper who keeps the dead company so you can sleep near them."
+    }
    }
   }
  ],
@@ -2163,8 +3669,8 @@
     "role": null
    },
    "sample_lines": [
-    "“I intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,—because you\n\nare so young... You are a pretty boy, Minokichi; and I w",
-    "“I intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,—because you\n\nare so young... You are a pretty boy, Minokichi; and I w"
+    "\u201cI intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,\u2014because you\n\nare so young... You are a pretty boy, Minokichi; and I w",
+    "\u201cI intended to treat you like\n\nthe other man. But I cannot help feeling some pity for you,\u2014because you\n\nare so young... You are a pretty boy, Minokichi; and I w"
    ],
    "predicted": {
     "archetype": "hero",
@@ -2200,7 +3706,7 @@
      }
     ]
    },
-   "why": "34 mentions across 2 book(s), 10 spoken lines; speaks proximity. Minokichi: young unspecified figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+   "why": "34 mentions across 2 book(s), 10 spoken lines; speaks proximity. Minokichi: young unspecified figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind \u2014 the sleep baseline"
   },
   {
    "character": "Yuki",
@@ -2216,8 +3722,8 @@
     "role": null
    },
    "sample_lines": [
-    "“Tell me about her... Where did you see her?”",
-    "“Tell me about her... Where did you see her?”"
+    "\u201cTell me about her... Where did you see her?\u201d",
+    "\u201cTell me about her... Where did you see her?\u201d"
    ],
    "predicted": {
     "archetype": "fae",
@@ -2253,7 +3759,7 @@
      }
     ]
    },
-   "why": "23 mentions across 2 book(s), 2 spoken lines; speaks proximity. Yuki: young unspecified figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+   "why": "23 mentions across 2 book(s), 2 spoken lines; speaks proximity. Yuki: young unspecified figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind \u2014 the sleep baseline"
   },
   {
    "character": "Tiger",
@@ -2270,7 +3776,7 @@
     "role": null
    },
    "sample_lines": [
-    "“What you have in that basket,\n\nsah?”",
+    "\u201cWhat you have in that basket,\n\nsah?\u201d",
     "\"Friend Jackal, I am quite out of breath, and am half dead\n\nwith fright, for I have just seen a terrible looking fellow, with a\n\nlarge and thick head, and on my",
     "Go home,"
    ],
@@ -2308,7 +3814,7 @@
      }
     ]
    },
-   "why": "244 mentions across 3 book(s), 91 spoken lines; speaks proximity. Tiger: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+   "why": "244 mentions across 3 book(s), 91 spoken lines; speaks proximity. Tiger: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind \u2014 the sleep baseline"
   },
   {
    "character": "Yaga",
@@ -2363,7 +3869,7 @@
      }
     ]
    },
-   "why": "106 mentions across 3 book(s), 89 spoken lines; speaks proximity. Yaga: young female figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+   "why": "106 mentions across 3 book(s), 89 spoken lines; speaks proximity. Yaga: young female figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind \u2014 the sleep baseline"
   },
   {
    "character": "Queen",
@@ -2385,9 +3891,9 @@
     "role": "queen"
    },
    "sample_lines": [
-    "“We have travelled fast,”",
-    "“No,\n\nI did not open the forbidden door;”",
-    "“How fares my child, how fares my roe?\n\nTwice shall I come, then never more.”"
+    "\u201cWe have travelled fast,\u201d",
+    "\u201cNo,\n\nI did not open the forbidden door;\u201d",
+    "\u201cHow fares my child, how fares my roe?\n\nTwice shall I come, then never more.\u201d"
    ],
    "predicted": {
     "archetype": "supporting",
@@ -2427,7 +3933,7 @@
      }
     ]
    },
-   "why": "139 mentions across 8 book(s), 81 spoken lines; speaks proximity. Queen: young female queen (ruler); pitch around 150-220Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority — rooms quiet when they speak"
+   "why": "139 mentions across 8 book(s), 81 spoken lines; speaks proximity. Queen: young female queen (ruler); pitch around 150-220Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority \u2014 rooms quiet when they speak"
   },
   {
    "character": "Sultan",
@@ -2444,7 +3950,7 @@
    },
    "sample_lines": [
     "\"The Arabian\n\nNights\"",
-    "“To-morrow I intend to shoot Old Sultan, he is no longer of any\n\nuse.”"
+    "\u201cTo-morrow I intend to shoot Old Sultan, he is no longer of any\n\nuse.\u201d"
    ],
    "predicted": {
     "archetype": "supporting",
@@ -2480,7 +3986,7 @@
      }
     ]
    },
-   "why": "57 mentions across 2 book(s), 63 spoken lines; speaks proximity. Sultan: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+   "why": "57 mentions across 2 book(s), 63 spoken lines; speaks proximity. Sultan: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind \u2014 the sleep baseline"
   },
   {
    "character": "Grethel",
@@ -2497,7 +4003,7 @@
    },
    "sample_lines": [
     "And no boat crosses either,",
-    "“Behave well, Hans.”"
+    "\u201cBehave well, Hans.\u201d"
    ],
    "predicted": {
     "archetype": "supporting",
@@ -2533,7 +4039,7 @@
      }
     ]
    },
-   "why": "73 mentions across 2 book(s), 56 spoken lines; speaks proximity. Grethel: young female figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+   "why": "73 mentions across 2 book(s), 56 spoken lines; speaks proximity. Grethel: young female figure (supporting); pitch around 140-200Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind \u2014 the sleep baseline"
   },
   {
    "character": "Tree",
@@ -2550,8 +4056,8 @@
     "role": null
    },
    "sample_lines": [
-    "“Oh! Were I but such a high tree as the others are,”",
-    "“It is lovely here in spring!”"
+    "\u201cOh! Were I but such a high tree as the others are,\u201d",
+    "\u201cIt is lovely here in spring!\u201d"
    ],
    "predicted": {
     "archetype": "elder",
@@ -2587,7 +4093,7 @@
      }
     ]
    },
-   "why": "67 mentions across 3 book(s), 55 spoken lines; speaks proximity. Tree: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind — the sleep baseline"
+   "why": "67 mentions across 3 book(s), 55 spoken lines; speaks proximity. Tree: young male figure (supporting); pitch around 100-150Hz; affect v0.1/p0.0: calm, slow, soft; plain and kind \u2014 the sleep baseline"
   },
   {
    "character": "Princess",
@@ -2603,8 +4109,8 @@
     "role": "princess"
    },
    "sample_lines": [
-    "“Visiting,”",
-    "“Does he live with a Princess?”"
+    "\u201cVisiting,\u201d",
+    "\u201cDoes he live with a Princess?\u201d"
    ],
    "predicted": {
     "archetype": "supporting",
@@ -2640,7 +4146,7 @@
      }
     ]
    },
-   "why": "55 mentions across 2 book(s), 50 spoken lines; speaks proximity. Princess: young unspecified princess (ruler); pitch around 140-200Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority — rooms quiet when they speak"
+   "why": "55 mentions across 2 book(s), 50 spoken lines; speaks proximity. Princess: young unspecified princess (ruler); pitch around 140-200Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority \u2014 rooms quiet when they speak"
   },
   {
    "character": "Emperor",
@@ -2658,8 +4164,8 @@
     "role": "emperor"
    },
    "sample_lines": [
-    "“Had I\n\nsuch a suit, I might at once find out what men in my realms are unfit\n\nfor their office, and also be able to distinguish the wise from the\n\nfoolish! Thi",
-    "“Alas, wife, why do you wish to be\n\nEmperor?”"
+    "\u201cHad I\n\nsuch a suit, I might at once find out what men in my realms are unfit\n\nfor their office, and also be able to distinguish the wise from the\n\nfoolish! Thi",
+    "\u201cAlas, wife, why do you wish to be\n\nEmperor?\u201d"
    ],
    "predicted": {
     "archetype": "overlord",
@@ -2699,7 +4205,7 @@
      }
     ]
    },
-   "why": "57 mentions across 4 book(s), 44 spoken lines; speaks proximity. Emperor: young male emperor (ruler); pitch around 85-130Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority — rooms quiet when they speak"
+   "why": "57 mentions across 4 book(s), 44 spoken lines; speaks proximity. Emperor: young male emperor (ruler); pitch around 85-130Hz; affect v0.0/p0.7: authoritative, calm, commanding, deep, slow, soft; unhurried authority \u2014 rooms quiet when they speak"
   }
  ]
 }

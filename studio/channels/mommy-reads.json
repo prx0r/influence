@@ -37,10 +37,42 @@
      "stern",
      "shared with ANY other project"
     ],
-    "status": "locked"
+    "status": "locked",
+    "tags": {
+     "gender": "female",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "bedtime mother",
+     "energy": "warm-low",
+     "shelf": "warm lull",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer"
+     ],
+     "age": "middle",
+     "register": "mid",
+     "texture": [
+      "warm",
+      "soft",
+      "close"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "bedtime",
+      "close",
+      "lull",
+      "mother",
+      "soft",
+      "warm"
+     ],
+     "truth": "Mother at the bedside; honey, time for bed."
+    }
    }
   },
-  "pace": 0.9,
+  "pace": 1.0,
   "render_default": "free (REST s2.1-pro-free, $0)",
   "render_hero": "drama-3 grant-gated"
  },

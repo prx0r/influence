@@ -1,0 +1,128 @@
+{
+ "schema_version": "character-graph.v1",
+ "character_id": "channel-library-diaries",
+ "name": "Library Diaries",
+ "kind": "channel",
+ "category": "host",
+ "status": "scaffold",
+ "seed": {
+  "philosophy": {
+   "orientation": [
+    "Every \"X's Library/Diary\" in the registry (mostly ready, all PD) + the long"
+   ],
+   "problem_space": [
+    "sleep induction via narrative"
+   ]
+  },
+  "modulator_range": [
+   "calm",
+   "measured",
+   "drowsy",
+   "warm"
+  ],
+  "canon": "studio/channels/library-diaries.json",
+  "seed_version": 1
+ },
+ "who": {
+  "chairs": {
+   "narrator": {
+    "label": "own fork per author-season (wry/brisk/tender as filed)",
+    "category": "narrator",
+    "direction": "[unhurried reader voice, diary-paced, lights low, never shared across authors]",
+    "voice_id": ""
+   },
+   "dee": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[dark wizard magus, Elizabethan; diary-paced, lights low]",
+    "voice_id": "394578d869ee4f99aa6fa500ba664528"
+   },
+   "pepys": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[wry diarist, Restoration; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "aurelius": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[stoic emperor, Roman; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "evelyn": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[virtuoso diarist, Restoration; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "woodforde": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[country parson, Georgian; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "dorothy": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[lakeside sister, Romantic; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "walpole": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[witty correspondent, Georgian; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "cellini": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[brash goldsmith, Renaissance; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "caesar": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[commander chronicler, Roman; diary-paced, lights low]",
+    "voice_id": ""
+   },
+   "leonardo": {
+    "label": "",
+    "category": "narrator",
+    "direction": "[notebook genius, Renaissance; diary-paced, lights low]",
+    "voice_id": ""
+   }
+  }
+ },
+ "hosts": [
+  {
+   "channel_id": "library-diaries",
+   "content_type": "E-LOG",
+   "vibe": "Every \"X's Library/Diary\" in the registry (mostly ready, all PD) + the long"
+  }
+ ],
+ "profile": {
+  "voice": "roster of 11 locked chairs",
+  "branches": [
+   {
+    "branch_id": "youtube",
+    "platform": "youtube",
+    "enabled": true,
+    "account": {
+     "handle": "",
+     "status": "unclaimed"
+    }
+   }
+  ]
+ },
+ "instances": [],
+ "edges": [],
+ "analytics": {},
+ "provenance": [
+  "influence studio/channels",
+  {
+   "primary": "E-LOG",
+   "contract": "damn routines 01-07; snippet-first Studio renders",
+   "damn_engine": "E-LOG + E2-reading"
+  }
+ ]
+}

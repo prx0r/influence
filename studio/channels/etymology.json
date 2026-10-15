@@ -1,7 +1,7 @@
 {
  "channel": "etymology",
  "display_name": "Word Hoard",
- "pitch": "Etymology, grammar, thesaurus, roots and idioms — one word per video, read to sleep.",
+ "pitch": "Etymology, grammar, thesaurus, roots and idioms \u2014 one word per video, read to sleep.",
  "engine": {
   "primary": "E5-talk",
   "contract": "damn routines 01-07; snippet-first Studio renders"
@@ -16,7 +16,7 @@
  },
  "voice": {
   "bed": "",
-  "pace": 0.85,
+  "pace": 1.0,
   "chairs": {
    "lecturer": {
     "direction": "[clear lecturer voice, precise and unhurried, half speed]",
@@ -29,6 +29,41 @@
      "voice_id": "e1f8f1eb9d894a15990ac5eacc83bda9",
      "label": "Half-Life Scientist (clear, conversational)",
      "reason": "diagrams-in-words needs clarity + friendliness; ear-check pending"
+    },
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "word scholar",
+     "energy": "low",
+     "shelf": "documentary-sleep",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "clear",
+      "steady",
+      "calm"
+     ],
+     "presence": "desk",
+     "pace": "unhurried",
+     "warmth": "neutral",
+     "voice_words": [
+      "calm",
+      "clear",
+      "documentary",
+      "scholar",
+      "sleep",
+      "steady",
+      "word"
+     ],
+     "truth": "A word scholar reading you to sleep."
     }
    }
   },
@@ -40,7 +75,7 @@
   "text_prep": "influence pipeline/tts_text (score gate 70)"
  },
  "receipts": "per-video vaults + studio voice bank",
- "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)",
+ "imported_from": "damn profiles.json (scaffold \u2014 confirm thesis/style/cadence)",
  "thesis": "A word is a motif: 6-section essays (word today, etymology, history, philosophy, science, return) that make language itself the lullaby.",
  "audience": "Word lovers, trivia sleepers, language learners winding down; Etymonline/Wiktionary overlap.",
  "sourcing": {

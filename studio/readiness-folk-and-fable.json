@@ -1,0 +1,487 @@
+{
+ "collections": [
+  {
+   "collection": "aesop-front-to-back",
+   "words": 14239,
+   "est_min": 95,
+   "complete": false,
+   "score_head": 75,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "andersen-part-1",
+   "words": 21472,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 80,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "andersen-part-2",
+   "words": 21612,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 86,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "arabian-nights-entertainments",
+   "words": 21468,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 78,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "book-of-were-wolves",
+   "words": 17872,
+   "est_min": 119,
+   "complete": false,
+   "score_head": 67,
+   "junk": {
+    "footnotes": 34
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "bulfinchs-mythology",
+   "words": 21465,
+   "est_min": 143,
+   "complete": true,
+   "score_head": 60,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "celtic-folk-fairy-tales",
+   "words": 21456,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 81,
+   "junk": {
+    "urls": 2
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "changelings-witnesses",
+   "words": 18008,
+   "est_min": 120,
+   "complete": false,
+   "score_head": 51,
+   "junk": {
+    "footnotes": 23
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "discoverie-of-witchcraft",
+   "words": 21444,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 50,
+   "junk": {
+    "footnotes": 3
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "english-fairy-tales-jacobs",
+   "words": 21454,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 60,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "fairy-faith-celtic",
+   "words": 21457,
+   "est_min": 143,
+   "complete": true,
+   "score_head": 51,
+   "junk": {
+    "urls": 2,
+    "footnotes": 12,
+    "contents_dots": 3
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "fairy-mythology-keightley",
+   "words": 21456,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 48,
+   "junk": {
+    "urls": 2,
+    "footnotes": 163
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "golden-bough",
+   "words": 21447,
+   "est_min": 143,
+   "complete": true,
+   "score_head": 72,
+   "junk": {
+    "footnotes": 10
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "grimm-part-1",
+   "words": 21439,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 70,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "grimm-part-2",
+   "words": 21608,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 87,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "grimm-part-3",
+   "words": 21608,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 84,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "grimm-part-4",
+   "words": 21608,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 74,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "household-spirits",
+   "words": 18000,
+   "est_min": 120,
+   "complete": false,
+   "score_head": 80,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "jamaica-anansi",
+   "words": 14244,
+   "est_min": 95,
+   "complete": false,
+   "score_head": 68,
+   "junk": {
+    "footnotes": 22
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "kwaidan-part-1",
+   "words": 21456,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 35,
+   "junk": {
+    "footnotes": 31,
+    "contents_dots": 1
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "kwaidan-part-2",
+   "words": 15154,
+   "est_min": 101,
+   "complete": true,
+   "score_head": 55,
+   "junk": {
+    "footnotes": 67,
+    "contents_dots": 5
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "mythology-of-the-british-islands",
+   "words": 21451,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 58,
+   "junk": {
+    "footnotes": 110,
+    "contents_dots": 1
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "nights-continued",
+   "words": 21614,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 40,
+   "junk": {
+    "footnotes": 58
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "poetic-edda",
+   "words": 21439,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 50,
+   "junk": {
+    "footnotes": 2
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "princess-and-the-goblin",
+   "words": 21459,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 60,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "prose-edda-part-2",
+   "words": 21611,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 81,
+   "junk": {
+    "footnotes": 41
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "prose-edda",
+   "words": 17831,
+   "est_min": 119,
+   "complete": false,
+   "score_head": 58,
+   "junk": {
+    "footnotes": 46,
+    "transcriber": 1
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "russian-fairy-tales-part-1",
+   "words": 21437,
+   "est_min": 143,
+   "complete": true,
+   "score_head": 45,
+   "junk": {
+    "urls": 2,
+    "footnotes": 119
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "russian-fairy-tales-part-2",
+   "words": 21603,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 50,
+   "junk": {
+    "footnotes": 97
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "russian-fairy-tales-part-3",
+   "words": 21601,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 72,
+   "junk": {
+    "footnotes": 240
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "russian-story-book-part-1",
+   "words": 21432,
+   "est_min": 143,
+   "complete": true,
+   "score_head": 50,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "russian-story-book-part-2",
+   "words": 21607,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 90,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "sinbad-burton",
+   "words": 17816,
+   "est_min": 119,
+   "complete": false,
+   "score_head": 50,
+   "junk": {
+    "footnotes": 39
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "slav-peasants-part-1",
+   "words": 21440,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 63,
+   "junk": {
+    "urls": 2,
+    "contents_dots": 1
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "slav-peasants-part-2",
+   "words": 21605,
+   "est_min": 144,
+   "complete": false,
+   "score_head": 90,
+   "junk": {},
+   "readout_staged": true
+  },
+  {
+   "collection": "south-african-folk-tales",
+   "words": 21453,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 52,
+   "junk": {
+    "urls": 2,
+    "footnotes": 8
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "tales-of-old-japan-part-1",
+   "words": 21459,
+   "est_min": 143,
+   "complete": true,
+   "score_head": 44,
+   "junk": {
+    "urls": 4,
+    "footnotes": 16
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "thousand-nights-part-1",
+   "words": 21441,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 57,
+   "junk": {
+    "urls": 2,
+    "footnotes": 68,
+    "transcriber": 1
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "werewolf-case-histories",
+   "words": 18010,
+   "est_min": 120,
+   "complete": false,
+   "score_head": 68,
+   "junk": {
+    "footnotes": 36
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "west-african-part-1",
+   "words": 14252,
+   "est_min": 95,
+   "complete": false,
+   "score_head": 49,
+   "junk": {
+    "footnotes": 9,
+    "contents_dots": 3
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "west-african-part-2",
+   "words": 13427,
+   "est_min": 90,
+   "complete": true,
+   "score_head": 84,
+   "junk": {
+    "footnotes": 11
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "west-england-romances",
+   "words": 21439,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 60,
+   "junk": {
+    "urls": 2,
+    "footnotes": 40,
+    "contents_dots": 1
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "witchcraft-and-demonology",
+   "words": 21442,
+   "est_min": 143,
+   "complete": false,
+   "score_head": 52,
+   "junk": {
+    "footnotes": 97,
+    "contents_dots": 2
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "witches-before-the-trials",
+   "words": 18000,
+   "est_min": 120,
+   "complete": false,
+   "score_head": 71,
+   "junk": {
+    "footnotes": 1
+   },
+   "readout_staged": true
+  },
+  {
+   "collection": "yuki-onna",
+   "words": 1476,
+   "est_min": 10,
+   "complete": true,
+   "score_head": 57,
+   "junk": {
+    "footnotes": 2,
+    "contents_dots": 1
+   },
+   "readout_staged": true
+  }
+ ]
+}

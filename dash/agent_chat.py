@@ -48,6 +48,7 @@ READONLY_TOOLS = [
     "etsy.listing",
     "task.status",
     "audio.voices",
+    "audio.voice",
     "audio.balance",
     "audio.estimate",
     "audio.studio.status",
@@ -122,6 +123,10 @@ TOOL_SCHEMAS = [
         "name": "audio.voices", "description": "Voice casting search: public/team voices + samples (free read, never generates)",
         "parameters": {"type": "object", "properties": {
             "query": {"type": "string"}, "language": {"type": "string"}}}}},
+    {"type": "function", "function": {
+        "name": "audio.voice", "description": "One voice by ID: title, tags, sample, uses, likes (free read — ALWAYS use for a known voice_id, search never finds IDs)",
+        "parameters": {"type": "object", "properties": {
+            "voice_id": {"type": "string"}}, "required": ["voice_id"]}}},
     {"type": "function", "function": {
         "name": "audio.balance", "description": "Fish package credit balance + plan (free read)",
         "parameters": {"type": "object", "properties": {}}}},
@@ -210,6 +215,18 @@ Audio studio (Fish Audio, free reads + grant-gated spend):
   via the dash decide gate (human mints the grant, receipt always).
 - Voice casting: offer 3-5 candidates with samples, let the human pick unless
   told to choose. Same voice_id for every part of one piece.
+- FINDING VOICES (hunt like this, in this order):
+  1) Known voice_id? Call audio.voice FIRST — search never finds IDs.
+  2) Unknown? Search wide: pair narrow brief queries with broad popularity
+     sweeps (female/male narration storytelling, young conversational voice,
+     calm sleep narration). page_size caps at 20 (25+ returns zero) — breadth
+     comes from more queries, never a bigger page.
+  3) Think SHELF, not adjectives: whisper+breathy retrieves the sensual
+     shelf (wrong for frost — frost is witch/dark/mysterious/commanding).
+     Narrator chairs want narration voices; character chairs want
+     character-voice tags (persona over carrier). Veto the wrong genre
+     explicitly. Owner picks in studio/voice-registry.json are taste anchors
+     and override any slate; check them before proposing.
 - You CAN render audio yourself, but ONLY via audio.speak_free ($0 free tier,
   ≤1500 chars, locked voices only) — it lands in the voice bank. Never touch
   credit paths yourself: for anything billed, call audio.request (quotes +

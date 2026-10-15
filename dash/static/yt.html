@@ -5,24 +5,29 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Studio · youtube.agentcom.org</title>
 <style>
-:root{--bg:#161616;--bg2:#1d1d1f;--bg3:#252528;--bg4:#2f2f33;--line:#34343a;--text:#e6e6e6;--dim:#8a8a90;--acc:#e8a33d;--ok:#4ec9b0;--bad:#f47070;--warn:#dcb45a;--chan:#e8a33d}
+/* mkdir.directory × Mkdirs feel — same IDs, same API, prettier surface.
+   Directory logic: search + cards + tags + rank. Sleep logic: dark calm. */
+:root{--bg:#131316;--bg2:#1a1a1f;--bg3:#232329;--bg4:#2e2e36;--line:#34343c;--text:#eceaf0;--dim:#9c9aa6;--acc:#e8a33d;--ok:#4ec9b0;--bad:#f47070;--warn:#dcb45a;--chan:#e8a33d;--plate:#1a1a1f;--ink:var(--text);--muted:var(--dim);--radius:16px;--shadow:0 8px 30px #0007}
+html[data-theme="light"]{--bg:#fafafc;--bg2:#ffffff;--bg3:#f1f1f5;--bg4:#e8e8ee;--line:#e4e4ea;--text:#17171c;--dim:#6b6b78;--chan:#9a6b1f;--plate:#ffffff;--shadow:0 8px 24px #1a1a2a14}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{font:13px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);display:grid;grid-template-columns:56px 1fr;grid-template-rows:1fr auto;height:100vh;overflow:hidden}
-button{font:inherit;color:inherit;background:var(--bg4);border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer}
-button:hover{border-color:var(--dim)}
-button.primary{background:var(--chan);color:#111;border-color:var(--chan);font-weight:600}
+body{font:13.5px/1.5 "Geist",system-ui,-apple-system,"Segoe UI",Inter,sans-serif;background:var(--bg);color:var(--text);display:grid;grid-template-columns:64px 1fr;grid-template-rows:1fr auto;height:100vh;overflow:hidden;letter-spacing:-.01em}
+button{font:inherit;color:inherit;background:var(--bg4);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+button:hover{border-color:var(--chan);transform:translateY(-1px)}
+button.primary{background:var(--chan);color:#111;border-color:var(--chan);font-weight:650}
 button.ghost{background:transparent}
 button:disabled{opacity:.45;cursor:default}
-select,input,textarea{font:inherit;color:var(--text);background:var(--bg3);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+select,input,textarea{font:inherit;color:var(--text);background:var(--bg3);border:1px solid var(--line);border-radius:10px;padding:6px 10px}
+select:focus,input:focus,textarea:focus{outline:2px solid var(--chan);outline-offset:1px}
 a{color:var(--chan)}
+audio{width:100%;height:36px;accent-color:var(--chan);cursor:pointer}
 
-/* rail: channels as the active entity, 56px, never more */
-#rail{grid-row:1/3;background:var(--bg2);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:6px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
-#rail .ch{width:38px;height:38px;flex:0 0 38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;cursor:pointer;background:var(--bg3);border:2px solid transparent;position:relative;color:var(--c,#ccc)}
-#rail .ch:hover{background:var(--bg4)}
-#rail .ch.on{border-color:var(--c,var(--acc));background:var(--bg4)}
-#rail .ch .dot{position:absolute;right:-2px;bottom:-2px;width:9px;height:9px;border-radius:50%;background:var(--ok);border:2px solid var(--bg2)}
+/* rail: channels as directory index, 64px, search-filterable */
+#rail{grid-row:1/3;background:var(--bg2);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:10px 0;gap:8px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+#rail .ch{width:42px;height:42px;flex:0 0 42px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;cursor:pointer;background:var(--bg3);border:2px solid transparent;position:relative;color:var(--c,#ccc);transition:transform .15s,background .15s}
+#rail .ch:hover{background:var(--bg4);transform:translateY(-1px)}
+#rail .ch.on{border-color:var(--c,var(--acc));background:var(--bg4);box-shadow:var(--shadow)}
+#rail .ch .dot{position:absolute;right:-2px;bottom:-2px;width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--bg2)}
 #rail .sep{width:28px;border-top:1px solid var(--line);margin:4px 0}
 #rail .tip{position:fixed;left:62px;background:#000;color:#fff;padding:4px 8px;border-radius:5px;font-size:12px;pointer-events:none;white-space:nowrap;z-index:200;display:none;box-shadow:0 2px 8px #0008}
 #rail .foot{margin-top:auto;font-size:10px;color:var(--dim);text-align:center}
@@ -30,12 +35,14 @@ a{color:var(--chan)}
 #rail .foot a{color:var(--dim);text-decoration:none;display:block;padding:4px;font-size:16px}
 #rail .foot a:hover{color:var(--text)}
 
-/* main */
-#main{display:flex;flex-direction:column;min-width:0;min-height:0}
-#head{display:flex;align-items:center;gap:12px;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--bg2);min-height:48px}
-#head h1{font-size:16px;font-weight:650;white-space:nowrap}
+/* main — mkdir header: title + pitch + search + theme */
+#main{display:flex;flex-direction:column;min-width:0;min-height:0;max-width:1400px;width:100%;justify-self:center}
+#head{display:flex;align-items:center;gap:12px;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--bg2);min-height:56px;position:sticky;top:0;z-index:5}
+#head h1{font-size:19px;font-weight:700;white-space:nowrap;letter-spacing:-.02em}
 #head .pitch{color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
-.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--bg4);color:var(--dim);white-space:nowrap}
+#dir-search{width:210px}
+#theme-btn{background:transparent;border:1px solid var(--line);border-radius:999px;width:34px;height:34px;padding:0;font-size:15px}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 10px;border-radius:999px;background:var(--bg4);color:var(--dim);white-space:nowrap;border:1px solid var(--line)}
 .chip.ok{color:var(--ok)}.chip.warn{color:var(--warn)}.chip.acc{color:var(--chan)}
 #tabs{display:flex;gap:2px}
 #tabs button{background:transparent;border:none;border-bottom:2px solid transparent;border-radius:0;padding:6px 10px;color:var(--dim)}
@@ -55,9 +62,9 @@ a{color:var(--chan)}
 .pi .r.y{background:var(--ok)}
 .pi .t{flex:1;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-word;line-height:1.25}
 .pi .s{font-size:11px;color:var(--dim)}
-#stage{overflow:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px}
-.card h2{font-size:15px;margin-bottom:2px}
+#stage{overflow:auto;padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+.card{background:var(--plate);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.card h2{font-size:16px;margin-bottom:2px;letter-spacing:-.01em}
 .sub{color:var(--dim);font-size:12px}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .knobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px 16px;margin-top:12px}
@@ -112,6 +119,8 @@ textarea{width:100%;min-height:90px;resize:vertical}
     <h1 id="cname">Studio</h1>
     <span class="chip" id="cstatus"></span>
     <span class="pitch" id="cpitch"></span>
+    <input id="dir-search" placeholder="Search channels · pilots" autocomplete="off">
+    <button id="theme-btn" title="light / dark">◐</button>
     <span class="chip acc" id="cformula" title="Saved formula for this channel"></span>
     <nav id="tabs">
       <button data-t="pilots" class="on">Pilots</button>
@@ -170,6 +179,7 @@ function renderRail(){
     const d = document.createElement('div');
     d.className = 'ch' + (c.slug === S.slug ? ' on' : '');
     d.style.setProperty('--c', c.accent || '#ccc');
+    d.title = `${c.name} · ${c.chairs_locked||0}/${c.chairs||0} voices${c.formula?' · formula':''}`;
     d.innerHTML = esc(initials(c.name)) + (c.formula ? '<span class="dot" title="formula saved"></span>' : '');
     d.onclick = () => selectChannel(c.slug);
     d.onmouseenter = () => { const r = d.getBoundingClientRect(); tip.textContent = `${c.name} · ${c.chairs_locked}/${c.chairs} voices${c.formula?' · formula':''}`; tip.style.top = (r.top+9)+'px'; tip.style.display='block'; };
@@ -202,8 +212,9 @@ async function selectChannel(slug){
   $('#cpitch').title = v.pitch || '';
   const f = v.formula || {};
   $('#cformula').textContent = f.knobs ? `formula v${f.version}` : 'no formula yet';
-  S.knobs = Object.assign({speed: v.pace ?? 1.0, temperature: .7, volume_db: 0, preview_segments: 4, voices: {}}, f.knobs || {});
+  S.knobs = Object.assign({speed: v.pace ?? 1.0, temperature: null, volume_db: 0, preview_segments: 4, voices: {}}, f.knobs || {});
   if (S.knobs.speed == null) S.knobs.speed = v.pace ?? 1.0;
+  if (S.knobs.temperature === undefined) S.knobs.temperature = null;
   const all = (v.pilots||[]);
   const remembered = localStorage['ytPilot:'+slug];
   S.pilot = all.find(p => p.path === remembered) || all[0] || null;
@@ -280,9 +291,7 @@ function renderStage(){
       <span class="chip ${p.ready?'ok':'warn'}">${p.ready?'ready':'needs prep'}</span>
     </div>
     <div class="knobs">
-      ${knobSlider('speed','Pace',0.5,1.3,0.01,x=>(+x).toFixed(2)+'×')}
-      ${knobSlider('temperature','Expression',0,1,0.05,x=>(+x).toFixed(2))}
-      ${knobSlider('volume_db','Volume',-6,4,0.5,x=>(+x>0?'+':'')+(+x).toFixed(1)+' dB')}
+      <div class="sub" style="grid-column:1/-1">Clean voice — rendered exactly as the voice is. No pace, expression, or volume edits, no bed, no SFX.</div>
       ${knobSlider('preview_segments','Preview length',1,12,1,x=>x+' seg')}
       ${voiceSel}
     </div>
@@ -393,13 +402,17 @@ function renderConfigTabs(){
   const v = S.view;
   $('#tab-voices').innerHTML = `<div class="grid2">${(v.chairs||[]).map(c => `
     <div class="card"><div class="row" style="justify-content:space-between"><h2>${esc(c.name)}</h2><span class="chip ${c.locked?'ok':'warn'}">${c.locked?'locked':esc(c.status||'open')}</span></div>
-    <div class="sub">${esc(c.direction)}</div>
-    <div style="margin-top:8px" id="cast-${esc(c.name)}">${c.options.map(o => `<div class="vopt"><span>${esc(o.label)}${o.locked?' ★':''}</span>
-      <button class="ghost" data-ask="Propose 5 alternatives to ${esc(o.label)} for the ${esc(c.name)} chair">alternatives</button></div>`).join('') || '<div class="sub">No candidates yet.</div>'}</div>
+    <div class="sub">${esc(c.direction)} · click ▶ to hear instantly</div>
+    <div style="margin-top:8px" id="cast-${esc(c.name)}">${c.options.map(o => `<div class="vopt vrow" data-vid="${esc(o.id)}" data-vlabel="${esc(o.label)}" style="cursor:pointer"><span><button class="ghost vplay" data-vid="${esc(o.id)}" data-vlabel="${esc(o.label)}" title="play ${esc(o.label)}">▶</button> ${esc(o.label)}${o.locked?' ★':''}</span>
+      <span class="row"><audio preload="none" data-va="${esc(o.id)}" style="width:150px;height:30px"></audio>
+      <button class="ghost" data-all="${esc(o.id)}" data-vlabel="${esc(o.label)}" data-chair="${esc(c.name)}" title="lock ${esc(o.label)} as ${esc(c.name)} on EVERY channel">all&nbsp;channels</button>
+      <button class="ghost" data-ask="Propose 5 alternatives to ${esc(o.label)} for the ${esc(c.name)} chair">alternatives</button></span></div>`).join('') || '<div class="sub">No candidates yet.</div>'}</div>
     <div class="row" style="margin-top:10px"><button data-cast="${esc(c.name)}">Cast 5 voices</button><button data-ask="Propose 5 ${esc(c.name)} voices for ${esc(v.name)} with samples and one-line reasons">Ask Pi for 5 voices</button></div>
     </div>`).join('') || '<div class="empty">No voice chairs on this channel.</div>'}
     <div class="card"><h2>Bed</h2><div class="sub">${esc(v.bed || 'none set')}</div><div class="kv"><div>Pace</div><div>${v.pace ?? 'default'}</div></div></div></div>`;
   document.querySelectorAll('#tab-voices [data-cast]').forEach(b => b.onclick = () => castGrid(b.dataset.cast));
+  wireVoicePlay();
+  document.querySelectorAll('#tab-voices [data-all]').forEach(b => b.onclick = (e) => { e.stopPropagation(); applyVoiceAll(b.dataset.all, b.dataset.vlabel, b.dataset.chair, b); });
   const th = v.thumbnail || {};
   $('#tab-thumb').innerHTML = `<div class="grid2"><div class="card"><h2>Thumbnail template</h2><div class="sub">The look that makes the shelf recognisable.</div>
     <div class="knob" style="margin-top:10px"><label>Template</label><textarea id="th-type">${esc(th.type||'')}</textarea></div>
@@ -424,6 +437,83 @@ function renderConfigTabs(){
     if (r.ok){ S.view.formula = r.formula; $('#cformula').textContent = `formula v${r.formula.version}`; }
   };
 }
+
+/* click-to-play voices: row or ▶ fetches Fish sample once, plays inline. Pi-safe: free reads only. */
+window._vsamp = window._vsamp || {};
+async function sampleFor(vid, label){
+  if (window._vsamp[vid]) return window._vsamp[vid];
+  try{
+    const r = await api('POST','/api/studio/fish/voices',{query:(label||'').split(' ')[0], page_size:8});
+    const hit = (r.cards||[]).find(c=>c.voice_id===vid) || (r.cards||[])[0];
+    if (hit && hit.sample){ window._vsamp[vid]=hit.sample; return hit.sample; }
+  }catch(e){}
+  return '';
+}
+async function playVoice(vid, label, audioEl, btn){
+  document.querySelectorAll('#tab-voices audio').forEach(a=>{ if(a!==audioEl) a.pause(); });
+  if (audioEl && audioEl.src){ audioEl.play().catch(()=>{}); return; }
+  if (btn) btn.textContent='…';
+  const url = await sampleFor(vid, label);
+  if (btn) btn.textContent='▶';
+  if (!url){ say('pi','No preview sample for '+label+' yet — Cast 5 voices to mint $0 auditions.'); return; }
+  if (audioEl){ audioEl.src=url; audioEl.play().catch(()=>{}); }
+  else { const a=new Audio(url); a.play().catch(()=>{}); }
+}
+function wireVoicePlay(){
+  document.querySelectorAll('#tab-voices .vplay').forEach(b => b.onclick = (e) => {
+    e.stopPropagation();
+    const row = b.closest('.vrow');
+    const a = row ? row.querySelector('audio') : null;
+    playVoice(b.dataset.vid, b.dataset.vlabel, a, b);
+  });
+  document.querySelectorAll('#tab-voices .vrow').forEach(row => row.onclick = (e) => {
+    if (e.target.closest('button') || e.target.closest('audio') || e.target.closest('input')) return;
+    const a = row.querySelector('audio');
+    const btn = row.querySelector('.vplay');
+    playVoice(row.dataset.vid, row.dataset.vlabel, a, btn);
+  });
+}
+
+/* lock one voice as a chair on EVERY channel (existing onboard/lock, looped). */
+async function applyVoiceAll(vid, label, chair, btn){
+  const n = S.channels.length;
+  if (!n) return;
+  if (!confirm(`Lock "${label}" as ${chair} on all ${n} channels?`)) return;
+  if (btn){ btn.disabled = true; btn.textContent = '…'; }
+  say('pi', `Locking ${label} as ${chair} everywhere (${n} channels)…`);
+  let ok = 0; const failed = [];
+  for (const c of S.channels){
+    try{
+      const r = await api('POST','/api/studio/onboard/lock',{channel:c.slug, chair, voice_id:vid, reason:'owner: use everywhere'});
+      if (r.ok) ok++; else failed.push(c.slug);
+    }catch(e){ failed.push(c.slug); }
+  }
+  if (btn){ btn.disabled = false; btn.textContent = 'all channels'; }
+  say('pi', failed.length ? `Locked on ${ok}/${n}. Skipped (no ${chair} chair): ${failed.join(', ')}.` : `Locked ${label} as ${chair} on all ${n} channels.`);
+  selectChannel(S.slug);
+}
+
+/* mkdir directory chrome: theme + channel/pilot search filter (frontend only, no API change) */
+(function(){
+  try{
+    const t = localStorage.ytTheme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.dataset.theme = t;
+  }catch(e){}
+  document.addEventListener('click', (e)=>{
+    if (e.target && e.target.id==='theme-btn'){
+      const cur = document.documentElement.dataset.theme==='light' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = cur;
+      try{ localStorage.ytTheme=cur; }catch(_){}
+    }
+  });
+  document.addEventListener('input', (e)=>{
+    if (e.target && e.target.id==='dir-search'){
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('#rail .ch').forEach(el=>{ el.style.display = el.title.toLowerCase().includes(q) ? '' : 'none'; });
+      document.querySelectorAll('#plist .pi').forEach(el=>{ el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none'; });
+    }
+  });
+})();
 
 document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
   S.tab = b.dataset.t;

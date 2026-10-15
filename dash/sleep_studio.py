@@ -450,17 +450,21 @@ def render_pilot(path: str, channel_slug: str = "",
                     "reason": f"segment {i} score {prepped['score_after']} "
                               f"< gate {min_score}",
                     "flags": prepped["flags_after"][:6]}
+        # gate + poison per prep chunk (a full readout is one segment but
+        # dozens of chunks — gating the whole segment could never pass).
         try:
-            if not gate.gate(s["text"])["pass"]:
-                return {"ok": False,
-                        "reason": f"segment {i} blocked by damn gate"}
+            for _ci, _ch in enumerate(prepped["chunks"]):
+                if not gate.gate(_ch)["pass"]:
+                    return {"ok": False,
+                            "reason": f"segment {i} chunk {_ci} blocked by damn gate"}
         except Exception as e:  # noqa: BLE001 — gate infra hiccup, report
             return {"ok": False, "reason": f"gate error seg {i}: {e}"[:120]}
         if poison is not None:
             try:
-                if not poison.poison(s["text"])["pass"]:
-                    return {"ok": False,
-                            "reason": f"segment {i} blocked by tts-poison"}
+                for _ci, _ch in enumerate(prepped["chunks"]):
+                    if not poison.poison(_ch)["pass"]:
+                        return {"ok": False,
+                                "reason": f"segment {i} chunk {_ci} blocked by tts-poison"}
             except Exception as e:  # noqa: BLE001
                 return {"ok": False, "reason": f"poison error seg {i}: {e}"[:120]}
         # render each prep chunk to bank parts (free tier, saved files).

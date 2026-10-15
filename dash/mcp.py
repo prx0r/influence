@@ -103,6 +103,8 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"store": {"type": "string"}, "sku": {"type": "string"}, "items": {"type": "array", "items": {"type": "object"}}, "live": {"type": "boolean"}, "grant": {"type": "object"}, "campaign": {"type": "string"}}, "required": ["sku"]}},
     {"name": "audio.voices", "description": "Voice casting search (free read: public/team voices, samples, popularity)",
      "inputSchema": {"type": "object", "properties": {"query": {"type": "string"}, "language": {"type": "string"}, "self": {"type": "boolean"}, "page_size": {"type": "integer"}}}},
+    {"name": "audio.voice", "description": "One voice by ID: title, tags, sample URL, uses, likes (free read — ALWAYS use this for a known voice_id, search never finds IDs)",
+     "inputSchema": {"type": "object", "properties": {"voice_id": {"type": "string"}}, "required": ["voice_id"]}},
     {"name": "audio.balance", "description": "Fish package credit balance + plan + TTS budget (free read)",
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "audio.speak", "description": "TTS quote (dry-run, free) or live render (needs approved grant, burns package credits ~1/byte)",
@@ -703,7 +705,7 @@ def handle(state: dict, method: str, params: dict) -> dict:
             return {"error": str(e)[:250]}
     if name in ("pack.list", "pack.compile", "release.create", "task.status", "campaign.list", "actions.list",
                  "images.plan", "images.generate", "images.upload",
-                 "audio.voices", "audio.balance", "audio.speak",
+                 "audio.voices", "audio.voice", "audio.balance", "audio.speak",
                  "audio.estimate", "audio.generate",
                  "audio.studio.import", "audio.studio.status",
                  "audio.studio.generate", "audio.studio.export",
@@ -771,9 +773,10 @@ def handle(state: dict, method: str, params: dict) -> dict:
                 return {"result": upload_batch(store, sku, args.get("items"),
                                                dry_run=not live, ctx=ctx,
                                                campaign=args.get("campaign"))}
-            if name in ("audio.voices", "audio.balance", "audio.speak",
-                        "audio.estimate", "audio.generate"):
-                from pipeline.audio_flow import (voices, balance, speak,
+            if name in ("audio.voices", "audio.voice", "audio.balance",
+                        "audio.speak", "audio.estimate", "audio.generate"):
+                from pipeline.audio_flow import (voices, voice_detail,
+                                                 balance, speak,
                                                  estimate_media,
                                                  generate_media,
                                                  studio_import,
@@ -785,6 +788,8 @@ def handle(state: dict, method: str, params: dict) -> dict:
                                              str(args.get("language") or ""),
                                              bool(args.get("self")),
                                              int(args.get("page_size") or 10))}
+                if name == "audio.voice":
+                    return {"result": voice_detail(str(args.get("voice_id") or ""))}
                 if name == "audio.balance":
                     return {"result": balance()}
                 live = args.get("live") is True

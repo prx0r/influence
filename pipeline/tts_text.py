@@ -331,13 +331,47 @@ def _norm_words(t: str, subs: list, flags: list) -> str:
         if pat.search(t):
             subs.append((ab, w))
         t = pat.sub(w, t)
+    # scene-break asterisks *** → performed pause (never read aloud)
+    if re.search(r"\*{3,}", t):
+        subs.append(("*** break", "[long pause]"))
+    t = re.sub(r"\*{3,}", " [long pause] ", t)
+    # Gutenberg italics _word_ → plain word (underscores are never spoken)
+    if "_" in t:
+        subs.append(("_markup_", "plain"))
+    t = t.replace("_", "")
     # Roman numerals as standalone caps (Chapter XII, Part IV)
+    # structural words first: BOOK/Chapters are titles, not acronyms
+    def _st(mo):
+        w = mo.group(1).capitalize()
+        subs.append((mo.group(0), w))
+        return " " + w + " "
+    t = re.sub(r"\b(CHAPTER|BOOK|PART|VOLUME|ACT|SCENE|PSALM|CANTO)\b", _st, t)
+    # chapter/book + roman → cardinal ("chapter twelve", never "twelfth")
+    def _rc(mo):
+        v = roman_value(mo.group(2))
+        if v is None or v > 110:
+            flags.append(f"roman? {mo.group(0)}")
+            return mo.group(0)
+        w = cardinal(v)
+        subs.append((mo.group(0), w))
+        return " " + mo.group(1) + " " + w + " "
+    t = re.sub(r"\b([Cc]hapter|[Bb]ook|[Pp]art|[Vv]olume|[Aa]ct|[Ss]cene|[Pp]salm|[Cc]anto)\s+([IVXLCDM]{2,})\b", _rc, t)
+    # monarchs + roman → "Henry the eighth" (the one ordinal context)
+    def _rm(mo):
+        v = roman_value(mo.group(2))
+        if v is None or v > 30:
+            flags.append(f"roman? {mo.group(0)}")
+            return mo.group(0)
+        w = "the " + ordinal_word(v)
+        subs.append((mo.group(0), w))
+        return " " + mo.group(1) + " " + w + " "
+    t = re.sub(r"\b(Henry|Louis|Charles|Elizabeth|James|George|Edward|Pope|Catherine)\s+([IVXLCDM]{1,4})\b", _rm, t)
     def _r(mo):
         v = roman_value(mo.group(1))
         if v is None or v > 110:
             flags.append(f"roman? {mo.group(0)}")
             return mo.group(0)
-        w = ordinal_word(v)
+        w = cardinal(v)
         subs.append((mo.group(0), w))
         return " " + w + " "
     t = re.sub(r"\b([IVXLCDM]{2,})\b", _r, t)

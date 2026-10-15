@@ -94,7 +94,7 @@ def test_channel_character_binding():
     ch = cc.load_channel('folk-and-fable')
     d = cc.compile_direction(ch['voice']['chairs']['narrator'], ch)
     assert d.startswith('[') and 'never' not in d  # narrator has no nevers
-    a = cc.compile_direction(ch['voice']['chairs']['yuki'] if 'fish_id' in ch['voice']['chairs'].get('yuki', {}) else {'direction': 'soft', 'never': ['rush']}, ch)
+    a = cc.compile_direction({'direction': 'soft', 'never': ['rush']}, ch)
     assert 'never rush' in a
     try:
         cc.roster_for_duel(ch, ['narrator', 'nobody'])

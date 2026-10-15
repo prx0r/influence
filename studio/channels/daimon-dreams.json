@@ -17,7 +17,7 @@
  },
  "voice": {
   "bed": "deep drone, near-static visual, no captions",
-  "pace": 0.85,
+  "pace": 1.0,
   "chairs": {
    "guide": {
     "direction": "[low, steady guide voice, descending, unhurried]",
@@ -31,7 +31,41 @@
     "recommended": {
      "voice_id": "22e9311f9a0a4665b5b65b869ab0bbed",
      "label": "Dr. Easterman",
-     "reason": "weak tag match (low) — judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): character-voice, entertainment, storytelling, expressive; 1,357 prior uses (niche)"
+     "reason": "weak tag match (low) \u2014 judge the sample; owner taste (Calm Sleep Narrator, Luna Lovegood): character-voice, entertainment, storytelling, expressive; 1,357 prior uses (niche)"
+    },
+    "tags": {
+     "gender": "male",
+     "gender_conf": "med",
+     "era": "timeless",
+     "archetype": "ritual magus",
+     "energy": "low",
+     "shelf": "ritual-calm",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "low",
+      "measured",
+      "still"
+     ],
+     "presence": "circle",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "calm",
+      "low",
+      "magus",
+      "measured",
+      "ritual",
+      "still"
+     ],
+     "truth": "A magus mid-rite; the circle holds."
     }
    }
   },
@@ -43,9 +77,9 @@
   "text_prep": "influence pipeline/tts_text (score gate 70)"
  },
  "receipts": "per-video vaults + studio voice bank",
- "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)",
- "thesis": "Daimon Dreams sleep channel — thesis to confirm from damn README + sleepintel registry",
- "audience": "Adults 25-54 sleep listeners — refine per sleepintel hypotheses",
+ "imported_from": "damn profiles.json (scaffold \u2014 confirm thesis/style/cadence)",
+ "thesis": "Daimon Dreams sleep channel \u2014 thesis to confirm from damn README + sleepintel registry",
+ "audience": "Adults 25-54 sleep listeners \u2014 refine per sleepintel hypotheses",
  "sourcing": {
   "method": "damn project scripts + PD sources on disk; pi proposes from registry gaps",
   "feeds": [

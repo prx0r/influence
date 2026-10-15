@@ -17,7 +17,7 @@
  },
  "voice": {
   "bed": "",
-  "pace": 0.85,
+  "pace": 1.0,
   "chairs": {
    "imaginal": {
     "direction": "[luminous reader voice, imaginal-paced, violet hour]",
@@ -30,13 +30,83 @@
      "voice_id": "109f28529b1744888c0c809a73f4eb00",
      "label": "BANKAI",
      "reason": "owner taste (Calm Sleep Narrator, Luna Lovegood): middle-aged, expressive, energetic, narration; 75,432 prior uses (proven)"
+    },
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "imaginal guide",
+     "energy": "low",
+     "shelf": "ritual-calm",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "ageless",
+     "register": "low",
+     "texture": [
+      "low",
+      "measured",
+      "still"
+     ],
+     "presence": "circle",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "calm",
+      "guide",
+      "imaginal",
+      "low",
+      "measured",
+      "ritual",
+      "still"
+     ],
+     "truth": "A imaginal guide reading you to sleep."
     }
    },
    "guest": {
     "direction": "",
     "label": "dialogue guest voice (S2 only)",
     "never": [],
-    "status": "casting"
+    "status": "casting",
+    "tags": {
+     "gender": null,
+     "gender_conf": "low",
+     "era": "timeless",
+     "archetype": "imaginal guest",
+     "energy": "low",
+     "shelf": "ritual-calm",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": null,
+     "register": "low",
+     "texture": [
+      "low",
+      "measured",
+      "still"
+     ],
+     "presence": "circle",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "calm",
+      "guest",
+      "imaginal",
+      "low",
+      "measured",
+      "ritual",
+      "still"
+     ],
+     "truth": "A imaginal guest reading you to sleep."
+    }
    }
   },
   "render_default": "free (REST s2.1-pro-free, $0)"
@@ -47,9 +117,9 @@
   "text_prep": "influence pipeline/tts_text (score gate 70)"
  },
  "receipts": "per-video vaults + studio voice bank",
- "imported_from": "damn profiles.json (scaffold — confirm thesis/style/cadence)",
- "thesis": "Corbin Sleep sleep channel — thesis to confirm from damn README + sleepintel registry",
- "audience": "Adults 25-54 sleep listeners — refine per sleepintel hypotheses",
+ "imported_from": "damn profiles.json (scaffold \u2014 confirm thesis/style/cadence)",
+ "thesis": "Corbin Sleep sleep channel \u2014 thesis to confirm from damn README + sleepintel registry",
+ "audience": "Adults 25-54 sleep listeners \u2014 refine per sleepintel hypotheses",
  "sourcing": {
   "method": "damn project scripts + PD sources on disk; pi proposes from registry gaps",
   "feeds": [

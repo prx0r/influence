@@ -1,0 +1,1248 @@
+[
+[
+"aesop-front-to-back",
+{
+"words": 14220,
+"est_min": 95,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"truncated tail cut (91 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/aesop-front-to-back/source.txt",
+"out": "/tmp/auto-aesop-front-to-back.txt"
+},
+{
+"file": "/tmp/auto-aesop-front-to-back.txt",
+"pass": true,
+"score": 86,
+"chunks": 53,
+"words": 14220,
+"est_min": 95,
+"gate_warnings": 2,
+"fails": []
+}
+],
+[
+"andersen-part-1",
+{
+"words": 21400,
+"est_min": 143,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (40 lines)",
+"glosses unwrapped x4",
+"truncated tail cut (23 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/andersen-part-1/source.txt",
+"out": "/tmp/auto-andersen-part-1.txt"
+},
+{
+"file": "/tmp/auto-andersen-part-1.txt",
+"pass": true,
+"score": 90,
+"chunks": 80,
+"words": 21400,
+"est_min": 143,
+"gate_warnings": 6,
+"fails": []
+}
+],
+[
+"andersen-part-2",
+{
+"words": 21586,
+"est_min": 144,
+"complete": false,
+"notes": [
+"glosses unwrapped x2",
+"truncated tail cut (142 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/andersen-part-2/source.txt",
+"out": "/tmp/auto-andersen-part-2.txt"
+},
+{
+"file": "/tmp/auto-andersen-part-2.txt",
+"pass": true,
+"score": 90,
+"chunks": 78,
+"words": 21586,
+"est_min": 144,
+"gate_warnings": 5,
+"fails": []
+}
+],
+[
+"arabian-nights-entertainments",
+{
+"words": 21237,
+"est_min": 142,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (56 lines)",
+"truncated tail cut (184 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/arabian-nights-entertainments/source.txt",
+"out": "/tmp/auto-arabian-nights-entertainments.txt"
+},
+{
+"file": "/tmp/auto-arabian-nights-entertainments.txt",
+"pass": true,
+"score": 100,
+"chunks": 76,
+"words": 21237,
+"est_min": 142,
+"gate_warnings": 0,
+"fails": []
+}
+],
+[
+"book-of-were-wolves",
+{
+"words": 17784,
+"est_min": 119,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (14 lines)",
+"footnotes x34",
+"truncated tail cut (70 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/book-of-were-wolves/source.txt",
+"out": "/tmp/auto-book-of-were-wolves.txt"
+},
+{
+"file": "/tmp/auto-book-of-were-wolves.txt",
+"pass": true,
+"score": 77,
+"chunks": 69,
+"words": 17784,
+"est_min": 119,
+"gate_warnings": 3,
+"fails": []
+}
+],
+[
+"bulfinchs-mythology",
+{
+"words": 21465,
+"est_min": 143,
+"complete": true,
+"notes": [
+"pg-header dropped",
+"glosses unwrapped x5"
+],
+"source": "/root/easy/folk-and-fable/bulfinchs-mythology/source.txt",
+"out": "/tmp/auto-bulfinchs-mythology.txt"
+},
+{
+"file": "/tmp/auto-bulfinchs-mythology.txt",
+"pass": false,
+"score": 82,
+"chunks": 83,
+"words": 21465,
+"est_min": 143,
+"gate_warnings": 2,
+"fails": [
+"gate seg18: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg18: unclosed [direction] line: '[Footnote: This inconsistency arises from considering the Sa'",
+"gate seg19: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg31: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg31: unclosed [direction] line: '[Footnote: The goddess of innocence and purity. After leavin'",
+"gate seg32: unbalanced [brackets]: 0 open vs 1 close"
+]
+}
+],
+[
+"celtic-folk-fairy-tales",
+{
+"words": 21397,
+"est_min": 143,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"urls x1",
+"glosses unwrapped x15",
+"captions x17",
+"truncated tail cut (68 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/celtic-folk-fairy-tales/source.txt",
+"out": "/tmp/auto-celtic-folk-fairy-tales.txt"
+},
+{
+"file": "/tmp/auto-celtic-folk-fairy-tales.txt",
+"pass": false,
+"score": 87,
+"chunks": 75,
+"words": 21397,
+"est_min": 143,
+"gate_warnings": 8,
+"fails": [
+"gate seg45: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg69: unbalanced [brackets]: 0 open vs 1 close",
+"unbalanced brackets"
+]
+}
+],
+[
+"changelings-witnesses",
+{
+"words": 17992,
+"est_min": 120,
+"complete": false,
+"notes": [
+"footnotes x23",
+"glosses unwrapped x4",
+"truncated tail cut (81 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/changelings-witnesses/source.txt",
+"out": "/tmp/auto-changelings-witnesses.txt"
+},
+{
+"file": "/tmp/auto-changelings-witnesses.txt",
+"pass": true,
+"score": 78,
+"chunks": 69,
+"words": 17992,
+"est_min": 120,
+"gate_warnings": 4,
+"fails": []
+}
+],
+[
+"discoverie-of-witchcraft",
+{
+"words": 21350,
+"est_min": 142,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"footnotes x3",
+"glosses unwrapped x80",
+"captions x11",
+"truncated tail cut (11 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/discoverie-of-witchcraft/source.txt",
+"out": "/tmp/auto-discoverie-of-witchcraft.txt"
+},
+{
+"file": "/tmp/auto-discoverie-of-witchcraft.txt",
+"pass": false,
+"score": 65,
+"chunks": 88,
+"words": 21350,
+"est_min": 142,
+"gate_warnings": 0,
+"fails": [
+"prep score 65 < 70",
+"gate seg67: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg67: unclosed [direction] line: '[though we know from'",
+"gate seg68: unbalanced [brackets]: 0 open vs 1 close"
+]
+}
+],
+[
+"english-fairy-tales-jacobs",
+{
+"words": 21398,
+"est_min": 143,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"truncated tail cut (289 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/english-fairy-tales-jacobs/source.txt",
+"out": "/tmp/auto-english-fairy-tales-jacobs.txt"
+},
+{
+"file": "/tmp/auto-english-fairy-tales-jacobs.txt",
+"pass": true,
+"score": 84,
+"chunks": 76,
+"words": 21398,
+"est_min": 143,
+"gate_warnings": 0,
+"fails": []
+}
+],
+[
+"fairy-faith-celtic",
+{
+"words": 21152,
+"est_min": 141,
+"complete": true,
+"notes": [
+"pg-header dropped",
+"contents dropped (26 lines)",
+"footnotes x12"
+],
+"source": "/root/easy/folk-and-fable/fairy-faith-celtic/source.txt",
+"out": "/tmp/auto-fairy-faith-celtic.txt"
+},
+{
+"file": "/tmp/auto-fairy-faith-celtic.txt",
+"pass": false,
+"score": 66,
+"chunks": 85,
+"words": 21152,
+"est_min": 141,
+"gate_warnings": 0,
+"fails": [
+"prep score 66 < 70"
+]
+}
+],
+[
+"fairy-mythology-keightley",
+{
+"words": 21324,
+"est_min": 142,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"urls x1",
+"footnotes x163",
+"glosses unwrapped x9",
+"captions x7",
+"truncated tail cut (64 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/fairy-mythology-keightley/source.txt",
+"out": "/tmp/auto-fairy-mythology-keightley.txt"
+},
+{
+"file": "/tmp/auto-fairy-mythology-keightley.txt",
+"pass": false,
+"score": 65,
+"chunks": 85,
+"words": 21324,
+"est_min": 142,
+"gate_warnings": 0,
+"fails": [
+"prep score 65 < 70"
+]
+}
+],
+[
+"golden-bough",
+{
+"words": 20774,
+"est_min": 138,
+"complete": true,
+"notes": [
+"pg-header dropped",
+"contents dropped (238 lines)",
+"footnotes x10",
+"captions x1"
+],
+"source": "/root/easy/folk-and-fable/golden-bough/source.txt",
+"out": "/tmp/auto-golden-bough.txt"
+},
+{
+"file": "/tmp/auto-golden-bough.txt",
+"pass": true,
+"score": 85,
+"chunks": 80,
+"words": 20774,
+"est_min": 138,
+"gate_warnings": 1,
+"fails": []
+}
+],
+[
+"grimm-part-1",
+{
+"words": 21396,
+"est_min": 143,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (2 lines)",
+"glosses unwrapped x6",
+"captions x1",
+"truncated tail cut (71 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/grimm-part-1/source.txt",
+"out": "/tmp/auto-grimm-part-1.txt"
+},
+{
+"file": "/tmp/auto-grimm-part-1.txt",
+"pass": true,
+"score": 98,
+"chunks": 79,
+"words": 21396,
+"est_min": 143,
+"gate_warnings": 4,
+"fails": []
+}
+],
+[
+"grimm-part-2",
+{
+"words": 21593,
+"est_min": 144,
+"complete": false,
+"notes": [
+"truncated tail cut (73 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/grimm-part-2/source.txt",
+"out": "/tmp/auto-grimm-part-2.txt"
+},
+{
+"file": "/tmp/auto-grimm-part-2.txt",
+"pass": true,
+"score": 100,
+"chunks": 77,
+"words": 21593,
+"est_min": 144,
+"gate_warnings": 1,
+"fails": []
+}
+],
+[
+"grimm-part-3",
+{
+"words": 21589,
+"est_min": 144,
+"complete": false,
+"notes": [
+"truncated tail cut (95 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/grimm-part-3/source.txt",
+"out": "/tmp/auto-grimm-part-3.txt"
+},
+{
+"file": "/tmp/auto-grimm-part-3.txt",
+"pass": true,
+"score": 94,
+"chunks": 77,
+"words": 21589,
+"est_min": 144,
+"gate_warnings": 5,
+"fails": []
+}
+],
+[
+"grimm-part-4",
+{
+"words": 21592,
+"est_min": 144,
+"complete": false,
+"notes": [
+"truncated tail cut (76 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/grimm-part-4/source.txt",
+"out": "/tmp/auto-grimm-part-4.txt"
+},
+{
+"file": "/tmp/auto-grimm-part-4.txt",
+"pass": true,
+"score": 96,
+"chunks": 77,
+"words": 21592,
+"est_min": 144,
+"gate_warnings": 5,
+"fails": []
+}
+],
+[
+"household-spirits",
+{
+"words": 17961,
+"est_min": 120,
+"complete": false,
+"notes": [
+"truncated tail cut (219 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/household-spirits/source.txt",
+"out": "/tmp/auto-household-spirits.txt"
+},
+{
+"file": "/tmp/auto-household-spirits.txt",
+"pass": true,
+"score": 86,
+"chunks": 64,
+"words": 17961,
+"est_min": 120,
+"gate_warnings": 2,
+"fails": []
+}
+],
+[
+"jamaica-anansi",
+{
+"words": 14217,
+"est_min": 95,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"footnotes x22",
+"truncated tail cut (21 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/jamaica-anansi/source.txt",
+"out": "/tmp/auto-jamaica-anansi.txt"
+},
+{
+"file": "/tmp/auto-jamaica-anansi.txt",
+"pass": true,
+"score": 90,
+"chunks": 54,
+"words": 14217,
+"est_min": 95,
+"gate_warnings": 1,
+"fails": []
+}
+],
+[
+"kwaidan-part-1",
+{
+"words": 21192,
+"est_min": 141,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (58 lines)",
+"footnotes x31",
+"glosses unwrapped x4",
+"captions x3",
+"truncated tail cut (4 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/kwaidan-part-1/source.txt",
+"out": "/tmp/auto-kwaidan-part-1.txt"
+},
+{
+"file": "/tmp/auto-kwaidan-part-1.txt",
+"pass": false,
+"score": 69,
+"chunks": 81,
+"words": 21192,
+"est_min": 141,
+"gate_warnings": 6,
+"fails": [
+"prep score 69 < 70",
+"gate seg70: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg70: unclosed [direction] line: '[Closely, closely the youthful prince now follows after the '",
+"gate seg71: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg75: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg75: unclosed [direction] line: '[Here I must tell you that in Japanese feudal times there wa'",
+"gate seg76: unbalanced [brackets]: 0 open vs 1 close"
+]
+}
+],
+[
+"kwaidan-part-2",
+{
+"words": 18002,
+"est_min": 120,
+"complete": true,
+"notes": [
+"urls x8",
+"footnotes x67",
+"glosses unwrapped x8",
+"captions x2"
+],
+"source": "/root/easy/folk-and-fable/kwaidan-part-2/source.txt",
+"out": "/tmp/auto-kwaidan-part-2.txt"
+},
+{
+"file": "/tmp/auto-kwaidan-part-2.txt",
+"pass": false,
+"score": 65,
+"chunks": 61,
+"words": 18002,
+"est_min": 120,
+"gate_warnings": 0,
+"fails": [
+"prep score 65 < 70",
+"gate seg5: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg7: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg7: unclosed [direction] line: '[Only yesterday, near the village of Takata, I noticed a flo'",
+"gate seg8: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg17: unbalanced [brackets]: 11 open vs 10 close"
+]
+}
+],
+[
+"mythology-of-the-british-islands",
+{
+"words": 20347,
+"est_min": 136,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (74 lines)",
+"footnotes x110",
+"glosses unwrapped x2",
+"captions x3",
+"truncated tail cut (146 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/mythology-of-the-british-islands/source.txt",
+"out": "/tmp/auto-mythology-of-the-british-islands.txt"
+},
+{
+"file": "/tmp/auto-mythology-of-the-british-islands.txt",
+"pass": false,
+"score": 66,
+"chunks": 83,
+"words": 20347,
+"est_min": 136,
+"gate_warnings": 0,
+"fails": [
+"prep score 66 < 70",
+"gate seg58: unbalanced [brackets]: 0 open vs 1 close",
+"unbalanced brackets"
+]
+}
+],
+[
+"nights-continued",
+{
+"words": 21527,
+"est_min": 144,
+"complete": false,
+"notes": [
+"footnotes x58",
+"glosses unwrapped x85",
+"captions x21",
+"truncated tail cut (103 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/nights-continued/source.txt",
+"out": "/tmp/auto-nights-continued.txt"
+},
+{
+"file": "/tmp/auto-nights-continued.txt",
+"pass": true,
+"score": 70,
+"chunks": 82,
+"words": 21527,
+"est_min": 144,
+"gate_warnings": 1,
+"fails": []
+}
+],
+[
+"poetic-edda",
+{
+"words": 21426,
+"est_min": 143,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"footnotes x2",
+"truncated tail cut (64 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/poetic-edda/source.txt",
+"out": "/tmp/auto-poetic-edda.txt"
+},
+{
+"file": "/tmp/auto-poetic-edda.txt",
+"pass": true,
+"score": 70,
+"chunks": 85,
+"words": 21426,
+"est_min": 143,
+"gate_warnings": 1,
+"fails": []
+}
+],
+[
+"princess-and-the-goblin",
+{
+"words": 21280,
+"est_min": 142,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (70 lines)",
+"truncated tail cut (73 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/princess-and-the-goblin/source.txt",
+"out": "/tmp/auto-princess-and-the-goblin.txt"
+},
+{
+"file": "/tmp/auto-princess-and-the-goblin.txt",
+"pass": true,
+"score": 98,
+"chunks": 78,
+"words": 21280,
+"est_min": 142,
+"gate_warnings": 6,
+"fails": []
+}
+],
+[
+"prose-edda-part-2",
+{
+"words": 21581,
+"est_min": 144,
+"complete": false,
+"notes": [
+"footnotes x41",
+"glosses unwrapped x36",
+"truncated tail cut (170 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/prose-edda-part-2/source.txt",
+"out": "/tmp/auto-prose-edda-part-2.txt"
+},
+{
+"file": "/tmp/auto-prose-edda-part-2.txt",
+"pass": true,
+"score": 86,
+"chunks": 79,
+"words": 21581,
+"est_min": 144,
+"gate_warnings": 2,
+"fails": []
+}
+],
+[
+"prose-edda",
+{
+"words": 17828,
+"est_min": 119,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"footnotes x46",
+"glosses unwrapped x38",
+"truncated tail cut (22 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/prose-edda/source.txt",
+"out": "/tmp/auto-prose-edda.txt"
+},
+{
+"file": "/tmp/auto-prose-edda.txt",
+"pass": true,
+"score": 77,
+"chunks": 69,
+"words": 17828,
+"est_min": 119,
+"gate_warnings": 1,
+"fails": []
+}
+],
+[
+"russian-fairy-tales-part-1",
+{
+"words": 21368,
+"est_min": 142,
+"complete": true,
+"notes": [
+"pg-header dropped",
+"urls x1",
+"footnotes x119",
+"glosses unwrapped x4",
+"captions x3"
+],
+"source": "/root/easy/folk-and-fable/russian-fairy-tales-part-1/source.txt",
+"out": "/tmp/auto-russian-fairy-tales-part-1.txt"
+},
+{
+"file": "/tmp/auto-russian-fairy-tales-part-1.txt",
+"pass": false,
+"score": 80,
+"chunks": 83,
+"words": 21368,
+"est_min": 142,
+"gate_warnings": 2,
+"fails": [
+"gate seg0: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg4: unbalanced [brackets]: 4 open vs 3 close",
+"gate seg4: unclosed [direction] line: '[Popular Tales, collected by village schoolmasters in the'",
+"gate seg5: unbalanced [brackets]: 0 open vs 1 close",
+"unbalanced brackets"
+]
+}
+],
+[
+"russian-fairy-tales-part-2",
+{
+"words": 20913,
+"est_min": 139,
+"complete": false,
+"notes": [
+"preamble dropped to first chapter",
+"footnotes x73",
+"glosses unwrapped x6",
+"captions x1",
+"truncated tail cut (82 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/russian-fairy-tales-part-2/source.txt",
+"out": "/tmp/auto-russian-fairy-tales-part-2.txt"
+},
+{
+"file": "/tmp/auto-russian-fairy-tales-part-2.txt",
+"pass": false,
+"score": 80,
+"chunks": 77,
+"words": 20913,
+"est_min": 139,
+"gate_warnings": 0,
+"fails": [
+"gate seg21: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg21: unclosed [direction] line: '[The conclusion of this story is somewhat obscure. Most of t'",
+"gate seg23: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg43: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg43: unclosed [direction] line: '[Into the mystery of the forbidden chamber I will not enter '",
+"gate seg46: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg66: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg66: unclosed [direction] line: '[Stories about serpent-spouses are by no means uncommon, but'",
+"gate seg67: unbalanced [brackets]: 0 open vs 1 close",
+"\u2026more gate blocks (truncated)"
+]
+}
+],
+[
+"russian-fairy-tales-part-3",
+{
+"words": 21436,
+"est_min": 143,
+"complete": false,
+"notes": [
+"footnotes x240",
+"glosses unwrapped x11",
+"captions x1",
+"truncated tail cut (3 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/russian-fairy-tales-part-3/source.txt",
+"out": "/tmp/auto-russian-fairy-tales-part-3.txt"
+},
+{
+"file": "/tmp/auto-russian-fairy-tales-part-3.txt",
+"pass": false,
+"score": 82,
+"chunks": 83,
+"words": 21436,
+"est_min": 143,
+"gate_warnings": 0,
+"fails": [
+"gate seg5: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg5: unclosed [direction] line: '[With this story may be compared a multitude of tales in ver'",
+"gate seg8: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg36: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg36: unclosed [direction] line: '[Next morning Vasilissa \"buried the skull,\" locked up the ho'",
+"gate seg37: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg46: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg46: unclosed [direction] line: '[That part of this story which relates to the baking'",
+"gate seg48: unbalanced [brackets]: 0 open vs 1 close",
+"\u2026more gate blocks (truncated)"
+]
+}
+],
+[
+"russian-story-book-part-1",
+{
+"words": 20761,
+"est_min": 138,
+"complete": true,
+"notes": [
+"pg-header dropped",
+"contents dropped (42 lines)",
+"captions x1"
+],
+"source": "/root/easy/folk-and-fable/russian-story-book-part-1/source.txt",
+"out": "/tmp/auto-russian-story-book-part-1.txt"
+},
+{
+"file": "/tmp/auto-russian-story-book-part-1.txt",
+"pass": true,
+"score": 85,
+"chunks": 76,
+"words": 20761,
+"est_min": 138,
+"gate_warnings": 5,
+"fails": []
+}
+],
+[
+"russian-story-book-part-2",
+{
+"words": 21582,
+"est_min": 144,
+"complete": false,
+"notes": [
+"truncated tail cut (135 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/russian-story-book-part-2/source.txt",
+"out": "/tmp/auto-russian-story-book-part-2.txt"
+},
+{
+"file": "/tmp/auto-russian-story-book-part-2.txt",
+"pass": true,
+"score": 88,
+"chunks": 79,
+"words": 21582,
+"est_min": 144,
+"gate_warnings": 6,
+"fails": []
+}
+],
+[
+"sinbad-burton",
+{
+"words": 17795,
+"est_min": 119,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"footnotes x39",
+"glosses unwrapped x6",
+"captions x6",
+"truncated tail cut (95 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/sinbad-burton/source.txt",
+"out": "/tmp/auto-sinbad-burton.txt"
+},
+{
+"file": "/tmp/auto-sinbad-burton.txt",
+"pass": false,
+"score": 66,
+"chunks": 71,
+"words": 17795,
+"est_min": 119,
+"gate_warnings": 0,
+"fails": [
+"prep score 66 < 70"
+]
+}
+],
+[
+"slav-peasants-part-1",
+{
+"words": 20934,
+"est_min": 140,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (132 lines)",
+"glosses unwrapped x24",
+"captions x24",
+"truncated tail cut (96 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/slav-peasants-part-1/source.txt",
+"out": "/tmp/auto-slav-peasants-part-1.txt"
+},
+{
+"file": "/tmp/auto-slav-peasants-part-1.txt",
+"pass": true,
+"score": 83,
+"chunks": 77,
+"words": 20934,
+"est_min": 140,
+"gate_warnings": 4,
+"fails": []
+}
+],
+[
+"slav-peasants-part-2",
+{
+"words": 21585,
+"est_min": 144,
+"complete": false,
+"notes": [
+"glosses unwrapped x15",
+"captions x15",
+"truncated tail cut (28 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/slav-peasants-part-2/source.txt",
+"out": "/tmp/auto-slav-peasants-part-2.txt"
+},
+{
+"file": "/tmp/auto-slav-peasants-part-2.txt",
+"pass": true,
+"score": 83,
+"chunks": 80,
+"words": 21585,
+"est_min": 144,
+"gate_warnings": 4,
+"fails": []
+}
+],
+[
+"south-african-folk-tales",
+{
+"words": 21095,
+"est_min": 141,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (112 lines)",
+"footnotes x8",
+"truncated tail cut (63 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/south-african-folk-tales/source.txt",
+"out": "/tmp/auto-south-african-folk-tales.txt"
+},
+{
+"file": "/tmp/auto-south-african-folk-tales.txt",
+"pass": true,
+"score": 90,
+"chunks": 77,
+"words": 21095,
+"est_min": 141,
+"gate_warnings": 11,
+"fails": []
+}
+],
+[
+"tales-of-old-japan-part-1",
+{
+"words": 20663,
+"est_min": 138,
+"complete": true,
+"notes": [
+"pg-header dropped",
+"contents dropped (36 lines)",
+"footnotes x16",
+"glosses unwrapped x7",
+"captions x7"
+],
+"source": "/root/easy/folk-and-fable/tales-of-old-japan-part-1/source.txt",
+"out": "/tmp/auto-tales-of-old-japan-part-1.txt"
+},
+{
+"file": "/tmp/auto-tales-of-old-japan-part-1.txt",
+"pass": false,
+"score": 74,
+"chunks": 79,
+"words": 20663,
+"est_min": 138,
+"gate_warnings": 1,
+"fails": [
+"gate seg7: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg7: unclosed [direction] line: '[Footnote three : The full title of the Tycoon was Sei-i-tai'",
+"gate seg8: unbalanced [brackets]: 1 open vs 2 close",
+"gate seg38: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg38: unclosed [direction] line: '[Footnote nine : The Chinese, and the Japanese following the'",
+"gate seg39: unbalanced [brackets]: 0 open vs 1 close",
+"gate seg67: unbalanced [brackets]: 1 open vs 0 close",
+"gate seg67: unclosed [direction] line: '[Footnote fourteen : Those who are interested in this branch'",
+"gate seg68: unbalanced [brackets]: 0 open vs 1 close",
+"\u2026more gate blocks (truncated)"
+]
+}
+],
+[
+"thousand-nights-part-1",
+{
+"words": 21390,
+"est_min": 143,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"transcriber markers x1",
+"urls x1",
+"footnotes x68",
+"glosses unwrapped x70",
+"captions x20",
+"truncated tail cut (150 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/thousand-nights-part-1/source.txt",
+"out": "/tmp/auto-thousand-nights-part-1.txt"
+},
+{
+"file": "/tmp/auto-thousand-nights-part-1.txt",
+"pass": false,
+"score": 65,
+"chunks": 88,
+"words": 21390,
+"est_min": 143,
+"gate_warnings": 0,
+"fails": [
+"prep score 65 < 70",
+"gate seg86: unbalanced [brackets]: 2 open vs 1 close",
+"gate seg86: unclosed [direction] line: '[i. e.'",
+"gate seg87: unbalanced [brackets]: 1 open vs 2 close"
+]
+}
+],
+[
+"werewolf-case-histories",
+{
+"words": 17813,
+"est_min": 119,
+"complete": false,
+"notes": [
+"preamble dropped to first chapter",
+"footnotes x34",
+"truncated tail cut (127 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/werewolf-case-histories/source.txt",
+"out": "/tmp/auto-werewolf-case-histories.txt"
+},
+{
+"file": "/tmp/auto-werewolf-case-histories.txt",
+"pass": true,
+"score": 77,
+"chunks": 69,
+"words": 17813,
+"est_min": 119,
+"gate_warnings": 5,
+"fails": []
+}
+],
+[
+"west-african-part-1",
+{
+"words": 13686,
+"est_min": 91,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (154 lines)",
+"footnotes x9",
+"glosses unwrapped x2",
+"truncated tail cut (52 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/west-african-part-1/source.txt",
+"out": "/tmp/auto-west-african-part-1.txt"
+},
+{
+"file": "/tmp/auto-west-african-part-1.txt",
+"pass": true,
+"score": 75,
+"chunks": 51,
+"words": 13686,
+"est_min": 91,
+"gate_warnings": 6,
+"fails": []
+}
+],
+[
+"west-african-part-2",
+{
+"words": 14393,
+"est_min": 96,
+"complete": false,
+"notes": [
+"urls x2",
+"footnotes x11",
+"truncated tail cut (11 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/west-african-part-2/source.txt",
+"out": "/tmp/auto-west-african-part-2.txt"
+},
+{
+"file": "/tmp/auto-west-african-part-2.txt",
+"pass": true,
+"score": 81,
+"chunks": 49,
+"words": 14393,
+"est_min": 96,
+"gate_warnings": 3,
+"fails": []
+}
+],
+[
+"west-england-romances",
+{
+"words": 21410,
+"est_min": 143,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"urls x1",
+"footnotes x40",
+"glosses unwrapped x3",
+"captions x3",
+"truncated tail cut (58 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/west-england-romances/source.txt",
+"out": "/tmp/auto-west-england-romances.txt"
+},
+{
+"file": "/tmp/auto-west-england-romances.txt",
+"pass": false,
+"score": 65,
+"chunks": 87,
+"words": 21410,
+"est_min": 143,
+"gate_warnings": 2,
+"fails": [
+"prep score 65 < 70"
+]
+}
+],
+[
+"witchcraft-and-demonology",
+{
+"words": 20923,
+"est_min": 139,
+"complete": false,
+"notes": [
+"pg-header dropped",
+"contents dropped (30 lines)",
+"footnotes x97",
+"glosses unwrapped x1",
+"captions x1",
+"truncated tail cut (26 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/witchcraft-and-demonology/source.txt",
+"out": "/tmp/auto-witchcraft-and-demonology.txt"
+},
+{
+"file": "/tmp/auto-witchcraft-and-demonology.txt",
+"pass": false,
+"score": 65,
+"chunks": 88,
+"words": 20923,
+"est_min": 139,
+"gate_warnings": 5,
+"fails": [
+"prep score 65 < 70"
+]
+}
+],
+[
+"witches-before-the-trials",
+{
+"words": 17942,
+"est_min": 120,
+"complete": false,
+"notes": [
+"footnotes x1",
+"glosses unwrapped x86",
+"captions x6",
+"truncated tail cut (215 chars to last sentence)"
+],
+"source": "/root/easy/folk-and-fable/witches-before-the-trials/source.txt",
+"out": "/tmp/auto-witches-before-the-trials.txt"
+},
+{
+"file": "/tmp/auto-witches-before-the-trials.txt",
+"pass": true,
+"score": 76,
+"chunks": 78,
+"words": 17942,
+"est_min": 120,
+"gate_warnings": 0,
+"fails": []
+}
+],
+[
+"yuki-onna",
+{
+"words": 1455,
+"est_min": 10,
+"complete": true,
+"notes": [
+"footnotes x2",
+"glosses unwrapped x1",
+"captions x2"
+],
+"source": "/root/easy/folk-and-fable/yuki-onna/source.txt",
+"out": "/tmp/auto-yuki-onna.txt"
+},
+{
+"file": "/tmp/auto-yuki-onna.txt",
+"pass": true,
+"score": 95,
+"chunks": 6,
+"words": 1455,
+"est_min": 10,
+"gate_warnings": 1,
+"fails": []
+}
+]
+]

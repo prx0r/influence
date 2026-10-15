@@ -17,7 +17,7 @@
  },
  "voice": {
   "bed": "",
-  "pace": 0.85,
+  "pace": 1.0,
   "chairs": {
    "narrator": {
     "direction": "[unhurried reader voice, diary-paced, lights low]",
@@ -30,6 +30,422 @@
      "voice_id": "8e90926676d147ffa27b22773bcfeb3f",
      "label": "Storytelling Philosophy Deep",
      "reason": "tags match vibe: authoritative, low; owner taste (Calm Sleep Narrator, Luna Lovegood): storytelling, narration, young, deep; 1,576 prior uses (niche)"
+    }
+   },
+   "dee": {
+    "direction": "[dark wizard magus, Elizabethan; diary-paced, lights low]",
+    "label": "",
+    "status": "locked",
+    "notes": "Dee 1587 lamp-fire, True & Faithful Relation; occult ritual, never stagey",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "Elizabethan",
+     "archetype": "dark wizard magus",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "dark",
+      "low",
+      "magus",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper",
+      "wizard"
+     ],
+     "truth": "A magus who worked the rite and wrote it down by lamplight."
+    },
+    "fish_id": "394578d869ee4f99aa6fa500ba664528",
+    "lock_reason": "owner pick: wise English old man for John Dee",
+    "locked_by": "dash-human",
+    "locked_at": 1792082639,
+    "previous": []
+   },
+   "pepys": {
+    "direction": "[wry diarist, Restoration; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Pepys 1660 week; brisk wry gossip-energy held at sleep pace",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "Restoration",
+     "archetype": "wry diarist",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "diarist",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper",
+      "wry"
+     ],
+     "truth": "A diarist wry at midnight, brisk but held to sleep pace."
+    }
+   },
+   "aurelius": {
+    "direction": "[stoic emperor, Roman; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Meditations Book 2; tender resolve, midnight counsel",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "Roman",
+     "archetype": "stoic emperor",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "emperor",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "stoic",
+      "whisper"
+     ],
+     "truth": "An emperor counseling himself at midnight; tender resolve."
+    }
+   },
+   "evelyn": {
+    "direction": "[virtuoso diarist, Restoration; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Evelyn 1641; curious gentleman observer",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "med",
+     "era": "Restoration",
+     "archetype": "virtuoso diarist",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "diarist",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "virtuoso",
+      "whisper"
+     ],
+     "truth": "A virtuoso diarist reading you to sleep."
+    }
+   },
+   "woodforde": {
+    "direction": "[country parson, Georgian; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Woodforde diary; parish rhythms, dinner-table warmth",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "med",
+     "era": "Georgian",
+     "archetype": "country parson",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "country",
+      "low",
+      "parson",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A country parson reading you to sleep."
+    }
+   },
+   "dorothy": {
+    "direction": "[lakeside sister, Romantic; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Dorothy Wordsworth Alfoxden; tender close observation",
+    "tags": {
+     "gender": "female",
+     "gender_conf": "high",
+     "era": "Romantic",
+     "archetype": "lakeside sister",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "young",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "lakeside",
+      "low",
+      "sister",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A sister noting everything tenderly in her journal."
+    }
+   },
+   "walpole": {
+    "direction": "[witty correspondent, Georgian; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Walpole letters; arch amusement, never camp",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "med",
+     "era": "Georgian",
+     "archetype": "witty correspondent",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "correspondent",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper",
+      "witty"
+     ],
+     "truth": "A witty correspondent reading you to sleep."
+    }
+   },
+   "cellini": {
+    "direction": "[brash goldsmith, Renaissance; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Cellini autobiography; Florentine swagger, sleep-held",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "med",
+     "era": "Renaissance",
+     "archetype": "brash goldsmith",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "brash",
+      "goldsmith",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A brash goldsmith reading you to sleep."
+    }
+   },
+   "caesar": {
+    "direction": "[commander chronicler, Roman; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Gallic Wars; spare dispatches, winter-camp calm",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "Roman",
+     "archetype": "commander chronicler",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "chronicler",
+      "commander",
+      "low",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A commander dictating dispatches in a winter camp."
+    }
+   },
+   "leonardo": {
+    "direction": "[notebook genius, Renaissance; diary-paced, lights low]",
+    "label": "",
+    "status": "casting",
+    "notes": "Leonardo on time; mirror-mind curiosity, slow",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "med",
+     "era": "Renaissance",
+     "archetype": "notebook genius",
+     "energy": "low",
+     "shelf": "sleep-whisper",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "middle",
+     "register": "low",
+     "texture": [
+      "soft",
+      "smooth",
+      "low"
+     ],
+     "presence": "bedside-close",
+     "pace": "unhurried",
+     "warmth": "cool",
+     "voice_words": [
+      "genius",
+      "low",
+      "notebook",
+      "sleep",
+      "smooth",
+      "soft",
+      "whisper"
+     ],
+     "truth": "A notebook genius reading you to sleep."
     }
    }
   },

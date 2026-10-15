@@ -149,7 +149,11 @@ def test_onboard_react_cycle():
 def test_design_instruction_pure_and_gated():
     import sleep_studio as st
     r = st.design_instruction("folk-and-fable", "narrator")
-    assert r["ok"] is True and "Adrian" in r["instruction"]
+    # instruction mirrors the live locked chair label — never pin a voice name
+    import json as _j
+    _ch = _j.load(open(os.path.join(_CHAN, "folk-and-fable.json")))
+    _label = ((_ch.get("voice") or {}).get("chairs") or {}).get("narrator", {}).get("label", "narrator")
+    assert r["ok"] is True and _label.split(" ")[0] in r["instruction"]
     assert st.design_instruction("nope", "n")["ok"] is False
     assert st.design_instruction("folk-and-fable", "nobody")["ok"] is False
     import sys as _s

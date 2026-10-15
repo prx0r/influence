@@ -41,14 +41,83 @@
      "voice_id": "536d3a5e000945adb7038665781a4aca",
      "label": "Ethan (young earnest)",
      "reason": "young male ballad — deep house default wrong for a lad; ear-check pending"
+    },
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "earnest lad",
+     "energy": "warm-low",
+     "shelf": "warm lull",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "raspy",
+      "authoritative"
+     ],
+     "age": "young",
+     "register": "mid",
+     "texture": [
+      "warm",
+      "soft",
+      "close"
+     ],
+     "presence": "bedside",
+     "pace": "measured",
+     "warmth": "warm",
+     "voice_words": [
+      "close",
+      "earnest",
+      "lad",
+      "lull",
+      "soft",
+      "warm"
+     ],
+     "truth": "A lad of eighteen telling it plain and true."
     }
    },
    "narrator": {
     "direction": "[calm, measured storyteller voice, slow and gentle for sleep]",
     "edge_fallback": "en-GB-SoniaNeural",
-    "fish_id": "bf322df2096a46f18c579d0baa36f41d",
-    "label": "Adrian",
-    "status": "ear-checked"
+    "fish_id": "4b5f0c6f0a4b49988f449d0a04039a95",
+    "label": "old man (THE storytelling voice)",
+    "status": "ear-checked",
+    "tags": {
+     "gender": "male",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "old storyteller",
+     "energy": "low",
+     "shelf": "nostalgic narration",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "announcer",
+      "comedy",
+      "parody"
+     ],
+     "age": "old",
+     "register": "low",
+     "texture": [
+      "warm",
+      "weathered",
+      "low"
+     ],
+     "presence": "fireside",
+     "pace": "unhurried",
+     "warmth": "warm",
+     "voice_words": [
+      "low",
+      "narration",
+      "nostalgic",
+      "old",
+      "storyteller",
+      "warm",
+      "weathered"
+     ],
+     "truth": "An old storyteller for whom every tale is memory."
+    }
    },
    "yuki": {
     "candidates": [
@@ -64,10 +133,53 @@
      }
     ],
     "direction": "veiled whisper female",
-    "status": "casting"
+    "status": "locked",
+    "tags": {
+     "gender": "female",
+     "gender_conf": "high",
+     "era": "timeless",
+     "archetype": "frost spirit",
+     "energy": "low",
+     "shelf": "sleep-whisper-dark",
+     "vetoes": [
+      "sensual",
+      "seductive",
+      "bright",
+      "energetic",
+      "playful",
+      "cheerful",
+      "intimate"
+     ],
+     "age": "ageless",
+     "register": "low",
+     "texture": [
+      "deep",
+      "weathered",
+      "low"
+     ],
+     "presence": "graveside",
+     "pace": "unhurried",
+     "warmth": "cold",
+     "voice_words": [
+      "dark",
+      "deep",
+      "frost",
+      "low",
+      "sleep",
+      "spirit",
+      "weathered",
+      "whisper"
+     ],
+     "truth": "Winter being kind exactly once, then gone."
+    },
+    "fish_id": "511587b8341d471897655a634340a296",
+    "lock_reason": "owner pick: breathy frosty female, Witch archetype — frost not whisper-genre",
+    "locked_by": "dash-human",
+    "locked_at": 1792070501,
+    "previous": []
    }
   },
-  "pace": 0.85,
+  "pace": 1.0,
   "render_default": "free (REST s2.1-pro-free, $0)",
   "render_hero": "drama-3 grant-gated"
  },
@@ -225,8 +337,8 @@
     "FF-S1-fairy-witches-before-the-trials"
    ],
    "narrator": {
-    "voice_id": "bf322df2096a46f18c579d0baa36f41d",
-    "label": "Adrian (channel default, Calm Sleep under review)",
+    "voice_id": "4b5f0c6f0a4b49988f449d0a04039a95",
+    "label": "old man (channel default, THE storytelling voice)",
     "status": "locked"
    },
    "characters": {},
@@ -317,8 +429,8 @@
     "FF-S3-myth-sinbad-burton"
    ],
    "narrator": {
-    "voice_id": "bf322df2096a46f18c579d0baa36f41d",
-    "label": "Adrian (channel default, Calm Sleep under review)",
+    "voice_id": "4b5f0c6f0a4b49988f449d0a04039a95",
+    "label": "old man (channel default, THE storytelling voice)",
     "status": "locked"
    },
    "characters": {},

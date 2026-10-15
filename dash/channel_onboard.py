@@ -165,6 +165,28 @@ def propose(channel_slug: str, chair: str = "narrator",
     # the ghost-tale brief sat unused). Merge its words + lead query.
     _dir_kw = _keywords(direction) if direction else set()
     chair_kw |= _dir_kw
+    # casting tags (studio/channels/<slug>.json chairs.<chair>.tags): the
+    # owner-authored steering wheel. Archetype/shelf/era feed keywords;
+    # gender + vetoes are enforced at scoring (see _tag_gender/_vetoes).
+    _tag_gender, _tag_vetoes = None, set()
+    _ctags = (chairs[chair] or {}).get("tags") or {}
+    if isinstance(_ctags, dict):
+        _tagtext = ((_ctags.get("archetype") or "") + " " +
+                    (_ctags.get("shelf") or "") + " " +
+                    (_ctags.get("era") or "") + " " +
+                    " ".join(_ctags.get("voice_words") or []) + " " +
+                    " ".join(_ctags.get("texture") or []) + " " +
+                    (_ctags.get("truth") or "") + " " +
+                    (_ctags.get("presence") or "") + " " +
+                    (_ctags.get("pace") or ""))
+        for _w in _tagtext.lower().split():
+            _w = "".join(c for c in _w if c.isalpha())
+            if len(_w) >= 4 and _w not in STOP:
+                chair_kw.add(_w)
+        if _ctags.get("gender") in ("male", "female") and \
+                _ctags.get("gender_conf", "low") != "low":
+            _tag_gender = _ctags["gender"]
+        _tag_vetoes |= {str(v).lower() for v in (_ctags.get("vetoes") or [])}
     # brief translator: human words -> catalogue words. Without this,
     # briefs match nothing and every chair resolves to the default.
     try:
@@ -267,6 +289,27 @@ def propose(channel_slug: str, chair: str = "narrator",
     except Exception:
         _cg = None
     _vetoes: set = set((_cg or {}).get("vetoes", []) or [])
+    _vetoes |= _tag_vetoes
+    # thesis narrator tags (voice-thesis/<channel>.json collections[].narrator.tags):
+    # per-video steering. Same treatment as chair tags; chair wins gender ties.
+    try:
+        _ntags = ((_coll or {}).get("narrator") or {}).get("tags") or {}
+    except Exception:
+        _ntags = {}
+    if isinstance(_ntags, dict):
+        _ntagtext = ((_ntags.get("archetype") or "") + " " +
+                     (_ntags.get("shelf") or "") + " " +
+                     " ".join(_ntags.get("voice_words") or []) + " " +
+                     " ".join(_ntags.get("texture") or []) + " " +
+                     (_ntags.get("truth") or ""))
+        for _w in _ntagtext.lower().split():
+            _w = "".join(c for c in _w if c.isalpha())
+            if len(_w) >= 4 and _w not in STOP:
+                chair_kw.add(_w)
+        if _tag_gender is None and _ntags.get("gender") in ("male", "female") \
+                and _ntags.get("gender_conf", "low") != "low":
+            _tag_gender = _ntags["gender"]
+        _vetoes |= {str(v).lower() for v in (_ntags.get("vetoes") or [])}
     _queries = list((_cg or {}).get("queries", []) or []) or None
     if _cg:
         for _qw in " ".join(_cg.get("queries", [])).lower().split():
@@ -295,8 +338,16 @@ def propose(channel_slug: str, chair: str = "narrator",
         _lead = [" ".join(_keywords_ordered(_cth)[:6])] + _lead
     _all_q = list(dict.fromkeys(
         _lead + list(_queries or []) + vibe_queries(channel, chair)))
-    for q in _all_q:
-        r = af.voices(q, "", False, 15)
+    # popularity sweep: narrow brief queries miss high-use voices entirely
+    # (Friendly Teen 6708 uses never entered a ~30-voice pool). Broad
+    # queries pull the popular surface in; scoring (fame + buzz terms)
+    # decides, dedupe keeps the highest-use copy per name.
+    # NOTE: Fish search caps page_size at 20 (25+ returns zero) — breadth
+    # comes from more queries, never a bigger page.
+    _sweep = ["female narration storytelling", "male narration storytelling",
+              "young conversational voice", "calm sleep narration"]
+    for q in _all_q + [s for s in _sweep if s not in _all_q]:
+        r = af.voices(q, "", False, 20)
         for v in ((r.get("data") or {}).get("voices") or []):
             vid = v.get("id") or v.get("voice_id", "")
             if vid and vid not in pool:
@@ -362,6 +413,8 @@ def propose(channel_slug: str, chair: str = "narrator",
                 best[nm] = pool[incumbent]
     # loved voices always included (owner taste anchors — Calm Sleep
     # Narrator, Sleepy, Luna…): English-first, marked so reasons cite them.
+    # Gender lock still applies (a locked male chair never slates Luna):
+    # anchors bypass the uses/junk floor, never the chair's gender.
     for _a in _anchors():
         _vid = str(_a.get("voice_id") or "")
         _langs = _a.get("languages") or ["en"]
@@ -369,6 +422,12 @@ def propose(channel_slug: str, chair: str = "narrator",
             continue
         if not any(str(_l).startswith("en") for _l in _langs):
             continue
+        if _tag_gender:
+            _atl = {str(t).lower() for t in (_a.get("tags") or [])}
+            if _tag_gender == "male" and "female" in _atl and "male" not in _atl:
+                continue
+            if _tag_gender == "female" and "male" in _atl and "female" not in _atl:
+                continue
         pool[_vid] = {"id": _vid, "title": _a.get("title") or "loved voice",
                       "languages": _langs, "tags": _a.get("tags") or [],
                       "sample_audio": _a.get("sample_audio"),
@@ -422,6 +481,14 @@ def propose(channel_slug: str, chair: str = "narrator",
         if (_junk or _uses < 200) and vid != incumbent and not _anchored:
             continue
         tags = set((v.get("tags") or []))
+        # tag gender lock: a gendered chair never slates the other gender
+        # (Luna-for-Pepys was the lesson). Anchors + incumbent bypass.
+        if _tag_gender and vid != incumbent and not _anchored:
+            _tl = {str(t).lower() for t in tags}
+            if _tag_gender == "male" and "female" in _tl and "male" not in _tl:
+                continue
+            if _tag_gender == "female" and "male" in _tl and "female" not in _tl:
+                continue
         # token match (substring "male" in "female" was scoring cross-gender).
         # Each tag counts ONCE across all terms: theory claims first, then
         # affect, then overlap, then anchor. Same tags stacking four capped
