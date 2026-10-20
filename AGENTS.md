@@ -33,6 +33,24 @@
 13. **Owner law: 0 credits ever** (CREDIT_SPEND_ENABLED unset — kill-switch in
     `pipeline/audio_flow.py`). Free tier only until the owner explicitly says
     otherwise. No workarounds, no exceptions, no "just this once".
+    - **APIs are in .env files you can read** (key names only, never print or
+      commit values): `/root/influence/.env` (YOUTUBE_DATA_API_KEY),
+      `/root/characters/audition/.env` (FISH_API_KEY, 600, gitignored),
+      `~/.config/influence/fish-mcp.json` (Fish MCP OAuth, independent refresh).
+      `fish_rest.py` reads them in that order. `/root/.fish-env` is MISSING
+      by design (damn direct client errors; influence path is fine).
+    - **Fish MCP: connect, spend $0.** Free reads only — `balance` / `voices` /
+      `voice_detail` / `estimate_*` / `studio import/status` (no grant needed).
+      Anything billed (`speak` / `studio_generate` / `studio_export` /
+      `generate_media`) fails closed without a grant AND without
+      CREDIT_SPEND_ENABLED=1. Dry-run first, queue via `audio_request`, human
+      approves in dash — never call billed tools direct.
+    - **All rendering is fish free-pro API ONLY** (`s2.1-pro-free` via
+      `pipeline/providers/fish_rest.py` → `audio_flow.speak_free()` → dash
+      `render_pilot` / `free_narrate`). Same pro quality, $0, fair-use.
+      Paid models (`s2.1-pro`, voice-design $0.01, MCP `text_to_speech`) are
+      NEVER a render path — `fish_rest.tts()` raises on non-free models by
+      construction. If it isn't `speak_free`, it isn't rendering.
 14. **URL map (read before touching any frontend):**
     - `youtube.agentcom.org/studio` — THE STUDIO. Channel rail, Pilots
       (preview/full/formula), Voices (casting grid), Thumbnail + Titles
@@ -51,3 +69,10 @@
 15. **Casting lane handover: `docs/HANDOVER-CASTING.md`.** Next agent starts
     there (engine map, open threads, never-dos). This rule is the link —
     keep the handover current when the lane changes hands.
+
+## TOPOLOGY (how the three repos connect; full map: damn/AGENT-START-HERE.md)
+- influence (you are here) = PLATFORM + hands: MCP tools, release, feedback, qp runtime. R2 creds load at runtime from /root/.r2-factory. Publish = draft + human hash, always.
+- damn = CHANNELS + judgment: channel runtimes, fish gates, voice registry. Judges what passes; spends nothing.
+- sleepdraw = WORKSHOP: packs, styles, voice runs, R2 transport (merge candidate → damn/production/).
+- Flow: agent → this MCP (channel.skill serves damn) → engines (damn judges, sleepdraw builds) → R2 artifacts / damn receipts / influence state.
+- Secrets in NO repo · timers in SYSTEM crontab only (02:00 factory, 09:00 scan) · absolute paths bind all three — rewrite before any move.
