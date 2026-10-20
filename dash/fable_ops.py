@@ -7,6 +7,7 @@ never written anywhere, never committed.
 """
 from __future__ import annotations
 
+import glob
 import json
 import os
 import subprocess
@@ -187,6 +188,9 @@ def channel_skill(slug: str) -> dict:
     laws = _read("/root/damn/AGENTS.md", 4000)
     if laws:
         files["house-laws.md"] = laws
+    registry = _read("/root/damn/voices/registry.md", 4000)
+    if registry:
+        files["voice-registry.md"] = registry
     thesis = _theses().get(proj, _theses().get(slug))
     lane, lane_beats = LANES.get(proj, LANES.get(slug, (None, None)))
     routine_order = ["01-cast", "02-drama", "03-voice-lock", "04-sfx",
@@ -486,3 +490,173 @@ def yt_upload(slug: str) -> dict:
     mp = os.path.join(wdir, "upload-manifest.json")
     json.dump(manifest, open(mp, "w"), indent=1)
     return {"draft": manifest, "manifest_path": mp}
+
+
+# ---- engines (damn fish/* exposed read/dry-run; writes stay in-repo, $0) ----
+
+def _proj_dir(slug: str):
+    proj = CHANNEL_PROJECTS.get(slug, slug)
+    p = os.path.join(DAMN, proj)
+    return p if p.startswith(DAMN) and os.path.isdir(p) else None
+
+
+def qc_validate(slug: str, file: str) -> dict:
+    """validate.py (gate+poison+goldens) — the pre-render FAIL-closed check."""
+    pdir = _proj_dir(slug)
+    if not pdir:
+        return {"error": f"no project for {slug}"}
+    target = file if os.path.isabs(file) else os.path.join(pdir, file)
+    if not target.startswith(pdir) or not os.path.isfile(target):
+        return {"error": f"file not found: {file}"}
+    house = os.path.basename(pdir.rstrip("/"))
+    r = subprocess.run([sys.executable, "/root/damn/fish/validate.py",
+                        target, f"--house={house}"],
+                       capture_output=True, text=True, timeout=300)
+    out = (r.stdout + r.stderr)
+    return {"ok": r.returncode == 0, "exit_code": r.returncode,
+            "tail": out[-1200:]}
+
+
+def engine_direct(slug: str, file: str, words: int = 0) -> dict:
+    """direct.py — clean/dread/warm A/B/C direction variants (tags only, body untouched)."""
+    pdir = _proj_dir(slug)
+    if not pdir:
+        return {"error": f"no project for {slug}"}
+    target = file if os.path.isabs(file) else os.path.join(pdir, file)
+    if not target.startswith(pdir) or not os.path.isfile(target):
+        return {"error": f"file not found: {file}"}
+    cmd = [sys.executable, "/root/damn/fish/direct.py", target]
+    if words:
+        cmd += ["--words", str(int(words))]
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+    return {"ok": r.returncode == 0, "report": (r.stdout + r.stderr)[-4000:]}
+
+
+def engine_mvp(slug: str, script: str, title: str = "") -> dict:
+    """mvp.py — build MVP-0 content pack (script/voices/art/meta/manifest). $0 text-only."""
+    pdir = _proj_dir(slug)
+    if not pdir:
+        return {"error": f"no project for {slug}"}
+    target = script if os.path.isabs(script) else os.path.join(pdir, script)
+    if not target.startswith(pdir) or not os.path.isfile(target):
+        return {"error": f"script not found: {script}"}
+    house = os.path.basename(pdir.rstrip("/"))
+    cmd = [sys.executable, "/root/damn/fish/mvp.py", house, target]
+    if title:
+        cmd += ["--title", title]
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=300,
+                       cwd="/root/damn")
+    packs = sorted(glob.glob(os.path.join(pdir, "mvp", "*", "manifest.json")))
+    return {"ok": r.returncode == 0, "report": (r.stdout + r.stderr)[-1500:],
+            "latest_pack": packs[-1] if packs else None}
+
+
+def engine_books(query: str) -> dict:
+    """books.py — PD book finder (Gutendex -> Open Library -> Google Books)."""
+    if not query.strip():
+        return {"error": "query required"}
+    r = subprocess.run([sys.executable, "/root/damn/fish/books.py", query],
+                       capture_output=True, text=True, timeout=90)
+    return {"ok": r.returncode == 0, "results": (r.stdout + r.stderr)[:3000]}
+
+
+def engine_content(slug: str, limit: int = 3, dry_run: bool = True) -> dict:
+    """content.py — queue processor (P0/P1 -> validate+slop -> receipt). Default dry."""
+    pdir = _proj_dir(slug)
+    if not pdir:
+        return {"error": f"no project for {slug}"}
+    if not os.path.exists(os.path.join(pdir, "content-queue.txt")):
+        return {"error": f"no content-queue.txt for {slug}"}
+    cmd = [sys.executable, "/root/damn/fish/content.py", slug,
+           "--limit", str(int(limit))]
+    if dry_run:
+        cmd.append("--dry-run")
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)
+    return {"ok": r.returncode == 0, "dry_run": dry_run,
+            "report": (r.stdout + r.stderr)[-2000:]}
+
+
+def feedback_run(video_ids: list, brand: str = "oddhobb") -> dict:
+    """feedback_tick — Data-API stats -> verdicts -> ledger rows."""
+    if not video_ids:
+        return {"error": "video_ids required"}
+    ids = [v.strip() for v in video_ids if v.strip()]
+    sys.path.insert(0, "/root/influence")
+    from pipeline import feedback_tick as ft
+    return ft.tick(ids, brand)
+
+
+def release_compile(slug: str) -> dict:
+    """compilers/youtube.py — final+thumb+manifest -> payload + compliance + hashes."""
+    wdir = os.path.join(WORK, slug)
+    final = os.path.join(wdir, slug + "-full.mp4")
+    thumb, manifest = os.path.join(wdir, "thumb.jpg"), os.path.join(wdir, "upload-manifest.json")
+    missing = [p for p in (final, thumb, manifest) if not os.path.exists(p)]
+    if missing:
+        return {"error": f"missing: {missing} — build + stage first"}
+    r = subprocess.run([sys.executable,
+                        "/root/influence/pipeline/compilers/youtube.py",
+                        manifest, final, thumb], capture_output=True,
+                       text=True, timeout=180)
+    try:
+        return json.loads(r.stdout)
+    except Exception:
+        return {"raw": (r.stdout + r.stderr)[-500:]}
+
+
+def studio_voicebank() -> dict:
+    """Voice bank inventory (masters + sidecars, voice ids per file)."""
+    out = []
+    for f in sorted(os.listdir(VOICE)):
+        if not f.endswith(".mp3"):
+            continue
+        meta = {}
+        try:
+            meta = json.load(open(os.path.join(VOICE, f + ".json")))
+        except Exception:
+            pass
+        segs = meta.get("pilot", {}).get("segments", meta.get("segments", []))
+        vids = sorted({s.get("voice_id", "?")[:12] for s in segs if s.get("voice_id")}) or \
+            [str(meta.get("voice", "?"))[:16]]
+        out.append({"file": f, "voice": vids, "chars": meta.get("chars")})
+    return {"count": len(out), "bank": out[-60:]}
+
+
+def status_morning() -> dict:
+    """Latest morning review + per-channel fix-queue tails + content queues."""
+    revs = sorted(glob.glob(os.path.join(PACKS, "morning-review-*.md")))
+    latest = _read(revs[-1], 4000) if revs else "no reviews yet"
+    fixes = {}
+    for slug, proj in CHANNEL_PROJECTS.items():
+        fq = os.path.join(DAMN, proj, "fix-queue.md")
+        cq = os.path.join(DAMN, proj, "content-queue.txt")
+        if os.path.exists(fq):
+            fixes[slug] = {"fix_queue": _read(fq, 1500),
+                           "queue": _read(cq, 600) or ""}
+    return {"latest_review": latest, "channels": fixes}
+
+
+def status_overnight() -> dict:
+    """Cron line, queue, last log tail."""
+    cr = subprocess.run(["crontab", "-l"], capture_output=True, text=True, timeout=15)
+    cron = [l for l in cr.stdout.splitlines() if "overnight" in l]
+    queue = _read(os.path.join(PACKS, "queue.txt"), 800) or "(empty)"
+    log = _read("/root/sleepdraw/pack/overnight.log", 1200) or "(no runs yet)"
+    return {"cron": cron, "queue": queue, "last_log": log}
+
+
+SKILL_DIRS = {
+    "find-voices": "/root/influence/.opencode/skills/find-voices/SKILL.md",
+    "render-episodes": "/root/influence/.opencode/skills/render-episodes/SKILL.md",
+    "motion-probe": "/root/gcomedy/essay1/skills/motion-probe/SKILL.md",
+    "earshot-qc": "/root/gcomedy/essay1/skills/earshot-qc/SKILL.md",
+    "fish-voices": "/root/gcomedy/essay1/skills/fish-voices/SKILL.md",
+    "laptop-anatomy": "/root/gcomedy/essay1/skills/laptop-anatomy/SKILL.md",
+}
+
+
+def skill_get(name: str) -> dict:
+    p = SKILL_DIRS.get(name)
+    if not p or not os.path.isfile(p):
+        return {"error": f"unknown skill; have: {sorted(SKILL_DIRS)}"}
+    return {"name": name, "skill": _read(p, 8000)}

@@ -27,6 +27,38 @@
 | Unattended production? | `sleepdraw: pack/overnight.sh` (queue→build→gate→push; stops at human gates) |
 | MCP surface? | `influence: dash/mcp.py` + `dash/fable_ops.py`; stdio bridge `dash/fable-mcp-stdio.py` |
 
+## Exposure map (disk → MCP, audited 2026-10-20 — 85 tools, all live-called)
+Everything useful on disk that agents need is a tool; the rest has a reason:
+
+| Disk asset | MCP | Notes |
+|---|---|---|
+| damn fish engine (normalize/validate/gate/poison) | `qc.validate`, `qc.text` | pre-render FAIL-closed |
+| damn slop + NoSlop signal | `qc.text` | suggested edits included |
+| damn deliver | `qc.audio` | WPM + pauses vs tags |
+| damn gate_pack | `fable.gate` | receipt JSON per video |
+| damn direct.py (A/B/C direction) | `engine.direct` | $0, body untouched |
+| damn mvp.py (content packs) | `engine.mvp` | $0 text-only |
+| damn content.py (queue→receipt) | `engine.content` | dry-run default |
+| damn books.py (PD finder) | `engine.books` | Gutendex→OL→GB |
+| damn readout/diary/gate internals | via qc.* | composed, not raw |
+| vid packs + R2 factory | `fable.*`, `r2.ls` | pull/build/gate/push |
+| compilers/youtube.py | `release.compile` | dry-run payload+hashes |
+| yt_compliance | inside `fable.gate` + compile | |
+| feedback_tick | `feedback.tick` | needs Analytics OAuth for AVD later |
+| analytics pull | `feedback.tick` internals | vault key read |
+| voice bank (170 masters) | `studio.voicebank` | ids per file |
+| channel skills/thesis/lanes/styles | `channel.skill` | live docs |
+| voice registry + pick protocol | inside `channel.skill` | registry.md served |
+| skills (find-voices, render-episodes, motion-probe, earshot-qc, fish-voices, laptop-anatomy) | `skill.get` | |
+| morning review + fix-queues + content queues | `status.morning` | |
+| overnight cron + queue + log | `status.overnight` | |
+| sleepvids section sources | via qc.text paths | project-relative reads |
+| gcomedy attardo graph (76n/117e) | — | comedy-theory knowledge; park until a comedy channel needs it |
+| characters2 jokegate/jev delivery | — | comedy-specific; determinists already ported (slop/deliver); Jev loop stays on its repo |
+| sleepdraw board/shot CLI (corbin film machine) | — | corbin-specific; studio.* covers art/etch for channels |
+| earshot (audio critique) | — | proven skill, needs model pull; wire when foley QC matters |
+| Go/Opencode keys, FAL, OAuth | — | spend/credentials; human-gated by law, never tools |
+
 ## Running the studio server
 `dash/launch-8795.sh` (sets LIVE=1 YT_MODE=1, port 8795 — the tunnel target
 for youtube.agentcom.org). Rebuilt venv: `stevejobless/.venv` via `uv sync`.

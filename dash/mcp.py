@@ -153,6 +153,28 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "file": {"type": "string"}}, "required": ["slug", "file"]}},
     {"name": "qc.audio", "description": "Delivery check on a rendered master: WPM vs chair spec + pauses vs direction tags (PASS/FAIL)",
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "audio": {"type": "string"}, "words": {"type": "integer"}, "wpm_target": {"type": "number"}, "drama": {"type": "string"}}, "required": ["slug", "audio", "words"]}},
+    {"name": "qc.validate", "description": "Full validate.py (gate+poison+goldens) on a channel text — pre-render FAIL-closed check",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "file": {"type": "string"}}, "required": ["slug", "file"]}},
+    {"name": "engine.direct", "description": "Direction compiler: clean/dread/warm A/B/C variants (tags before anchors, body untouched)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "file": {"type": "string"}, "words": {"type": "integer"}}, "required": ["slug", "file"]}},
+    {"name": "engine.mvp", "description": "Build MVP-0 content pack from a script (script/voices/art/meta/manifest, $0 text-only)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "script": {"type": "string"}, "title": {"type": "string"}}, "required": ["slug", "script"]}},
+    {"name": "engine.books", "description": "PD book finder: Gutendex -> Open Library -> Google Books",
+     "inputSchema": {"type": "object", "properties": {"query": {"type": "string"}}, "required": ["query"]}},
+    {"name": "engine.content", "description": "Run the content queue (P0/P1 -> validate+slop -> receipt). Dry-run by default",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "limit": {"type": "integer"}, "live": {"type": "boolean"}}, "required": ["slug"]}},
+    {"name": "feedback.tick", "description": "Pull video stats -> verdicts (velocity/engagement floors) -> ledger rows",
+     "inputSchema": {"type": "object", "properties": {"video_ids": {"type": "array", "items": {"type": "string"}}, "brand": {"type": "string"}}, "required": ["video_ids"]}},
+    {"name": "release.compile", "description": "Dry-run videos.insert payload from a built workdir (compliance + hashes, never uploads)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "studio.voicebank", "description": "Voice bank inventory: masters + sidecars + voice ids per file",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "status.morning", "description": "Latest morning review + per-channel fix-queues + content queues",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "status.overnight", "description": "Overnight cron line, queue, last log tail",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "skill.get", "description": "Serve a named skill (find-voices, render-episodes, motion-probe, earshot-qc, fish-voices, laptop-anatomy)",
+     "inputSchema": {"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}},
     {"name": "fable.still", "description": "Tableau prompt for a tale (dry-run copy-paste until vision key lands)",
      "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "tale": {"type": "string"}}, "required": ["slug", "tale"]}},
     {"name": "r2.ls", "description": "List R2 prefix (read-only, needs R2 creds)",
@@ -925,7 +947,10 @@ def handle(state: dict, method: str, params: dict) -> dict:
     if name in ("channel.list", "channel.skill", "fable.packs", "fable.pack",
                   "fable.pull", "fable.push", "fable.build", "fable.job",
                   "fable.still", "fable.gate", "r2.ls", "yt.upload",
-                  "qc.text", "qc.audio"):
+                  "qc.text", "qc.audio", "qc.validate", "engine.direct",
+                  "engine.mvp", "engine.books", "engine.content",
+                  "feedback.tick", "release.compile", "studio.voicebank",
+                  "status.morning", "status.overnight", "skill.get"):
         try:
             sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
             import fable_ops as _fb
@@ -957,6 +982,36 @@ def handle(state: dict, method: str, params: dict) -> dict:
                                                int(args.get("words") or 0),
                                                float(args.get("wpm_target") or 110.0),
                                                str(args.get("drama") or ""))}
+            if name == "qc.validate":
+                return {"result": _fb.qc_validate(str(args.get("slug", "")),
+                                                  str(args.get("file", "")))}
+            if name == "engine.direct":
+                return {"result": _fb.engine_direct(str(args.get("slug", "")),
+                                                    str(args.get("file", "")),
+                                                    int(args.get("words") or 0))}
+            if name == "engine.mvp":
+                return {"result": _fb.engine_mvp(str(args.get("slug", "")),
+                                                 str(args.get("script", "")),
+                                                 str(args.get("title") or ""))}
+            if name == "engine.books":
+                return {"result": _fb.engine_books(str(args.get("query", "")))}
+            if name == "engine.content":
+                return {"result": _fb.engine_content(str(args.get("slug", "")),
+                                                     int(args.get("limit") or 3),
+                                                     not bool(args.get("live")))}
+            if name == "feedback.tick":
+                return {"result": _fb.feedback_run(list(args.get("video_ids") or []),
+                                                   str(args.get("brand") or "oddhobb"))}
+            if name == "release.compile":
+                return {"result": _fb.release_compile(str(args.get("slug", "")))}
+            if name == "studio.voicebank":
+                return {"result": _fb.studio_voicebank()}
+            if name == "status.morning":
+                return {"result": _fb.status_morning()}
+            if name == "status.overnight":
+                return {"result": _fb.status_overnight()}
+            if name == "skill.get":
+                return {"result": _fb.skill_get(str(args.get("name", "")))}
             if name == "fable.still":
                 return {"result": _fb.fable_still(str(args.get("slug", "")),
                                                   str(args.get("tale", "")))}
