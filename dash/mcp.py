@@ -131,6 +131,34 @@ TOOLS = [
       "inputSchema": {"type": "object", "properties": {"collection": {"type": "string"}, "channel": {"type": "string"}}, "required": ["collection"]}},
      {"name": "taste.profile", "description": "Owner taste profile: learned feature weights + standing rules compiled from locks/likes/anchors/notes (free read — check this before proposing voices)",
       "inputSchema": {"type": "object", "properties": {}, "required": []}},
+    {"name": "channel.list", "description": "List all YouTube channels: studio + damn houses (read-only)",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "channel.skill", "description": "Channel skill pack: routines, style bible, laws, how-to-make (read-only, live docs)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "fable.packs", "description": "List vid packs with factory readiness (read-only)",
+     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "fable.pack", "description": "One vid pack: meta + cue + prompts + build files (read-only)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "fable.pull", "description": "Pull pack + audio from R2 to box workdir (needs R2 creds)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "fable.push", "description": "Push stills + final to R2 (needs R2 creds, final must exist)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "fable.build", "description": "Assemble pack to full MP4 (async jid; stills + baked segments required)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "fable.job", "description": "Poll a fable build job",
+     "inputSchema": {"type": "object", "properties": {"jid": {"type": "string"}}, "required": ["jid"]}},
+    {"name": "fable.gate", "description": "Deterministic video gates on a built pack (PASS/FAIL + receipt)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "channel": {"type": "string"}}, "required": ["slug"]}},
+    {"name": "qc.text", "description": "Slop gate on a channel text: coherence, rhythm, NoSlop signal + suggested edits (PASS/FAIL)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "file": {"type": "string"}}, "required": ["slug", "file"]}},
+    {"name": "qc.audio", "description": "Delivery check on a rendered master: WPM vs chair spec + pauses vs direction tags (PASS/FAIL)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "audio": {"type": "string"}, "words": {"type": "integer"}, "wpm_target": {"type": "number"}, "drama": {"type": "string"}}, "required": ["slug", "audio", "words"]}},
+    {"name": "fable.still", "description": "Tableau prompt for a tale (dry-run copy-paste until vision key lands)",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}, "tale": {"type": "string"}}, "required": ["slug", "tale"]}},
+    {"name": "r2.ls", "description": "List R2 prefix (read-only, needs R2 creds)",
+     "inputSchema": {"type": "object", "properties": {"prefix": {"type": "string"}}, "required": []}},
+    {"name": "yt.upload", "description": "DRAFT ONLY: stage title/desc/tags/chapters manifest, never publishes",
+     "inputSchema": {"type": "object", "properties": {"slug": {"type": "string"}}, "required": ["slug"]}},
 ]
 
 GRAPH = [
@@ -894,4 +922,48 @@ def handle(state: dict, method: str, params: dict) -> dict:
                 return {"result": _ar(kind, params)}
         except Exception as e:
             return {"error": str(e)[:250]}
+    if name in ("channel.list", "channel.skill", "fable.packs", "fable.pack",
+                  "fable.pull", "fable.push", "fable.build", "fable.job",
+                  "fable.still", "fable.gate", "r2.ls", "yt.upload",
+                  "qc.text", "qc.audio"):
+        try:
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            import fable_ops as _fb
+            if name == "channel.list":
+                return {"result": _fb.channel_list(state)}
+            if name == "channel.skill":
+                return {"result": _fb.channel_skill(str(args.get("slug", "")))}
+            if name == "fable.packs":
+                return {"result": _fb.pack_list()}
+            if name == "fable.pack":
+                return {"result": _fb.pack_get(str(args.get("slug", "")))}
+            if name == "fable.pull":
+                return {"result": _fb.pack_pull(str(args.get("slug", "")))}
+            if name == "fable.push":
+                return {"result": _fb.pack_push(str(args.get("slug", "")))}
+            if name == "fable.build":
+                return {"result": _fb.fable_build(str(args.get("slug", "")))}
+            if name == "fable.job":
+                return {"result": _fb.fable_job(str(args.get("jid", "")))}
+            if name == "fable.gate":
+                return {"result": _fb.fable_gate(str(args.get("slug", "")),
+                                                 str(args.get("channel") or "folk-and-fable"))}
+            if name == "qc.text":
+                return {"result": _fb.qc_text(str(args.get("slug", "")),
+                                              str(args.get("file", "")))}
+            if name == "qc.audio":
+                return {"result": _fb.qc_audio(str(args.get("slug", "")),
+                                               str(args.get("audio", "")),
+                                               int(args.get("words") or 0),
+                                               float(args.get("wpm_target") or 110.0),
+                                               str(args.get("drama") or ""))}
+            if name == "fable.still":
+                return {"result": _fb.fable_still(str(args.get("slug", "")),
+                                                  str(args.get("tale", "")))}
+            if name == "r2.ls":
+                return {"result": _fb.r2_ls(str(args.get("prefix") or "fable/"))}
+            if name == "yt.upload":
+                return {"result": _fb.yt_upload(str(args.get("slug", "")))}
+        except Exception as e:
+            return {"error": str(e)[:300]}
     return {"error": f"unknown tool {name}"}

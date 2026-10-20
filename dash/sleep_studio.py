@@ -38,11 +38,23 @@ VOICES = {
 
 
 def _creds():
-    for line in open(os.environ.get("SLEEPDRAW_ENV_FILE", "/root/.r2-env")):
-        line = line.strip()
-        if line and "=" in line and not line.startswith("#"):
-            k, v = line.split("=", 1)
-            os.environ.setdefault(k.strip(), v.strip().strip("'\""))
+    for path in (os.environ.get("SLEEPDRAW_ENV_FILE", ""),
+                 "/root/.r2-factory", "/root/.r2-env"):
+        if not path:
+            continue
+        try:
+            fh = open(path)
+        except FileNotFoundError:
+            continue
+        with fh:
+            for line in fh:
+                line = line.strip()
+                if line and "=" in line and not line.startswith("#"):
+                    k, v = line.split("=", 1)
+                    k = k.strip()
+                    if k.startswith("export "):
+                        k = k[7:].strip()
+                    os.environ.setdefault(k, v.strip().strip("'\""))
 
 
 def _slug(s: str) -> str:
@@ -286,7 +298,7 @@ def list_pilots() -> list:
             except Exception:
                 pass
             try:
-                poison = _damn_poison().poison(body)
+                poison = _tt.book_poison(body)
             except Exception:
                 pass
             house = path.split(os.sep)[-3]
@@ -391,6 +403,16 @@ def render_pilot(path: str, channel_slug: str = "",
     except ImportError:
         from pipeline import tts_text as _tt
     parsed = parse_drama(path)
+    # mic-safety: publishing metadata (voice IDs, model names, SHIP notes,
+    # paths) lives in // headers by design. If any survived into the body
+    # (bad edit, lost // prefix), refuse LOUDLY — never voice it.
+    _pub = _tt.find_publishing_info(
+        "\n".join(s["text"] for s in parsed["segments"]))
+    if _pub:
+        return {"ok": False,
+                "reason": "publishing info in render body "
+                          f"[{_pub[0]['kind']}]: {_pub[0]['sample'][:80]} — "
+                          "fix the file (// prefix the header), never render it"}
     # locked chairs override stand-in IDs from the header
     locked: dict = {}
     if channel_slug:
@@ -462,7 +484,7 @@ def render_pilot(path: str, channel_slug: str = "",
         if poison is not None:
             try:
                 for _ci, _ch in enumerate(prepped["chunks"]):
-                    if not poison.poison(_ch)["pass"]:
+                    if not _tt.book_poison(_ch)["pass"]:
                         return {"ok": False,
                                 "reason": f"segment {i} chunk {_ci} blocked by tts-poison"}
             except Exception as e:  # noqa: BLE001
@@ -524,6 +546,46 @@ def render_pilot(path: str, channel_slug: str = "",
         meta.update({k: v for k, v in extra_meta.items()
                      if k not in ("name", "url")})
     json.dump(meta, open(master + ".json", "w"), indent=1)
+    # registry: file -> episode ledger (never fails the render).
+    try:
+        sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+        sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                        "pipeline"))
+        try:
+            import render_registry as _rr
+        except ImportError:
+            from pipeline import render_registry as _rr
+        _coll = _pilot_collection(parsed["path"], parsed["house"])
+        _voices = {str(s["speaker"]): s["voice_id"]
+                   for s in receipt["segments"]}
+        _dur = 0.0
+        try:
+            import subprocess as _sp2
+            _pr = _sp2.run(["ffprobe", "-v", "error",
+                            "-show_entries", "format=duration",
+                            "-of", "default=noprint_wrappers=1:nokey=1",
+                            master], capture_output=True, text=True,
+                           timeout=30)
+            _dur = float((_pr.stdout or "0").strip() or 0)
+        except Exception:
+            _dur = 0.0
+        _words = sum(len(s.get("text", "").split())
+                     for s in parsed["segments"])
+        _entry = _rr.make_entry(
+            source=parsed["path"], master=os.path.basename(master),
+            url=meta["url"], channel=channel_slug or parsed["house"],
+            house=parsed["house"], video=_coll, words=_words,
+            duration_s=_dur, voices=_voices,
+            validation={"score": min(
+                s.get("score", 0) for s in receipt["segments"]) if receipt["segments"] else 0,
+                "segments": len(receipt["segments"])},
+            backend="free-batch")
+        meta["video_id"] = _entry["video_id"]
+        meta["render_id"] = _entry["render_id"]
+        json.dump(meta, open(master + ".json", "w"), indent=1)
+        _rr.record(_entry)
+    except Exception:
+        pass  # registry is a ledger, not a gate
     return {"ok": True, **meta}
 
 
@@ -634,6 +696,20 @@ def list_voice_bank() -> list:
     return out
 
 
+def list_renders(channel: str = "") -> list:
+    """Registry reads for the dash: every master, which episode, where,
+    whose voices, how long. Optional channel filter. Newest last."""
+    try:
+        from pipeline import render_registry as _rr
+    except ImportError:
+        import render_registry as _rr
+    reg = _rr.load()
+    out = [r for r in reg.get("renders", []) if r.get("status") != "dead"]
+    if channel:
+        out = [r for r in out if r.get("channel") == channel]
+    return out
+
+
 def list_channels() -> list:
     """Channel entities for the dash: every studio/channels/*.json record
     with live status (chairs locked, bank clips, brief present). This is
@@ -643,6 +719,19 @@ def list_channels() -> list:
                             "..", "studio", "channels")
     chan_dir = os.path.normpath(chan_dir)
     bank = list_voice_bank()
+    # per-channel masters from the registry (bank_clips used to be the
+    # GLOBAL count stamped on every channel — wrong).
+    try:
+        sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence"))
+        sys.path.insert(0, os.path.join(os.path.dirname(SLEEPDRAW), "influence",
+                                        "pipeline"))
+        try:
+            import render_registry as _rr
+        except ImportError:
+            from pipeline import render_registry as _rr
+        _reg = _rr.load()
+    except Exception:
+        _reg = {"renders": []}
     out = []
     if not os.path.isdir(chan_dir):
         return out
@@ -662,6 +751,9 @@ def list_channels() -> list:
         locked = sum(1 for c in chairs.values()
                      if isinstance(c, dict) and c.get("status") == "ear-checked")
         brief = os.path.isfile(os.path.join(chan_dir, slug + "-brief.md"))
+        mine = [r for r in _reg.get("renders", [])
+                if r.get("channel") == slug and r.get("status") != "dead"]
+        mmin = round(sum(r.get("duration_s", 0) for r in mine) / 60, 1)
         out.append({"slug": slug,
                     "display_name": rec.get("display_name", slug),
                     "status": rec.get("status", "unknown"),
@@ -678,6 +770,7 @@ def list_channels() -> list:
                                     if isinstance(c, dict) else "")}
                         for n, c in chairs.items()],
                     "bank_clips": len(bank),
+                    "masters": len(mine), "minutes_banked": mmin,
                     "brief": brief,
                     "cadence": rec.get("cadence", "")})
     return out
