@@ -44,8 +44,9 @@ CHANNEL_PROJECTS = {
     "meditate-with-monk": "meditate-with-monk",
 }
 
-SKILL_FILES = ["README.md", "RUNTIME.md", "routines/00-index.md",
-               "normalize.md", "pilots.md", "profiles.json"]
+SKILL_FILES = ["README.md", "RUNTIME.md", "GATES.md", "RESOURCE.md",
+               "routines/00-index.md", "normalize.md", "pilots.md",
+               "profiles.json"]
 
 UNIVERSAL_BEATS = ["cold open (one striking line/image, attributed)",
                    "settle (place the listener)",
