@@ -9,7 +9,7 @@
 | Decision | Absorbs | Home | Note |
 |---|---|---|---|
 | **ESOTERICA (one channel)** | stonedoorway + daimon-dreams + channeled-wisdom + corbin-sleep (+ yogi-watch, eastern wing — owner's "yogi watch shit" read as fold) | NEW merged runtime; source wells = the four dirs + yogi | Same formula: esoteric/guided texts at night. ⚠️ rights: LL-permission (Ra), Corbin d.1978 translations, modern channeling © — rights-first routine. Owner to name the channel |
-| **MOMMY-READS + LORE-SLEEP** | lore-sleep → mommy-reads | mommy-reads (chair LOCKED, pilot stage) | "baby books goodnight stories." ⚠️ lore's Shrek E01 dies in merge — modern IP gets PD/whitewash or mommy-voice original retellings only |
+| **MOMMY-READS + LORE-SLEEP + COMPANY-COMFORT** | lore-sleep + company-comfort → mommy-reads | mommy-reads (chair LOCKED, pilot stage) | Final seasons (owner 2026-08-20→20: Bedtime stories (children's books + PD lore) · Mom explains (science made easy = the wedge) · Beautiful stories (hopecore: Everyday Truth + Cosy Past) · Soul & Near (ancient-PD only: Plato Er/Phaedo, Swedenborg, Jataka, TBoD-1927, Upanishads) · Mommy sings. KILLS: "tell me about your day" chat (human lane, ASMR owns it) · lore's Shrek E01 (modern IP out) |
 
 ## Keeps (own channels)
 - **sleepy-trades** — stays its own
