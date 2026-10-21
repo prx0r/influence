@@ -1,7 +1,7 @@
 {
  "cadence": "3x/week + goodnight ritual crossovers",
  "channel": "mommy-reads",
- "display_name": "Mommy Reads",
+ "display_name": "Mommy Explains",
  "engine": {
   "contract": "E2-reading: slow TTS + ambient bed + one scene per passage",
   "primary": "E2-reading",
