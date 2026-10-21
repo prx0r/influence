@@ -45,3 +45,20 @@
 2. Esoterica merge runtime (biggest collapse; rights-first)
 3. Mommy+lore merge (chair locked = fastest)
 4. Then the Tier-C copy queue per CHANNEL-REVIEW
+
+---
+
+## ADDENDUM 2026-10-21 — NEW LANE: SYNTHETIC LIFE (frontier-science explainers)
+
+**Decision:** launch lane = **synthetic life / emerging bio-engineering** —
+visual explainers over xenobots, minimal cells, protocells, XNA, DNA storage,
+de-extinction, organoid intelligence, AI protein design. Spec v0.1:
+`damn/projects/synthetic-life/CHANNEL.md` (premise, 12 seed pointers,
+open-access rights lanes, settle-law science framing, gates, pipeline).
+**Build-after gates:** mommy E06 render + fable factory run (taste proofs).
+Name = owner pick. NOT a merge — new channel. Adjacent future: quantum/
+frontier-physics sibling (explicitly deferred).
+
+**Source engine note:** informationphilosopher.com full-site deep-mine running
+(580-page sitemap crawl → mommy readout shelf, CC BY attribution headers) —
+IP content = hard-things backbone; no knowledge-graph build (TODOS #2 verdict).
